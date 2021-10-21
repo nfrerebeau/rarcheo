@@ -1,13 +1,11 @@
-Welcome! 
+# R pour l'archéologue
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/). Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
 
-This template provides a skeleton file structure that you can edit to create your book. 
+Bien qu'il soit principalement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
 
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+Ce livre est écrit avec le package R [**bookdown**](https://github.com/rstudio/bookdown).
 
-Additional resources:
+## Code de conduite
 
-The **bookdown** book: https://bookdown.org/yihui/bookdown/
-
-The **bookdown** package reference site: https://pkgs.rstudio.com/bookdown
+Ce projet est publié avec un [code de conduite du contributeur](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). En contribuant à ce projet, vous acceptez de vous conformer à ses termes.
