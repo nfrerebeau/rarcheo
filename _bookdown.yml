@@ -3,5 +3,13 @@ new_session: true
 before_chapter_script: _common.R
 delete_merged_file: true
 language:
+  label:
+    fig: 'Figure '
+    tab: 'Tableau '
+    exm: 'Exemple '
+    exr: 'Exercice '
+    remark: 'Remarque '
   ui:
-    chapter_name: "Chapter "
+    edit: 'Editer'
+    chapter_name: ''
+    appendix_name: ''
