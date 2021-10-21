@@ -1,0 +1,57 @@
+%Mise en forme
+\KOMAoptions{chapterprefix=false}
+\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+\usepackage{microtype} %Détails typographiques
+
+%Langue
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\usepackage{csquotes}
+
+%Hyperliens
+\usepackage{bookmark}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  anchorcolor=black,
+  citecolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+  bookmarks=true,
+  bookmarksopen=false
+}
+
+%Images
+%\usepackage{subcaption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+%Tableaux
+\usepackage{longtable}
+\usepackage{booktabs}
+
+% \titlehead{}
+% \subject{}
+% \title{}
+% \subtitle{}
+% \author{}
+\publishers{Université Bordeaux Montaigne\\Département d'Histoire de l'Art et d'Archéologie}
+% \date{}
+% \thanks{}
+\uppertitleback{
+	\textbf{Nicolas \textsc{Frerebeau}}
+	\vspace{1em}
+	\newline IRAMAT (UMR 5060)
+	\newline Maison de l'Archéologie
+	\newline Université Bordeaux Montaigne
+	\newline F-33607 Pessac cedex
+	\vspace{1em}
+	\newline MSHS-Toulouse (UAR 3414)
+  \newline Maison de la Recherche
+	\newline Université Toulouse -- Jean Jaurès
+  \newline 5 allées Antonio Machado
+  \newline F-31058 Toulouse cedex 9
+}
+% \lowertitleback{}
