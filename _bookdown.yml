@@ -13,3 +13,19 @@ language:
     edit: 'Editer'
     chapter_name: ''
     appendix_name: ''
+rmd_files:
+  [
+    "index.Rmd",
+
+    "chapter_introduction.Rmd",
+
+    "chapter_data.Rmd",
+    "chapter_rstats.Rmd",
+    "chapter_visualization.Rmd",
+    "chapter_statistics.Rmd",
+    
+    "chapter_chronology.Rmd",
+    "chapter_geography.Rmd",
+    
+    "chapter_references.Rmd"
+  ]

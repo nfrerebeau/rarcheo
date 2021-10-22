@@ -18,9 +18,12 @@ csl: chicago-fullnote-bibliography.csl
 lang: fr
 ---
 
-\frontmatter
+```{r include=FALSE}
+# Créer automatiquement une bibliographie des packages R utilisés
+knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
+```
 
-# À propos {-}
+# Avant propos {-}
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/). Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
 
@@ -33,13 +36,6 @@ Bien qu'il soit principalement conçu pour les étudiants du master mention *Arc
 Ce livre est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>^[Cela signifie que vous êtes libre de copier, distribuer et communiquer ce livre par tous moyens et sous tous formats, de modifier, transformer et créer à partir du matériel de ce livre. En contrepartie, vous devez créditer la source d'origine en précisant si vous l'avez modifiée, vous devez partager sous la même licence et vous ne pouvez pas en faire un usage commercial.].
 
 Le code contenu dans ce livre est simultanément disponible sous la [licence MIT](https://opensource.org/licenses/MIT)^[Cela signifie que vous êtes libre de l'utiliser dans vos propres projets, à condition de citer la source.].
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
 
 ## Contributions {-}
 
