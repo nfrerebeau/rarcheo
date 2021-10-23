@@ -17,6 +17,8 @@ License: CC BY-NC-SA 4.0
 URL: https://github.com/nfrerebeau/rarcheo
 Depends: 
     R (>= 4.1.0)
+Imports:
+    folio
 Suggests:
     bslib,
     bookdown,

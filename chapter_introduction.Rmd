@@ -1,3 +1,46 @@
 \mainmatter
 
 # Introduction
+
+## Ressources complémentaires
+
+Il existe de très nombreux ouvrages consacrés à R, dont la plupart sont consultables en ligne.
+*R in a Nutshell* de @adler2010 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courrant.
+
+L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à réaliser des graphiques informatifs et convaincants consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
+
+L'utilisateur confirmé trouvera dans les ouvrages [*Advanced R*](https://adv-r.hadley.nz/) [@wickham2019], [*Efficient R programming*](https://csgillespie.github.io/efficientR/) [@gillespie2016] et [*R packages*](https://r-pkgs.org/) [@wickham2015] de quoi approfondir sa compréhension du langage et développer sa pratique (notamment pour le développement de packages).
+
+Enfin, on trouvera sur le [site du package bookdown](https://bookdown.org/home/) de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également [une liste d'ouvrages dédiés à R et ses applications](https://www.r-project.org/doc/bib/R-books.html).
+
+## Données d'exemple
+
+Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio].
+
+## Conventions d'écriture
+
+Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
+
+Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
+
+Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
+
+## Colophon {#colophon}
+
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [bookdown](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit. Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/).
+
+Cette version du livre a été réalisée avec `r R.version.string`, les packages utilisés sont résumés dans le tableau \@ref(tab:packages).
+
+```{r packages, echo=FALSE, results="asis"}
+# Lister les packages présents dans le fichier DESCRIPTION
+dep <- desc::desc_get_deps()$package[-1] # Retirer R base
+# Récupérer les informations sur les packages
+pkg <- sessioninfo::package_info(dep, dependencies = FALSE)
+
+df <- data.frame(
+  Package = pkg$package,
+  Version = pkg$ondiskversion,
+  Source = pkg$source
+)
+knitr::kable(df, format = "markdown", caption = "Liste des packages utilisés.")
+```

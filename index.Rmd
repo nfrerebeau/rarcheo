@@ -27,7 +27,9 @@ knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/). Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
 
-Bien qu'il soit principalement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
+Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
+
+Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction.
 
 ## Licence {-}
 
@@ -39,4 +41,4 @@ Le code contenu dans ce livre est simultanément disponible sous la [licence MIT
 
 ## Contributions {-}
 
-Le code source de ce livre est disponible sur [GitHub](https://github.com/nfrerebeau/rarcheo). N'hésitez pas à y signaler toutes les erreurs que vous pourrez constater ou à y proposer des modifications.
+Le code source de ce livre est disponible sur [GitHub](https://github.com/nfrerebeau/rarcheo). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
