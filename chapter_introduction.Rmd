@@ -2,6 +2,14 @@
 
 # Introduction
 
+## Note sur le *tidyverse*
+
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse est "dogmatique" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
+
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations à l'aide de quelques opérations simples.
+
+Ceci étant dit, le lecteur qui le souhaite trouvera dans [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] une introduction à l'analyse de données avec les packages du tidyverse.
+
 ## Ressources complémentaires
 
 Il existe de très nombreux ouvrages consacrés à R, dont la plupart sont consultables en ligne.
