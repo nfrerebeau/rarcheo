@@ -18,11 +18,16 @@ URL: https://github.com/nfrerebeau/rarcheo
 Depends: 
     R (>= 4.1.0)
 Suggests:
+    bslib,
     bookdown,
+    downlit,
     desc,
     knitr,
+    markdown,
+    mime,
     rmarkdown,
-    sessioninfo
+    sessioninfo,
+    xml2
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

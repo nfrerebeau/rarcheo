@@ -39,6 +39,9 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
+# renv library
+/renv/library/
+
 ### R.Bookdown Stack ###
 _book/
 # R package: bookdown caching files
