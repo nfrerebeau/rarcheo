@@ -1,11 +1,11 @@
 bookdown::bs4_book:
   css: bs4_style.css
   theme:
-    primary: "#096B72"   # default .rmdnote = blue
-    danger:  "#dc3545"   # default .rmdcaution = red
-    success: "#198754"   # default .rmdimportant = green
-    info:    "#0dcaf0"   # default .rmdtip = cyan
-    warning: "#ffc107"   # default .rmdwarning = yellow
+    primary: "#222255"   # default .rmdnote = blue
+    danger:  "#663333"   # default .rmdcaution = red
+    success: "#225522"   # default .rmdimportant = green
+    info:    "#225555"   # default .rmdtip = cyan
+    warning: "#663333"   # default .rmdwarning = yellow
   repo: https://github.com/nfrerebeau/rarcheo
   template: template.html
   
@@ -16,6 +16,7 @@ bookdown::pdf_book:
     after_body: latex/after_body.tex
   latex_engine: xelatex
   citation_package: biblatex
+  pandoc_args: ["--top-level-division=chapter", "--lua-filter=latex/sidebar.lua"]
   keep_tex: yes
   toc_unnumbered: false
   toc_bib: true
