@@ -41,4 +41,30 @@ Le code contenu dans ce livre est simultanément disponible sous la [licence MIT
 
 ## Contributions {-}
 
-Le code source de ce livre est disponible sur [GitHub](https://github.com/nfrerebeau/rarcheo). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
+Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
+
+## Exemples {-}
+
+Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio].
+
+Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
+
+## Colophon {-}
+
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [bookdown](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit.
+
+Cette version du livre a été réalisée avec `r R.version.string`, les packages utilisés sont résumés dans le tableau \@ref(tab:packages).
+
+```{r packages, echo=FALSE, results="asis"}
+# Lister les packages présents dans le fichier DESCRIPTION
+dep <- desc::desc_get_deps()$package[-1] # Retirer R base
+# Récupérer les informations sur les packages
+pkg <- sessioninfo::package_info(dep, dependencies = FALSE)
+
+df <- data.frame(
+  Package = pkg$package,
+  Version = pkg$ondiskversion,
+  Source = pkg$source
+)
+knitr::kable(df, format = "markdown", caption = "Liste des packages utilisés.")
+```

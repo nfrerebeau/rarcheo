@@ -1,1 +1,26 @@
-# Des données bien rangées
+# Structure des données
+
+## Type de variables
+
+```{r variables, echo=FALSE}
+DiagrammeR::grViz(
+  "digraph {
+  node [shape = box, fontname = arial]
+  variable; qualitative; quantitative;
+  nominale; ordinale; discrète; continue
+  
+  variable -> {qualitative quantitative}
+  qualitative -> {nominale ordinale}
+  quantitative -> {discrète continue}
+  }",
+  height = 200
+)
+```
+
+### Variables quantitatives
+
+### Variables qualitatives
+
+### Transformations de variables
+
+## Tableaux de données
