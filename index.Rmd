@@ -18,7 +18,7 @@ csl: chicago-fullnote-bibliography.csl
 lang: fr
 ---
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
 # Créer automatiquement une bibliographie des packages R utilisés
 knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 ```
@@ -60,11 +60,12 @@ Cette version du livre a été réalisée avec `r R.version.string`, les package
 dep <- desc::desc_get_deps()$package[-1] # Retirer R base
 # Récupérer les informations sur les packages
 pkg <- sessioninfo::package_info(dep, dependencies = FALSE)
-
+  
 df <- data.frame(
   Package = pkg$package,
   Version = pkg$ondiskversion,
-  Source = pkg$source
+  Source = pkg$source,
+  Référence = paste0("@R-", pkg$package)
 )
 knitr::kable(df, format = "markdown", caption = "Liste des packages utilisés.")
 ```
