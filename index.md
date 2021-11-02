@@ -6,7 +6,7 @@ date: "2021-11-02"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://rstats.archaeo.science
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
   Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
