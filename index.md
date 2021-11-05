@@ -1,8 +1,9 @@
 --- 
 title: "R pour l'archéologue"
+subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2021-11-02"
+date: "2021-11-05"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -35,6 +36,18 @@ Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequi
 Ce livre est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a>^[Cela signifie que vous êtes libre de copier, distribuer et communiquer ce livre par tous moyens et sous tous formats, de modifier, transformer et créer à partir du matériel de ce livre. En contrepartie, vous devez créditer la source d'origine en précisant si vous l'avez modifiée, vous devez partager sous la même licence et vous ne pouvez pas en faire un usage commercial.].
 
 Le code contenu dans ce livre est simultanément disponible sous la [licence MIT](https://opensource.org/licenses/MIT)^[Cela signifie que vous êtes libre de l'utiliser dans vos propres projets, à condition de citer la source.].
+
+
+```
+@Book{rarcheo,
+  title = {R pour l'archéologue: Exploration, visualisation et analyse de données},
+  author = {Nicolas Frerebeau},
+  year = {2021},
+  publisher = {Université Bordeaux Montaigne},
+  address = {Pessac, France},
+  url = {https://rstats.archaeo.science},
+}
+```
 
 ## Contributions {-}
 
