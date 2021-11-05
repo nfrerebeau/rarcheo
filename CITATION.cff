@@ -1,0 +1,39 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.1.0
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "rarcheo" in publications use:'
+type: software
+license: CC-BY-NC-SA-4.0
+title: 'rarcheo: R pour l''archéologue'
+version: 0.0.0.9000
+abstract: Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et
+  modéliser des données archéologiques à l'aide du langage R. Cet ouvrage vous permet
+  d'acquérir les connaissances et les compétences nécessaires pour aborder un large
+  éventail de problèmes liés aux données archéologiques.
+authors:
+- family-names: Frerebeau
+  given-names: Nicolas
+  email: nicolas.frerebeau@u-bordeaux-montaigne.fr
+  orcid: https://orcid.org/0000-0001-5759-4944
+  affiliation: Université Bordeaux Montaigne
+preferred-citation:
+  type: book
+  title: 'R pour l''archéologue: Exploration, visualisation et analyse de données'
+  authors:
+  - family-names: Frerebeau
+    given-names: Nicolas
+  year: '2021'
+  publisher:
+    name: Université Bordeaux Montaigne
+  url: https://rstats.archaeo.science
+repository-code: https://github.com/nfrerebeau/rarcheo
+url: https://rstats.archaeo.science
+contact:
+- family-names: Frerebeau
+  given-names: Nicolas
+  email: nicolas.frerebeau@u-bordeaux-montaigne.fr
+  orcid: https://orcid.org/0000-0001-5759-4944
+  affiliation: Université Bordeaux Montaigne

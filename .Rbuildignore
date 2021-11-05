@@ -1,7 +1,9 @@
 ^renv$
 ^renv\.lock$
 ^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$
+^README\.Rmd$
+^CITATION\.cff$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
-^LICENSE\.md$

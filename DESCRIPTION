@@ -6,7 +6,8 @@ Authors@R:
            family = "Frerebeau",
            role = c("aut", "cre"),
            email = "nicolas.frerebeau@u-bordeaux-montaigne.fr",
-           comment = c(ORCID = "0000-0001-5759-4944"))
+           comment = c(ORCID = "0000-0001-5759-4944", 
+                       affiliation = "Université Bordeaux Montaigne"))
 Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: Ce livre s'adresse aux personnes qui souhaitent analyser,
     visualiser et modéliser des données archéologiques à l'aide du langage
@@ -14,7 +15,8 @@ Description: Ce livre s'adresse aux personnes qui souhaitent analyser,
     compétences nécessaires pour aborder un large éventail de problèmes
     liés aux données archéologiques.
 License: CC BY-NC-SA 4.0
-URL: https://github.com/nfrerebeau/rarcheo
+URL: https://rstats.archaeo.science, https://github.com/nfrerebeau/rarcheo
+BugReports: https://github.com/nfrerebeau/rarcheo/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
