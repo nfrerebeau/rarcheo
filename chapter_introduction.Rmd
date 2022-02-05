@@ -1,30 +1,95 @@
 \mainmatter
 
-# Introduction
+# Introduction {-}
 
-## Pourquoi travailler avec R
+## Pourquoi travailler avec R ? {-}
 
-### Conventions d'écriture
+R est libre et gratuit
+: Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Robert Gentleman au sein du département de statistiques de l'université d'Auckland (Nouvelle-Zélande). En 1995 la première version officielle est publiée et R devient un logiciel libre, distribué sous [licence GNU](https://www.gnu.org/philosophy/free-sw.html). Le code source de l'ensemble du système R est ainsi accessible à tous, en garantissant quatre libertés essentielles :
 
-Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
+> * La liberté de faire fonctionner le programme comme vous voulez, pour n'importe quel usage (liberté 0) ;
+* La liberté d'étudier le fonctionnement du programme, et de le modifier pour qu'il effectue vos tâches informatiques comme vous le souhaitez (liberté 1) ; l'accès au code source est une condition nécessaire ;
+* La liberté de redistribuer des copies, donc d'aider les autres (liberté 2) ;
+* La liberté de distribuer aux autres des copies de vos versions modifiées (liberté 3) ; en faisant cela, vous donnez à toute la communauté une possibilité de profiter de vos changements ; l'accès au code source est une condition nécessaire.
 
-Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
+R est modulable
+: Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées [*packages*](#packages)) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés sur le [*Comprehensive R Archive Network*](https://cran.r-project.org/)^[Il existe d'autres archives, parfois spécialisées comme [Bioconductor](https://www.bioconductor.org/) pour la biologie.] (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig. \@ref(fig:cran-packages-year)).
 
-### Note sur le *tidyverse*
+R facilite la reproductibilité
+: R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script sur des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte transparente et reproductible.
 
-Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse est "dogmatique" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
+(ref:cran-packages-year) Évolution du nombre de packages disponibles sur le CRAN par année.
 
-Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations à l'aide de quelques opérations simples.
+```{r cran-packages-year, echo=FALSE, fig.cap="(ref:cran-packages-year)"}
+# https://gist.github.com/daroczig/3cf06d6db4be2bbe3368
 
-Ceci étant dit, le lecteur qui le souhaite trouvera dans [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] une introduction à l'analyse de données avec les packages du tidyverse.
+cran_pkg <- read.table("data/CRAN_packages_year.csv", header = TRUE,
+                       sep = ",", dec = ".")
+cran_pkg$year <- as.character.Date(cran_pkg$year)
+cran_pkg <- subset(cran_pkg, year < 2022)
 
-## Ressources complémentaires
+cran_pkg |> 
+  ggplot() +
+  aes(x = as.Date(year), y = published) +
+  geom_col() +
+  scale_x_date(date_breaks = '2 year', date_labels = '%Y') +
+  scale_y_continuous(breaks = seq(0, 23000, 2000)) +
+  labs(x = "Année", y = "Nombre de packages", caption = "Source : CRAN")
+```
 
-Il existe de très nombreux ouvrages consacrés à R, dont la plupart sont consultables en ligne.
-*R in a Nutshell* de @adler2010 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courrant.
+R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne (il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r)) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996).
 
-L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à réaliser des graphiques informatifs et convaincants consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
+Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
 
-L'utilisateur confirmé trouvera dans les ouvrages [*Advanced R*](https://adv-r.hadley.nz/) [@wickham2019], [*Efficient R programming*](https://csgillespie.github.io/efficientR/) [@gillespie2016] et [*R packages*](https://r-pkgs.org/) [@wickham2015] de quoi approfondir sa compréhension du langage et développer sa pratique (notamment pour le développement de packages).
+(ref:wos-archaeo-year) Nombre d'articles d'archéologie citant R publié chaque année [répliqué d'après @schmidt2020].
 
-Enfin, on trouvera sur le [site du package bookdown](https://bookdown.org/home/) de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également [une liste d'ouvrages dédiés à R et ses applications](https://www.r-project.org/doc/bib/R-books.html).
+```{r wos-archaeo, echo=FALSE, fig.cap="(ref:wos-archaeo-year)"}
+# https://www.webofscience.com/wos/alldb/summary/f0124786-cee4-4290-bcd6-c7db5d8ab7fe-142d56d3/relevance/1
+
+wos_path <- list.files(path = "data", pattern = "WoS_archaeology_R", 
+                       full.names = TRUE)
+wos_data <- wos_path |> 
+  lapply(FUN = read.table, header = TRUE, sep = "\t", quote = "", dec = ".")
+wos_data <- do.call(rbind, wos_data) |> 
+  subset(PY < 2021)
+
+wos_archaeo_title <- wos_data |> 
+  split(f = wos_data$SO) |> 
+  lapply(FUN = function(x) data.frame(title = unique(x$SO), n = nrow(x)))
+wos_archaeo_title <- do.call(rbind, wos_archaeo_title)
+
+wos_archaeo_years <- wos_data |> 
+  split(f = wos_data$PY) |> 
+  lapply(FUN = function(x) data.frame(year = unique(x$PY), n = nrow(x)))
+wos_archaeo_years <- do.call(rbind, wos_archaeo_years)
+
+wos_archaeo_years |> 
+  ggplot() +
+  aes(x = year, y = n) +
+  geom_col() +
+  labs(x = "Année de publication", y = "Nombre d'articles",
+       caption = "Source : Web of Science")
+```
+
+## Ressources complémentaires {-}
+
+En complément de la [documentation officielle](https://cran.r-project.org/doc/manuals/R-intro.html) pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. *R in a Nutshell* de @adler2010 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
+
+L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
+
+L'utilisateur confirmé trouvera dans les ouvrages [*Advanced R*](https://adv-r.hadley.nz/) [@wickham2019] et [*Efficient R programming*](https://csgillespie.github.io/efficientR/) [@gillespie2016] de quoi approfondir sa compréhension du langage et développer sa pratique. [*R packages*](https://r-pkgs.org/) de @wickham2015 est l'ouvrage idéal pour tout utilisateur souhaitant écrire son premier package et se former aux outils de développement ([*devtools*](https://devtools.r-lib.org/), [*roxygen2*](https://roxygen2.r-lib.org/), [*testthat*](https://testthat.r-lib.org/)...)^[Voir également la documentation officielle pour le développement d'extensions de R, la description du processus de création des modules complémentaires, l'écriture de la documentation, les interfaces et l'API : [*Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html).].
+
+Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue^[On trouvera sur le [site du package bookdown](https://bookdown.org/home/) et sur le site du [Big Book of R](https://www.bigbookofr.com/) de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également [une liste d'ouvrages dédiés à R et ses applications](https://www.r-project.org/doc/bib/R-books.html).] :
+
+* [*Geocomputation with R*](https://geocompr.robinlovelace.net/) [@lovelace2020], un livre sur l'analyse, la visualisation et la modélisation des données géographiques.
+* [*Text Mining with R*](https://www.tidytextmining.com/) [@silge2017], un livre sur l'analyse textuelle avec R.
+
+Enfin, on trouvera sur [R-bloggers](https://www.r-bloggers.com/) (un agrégateur de blogs) l'actualité du langage et de nombreux tutoriels. 
+
+::: {.rmdtip}
+Le site collaboratif [Rzine](https://rzine.fr/) a pour objectif de favoriser la diffusion et le partage de connaissances sur la pratique de R en <abbr title="Sciences Humaines et Sociales">SHS</abbr> :
+
+> Rzine.fr s'efforce de dessiner les contours de la communauté R en SHS. Il donne aux débutant·e·s un accès simple à l'information et orienté vers une utilisation autonome. Il offre aux utilisateur·rice·s de niveau intermédiaire la possibilité d'étendre leurs pratiques et de s'ouvrir à d'autres méthodes parfois issues d'autres disciplines. Enfin, il s'agit d'un espace de diffusion pour les utilisateur·rice·s avancé·e·s, auteur·e·s de développements ou de documentation. --- [Rzine](https://rzine.fr)
+
+Rzine recense de nombreuses ressources, fiches et manuels, *open source* et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en SHS.
+:::

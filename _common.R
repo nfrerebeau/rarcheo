@@ -19,3 +19,7 @@ if (knitr::is_latex_output()) {
   options(crayon.enabled = FALSE)
   options(cli.unicode = TRUE)
 }
+
+# load packages
+library(ggplot2)
+old <- theme_set(theme_bw())

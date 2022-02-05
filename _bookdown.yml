@@ -24,6 +24,7 @@ rmd_files:
     "chapter_data.Rmd",
     
     "chapter_statistics.Rmd",
+    
     "chapter_visualization.Rmd",
     
     "chapter_chronology.Rmd",
