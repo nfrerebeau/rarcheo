@@ -52,22 +52,22 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
       <nav aria-label="Table of contents"><h2>Sommaire</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html">Avant propos</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
 <li class="book-part">Premiers pas avec R</li>
-<li><a class="" href="installation.html"><span class="header-section-number">2</span> Installation</a></li>
-<li><a class="" href="environnement-de-travail.html"><span class="header-section-number">3</span> Environnement de travail</a></li>
-<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">4</span> Structure des données</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">1</span> Installation</a></li>
+<li><a class="" href="environnement-de-travail.html"><span class="header-section-number">2</span> Environnement de travail</a></li>
+<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">3</span> Structure des données</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">5</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">6</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">7</span> Visualisation de données</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">4</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">5</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">6</span> Visualisation de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">8</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">9</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">10</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">7</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">8</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">9</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">11</span> Coordonnées et projections</a></li>
-<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">12</span> Format de données</a></li>
+<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">10</span> Coordonnées et projections</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -88,6 +88,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a></p>
 <p>Ce livre est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Cela signifie que vous êtes libre de copier, distribuer et communiquer ce livre par tous moyens et sous tous formats, de modifier, transformer et créer à partir du matériel de ce livre. En contrepartie, vous devez créditer la source d’origine en précisant si vous l’avez modifiée, vous devez partager sous la même licence et vous ne pouvez pas en faire un usage commercial.&lt;/p&gt;"><sup>1</sup></a>.</p>
 <p>Le code contenu dans ce livre est simultanément disponible sous la <a href="https://opensource.org/licenses/MIT">licence MIT</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Cela signifie que vous êtes libre de l’utiliser dans vos propres projets, à condition de citer la source.&lt;/p&gt;"><sup>2</sup></a>.</p>
+<p>Une entrée BibTeX pour citer ce document :</p>
 <pre><code>@Book{rarcheo,
   title = {R pour l'archéologue: Exploration, visualisation et analyse de données},
   author = {Nicolas Frerebeau},
@@ -102,16 +103,17 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 </h2>
 <p>Le <a href="https://github.com/nfrerebeau/rarcheo">code source</a> de ce livre est disponible sur <a href="https://github.com/">GitHub</a>. N’hésitez pas à y <a href="https://github.com/nfrerebeau/rarcheo/issues">ouvrir un ticket</a> pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.</p>
 </div>
-<div id="exemples" class="section level2 unnumbered">
-<h2>Exemples<a class="anchor" aria-label="anchor" href="#exemples"><i class="fas fa-link"></i></a>
+<div id="conventions-décriture" class="section level2 unnumbered">
+<h2>Conventions d’écriture<a class="anchor" aria-label="anchor" href="#conventions-d%C3%A9criture"><i class="fas fa-link"></i></a>
 </h2>
-<p>Les données utilisées dans les exemples sont issues des packages <em>datasets</em><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;R Core Team, &lt;em&gt;R: A Language and Environment for Statistical Computing&lt;/em&gt; (Vienna, Austria: R Foundation for Statistical Computing, 2021), &lt;a href="https://www.R-project.org/" role="doc-biblioref"&gt;https://www.R-project.org/&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a></span> et <a href="https://packages.tesselle.org/folio/"><em>folio</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nicolas Frerebeau, &lt;em&gt;folio: Datasets for Teaching Archaeology and Paleontology&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=folio" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=folio&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></span></p>
-<p>Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant <code>set.seed(12345)</code>.</p>
+<p>Par la suite, on écrira <code>foo()</code> pour désigner une fonction, <code>bar</code> pour désigner les variables et les paramètres des fonctions et <code>baz/</code> pour désigner les chemins. Les noms de <em>packages</em> sont indiqués en italique.</p>
+<p>Les commentaires dans le code sont précédés par le signe <code>#</code>. Les blocs de code alternent l’entrée et la sortie. La sortie est commentée (précédée par <code>#&gt;</code> pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.</p>
 </div>
-<div id="colophon" class="section level2 unnumbered">
-<h2>Colophon<a class="anchor" aria-label="anchor" href="#colophon"><i class="fas fa-link"></i></a>
+<div id="reproductibilité" class="section level2 unnumbered">
+<h2>Reproductibilité<a class="anchor" aria-label="anchor" href="#reproductibilit%C3%A9"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ce livre a été écrit dans <a href="http://www.rstudio.com/ide/">RStudio</a> avec le package R <a href="http://bookdown.org/">bookdown</a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;bookdown: Authoring Books and Technical Documents with R Markdown&lt;/em&gt; (Boca Raton, Florida: Chapman; Hall/CRC, 2016), &lt;a href="https://bookdown.org/yihui/bookdown" role="doc-biblioref"&gt;https://bookdown.org/yihui/bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></span> Le site web est hébergé par <a href="https://pages.github.com/">GitHub Pages</a> et automatiquement mis à jour après chaque commit.</p>
+<p>Ce livre a été écrit dans <a href="http://www.rstudio.com/ide/">RStudio</a> avec le package R <a href="http://bookdown.org/"><em>bookdown</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;bookdown: Authoring Books and Technical Documents with R Markdown&lt;/em&gt; (Boca Raton, Florida: Chapman; Hall/CRC, 2016), &lt;a href="https://bookdown.org/yihui/bookdown" role="doc-biblioref"&gt;https://bookdown.org/yihui/bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a></span> Le site web est hébergé par <a href="https://pages.github.com/">GitHub Pages</a> et automatiquement mis à jour après chaque commit par <a href="https://github.com/nfrerebeau/rarcheo/actions">GitHub Actions</a> (cette version a été compilée le 05 Feb 2022).</p>
+<p>Les données utilisées dans les exemples sont issues des packages <em>datasets</em><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;R Core Team, &lt;em&gt;R: A Language and Environment for Statistical Computing&lt;/em&gt; (Vienna, Austria: R Foundation for Statistical Computing, 2021), &lt;a href="https://www.R-project.org/" role="doc-biblioref"&gt;https://www.R-project.org/&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></span> et <a href="https://packages.tesselle.org/folio/"><em>folio</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nicolas Frerebeau, &lt;em&gt;folio: Datasets for Teaching Archaeology and Paleontology&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=folio" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=folio&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></span> Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant <code>set.seed(12345)</code>.</p>
 <p>Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01), les packages utilisés sont résumés dans le tableau <a href="index.html#tab:packages">0.1</a>.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -149,7 +151,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 </tr>
 <tr class="odd">
 <td align="left">downlit</td>
-<td align="left">0.2.1</td>
+<td align="left">0.4.0</td>
 <td align="left">CRAN (R 4.1.2)</td>
 <td align="left"><span class="citation">Hadley Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;downlit: Syntax Highlighting and Automatic Linking&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=downlit" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=downlit&lt;/a&gt;.&lt;/p&gt;'><sup>10</sup></a></span></td>
 </tr>
@@ -185,14 +187,14 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 </tr>
 <tr class="odd">
 <td align="left">sessioninfo</td>
-<td align="left">1.1.1</td>
+<td align="left">1.2.1</td>
 <td align="left">CRAN (R 4.1.2)</td>
 <td align="left"><span class="citation">Hadley Wickham et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;sessioninfo: R Session Information&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=sessioninfo" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=sessioninfo&lt;/a&gt;.&lt;/p&gt;'><sup>16</sup></a></span></td>
 </tr>
 <tr class="even">
 <td align="left">webshot</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left">0.5.2</td>
+<td align="left">CRAN (R 4.1.2)</td>
 <td align="left"><span class="citation">Winston Chang<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;webshot: Take Screenshots of Web Pages&lt;/em&gt;, 2019, &lt;a href="https://github.com/wch/webshot/" role="doc-biblioref"&gt;https://github.com/wch/webshot/&lt;/a&gt;.&lt;/p&gt;'><sup>17</sup></a></span></td>
 </tr>
 <tr class="odd">
@@ -208,15 +210,15 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="introduction.html"><span class="header-section-number">1</span> Introduction</a></div>
+<div class="next"><a href="introduction.html">Introduction</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#avant-propos">Avant propos</a></li>
 <li><a class="nav-link" href="#licence">Licence</a></li>
 <li><a class="nav-link" href="#contributions">Contributions</a></li>
-<li><a class="nav-link" href="#exemples">Exemples</a></li>
-<li><a class="nav-link" href="#colophon">Colophon</a></li>
+<li><a class="nav-link" href="#conventions-d%C3%A9criture">Conventions d’écriture</a></li>
+<li><a class="nav-link" href="#reproductibilit%C3%A9">Reproductibilité</a></li>
 </ul>
 
       <div class="book-extra">
@@ -234,7 +236,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2021-11-05.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

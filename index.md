@@ -3,7 +3,7 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2021-11-05"
+date: "2022-02-05"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -37,6 +37,8 @@ Ce livre est mis à disposition selon les termes de la <a rel="license" href="ht
 
 Le code contenu dans ce livre est simultanément disponible sous la [licence MIT](https://opensource.org/licenses/MIT)^[Cela signifie que vous êtes libre de l'utiliser dans vos propres projets, à condition de citer la source.].
 
+Une entrée BibTeX pour citer ce document :
+
 
 ```
 @Book{rarcheo,
@@ -53,15 +55,17 @@ Le code contenu dans ce livre est simultanément disponible sous la [licence MIT
 
 Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
 
-## Exemples {-}
+## Conventions d'écriture {-}
 
-Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio].
+Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
 
-Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
+Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
 
-## Colophon {-}
+## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [bookdown](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit.
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 05 Feb 2022).
+
+Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
 Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01), les packages utilisés sont résumés dans le tableau \@ref(tab:packages).
 
@@ -74,12 +78,12 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |bslib       |0.3.1   |CRAN (R 4.1.2) |@R-bslib       |
 |desc        |1.4.0   |CRAN (R 4.1.2) |@R-desc        |
 |DiagrammeR  |1.0.6.1 |CRAN (R 4.1.2) |@R-DiagrammeR  |
-|downlit     |0.2.1   |CRAN (R 4.1.2) |@R-downlit     |
+|downlit     |0.4.0   |CRAN (R 4.1.2) |@R-downlit     |
 |folio       |1.0.0   |CRAN (R 4.1.2) |@R-folio       |
 |knitr       |1.36    |CRAN (R 4.1.2) |@R-knitr       |
 |markdown    |1.1     |CRAN (R 4.1.2) |@R-markdown    |
 |mime        |0.12    |CRAN (R 4.1.2) |@R-mime        |
 |rmarkdown   |2.11    |CRAN (R 4.1.2) |@R-rmarkdown   |
-|sessioninfo |1.1.1   |CRAN (R 4.1.2) |@R-sessioninfo |
-|webshot     |NA      |NA             |@R-webshot     |
+|sessioninfo |1.2.1   |CRAN (R 4.1.2) |@R-sessioninfo |
+|webshot     |0.5.2   |CRAN (R 4.1.2) |@R-webshot     |
 |xml2        |1.3.2   |CRAN (R 4.1.2) |@R-xml2        |
