@@ -18,6 +18,8 @@ rmd_files:
     "index.Rmd",
 
     "chapter_introduction.Rmd",
+
+    "chapter_installation.Rmd",
     
     "chapter_rstats.Rmd",
 
@@ -31,7 +33,7 @@ rmd_files:
     
     "chapter_geography.Rmd",
     
-    "chapter_style.Rmd",
+    "chapter_appendix.Rmd",
     
     "chapter_references.Rmd"
   ]

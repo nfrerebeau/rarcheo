@@ -18,6 +18,7 @@ bookdown::pdf_book:
   citation_package: biblatex
   pandoc_args: ["--top-level-division=chapter", "--lua-filter=latex/sidebar.lua"]
   keep_tex: yes
-  toc_unnumbered: false
-  toc_bib: true
   number_sections: true
+  toc_unnumbered: true
+  toc_appendix: true
+  toc_bib: true

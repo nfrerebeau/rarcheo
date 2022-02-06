@@ -1,6 +1,7 @@
 %Mise en forme
 \KOMAoptions{chapterprefix=false}
-\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+%\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+\renewcommand\addparttocentry[2]{\addtocentrydefault{part}{}{#2}}
 \usepackage{microtype} %Détails typographiques
 
 %Langue
