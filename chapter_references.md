@@ -3,5 +3,3 @@
 \addtocontents{toc}{\bigskip}
 
 
-# Bibliographie {-}
-

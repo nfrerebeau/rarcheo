@@ -3,7 +3,7 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2022-02-05"
+date: "2022-02-06"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -28,6 +28,8 @@ Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modélis
 Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
 
 Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction.
+
+
 
 ## Licence {-}
 
@@ -63,7 +65,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 05 Feb 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 06 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 

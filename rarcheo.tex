@@ -1,0 +1,437 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  french,
+]{scrbook}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R pour l'archéologue},
+  pdfauthor={Nicolas Frerebeau},
+  pdflang={fr},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+%Mise en forme
+\KOMAoptions{chapterprefix=false}
+\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+\usepackage{microtype} %Détails typographiques
+
+%Langue
+\usepackage{polyglossia}
+\setmainlanguage{french}
+\gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\usepackage[autostyle=true]{csquotes}
+
+%Hyperliens
+\usepackage{bookmark}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  anchorcolor=black,
+  citecolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+  bookmarks=true,
+  bookmarksopen=false
+}
+
+%Images
+%\usepackage{subcaption}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+%Tableaux
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{xcolor}
+\usepackage{tcolorbox} %Cadres autour des paragraphes
+\definecolor{darkblue}{HTML}{222255}
+\definecolor{darkcyan}{HTML}{225555}
+\definecolor{darkgreen}{HTML}{225522}
+\definecolor{darkyellow}{HTML}{666633}
+\definecolor{darkred}{HTML}{663333}
+\definecolor{darkgrey}{HTML}{555555}
+\definecolor{paleblue}{HTML}{BBCCEE}
+\definecolor{palecyan}{HTML}{CCEEFF}
+\definecolor{palegreen}{HTML}{CCDDAA}
+\definecolor{paleyellow}{HTML}{EEEEBB}
+\definecolor{palered}{HTML}{FFCCCC}
+\definecolor{palegrey}{HTML}{DDDDDD}
+
+% \titlehead{}
+% \subject{}
+% \title{}
+% \subtitle{}
+% \author{}
+\publishers{Université Bordeaux Montaigne\\Département d'Histoire de l'Art et d'Archéologie}
+% \date{}
+% \thanks{}
+\uppertitleback{
+	\textbf{Nicolas \textsc{Frerebeau}}
+	\vspace{1em}
+	\newline MSHS-Toulouse (UAR 3414)
+  \newline Maison de la Recherche
+	\newline Université Fédérale de Toulouse -- Jean Jaurès
+  \newline 5 allées Antonio Machado
+  \newline F-31058 Toulouse cedex 9
+	\vspace{1em}
+	\newline Archéosciences Bordeaux (UMR 6034)
+	\newline Maison de l'Archéologie
+	\newline Université Bordeaux Montaigne
+	\newline F-33607 Pessac cedex
+}
+% \lowertitleback{}
+\ifXeTeX
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+  \usepackage{polyglossia}
+  \setmainlanguage[]{french}
+\else
+  \usepackage[main=french]{babel}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=apa,]{biblatex}
+\addbibresource{book.bib}
+\addbibresource{packages.bib}
+
+\title{R pour l'archéologue}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Exploration, visualisation et analyse de données}
+\author{Nicolas Frerebeau}
+\date{2022-02-06}
+
+\begin{document}
+\maketitle
+
+\frontmatter
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{avant-propos}{%
+\chapter*{Avant propos}\label{avant-propos}}
+
+
+Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R}. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
+
+Bien qu'il soit initialement conçu pour les étudiants du master mention \emph{Archéologie, sciences pour l'archéologie} de l'\href{https://www.u-bordeaux-montaigne.fr/}{Université Bordeaux Montaigne}, ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
+
+Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des \protect\hyperlink{ressources-compluxe9mentaires}{suggestions de lecture} complémentaires à la fin de l'introduction.
+
+\hypertarget{licence}{%
+\section*{Licence}\label{licence}}
+
+
+Ce livre est mis à disposition selon les termes de la licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International\footnote{Cela signifie que vous êtes libre de copier, distribuer et communiquer ce livre par tous moyens et sous tous formats, de modifier, transformer et créer à partir du matériel de ce livre. En contrepartie, vous devez créditer la source d'origine en précisant si vous l'avez modifiée, vous devez partager sous la même licence et vous ne pouvez pas en faire un usage commercial.}.
+
+Le code contenu dans ce livre est simultanément disponible sous la \href{https://opensource.org/licenses/MIT}{licence MIT}\footnote{Cela signifie que vous êtes libre de l'utiliser dans vos propres projets, à condition de citer la source.}.
+
+Une entrée BibTeX pour citer ce document :
+
+\begin{verbatim}
+@Book{rarcheo,
+  title = {R pour l'archéologue: Exploration, visualisation et analyse de données},
+  author = {Nicolas Frerebeau},
+  year = {2021},
+  publisher = {Université Bordeaux Montaigne},
+  address = {Pessac, France},
+  url = {https://rstats.archaeo.science},
+}
+\end{verbatim}
+
+\hypertarget{contributions}{%
+\section*{Contributions}\label{contributions}}
+
+
+Le \href{https://github.com/nfrerebeau/rarcheo}{code source} de ce livre est disponible sur \href{https://github.com/}{GitHub}. N'hésitez pas à y \href{https://github.com/nfrerebeau/rarcheo/issues}{ouvrir un ticket} pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
+
+\hypertarget{conventions-duxe9criture}{%
+\section*{Conventions d'écriture}\label{conventions-duxe9criture}}
+
+
+Par la suite, on écrira \texttt{foo()} pour désigner une fonction, \texttt{bar} pour désigner les variables et les paramètres des fonctions et \texttt{baz/} pour désigner les chemins. Les noms de \emph{packages} sont indiqués en italique.
+
+Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par \texttt{\#\textgreater{}} pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
+
+\hypertarget{reproductibilituxe9}{%
+\section*{Reproductibilité}\label{reproductibilituxe9}}
+
+
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 06 Feb 2022).
+
+Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
+
+Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01), les packages utilisés sont résumés dans le tableau \ref{tab:packages}.
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{\label{tab:packages}Liste des packages utilisés.}\tabularnewline
+\toprule
+Package & Version & Source & Référence \\
+\midrule
+\endfirsthead
+\toprule
+Package & Version & Source & Référence \\
+\midrule
+\endhead
+bookdown & 0.24 & CRAN (R 4.1.2) & \textcite{R-bookdown} \\
+bslib & 0.3.1 & CRAN (R 4.1.2) & \textcite{R-bslib} \\
+desc & 1.4.0 & CRAN (R 4.1.2) & \textcite{R-desc} \\
+DiagrammeR & 1.0.6.1 & CRAN (R 4.1.2) & \textcite{R-DiagrammeR} \\
+downlit & 0.4.0 & CRAN (R 4.1.2) & \textcite{R-downlit} \\
+folio & 1.0.0 & CRAN (R 4.1.2) & \textcite{R-folio} \\
+knitr & 1.36 & CRAN (R 4.1.2) & \textcite{R-knitr} \\
+markdown & 1.1 & CRAN (R 4.1.2) & \textcite{R-markdown} \\
+mime & 0.12 & CRAN (R 4.1.2) & \textcite{R-mime} \\
+rmarkdown & 2.11 & CRAN (R 4.1.2) & \textcite{R-rmarkdown} \\
+sessioninfo & 1.2.1 & CRAN (R 4.1.2) & \textcite{R-sessioninfo} \\
+webshot & 0.5.2 & CRAN (R 4.1.2) & \textcite{R-webshot} \\
+xml2 & 1.3.2 & CRAN (R 4.1.2) & \textcite{R-xml2} \\
+\bottomrule
+\end{longtable}
+
+\mainmatter
+
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+
+
+\hypertarget{pourquoi-travailler-avec-r}{%
+\section*{Pourquoi travailler avec R ?}\label{pourquoi-travailler-avec-r}}
+
+
+\begin{description}
+\tightlist
+\item[R est libre et gratuit]
+Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Robert Gentleman au sein du département de statistiques de l'université d'Auckland (Nouvelle-Zélande). En 1995 la première version officielle est publiée et R devient un logiciel libre, distribué sous \href{https://www.gnu.org/philosophy/free-sw.html}{licence GNU}. Le code source de l'ensemble du système R est ainsi accessible à tous, en garantissant quatre libertés essentielles :
+\end{description}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  La liberté de faire fonctionner le programme comme vous voulez, pour n'importe quel usage (liberté 0) ;
+\item
+  La liberté d'étudier le fonctionnement du programme, et de le modifier pour qu'il effectue vos tâches informatiques comme vous le souhaitez (liberté 1) ; l'accès au code source est une condition nécessaire ;
+\item
+  La liberté de redistribuer des copies, donc d'aider les autres (liberté 2) ;
+\item
+  La liberté de distribuer aux autres des copies de vos versions modifiées (liberté 3) ; en faisant cela, vous donnez à toute la communauté une possibilité de profiter de vos changements ; l'accès au code source est une condition nécessaire.
+\end{itemize}
+\end{quote}
+
+\begin{description}
+\tightlist
+\item[R est modulable]
+Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées \protect\hyperlink{packages}{\emph{packages}}) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés sur le \href{https://cran.r-project.org/}{\emph{Comprehensive R Archive Network}}\footnote{Il existe d'autres archives, parfois spécialisées comme \href{https://www.bioconductor.org/}{Bioconductor} pour la biologie.} (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig.~\ref{fig:cran-packages-year}).
+\item[R facilite la reproductibilité]
+R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script sur des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte transparente et reproductible.
+\end{description}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
+
+}
+
+\caption{Évolution du nombre de packages disponibles sur le CRAN par année.}\label{fig:cran-packages-year}
+\end{figure}
+
+R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne (il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow}) ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996).
+
+Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
+
+}
+
+\caption{Nombre d'articles d'archéologie citant R publié chaque année \autocite[répliqué d'après][]{schmidt2020}.}\label{fig:wos-archaeo}
+\end{figure}
+
+\hypertarget{ressources-compluxe9mentaires}{%
+\section*{Ressources complémentaires}\label{ressources-compluxe9mentaires}}
+
+
+En complément de la \href{https://cran.r-project.org/doc/manuals/R-intro.html}{documentation officielle} pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. \emph{R in a Nutshell} de \textcite{adler2010} et \href{https://rc2e.com/}{\emph{R cookbook}} de \textcite{long2019} couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
+
+L'ouvrage de référence de \textcite{murrell2019}, \emph{R graphics}, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. \href{https://r-graphics.org/}{\emph{R Graphics Cookbook}} \autocite{chang2012} constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt \href{https://clauswilke.com/dataviz/}{\emph{Fundamentals of Data Visualization}} de \textcite{wilke2019}.
+
+L'utilisateur confirmé trouvera dans les ouvrages \href{https://adv-r.hadley.nz/}{\emph{Advanced R}} \autocite{wickham2019} et \href{https://csgillespie.github.io/efficientR/}{\emph{Efficient R programming}} \autocite{gillespie2016} de quoi approfondir sa compréhension du langage et développer sa pratique. \href{https://r-pkgs.org/}{\emph{R packages}} de \textcite{wickham2015} est l'ouvrage idéal pour tout utilisateur souhaitant écrire son premier package et se former aux outils de développement (\href{https://devtools.r-lib.org/}{\emph{devtools}}, \href{https://roxygen2.r-lib.org/}{\emph{roxygen2}}, \href{https://testthat.r-lib.org/}{\emph{testthat}}\ldots)\footnote{Voir également la documentation officielle pour le développement d'extensions de R, la description du processus de création des modules complémentaires, l'écriture de la documentation, les interfaces et l'API : \href{https://cran.r-project.org/doc/manuals/r-release/R-exts.html}{\emph{Writing R Extensions}}.}.
+
+Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue\footnote{On trouvera sur le \href{https://bookdown.org/home/}{site du package bookdown} et sur le site du \href{https://www.bigbookofr.com/}{Big Book of R} de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également \href{https://www.r-project.org/doc/bib/R-books.html}{une liste d'ouvrages dédiés à R et ses applications}.} :
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://geocompr.robinlovelace.net/}{\emph{Geocomputation with R}} \autocite{lovelace2020}, un livre sur l'analyse, la visualisation et la modélisation des données géographiques.
+\item
+  \href{https://www.tidytextmining.com/}{\emph{Text Mining with R}} \autocite{silge2017}, un livre sur l'analyse textuelle avec R.
+\end{itemize}
+
+Enfin, on trouvera sur \href{https://www.r-bloggers.com/}{R-bloggers} (un agrégateur de blogs) l'actualité du langage et de nombreux tutoriels.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Le site collaboratif \href{https://rzine.fr/}{Rzine} a pour objectif de favoriser la diffusion et le partage de connaissances sur la pratique de R en SHS :
+
+\begin{quote}
+Rzine.fr s'efforce de dessiner les contours de la communauté R en SHS. Il donne aux débutant·e·s un accès simple à l'information et orienté vers une utilisation autonome. Il offre aux utilisateur·rice·s de niveau intermédiaire la possibilité d'étendre leurs pratiques et de s'ouvrir à d'autres méthodes parfois issues d'autres disciplines. Enfin, il s'agit d'un espace de diffusion pour les utilisateur·rice·s avancé·e·s, auteur·e·s de développements ou de documentation. --- \href{https://rzine.fr}{Rzine}
+\end{quote}
+
+Rzine recense de nombreuses ressources, fiches et manuels, \emph{open source} et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en SHS.
+
+\end{tcolorbox}
+
+\hypertarget{part-premiers-pas-avec-r}{%
+\part{Premiers pas avec R}\label{part-premiers-pas-avec-r}}
+
+\hypertarget{installation}{%
+\chapter{Installation}\label{installation}}
+
+\hypertarget{environnement-de-travail}{%
+\chapter{Environnement de travail}\label{environnement-de-travail}}
+
+\hypertarget{structure-des-donnuxe9es}{%
+\chapter{Structure des données}\label{structure-des-donnuxe9es}}
+
+\hypertarget{type-de-variables}{%
+\section{Type de variables}\label{type-de-variables}}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{chapter_data_files/figure-latex/variables-1} \end{center}
+
+\hypertarget{variables-quantitatives}{%
+\subsection{Variables quantitatives}\label{variables-quantitatives}}
+
+\hypertarget{variables-qualitatives}{%
+\subsection{Variables qualitatives}\label{variables-qualitatives}}
+
+\hypertarget{transformations-de-variables}{%
+\subsection{Transformations de variables}\label{transformations-de-variables}}
+
+\hypertarget{tableaux-de-donnuxe9es}{%
+\section{Tableaux de données}\label{tableaux-de-donnuxe9es}}
+
+\hypertarget{part-uxe9luxe9ments-de-statistiques}{%
+\part{Éléments de statistiques}\label{part-uxe9luxe9ments-de-statistiques}}
+
+\hypertarget{statistique-descriptive}{%
+\chapter{Statistique descriptive}\label{statistique-descriptive}}
+
+\hypertarget{relations-entre-variables}{%
+\chapter{Relations entre variables}\label{relations-entre-variables}}
+
+\hypertarget{visualisation-de-donnuxe9es}{%
+\chapter{Visualisation de données}\label{visualisation-de-donnuxe9es}}
+
+\hypertarget{part-chronologie}{%
+\part{Chronologie}\label{part-chronologie}}
+
+\hypertarget{remarques-pruxe9liminaires}{%
+\chapter{Remarques préliminaires}\label{remarques-pruxe9liminaires}}
+
+En archéologie, le processus de datation consiste au ``placement dans le temps d'événements les uns par rapport aux autres ou par rapport à toute échelle établie de mesure temporelle'' \autocite{dean1978}. Cela implique de distinguer les méthodes de datation dites \emph{relatives} (qui fournissent une séquence chronologique ordonnée d'événements) et les méthodes de datation dites \emph{absolues} (qui donnent une indication calendaire et peuvent fournir la durée d'un événement) \autocite{obrien2002}.
+
+À proprement parler, il n'existe pas de datation absolue, étant donné la façon dont les dates sont produites et que toute date s'inscrit dans un référentiel particulier. La distinction entre temps absolu et temps relatif peut être reformulée plus clairement comme quantifiable ou non quantifiable \autocite{obrien2002} : les dates absolues ``sont exprimées en points sur des échelles standard de mesure du temps'' \autocite{dean1978}.
+
+Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle que formulée par \textcite{colman1987} : ``une date est un point précis dans le temps, alors qu'un âge est un intervalle de temps mesuré en arrière à partir du présent''. Traiter des dates en archéologie peut être délicat si l'on ne tient pas compte des sources de l'information chronologique. Dans la plupart des cas, une date représente un \emph{terminus} pour un assemblage archéologique donné. C'est-à-dire une date avant (\emph{terminus ante quem}) ou après (\emph{terminus post quem}) laquelle l'événement étudié a eu lieu. Enfin, on gardera à l'esprit qu'il n'existe pas de datation sans incertitude en archéologie (même si cette dernière ne peut pas toujours être quantifiée).
+
+\hypertarget{chronologie-qualitative}{%
+\chapter{Chronologie qualitative}\label{chronologie-qualitative}}
+
+\hypertarget{chronologie-quantitative}{%
+\chapter{Chronologie quantitative}\label{chronologie-quantitative}}
+
+\hypertarget{part-cartographie}{%
+\part{Cartographie}\label{part-cartographie}}
+
+\hypertarget{coordonnuxe9es-et-projections}{%
+\chapter{Coordonnées et projections}\label{coordonnuxe9es-et-projections}}
+
+\hypertarget{format-de-donnuxe9es}{%
+\chapter{Format de données}\label{format-de-donnuxe9es}}
+
+\backmatter
+\bookmarksetup{startatroot}
+\addtocontents{toc}{\bigskip}
+
+\printbibliography[heading=bibintoc]
+
+
+
+\end{document}

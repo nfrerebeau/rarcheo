@@ -20,10 +20,14 @@ R facilite la reproductibilité
 
 (ref:cran-packages-year) Évolution du nombre de packages disponibles sur le CRAN par année.
 
-<div class="figure" style="text-align: center">
-<img src="chapter_introduction_files/figure-html/cran-packages-year-1.png" alt="(ref:cran-packages-year)" width="70%" />
-<p class="caption">(\#fig:cran-packages-year)(ref:cran-packages-year)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
+
+}
+
+\caption{(ref:cran-packages-year)}(\#fig:cran-packages-year)
+\end{figure}
 
 R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne (il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r)) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996).
 
@@ -31,10 +35,14 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 
 (ref:wos-archaeo-year) Nombre d'articles d'archéologie citant R publié chaque année [répliqué d'après @schmidt2020].
 
-<div class="figure" style="text-align: center">
-<img src="chapter_introduction_files/figure-html/wos-archaeo-1.png" alt="(ref:wos-archaeo-year)" width="70%" />
-<p class="caption">(\#fig:wos-archaeo)(ref:wos-archaeo-year)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
+
+}
+
+\caption{(ref:wos-archaeo-year)}(\#fig:wos-archaeo)
+\end{figure}
 
 ## Ressources complémentaires {-}
 
