@@ -43,6 +43,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -425,6 +465,537 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 
 \hypertarget{format-de-donnuxe9es}{%
 \chapter{Format de données}\label{format-de-donnuxe9es}}
+
+\appendix
+
+\hypertarget{part-annexes}{%
+\part{Annexes}\label{part-annexes}}
+
+\hypertarget{style}{%
+\chapter{Style de programmation}\label{style}}
+
+Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l'écriture du code et permet d'en faciliter la lecture et la compréhension. Ce style est dérivé du \href{https://style.tidyverse.org}{\emph{tidyverse style guide}} et du livre \href{https://devguide.ropensci.org}{\emph{rOpenSci Packages}}.
+
+\hypertarget{style-naming}{%
+\section{Dénominations}\label{style-naming}}
+
+En règle générale, les abréviations doivent être évitées lors de la dénomination de fichiers ou d'objets.
+
+\hypertarget{nommer-les-fichiers}{%
+\subsection{Nommer les fichiers}\label{nommer-les-fichiers}}
+
+Les noms de fichiers doivent utiliser l'extension \texttt{.R}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{plot.R}
+
+\CommentTok{\# BAD}
+\NormalTok{plot}
+\end{Highlighting}
+\end{Shaded}
+
+Les noms de fichiers doivent être parlants.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{plot.R}
+
+\CommentTok{\# BAD}
+\NormalTok{Untitled1.R}
+\end{Highlighting}
+\end{Shaded}
+
+Les noms de fichiers ne doivent pas contenir de \texttt{/} et d'espaces. À la place, utilisez un tiret (\texttt{-}) ou un trait de soulignement (\texttt{\_}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{read\_csv.R}
+\NormalTok{plot}\SpecialCharTok{{-}}\NormalTok{methods.R}
+
+\CommentTok{\# BAD}
+\NormalTok{read csv.R}
+\end{Highlighting}
+\end{Shaded}
+
+Les noms de fichiers doivent utiliser des lettres du latin de base, et non du supplément latin-1, et doivent être en minuscules.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{plot.R}
+
+\CommentTok{\# BAD}
+\NormalTok{Plot.R}
+\NormalTok{données.R}
+\end{Highlighting}
+\end{Shaded}
+
+Utilisez des verbes signifiants pour les noms de fichiers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{fit\_model.R}
+
+\CommentTok{\# BAD}
+\NormalTok{addition.R}
+\end{Highlighting}
+\end{Shaded}
+
+Si le fichier ne contient qu'une seule fonction, nommez-le par le nom de la fonction.
+
+\hypertarget{nommer-les-variables}{%
+\subsection{Nommer les variables}\label{nommer-les-variables}}
+
+Les noms des variables doivent être aussi courts que possible.
+
+Les noms des variables doivent être des substantifs évocateurs.
+
+Les noms de variables doivent être en minuscules.
+
+Ne séparez jamais les mots à l'intérieur du nom par \texttt{.} (réservé pour les méthodes S3) et n'écrivez pas en PascalCase (réservé pour les définitions de classes S4). Utilisez plutôt un trait de soulignement (\texttt{\_}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{std\_dev }\OtherTok{\textless{}{-}} \DecValTok{3}
+
+\CommentTok{\# BAD}
+\NormalTok{std.dev }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{StdDev }\OtherTok{\textless{}{-}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+N'utilisez pas les noms de fonctions et de variables existantes (en particulier celles qui sont propres à R).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{std\_dev }\OtherTok{\textless{}{-}} \DecValTok{3}
+
+\CommentTok{\# BAD}
+\NormalTok{T }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{c }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*} \DecValTok{2}
+\NormalTok{mean }\OtherTok{\textless{}{-}} \DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{nommer-les-fonctions}{%
+\subsection{Nommer les fonctions}\label{nommer-les-fonctions}}
+
+Les noms de fonction doivent contenir un verbe qui fait référence à l'action principale de la fonction.
+
+Les noms de fonction doivent être en snake\_case. N'utilisez \texttt{.} que pour le dispatching des méthodes S3.
+
+Le schéma de nommage \texttt{object\_verb()} doit être préféré aussi souvent que possible. Ce schéma est facile à lire et à compléter automatiquement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\FunctionTok{peak\_detect}\NormalTok{()}
+
+\CommentTok{\# BAD}
+\FunctionTok{addition}\NormalTok{()}
+\FunctionTok{readFile}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Évitez de réemployer des noms de fonctions déjà utilisés par les packages de base ou d'autres packages populaires.
+
+\hypertarget{nommer-les-classes-s4}{%
+\subsection{Nommer les classes S4}\label{nommer-les-classes-s4}}
+
+Les noms des classes doivent être des substantifs en PascalCase avec une majuscule initiale et la première lettre de chaque mot concaténé en majuscule.
+
+\hypertarget{style-syntax}{%
+\section{Syntaxe}\label{style-syntax}}
+
+\hypertarget{longueur-de-ligne}{%
+\subsection{Longueur de ligne}\label{longueur-de-ligne}}
+
+La longueur maximale des lignes est limitée à 80 caractères.
+
+Ne mettez pas plus d'une déclaration par ligne. N'utilisez pas de point-virgule pour terminer la commande.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{1}
+
+\CommentTok{\# BAD }
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\NormalTok{; x }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{appel-de-fonction}{%
+\subsection{Appel de fonction}\label{appel-de-fonction}}
+
+Dans un appel de fonction, spécifiez les arguments par leur nom. Ne spécifiez jamais les arguments par un nom partiel et ne mélangez jamais la position et le nom complet.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{na =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\FunctionTok{raise\_to\_power}\NormalTok{(x, }\AttributeTok{power =} \FloatTok{2.7}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\FunctionTok{raise\_to\_power}\NormalTok{(}\AttributeTok{power =} \FloatTok{2.7}\NormalTok{, x)}
+\end{Highlighting}
+\end{Shaded}
+
+L'argument \texttt{...} doit se trouver soit au début, soit à la fin.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\FunctionTok{standardize}\NormalTok{(..., }\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\FunctionTok{standardize}\NormalTok{(}\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{, ..., }\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Définissez les arguments par défaut à l'intérieur de la fonction en utilisant l'idiome \texttt{NULL}, et évitez la dépendance entre les arguments.
+
+Validez toujours les arguments dans une fonction.
+
+\hypertarget{affectation}{%
+\subsection{Affectation}\label{affectation}}
+
+Utilisez \texttt{\textless{}-} au lieu de \texttt{=} pour l'affectation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# BAD}
+\NormalTok{x }\OtherTok{=} \DecValTok{1}
+\DecValTok{1} \OtherTok{{-}\textgreater{}}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{espaces}{%
+\subsection{Espaces}\label{espaces}}
+
+Mettez des espaces autour de tous les opérateurs binaires infixes (\texttt{=}, \texttt{+}, \texttt{*}, \texttt{==}, \texttt{\&\&}, \texttt{\textless{}-}, \texttt{\%*\%}, etc.).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\NormalTok{x }\SpecialCharTok{==}\NormalTok{ y}
+\NormalTok{z }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{+} \DecValTok{1}
+
+\CommentTok{\# BAD}
+\NormalTok{x}\SpecialCharTok{==}\NormalTok{y}
+\NormalTok{z}\OtherTok{\textless{}{-}}\DecValTok{2}\SpecialCharTok{+}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+Mettez des espaces autour de \texttt{=} dans les appels de fonction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\FunctionTok{mean}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\FunctionTok{mean}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{), }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Ne placez pas d'espace pour obtenir des sous-ensembles (\texttt{\$} et \texttt{@}), pour la manipulation des espaces de noms (\texttt{::} et \texttt{:::}) et pour la génération de séquences (\texttt{:}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{car}\SpecialCharTok{$}\NormalTok{cyl}
+\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{()}
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+
+\CommentTok{\# BAD}
+\NormalTok{car }\SpecialCharTok{$}\NormalTok{cyl}
+\NormalTok{dplyr}\SpecialCharTok{::} \FunctionTok{select}\NormalTok{()}
+\DecValTok{1}\SpecialCharTok{:} \DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+Mettez un espace après une virgule.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\NormalTok{mtcars[}\DecValTok{1}\NormalTok{, ]}
+\FunctionTok{mean}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{2}\NormalTok{), }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\NormalTok{mtcars[}\DecValTok{1}\NormalTok{ ,]}
+\FunctionTok{mean}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{2}\NormalTok{),}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Utilisez un espace avant les parenthèses ouvrantes, sauf dans un appel de fonction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\ControlFlowTok{for}\NormalTok{ (element }\ControlFlowTok{in}\NormalTok{ element\_list)}
+\ControlFlowTok{if}\NormalTok{ (total }\SpecialCharTok{==} \DecValTok{5}\NormalTok{)}
+\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\ControlFlowTok{for}\NormalTok{(element }\ControlFlowTok{in}\NormalTok{ element\_list)}
+\ControlFlowTok{if}\NormalTok{(total }\SpecialCharTok{==} \DecValTok{5}\NormalTok{)}
+\FunctionTok{sum}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Ne mettez pas d'espaces autour du code entre parenthèses ou entre crochets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\ControlFlowTok{if}\NormalTok{ (is\_true) }\FunctionTok{message}\NormalTok{(}\StringTok{"Hello!"}\NormalTok{)}
+\NormalTok{species[}\StringTok{"tiger"}\NormalTok{, ]}
+
+\CommentTok{\# BAD}
+\ControlFlowTok{if}\NormalTok{ ( is\_true ) }\FunctionTok{message}\NormalTok{(}\StringTok{"Hello!"}\NormalTok{)}
+\NormalTok{species[ }\StringTok{"tiger"}\NormalTok{ ,]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{accolade}{%
+\subsection{Accolade}\label{accolade}}
+
+Une accolade ouvrante ne doit jamais être placée sur sa propre ligne et doit toujours être suivie d'une nouvelle ligne.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+\NormalTok{\}}
+
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# do something else}
+\NormalTok{\}}
+    
+\CommentTok{\# BAD}
+\ControlFlowTok{if}\NormalTok{ (is\_true)}
+\NormalTok{\{}
+  \CommentTok{\# do something}
+\NormalTok{\}}
+    
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{ }\CommentTok{\# do something \}}
+\ControlFlowTok{else}\NormalTok{ \{ }\CommentTok{\# do something else \}}
+\end{Highlighting}
+\end{Shaded}
+
+Une accolade fermante doit toujours être placée sur sa propre ligne, sauf si elle est suivie de \texttt{else}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# do something else}
+\NormalTok{\}}
+
+\CommentTok{\# BAD}
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+\NormalTok{\}}
+\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# do something else }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Indentez toujours le code à l'intérieur des accolades.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+  \CommentTok{\# and then something else}
+\NormalTok{\}}
+
+\CommentTok{\# BAD}
+\ControlFlowTok{if}\NormalTok{ (is\_true) \{}
+  \CommentTok{\# do something}
+  \CommentTok{\# and then something else}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Les accolades et les nouvelles lignes peuvent être évitées, si une déclaration après \texttt{if} est très courte.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# OK }
+\ControlFlowTok{if}\NormalTok{ (is\_true) }\FunctionTok{return}\NormalTok{(value)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{indentation}{%
+\subsection{Indentation}\label{indentation}}
+
+N'utilisez pas de tabulations ou de mélanges de tabulations et d'espaces pour l'indentation.
+
+Utilisez deux espaces pour l'indentation.
+
+\hypertarget{nouvelle-ligne}{%
+\subsection{Nouvelle ligne}\label{nouvelle-ligne}}
+
+Dans une définition ou un appel de fonction, les arguments excessifs doivent être indentés sur la ligne de la parenthèse fermante, si deux lignes suffisent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{long\_function\_name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(arg1, arg2, arg3, arg4, }
+                               \AttributeTok{long\_argument\_name1 =} \ConstantTok{TRUE}\NormalTok{)}
+  
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{table}\NormalTok{(}\FunctionTok{rpois}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{5}\NormalTok{)), }\AttributeTok{type =} \StringTok{"h"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{10}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"rpois(100, lambda = 5)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Sinon, chaque argument peut aller sur une ligne séparée, en commençant par une nouvelle ligne après la parenthèse ouvrante.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{long\_function\_name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{long\_argument\_name1 =} \FunctionTok{c}\NormalTok{(}\StringTok{"value1"}\NormalTok{, }\StringTok{"value2"}\NormalTok{),}
+                               \AttributeTok{long\_argument\_name2 =} \ConstantTok{TRUE}\NormalTok{,}
+                               \AttributeTok{long\_argument\_name3 =} \ConstantTok{NULL}\NormalTok{,}
+                               \AttributeTok{long\_argument\_name4 =} \ConstantTok{FALSE}\NormalTok{)}
+  
+\FunctionTok{list}\NormalTok{(}
+  \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(x),}
+  \AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(x),}
+  \AttributeTok{var =} \FunctionTok{var}\NormalTok{(x),}
+  \AttributeTok{min =} \FunctionTok{min}\NormalTok{(x),}
+  \AttributeTok{max =} \FunctionTok{max}\NormalTok{(x),}
+  \AttributeTok{median =} \FunctionTok{median}\NormalTok{(x)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si la condition dans l'instruction \texttt{if} s'étend sur plusieurs lignes, alors chaque condition doit se terminer par un opérateur logique, et non commencer par lui.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\ControlFlowTok{if}\NormalTok{ (some\_very\_long\_name\_1 }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\&\&}
+\NormalTok{    some\_very\_long\_name\_2 }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{||}
+\NormalTok{    some\_very\_long\_name\_3 }\SpecialCharTok{\%in\%}\NormalTok{ some\_very\_long\_name\_4)}
+  
+\CommentTok{\# BAD}
+\ControlFlowTok{if}\NormalTok{ (some\_very\_long\_name\_1 }\SpecialCharTok{==} \DecValTok{1}
+    \SpecialCharTok{\&\&}\NormalTok{ some\_very\_long\_name\_2 }\SpecialCharTok{==} \DecValTok{1}
+    \SpecialCharTok{||}\NormalTok{ some\_very\_long\_name\_3 }\SpecialCharTok{\%in\%}\NormalTok{ some\_very\_long\_name\_4)}
+\end{Highlighting}
+\end{Shaded}
+
+Si l'instruction qui contient des opérateurs s'étend sur plusieurs lignes, chaque ligne doit se terminer par un opérateur et non commencer par lui.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD }
+\NormalTok{normal\_pdf }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ d\_sigma }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{) }\SpecialCharTok{*}
+  \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(x }\SpecialCharTok{{-}}\NormalTok{ d\_mean) }\SpecialCharTok{\^{}} \DecValTok{2} \SpecialCharTok{/} \DecValTok{2} \SpecialCharTok{/}\NormalTok{ s }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# BAD}
+\NormalTok{normal\_pdf }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ d\_sigma }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)}
+\SpecialCharTok{*} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{(x }\SpecialCharTok{{-}}\NormalTok{ d\_mean) }\SpecialCharTok{\^{}} \DecValTok{2} \SpecialCharTok{/} \DecValTok{2} \SpecialCharTok{/}\NormalTok{ d\_sigma }\SpecialCharTok{\^{}} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Chaque appel de \texttt{dplyr} (après \texttt{\%\textgreater{}\%} ou \texttt{\textbar{}\textgreater{}}) ou de \texttt{ggplot2} (après \texttt{+}) doit commencer sur une nouvelle ligne.
+
+\hypertarget{commentaires}{%
+\section{Commentaires}\label{commentaires}}
+
+Il est recommandé d'écrire les commentaires en anglais.
+
+Les commentaires commencent par \texttt{\#} suivi d'un espace et du texte du commentaire.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This is a comment.}
+\end{Highlighting}
+\end{Shaded}
+
+Les commentaires doivent expliquer le pourquoi, et non le comment. Les commentaires doivent expliquer l'intention générale de la commande.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\CommentTok{\# define iterator}
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# BAD}
+\CommentTok{\# set i to 1}
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+De courts commentaires peuvent être placés sur la même ligne que le code code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(price, weight) }\CommentTok{\# Plot a scatter chart of price and weight}
+\end{Highlighting}
+\end{Shaded}
+
+Il peut être utile de diviser le code source en morceaux logiques par un commentaire suivi de \texttt{-} ou \texttt{=}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read data {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+
+\CommentTok{\# Clean data {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+Les descriptions des fonctions et des objets doivent respecter les directives de {[}\emph{roxygen2}{]} (\url{https://roxygen2.r-lib.org/}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\textquotesingle{} Add Together Two Numbers}
+\CommentTok{\#\textquotesingle{} }
+\CommentTok{\#\textquotesingle{} @param x A number.}
+\CommentTok{\#\textquotesingle{} @param y A number.}
+\CommentTok{\#\textquotesingle{} @return The sum of x and y.}
+\CommentTok{\#\textquotesingle{} @examples}
+\CommentTok{\#\textquotesingle{} add(1, 1)}
+\CommentTok{\#\textquotesingle{} add(10, 1)}
+\NormalTok{add }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+  \CommentTok{\# general comment}
+\NormalTok{  x }\SpecialCharTok{+}\NormalTok{ y }\CommentTok{\# inline comment}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
 \backmatter
 \bookmarksetup{startatroot}

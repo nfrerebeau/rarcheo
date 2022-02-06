@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>12 Style de programmation | R pour l’archéologue</title>
+<meta name="author" content="Nicolas Frerebeau">
+<meta name="description" content="Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l’écriture du code et permet d’en...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="12 Style de programmation | R pour l’archéologue">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://rstats.archaeo.science/style.html">
+<meta property="og:description" content="Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l’écriture du code et permet d’en...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12 Style de programmation | R pour l’archéologue">
+<meta name="twitter:description" content="Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l’écriture du code et permet d’en...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Exploration, visualisation et analyse de données">R pour l’archéologue</a>:
+        <small class="text-muted">Exploration, visualisation et analyse de données</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sommaire</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Avant propos</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
+<li class="book-part">Premiers pas avec R</li>
+<li><a class="" href="installation.html"><span class="header-section-number">1</span> Installation</a></li>
+<li><a class="" href="environnement-de-travail.html"><span class="header-section-number">2</span> Environnement de travail</a></li>
+<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">3</span> Structure des données</a></li>
+<li class="book-part">Éléments de statistiques</li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">4</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">5</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">6</span> Visualisation de données</a></li>
+<li class="book-part">Chronologie</li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">7</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">8</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">9</span> Chronologie quantitative</a></li>
+<li class="book-part">Cartographie</li>
+<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">10</span> Coordonnées et projections</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></li>
+<li class="book-part">Annexes</li>
+<li><a class="active" href="style.html"><span class="header-section-number">12</span> Style de programmation</a></li>
+<li><a class="" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/nfrerebeau/rarcheo">Voir le code <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="style" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> Style de programmation<a class="anchor" aria-label="anchor" href="#style"><i class="fas fa-link"></i></a>
+</h1>
+<p>Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l’écriture du code et permet d’en faciliter la lecture et la compréhension. Ce style est dérivé du <a href="https://style.tidyverse.org"><em>tidyverse style guide</em></a> et du livre <a href="https://devguide.ropensci.org"><em>rOpenSci Packages</em></a>.</p>
+<div id="style-naming" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Dénominations<a class="anchor" aria-label="anchor" href="#style-naming"><i class="fas fa-link"></i></a>
+</h2>
+<p>En règle générale, les abréviations doivent être évitées lors de la dénomination de fichiers ou d’objets.</p>
+<div id="nommer-les-fichiers" class="section level3" number="12.1.1">
+<h3>
+<span class="header-section-number">12.1.1</span> Nommer les fichiers<a class="anchor" aria-label="anchor" href="#nommer-les-fichiers"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les noms de fichiers doivent utiliser l’extension <code>.R</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">plot.R</span>
+
+<span class="co"># BAD</span>
+<span class="va">plot</span></code></pre></div>
+<p>Les noms de fichiers doivent être parlants.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">plot.R</span>
+
+<span class="co"># BAD</span>
+<span class="va">Untitled1.R</span></code></pre></div>
+<p>Les noms de fichiers ne doivent pas contenir de <code>/</code> et d’espaces. À la place, utilisez un tiret (<code>-</code>) ou un trait de soulignement (<code>_</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="style.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD</span></span>
+<span id="cb4-2"><a href="style.html#cb4-2" aria-hidden="true" tabindex="-1"></a>read_csv.R</span>
+<span id="cb4-3"><a href="style.html#cb4-3" aria-hidden="true" tabindex="-1"></a>plot<span class="sc">-</span>methods.R</span>
+<span id="cb4-4"><a href="style.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="style.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD</span></span>
+<span id="cb4-6"><a href="style.html#cb4-6" aria-hidden="true" tabindex="-1"></a>read csv.R</span></code></pre></div>
+<p>Les noms de fichiers doivent utiliser des lettres du latin de base, et non du supplément latin-1, et doivent être en minuscules.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">plot.R</span>
+
+<span class="co"># BAD</span>
+<span class="va">Plot.R</span>
+<span class="va">données.R</span></code></pre></div>
+<p>Utilisez des verbes signifiants pour les noms de fichiers.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">fit_model.R</span>
+
+<span class="co"># BAD</span>
+<span class="va">addition.R</span></code></pre></div>
+<p>Si le fichier ne contient qu’une seule fonction, nommez-le par le nom de la fonction.</p>
+</div>
+<div id="nommer-les-variables" class="section level3" number="12.1.2">
+<h3>
+<span class="header-section-number">12.1.2</span> Nommer les variables<a class="anchor" aria-label="anchor" href="#nommer-les-variables"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les noms des variables doivent être aussi courts que possible.</p>
+<p>Les noms des variables doivent être des substantifs évocateurs.</p>
+<p>Les noms de variables doivent être en minuscules.</p>
+<p>Ne séparez jamais les mots à l’intérieur du nom par <code>.</code> (réservé pour les méthodes S3) et n’écrivez pas en PascalCase (réservé pour les définitions de classes S4). Utilisez plutôt un trait de soulignement (<code>_</code>).</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">std_dev</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+
+<span class="co"># BAD</span>
+<span class="va">std.dev</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+<span class="va">StdDev</span> <span class="op">&lt;-</span> <span class="fl">3</span></code></pre></div>
+<p>N’utilisez pas les noms de fonctions et de variables existantes (en particulier celles qui sont propres à R).</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">std_dev</span> <span class="op">&lt;-</span> <span class="fl">3</span>
+
+<span class="co"># BAD</span>
+<span class="cn">T</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fl">2</span>
+<span class="va">mean</span> <span class="op">&lt;-</span> <span class="fl">10</span></code></pre></div>
+</div>
+<div id="nommer-les-fonctions" class="section level3" number="12.1.3">
+<h3>
+<span class="header-section-number">12.1.3</span> Nommer les fonctions<a class="anchor" aria-label="anchor" href="#nommer-les-fonctions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les noms de fonction doivent contenir un verbe qui fait référence à l’action principale de la fonction.</p>
+<p>Les noms de fonction doivent être en snake_case. N’utilisez <code>.</code> que pour le dispatching des méthodes S3.</p>
+<p>Le schéma de nommage <code>object_verb()</code> doit être préféré aussi souvent que possible. Ce schéma est facile à lire et à compléter automatiquement.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="fu">peak_detect</span><span class="op">(</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="fu">addition</span><span class="op">(</span><span class="op">)</span>
+<span class="fu">readFile</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Évitez de réemployer des noms de fonctions déjà utilisés par les packages de base ou d’autres packages populaires.</p>
+</div>
+<div id="nommer-les-classes-s4" class="section level3" number="12.1.4">
+<h3>
+<span class="header-section-number">12.1.4</span> Nommer les classes S4<a class="anchor" aria-label="anchor" href="#nommer-les-classes-s4"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les noms des classes doivent être des substantifs en PascalCase avec une majuscule initiale et la première lettre de chaque mot concaténé en majuscule.</p>
+</div>
+</div>
+<div id="style-syntax" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Syntaxe<a class="anchor" aria-label="anchor" href="#style-syntax"><i class="fas fa-link"></i></a>
+</h2>
+<div id="longueur-de-ligne" class="section level3" number="12.2.1">
+<h3>
+<span class="header-section-number">12.2.1</span> Longueur de ligne<a class="anchor" aria-label="anchor" href="#longueur-de-ligne"><i class="fas fa-link"></i></a>
+</h3>
+<p>La longueur maximale des lignes est limitée à 80 caractères.</p>
+<p>Ne mettez pas plus d’une déclaration par ligne. N’utilisez pas de point-virgule pour terminer la commande.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span>
+
+<span class="co"># BAD </span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>; <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span></code></pre></div>
+</div>
+<div id="appel-de-fonction" class="section level3" number="12.2.2">
+<h3>
+<span class="header-section-number">12.2.2</span> Appel de fonction<a class="anchor" aria-label="anchor" href="#appel-de-fonction"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dans un appel de fonction, spécifiez les arguments par leur nom. Ne spécifiez jamais les arguments par un nom partiel et ne mélangez jamais la position et le nom complet.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="fu">raise_to_power</span><span class="op">(</span><span class="va">x</span>, power <span class="op">=</span> <span class="fl">2.7</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="fu">raise_to_power</span><span class="op">(</span>power <span class="op">=</span> <span class="fl">2.7</span>, <span class="va">x</span><span class="op">)</span></code></pre></div>
+<p>L’argument <code>...</code> doit se trouver soit au début, soit à la fin.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="fu">standardize</span><span class="op">(</span><span class="va">...</span>, scale <span class="op">=</span> <span class="cn">TRUE</span>, center <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="fu">standardize</span><span class="op">(</span>scale <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span>, center <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Définissez les arguments par défaut à l’intérieur de la fonction en utilisant l’idiome <code>NULL</code>, et évitez la dépendance entre les arguments.</p>
+<p>Validez toujours les arguments dans une fonction.</p>
+</div>
+<div id="affectation" class="section level3" number="12.2.3">
+<h3>
+<span class="header-section-number">12.2.3</span> Affectation<a class="anchor" aria-label="anchor" href="#affectation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Utilisez <code>&lt;-</code> au lieu de <code>=</code> pour l’affectation.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+
+<span class="co"># BAD</span>
+<span class="va">x</span> <span class="op">=</span> <span class="fl">1</span>
+<span class="fl">1</span> <span class="op">-&gt;</span> <span class="va">x</span></code></pre></div>
+</div>
+<div id="espaces" class="section level3" number="12.2.4">
+<h3>
+<span class="header-section-number">12.2.4</span> Espaces<a class="anchor" aria-label="anchor" href="#espaces"><i class="fas fa-link"></i></a>
+</h3>
+<p>Mettez des espaces autour de tous les opérateurs binaires infixes (<code>=</code>, <code>+</code>, <code>*</code>, <code>==</code>, <code>&amp;&amp;</code>, <code>&lt;-</code>, <code>%*%</code>, etc.).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="va">x</span> <span class="op">==</span> <span class="va">y</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">1</span>
+
+<span class="co"># BAD</span>
+<span class="va">x</span><span class="op">==</span><span class="va">y</span>
+<span class="va">z</span><span class="op">&lt;-</span><span class="fl">2</span><span class="op">+</span><span class="fl">1</span></code></pre></div>
+<p>Mettez des espaces autour de <code>=</code> dans les appels de fonction.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span><span class="op">)</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Ne placez pas d’espace pour obtenir des sous-ensembles (<code>$</code> et <code>@</code>), pour la manipulation des espaces de noms (<code>::</code> et <code>:::</code>) et pour la génération de séquences (<code>:</code>).</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">car</span><span class="op">$</span><span class="va">cyl</span>
+<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
+
+<span class="co"># BAD</span>
+<span class="va">car</span> <span class="op">$</span><span class="va">cyl</span>
+<span class="fu">dplyr</span><span class="fu">::</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fl">1</span><span class="op">:</span> <span class="fl">10</span></code></pre></div>
+<p>Mettez un espace après une virgule.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">2</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span> ,<span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="cn">NA</span>,<span class="fl">2</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Utilisez un espace avant les parenthèses ouvrantes, sauf dans un appel de fonction.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">element</span> <span class="kw">in</span> <span class="va">element_list</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">total</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
+
+<span class="co"># BAD</span>
+<span class="kw">for</span><span class="op">(</span><span class="va">element</span> <span class="kw">in</span> <span class="va">element_list</span><span class="op">)</span>
+<span class="kw">if</span><span class="op">(</span><span class="va">total</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<p>Ne mettez pas d’espaces autour du code entre parenthèses ou entre crochets.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">is_true</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Hello!"</span><span class="op">)</span>
+<span class="va">species</span><span class="op">[</span><span class="st">"tiger"</span>, <span class="op">]</span>
+
+<span class="co"># BAD</span>
+<span class="kw">if</span> <span class="op">(</span> <span class="va">is_true</span> <span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Hello!"</span><span class="op">)</span>
+<span class="va">species</span><span class="op">[</span> <span class="st">"tiger"</span> ,<span class="op">]</span></code></pre></div>
+</div>
+<div id="accolade" class="section level3" number="12.2.5">
+<h3>
+<span class="header-section-number">12.2.5</span> Accolade<a class="anchor" aria-label="anchor" href="#accolade"><i class="fas fa-link"></i></a>
+</h3>
+<p>Une accolade ouvrante ne doit jamais être placée sur sa propre ligne et doit toujours être suivie d’une nouvelle ligne.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="style.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD </span></span>
+<span id="cb21-2"><a href="style.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true) {</span>
+<span id="cb21-3"><a href="style.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb21-4"><a href="style.html#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-5"><a href="style.html#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="style.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true) {</span>
+<span id="cb21-7"><a href="style.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb21-8"><a href="style.html#cb21-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb21-9"><a href="style.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb21-10"><a href="style.html#cb21-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-11"><a href="style.html#cb21-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-12"><a href="style.html#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD</span></span>
+<span id="cb21-13"><a href="style.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true)</span>
+<span id="cb21-14"><a href="style.html#cb21-14" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb21-15"><a href="style.html#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb21-16"><a href="style.html#cb21-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-17"><a href="style.html#cb21-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-18"><a href="style.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true) { <span class="co"># do something }</span></span>
+<span id="cb21-19"><a href="style.html#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> { <span class="co"># do something else }</span></span></code></pre></div>
+<p>Une accolade fermante doit toujours être placée sur sa propre ligne, sauf si elle est suivie de <code>else</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="style.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD </span></span>
+<span id="cb22-2"><a href="style.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true) {</span>
+<span id="cb22-3"><a href="style.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb22-4"><a href="style.html#cb22-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb22-5"><a href="style.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else</span></span>
+<span id="cb22-6"><a href="style.html#cb22-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-7"><a href="style.html#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="style.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD</span></span>
+<span id="cb22-9"><a href="style.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_true) {</span>
+<span id="cb22-10"><a href="style.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb22-11"><a href="style.html#cb22-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-12"><a href="style.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> {</span>
+<span id="cb22-13"><a href="style.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do something else </span></span>
+<span id="cb22-14"><a href="style.html#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Indentez toujours le code à l’intérieur des accolades.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD </span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">is_true</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># do something</span>
+  <span class="co"># and then something else</span>
+<span class="op">}</span>
+
+<span class="co"># BAD</span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">is_true</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># do something</span>
+  <span class="co"># and then something else</span>
+<span class="op">}</span></code></pre></div>
+<p>Les accolades et les nouvelles lignes peuvent être évitées, si une déclaration après <code>if</code> est très courte.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># OK </span>
+<span class="kw">if</span> <span class="op">(</span><span class="va">is_true</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="indentation" class="section level3" number="12.2.6">
+<h3>
+<span class="header-section-number">12.2.6</span> Indentation<a class="anchor" aria-label="anchor" href="#indentation"><i class="fas fa-link"></i></a>
+</h3>
+<p>N’utilisez pas de tabulations ou de mélanges de tabulations et d’espaces pour l’indentation.</p>
+<p>Utilisez deux espaces pour l’indentation.</p>
+</div>
+<div id="nouvelle-ligne" class="section level3" number="12.2.7">
+<h3>
+<span class="header-section-number">12.2.7</span> Nouvelle ligne<a class="anchor" aria-label="anchor" href="#nouvelle-ligne"><i class="fas fa-link"></i></a>
+</h3>
+<p>Dans une définition ou un appel de fonction, les arguments excessifs doivent être indentés sur la ligne de la parenthèse fermante, si deux lignes suffisent.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">arg3</span>, <span class="va">arg4</span>, 
+                               <span class="va">long_argument_name1</span> <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"h"</span>, col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">10</span>, 
+     main <span class="op">=</span> <span class="st">"rpois(100, lambda = 5)"</span><span class="op">)</span></code></pre></div>
+<p>Sinon, chaque argument peut aller sur une ligne séparée, en commençant par une nouvelle ligne après la parenthèse ouvrante.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="va">long_function_name</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">long_argument_name1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"value1"</span>, <span class="st">"value2"</span><span class="op">)</span>,
+                               <span class="va">long_argument_name2</span> <span class="op">=</span> <span class="cn">TRUE</span>,
+                               <span class="va">long_argument_name3</span> <span class="op">=</span> <span class="cn">NULL</span>,
+                               <span class="va">long_argument_name4</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+  
+<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+  sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+  min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+  max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+  median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Si la condition dans l’instruction <code>if</code> s’étend sur plusieurs lignes, alors chaque condition doit se terminer par un opérateur logique, et non commencer par lui.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="style.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD</span></span>
+<span id="cb27-2"><a href="style.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (some_very_long_name_1 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span></span>
+<span id="cb27-3"><a href="style.html#cb27-3" aria-hidden="true" tabindex="-1"></a>    some_very_long_name_2 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">||</span></span>
+<span id="cb27-4"><a href="style.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    some_very_long_name_3 <span class="sc">%in%</span> some_very_long_name_4)</span>
+<span id="cb27-5"><a href="style.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-6"><a href="style.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD</span></span>
+<span id="cb27-7"><a href="style.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (some_very_long_name_1 <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb27-8"><a href="style.html#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">&amp;&amp;</span> some_very_long_name_2 <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb27-9"><a href="style.html#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">||</span> some_very_long_name_3 <span class="sc">%in%</span> some_very_long_name_4)</span></code></pre></div>
+<p>Si l’instruction qui contient des opérateurs s’étend sur plusieurs lignes, chaque ligne doit se terminer par un opérateur et non commencer par lui.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="style.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GOOD </span></span>
+<span id="cb28-2"><a href="style.html#cb28-2" aria-hidden="true" tabindex="-1"></a>normal_pdf <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> d_sigma <span class="sc">^</span> <span class="dv">2</span>) <span class="sc">*</span></span>
+<span id="cb28-3"><a href="style.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(<span class="sc">-</span>(x <span class="sc">-</span> d_mean) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">/</span> s <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb28-4"><a href="style.html#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="style.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BAD</span></span>
+<span id="cb28-6"><a href="style.html#cb28-6" aria-hidden="true" tabindex="-1"></a>normal_pdf <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> d_sigma <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb28-7"><a href="style.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>(x <span class="sc">-</span> d_mean) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">/</span> d_sigma <span class="sc">^</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>Chaque appel de <code>dplyr</code> (après <code>%&gt;%</code> ou <code>|&gt;</code>) ou de <code>ggplot2</code> (après <code>+</code>) doit commencer sur une nouvelle ligne.</p>
+</div>
+</div>
+<div id="commentaires" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> Commentaires<a class="anchor" aria-label="anchor" href="#commentaires"><i class="fas fa-link"></i></a>
+</h2>
+<p>Il est recommandé d’écrire les commentaires en anglais.</p>
+<p>Les commentaires commencent par <code>#</code> suivi d’un espace et du texte du commentaire.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># This is a comment.</span></code></pre></div>
+<p>Les commentaires doivent expliquer le pourquoi, et non le comment. Les commentaires doivent expliquer l’intention générale de la commande.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># GOOD</span>
+<span class="co"># define iterator</span>
+<span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+
+<span class="co"># BAD</span>
+<span class="co"># set i to 1</span>
+<span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span></code></pre></div>
+<p>De courts commentaires peuvent être placés sur la même ligne que le code code.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">price</span>, <span class="va">weight</span><span class="op">)</span> <span class="co"># Plot a scatter chart of price and weight</span></code></pre></div>
+<p>Il peut être utile de diviser le code source en morceaux logiques par un commentaire suivi de <code>-</code> ou <code>=</code>.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Read data -------------------------------------------------------------</span>
+
+<span class="co"># Clean data ------------------------------------------------------------</span></code></pre></div>
+<p>Les descriptions des fonctions et des objets doivent respecter les directives de [<em>roxygen2</em>] (<a href="https://roxygen2.r-lib.org/" class="uri">https://roxygen2.r-lib.org/</a>).</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#' Add Together Two Numbers</span>
+<span class="co">#' </span>
+<span class="co">#' @param x A number.</span>
+<span class="co">#' @param y A number.</span>
+<span class="co">#' @return The sum of x and y.</span>
+<span class="co">#' @examples</span>
+<span class="co">#' add(1, 1)</span>
+<span class="co">#' add(10, 1)</span>
+<span class="va">add</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># general comment</span>
+  <span class="va">x</span> <span class="op">+</span> <span class="va">y</span> <span class="co"># inline comment</span>
+<span class="op">}</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></div>
+<div class="next"><a href="bibliographie.html">Bibliographie</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#style"><span class="header-section-number">12</span> Style de programmation</a></li>
+<li>
+<a class="nav-link" href="#style-naming"><span class="header-section-number">12.1</span> Dénominations</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#nommer-les-fichiers"><span class="header-section-number">12.1.1</span> Nommer les fichiers</a></li>
+<li><a class="nav-link" href="#nommer-les-variables"><span class="header-section-number">12.1.2</span> Nommer les variables</a></li>
+<li><a class="nav-link" href="#nommer-les-fonctions"><span class="header-section-number">12.1.3</span> Nommer les fonctions</a></li>
+<li><a class="nav-link" href="#nommer-les-classes-s4"><span class="header-section-number">12.1.4</span> Nommer les classes S4</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#style-syntax"><span class="header-section-number">12.2</span> Syntaxe</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#longueur-de-ligne"><span class="header-section-number">12.2.1</span> Longueur de ligne</a></li>
+<li><a class="nav-link" href="#appel-de-fonction"><span class="header-section-number">12.2.2</span> Appel de fonction</a></li>
+<li><a class="nav-link" href="#affectation"><span class="header-section-number">12.2.3</span> Affectation</a></li>
+<li><a class="nav-link" href="#espaces"><span class="header-section-number">12.2.4</span> Espaces</a></li>
+<li><a class="nav-link" href="#accolade"><span class="header-section-number">12.2.5</span> Accolade</a></li>
+<li><a class="nav-link" href="#indentation"><span class="header-section-number">12.2.6</span> Indentation</a></li>
+<li><a class="nav-link" href="#nouvelle-ligne"><span class="header-section-number">12.2.7</span> Nouvelle ligne</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#commentaires"><span class="header-section-number">12.3</span> Commentaires</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_style.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_style.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Ce livre a été écrit avec le package R <a class="text-light" href="https://bookdown.org">bookdown</a>.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
