@@ -31,5 +31,7 @@ rmd_files:
     
     "chapter_geography.Rmd",
     
+    "chapter_style.Rmd",
+    
     "chapter_references.Rmd"
   ]
