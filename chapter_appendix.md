@@ -1,6 +1,6 @@
 \appendix
 
-# Annexes {-}
+# (PART) Annexes {-}
 
 # Bonnes pratiques {#bonnes-pratiques}
 
