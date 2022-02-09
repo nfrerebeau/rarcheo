@@ -112,7 +112,8 @@
 \setcounter{secnumdepth}{5}
 %Mise en forme
 \KOMAoptions{chapterprefix=false}
-\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+%\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
+\renewcommand\addparttocentry[2]{\addtocentrydefault{part}{}{#2}}
 \usepackage{microtype} %Détails typographiques
 
 %Langue
@@ -208,7 +209,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-06}
+\date{2022-02-09}
 
 \begin{document}
 \maketitle
@@ -221,7 +222,7 @@
 }
 \hypertarget{avant-propos}{%
 \chapter*{Avant propos}\label{avant-propos}}
-
+\addcontentsline{toc}{chapter}{Avant propos}
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R}. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
 
@@ -231,7 +232,7 @@ Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequi
 
 \hypertarget{licence}{%
 \section*{Licence}\label{licence}}
-
+\addcontentsline{toc}{section}{Licence}
 
 Ce livre est mis à disposition selon les termes de la licence Creative Commons Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International\footnote{Cela signifie que vous êtes libre de copier, distribuer et communiquer ce livre par tous moyens et sous tous formats, de modifier, transformer et créer à partir du matériel de ce livre. En contrepartie, vous devez créditer la source d'origine en précisant si vous l'avez modifiée, vous devez partager sous la même licence et vous ne pouvez pas en faire un usage commercial.}.
 
@@ -252,13 +253,13 @@ Une entrée BibTeX pour citer ce document :
 
 \hypertarget{contributions}{%
 \section*{Contributions}\label{contributions}}
-
+\addcontentsline{toc}{section}{Contributions}
 
 Le \href{https://github.com/nfrerebeau/rarcheo}{code source} de ce livre est disponible sur \href{https://github.com/}{GitHub}. N'hésitez pas à y \href{https://github.com/nfrerebeau/rarcheo/issues}{ouvrir un ticket} pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
 
 \hypertarget{conventions-duxe9criture}{%
 \section*{Conventions d'écriture}\label{conventions-duxe9criture}}
-
+\addcontentsline{toc}{section}{Conventions d'écriture}
 
 Par la suite, on écrira \texttt{foo()} pour désigner une fonction, \texttt{bar} pour désigner les variables et les paramètres des fonctions et \texttt{baz/} pour désigner les chemins. Les noms de \emph{packages} sont indiqués en italique.
 
@@ -266,9 +267,9 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 
 \hypertarget{reproductibilituxe9}{%
 \section*{Reproductibilité}\label{reproductibilituxe9}}
+\addcontentsline{toc}{section}{Reproductibilité}
 
-
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 06 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 09 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -304,11 +305,11 @@ xml2 & 1.3.2 & CRAN (R 4.1.2) & \textcite{R-xml2} \\
 
 \hypertarget{introduction}{%
 \chapter*{Introduction}\label{introduction}}
-
+\addcontentsline{toc}{chapter}{Introduction}
 
 \hypertarget{pourquoi-travailler-avec-r}{%
 \section*{Pourquoi travailler avec R ?}\label{pourquoi-travailler-avec-r}}
-
+\addcontentsline{toc}{section}{Pourquoi travailler avec R ?}
 
 \begin{description}
 \tightlist
@@ -333,7 +334,7 @@ Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Rober
 \begin{description}
 \tightlist
 \item[R est modulable]
-Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées \protect\hyperlink{packages}{\emph{packages}}) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés sur le \href{https://cran.r-project.org/}{\emph{Comprehensive R Archive Network}}\footnote{Il existe d'autres archives, parfois spécialisées comme \href{https://www.bioconductor.org/}{Bioconductor} pour la biologie.} (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig.~\ref{fig:cran-packages-year}).
+Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées \protect\hyperlink{packages}{\emph{packages}}) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés et installés depuis le \href{https://cran.r-project.org/}{\emph{Comprehensive R Archive Network}}\footnote{Il existe d'autres archives, parfois spécialisées comme \href{https://www.bioconductor.org/}{Bioconductor} pour la biologie.} (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig.~\ref{fig:cran-packages-year}).
 \item[R facilite la reproductibilité]
 R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
 \end{description}
@@ -349,7 +350,7 @@ R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scrip
 \caption{Évolution du nombre de packages disponibles sur le CRAN par année.}\label{fig:cran-packages-year}
 \end{figure}
 
-R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne (il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow}) ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996).
+R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne. Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996).
 
 Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
 
@@ -366,7 +367,7 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 
 \hypertarget{ressources-compluxe9mentaires}{%
 \section*{Ressources complémentaires}\label{ressources-compluxe9mentaires}}
-
+\addcontentsline{toc}{section}{Ressources complémentaires}
 
 En complément de la \href{https://cran.r-project.org/doc/manuals/R-intro.html}{documentation officielle} pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. \emph{R in a Nutshell} de \textcite{adler2010} et \href{https://rc2e.com/}{\emph{R cookbook}} de \textcite{long2019} couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
 
@@ -400,11 +401,11 @@ Rzine recense de nombreuses ressources, fiches et manuels, \emph{open source} et
 
 \hypertarget{installation}{%
 \chapter*{Installation}\label{installation}}
+\addcontentsline{toc}{chapter}{Installation}
 
-
-\hypertarget{installer-r}{%
-\section*{Installer R}\label{installer-r}}
-
+\hypertarget{r-installation}{%
+\section*{Installer R}\label{r-installation}}
+\addcontentsline{toc}{section}{Installer R}
 
 R est fonctionne sur les principaux systèmes d'exploitation. Vous pouvez télécharger les fichiers d'installation depuis le \href{https://cran.r-project.org/}{site du CRAN}. Sous Windows et Mac OS, lancez l'exécutable après l'avoir téléchargé et suivez les étapes d'installation en laissant les options par défaut.
 
@@ -425,11 +426,11 @@ Des changements importants peuvent subvenir entre les versions de R, entraînant
 
 \end{tcolorbox}
 
-\hypertarget{installer-rstudio}{%
-\section*{Installer RStudio}\label{installer-rstudio}}
+\hypertarget{rstudio-installation}{%
+\section*{Installer RStudio}\label{rstudio-installation}}
+\addcontentsline{toc}{section}{Installer RStudio}
 
-
-RStudio est un environnement de développement intégré (\emph{interactive development environment}, abrégé en IDE)\footnote{RStudio n'est pas le seul IDE, des utilisateurs avancés peuvent lui préférer \href{https://ess.r-project.org/}{\emph{Emacs Speaks Statistics}} (ESS), un plugin pour l'éditeur \href{https://www.gnu.org/software/emacs/}{Emacs}.}. RStudio \emph{n'est pas} R, pas plus qu'il n'offre une interface graphique à R. Il s'agit d'un logiciel utilitaire qui permet d'éditer et d'exécuter votre code, ainsi que de réaliser des actions connexes telles que l'installation de packages ou l'import de données. RStudio dispose notamment d'un système de \protect\hyperlink{projets}{gestion de projets} qui permet d'organiser son travail.
+RStudio est un environnement de développement intégré (\emph{interactive development environment}, IDE)\footnote{RStudio n'est pas le seul IDE, des utilisateurs avancés peuvent lui préférer \href{https://ess.r-project.org/}{\emph{Emacs Speaks Statistics}} (ESS), un plugin pour l'éditeur \href{https://www.gnu.org/software/emacs/}{Emacs}.}. RStudio \emph{n'est pas} R, pas plus qu'il n'offre une interface graphique à R. Il s'agit d'un logiciel utilitaire qui permet d'éditer et d'exécuter votre code, ainsi que de réaliser des actions connexes telles que l'installation de packages ou l'import de données. RStudio dispose notamment d'un système de \protect\hyperlink{projets}{gestion de projets} qui permet d'organiser son travail.
 
 RStudio Desktop est disponible sous licence \emph{open-source} pour les principaux systèmes d'exploitation et peut être \href{https://www.rstudio.com/products/rstudio/download/\#download}{téléchargée depuis le site de la société éditrice}.
 
@@ -453,7 +454,7 @@ Après l'installation de RStudio, la première étape consiste à en changer les
   Réglez \emph{Save workspace to .RData on exit} sur \emph{never}.
 \end{itemize}
 
-Ces deux réglages vous épargneront de mauvaises surprises (et de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}).
+Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}).
 
 \end{tcolorbox}
 
@@ -466,15 +467,7 @@ Ces deux réglages vous épargneront de mauvaises surprises (et de faire débute
 \caption{Configuration globale de RStudio Desktop.}\label{fig:rstudio-settings}
 \end{figure}
 
-\hypertarget{utiliser-rstudio}{%
-\section*{Utiliser RStudio}\label{utiliser-rstudio}}
-
-
-\hypertarget{interface}{%
-\subsection*{Interface}\label{interface}}
-
-
-RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}), de haut en bas et de gauche à droite :
+L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}). Par défaut, de haut en bas et de gauche à droite :
 
 \begin{itemize}
 \tightlist
@@ -496,16 +489,6 @@ RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrant
 
 \caption{L'interface de RStudio Desktop.}\label{fig:rstudio-desktop}
 \end{figure}
-
-\hypertarget{projets}{%
-\subsection*{Travailler par projets}\label{projets}}
-
-
-Une bonne pratique liée à l'utilisation de R consiste à \href{https://www.tidyverse.org/blog/2017/12/workflow-vs-script/}{organiser l'ensemble de son analyse en un projet}, c'est à dire un dossier contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes\ldots).
-
-RStudio dispose d'un mécanisme permettant de créer facilement de tels projets (soit en créant un nouveau dossier, soit en transformant un dossier existant). Un projet est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (\emph{working directory}), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
-
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}}.
 
 \hypertarget{part-premiers-pas-avec-r}{%
 \part{Premiers pas avec R}\label{part-premiers-pas-avec-r}}
@@ -577,8 +560,41 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 
 \appendix
 
-\hypertarget{part-annexes}{%
-\part{Annexes}\label{part-annexes}}
+\hypertarget{annexes}{%
+\chapter*{Annexes}\label{annexes}}
+\addcontentsline{toc}{chapter}{Annexes}
+
+\hypertarget{bonnes-pratiques}{%
+\chapter{Bonnes pratiques}\label{bonnes-pratiques}}
+
+\hypertarget{projets}{%
+\section{Travailler par projets}\label{projets}}
+
+Une bonne pratique liée à l'utilisation de R consiste à \href{https://www.tidyverse.org/blog/2017/12/workflow-vs-script/}{organiser l'ensemble de son analyse en un projet}, c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes\ldots).
+
+Ce dossier, ou répertoire de travail (\emph{working directory}), peut être défini ou retrouvé à l'aide des fonctions \texttt{setwd()} et \texttt{getwd()}, respectivement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition du répertoire de travail}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/vers/mon/dossier"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Un projet est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+
+Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-project} 
+
+}
+
+\caption{Création d'un projet avec RStudio.}\label{fig:rstudio-project}
+\end{figure}
+
+L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}}.
 
 \hypertarget{style}{%
 \chapter{Style de programmation}\label{style}}

@@ -60,8 +60,9 @@
 <li class="book-part">Cartographie</li>
 <li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">10</span> Coordonnées et projections</a></li>
 <li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></li>
-<li class="book-part">Annexes</li>
-<li><a class="" href="style.html"><span class="header-section-number">12</span> Style de programmation</a></li>
+<li><a class="" href="annexes.html">Annexes</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">12</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">13</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -91,7 +92,7 @@
 </blockquote>
 <dl>
 <dt>R est modulable</dt>
-<dd>Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées <a href="#packages"><em>packages</em></a>) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d’autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d’utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés sur le <a href="https://cran.r-project.org/"><em>Comprehensive R Archive Network</em></a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Il existe d’autres archives, parfois spécialisées comme &lt;a href="https://www.bioconductor.org/"&gt;Bioconductor&lt;/a&gt; pour la biologie.&lt;/p&gt;'><sup>19</sup></a> (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig. <a href="introduction.html#fig:cran-packages-year">0.1</a>).
+<dd>Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées <a href="#packages"><em>packages</em></a>) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d’autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d’utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés et installés depuis le <a href="https://cran.r-project.org/"><em>Comprehensive R Archive Network</em></a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Il existe d’autres archives, parfois spécialisées comme &lt;a href="https://www.bioconductor.org/"&gt;Bioconductor&lt;/a&gt; pour la biologie.&lt;/p&gt;'><sup>19</sup></a> (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig. <a href="introduction.html#fig:cran-packages-year">0.1</a>).
 </dd>
 <dt>R facilite la reproductibilité</dt>
 <dd>R est un langage de programmation qui fonctionne à l’aide de scripts. Ces scripts permettent de définir une suite d’instructions à exécuter et contiennent ainsi l’ensemble des étapes de l’analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l’examen des pairs et publiés au bénéfice d’une science ouverte, transparente et reproductible.
@@ -103,7 +104,7 @@
 Figure 0.1: Évolution du nombre de packages disponibles sur le CRAN par année.
 </p>
 </div>
-<p>R s’est ainsi progressivement imposé comme un outil de référence pour l’analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. <a href="introduction.html#fig:wos-archaeo">0.2</a>). Si l’apprentissage du langage peut paraître difficile pour qui n’a jamais programmé, R bénéficie d’une communauté très active d’utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de <a href="#aide">trouver de l’aide</a> en ligne (il fort probable quelqu’un se soit déjà posé la même question que vous et que la réponse se trouve sur <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a>) ou sur les listes de diffusions <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a> et <a href="https://stat.ethz.ch/mailman/listinfo/r-devel">R-devel</a> (actives depuis 1996).</p>
+<p>R s’est ainsi progressivement imposé comme un outil de référence pour l’analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. <a href="introduction.html#fig:wos-archaeo">0.2</a>). Si l’apprentissage du langage peut paraître difficile pour qui n’a jamais programmé, R bénéficie d’une communauté très active d’utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de <a href="#aide">trouver de l’aide</a> en ligne. Si vous faites face à une difficulté, il fort probable quelqu’un se soit déjà posé la même question que vous et que la réponse se trouve sur <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a> ou sur les listes de diffusions <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a> et <a href="https://stat.ethz.ch/mailman/listinfo/r-devel">R-devel</a> (actives depuis 1996).</p>
 <p>Enfin, l’usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C’est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.</p>
 
 <div class="figure" style="text-align: center">
@@ -164,7 +165,7 @@ Figure 0.2: Nombre d’articles d’archéologie citant R publié chaque année.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-06.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

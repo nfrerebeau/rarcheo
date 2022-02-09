@@ -4,26 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>11 Format de données | R pour l’archéologue</title>
+<title>12 Bonnes pratiques | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="description" content="12.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="11 Format de données | R pour l’archéologue">
+<meta property="og:title" content="12 Bonnes pratiques | R pour l’archéologue">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://rstats.archaeo.science/format-de-données.html">
-<meta property="og:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta property="og:url" content="https://rstats.archaeo.science/bonnes-pratiques.html">
+<meta property="og:description" content="12.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 Format de données | R pour l’archéologue">
-<meta name="twitter:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="twitter:title" content="12 Bonnes pratiques | R pour l’archéologue">
+<meta name="twitter:description" content="12.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -68,9 +59,9 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">9</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
 <li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">10</span> Coordonnées et projections</a></li>
-<li><a class="active" href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">11</span> Format de données</a></li>
 <li><a class="" href="annexes.html">Annexes</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">12</span> Bonnes pratiques</a></li>
+<li><a class="active" href="bonnes-pratiques.html"><span class="header-section-number">12</span> Bonnes pratiques</a></li>
 <li><a class="" href="style.html"><span class="header-section-number">13</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
@@ -80,23 +71,44 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="format-de-données" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bonnes-pratiques" class="section level1" number="12">
 <h1>
-<span class="header-section-number">11</span> Format de données<a class="anchor" aria-label="anchor" href="#format-de-donn%C3%A9es"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Bonnes pratiques<a class="anchor" aria-label="anchor" href="#bonnes-pratiques"><i class="fas fa-link"></i></a>
 </h1>
-
+<div id="projets" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Travailler par projets<a class="anchor" aria-label="anchor" href="#projets"><i class="fas fa-link"></i></a>
+</h2>
+<p>Une bonne pratique liée à l’utilisation de R consiste à <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">organiser l’ensemble de son analyse en un projet</a>, c’est à dire un dossier autonome contenant l’ensemble des fichiers nécessaires à l’analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes…).</p>
+<p>Ce dossier, ou répertoire de travail (<em>working directory</em>), peut être défini ou retrouvé à l’aide des fonctions <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> et <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, respectivement :</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Définition du répertoire de travail</span>
+<span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"/chemin/vers/mon/dossier"</span><span class="op">)</span></code></pre></div>
+<p>RStudio dispose d’un mécanisme permettant de <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">créer facilement de tels projets</a>. Un projet est reconnaissable par la présence d’un fichier <code>.Rproj</code>. Ce fichier marque le dossier de plus haut niveau au sein d’un projet (répertoire de travail), à partir duquel des chemins d’accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.</p>
+<p>Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l’interface ou en cliquant sur <em>New Project…</em> depuis le menu <em>File</em>. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. <a href="bonnes-pratiques.html#fig:rstudio-project">12.1</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:rstudio-project"></span>
+<img src="images/rstudio-project.png" alt="Création d'un projet avec RStudio." width="70%"><p class="caption">
+Figure 12.1: Création d’un projet avec RStudio.
+</p>
+</div>
+<p>L’organisation des fichiers et des sous-dossiers au sein d’un projet relève des habitudes de travail de chacun. S’il n’existe pas de consensus sur la manière d’organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package <a href="https://github.com/benmarwick/rrtools"><em>rrtools</em></a>.</p>
+</div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">10</span> Coordonnées et projections</a></div>
-<div class="next"><a href="annexes.html">Annexes</a></div>
+<div class="prev"><a href="annexes.html">Annexes</a></div>
+<div class="next"><a href="style.html"><span class="header-section-number">13</span> Style de programmation</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#format-de-donn%C3%A9es"><span class="header-section-number">11</span> Format de données</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bonnes-pratiques"><span class="header-section-number">12</span> Bonnes pratiques</a></li>
+<li><a class="nav-link" href="#projets"><span class="header-section-number">12.1</span> Travailler par projets</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_geography.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_geography.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_appendix.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_appendix.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

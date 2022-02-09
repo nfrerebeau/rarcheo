@@ -1,6 +1,35 @@
 \appendix
 
-# (PART) Annexes {-}
+# Annexes {-}
+
+# Bonnes pratiques {#bonnes-pratiques}
+
+## Travailler par projets {#projets}
+
+Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...).
+
+Ce dossier, ou répertoire de travail (*working directory*), peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
+
+
+```r
+# Définition du répertoire de travail
+setwd("/chemin/vers/mon/dossier")
+```
+
+RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Un projet est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+
+Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-project} 
+
+}
+
+\caption{Création d'un projet avec RStudio.}(\#fig:rstudio-project)
+\end{figure}
+
+L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools).
 
 # Style de programmation {#style}
 
