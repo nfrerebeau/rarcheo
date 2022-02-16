@@ -6,7 +6,7 @@
 
 ## Travailler par projets {#projets}
 
-Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...).
+Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://rstats.wtf/project-oriented-workflow.html), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...).
 
 Ce dossier, ou répertoire de travail (*working directory*), peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
 
@@ -30,6 +30,27 @@ Il est possible de créer un projet dans RStudio à partir du menu déroulant si
 \end{figure}
 
 L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools).
+
+## Limiter les dépendances {#dependances}
+
+(fig. \@ref(fig:xkcd-dependency))
+
+(ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_dependency} 
+
+}
+
+\caption{(ref:xkcd-dependency)}(\#fig:xkcd-dependency)
+\end{figure}
+
+## Écrire des exemples reproductibles {#reprex}
+
+https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example
+
+https://reprex.tidyverse.org/
 
 # Style de programmation {#style}
 
@@ -175,7 +196,7 @@ x <- x + 1
 x <- 1; x <- x + 1
 ```
 
-### Appel de fonction
+### Appel de fonction {#style-fonction}
 
 Dans un appel de fonction, spécifiez les arguments par leur nom. Ne spécifiez jamais les arguments par un nom partiel et ne mélangez jamais la position et le nom complet.
 

@@ -3,7 +3,7 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2022-02-09"
+date: "2022-02-16"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -27,7 +27,7 @@ Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modélis
 
 Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
 
-Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction.
+Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
 
 
 
@@ -65,7 +65,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 09 Feb 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package R [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 16 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
@@ -79,13 +79,13 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |bookdown    |0.24    |CRAN (R 4.1.2) |@R-bookdown    |
 |bslib       |0.3.1   |CRAN (R 4.1.2) |@R-bslib       |
 |desc        |1.4.0   |CRAN (R 4.1.2) |@R-desc        |
-|DiagrammeR  |1.0.6.1 |CRAN (R 4.1.2) |@R-DiagrammeR  |
+|DiagrammeR  |1.0.8   |CRAN (R 4.1.2) |@R-DiagrammeR  |
 |downlit     |0.4.0   |CRAN (R 4.1.2) |@R-downlit     |
 |folio       |1.0.0   |CRAN (R 4.1.2) |@R-folio       |
-|knitr       |1.36    |CRAN (R 4.1.2) |@R-knitr       |
+|knitr       |1.37    |CRAN (R 4.1.2) |@R-knitr       |
 |markdown    |1.1     |CRAN (R 4.1.2) |@R-markdown    |
 |mime        |0.12    |CRAN (R 4.1.2) |@R-mime        |
 |rmarkdown   |2.11    |CRAN (R 4.1.2) |@R-rmarkdown   |
-|sessioninfo |1.2.1   |CRAN (R 4.1.2) |@R-sessioninfo |
+|sessioninfo |1.2.2   |CRAN (R 4.1.2) |@R-sessioninfo |
 |webshot     |0.5.2   |CRAN (R 4.1.2) |@R-webshot     |
-|xml2        |1.3.2   |CRAN (R 4.1.2) |@R-xml2        |
+|xml2        |1.3.3   |CRAN (R 4.1.2) |@R-xml2        |

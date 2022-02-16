@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Vecteurs | R pour l’archéologue</title>
+<meta name="author" content="Nicolas Frerebeau">
+<meta name="description" content="Un vecteur (vector) est simplement un ensemble d’éléments. Un vecteur peut être de type atomic, si tous ses éléments sont de même type, ou de type list, si ses éléments sont de types différents....">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="2 Vecteurs | R pour l’archéologue">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://rstats.archaeo.science/r-vector.html">
+<meta property="og:description" content="Un vecteur (vector) est simplement un ensemble d’éléments. Un vecteur peut être de type atomic, si tous ses éléments sont de même type, ou de type list, si ses éléments sont de types différents....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Vecteurs | R pour l’archéologue">
+<meta name="twitter:description" content="Un vecteur (vector) est simplement un ensemble d’éléments. Un vecteur peut être de type atomic, si tous ses éléments sont de même type, ou de type list, si ses éléments sont de types différents....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Exploration, visualisation et analyse de données">R pour l’archéologue</a>:
+        <small class="text-muted">Exploration, visualisation et analyse de données</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sommaire</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Avant propos</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
+<li><a class="" href="installation.html">Installation</a></li>
+<li class="book-part">Premiers pas avec R</li>
+<li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
+<li><a class="active" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
+<li><a class="" href="operateurs.html"><span class="header-section-number">3</span> Opérateurs</a></li>
+<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">4</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">5</span> Fonctions d’ordre supérieur</a></li>
+<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">6</span> Structure des données</a></li>
+<li class="book-part">Éléments de statistiques</li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">7</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">8</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">9</span> Visualisation de données</a></li>
+<li class="book-part">Chronologie</li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">10</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">11</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">12</span> Chronologie quantitative</a></li>
+<li class="book-part">Cartographie</li>
+<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">13</span> Coordonnées et projections</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Format de données</a></li>
+<li class="book-part">Annexes</li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">15</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">16</span> Style de programmation</a></li>
+<li><a class="" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/nfrerebeau/rarcheo">Voir le code <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-vector" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Vecteurs<a class="anchor" aria-label="anchor" href="#r-vector"><i class="fas fa-link"></i></a>
+</h1>
+<p>Un vecteur (<code>vector</code>) est simplement un ensemble d’<strong>éléments</strong>. Un vecteur peut être de type <a href="r-vector.html#r-atomic"><code>atomic</code></a>, si tous ses éléments sont de même type, ou de type <a href="r-vector.html#r-list"><code>list</code></a>, si ses éléments sont de types différents. Le vecteur est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>). Un vecteur peut également avoir des <strong>attributs</strong> (sorte de métadonnées), dont l’attribut dimension qui transforme un vecteur en <a href="r-vector.html#r-matrix">matrice</a>.</p>
+
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:r-vector-types"></span>
+<div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:70%;height:400px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  graph [rankdir = BT]\n  \n  node [shape = plaintext, fontname = arial]\n  vector; atomic; list; \"data.frame\";\n  logical; integer; double; character\n  \n  {atomic list} -> vector\n  \"data.frame\" -> list\n  {logical integer double character} -> atomic\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p class="caption">
+Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>47</sup></a></span>.
+</p>
+</div>
+<div id="r-atomic" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Vecteurs atomiques (<code>atomic</code>)<a class="anchor" aria-label="anchor" href="#r-atomic"><i class="fas fa-link"></i></a>
+</h2>
+<p>Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d’éléments qu’il contient). Les 5 principaux types de R sont les suivants :</p>
+<ul>
+<li>
+<code>logical</code> : booléen, ne peut pendre que deux valeurs <code>TRUE</code> (vrai) ou <code>FALSE</code> (faux).</li>
+<li>
+<code>integer</code> : nombre entier.</li>
+<li>
+<code>double</code> : nombre réel, avec ou sans partie décimale.</li>
+<li>
+<code>character</code> : chaîne de caractère.</li>
+</ul>
+<div class="rmdtip">
+<p>La fonction <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> permet de connaitre le type d’un vecteur et la fonction <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> sa longueur.</p>
+</div>
+<div id="création" class="section level3" number="2.1.1">
+<h3>
+<span class="header-section-number">2.1.1</span> Création<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Chacun de ces types possède une syntaxe particulière pour former des vecteur contenant un unique élément :</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># logical</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "logical"</span>
+
+<span class="co"># integer</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1L</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "integer"</span>
+
+<span class="co"># double</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10.5</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "double"</span>
+
+<span class="co"># character</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"archéologie"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "character"</span></code></pre></div>
+<p>La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (<em>combine</em>) permet de construire des vecteurs longs :</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vec_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># logical</span>
+<span class="va">vec_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">3L</span><span class="op">)</span>        <span class="co"># integer</span>
+<span class="va">vec_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span>     <span class="co"># double</span>
+<span class="va">vec_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>     <span class="co"># character</span></code></pre></div>
+<p>La famille de fonctions <code>is.*()</code> permet de tester si un vecteur est d’un type particulier :</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">is.logical</a></span><span class="op">(</span><span class="va">vec_log</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/integer.html">is.integer</a></span><span class="op">(</span><span class="va">vec_int</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/double.html">is.double</a></span><span class="op">(</span><span class="va">vec_num</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/character.html">is.character</a></span><span class="op">(</span><span class="va">vec_cha</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+<div id="conversions" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> Conversions<a class="anchor" aria-label="anchor" href="#conversions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tous les éléments d’un vecteur atomique sont du même type. Lors de la combinaison d’éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>character</code>.</p>
+<p>Un vecteur contenant au moins une chaîne de caractères sera donc de type <code>character</code> :</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"B"</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "character"</span>
+
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"B"</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "character"</span></code></pre></div>
+<p>Un vecteur contenant au moins un nombre réel sera de type <code>double</code> (même s’il ne possède pas de partie décimale) :</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2</span>, <span class="fl">3L</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "double"</span>
+
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fl">2</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "double"</span></code></pre></div>
+<p>Il est possible de convertir explicitement un vecteur d’un type à l’autre à l’aide de la famille de fonctions <code>as.*()</code> :</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1 2 3</span>
+<span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1 0 1</span>
+<span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "1.2" "2.1" "3.2"</span></code></pre></div>
+<p>Les valeurs d’un vecteur numérique peuvent être converties en valeurs logiques : les valeurs égales à 0 deviennent <code>FALSE</code>, tout autre valeur non nulle devient <code>TRUE</code> :</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1]  TRUE FALSE  TRUE</span></code></pre></div>
+<p>En cas de conversion impossible, des <a href="#valeurs-manquantes">valeurs manquantes</a> sont générées et un avertissement est généré :</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Warning: NAs introduced by coercion</span>
+<span class="co">#&gt; [1] NA NA NA</span></code></pre></div>
+</div>
+</div>
+<div id="r-list" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Listes (<code>list</code>)<a class="anchor" aria-label="anchor" href="#r-list"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="r-matrix" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Matrices (<code>matrix</code> et <code>array</code>)<a class="anchor" aria-label="anchor" href="#r-matrix"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="tableaux-de-données-data.frame" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Tableaux de données (<code>data.frame</code>)<a class="anchor" aria-label="anchor" href="#tableaux-de-donn%C3%A9es-data.frame"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></div>
+<div class="next"><a href="operateurs.html"><span class="header-section-number">3</span> Opérateurs</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-vector"><span class="header-section-number">2</span> Vecteurs</a></li>
+<li>
+<a class="nav-link" href="#r-atomic"><span class="header-section-number">2.1</span> Vecteurs atomiques (atomic)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cr%C3%A9ation"><span class="header-section-number">2.1.1</span> Création</a></li>
+<li><a class="nav-link" href="#conversions"><span class="header-section-number">2.1.2</span> Conversions</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#r-list"><span class="header-section-number">2.2</span> Listes (list)</a></li>
+<li><a class="nav-link" href="#r-matrix"><span class="header-section-number">2.3</span> Matrices (matrix et array)</a></li>
+<li><a class="nav-link" href="#tableaux-de-donn%C3%A9es-data.frame"><span class="header-section-number">2.4</span> Tableaux de données (data.frame)</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_rstats.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_rstats.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Ce livre a été écrit avec le package R <a class="text-light" href="https://bookdown.org">bookdown</a>.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
