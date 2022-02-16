@@ -1,5 +1,393 @@
 # (PART) Premiers pas avec R {-}
 
-# Installation
+# Prise en main
+## Invite de commande
 
-# Environnement de travail
+R se présente sous la forme d'une [interface en ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande), permettant de donner des instructions à l'ordinateur. Dans RStudio, cette interface est accessible dans l'onglet *Console*.
+
+Lorsque R est en cours d'exécution, l'interface signifie qu'elle est prête à recevoir des instructions par une invite de commande (*prompt*) indiquée par un chevron `>`.
+
+Il est alors possible d'entrer une **expression**, qui va être **évaluée** par R avant d'en retourner le résultat :
+
+```{r}
+1 + 1
+```
+
+Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'[opérateur](#operateurs) `:` (deux-points) permet de construire des [séquences](#sequences) de nombres entiers :
+
+```{r}
+0:100
+```
+
+La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'indice de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17^e^ valeur, etc.).
+
+::: {.rmdimportant}
+Contrairement à [Python](https://www.python.org/), les [indices commencent à 1](#extraction) et non à 0.
+:::
+
+Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie : 
+
+```{r}
+1 -
+1
+```
+
+::: {.rmdtip}
+Il est possible d'interrompre la saisie ou d'annuler une commande avec `ctrl/cmd + c`.
+:::
+
+Si une commande erronée est transmise, R s'interrompt et retourne un message d'erreur (plus ou moins explicite) :
+
+```{r, error=TRUE}
+x
+```
+
+::: {.rmdtip}
+Il est possible de naviguer dans l'historique des commandes précédemment exécutées à l'aide des flèches `haut` et `bas` du clavier.
+:::
+
+## Objets {#objets}
+
+Il est possible d'associer un nom à une valeur et ainsi de créer des **variables** qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur. 
+
+Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur `<-` :
+
+```{r}
+x <- 1
+x
+```
+
+Il est possible d'affecter plusieurs variables en même temps :
+
+```{r}
+y <- z <- 1
+```
+
+Les variables ainsi crées peuvent être réutilisées :
+
+```{r}
+x + 1
+y + z
+```
+
+La réutilisation d'un nom de variable existant entraîne le remplacement de la valeur précédente (sans avertissement) :
+
+```{r}
+i <- 1
+i
+
+i <- 2
+i
+```
+
+::: {.rmdimportant}
+Un nom de variable peut uniquement être composé de lettres, de chiffres et des caractères `.` ou `_`.
+
+Un nom de variable doit toujours commencer par une lettre (ou par un point suivi d'une lettre).
+
+Les noms de variables sont sensibles à la casse (`x` et `X` sont deux variables différentes).
+
+Il existe des mots réservés qui ne peuvent être utilisés comme nom de variable.
+:::
+
+Dans R les variables stockent des **objets**^[En informatique, un objet est une représentation d'une entité du monde réel et de ses attributs, auxquels sont associés des traitements particuliers.]. Ainsi, le code `x <- 1` peut se lire "créer un objet nommé *x* dont la valeur est 1"^[Il s'agit cependant d'une simplification, voir la section "[Binding basics](https://adv-r.hadley.nz/names-values.html#binding-basics)" dans @wickham2019 pour plus de détails.].
+
+Un objet possède un type et une structure de données particulière. Le type d'un objet est lié au type d'information qu'il contient et à la façon dont il est stocké dans la mémoire^[Votre système d'exploitation alloue la mémoire en fonction du type de donnée et décide de ce qui peut être stocké dans la mémoire réservée lors de la création d'une variable.]. La structure de données d'un objet correspond à la manière dont sont organisées les données.
+
+## Fonctions {#fonctions}
+
+Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. R fournit de très nombreuses fonctions, pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#) ou d'[installer des packages](#packages) supplémentaires.
+
+Par exemple, la fonction `round()` permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction `round()` réalise un arrondi à zéro chiffre après la virgule :
+
+```{r}
+round(3.141593)
+```
+
+La fonction `args()` permet de connaitre les différents arguments d'une fonction et les valeurs par défaut qui peuvent leur être associées :
+
+```{r}
+args(round)
+```
+
+La fonction `round()` accepte ainsi deux arguments, la valeur à arrondir et le nombre de décimales à conserver (0 par défaut).
+
+::: {.rmdnote}
+Les arguments qui possèdent une valeur par défaut sont des **arguments optionnels** : ils peuvent être omis lorsque la fonction est appelée (la valeur par défaut sera utilisée). À l'inverse, les arguments sans valeurs par défaut doivent être spécifiés : ce sont des **arguments obligatoires**.
+:::
+
+Les différents arguments d'une fonction sont séparés par une virgule et sont nommés. Lors de l'appel d'une fonction, si les arguments ne sont pas spécifiés par leur nom, R va associer les valeurs correspondantes dans l'ordre. Dans l'exemple suivant, la valeur `2` est associée au second argument (`digits`) :
+
+```{r}
+round(3.141593, 2)
+```
+
+Pour éviter les erreurs et pour [faciliter la lecture du code](#style-fonction), dans un appel de fonction, spécifiez toujours les arguments par leur nom (à l'exception du premier argument). Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs :
+
+```{r}
+round(3.141593, digits = 2)
+```
+
+::: {.rmdtip}
+Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
+:::
+
+## Packages {#packages}
+
+Lors d'une première installation de R, un premier ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
+
+* Les packages essentiels : `base`, `compiler`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `parallel`, `splines`, `stats`, `stats4`, `tcltk`, `tools`, `translations`, `utils`.
+* Les packages recommandés : `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `MASS`, `Matrix`, `mgcv`, `nlme`, `nnet`, `rpart`, `spatial`, `survival`.
+
+L'installation d'un package permet de bénéficier de fonctionnalités supplémentaires, généralement dédiées à une tâche bien spécifique. Pour ne pas se perdre dans la multitude de ressources disponibles, le CRAN propose des [répertoires de packages](https://cran.r-project.org/web/views/) par domaine (*Task Views*) pour faciliter le choix des packages pour une analyse spécifique. Il existe ainsi des répertoires pour les [sciences sociales](https://cran.r-project.org/web/views/SocialSciences.html), l'analyse de [données environnementales](https://cran.r-project.org/web/views/Environmetrics.html) ou encore l'analyse de [données spatiales](https://cran.r-project.org/web/views/Spatial.html). Pour l'archéologie, il existe une [*Task View* non officielle](https://github.com/benmarwick/ctv-archaeology), maintenue par Ben Marwick.
+
+::: {.rmdtip}
+Une bonne pratique consiste à toujours chercher à [limiter les dépendances](#dependances).
+:::
+
+Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction `install.packages()`^[`install.packages()` permet également d'installer des packages publiés sur d'[autres dépôts](#packages-depots) que le CRAN.].
+
+La commande suivante permet d'installer le package [*folio*](https://packages.tesselle.org/folio/) qui contient les jeux de données utilisés par la suite :
+
+```{r, eval=FALSE}
+install.packages("folio")
+```
+
+::: {.rmdtip}
+La plupart des packages publiés sur le CRAN font l'objet de mises à jour régulières. Pour maintenir à jour les packages installés sur votre ordinateur, la fonction `old.packages()` permet de lister les packages pour lesquels il existe une nouvelle version et `update.packages()` permet de télécharger et d'installer les nouvelles versions.
+:::
+
+Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base^[La liste des packages chargés par défaut au lancement de R peut être obtenue avec `getOption('defaultPackages')`.]. Ainsi, si on utilise la fonction `data()` pour charger le jeux de données `intcal20` du package *folio*, R ne sait pas où chercher cet objet et retourne une erreur :
+
+```{r, message=TRUE, warning=TRUE, error=TRUE}
+data(intcal20)
+```
+
+Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
+
+```{r}
+library("folio")
+data(intcal20)
+```
+
+## Obtenir de l'aide {#aide}
+
+```{r, echo=FALSE}
+base_pkg <- getOption('defaultPackages')
+names(base_pkg) <- base_pkg
+
+n_base_pkg <- vapply(
+  X = base_pkg,
+  FUN = function(pkg) length(ls(paste0('package:', pkg))),
+  FUN.VALUE = numeric(1)
+)
+```
+
+Lorsque vous ne savez pas comment utiliser une fonction particulière (difficile de mémoriser les `r sum(n_base_pkg)` fonctions des packages de base), votre premier réflexe doit être de [consulter la documentation](https://fr.wikipedia.org/wiki/RTFM_(expression)). La documentation couvre l'ensemble des fonctions, jeux de données et autres objets présents dans les différents packages. 
+
+Pour un objet donné, on peut consulter la documentation associée en utilisant soit la fonction `help()`, soit l'opérateur `?`. Par exemple, pour accéder à l'aide de la fonction `round()` :
+
+```{r, eval=FALSE}
+help(round)
+
+?round
+```
+
+Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura pas où chercher la documentation. Par exemple, la fonction `lda()` appartient au package *MASS* qui n'est pas chargé :
+
+```{r}
+help(lda)
+```
+
+Pour accéder à la documentation, il faudra alors charger le package au préalable ou le spécifier dans la fonction `help()` :
+
+```{r, eval=FALSE}
+help(lda, package = "MASS")
+```
+
+Si on ignore le nom de la fonction à utiliser, deux approches permettent d'explorer la documentation :
+
+* On peut parcourir la documentation d'un package particulier, dont on sait qu'il doit contenir la fonction recherchée (par exemple, `help(package = "MASS")` permet d'afficher le sommaire de la documentation du package *MASS*).
+* On peut rechercher dans l'aide par mot-clé à l'aide de l'opérateur `??`.
+
+Par exemple, pour chercher toutes les pages de la documentation contenant le terme "correlation" :
+
+```{r, eval=FALSE}
+??correlation
+```
+
+Toutes les pages d'aide sont structurées de la même façon. Généralement, on y trouve au moins les sections suivantes :
+
+*Description*
+: Une courte description de ce que fait la fonction.
+
+*Usage*
+: Un exemple d'utilisation de la fonction présentant l'ensemble des arguments et leurs éventuelles valeurs par défaut.
+
+*Arguments*
+: La liste des arguments de la fonction précisant leur nom, leur rôle et la valeur ou le type d'objet qui est attendu.
+
+*Details*
+: Une explication détaillée du comportement de la fonction.
+
+*Value*
+: Une description de ce qui est retourné lorsque la fonction est exécutée.
+
+*References*
+: Les références bibliographiques associées à la fonction.
+
+*See Also*
+: Une suggestion de fonctions similaires.
+
+*Examples*
+: Quelques exemples illustrant différents cas d'utilisation de la fonction. Ces exemples peuvent être exécutés directement avec la fonction `example()`.
+
+Pour exécuter les exemples illustrant la documentation de la fonction `mean()` : 
+
+```{r, eval=FALSE}
+example(mean)
+```
+
+::: {.rmdtip}
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex) (ou [*reprex*](https://twitter.com/romain_francois/status/530011023743655936)).
+:::
+
+# Vecteurs {#r-vector}
+
+Un vecteur (`vector`) est simplement un ensemble d'**éléments**. Un vecteur peut être de type [`atomic`](#r-atomic), si tous ses éléments sont de même type, ou de type [`list`](#r-list), si ses éléments sont de types différents. Le vecteur est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur peut également avoir des **attributs** (sorte de métadonnées), dont l'attribut dimension qui transforme un vecteur en [matrice](#r-matrix).
+
+(ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
+
+```{r r-vector-types, echo=FALSE, fig.cap="(ref:r-vector-types)"}
+DiagrammeR::grViz(
+  "digraph {
+  graph [rankdir = BT]
+  
+  node [shape = plaintext, fontname = arial]
+  vector; atomic; list; 'data.frame';
+  logical; integer; double; character
+  
+  {atomic list} -> vector
+  'data.frame' -> list
+  {logical integer double character} -> atomic
+  }",
+  height = 400
+)
+```
+
+## Vecteurs atomiques (`atomic`) {#r-atomic}
+
+Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les 5 principaux types de R sont les suivants :
+
+* `logical` : booléen, ne peut pendre que deux valeurs `TRUE` (vrai) ou `FALSE` (faux).
+* `integer` : nombre entier.
+* `double` : nombre réel, avec ou sans partie décimale.
+* `character` : chaîne de caractère.
+
+::: {.rmdtip}
+La fonction `typeof()` permet de connaitre le type d'un vecteur et la fonction `length()` sa longueur.
+:::
+
+### Création
+
+Chacun de ces types possède une syntaxe particulière pour former des vecteur contenant un unique élément :
+
+```{r}
+# logical
+x <- TRUE
+typeof(x)
+
+# integer
+x <- 1L
+typeof(x)
+
+# double
+x <- 10.5
+typeof(x)
+
+# character
+x <- "archéologie"
+typeof(x)
+```
+
+La fonction `c()` (*combine*) permet de construire des vecteurs longs :
+
+```{r}
+vec_log <- c(TRUE, FALSE, TRUE) # logical
+vec_int <- c(1L, 2L, 3L)        # integer
+vec_num <- c(1.2, 2.1, 3.2)     # double
+vec_cha <- c("A", "B", "C")     # character
+```
+
+La famille de fonctions `is.*()` permet de tester si un vecteur est d'un type particulier :
+
+```{r}
+is.logical(vec_log)
+is.integer(vec_int)
+is.double(vec_num)
+is.character(vec_cha)
+```
+
+### Conversions
+
+Tous les éléments d'un vecteur atomique sont du même type. Lors de la combinaison d'éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie `logical` < `integer` < `double` < `character`.
+
+Un vecteur contenant au moins une chaîne de caractères sera donc de type `character` :
+
+```{r}
+x <- c(1, "B", 3)
+typeof(x)
+
+x <- c(TRUE, "B", TRUE)
+typeof(x)
+```
+
+Un vecteur contenant au moins un nombre réel sera de type `double` (même s'il ne possède pas de partie décimale) :
+
+```{r}
+x <- c(1L, 2, 3L)
+typeof(x)
+
+x <- c(TRUE, 2, TRUE)
+typeof(x)
+```
+
+Il est possible de convertir explicitement un vecteur d'un type à l'autre à l'aide de la famille de fonctions `as.*()` :
+
+```{r}
+as.integer(c(1.2, 2.1, 3.2))
+as.numeric(c(TRUE, FALSE, TRUE))
+as.character(c(1.2, 2.1, 3.2))
+```
+
+Les valeurs d'un vecteur numérique peuvent être converties en valeurs logiques : les valeurs égales à 0 deviennent `FALSE`, tout autre valeur non nulle devient `TRUE` :
+
+```{r}
+as.logical(c(1, 0, 3))
+```
+
+En cas de conversion impossible, des [valeurs manquantes](#valeurs-manquantes) sont générées et un avertissement est généré :
+
+```{r, warning=TRUE}
+as.numeric(c("A", "B", "C"))
+```
+
+## Listes (`list`) {#r-list}
+
+## Matrices (`matrix` et `array`) {#r-matrix}
+
+## Tableaux de données (`data.frame`)
+
+# Opérateurs {#operateurs}
+
+## Opérateurs logiques
+
+## Opérateurs arithmétiques
+
+# Structures de contrôle
+
+## Alternatives
+
+## Boucles
+
+# Fonctions d'ordre supérieur

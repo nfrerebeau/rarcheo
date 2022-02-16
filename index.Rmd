@@ -30,7 +30,7 @@ Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modélis
 
 Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
 
-Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction.
+Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
 
 `r if (knitr::is_html_output()) '
 <a class="btn btn-primary" href="rarcheo.pdf" role="button">Téléchargez le pdf</a>

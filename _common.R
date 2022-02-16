@@ -1,4 +1,6 @@
 # options set globally
+knitr::opts_chunk$set(width = 69)
+options(width = 69)
 set.seed(12345)
 
 # chunk options set globally
@@ -14,8 +16,6 @@ knitr::opts_chunk$set(
 
 # latex options set globally
 if (knitr::is_latex_output()) {
-  knitr::opts_chunk$set(width = 69)
-  options(width = 69)
   options(crayon.enabled = FALSE)
   options(cli.unicode = TRUE)
 }

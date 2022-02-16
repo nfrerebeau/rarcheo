@@ -37,7 +37,7 @@ cran_pkg |>
   labs(x = "Année", y = "Nombre de packages", caption = "Source : CRAN")
 ```
 
-R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne. Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996).
+R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne.
 
 Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
 
@@ -73,7 +73,7 @@ wos_archaeo_years |>
 
 ## Ressources complémentaires {-}
 
-En complément de la [documentation officielle](https://cran.r-project.org/doc/manuals/R-intro.html) pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. *R in a Nutshell* de @adler2010 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
+En complément de la [documentation officielle](https://cran.r-project.org/doc/manuals/R-intro.html) pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. *R in a Nutshell* de @adler2010, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) de @grolemund2015 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
 
 L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
 
@@ -92,4 +92,16 @@ Le site collaboratif [Rzine](https://rzine.fr/) a pour objectif de favoriser la 
 > Rzine.fr s'efforce de dessiner les contours de la communauté R en SHS. Il donne aux débutant·e·s un accès simple à l'information et orienté vers une utilisation autonome. Il offre aux utilisateur·rice·s de niveau intermédiaire la possibilité d'étendre leurs pratiques et de s'ouvrir à d'autres méthodes parfois issues d'autres disciplines. Enfin, il s'agit d'un espace de diffusion pour les utilisateur·rice·s avancé·e·s, auteur·e·s de développements ou de documentation. --- [Rzine](https://rzine.fr)
 
 Rzine recense de nombreuses ressources, fiches et manuels, *open source* et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en SHS.
+:::
+
+## Pour aller plus loin {-}
+
+Si les enjeux de reproductibilité et de science ouverte vous intéressent, il vous faudra sans doute compléter votre maîtrise de R par des outils supplémentaires, notamment les logiciels de contrôle de version [@bryan2021].
+
+::: {.rmdnote}
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
+
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier).
+
+Ceci étant dit, le lecteur qui le souhaite trouvera dans [*Introduction à R et au tidyverse*](https://juba.github.io/tidyverse) [@barnier2021], [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] et [*STAT 545*](https://stat545.com/) [@bryan2020] une introduction à l'analyse de données avec les packages du tidyverse.
 :::
