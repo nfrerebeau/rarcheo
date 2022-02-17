@@ -209,7 +209,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-16}
+\date{2022-02-17}
 
 \begin{document}
 \maketitle
@@ -269,7 +269,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 16 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 17 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -543,11 +543,11 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 \end{Highlighting}
 \end{Shaded}
 
-La commande \texttt{0:100} retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'indice de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17\textsuperscript{e} valeur, etc.).
+La commande \texttt{0:100} retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'\textbf{indice} de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17\textsuperscript{e} valeur, etc.).
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
 
-Contrairement à \href{https://www.python.org/}{Python}, les \protect\hyperlink{extraction}{indices commencent à 1} et non à 0.
+Contrairement à \href{https://www.python.org/}{Python}, dans R les \protect\hyperlink{extraction}{indices commencent à 1} et non à 0.
 
 \end{tcolorbox}
 
@@ -585,7 +585,7 @@ Il est possible de naviguer dans l'historique des commandes précédemment exéc
 \hypertarget{objets}{%
 \section{Objets}\label{objets}}
 
-Il est possible d'associer un nom à une valeur et ainsi de créer des \textbf{variables} qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur.
+Il est possible d'associer un nom à une valeur et ainsi de créer des \textbf{variables} (au sens informatique) qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur.
 
 Cette \textbf{affectation} (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur \texttt{\textless{}-} :
 
@@ -632,13 +632,17 @@ La réutilisation d'un nom de variable existant entraîne le remplacement de la 
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
 
-Un nom de variable peut uniquement être composé de lettres, de chiffres et des caractères \texttt{.} ou \texttt{\_}.
-
-Un nom de variable doit toujours commencer par une lettre (ou par un point suivi d'une lettre).
-
-Les noms de variables sont sensibles à la casse (\texttt{x} et \texttt{X} sont deux variables différentes).
-
-Il existe des mots réservés qui ne peuvent être utilisés comme nom de variable.
+\begin{itemize}
+\tightlist
+\item
+  Un nom de variable peut uniquement être composé de lettres, de chiffres et des caractères \texttt{.} ou \texttt{\_}.
+\item
+  Un nom de variable doit toujours commencer par une lettre (ou par un point suivi d'une lettre).
+\item
+  Les noms de variables sont sensibles à la casse (\texttt{x} et \texttt{X} sont deux variables différentes).
+\item
+  Il existe des mots réservés qui ne peuvent être utilisés comme nom de variable.
+\end{itemize}
 
 \end{tcolorbox}
 
@@ -674,7 +678,7 @@ La fonction \texttt{round()} accepte ainsi deux arguments, la valeur à arrondir
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
 
-Les arguments qui possèdent une valeur par défaut sont des \textbf{arguments optionnels} : ils peuvent être omis lorsque la fonction est appelée (la valeur par défaut sera utilisée). À l'inverse, les arguments sans valeurs par défaut doivent être spécifiés : ce sont des \textbf{arguments obligatoires}.
+Les arguments qui possèdent une valeur par défaut sont des \textbf{arguments facultatifs} : ils peuvent être omis lorsque la fonction est appelée (la valeur par défaut sera utilisée). À l'inverse, les arguments sans valeurs par défaut doivent être spécifiés : ce sont des \textbf{arguments obligatoires}.
 
 \end{tcolorbox}
 
@@ -739,12 +743,11 @@ La plupart des packages publiés sur le CRAN font l'objet de mises à jour régu
 
 \end{tcolorbox}
 
-Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base\footnote{La liste des packages chargés par défaut au lancement de R peut être obtenue avec \texttt{getOption(\textquotesingle{}defaultPackages\textquotesingle{})}.}. Ainsi, si on utilise la fonction \texttt{data()} pour charger le jeux de données \texttt{intcal20} du package \emph{folio}, R ne sait pas où chercher cet objet et retourne une erreur :
+Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base\footnote{La liste des packages chargés par défaut au lancement de R peut être obtenue avec \texttt{getOption(\textquotesingle{}defaultPackages\textquotesingle{})}.}. Si on utilise la fonction \texttt{data()} pour charger le jeux de données \texttt{intcal20} du package \emph{folio} sans que ce dernier soit chargé, R ne sait pas où chercher l'objet et retourne un avertissement :
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
-\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -772,7 +775,7 @@ Pour un objet donné, on peut consulter la documentation associée en utilisant 
 \end{Highlighting}
 \end{Shaded}
 
-Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura pas où chercher la documentation. Par exemple, la fonction \texttt{lda()} appartient au package \emph{MASS} qui n'est pas chargé :
+Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura pas où chercher la documentation. Dans l'exemple suivant, la fonction \texttt{lda()} appartient au package \emph{MASS} qui n'est pas chargé :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -797,13 +800,15 @@ Si on ignore le nom de la fonction à utiliser, deux approches permettent d'expl
 \item
   On peut parcourir la documentation d'un package particulier, dont on sait qu'il doit contenir la fonction recherchée (par exemple, \texttt{help(package\ =\ "MASS")} permet d'afficher le sommaire de la documentation du package \emph{MASS}).
 \item
-  On peut rechercher dans l'aide par mot-clé à l'aide de l'opérateur \texttt{??}.
+  On peut rechercher dans l'aide par mot-clé à l'aide de l'opérateur \texttt{??} ou de la fonction \texttt{help.search()}.
 \end{itemize}
 
 Par exemple, pour chercher toutes les pages de la documentation contenant le terme ``correlation'' :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{help.search}\NormalTok{(}\StringTok{"correlation"}\NormalTok{)}
+
 \NormalTok{??correlation}
 \end{Highlighting}
 \end{Shaded}
@@ -840,14 +845,16 @@ Pour exécuter les exemples illustrant la documentation de la fonction \texttt{m
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
 
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{reprex}{écrire des exemples reproductibles} (ou \href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{reprex}{écrire des exemples reproductibles} (\href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}).
 
 \end{tcolorbox}
 
 \hypertarget{r-vector}{%
 \chapter{Vecteurs}\label{r-vector}}
 
-Un vecteur (\texttt{vector}) est simplement un ensemble d'\textbf{éléments}. Un vecteur peut être de type \protect\hyperlink{r-atomic}{\texttt{atomic}}, si tous ses éléments sont de même type, ou de type \protect\hyperlink{r-list}{\texttt{list}}, si ses éléments sont de types différents. Le vecteur est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig.~\ref{fig:r-vector-types}). Un vecteur peut également avoir des \textbf{attributs} (sorte de métadonnées), dont l'attribut dimension qui transforme un vecteur en \protect\hyperlink{r-matrix}{matrice}.
+Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig.~\ref{fig:r-vector-types}). Un vecteur est simplement un ensemble d'\textbf{éléments}.
+
+Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou de une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents. Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
 
 
 
@@ -863,12 +870,12 @@ Un vecteur (\texttt{vector}) est simplement un ensemble d'\textbf{éléments}. U
 \hypertarget{r-atomic}{%
 \section{\texorpdfstring{Vecteurs atomiques (\texttt{atomic})}{Vecteurs atomiques (atomic)}}\label{r-atomic}}
 
-Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les 5 principaux types de R sont les suivants :
+Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les quatre principaux types de R sont les suivants :
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{logical} : booléen, ne peut pendre que deux valeurs \texttt{TRUE} (vrai) ou \texttt{FALSE} (faux).
+  \texttt{logical} : booléen.
 \item
   \texttt{integer} : nombre entier.
 \item
@@ -877,40 +884,35 @@ Un vecteur atomique possède deux propriétés : son type et sa longueur (le nom
   \texttt{character} : chaîne de caractère.
 \end{itemize}
 
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
-
-La fonction \texttt{typeof()} permet de connaitre le type d'un vecteur et la fonction \texttt{length()} sa longueur.
-
-\end{tcolorbox}
-
 \hypertarget{cruxe9ation}{%
 \subsection{Création}\label{cruxe9ation}}
 
-Chacun de ces types possède une syntaxe particulière pour former des vecteur contenant un unique élément :
+Chacun de ces types possède une syntaxe particulière pour former des vecteur contenant un unique élément (scalaires) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# logical}
-\NormalTok{x }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}
-\FunctionTok{typeof}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "logical"}
-
-\CommentTok{\# integer}
-\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 1L}
-\FunctionTok{typeof}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "integer"}
-
-\CommentTok{\# double}
-\NormalTok{x }\OtherTok{\textless{}{-}} \FloatTok{10.5}
-\FunctionTok{typeof}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "double"}
-
-\CommentTok{\# character}
-\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"archéologie"}
-\FunctionTok{typeof}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "character"}
+\NormalTok{x }\OtherTok{\textless{}{-}} \ConstantTok{TRUE}          \CommentTok{\# logical}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 1L            }\CommentTok{\# integer}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FloatTok{10.5}          \CommentTok{\# double}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"archéologie"} \CommentTok{\# character}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
+
+\begin{itemize}
+\tightlist
+\item
+  Un vecteur logique ne peut pendre que deux valeurs \texttt{TRUE} (vrai) ou \texttt{FALSE} (faux). \texttt{TRUE} et \texttt{FALSE} sont des mots réservés dans R : ils ne peuvent pas être utilisés comme identifiants pour nommer des variables ou des fonctions.
+\item
+  Un nombre réel sans partie décimale sera toujours interprété comme étant de type \texttt{double} et non de type \texttt{integer}.
+\item
+  Un vecteur de type \texttt{integer} s'écrit avec une syntaxe particulière : les nombres doivent être suivis d'un \texttt{L} pour les distinguer du type \texttt{double} et ne doivent pas avoir de partie décimale.
+\item
+  Une chaîne de caractère doit toujours être encadrée par des guillemets simples (\texttt{\textquotesingle{}}) ou doubles (\texttt{"}). Si les guillemets sont manquantes, R l'interprétera comme un nom d'objet (et cherchera l'objet correspondant).
+\end{itemize}
+
+\end{tcolorbox}
 
 La fonction \texttt{c()} (\emph{combine}) permet de construire des vecteurs longs :
 
@@ -923,23 +925,38 @@ La fonction \texttt{c()} (\emph{combine}) permet de construire des vecteurs long
 \end{Highlighting}
 \end{Shaded}
 
+La fonction \texttt{typeof()} permet de connaitre le type d'un vecteur et la fonction \texttt{length()} sa longueur :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(vec\_cha)}
+\CommentTok{\#\textgreater{} [1] "character"}
+
+\FunctionTok{length}\NormalTok{(vec\_cha)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{test-et-conversion}{%
+\subsection{Test et conversion}\label{test-et-conversion}}
+
 La famille de fonctions \texttt{is.*()} permet de tester si un vecteur est d'un type particulier :
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{is.logical}\NormalTok{(vec\_log)}
 \CommentTok{\#\textgreater{} [1] TRUE}
+
 \FunctionTok{is.integer}\NormalTok{(vec\_int)}
 \CommentTok{\#\textgreater{} [1] TRUE}
+
 \FunctionTok{is.double}\NormalTok{(vec\_num)}
 \CommentTok{\#\textgreater{} [1] TRUE}
+
 \FunctionTok{is.character}\NormalTok{(vec\_cha)}
 \CommentTok{\#\textgreater{} [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{conversions}{%
-\subsection{Conversions}\label{conversions}}
 
 Tous les éléments d'un vecteur atomique sont du même type. Lors de la combinaison d'éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie \texttt{logical} \textless{} \texttt{integer} \textless{} \texttt{double} \textless{} \texttt{character}.
 
@@ -961,11 +978,21 @@ Un vecteur contenant au moins un nombre réel sera de type \texttt{double} (mêm
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\DecValTok{2}\NormalTok{, 3L)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\FloatTok{2.1}\NormalTok{, 3L)}
 \FunctionTok{typeof}\NormalTok{(x)}
 \CommentTok{\#\textgreater{} [1] "double"}
 
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "double"}
+\end{Highlighting}
+\end{Shaded}
+
+La création d'un \texttt{integer} avec une partie décimale sera automatiquement converti en type \texttt{double} avec un avertissement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FloatTok{10.5}\NormalTok{L}
 \FunctionTok{typeof}\NormalTok{(x)}
 \CommentTok{\#\textgreater{} [1] "double"}
 \end{Highlighting}
@@ -977,8 +1004,10 @@ Il est possible de convertir explicitement un vecteur d'un type à l'autre à l'
 \begin{Highlighting}[]
 \FunctionTok{as.integer}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{3.2}\NormalTok{))}
 \CommentTok{\#\textgreater{} [1] 1 2 3}
+
 \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{))}
 \CommentTok{\#\textgreater{} [1] 1 0 1}
+
 \FunctionTok{as.character}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{2.1}\NormalTok{, }\FloatTok{3.2}\NormalTok{))}
 \CommentTok{\#\textgreater{} [1] "1.2" "2.1" "3.2"}
 \end{Highlighting}
@@ -993,7 +1022,7 @@ Les valeurs d'un vecteur numérique peuvent être converties en valeurs logiques
 \end{Highlighting}
 \end{Shaded}
 
-En cas de conversion impossible, des \protect\hyperlink{valeurs-manquantes}{valeurs manquantes} sont générées et un avertissement est généré :
+En cas de conversion impossible, des \protect\hyperlink{valeurs-manquantes}{valeurs manquantes} sont générées et un avertissement est retourné :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1003,14 +1032,780 @@ En cas de conversion impossible, des \protect\hyperlink{valeurs-manquantes}{vale
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{attributs}{%
+\subsection{Attributs}\label{attributs}}
+
+Les attributs d'un vecteur peuvent être vus comme des métadonnées : des données qui fournissent des informations sur les données du vecteur.
+
+Les attributs peuvent être spécifiés individuellement à l'aide de la fonction \texttt{attr()}, sous la forme de paires associant un nom et une valeur. Dans l'exemple suivant, deux attributs nommés \texttt{a} et \texttt{b} sont associés au vecteur \texttt{x} avec pour valeurs \texttt{"xyz"} et \texttt{1\ 2\ 3}, respectivement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+
+\FunctionTok{attr}\NormalTok{(x, }\StringTok{"a"}\NormalTok{) }\OtherTok{\textless{}{-}} \StringTok{"xyz"}
+\FunctionTok{attr}\NormalTok{(x, }\StringTok{"a"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] "xyz"}
+
+\FunctionTok{attr}\NormalTok{(x, }\StringTok{"b"}\NormalTok{) }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\FunctionTok{attr}\NormalTok{(x, }\StringTok{"b"}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
+
+La syntaxe particulière \texttt{attr(x,\ "a")\ \textless{}-\ "xyz"} indique qu'il s'agit d'une fonction de remplacement. Ces fonctions modifient l'objet correspondant au premier argument.
+
+\end{tcolorbox}
+
+L'utilisation des attributs requiert un peu de prudence, car à quelques exceptions près les attributs ne sont pas conservés lors d'opérations sur les vecteurs (comme lors de l'\protect\hyperlink{subset}{extraction de sous-ensembles}). Il existe cependant deux attributs particuliers qui sont généralement conservés : les noms (\texttt{names}) et la dimension (\texttt{dim}, qui transforme un vecteur en \protect\hyperlink{r-matrix}{matrice}).
+
+Il est possible d'associer des noms aux différents éléments d'un vecteur, soit au moment de sa création, soit \emph{a posteriori} avec la fonction \texttt{names()} (qui permet également d'extraire les noms) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Un nom est associé à chaque élément}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{a =} \DecValTok{1}\NormalTok{, }\AttributeTok{b =} \DecValTok{2}\NormalTok{, }\AttributeTok{c =} \DecValTok{3}\NormalTok{, }\AttributeTok{d =} \DecValTok{4}\NormalTok{, }\AttributeTok{e =} \DecValTok{5}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} a b c d e }
+\CommentTok{\#\textgreater{} 1 2 3 4 5}
+
+\CommentTok{\# Les noms sont spécifiés à l\textquotesingle{}aide d\textquotesingle{}un vecteur}
+\FunctionTok{names}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"f"}\NormalTok{, }\StringTok{"g"}\NormalTok{, }\StringTok{"h"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"j"}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} f g h i j }
+\CommentTok{\#\textgreater{} 1 2 3 4 5}
+
+\CommentTok{\# Extraire les noms des différents éléments}
+\FunctionTok{names}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "f" "g" "h" "i" "j"}
+
+\CommentTok{\# Supprimer les noms}
+\FunctionTok{names}\NormalTok{(x) }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\FunctionTok{names}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} NULL}
+
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
+
+L'utilisation des attributs permet de créer des vecteurs particuliers, appelés \texttt{factor}, qui représentent des \protect\hyperlink{variables-qualitatives}{variables qualitatives} (nominales ou ordinales).
+
+\end{tcolorbox}
+
 \hypertarget{r-list}{%
 \section{\texorpdfstring{Listes (\texttt{list})}{Listes (list)}}\label{r-list}}
+
+Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type. Une liste peut être créée avec avec la fonction \texttt{list()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Création d\textquotesingle{}une liste contenant 4 éléments}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \ConstantTok{TRUE}\NormalTok{,}
+\NormalTok{  1L,}
+  \FunctionTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{2.1}\NormalTok{),}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 1.2 2.1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+
+\CommentTok{\# Une liste est un objet de type \textquotesingle{}list\textquotesingle{}}
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "list"}
+
+\CommentTok{\# Longueur de la liste}
+\FunctionTok{length}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] 4}
+
+\CommentTok{\# Longueur des différents éléments de la liste}
+\FunctionTok{lengths}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] 1 1 2 3}
+
+\CommentTok{\# Les éléments de la liste peuvent être nommés}
+\FunctionTok{names}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $b}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] 1.2 2.1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $d}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\end{Highlighting}
+\end{Shaded}
+
+Les listes permettent ainsi de créer et de manipuler des objets complexes, qui peuvent contenir d'autres listes (on parle alors de vecteurs récursifs) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(}
+    \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
+    \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\NormalTok{  ), }
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [[1]][[1]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[1]][[2]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] 1 2}
+\end{Highlighting}
+\end{Shaded}
+
+La fonction \texttt{c()} permet de combiner plusieurs listes en une seule :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Deux listes sont combinées en une seule}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(}
+    \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
+    \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\NormalTok{  ), }
+  \FunctionTok{list}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]]}
+\CommentTok{\#\textgreater{} [1] 2}
+
+\CommentTok{\# Un vecteur atomique est converti en liste avant d\textquotesingle{}être combiné}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \FunctionTok{list}\NormalTok{(}
+    \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
+    \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\NormalTok{  ), }
+  \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]]}
+\CommentTok{\#\textgreater{} [1] 2}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{r-matrix}{%
 \section{\texorpdfstring{Matrices (\texttt{matrix} et \texttt{array})}{Matrices (matrix et array)}}\label{r-matrix}}
 
-\hypertarget{tableaux-de-donnuxe9es-data.frame}{%
-\section{\texorpdfstring{Tableaux de données (\texttt{data.frame})}{Tableaux de données (data.frame)}}\label{tableaux-de-donnuxe9es-data.frame}}
+Un vecteur peut être transformé en un tableau à deux (\texttt{matrix}) ou plusieurs (\texttt{array}) dimensions, en spécifiant l'attribut \texttt{dim}. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède \(m\) lignes et \(n\) colonnes et contient \(m \times n\) éléments du même type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Soit un vecteur contenant 12 éléments}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{12}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10 11 12}
+
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "integer"}
+
+\CommentTok{\# Le vecteur est transformé en une matrice de 2 lignes et 6 colonnes}
+\FunctionTok{dim}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4] [,5] [,6]}
+\CommentTok{\#\textgreater{} [1,]    1    3    5    7    9   11}
+\CommentTok{\#\textgreater{} [2,]    2    4    6    8   10   12}
+
+\FunctionTok{dim}\NormalTok{(x)    }\CommentTok{\# Dimensions de la matrice}
+\CommentTok{\#\textgreater{} [1] 2 6}
+\FunctionTok{nrow}\NormalTok{(x)   }\CommentTok{\# Nombre de lignes}
+\CommentTok{\#\textgreater{} [1] 2}
+\FunctionTok{ncol}\NormalTok{(x)   }\CommentTok{\# Nombre de colonnes}
+\CommentTok{\#\textgreater{} [1] 6}
+\FunctionTok{length}\NormalTok{(x) }\CommentTok{\# Nombre d\textquotesingle{}éléments}
+\CommentTok{\#\textgreater{} [1] 12}
+\FunctionTok{typeof}\NormalTok{(x) }\CommentTok{\# Type des éléments}
+\CommentTok{\#\textgreater{} [1] "integer"}
+\end{Highlighting}
+\end{Shaded}
+
+La fonction \texttt{matrix()} permet de créer des matrices en spécifiant le nombre de lignes et de colonnes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Par défaut, une matrice est remplie colonne par colonne}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7   10}
+\CommentTok{\#\textgreater{} [2,]    2    5    8   11}
+\CommentTok{\#\textgreater{} [3,]    3    6    9   12}
+
+\CommentTok{\# Ce comportement peut être modifié}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{y}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    2    3    4}
+\CommentTok{\#\textgreater{} [2,]    5    6    7    8}
+\CommentTok{\#\textgreater{} [3,]    9   10   11   12}
+\end{Highlighting}
+\end{Shaded}
+
+Plusieurs matrices peuvent être combinées en une seule, par lignes (\texttt{rbind()}) ou par colonnes (\texttt{cbind()}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Combine les lignes de deux matrices}
+\FunctionTok{rbind}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7   10}
+\CommentTok{\#\textgreater{} [2,]    2    5    8   11}
+\CommentTok{\#\textgreater{} [3,]    3    6    9   12}
+\CommentTok{\#\textgreater{} [4,]    1    2    3    4}
+\CommentTok{\#\textgreater{} [5,]    5    6    7    8}
+\CommentTok{\#\textgreater{} [6,]    9   10   11   12}
+
+\CommentTok{\# Combine les colonnes de deux matrices}
+\FunctionTok{cbind}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]}
+\CommentTok{\#\textgreater{} [1,]    1    4    7   10    1    2    3    4}
+\CommentTok{\#\textgreater{} [2,]    2    5    8   11    5    6    7    8}
+\CommentTok{\#\textgreater{} [3,]    3    6    9   12    9   10   11   12}
+\end{Highlighting}
+\end{Shaded}
+
+Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes avec les fonctions \texttt{rownames()} et \texttt{colnames()} ou avec la fonction \texttt{dimnames()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+
+\FunctionTok{colnames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C" "D"}
+
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   A B C  D}
+\CommentTok{\#\textgreater{} X 1 4 7 10}
+\CommentTok{\#\textgreater{} Y 2 5 8 11}
+\CommentTok{\#\textgreater{} Z 3 6 9 12}
+
+\FunctionTok{dimnames}\NormalTok{(y) }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{))}
+\FunctionTok{dimnames}\NormalTok{(y)}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{} [1] "A" "B" "C" "D"}
+
+\NormalTok{y}
+\CommentTok{\#\textgreater{}   A  B  C  D}
+\CommentTok{\#\textgreater{} X 1  2  3  4}
+\CommentTok{\#\textgreater{} Y 5  6  7  8}
+\CommentTok{\#\textgreater{} Z 9 10 11 12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Avertissement,colframe=darkyellow]
+
+Un vecteur sans attribut \texttt{dim} n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
+
+\end{tcolorbox}
+
+\hypertarget{r-dataframe}{%
+\section{\texorpdfstring{Tableaux de données (\texttt{data.frame})}{Tableaux de données (data.frame)}}\label{r-dataframe}}
+
+Le \texttt{data.frame} est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un \texttt{data.frame} est un cas particulier de \texttt{list} (fig.~\ref{fig:r-vector-types}) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau\footnote{Ainsi, la fonction \texttt{names()} est équivalente à \texttt{rownames()} et la fonction \texttt{length()} retourne le nombre de colonne du tableau (équivalent à \texttt{ncol()}).}. Chaque colonne d'un \texttt{data.frame} peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont d'un seul type) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{a =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{,}
+  \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{, }\StringTok{"z"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   a b}
+\CommentTok{\#\textgreater{} 1 1 x}
+\CommentTok{\#\textgreater{} 2 2 y}
+\CommentTok{\#\textgreater{} 3 3 z}
+
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "list"}
+\end{Highlighting}
+\end{Shaded}
+
+Un \texttt{data.frame} est un tableau à deux dimensions :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(x) }\CommentTok{\# Nombre de lignes}
+\CommentTok{\#\textgreater{} [1] 3}
+\FunctionTok{ncol}\NormalTok{(x) }\CommentTok{\# Nombre de colonnes}
+\CommentTok{\#\textgreater{} [1] 2}
+\end{Highlighting}
+\end{Shaded}
+
+Lignes et colonnes d'un \texttt{data.frame} sont nommées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rownames}\NormalTok{(x) }\CommentTok{\# Noms de lignes}
+\CommentTok{\#\textgreater{} [1] "1" "2" "3"}
+\FunctionTok{colnames}\NormalTok{(x) }\CommentTok{\# Noms de colonnes}
+\CommentTok{\#\textgreater{} [1] "a" "b"}
+\end{Highlighting}
+\end{Shaded}
+
+Sauf instruction spécifique lors de la création d'un \texttt{data.frame}, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type \texttt{character}) et ils ne doivent pas être confondu avec les indices (numérotation) des lignes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{greek =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{home =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ithaca"}\NormalTok{, }\StringTok{"Troy"}\NormalTok{, }\StringTok{"Phthia"}\NormalTok{),}
+  \AttributeTok{row.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Odysseus"}\NormalTok{, }\StringTok{"Hector"}\NormalTok{, }\StringTok{"Achilles"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}          greek   home}
+\CommentTok{\#\textgreater{} Odysseus  TRUE Ithaca}
+\CommentTok{\#\textgreater{} Hector   FALSE   Troy}
+\CommentTok{\#\textgreater{} Achilles  TRUE Phthia}
+\end{Highlighting}
+\end{Shaded}
+
+Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs \texttt{data.frame} en un seul tableau de données avec \texttt{rbind()} et \texttt{cbind()}. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des \protect\hyperlink{jointures}{jointures}.
+
+\hypertarget{subset}{%
+\chapter{Extraction et remplacement}\label{subset}}
+
+\hypertarget{subset-atomic}{%
+\section{Vecteurs atomiques}\label{subset-atomic}}
+
+Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur \texttt{{[}} (crochet) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.3}\NormalTok{, }\FloatTok{2.4}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{4.6}\NormalTok{, }\FloatTok{5.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  Il est possible de spécifier les indices (positions) des éléments à conserver ou à enlever avec des nombres entiers :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sélection du premier, troisième et cinquième élément}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)]}
+\CommentTok{\#\textgreater{} [1] 1.3 3.5 5.7}
+
+\CommentTok{\# Suppression du second et du quatrième élément}
+\NormalTok{x[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)]}
+\CommentTok{\#\textgreater{} [1] 1.3 3.5 5.7}
+
+\CommentTok{\# Zéro est un cas particulier}
+\CommentTok{\# (retourne un vecteur de longueur nulle)}
+\NormalTok{x[}\DecValTok{0}\NormalTok{]}
+\CommentTok{\#\textgreater{} numeric(0)}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Il est possible de spécifier si oui (\texttt{TRUE}) ou non (\texttt{FALSE}) on souhaite conserver des éléments :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)]}
+\CommentTok{\#\textgreater{} [1] 1.3 3.5 5.7}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Si rien n'est spécifié, le vecteur d'origine est retourné :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[]}
+\CommentTok{\#\textgreater{} [1] 1.3 2.4 3.5 4.6 5.7}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Si les éléments sont nommés, on peut les sélectionner par leur nom :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{, }\StringTok{"e"}\NormalTok{)}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"e"}\NormalTok{)]}
+\CommentTok{\#\textgreater{}   a   c   e }
+\CommentTok{\#\textgreater{} 1.3 3.5 5.7}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
+Les éléments ainsi sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+
+\CommentTok{\# Remplacement du premier et du troisième élément}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{300}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 100   2 300   4   5}
+\end{Highlighting}
+\end{Shaded}
+
+Lors de l'affectation de nouvelles valeurs à l'aide de \texttt{x{[}i{]}\ \textless{}-\ y} (où \texttt{i} correspond à l'indice des valeurs à remplacer dans \texttt{x} et \texttt{y} correspond au vecteur de nouvelles valeurs), il faut veiller à plusieurs aspects :
+
+\begin{itemize}
+\item
+  La duplication d'indices :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)] }\CommentTok{\# Duplique les valeurs}
+\CommentTok{\#\textgreater{} [1] 1 1 1}
+\end{Highlighting}
+\end{Shaded}
+\item
+  L'ordre des indices :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)] }\CommentTok{\# Change l\textquotesingle{}ordre des valeurs}
+\CommentTok{\#\textgreater{} [1] 5 3 1}
+\end{Highlighting}
+\end{Shaded}
+\item
+  Les mécanismes de conversions implicites :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "integer"}
+
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{100.1}\NormalTok{, }\FloatTok{300.3}\NormalTok{)}
+\FunctionTok{typeof}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] "double"}
+\end{Highlighting}
+\end{Shaded}
+\item
+  La taille du vecteur de remplacement. Si ce dernier est trop petit, il sera \textbf{recyclé} : ses valeurs seront réutilisées autant que nécessaire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} [1] 100 200 100 200   5}
+\end{Highlighting}
+\end{Shaded}
+\end{itemize}
+
+\hypertarget{subset-list}{%
+\section{Listes}\label{subset-list}}
+
+La sélection d'éléments dans une liste s'opère de la même façon que pour un vecteur atomique :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \AttributeTok{a =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
+  \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{),}
+  \AttributeTok{c =} \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $b}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+
+\CommentTok{\# Sélection du premier et du troisième élément}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{)]}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\end{Highlighting}
+\end{Shaded}
+
+L'opérateur \texttt{{[}} retourne toujours une liste, y compris lorsqu'un unique élément est sélectionné. Pour extraire un unique élément \emph{hors} de la liste, il est possible d'utiliser l'opérateur \texttt{{[}{[}} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ x[}\DecValTok{1}\NormalTok{]}
+\FunctionTok{typeof}\NormalTok{(y)}
+\CommentTok{\#\textgreater{} [1] "list"}
+
+\NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ x[[}\DecValTok{1}\NormalTok{]]}
+\FunctionTok{typeof}\NormalTok{(z)}
+\CommentTok{\#\textgreater{} [1] "logical"}
+\end{Highlighting}
+\end{Shaded}
+
+Si les éléments de la liste sont nommés, on peut extraire un unique élément en le sélectionnant par son nom avec \texttt{{[}{[}} ou avec l'opérateur \texttt{\$} (dollar) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[[}\StringTok{"a"}\NormalTok{]]}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+
+\NormalTok{x}\SpecialCharTok{$}\NormalTok{a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+Cette distinction entre \texttt{{[}} et \texttt{{[}{[}} est particulièrement importante lorsqu'on souhaite remplacer des valeurs dans une liste (puisque \texttt{{[}} retourne toujours une liste, la valeur de remplacement doit également être une liste) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $b}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+
+\NormalTok{x[[}\DecValTok{1}\NormalTok{]] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $b}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\end{Highlighting}
+\end{Shaded}
+
+L'opérateur \texttt{{[}{[}} permet également de supprimer un élément en lui affectant la valeur \texttt{NULL} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[[}\DecValTok{2}\NormalTok{]] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{x}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subset-matrix}{%
+\section{Matrices}\label{subset-matrix}}
+
+La sélection d'un sous-ensemble dans un tableau à deux dimensions (\texttt{matrix} ou \texttt{array}) est une généralisation de la sélection dans un vecteur. Il suffit de spécifier les indices des lignes et des colonnes, séparés par une virgule :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{, }\StringTok{"z"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   A B C  D}
+\CommentTok{\#\textgreater{} x 1 4 7 10}
+\CommentTok{\#\textgreater{} y 2 5 8 11}
+\CommentTok{\#\textgreater{} z 3 6 9 12}
+
+\CommentTok{\# Sélection des lignes 2 à 3 et des colonnes 1 à 3}
+\NormalTok{x[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+\CommentTok{\#\textgreater{}   A B C}
+\CommentTok{\#\textgreater{} y 2 5 8}
+\CommentTok{\#\textgreater{} z 3 6 9}
+
+\NormalTok{x[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{]}
+\CommentTok{\#\textgreater{}   A B C}
+\CommentTok{\#\textgreater{} y 2 5 8}
+\CommentTok{\#\textgreater{} z 3 6 9}
+
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{)]}
+\CommentTok{\#\textgreater{}   A B C}
+\CommentTok{\#\textgreater{} y 2 5 8}
+\CommentTok{\#\textgreater{} z 3 6 9}
+\end{Highlighting}
+\end{Shaded}
+
+Si rien n'est spécifié, toutes les lignes ou toutes les colonnes sont sélectionnées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sélection de toutes les lignes et des colonnes 1 à 3}
+\NormalTok{x[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+\CommentTok{\#\textgreater{}   A B C}
+\CommentTok{\#\textgreater{} x 1 4 7}
+\CommentTok{\#\textgreater{} y 2 5 8}
+\CommentTok{\#\textgreater{} z 3 6 9}
+
+\CommentTok{\# Sélection de toutes les colonnes et des lignes 2 à 3}
+\NormalTok{x[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, ]}
+\CommentTok{\#\textgreater{}   A B C  D}
+\CommentTok{\#\textgreater{} y 2 5 8 11}
+\CommentTok{\#\textgreater{} z 3 6 9 12}
+\end{Highlighting}
+\end{Shaded}
+
+Par défaut, \texttt{{[}} \textbf{simplifie} les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La dimensionnalité de l'objet d'origine peut cependant être conservée à l'aide de l'argument \texttt{drop} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sélection de la première colonne}
+\NormalTok{x[, }\DecValTok{1}\NormalTok{] }\CommentTok{\# Retourne un vecteur}
+\CommentTok{\#\textgreater{} x y z }
+\CommentTok{\#\textgreater{} 1 2 3}
+
+\NormalTok{x[, }\DecValTok{1}\NormalTok{, drop }\OtherTok{=} \ConstantTok{FALSE}\NormalTok{] }\CommentTok{\# Retourne une matrice}
+\CommentTok{\#\textgreater{}   A}
+\CommentTok{\#\textgreater{} x 1}
+\CommentTok{\#\textgreater{} y 2}
+\CommentTok{\#\textgreater{} z 3}
+\end{Highlighting}
+\end{Shaded}
+
+Les matrices sont des \protect\hyperlink{r-matrix}{vecteurs possédant un attribut particulier} (\texttt{dim}), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sélection des premières et troisièmes valeurs}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
+\CommentTok{\#\textgreater{} [1] 1 3}
+
+\CommentTok{\# Remplacement du triangle supérieur}
+\NormalTok{x[}\FunctionTok{upper.tri}\NormalTok{(x)] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   A B C D}
+\CommentTok{\#\textgreater{} x 1 0 0 0}
+\CommentTok{\#\textgreater{} y 2 5 0 0}
+\CommentTok{\#\textgreater{} z 3 6 9 0}
+
+\CommentTok{\# Remplacement du triangle inférieur}
+\NormalTok{x[}\FunctionTok{lower.tri}\NormalTok{(x)] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   A B C D}
+\CommentTok{\#\textgreater{} x 1 0 0 0}
+\CommentTok{\#\textgreater{} y 0 5 0 0}
+\CommentTok{\#\textgreater{} z 0 0 9 0}
+\end{Highlighting}
+\end{Shaded}
+
+Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. La première colonne doit alors contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimension supérieure (\texttt{array}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{y}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    1}
+\CommentTok{\#\textgreater{} [2,]    2    2}
+\CommentTok{\#\textgreater{} [3,]    3    3}
+
+\NormalTok{x[y]}
+\CommentTok{\#\textgreater{} [1] 1 5 9}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{subset-dataframe}{%
+\section{Tableaux de données}\label{subset-dataframe}}
+
+Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut utiliser deux stratégies (les \texttt{data.frame} ont les caractéristiques des listes et des matrices) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{a =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{),}
+  \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+  \AttributeTok{c =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}       a b c}
+\CommentTok{\#\textgreater{} 1  TRUE 1 A}
+\CommentTok{\#\textgreater{} 2 FALSE 2 B}
+\CommentTok{\#\textgreater{} 3  TRUE 3 C}
+\CommentTok{\#\textgreater{} 4  TRUE 4 D}
+
+\CommentTok{\# Comme une liste !}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)] }\CommentTok{\# Colonnes nommées "a", "b" et "c"}
+\CommentTok{\#\textgreater{}       a b c}
+\CommentTok{\#\textgreater{} 1  TRUE 1 A}
+\CommentTok{\#\textgreater{} 2 FALSE 2 B}
+\CommentTok{\#\textgreater{} 3  TRUE 3 C}
+\CommentTok{\#\textgreater{} 4  TRUE 4 D}
+\NormalTok{x[[}\DecValTok{2}\NormalTok{]]              }\CommentTok{\# Deuxième colonne uniquement}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4}
+\NormalTok{x}\SpecialCharTok{$}\NormalTok{b                 }\CommentTok{\# Colonne nommée "b"}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4}
+
+\CommentTok{\# Comme une matrice !}
+\NormalTok{x[, }\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)]}
+\CommentTok{\#\textgreater{}       a b c}
+\CommentTok{\#\textgreater{} 1  TRUE 1 A}
+\CommentTok{\#\textgreater{} 2 FALSE 2 B}
+\CommentTok{\#\textgreater{} 3  TRUE 3 C}
+\CommentTok{\#\textgreater{} 4  TRUE 4 D}
+\NormalTok{x[, }\DecValTok{2}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4}
+\NormalTok{x[, }\StringTok{"b"}\NormalTok{, drop }\OtherTok{=} \ConstantTok{FALSE}\NormalTok{]}
+\CommentTok{\#\textgreater{}   b}
+\CommentTok{\#\textgreater{} 1 1}
+\CommentTok{\#\textgreater{} 2 2}
+\CommentTok{\#\textgreater{} 3 3}
+\CommentTok{\#\textgreater{} 4 4}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{operateurs}{%
 \chapter{Opérateurs}\label{operateurs}}

@@ -48,24 +48,25 @@
 <li class="book-part">Premiers pas avec R</li>
 <li><a class="active" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
 <li><a class="" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
-<li><a class="" href="operateurs.html"><span class="header-section-number">3</span> Opérateurs</a></li>
-<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">4</span> Structures de contrôle</a></li>
-<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">5</span> Fonctions d’ordre supérieur</a></li>
-<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">6</span> Structure des données</a></li>
+<li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
+<li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs</a></li>
+<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">6</span> Fonctions d’ordre supérieur</a></li>
+<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">7</span> Structure des données</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">7</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">8</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">9</span> Visualisation de données</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">8</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">9</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">10</span> Visualisation de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">10</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">11</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">12</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">11</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">12</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">13</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">13</span> Coordonnées et projections</a></li>
-<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Format de données</a></li>
+<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">14</span> Coordonnées et projections</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">15</span> Format de données</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">15</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">16</span> Style de programmation</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">16</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">17</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -98,9 +99,9 @@
 <span class="co">#&gt;  [65]  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79</span>
 <span class="co">#&gt;  [81]  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95</span>
 <span class="co">#&gt;  [97]  96  97  98  99 100</span></code></pre></div>
-<p>La commande <code>0:100</code> retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l’indice de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17<sup>e</sup> valeur, etc.).</p>
+<p>La commande <code>0:100</code> retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l’<strong>indice</strong> de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17<sup>e</sup> valeur, etc.).</p>
 <div class="rmdimportant">
-<p>Contrairement à <a href="https://www.python.org/">Python</a>, les <a href="#extraction">indices commencent à 1</a> et non à 0.</p>
+<p>Contrairement à <a href="https://www.python.org/">Python</a>, dans R les <a href="#extraction">indices commencent à 1</a> et non à 0.</p>
 </div>
 <p>Si une commande incomplète est transmise, l’invite de commande signale par un <code>+</code> que la suite des instructions peut être saisie :</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -122,7 +123,7 @@
 <h2>
 <span class="header-section-number">1.2</span> Objets<a class="anchor" aria-label="anchor" href="#objets"><i class="fas fa-link"></i></a>
 </h2>
-<p>Il est possible d’associer un nom à une valeur et ainsi de créer des <strong>variables</strong> qui peuvent ensuite être appelées dans l’invite de commande. Une variables n’est rien d’autre qu’un emplacement de la mémoire de l’ordinateur, réservé pour stocker une valeur.</p>
+<p>Il est possible d’associer un nom à une valeur et ainsi de créer des <strong>variables</strong> (au sens informatique) qui peuvent ensuite être appelées dans l’invite de commande. Une variables n’est rien d’autre qu’un emplacement de la mémoire de l’ordinateur, réservé pour stocker une valeur.</p>
 <p>Cette <strong>affectation</strong> (ou assignation, par anglicisme) est réalisée à l’aide de l’opérateur <code>&lt;-</code> :</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -147,10 +148,12 @@
 <span class="va">i</span>
 <span class="co">#&gt; [1] 2</span></code></pre></div>
 <div class="rmdimportant">
-<p>Un nom de variable peut uniquement être composé de lettres, de chiffres et des caractères <code>.</code> ou <code>_</code>.</p>
-<p>Un nom de variable doit toujours commencer par une lettre (ou par un point suivi d’une lettre).</p>
-<p>Les noms de variables sont sensibles à la casse (<code>x</code> et <code>X</code> sont deux variables différentes).</p>
-<p>Il existe des mots réservés qui ne peuvent être utilisés comme nom de variable.</p>
+<ul>
+<li>Un nom de variable peut uniquement être composé de lettres, de chiffres et des caractères <code>.</code> ou <code>_</code>.</li>
+<li>Un nom de variable doit toujours commencer par une lettre (ou par un point suivi d’une lettre).</li>
+<li>Les noms de variables sont sensibles à la casse (<code>x</code> et <code>X</code> sont deux variables différentes).</li>
+<li>Il existe des mots réservés qui ne peuvent être utilisés comme nom de variable.</li>
+</ul>
 </div>
 <p>Dans R les variables stockent des <strong>objets</strong><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;En informatique, un objet est une représentation d’une entité du monde réel et de ses attributs, auxquels sont associés des traitements particuliers.&lt;/p&gt;"><sup>41</sup></a>. Ainsi, le code <code>x &lt;- 1</code> peut se lire “créer un objet nommé <em>x</em> dont la valeur est 1”<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Il s’agit cependant d’une simplification, voir la section “&lt;a href="https://adv-r.hadley.nz/names-values.html#binding-basics"&gt;Binding basics&lt;/a&gt;” dans &lt;span class="citation"&gt;Wickham, &lt;em&gt;Advanced r&lt;/em&gt;&lt;/span&gt; pour plus de détails.&lt;/p&gt;'><sup>42</sup></a>.</p>
 <p>Un objet possède un type et une structure de données particulière. Le type d’un objet est lié au type d’information qu’il contient et à la façon dont il est stocké dans la mémoire<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Votre système d’exploitation alloue la mémoire en fonction du type de donnée et décide de ce qui peut être stocké dans la mémoire réservée lors de la création d’une variable.&lt;/p&gt;"><sup>43</sup></a>. La structure de données d’un objet correspond à la manière dont sont organisées les données.</p>
@@ -171,7 +174,7 @@
 <span class="co">#&gt; NULL</span></code></pre></div>
 <p>La fonction <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> accepte ainsi deux arguments, la valeur à arrondir et le nombre de décimales à conserver (0 par défaut).</p>
 <div class="rmdnote">
-<p>Les arguments qui possèdent une valeur par défaut sont des <strong>arguments optionnels</strong> : ils peuvent être omis lorsque la fonction est appelée (la valeur par défaut sera utilisée). À l’inverse, les arguments sans valeurs par défaut doivent être spécifiés : ce sont des <strong>arguments obligatoires</strong>.</p>
+<p>Les arguments qui possèdent une valeur par défaut sont des <strong>arguments facultatifs</strong> : ils peuvent être omis lorsque la fonction est appelée (la valeur par défaut sera utilisée). À l’inverse, les arguments sans valeurs par défaut doivent être spécifiés : ce sont des <strong>arguments obligatoires</strong>.</p>
 </div>
 <p>Les différents arguments d’une fonction sont séparés par une virgule et sont nommés. Lors de l’appel d’une fonction, si les arguments ne sont pas spécifiés par leur nom, R va associer les valeurs correspondantes dans l’ordre. Dans l’exemple suivant, la valeur <code>2</code> est associée au second argument (<code>digits</code>) :</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -205,10 +208,9 @@
 <div class="rmdtip">
 <p>La plupart des packages publiés sur le CRAN font l’objet de mises à jour régulières. Pour maintenir à jour les packages installés sur votre ordinateur, la fonction <code><a href="https://rdrr.io/r/utils/update.packages.html">old.packages()</a></code> permet de lister les packages pour lesquels il existe une nouvelle version et <code><a href="https://rdrr.io/r/utils/update.packages.html">update.packages()</a></code> permet de télécharger et d’installer les nouvelles versions.</p>
 </div>
-<p>Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l’utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;La liste des packages chargés par défaut au lancement de R peut être obtenue avec &lt;code&gt;getOption('defaultPackages')&lt;/code&gt;.&lt;/p&gt;"><sup>45</sup></a>. Ainsi, si on utilise la fonction <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> pour charger le jeux de données <code>intcal20</code> du package <em>folio</em>, R ne sait pas où chercher cet objet et retourne une erreur :</p>
+<p>Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l’utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;La liste des packages chargés par défaut au lancement de R peut être obtenue avec &lt;code&gt;getOption('defaultPackages')&lt;/code&gt;.&lt;/p&gt;"><sup>45</sup></a>. Si on utilise la fonction <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> pour charger le jeux de données <code>intcal20</code> du package <em>folio</em> sans que ce dernier soit chargé, R ne sait pas où chercher l’objet et retourne un avertissement :</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">intcal20</span><span class="op">)</span>
-<span class="co">#&gt; Warning in data(intcal20): data set 'intcal20' not found</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">intcal20</span><span class="op">)</span></code></pre></div>
 <p>Il est donc nécessaire de charger un package à l’aide de la fonction <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> avant de pouvoir l’utiliser<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Dans le cas présent, une alternative serait de spécifier l’argument &lt;code&gt;package&lt;/code&gt; de la fonction &lt;code&gt;data()&lt;/code&gt;.&lt;/p&gt;"><sup>46</sup></a> :</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://folio.tesselle.org">"folio"</a></span><span class="op">)</span>
@@ -224,7 +226,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">round</span><span class="op">)</span>
 
 <span class="op">?</span><span class="va">round</span></code></pre></div>
-<p>Si l’objet recherché appartient à un package qui n’est pas chargé, R ne saura pas où chercher la documentation. Par exemple, la fonction <code>lda()</code> appartient au package <em>MASS</em> qui n’est pas chargé :</p>
+<p>Si l’objet recherché appartient à un package qui n’est pas chargé, R ne saura pas où chercher la documentation. Dans l’exemple suivant, la fonction <code>lda()</code> appartient au package <em>MASS</em> qui n’est pas chargé :</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">lda</span><span class="op">)</span>
 <span class="co">#&gt; No documentation for 'lda' in specified packages and libraries:</span>
@@ -235,11 +237,13 @@
 <p>Si on ignore le nom de la fonction à utiliser, deux approches permettent d’explorer la documentation :</p>
 <ul>
 <li>On peut parcourir la documentation d’un package particulier, dont on sait qu’il doit contenir la fonction recherchée (par exemple, <code><a href="https://rdrr.io/pkg/MASS/man">help(package = "MASS")</a></code> permet d’afficher le sommaire de la documentation du package <em>MASS</em>).</li>
-<li>On peut rechercher dans l’aide par mot-clé à l’aide de l’opérateur <code>??</code>.</li>
+<li>On peut rechercher dans l’aide par mot-clé à l’aide de l’opérateur <code>??</code> ou de la fonction <code><a href="https://rdrr.io/r/utils/help.search.html">help.search()</a></code>.</li>
 </ul>
 <p>Par exemple, pour chercher toutes les pages de la documentation contenant le terme “correlation” :</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">?</span><span class="op">?</span><span class="va">correlation</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"correlation"</span><span class="op">)</span>
+
+<span class="op">?</span><span class="op">?</span><span class="va">correlation</span></code></pre></div>
 <p>Toutes les pages d’aide sont structurées de la même façon. Généralement, on y trouve au moins les sections suivantes :</p>
 <dl>
 <dt><em>Description</em></dt>
@@ -271,7 +275,7 @@
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></code></pre></div>
 <div class="rmdtip">
-<p>Si vous faites face à une difficulté, il fort probable quelqu’un se soit déjà posé la même question que vous et que la réponse se trouve sur <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a> ou sur les listes de diffusions <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a> et <a href="https://stat.ethz.ch/mailman/listinfo/r-devel">R-devel</a> (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à <a href="bonnes-pratiques.html#reprex">écrire des exemples reproductibles</a> (ou <a href="https://twitter.com/romain_francois/status/530011023743655936"><em>reprex</em></a>).</p>
+<p>Si vous faites face à une difficulté, il fort probable quelqu’un se soit déjà posé la même question que vous et que la réponse se trouve sur <a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a> ou sur les listes de diffusions <a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a> et <a href="https://stat.ethz.ch/mailman/listinfo/r-devel">R-devel</a> (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à <a href="bonnes-pratiques.html#reprex">écrire des exemples reproductibles</a> (<a href="https://twitter.com/romain_francois/status/530011023743655936"><em>reprex</em></a>).</p>
 </div>
 </div>
 </div>
@@ -305,7 +309,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-16.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -313,6 +317,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

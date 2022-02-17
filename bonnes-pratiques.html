@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>15 Bonnes pratiques | R pour l’archéologue</title>
+<title>16 Bonnes pratiques | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="15.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
+<meta name="description" content="16.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="15 Bonnes pratiques | R pour l’archéologue">
+<meta property="og:title" content="16 Bonnes pratiques | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/bonnes-pratiques.html">
-<meta property="og:description" content="15.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
+<meta property="og:description" content="16.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="15 Bonnes pratiques | R pour l’archéologue">
-<meta name="twitter:description" content="15.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
+<meta name="twitter:title" content="16 Bonnes pratiques | R pour l’archéologue">
+<meta name="twitter:description" content="16.1 Travailler par projets Une bonne pratique liée à l’utilisation de R consiste à organiser l’ensemble de son analyse en un projet, c’est à dire un dossier autonome contenant l’ensemble des...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -48,24 +48,25 @@
 <li class="book-part">Premiers pas avec R</li>
 <li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
 <li><a class="" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
-<li><a class="" href="operateurs.html"><span class="header-section-number">3</span> Opérateurs</a></li>
-<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">4</span> Structures de contrôle</a></li>
-<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">5</span> Fonctions d’ordre supérieur</a></li>
-<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">6</span> Structure des données</a></li>
+<li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
+<li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs</a></li>
+<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">6</span> Fonctions d’ordre supérieur</a></li>
+<li><a class="" href="structure-des-donn%C3%A9es.html"><span class="header-section-number">7</span> Structure des données</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">7</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">8</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">9</span> Visualisation de données</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">8</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">9</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">10</span> Visualisation de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">10</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">11</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">12</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">11</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">12</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">13</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">13</span> Coordonnées et projections</a></li>
-<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Format de données</a></li>
+<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">14</span> Coordonnées et projections</a></li>
+<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">15</span> Format de données</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="active" href="bonnes-pratiques.html"><span class="header-section-number">15</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">16</span> Style de programmation</a></li>
+<li><a class="active" href="bonnes-pratiques.html"><span class="header-section-number">16</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">17</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -74,45 +75,45 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bonnes-pratiques" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bonnes-pratiques" class="section level1" number="16">
 <h1>
-<span class="header-section-number">15</span> Bonnes pratiques<a class="anchor" aria-label="anchor" href="#bonnes-pratiques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16</span> Bonnes pratiques<a class="anchor" aria-label="anchor" href="#bonnes-pratiques"><i class="fas fa-link"></i></a>
 </h1>
-<div id="projets" class="section level2" number="15.1">
+<div id="projets" class="section level2" number="16.1">
 <h2>
-<span class="header-section-number">15.1</span> Travailler par projets<a class="anchor" aria-label="anchor" href="#projets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.1</span> Travailler par projets<a class="anchor" aria-label="anchor" href="#projets"><i class="fas fa-link"></i></a>
 </h2>
 <p>Une bonne pratique liée à l’utilisation de R consiste à <a href="https://rstats.wtf/project-oriented-workflow.html">organiser l’ensemble de son analyse en un projet</a>, c’est à dire un dossier autonome contenant l’ensemble des fichiers nécessaires à l’analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes…).</p>
 <p>Ce dossier, ou répertoire de travail (<em>working directory</em>), peut être défini ou retrouvé à l’aide des fonctions <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code> et <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code>, respectivement :</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Définition du répertoire de travail</span>
 <span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"/chemin/vers/mon/dossier"</span><span class="op">)</span></code></pre></div>
 <p>RStudio dispose d’un mécanisme permettant de <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">créer facilement de tels projets</a>. Un projet est reconnaissable par la présence d’un fichier <code>.Rproj</code>. Ce fichier marque le dossier de plus haut niveau au sein d’un projet (répertoire de travail), à partir duquel des chemins d’accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.</p>
-<p>Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l’interface ou en cliquant sur <em>New Project…</em> depuis le menu <em>File</em>. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. <a href="bonnes-pratiques.html#fig:rstudio-project">15.1</a>).</p>
+<p>Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l’interface ou en cliquant sur <em>New Project…</em> depuis le menu <em>File</em>. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. <a href="bonnes-pratiques.html#fig:rstudio-project">16.1</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:rstudio-project"></span>
 <img src="images/rstudio-project.png" alt="Création d'un projet avec RStudio." width="70%"><p class="caption">
-Figure 15.1: Création d’un projet avec RStudio.
+Figure 16.1: Création d’un projet avec RStudio.
 </p>
 </div>
 <p>L’organisation des fichiers et des sous-dossiers au sein d’un projet relève des habitudes de travail de chacun. S’il n’existe pas de consensus sur la manière d’organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package <a href="https://github.com/benmarwick/rrtools"><em>rrtools</em></a>.</p>
 </div>
-<div id="dependances" class="section level2" number="15.2">
+<div id="dependances" class="section level2" number="16.2">
 <h2>
-<span class="header-section-number">15.2</span> Limiter les dépendances<a class="anchor" aria-label="anchor" href="#dependances"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.2</span> Limiter les dépendances<a class="anchor" aria-label="anchor" href="#dependances"><i class="fas fa-link"></i></a>
 </h2>
-<p>(fig. <a href="bonnes-pratiques.html#fig:xkcd-dependency">15.2</a>)</p>
+<p>(fig. <a href="bonnes-pratiques.html#fig:xkcd-dependency">16.2</a>)</p>
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:xkcd-dependency"></span>
-<img src="images/xkcd_dependency.png" alt="Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.53" width="70%"><p class="caption">
-Figure 15.2: Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Dependency »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 17 août 2020), &lt;a href="https://xkcd.com/2347/" role="doc-biblioref"&gt;https://xkcd.com/2347/&lt;/a&gt;.&lt;/p&gt;'><sup>53</sup></a></span>
+<img src="images/xkcd_dependency.png" alt="Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.54" width="70%"><p class="caption">
+Figure 16.2: Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Dependency »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 17 août 2020), &lt;a href="https://xkcd.com/2347/" role="doc-biblioref"&gt;https://xkcd.com/2347/&lt;/a&gt;.&lt;/p&gt;'><sup>54</sup></a></span>
 </p>
 </div>
 </div>
-<div id="reprex" class="section level2" number="15.3">
+<div id="reprex" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">15.3</span> Écrire des exemples reproductibles<a class="anchor" aria-label="anchor" href="#reprex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> Écrire des exemples reproductibles<a class="anchor" aria-label="anchor" href="#reprex"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example" class="uri">https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example</a></p>
 <p><a href="https://reprex.tidyverse.org/" class="uri">https://reprex.tidyverse.org/</a></p>
@@ -120,15 +121,15 @@ Figure 15.2: Dependency. “Someday ImageMagick will finally break for good and 
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="format-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Format de données</a></div>
-<div class="next"><a href="style.html"><span class="header-section-number">16</span> Style de programmation</a></div>
+<div class="prev"><a href="format-de-donn%C3%A9es.html"><span class="header-section-number">15</span> Format de données</a></div>
+<div class="next"><a href="style.html"><span class="header-section-number">17</span> Style de programmation</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#bonnes-pratiques"><span class="header-section-number">15</span> Bonnes pratiques</a></li>
-<li><a class="nav-link" href="#projets"><span class="header-section-number">15.1</span> Travailler par projets</a></li>
-<li><a class="nav-link" href="#dependances"><span class="header-section-number">15.2</span> Limiter les dépendances</a></li>
-<li><a class="nav-link" href="#reprex"><span class="header-section-number">15.3</span> Écrire des exemples reproductibles</a></li>
+<li><a class="nav-link" href="#bonnes-pratiques"><span class="header-section-number">16</span> Bonnes pratiques</a></li>
+<li><a class="nav-link" href="#projets"><span class="header-section-number">16.1</span> Travailler par projets</a></li>
+<li><a class="nav-link" href="#dependances"><span class="header-section-number">16.2</span> Limiter les dépendances</a></li>
+<li><a class="nav-link" href="#reprex"><span class="header-section-number">16.3</span> Écrire des exemples reproductibles</a></li>
 </ul>
 
       <div class="book-extra">
@@ -146,7 +147,7 @@ Figure 15.2: Dependency. “Someday ImageMagick will finally break for good and 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-16.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -154,6 +155,34 @@ Figure 15.2: Dependency. “Someday ImageMagick will finally break for good and 
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>
