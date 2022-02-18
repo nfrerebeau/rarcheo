@@ -21,7 +21,12 @@ Depends:
     R (>= 4.1.0)
 Imports:
     DiagrammeR,
-    folio
+    folio,
+    ggplot2,
+    ggraph,
+    grid,
+    miniCRAN,
+    tidygraph
 Suggests:
     bslib,
     bookdown,

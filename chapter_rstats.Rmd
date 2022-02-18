@@ -156,7 +156,7 @@ La plupart des packages publiés sur le CRAN font l'objet de mises à jour régu
 
 Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base^[La liste des packages chargés par défaut au lancement de R peut être obtenue avec `getOption('defaultPackages')`.]. Si on utilise la fonction `data()` pour charger le jeux de données `intcal20` du package *folio* sans que ce dernier soit chargé, R ne sait pas où chercher l'objet et retourne un avertissement :
 
-```{r, warning=TRUE}
+```{r, warning=TRUE, cache=FALSE}
 data(intcal20)
 ```
 
@@ -248,14 +248,14 @@ example(mean)
 ```
 
 ::: {.rmdtip}
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex) ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex).
 :::
 
 # Vecteurs {#r-vector}
 
 Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur est simplement un ensemble d'**éléments**.
 
-Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou de une [liste](#r-list) (`list`), si ses éléments sont de types différents. Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
+Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents. Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
 
 (ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
 
@@ -296,12 +296,10 @@ x <- 10.5          # double
 x <- "archéologie" # character
 ```
 
-::: {.rmdimportant}
 * Un vecteur logique ne peut pendre que deux valeurs `TRUE` (vrai) ou `FALSE` (faux). `TRUE` et `FALSE` sont des mots réservés dans R : ils ne peuvent pas être utilisés comme identifiants pour nommer des variables ou des fonctions.
 * Un nombre réel sans partie décimale sera toujours interprété comme étant de type `double` et non de type `integer`.
 * Un vecteur de type `integer` s'écrit avec une syntaxe particulière : les nombres doivent être suivis d'un `L` pour les distinguer du type `double` et ne doivent pas avoir de partie décimale.
 * Une chaîne de caractère doit toujours être encadrée par des guillemets simples (`'`) ou doubles (`"`). Si les guillemets sont manquantes, R l'interprétera comme un nom d'objet (et cherchera l'objet correspondant).
-:::
 
 La fonction `c()` (*combine*) permet de construire des vecteurs longs :
 

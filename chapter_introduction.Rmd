@@ -18,7 +18,7 @@ R est modulable
 R facilite la reproductibilité
 : R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
 
-(ref:cran-packages-year) Évolution du nombre de packages disponibles sur le CRAN par année.
+(ref:cran-packages-year) Évolution du nombre de packages disponibles sur le CRAN par année. Cette croissance exponentielle n'est pas sans poser de question quant au futur du CRAN [@thieme2018].
 
 ```{r cran-packages-year, echo=FALSE, fig.cap="(ref:cran-packages-year)"}
 # https://gist.github.com/daroczig/3cf06d6db4be2bbe3368
