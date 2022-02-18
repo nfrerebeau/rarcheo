@@ -16,6 +16,21 @@ Ce dossier, ou répertoire de travail (*working directory*), peut être défini 
 setwd("/chemin/vers/mon/dossier")
 ```
 
+Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
+
+Cependant, le risque est de se retrouver dans la situation suivante :
+
+
+```r
+# Définition du répertoire de travail
+setwd("/chemin/uniquement/valide/sur/mon/ordinateur")
+```
+
+Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
+
+* L'utilisation du package [*here*](https://here.r-lib.org/),
+* L'utilisation de la gestion de projet dans RStudio.
+
 RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Un projet est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
 
 Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
@@ -31,9 +46,42 @@ Il est possible de créer un projet dans RStudio à partir du menu déroulant si
 
 L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools).
 
+## Structurer ses données {#tidy-data}
+
+Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse [@wickham2014]. Les principes régissant cette étape de structuration (*data tidying*) ont été exposés par @wickham2014, qui propose ainsi une approche pour lier "la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification)."
+
+Des jeux de données bien structurés se présentent sous la forme de tableaux à deux dimensions (lignes et colonnes) contenant des valeurs. Chaque valeur correspond à une observation d'une variable particulière, en conséquence :
+
+* Chaque variable doit correspondre à une colonne du tableau.
+* Chaque observation doit correspondre à une ligne du tableau.
+* Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles.].
+
+::: {.rmdtip}
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser. Dans le cas de données tabulaires, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte), idéalement au format <abbr title="comma-separated values">CSV</abbr>.
+:::
+
 ## Limiter les dépendances {#dependances}
 
-(fig. \@ref(fig:xkcd-dependency))
+Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances^[Sur le sujet, voir les billets regroupés sur le site du [tinyverse](https://www.tinyverse.org/).].
+
+Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le package le plus utilisé pour l'analyse de données multivariées. *FactoMineR* possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que *FactoMineR* a en réalité une longue chaîne de 103 (!) dépendances (fig. \@ref(fig:factominer-dependency)).
+
+(ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_appendix_files/figure-latex/factominer-dependency-1} 
+
+}
+
+\caption{(ref:factominer-dependency)}(\#fig:factominer-dependency)
+\end{figure}
+
+Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
+
+* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (écrivez vos propres fonctions !).
+* Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
+* N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
 
 (ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
 

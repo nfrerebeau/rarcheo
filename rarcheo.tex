@@ -209,7 +209,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-17}
+\date{2022-02-18}
 
 \begin{document}
 \maketitle
@@ -269,7 +269,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 17 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 18 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -1909,6 +1909,27 @@ Ce dossier, ou répertoire de travail (\emph{working directory}), peut être dé
 \end{Highlighting}
 \end{Shaded}
 
+Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
+
+Cependant, le risque est de se retrouver dans la situation suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition du répertoire de travail}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/uniquement/valide/sur/mon/ordinateur"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
+
+\begin{itemize}
+\tightlist
+\item
+  L'utilisation du package \href{https://here.r-lib.org/}{\emph{here}},
+\item
+  L'utilisation de la gestion de projet dans RStudio.
+\end{itemize}
+
 RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Un projet est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
 
 Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
@@ -1924,10 +1945,58 @@ Il est possible de créer un projet dans RStudio à partir du menu déroulant si
 
 L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}}.
 
+\hypertarget{tidy-data}{%
+\section{Structurer ses données}\label{tidy-data}}
+
+Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse \autocite{wickham2014}. Les principes régissant cette étape de structuration (\emph{data tidying}) ont été exposés par \textcite{wickham2014}, qui propose ainsi une approche pour lier ``la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification).''
+
+Des jeux de données bien structurés se présentent sous la forme de tableaux à deux dimensions (lignes et colonnes) contenant des valeurs. Chaque valeur correspond à une observation d'une variable particulière, en conséquence :
+
+\begin{itemize}
+\tightlist
+\item
+  Chaque variable doit correspondre à une colonne du tableau.
+\item
+  Chaque observation doit correspondre à une ligne du tableau.
+\item
+  Un tableau doit correspondre à une unique unité d'observation\footnote{On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles.}.
+\end{itemize}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser. Dans le cas de données tabulaires, conservez vos données dans un \href{https://fr.wikipedia.org/wiki/Fichier_texte}{fichier texte}, idéalement au format CSV.
+
+\end{tcolorbox}
+
 \hypertarget{dependances}{%
 \section{Limiter les dépendances}\label{dependances}}
 
-(fig.~\ref{fig:xkcd-dependency})
+Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances\footnote{Sur le sujet, voir les billets regroupés sur le site du \href{https://www.tinyverse.org/}{tinyverse}.}.
+
+Par exemple, \href{http://factominer.free.fr/}{\emph{FactoMineR}} est sans doute le package le plus utilisé pour l'analyse de données multivariées. \emph{FactoMineR} possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que \emph{FactoMineR} a en réalité une longue chaîne de 103 (!) dépendances (fig.~\ref{fig:factominer-dependency}).
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_appendix_files/figure-latex/factominer-dependency-1} 
+
+}
+
+\caption{Réseau des dépendances du package \emph{FactoMineR} (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (\emph{FactoMineR} est représenté par un triangle noir, les autres packages sont représentés par des points gris).}\label{fig:factominer-dependency}
+\end{figure}
+
+Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig.~\ref{fig:xkcd-dependency}) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
+
+\begin{itemize}
+\tightlist
+\item
+  Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (écrivez vos propres fonctions !).
+\item
+  Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
+\item
+  N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
+\end{itemize}
 
 
 
