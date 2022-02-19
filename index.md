@@ -29,6 +29,8 @@ Bien qu'il soit initialement conçu pour les étudiants du master mention *Arch�
 
 Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
 
+**Ce livre est en cours de rédaction.**
+
 
 
 ## Licence {-}
