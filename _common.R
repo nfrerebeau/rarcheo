@@ -1,4 +1,5 @@
 # options set globally
+Sys.setenv(LANGUAGE = "fr")
 knitr::opts_chunk$set(width = 69)
 options(width = 69)
 set.seed(12345)
