@@ -209,7 +209,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-18}
+\date{2022-02-19}
 
 \begin{document}
 \maketitle
@@ -269,7 +269,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 18 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 19 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -347,7 +347,7 @@ R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scrip
 
 }
 
-\caption{Évolution du nombre de packages disponibles sur le CRAN par année.}\label{fig:cran-packages-year}
+\caption{Évolution du nombre de packages disponibles sur le CRAN par année. Cette croissance exponentielle n'est pas sans poser de question quant au futur du CRAN \autocite{thieme2018}.}\label{fig:cran-packages-year}
 \end{figure}
 
 R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne.
@@ -748,6 +748,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
+\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -845,7 +846,7 @@ Pour exécuter les exemples illustrant la documentation de la fonction \texttt{m
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
 
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{reprex}{écrire des exemples reproductibles} (\href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{reprex}{écrire des exemples reproductibles}.
 
 \end{tcolorbox}
 
@@ -854,7 +855,7 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 
 Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig.~\ref{fig:r-vector-types}). Un vecteur est simplement un ensemble d'\textbf{éléments}.
 
-Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou de une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents. Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
+Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents. Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
 
 
 
@@ -898,8 +899,6 @@ Chacun de ces types possède une syntaxe particulière pour former des vecteur c
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
-
 \begin{itemize}
 \tightlist
 \item
@@ -911,8 +910,6 @@ Chacun de ces types possède une syntaxe particulière pour former des vecteur c
 \item
   Une chaîne de caractère doit toujours être encadrée par des guillemets simples (\texttt{\textquotesingle{}}) ou doubles (\texttt{"}). Si les guillemets sont manquantes, R l'interprétera comme un nom d'objet (et cherchera l'objet correspondant).
 \end{itemize}
-
-\end{tcolorbox}
 
 La fonction \texttt{c()} (\emph{combine}) permet de construire des vecteurs longs :
 
@@ -1930,9 +1927,7 @@ Pour pallier ce problème qui rend difficilement déplaçable un dossier de proj
   L'utilisation de la gestion de projet dans RStudio.
 \end{itemize}
 
-RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Un projet est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
-
-Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
+RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
 
 \begin{figure}
 
@@ -1943,7 +1938,20 @@ Il est possible de créer un projet dans RStudio à partir du menu déroulant si
 \caption{Création d'un projet avec RStudio.}\label{fig:rstudio-project}
 \end{figure}
 
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}}.
+Un projet créé par RStudio est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+
+L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig.~\ref{fig:xkcd-documents}), comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}} par exemple.
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_documents} 
+
+}
+
+\caption{Documents. ``Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc'' \autocite[CC BY-NC 2.0][]{munroe2014}.}\label{fig:xkcd-documents}
+\end{figure}
 
 \hypertarget{tidy-data}{%
 \section{Structurer ses données}\label{tidy-data}}
@@ -1959,12 +1967,53 @@ Des jeux de données bien structurés se présentent sous la forme de tableaux �
 \item
   Chaque observation doit correspondre à une ligne du tableau.
 \item
-  Un tableau doit correspondre à une unique unité d'observation\footnote{On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles.}.
+  Un tableau doit correspondre à une unique unité d'observation\footnote{On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles \autocite{wickham2014}.}.
 \end{itemize}
 
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+\hypertarget{csv}{%
+\section{Sauvegarder ses données}\label{csv}}
 
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser. Dans le cas de données tabulaires, conservez vos données dans un \href{https://fr.wikipedia.org/wiki/Fichier_texte}{fichier texte}, idéalement au format CSV.
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig.~\ref{fig:xkcd-norm}. De manière générale, conservez vos données dans un \href{https://fr.wikipedia.org/wiki/Fichier_texte}{fichier texte}.
+
+Dans le cas des données tabulaires, utilisez le format CSV. Comme son nom l'indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
+
+\begin{itemize}
+\tightlist
+\item
+  Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
+\item
+  Le format CSV est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
+\item
+  Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un \href{https://www.bbc.com/news/technology-54423988}{changement dramatique de spécification}.
+\item
+  Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
+\end{itemize}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_norm_normal_file_format} 
+
+}
+
+\caption{.NORM Normal File Format. ``At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts.'' \autocite[CC BY-NC 2.0][]{munroe2019}.}\label{fig:xkcd-norm}
+\end{figure}
+
+La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier CSV. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier CSV votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier CSV dans un tableur (fig.~\ref{fig:calc-csv}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/calc-csv} 
+
+}
+
+\caption{Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté).}\label{fig:calc-csv}
+\end{figure}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Attention,colframe=darkred]
+
+Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans \href{https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates}{conséquences} lors de l'ouverture d'un fichier.
 
 \end{tcolorbox}
 
@@ -2002,19 +2051,39 @@ Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, a
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_dependency} 
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
 
 }
 
 \caption{Dependency. ``Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble.'' \autocite[CC BY-NC 2.0][]{munroe2020}.}\label{fig:xkcd-dependency}
 \end{figure}
 
+Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme \href{https://ropensci.org/}{rOpenSci} œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
+
 \hypertarget{reprex}{%
 \section{Écrire des exemples reproductibles}\label{reprex}}
 
-\url{https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example}
+Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur \href{https://stackoverflow.com/questions}{Stack Overflow}\footnote{Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les \href{https://stackoverflow.com/help/how-to-ask}{recommandations d'écriture}.} ou sur les \href{https://www.r-project.org/mail.html}{listes de diffusion}, la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
 
-\url{https://reprex.tidyverse.org/}
+\begin{itemize}
+\tightlist
+\item
+  Minimal : utilisez le moins de code possible tout en produisant le même problème.
+\item
+  Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
+\item
+  Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
+\end{itemize}
+
+Ces trois aspects sont détaillés dans l'\href{https://stackoverflow.com/help/minimal-reproducible-example}{aide de Stack Overflow}, il existe également une \href{https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example}{question dédié} à l'écriture d'un exemple reproductible (\href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}) avec R.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+L'utilisation du package \href{https://reprex.tidyverse.org/}{\emph{reprex}}\footnote{Voir \url{https://reprex.tidyverse.org/articles/articles/learn-reprex.html}.} peut vous aider à écrire un exemple reproductible.
+
+\end{tcolorbox}
+
+Comme le souligne \textcite{wickham2016}, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
 
 \hypertarget{style}{%
 \chapter{Style de programmation}\label{style}}
@@ -2219,6 +2288,24 @@ L'argument \texttt{...} doit se trouver soit au début, soit à la fin.
 Définissez les arguments par défaut à l'intérieur de la fonction en utilisant l'idiome \texttt{NULL}, et évitez la dépendance entre les arguments.
 
 Validez toujours les arguments dans une fonction.
+
+\hypertarget{espaces-de-nom}{%
+\subsection{Espaces de nom}\label{espaces-de-nom}}
+
+Si vous utilisez ponctuellement une unique fonction d'un package, utilisez \texttt{::} pour spécifier le nom du package au lieu de charger tout le package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# GOOD}
+\NormalTok{FactoMineR}\SpecialCharTok{::}\FunctionTok{PCA}\NormalTok{()}
+
+\CommentTok{\# OK }
+\FunctionTok{library}\NormalTok{(FactoMineR)}
+\FunctionTok{PCA}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
 
 \hypertarget{affectation}{%
 \subsection{Affectation}\label{affectation}}

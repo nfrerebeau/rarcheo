@@ -80,13 +80,13 @@
 <span class="header-section-number">2</span> Vecteurs<a class="anchor" aria-label="anchor" href="#r-vector"><i class="fas fa-link"></i></a>
 </h1>
 <p>Le vecteur (<code>vector</code>) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>). Un vecteur est simplement un ensemble d’<strong>éléments</strong>.</p>
-<p>Un vecteur peut être un <a href="r-vector.html#r-atomic">vecteur atomique</a> (<code>atomic</code>), si tous ses éléments sont de même <strong>type</strong>, ou de une <a href="r-vector.html#r-list">liste</a> (<code>list</code>), si ses éléments sont de types différents. Un vecteur peut également avoir des <a href="r-vector.html#attributs"><strong>attributs</strong></a> (sorte de métadonnées).</p>
+<p>Un vecteur peut être un <a href="r-vector.html#r-atomic">vecteur atomique</a> (<code>atomic</code>), si tous ses éléments sont de même <strong>type</strong>, ou une <a href="r-vector.html#r-list">liste</a> (<code>list</code>), si ses éléments sont de types différents. Un vecteur peut également avoir des <a href="r-vector.html#attributs"><strong>attributs</strong></a> (sorte de métadonnées).</p>
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:r-vector-types"></span>
 <div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:70%;height:400px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  graph [rankdir = BT]\n  \n  node [shape = plaintext, fontname = arial]\n  vector; atomic; list; \"data.frame\";\n  logical; integer; double; character\n  \n  {atomic list} -> vector\n  \"data.frame\" -> list\n  {logical integer double character} -> atomic\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p class="caption">
-Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>47</sup></a></span>.
+Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>48</sup></a></span>.
 </p>
 </div>
 <div id="r-atomic" class="section level2" number="2.1">
@@ -114,14 +114,12 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1L</span>            <span class="co"># integer</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10.5</span>          <span class="co"># double</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"archéologie"</span> <span class="co"># character</span></code></pre></div>
-<div class="rmdimportant">
 <ul>
 <li>Un vecteur logique ne peut pendre que deux valeurs <code>TRUE</code> (vrai) ou <code>FALSE</code> (faux). <code>TRUE</code> et <code>FALSE</code> sont des mots réservés dans R : ils ne peuvent pas être utilisés comme identifiants pour nommer des variables ou des fonctions.</li>
 <li>Un nombre réel sans partie décimale sera toujours interprété comme étant de type <code>double</code> et non de type <code>integer</code>.</li>
 <li>Un vecteur de type <code>integer</code> s’écrit avec une syntaxe particulière : les nombres doivent être suivis d’un <code>L</code> pour les distinguer du type <code>double</code> et ne doivent pas avoir de partie décimale.</li>
 <li>Une chaîne de caractère doit toujours être encadrée par des guillemets simples (<code>'</code>) ou doubles (<code>"</code>). Si les guillemets sont manquantes, R l’interprétera comme un nom d’objet (et cherchera l’objet correspondant).</li>
 </ul>
-</div>
 <p>La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (<em>combine</em>) permet de construire des vecteurs longs :</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vec_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># logical</span>
@@ -466,7 +464,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <h2>
 <span class="header-section-number">2.4</span> Tableaux de données (<code>data.frame</code>)<a class="anchor" aria-label="anchor" href="#r-dataframe"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>48</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont d’un seul type) :</p>
+<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>49</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont d’un seul type) :</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,
@@ -542,7 +540,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-18.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

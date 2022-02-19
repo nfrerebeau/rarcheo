@@ -98,45 +98,78 @@
 <li>L’utilisation du package <a href="https://here.r-lib.org/"><em>here</em></a>,</li>
 <li>L’utilisation de la gestion de projet dans RStudio.</li>
 </ul>
-<p>RStudio dispose d’un mécanisme permettant de <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">créer facilement de tels projets</a>. Un projet est reconnaissable par la présence d’un fichier <code>.Rproj</code>. Ce fichier marque le dossier de plus haut niveau au sein d’un projet (répertoire de travail), à partir duquel des chemins d’accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.</p>
-<p>Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l’interface ou en cliquant sur <em>New Project…</em> depuis le menu <em>File</em>. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. <a href="bonnes-pratiques.html#fig:rstudio-project">16.1</a>).</p>
+<p>RStudio dispose d’un mécanisme permettant de <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">créer facilement de tels projets</a>. Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l’interface ou en cliquant sur <em>New Project…</em> depuis le menu <em>File</em>. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. <a href="bonnes-pratiques.html#fig:rstudio-project">16.1</a>).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:rstudio-project"></span>
 <img src="images/rstudio-project.png" alt="Création d'un projet avec RStudio." width="70%"><p class="caption">
 Figure 16.1: Création d’un projet avec RStudio.
 </p>
 </div>
-<p>L’organisation des fichiers et des sous-dossiers au sein d’un projet relève des habitudes de travail de chacun. S’il n’existe pas de consensus sur la manière d’organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package <a href="https://github.com/benmarwick/rrtools"><em>rrtools</em></a>.</p>
+<p>Un projet créé par RStudio est reconnaissable par la présence d’un fichier <code>.Rproj</code>. Ce fichier marque le dossier de plus haut niveau au sein d’un projet (répertoire de travail), à partir duquel des chemins d’accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.</p>
+<p>L’organisation des fichiers et des sous-dossiers au sein d’un projet relève des habitudes de travail de chacun. S’il n’existe pas de consensus sur la manière d’organiser les fichiers à l’intérieur d’un projet, il peut cependant être avantageux de suivre certaines conventions (fig. <a href="bonnes-pratiques.html#fig:xkcd-documents">16.2</a>), comme celles utilisées par le package <a href="https://github.com/benmarwick/rrtools"><em>rrtools</em></a> par exemple.</p>
+
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:xkcd-documents"></span>
+<img src="images/xkcd_documents.png" alt="Documents. “Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc”.55" width="50%"><p class="caption">
+Figure 16.2: Documents. “Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Documents »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 12 décembre 2014), &lt;a href="https://xkcd.com/1459/" role="doc-biblioref"&gt;https://xkcd.com/1459/&lt;/a&gt;.&lt;/p&gt;'><sup>55</sup></a></span>
+</p>
+</div>
 </div>
 <div id="tidy-data" class="section level2" number="16.2">
 <h2>
 <span class="header-section-number">16.2</span> Structurer ses données<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>Lors de l’acquisition puis lors de la préparation de vos données en vue d’une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l’analyse.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Hadley Wickham, &lt;span&gt;« Tidy Data »&lt;/span&gt;, &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59, nᵒ 10 (2014): 1‑23, &lt;a href="https://doi.org/10.18637/jss.v059.i10" role="doc-biblioref"&gt;https://doi.org/10.18637/jss.v059.i10&lt;/a&gt;.&lt;/p&gt;'><sup>54</sup></a></span> Les principes régissant cette étape de structuration (<em>data tidying</em>) ont été exposés par <span class="citation">Wickham<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a></span>, qui propose ainsi une approche pour lier “la structure d’un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification).”</p>
+<p>Lors de l’acquisition puis lors de la préparation de vos données en vue d’une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l’analyse.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Hadley Wickham, &lt;span&gt;« Tidy Data »&lt;/span&gt;, &lt;em&gt;Journal of Statistical Software&lt;/em&gt; 59, nᵒ 10 (2014): 1‑23, &lt;a href="https://doi.org/10.18637/jss.v059.i10" role="doc-biblioref"&gt;https://doi.org/10.18637/jss.v059.i10&lt;/a&gt;.&lt;/p&gt;'><sup>56</sup></a></span> Les principes régissant cette étape de structuration (<em>data tidying</em>) ont été exposés par <span class="citation">Wickham<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a></span>, qui propose ainsi une approche pour lier “la structure d’un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification).”</p>
 <p>Des jeux de données bien structurés se présentent sous la forme de tableaux à deux dimensions (lignes et colonnes) contenant des valeurs. Chaque valeur correspond à une observation d’une variable particulière, en conséquence :</p>
 <ul>
 <li>Chaque variable doit correspondre à une colonne du tableau.</li>
 <li>Chaque observation doit correspondre à une ligne du tableau.</li>
-<li>Un tableau doit correspondre à une unique unité d’observation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles.&lt;/p&gt;"><sup>56</sup></a>.</li>
+<li>Un tableau doit correspondre à une unique unité d’observation<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles &lt;span class="citation"&gt; (Wickham)&lt;/span&gt;.&lt;/p&gt;'><sup>58</sup></a>.</li>
 </ul>
-<div class="rmdtip">
-<p>Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser. Dans le cas de données tabulaires, conservez vos données dans un <a href="https://fr.wikipedia.org/wiki/Fichier_texte">fichier texte</a>, idéalement au format <abbr title="comma-separated values">CSV</abbr>.</p>
 </div>
-</div>
-<div id="dependances" class="section level2" number="16.3">
+<div id="csv" class="section level2" number="16.3">
 <h2>
-<span class="header-section-number">16.3</span> Limiter les dépendances<a class="anchor" aria-label="anchor" href="#dependances"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.3</span> Sauvegarder ses données<a class="anchor" aria-label="anchor" href="#csv"><i class="fas fa-link"></i></a>
 </h2>
-<p>Si les packages de base de R offrent de nombreuses possibilités, il est courant d’avoir besoin de fonctionnalités supplémentaires au cours d’une étude. Pour une analyse spécifique, il est très probable qu’il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Sur le sujet, voir les billets regroupés sur le site du &lt;a href="https://www.tinyverse.org/"&gt;tinyverse&lt;/a&gt;.&lt;/p&gt;'><sup>57</sup></a>.</p>
-<p>Par exemple, <a href="http://factominer.free.fr/"><em>FactoMineR</em></a> est sans doute le package le plus utilisé pour l’analyse de données multivariées. <em>FactoMineR</em> possède 15 dépendances directes : d’autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d’avoir elle même des dépendances, et ainsi de suite, si bien que <em>FactoMineR</em> a en réalité une longue chaîne de 103 (!) dépendances (fig. <a href="bonnes-pratiques.html#fig:factominer-dependency">16.2</a>).</p>
+<p>Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig. <a href="bonnes-pratiques.html#fig:xkcd-norm">16.3</a>. De manière générale, conservez vos données dans un <a href="https://fr.wikipedia.org/wiki/Fichier_texte">fichier texte</a>.</p>
+<p>Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l’indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :</p>
+<ul>
+<li>Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.</li>
+<li>Le format CSV est un format ouvert : son utilisation ne dépend pas d’un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n’importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).</li>
+<li>Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un <a href="https://www.bbc.com/news/technology-54423988">changement dramatique de spécification</a>.</li>
+<li>Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:xkcd-norm"></span>
+<img src="images/xkcd_norm_normal_file_format.png" alt=".NORM Normal File Format. “At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there’s no reason it can’t support vector JPEG artifacts.”.59" width="50%"><p class="caption">
+Figure 16.3: .NORM Normal File Format. “At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there’s no reason it can’t support vector JPEG artifacts.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe&lt;span&gt;« .&lt;span&gt;NORM Normal File Format&lt;/span&gt; »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 25 février 2019), &lt;a href="https://xkcd.com/2116/" role="doc-biblioref"&gt;https://xkcd.com/2116/&lt;/a&gt;.&lt;/p&gt;'><sup>59</sup></a></span>
+</p>
+</div>
+<p>La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d’un fichier CSV. Il est en effet possible d’utiliser n’importe quel caractère en guise de séparateur à la place d’une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l’ouverture d’un fichier CSV votre éditeur s’attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l’import ou de l’export d’un fichier CSV dans un tableur (fig. <a href="bonnes-pratiques.html#fig:calc-csv">16.4</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:calc-csv"></span>
+<img src="images/calc-csv.png" alt="Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté)." width="70%"><p class="caption">
+Figure 16.4: Paramètres lors de l’export d’un fichier au format CSV avec LibreOffice Calc (choisissez l’encodage de caractères UTF-8 et un séparateur de champ adapté).
+</p>
+</div>
+<div class="rmdcaution">
+<p>Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans <a href="https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates">conséquences</a> lors de l’ouverture d’un fichier.</p>
+</div>
+</div>
+<div id="dependances" class="section level2" number="16.4">
+<h2>
+<span class="header-section-number">16.4</span> Limiter les dépendances<a class="anchor" aria-label="anchor" href="#dependances"><i class="fas fa-link"></i></a>
+</h2>
+<p>Si les packages de base de R offrent de nombreuses possibilités, il est courant d’avoir besoin de fonctionnalités supplémentaires au cours d’une étude. Pour une analyse spécifique, il est très probable qu’il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Sur le sujet, voir les billets regroupés sur le site du &lt;a href="https://www.tinyverse.org/"&gt;tinyverse&lt;/a&gt;.&lt;/p&gt;'><sup>60</sup></a>.</p>
+<p>Par exemple, <a href="http://factominer.free.fr/"><em>FactoMineR</em></a> est sans doute le package le plus utilisé pour l’analyse de données multivariées. <em>FactoMineR</em> possède 15 dépendances directes : d’autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d’avoir elle même des dépendances, et ainsi de suite, si bien que <em>FactoMineR</em> a en réalité une longue chaîne de 103 (!) dépendances (fig. <a href="bonnes-pratiques.html#fig:factominer-dependency">16.5</a>).</p>
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:factominer-dependency"></span>
 <img src="chapter_appendix_files/figure-html/factominer-dependency-1.png" alt="Réseau des dépendances du package FactoMineR (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (FactoMineR est représenté par un triangle noir, les autres packages sont représentés par des points gris)." width="100%"><p class="caption">
-Figure 16.2: Réseau des dépendances du package <em>FactoMineR</em> (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (<em>FactoMineR</em> est représenté par un triangle noir, les autres packages sont représentés par des points gris).
+Figure 16.5: Réseau des dépendances du package <em>FactoMineR</em> (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (<em>FactoMineR</em> est représenté par un triangle noir, les autres packages sont représentés par des points gris).
 </p>
 </div>
-<p>Qu’arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. <a href="bonnes-pratiques.html#fig:xkcd-dependency">16.3</a>) ? Pour réduire ce risque et sortir de cet enfer des dépendances :</p>
+<p>Qu’arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. <a href="bonnes-pratiques.html#fig:xkcd-dependency">16.6</a>) ? Pour réduire ce risque et sortir de cet enfer des dépendances :</p>
 <ul>
 <li>Évitez d’utiliser un package particulier quand la même tâche peut être réalisée en R basique (écrivez vos propres fonctions !).</li>
 <li>Quand cela est possible, préférez les packages qui n’ont pas (ou peu) de dépendances.</li>
@@ -144,17 +177,27 @@ Figure 16.2: Réseau des dépendances du package <em>FactoMineR</em> (hors packa
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:xkcd-dependency"></span>
-<img src="images/xkcd_dependency.png" alt="Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.58" width="70%"><p class="caption">
-Figure 16.3: Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Dependency »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 17 août 2020), &lt;a href="https://xkcd.com/2347/" role="doc-biblioref"&gt;https://xkcd.com/2347/&lt;/a&gt;.&lt;/p&gt;'><sup>58</sup></a></span>
+<img src="images/xkcd_dependency.png" alt="Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.61" width="50%"><p class="caption">
+Figure 16.6: Dependency. “Someday ImageMagick will finally break for good and we’ll have a long period of scrambling as we try to reassemble civilization from the rubble.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Dependency »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 17 août 2020), &lt;a href="https://xkcd.com/2347/" role="doc-biblioref"&gt;https://xkcd.com/2347/&lt;/a&gt;.&lt;/p&gt;'><sup>61</sup></a></span>
 </p>
 </div>
+<p>Le tableau n’est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d’exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu’un bug est observé. De plus, lorsqu’un package n’est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme <a href="https://ropensci.org/">rOpenSci</a> œuvrent pour garantir un écosystème fonctionnel, en favorisant l’évaluation et la maintenance des packages.</p>
 </div>
-<div id="reprex" class="section level2" number="16.4">
+<div id="reprex" class="section level2" number="16.5">
 <h2>
-<span class="header-section-number">16.4</span> Écrire des exemples reproductibles<a class="anchor" aria-label="anchor" href="#reprex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16.5</span> Écrire des exemples reproductibles<a class="anchor" aria-label="anchor" href="#reprex"><i class="fas fa-link"></i></a>
 </h2>
-<p><a href="https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example" class="uri">https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example</a></p>
-<p><a href="https://reprex.tidyverse.org/" class="uri">https://reprex.tidyverse.org/</a></p>
+<p>Si vous souhaitez obtenir de l’aide en ligne auprès de la communauté des utilisateurs de R, sur <a href="https://stackoverflow.com/questions">Stack Overflow</a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les &lt;a href="https://stackoverflow.com/help/how-to-ask"&gt;recommandations d’écriture&lt;/a&gt;.&lt;/p&gt;'><sup>62</sup></a> ou sur les <a href="https://www.r-project.org/mail.html">listes de diffusion</a>, la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu’ils puissent vous proposer une solution. Pour cela, inutile de diffuser l’intégralité de votre code et de vos données, préparez un exemple qui soit :</p>
+<ul>
+<li>Minimal : utilisez le moins de code possible tout en produisant le même problème.</li>
+<li>Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d’exemple de R.</li>
+<li>Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.</li>
+</ul>
+<p>Ces trois aspects sont détaillés dans l’<a href="https://stackoverflow.com/help/minimal-reproducible-example">aide de Stack Overflow</a>, il existe également une <a href="https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example">question dédié</a> à l’écriture d’un exemple reproductible (<a href="https://twitter.com/romain_francois/status/530011023743655936"><em>reprex</em></a>) avec R.</p>
+<div class="rmdtip">
+<p>L’utilisation du package <a href="https://reprex.tidyverse.org/"><em>reprex</em></a><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Voir &lt;a href="https://reprex.tidyverse.org/articles/articles/learn-reprex.html" class="uri"&gt;https://reprex.tidyverse.org/articles/articles/learn-reprex.html&lt;/a&gt;.&lt;/p&gt;'><sup>63</sup></a> peut vous aider à écrire un exemple reproductible.</p>
+</div>
+<p>Comme le souligne <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;R for Data Science&lt;/em&gt;.&lt;/p&gt;"><sup>64</sup></a></span>, la plupart du temps, l’écriture d’un exemple reproductible vous permettra d’identifier et de résoudre vous-même le problème.</p>
 </div>
 </div>
 
@@ -167,8 +210,9 @@ Figure 16.3: Dependency. “Someday ImageMagick will finally break for good and 
 <li><a class="nav-link" href="#bonnes-pratiques"><span class="header-section-number">16</span> Bonnes pratiques</a></li>
 <li><a class="nav-link" href="#projets"><span class="header-section-number">16.1</span> Travailler par projets</a></li>
 <li><a class="nav-link" href="#tidy-data"><span class="header-section-number">16.2</span> Structurer ses données</a></li>
-<li><a class="nav-link" href="#dependances"><span class="header-section-number">16.3</span> Limiter les dépendances</a></li>
-<li><a class="nav-link" href="#reprex"><span class="header-section-number">16.4</span> Écrire des exemples reproductibles</a></li>
+<li><a class="nav-link" href="#csv"><span class="header-section-number">16.3</span> Sauvegarder ses données</a></li>
+<li><a class="nav-link" href="#dependances"><span class="header-section-number">16.4</span> Limiter les dépendances</a></li>
+<li><a class="nav-link" href="#reprex"><span class="header-section-number">16.5</span> Écrire des exemples reproductibles</a></li>
 </ul>
 
       <div class="book-extra">
@@ -186,7 +230,7 @@ Figure 16.3: Dependency. “Someday ImageMagick will finally break for good and 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-18.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -31,9 +31,7 @@ Pour pallier ce problème qui rend difficilement déplaçable un dossier de proj
 * L'utilisation du package [*here*](https://here.r-lib.org/),
 * L'utilisation de la gestion de projet dans RStudio.
 
-RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Un projet est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
-
-Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
+RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
 
 \begin{figure}
 
@@ -44,7 +42,20 @@ Il est possible de créer un projet dans RStudio à partir du menu déroulant si
 \caption{Création d'un projet avec RStudio.}(\#fig:rstudio-project)
 \end{figure}
 
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser un projet, il peut être avantageux de suivre certaines conventions, comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools).
+Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+
+L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
+
+(ref:xkcd-documents) Documents. "Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc" [CC BY-NC 2.0 @munroe2014].
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_documents} 
+
+}
+
+\caption{(ref:xkcd-documents)}(\#fig:xkcd-documents)
+\end{figure}
 
 ## Structurer ses données {#tidy-data}
 
@@ -54,10 +65,43 @@ Des jeux de données bien structurés se présentent sous la forme de tableaux �
 
 * Chaque variable doit correspondre à une colonne du tableau.
 * Chaque observation doit correspondre à une ligne du tableau.
-* Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles.].
+* Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles [@wickham2014].].
 
-::: {.rmdtip}
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser. Dans le cas de données tabulaires, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte), idéalement au format <abbr title="comma-separated values">CSV</abbr>.
+## Sauvegarder ses données {#csv}
+
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig. \@ref(fig:xkcd-norm). De manière générale, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte).
+
+Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
+
+* Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
+* Le format CSV est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
+* Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un [changement dramatique de spécification](https://www.bbc.com/news/technology-54423988).
+* Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
+
+(ref:xkcd-norm) .NORM Normal File Format. "At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts." [CC BY-NC 2.0 @munroe2019].
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_norm_normal_file_format} 
+
+}
+
+\caption{(ref:xkcd-norm)}(\#fig:xkcd-norm)
+\end{figure}
+
+La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier CSV. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier CSV votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier CSV dans un tableur (fig. \@ref(fig:calc-csv)).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/calc-csv} 
+
+}
+
+\caption{Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté).}(\#fig:calc-csv)
+\end{figure}
+
+::: {.rmdcaution}
+Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans [conséquences](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates) lors de l'ouverture d'un fichier.
 :::
 
 ## Limiter les dépendances {#dependances}
@@ -87,18 +131,30 @@ Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, a
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_dependency} 
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
 
 }
 
 \caption{(ref:xkcd-dependency)}(\#fig:xkcd-dependency)
 \end{figure}
 
+Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme [rOpenSci](https://ropensci.org/) œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
+
 ## Écrire des exemples reproductibles {#reprex}
 
-https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example
+Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur [Stack Overflow](https://stackoverflow.com/questions)^[Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les [recommandations d'écriture](https://stackoverflow.com/help/how-to-ask).] ou sur les [listes de diffusion](https://www.r-project.org/mail.html), la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
 
-https://reprex.tidyverse.org/
+* Minimal : utilisez le moins de code possible tout en produisant le même problème.
+* Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
+* Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
+
+Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
+
+::: {.rmdtip}
+L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
+:::
+
+Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
 
 # Style de programmation {#style}
 
@@ -282,6 +338,22 @@ standardize(scale = TRUE, ..., center = TRUE)
 Définissez les arguments par défaut à l'intérieur de la fonction en utilisant l'idiome `NULL`, et évitez la dépendance entre les arguments.
 
 Validez toujours les arguments dans une fonction.
+
+### Espaces de nom
+
+Si vous utilisez ponctuellement une unique fonction d'un package, utilisez `::` pour spécifier le nom du package au lieu de charger tout le package.
+
+
+```r
+# GOOD
+FactoMineR::PCA()
+
+# OK 
+library(FactoMineR)
+PCA()
+```
+
+L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
 
 ### Affectation
 

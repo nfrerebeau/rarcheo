@@ -192,6 +192,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 
 ```r
 data(intcal20)
+#> Warning in data(intcal20): data set 'intcal20' not found
 ```
 
 Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
@@ -281,14 +282,14 @@ example(mean)
 ```
 
 ::: {.rmdtip}
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex) ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex).
 :::
 
 # Vecteurs {#r-vector}
 
 Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur est simplement un ensemble d'**éléments**.
 
-Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou de une [liste](#r-list) (`list`), si ses éléments sont de types différents. Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
+Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents. Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
 
 (ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
 
@@ -322,12 +323,10 @@ x <- 10.5          # double
 x <- "archéologie" # character
 ```
 
-::: {.rmdimportant}
 * Un vecteur logique ne peut pendre que deux valeurs `TRUE` (vrai) ou `FALSE` (faux). `TRUE` et `FALSE` sont des mots réservés dans R : ils ne peuvent pas être utilisés comme identifiants pour nommer des variables ou des fonctions.
 * Un nombre réel sans partie décimale sera toujours interprété comme étant de type `double` et non de type `integer`.
 * Un vecteur de type `integer` s'écrit avec une syntaxe particulière : les nombres doivent être suivis d'un `L` pour les distinguer du type `double` et ne doivent pas avoir de partie décimale.
 * Une chaîne de caractère doit toujours être encadrée par des guillemets simples (`'`) ou doubles (`"`). Si les guillemets sont manquantes, R l'interprétera comme un nom d'objet (et cherchera l'objet correspondant).
-:::
 
 La fonction `c()` (*combine*) permet de construire des vecteurs longs :
 
