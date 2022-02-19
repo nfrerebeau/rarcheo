@@ -1,26 +1,9 @@
-# Structure des données
+# (PART) Préparation des données {-}
 
-## Type de variables
+# Importer
 
-```{r variables, echo=FALSE}
-DiagrammeR::grViz(
-  "digraph {
-  node [shape = box, fontname = arial]
-  variable; qualitative; quantitative;
-  nominale; ordinale; discrète; continue
-  
-  variable -> {qualitative quantitative}
-  qualitative -> {nominale ordinale}
-  quantitative -> {discrète continue}
-  }",
-  height = 200
-)
-```
+# Selectionner
 
-### Variables quantitatives
+# Filtrer
 
-### Variables qualitatives
-
-### Transformations de variables
-
-## Tableaux de données
+# Transformer
