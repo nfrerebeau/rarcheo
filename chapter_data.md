@@ -1,14 +1,9 @@
-# Structure des données
+# (PART) Préparation des données {-}
 
-## Type de variables
+# Importer
 
+# Selectionner
 
-\begin{center}\includegraphics[width=0.7\linewidth]{chapter_data_files/figure-latex/variables-1} \end{center}
+# Filtrer
 
-### Variables quantitatives
-
-### Variables qualitatives
-
-### Transformations de variables
-
-## Tableaux de données
+# Transformer
