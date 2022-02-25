@@ -30,7 +30,7 @@ sudo dpkg -i rstudio-2021.09.2-382-amd64.deb
 ```
 
 ::: {.rmdimportant}
-Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales et modifiez les réglages suivants (fig. \@ref(fig:rstudio-settings)) :
+Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales (*Tools* > *Global Options...*) et modifiez les réglages suivants (fig. \@ref(fig:rstudio-settings)) :
 
 * Décochez *Restore .RData into workspace at startup*.
 * Réglez *Save workspace to .RData on exit* sur *never*.

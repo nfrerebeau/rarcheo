@@ -15,9 +15,6 @@ R est libre et gratuit
 R est modulable
 : Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées [*packages*](#packages)) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés et installés depuis le [*Comprehensive R Archive Network*](https://cran.r-project.org/)^[Il existe d'autres archives, parfois spécialisées comme [Bioconductor](https://www.bioconductor.org/) pour la biologie.] (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig. \@ref(fig:cran-packages-year)).
 
-R facilite la reproductibilité
-: R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
-
 (ref:cran-packages-year) Évolution du nombre de packages disponibles sur le CRAN par année. Cette croissance exponentielle n'est pas sans poser de question quant au futur du CRAN [@thieme2018].
 
 ```{r cran-packages-year, echo=FALSE, fig.cap="(ref:cran-packages-year)"}
@@ -36,6 +33,9 @@ cran_pkg |>
   scale_y_continuous(breaks = seq(0, 23000, 2000)) +
   labs(x = "Année", y = "Nombre de packages", caption = "Source : CRAN")
 ```
+
+R facilite la reproductibilité
+: R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
 
 R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne.
 
@@ -73,6 +73,10 @@ wos_archaeo_years |>
 
 ## Ressources complémentaires {-}
 
+### Éléments de statistiques {-}
+
+### Utiliser R {-}
+
 En complément de la [documentation officielle](https://cran.r-project.org/doc/manuals/R-intro.html) pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. *R in a Nutshell* de @adler2010, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) de @grolemund2015 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
 
 L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
@@ -81,6 +85,7 @@ L'utilisateur confirmé trouvera dans les ouvrages [*Advanced R*](https://adv-r.
 
 Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue^[On trouvera sur le [site du package bookdown](https://bookdown.org/home/) et sur le site du [Big Book of R](https://www.bigbookofr.com/) de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également [une liste d'ouvrages dédiés à R et ses applications](https://www.r-project.org/doc/bib/R-books.html).] :
 
+* *Comprendre et réaliser les tests statistiques à l'aide de R* [@millot2014], un ouvrage détaillé expliquant comment choisir un test statistique et présentant toutes les subtilités.
 * [*Geocomputation with R*](https://geocompr.robinlovelace.net/) [@lovelace2020], un livre sur l'analyse, la visualisation et la modélisation des données géographiques.
 * [*Text Mining with R*](https://www.tidytextmining.com/) [@silge2017], un livre sur l'analyse textuelle avec R.
 
@@ -101,7 +106,7 @@ Si les enjeux de reproductibilité et de science ouverte vous intéressent, il v
 ::: {.rmdnote}
 Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
 
-Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier).
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).
 
 Ceci étant dit, le lecteur qui le souhaite trouvera dans [*Introduction à R et au tidyverse*](https://juba.github.io/tidyverse) [@barnier2021], [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] et [*STAT 545*](https://stat545.com/) [@bryan2020] une introduction à l'analyse de données avec les packages du tidyverse.
 :::

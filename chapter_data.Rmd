@@ -1,9 +1,13 @@
 # (PART) Préparation des données {-}
 
-# Importer
+# Importer {#importer}
 
-# Selectionner
+# Nettoyer {#nettoyer}
 
-# Filtrer
+# Selectionner {#selectionner}
 
-# Transformer
+# Filtrer {#filtrer}
+
+# Transformer {#transformer}
+
+# Exporter {#exporter}
