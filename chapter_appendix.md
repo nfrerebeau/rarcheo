@@ -2,6 +2,46 @@
 
 # (PART) Annexes {-}
 
+# Fonctions utiles {#cheat-sheet}
+
+## Séquences {#fonctions-sequences}
+
+
+```r
+# Séquence de nombres entiers
+1:10
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+
+```r
+# Séquence de 1 à 10
+seq(1, 10)
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+
+# Séquence de 1 à 10 par pas de 2
+seq(1, 10, by = 2)
+#> [1] 1 3 5 7 9
+```
+
+
+```r
+# Séquence de 10 entiers
+seq_len(10)
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+
+```r
+x <- c(8.6, 4.1, 3.9, 7, 1.8, 6.9, 1.6, 3.8, 2.6, 5.5)
+length(x)
+#> [1] 10
+
+# Séquence de même longueur qu'un objet
+seq_along(x)
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
 # Bonnes pratiques {#bonnes-pratiques}
 
 ## Travailler par projets {#projets}
@@ -42,7 +82,7 @@ RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets
 \caption{Création d'un projet avec RStudio.}(\#fig:rstudio-project)
 \end{figure}
 
-Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser `setwd()`.
 
 L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
 
@@ -123,7 +163,7 @@ Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le packag
 
 Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
 
-* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (écrivez vos propres fonctions !).
+* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
 * Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
 * N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
 
@@ -354,6 +394,28 @@ PCA()
 ```
 
 L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
+
+### Boucles
+
+Utilisez `seq_along()` dans les boucles pour gérer correctement les cas où `x` est vide.
+
+
+```r
+# Soit un vecteur numérique de longueur nulle
+x <- numeric(0)
+
+# La boucle ne s'exécute pas (OK)
+for (i in seq_along(x)) {
+  print(i)
+}
+
+# La boucle s'exécute pour i=1 puis i=0 (!)
+for (i in 1:length(x)) {
+  print(i)
+}
+#> [1] 1
+#> [1] 0
+```
 
 ### Affectation
 

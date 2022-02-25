@@ -209,7 +209,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-19}
+\date{2022-02-25}
 
 \begin{document}
 \maketitle
@@ -271,7 +271,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 19 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 25 Feb 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -337,8 +337,6 @@ Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Rober
 \tightlist
 \item[R est modulable]
 Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées \protect\hyperlink{packages}{\emph{packages}}) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés et installés depuis le \href{https://cran.r-project.org/}{\emph{Comprehensive R Archive Network}}\footnote{Il existe d'autres archives, parfois spécialisées comme \href{https://www.bioconductor.org/}{Bioconductor} pour la biologie.} (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (fig.~\ref{fig:cran-packages-year}).
-\item[R facilite la reproductibilité]
-R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
 \end{description}
 
 
@@ -351,6 +349,12 @@ R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scrip
 
 \caption{Évolution du nombre de packages disponibles sur le CRAN par année. Cette croissance exponentielle n'est pas sans poser de question quant au futur du CRAN \autocite{thieme2018}.}\label{fig:cran-packages-year}
 \end{figure}
+
+\begin{description}
+\tightlist
+\item[R facilite la reproductibilité]
+R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
+\end{description}
 
 R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne.
 
@@ -371,6 +375,14 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 \section*{Ressources complémentaires}\label{ressources-compluxe9mentaires}}
 \addcontentsline{toc}{section}{Ressources complémentaires}
 
+\hypertarget{uxe9luxe9ments-de-statistiques}{%
+\subsection*{Éléments de statistiques}\label{uxe9luxe9ments-de-statistiques}}
+\addcontentsline{toc}{subsection}{Éléments de statistiques}
+
+\hypertarget{utiliser-r}{%
+\subsection*{Utiliser R}\label{utiliser-r}}
+\addcontentsline{toc}{subsection}{Utiliser R}
+
 En complément de la \href{https://cran.r-project.org/doc/manuals/R-intro.html}{documentation officielle} pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. \emph{R in a Nutshell} de \textcite{adler2010}, \href{https://rstudio-education.github.io/hopr/}{\emph{Hands-On Programming with R}} de \textcite{grolemund2015} et \href{https://rc2e.com/}{\emph{R cookbook}} de \textcite{long2019} couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
 
 L'ouvrage de référence de \textcite{murrell2019}, \emph{R graphics}, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. \href{https://r-graphics.org/}{\emph{R Graphics Cookbook}} \autocite{chang2012} constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt \href{https://clauswilke.com/dataviz/}{\emph{Fundamentals of Data Visualization}} de \textcite{wilke2019}.
@@ -381,6 +393,8 @@ Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue\footnot
 
 \begin{itemize}
 \tightlist
+\item
+  \emph{Comprendre et réaliser les tests statistiques à l'aide de R} \autocite{millot2014}, un ouvrage détaillé expliquant comment choisir un test statistique et présentant toutes les subtilités.
 \item
   \href{https://geocompr.robinlovelace.net/}{\emph{Geocomputation with R}} \autocite{lovelace2020}, un livre sur l'analyse, la visualisation et la modélisation des données géographiques.
 \item
@@ -411,7 +425,7 @@ Si les enjeux de reproductibilité et de science ouverte vous intéressent, il v
 
 Le \href{https://www.tidyverse.org/}{tidyverse} est un ensemble de packages partageant ``une philosophie de conception, une grammaire et des structures de données'' dont les principes sont détaillés par \textcite{wickham2019b}. Tout comme le tidyverse revendique un ``parti pris'' (\emph{opinionated}), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
 
-Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier).
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier\footnote{Voir \textcite{matloff2019} pour une discussion détaillée.}).
 
 Ceci étant dit, le lecteur qui le souhaite trouvera dans \href{https://juba.github.io/tidyverse}{\emph{Introduction à R et au tidyverse}} \autocite{barnier2021}, \href{https://r4ds.had.co.nz/}{\emph{R for Data Science}} \autocite{wickham2016} et \href{https://stat545.com/}{\emph{STAT 545}} \autocite{bryan2020} une introduction à l'analyse de données avec les packages du tidyverse.
 
@@ -462,7 +476,7 @@ Pour installer RStudio sur Ubuntu, ouvrez un terminal dans le dossier de téléc
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
 
-Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales et modifiez les réglages suivants (fig.~\ref{fig:rstudio-settings}) :
+Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales (\emph{Tools} \textgreater{} \emph{Global Options\ldots{}}) et modifiez les réglages suivants (fig.~\ref{fig:rstudio-settings}) :
 
 \begin{itemize}
 \tightlist
@@ -530,7 +544,7 @@ Il est alors possible d'entrer une \textbf{expression}, qui va être \textbf{év
 \end{Highlighting}
 \end{Shaded}
 
-Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le \texttt{{[}1{]}} devant \texttt{2} précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'\protect\hyperlink{operateurs}{opérateur} \texttt{:} (deux-points) permet de construire des \protect\hyperlink{sequences}{séquences} de nombres entiers :
+Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le \texttt{{[}1{]}} devant \texttt{2} précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'opérateur \texttt{:} (deux-points) permet de construire des \protect\hyperlink{fonctions-sequences}{séquences} de nombres entiers :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -545,7 +559,7 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 \end{Highlighting}
 \end{Shaded}
 
-La commande \texttt{0:100} retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'\textbf{indice} de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17\textsuperscript{e} valeur, etc.).
+La commande \texttt{0:100} retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'\textbf{indice} de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17\textsuperscript{e} valeur, etc.).
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
 
@@ -553,7 +567,7 @@ Contrairement à \href{https://www.python.org/}{Python}, dans R les \protect\hyp
 
 \end{tcolorbox}
 
-Si une commande incomplète est transmise, l'invite de commande signale par un \texttt{+} que la suite des instructions peut être saisie :
+Si une commande incomplète est transmise, l'invite de commande signale par un \texttt{+} que la suite des instructions peut être saisie sur plusieurs lignes :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -599,11 +613,23 @@ Cette \textbf{affectation} (ou assignation, par anglicisme) est réalisée à l'
 \end{Highlighting}
 \end{Shaded}
 
+Il est possible de copier une variable :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ x}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 1}
+\end{Highlighting}
+\end{Shaded}
+
+Une fois copié, il n'existe aucun lien entre l'objet initial et sa copie. Dans l'exemple précédent, si \texttt{x} est modifié après avoir été copié dans \texttt{y}, la valeur de \texttt{y} ne sera pas modifiée.
+
 Il est possible d'affecter plusieurs variables en même temps :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ z }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{i }\OtherTok{\textless{}{-}}\NormalTok{ j }\OtherTok{\textless{}{-}} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
 
@@ -613,7 +639,7 @@ Les variables ainsi crées peuvent être réutilisées :
 \begin{Highlighting}[]
 \NormalTok{x }\SpecialCharTok{+} \DecValTok{1}
 \CommentTok{\#\textgreater{} [1] 2}
-\NormalTok{y }\SpecialCharTok{+}\NormalTok{ z}
+\NormalTok{i }\SpecialCharTok{+}\NormalTok{ j}
 \CommentTok{\#\textgreater{} [1] 2}
 \end{Highlighting}
 \end{Shaded}
@@ -655,7 +681,12 @@ Un objet possède un type et une structure de données particulière. Le type d'
 \hypertarget{fonctions}{%
 \section{Fonctions}\label{fonctions}}
 
-Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les \textbf{fonctions}. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés \textbf{arguments}, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. R fournit de très nombreuses fonctions, pour réaliser des taches très spécifiques il est possible d'\protect\hyperlink{}{écrire ses propres fonctions} ou d'\protect\hyperlink{packages}{installer des packages} supplémentaires.
+Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les \textbf{fonctions}. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés \textbf{arguments}, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction.
+
+R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'\protect\hyperlink{fonctions-ecrire}{écrire ses propres fonctions} ou d'\protect\hyperlink{packages}{installer des packages} supplémentaires.
+
+\hypertarget{utiliser-des-fonctions}{%
+\subsection{Utiliser des fonctions}\label{utiliser-des-fonctions}}
 
 Par exemple, la fonction \texttt{round()} permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction \texttt{round()} réalise un arrondi à zéro chiffre après la virgule :
 
@@ -708,10 +739,52 @@ Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs 
 
 \end{tcolorbox}
 
+\hypertarget{fonctions-ecrire}{%
+\subsection{Écrire des fonctions}\label{fonctions-ecrire}}
+
+Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+  \CommentTok{\# On définit les instructions à exécuter}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition de la fonction}
+\CommentTok{\# Par défaut, la valeur de y est 2}
+\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
+\CommentTok{\#\textgreater{} [1] 4}
+
+\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
+\CommentTok{\#\textgreater{} [1] 8}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{packages}{%
 \section{Packages}\label{packages}}
 
-Lors d'une première installation de R, un premier ensemble de packages contenant les \protect\hyperlink{fonctions}{fonctions} fondamentales est installé :
+Lors d'une première installation de R, un ensemble de packages contenant les \protect\hyperlink{fonctions}{fonctions} fondamentales est installé :
 
 \begin{itemize}
 \tightlist
@@ -729,7 +802,7 @@ Une bonne pratique consiste à toujours chercher à \protect\hyperlink{dependanc
 
 \end{tcolorbox}
 
-Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction \texttt{install.packages()}\footnote{\texttt{install.packages()} permet également d'installer des packages publiés sur d'\protect\hyperlink{packages-depots}{autres dépôts} que le CRAN.}.
+Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction \texttt{install.packages()}\footnote{\texttt{install.packages()} permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme \href{https://www.bioconductor.org/}{Bioconductor}.}.
 
 La commande suivante permet d'installer le package \href{https://packages.tesselle.org/folio/}{\emph{folio}} qui contient les jeux de données utilisés par la suite :
 
@@ -745,12 +818,11 @@ La plupart des packages publiés sur le CRAN font l'objet de mises à jour régu
 
 \end{tcolorbox}
 
-Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base\footnote{La liste des packages chargés par défaut au lancement de R peut être obtenue avec \texttt{getOption(\textquotesingle{}defaultPackages\textquotesingle{})}.}. Si on utilise la fonction \texttt{data()} pour charger le jeux de données \texttt{intcal20} du package \emph{folio} sans que ce dernier soit chargé, R ne sait pas où chercher l'objet et retourne un avertissement :
+Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base\footnote{La liste des packages chargés par défaut au lancement de R peut être obtenue avec \texttt{getOption(\textquotesingle{}defaultPackages\textquotesingle{})}.}. Dans l'exemple suivant, si on utilise la fonction \texttt{data()} pour charger le jeux de données \texttt{intcal20} du package \emph{folio} sans que ce dernier soit chargé. R ne sait pas où chercher l'objet et retourne un avertissement :
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
-\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -857,7 +929,7 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 
 Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig.~\ref{fig:r-vector-types}). Un vecteur est simplement un ensemble d'\textbf{éléments}.
 
-Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents. Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
+Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents (tab. \ref{tab:r-data-structures}). Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
 
 
 
@@ -869,6 +941,22 @@ Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt
 
 \caption{Les types d'objets de R. D'après \textcite{wickham2019}.}\label{fig:r-vector-types}
 \end{figure}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:r-data-structures} Structures de données des objets de R.}\tabularnewline
+\toprule
+Dimensions & Objet homogène & Objet hétérogène \\
+\midrule
+\endfirsthead
+\toprule
+Dimensions & Objet homogène & Objet hétérogène \\
+\midrule
+\endhead
+1 & \texttt{atomic} & \texttt{list} \\
+2 & \texttt{matrix} & \texttt{data.frame} \\
+\(n\) & \texttt{array} & - \\
+\bottomrule
+\end{longtable}
 
 \hypertarget{r-atomic}{%
 \section{\texorpdfstring{Vecteurs atomiques (\texttt{atomic})}{Vecteurs atomiques (atomic)}}\label{r-atomic}}
@@ -924,6 +1012,9 @@ La fonction \texttt{c()} (\emph{combine}) permet de construire des vecteurs long
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{description}{%
+\subsection{Description}\label{description}}
+
 La fonction \texttt{typeof()} permet de connaitre le type d'un vecteur et la fonction \texttt{length()} sa longueur :
 
 \begin{Shaded}
@@ -935,9 +1026,6 @@ La fonction \texttt{typeof()} permet de connaitre le type d'un vecteur et la fon
 \CommentTok{\#\textgreater{} [1] 3}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{test-et-conversion}{%
-\subsection{Test et conversion}\label{test-et-conversion}}
 
 La famille de fonctions \texttt{is.*()} permet de tester si un vecteur est d'un type particulier :
 
@@ -956,6 +1044,9 @@ La famille de fonctions \texttt{is.*()} permet de tester si un vecteur est d'un 
 \CommentTok{\#\textgreater{} [1] TRUE}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{conversion}{%
+\subsection{Conversion}\label{conversion}}
 
 Tous les éléments d'un vecteur atomique sont du même type. Lors de la combinaison d'éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie \texttt{logical} \textless{} \texttt{integer} \textless{} \texttt{double} \textless{} \texttt{character}.
 
@@ -1026,7 +1117,7 @@ En cas de conversion impossible, des \protect\hyperlink{valeurs-manquantes}{vale
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{))}
-\CommentTok{\#\textgreater{} Warning: NAs introduced by coercion}
+\CommentTok{\#\textgreater{} Warning: NAs introduits lors de la conversion automatique}
 \CommentTok{\#\textgreater{} [1] NA NA NA}
 \end{Highlighting}
 \end{Shaded}
@@ -1054,7 +1145,7 @@ Les attributs peuvent être spécifiés individuellement à l'aide de la fonctio
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
 
-La syntaxe particulière \texttt{attr(x,\ "a")\ \textless{}-\ "xyz"} indique qu'il s'agit d'une fonction de remplacement. Ces fonctions modifient l'objet correspondant au premier argument.
+La syntaxe particulière \texttt{attr(x,\ "a")\ \textless{}-\ "xyz"} indique qu'il s'agit d'une fonction de \protect\hyperlink{subset}{remplacement}. Ces fonctions particulières modifient en place l'objet correspondant au premier argument (\texttt{x}).
 
 \end{tcolorbox}
 
@@ -1127,7 +1218,7 @@ Une liste est un vecteur particulier, dont les éléments peuvent être de n'imp
 \FunctionTok{typeof}\NormalTok{(x)}
 \CommentTok{\#\textgreater{} [1] "list"}
 
-\CommentTok{\# Longueur de la liste}
+\CommentTok{\# Longueur de la liste (nombre d\textquotesingle{}éléments)}
 \FunctionTok{length}\NormalTok{(x)}
 \CommentTok{\#\textgreater{} [1] 4}
 
@@ -1181,7 +1272,6 @@ La fonction \texttt{c()} permet de combiner plusieurs listes en une seule :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Deux listes sont combinées en une seule}
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
   \FunctionTok{list}\NormalTok{(}
     \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
@@ -1201,8 +1291,13 @@ La fonction \texttt{c()} permet de combiner plusieurs listes en une seule :
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} [[4]]}
 \CommentTok{\#\textgreater{} [1] 2}
+\end{Highlighting}
+\end{Shaded}
 
-\CommentTok{\# Un vecteur atomique est converti en liste avant d\textquotesingle{}être combiné}
+Un vecteur atomique est converti en liste avant d'être combiné :
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
   \FunctionTok{list}\NormalTok{(}
     \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{),}
@@ -1237,26 +1332,29 @@ Un vecteur peut être transformé en un tableau à deux (\texttt{matrix}) ou plu
 \NormalTok{x}
 \CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10 11 12}
 
-\FunctionTok{typeof}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "integer"}
-
 \CommentTok{\# Le vecteur est transformé en une matrice de 2 lignes et 6 colonnes}
 \FunctionTok{dim}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\FunctionTok{dim}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] 2 6}
 \NormalTok{x}
 \CommentTok{\#\textgreater{}      [,1] [,2] [,3] [,4] [,5] [,6]}
 \CommentTok{\#\textgreater{} [1,]    1    3    5    7    9   11}
 \CommentTok{\#\textgreater{} [2,]    2    4    6    8   10   12}
+\end{Highlighting}
+\end{Shaded}
 
-\FunctionTok{dim}\NormalTok{(x)    }\CommentTok{\# Dimensions de la matrice}
-\CommentTok{\#\textgreater{} [1] 2 6}
+Les caractéristiques d'une matrice peuvent être retrouvées :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(x) }\CommentTok{\# Type des éléments}
+\CommentTok{\#\textgreater{} [1] "integer"}
+\FunctionTok{length}\NormalTok{(x) }\CommentTok{\# Nombre d\textquotesingle{}éléments (valeurs)}
+\CommentTok{\#\textgreater{} [1] 12}
 \FunctionTok{nrow}\NormalTok{(x)   }\CommentTok{\# Nombre de lignes}
 \CommentTok{\#\textgreater{} [1] 2}
 \FunctionTok{ncol}\NormalTok{(x)   }\CommentTok{\# Nombre de colonnes}
 \CommentTok{\#\textgreater{} [1] 6}
-\FunctionTok{length}\NormalTok{(x) }\CommentTok{\# Nombre d\textquotesingle{}éléments}
-\CommentTok{\#\textgreater{} [1] 12}
-\FunctionTok{typeof}\NormalTok{(x) }\CommentTok{\# Type des éléments}
-\CommentTok{\#\textgreater{} [1] "integer"}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1310,11 +1408,12 @@ Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{rownames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{)}
-\FunctionTok{rownames}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
-
 \FunctionTok{colnames}\NormalTok{(x) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
-\FunctionTok{colnames}\NormalTok{(x)}
+\FunctionTok{dimnames}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
 \CommentTok{\#\textgreater{} [1] "A" "B" "C" "D"}
 
 \NormalTok{x}
@@ -1324,11 +1423,9 @@ Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes 
 \CommentTok{\#\textgreater{} Z 3 6 9 12}
 
 \FunctionTok{dimnames}\NormalTok{(y) }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"Z"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{))}
-\FunctionTok{dimnames}\NormalTok{(y)}
-\CommentTok{\#\textgreater{} [[1]]}
+\FunctionTok{rownames}\NormalTok{(y)}
 \CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} [[2]]}
+\FunctionTok{colnames}\NormalTok{(y)}
 \CommentTok{\#\textgreater{} [1] "A" "B" "C" "D"}
 
 \NormalTok{y}
@@ -1339,16 +1436,10 @@ Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Avertissement,colframe=darkyellow]
-
-Un vecteur sans attribut \texttt{dim} n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
-
-\end{tcolorbox}
-
 \hypertarget{r-dataframe}{%
 \section{\texorpdfstring{Tableaux de données (\texttt{data.frame})}{Tableaux de données (data.frame)}}\label{r-dataframe}}
 
-Le \texttt{data.frame} est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un \texttt{data.frame} est un cas particulier de \texttt{list} (fig.~\ref{fig:r-vector-types}) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau\footnote{Ainsi, la fonction \texttt{names()} est équivalente à \texttt{rownames()} et la fonction \texttt{length()} retourne le nombre de colonne du tableau (équivalent à \texttt{ncol()}).}. Chaque colonne d'un \texttt{data.frame} peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont d'un seul type) :
+Le \texttt{data.frame} est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un \texttt{data.frame} est un cas particulier de \texttt{list} (fig.~\ref{fig:r-vector-types}) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau\footnote{Ainsi, la fonction \texttt{names()} est équivalente à \texttt{rownames()} et la fonction \texttt{length()} retourne le nombre de colonne du tableau (équivalent à \texttt{ncol()}).}. Chaque colonne d'un \texttt{data.frame} peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1361,9 +1452,17 @@ Le \texttt{data.frame} est probablement le concept le plus important de R : il p
 \CommentTok{\#\textgreater{} 1 1 x}
 \CommentTok{\#\textgreater{} 2 2 y}
 \CommentTok{\#\textgreater{} 3 3 z}
+\end{Highlighting}
+\end{Shaded}
 
-\FunctionTok{typeof}\NormalTok{(x)}
+Un \texttt{data.frame} est une liste :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(x) }\CommentTok{\# Type list}
 \CommentTok{\#\textgreater{} [1] "list"}
+\FunctionTok{length}\NormalTok{(x) }\CommentTok{\# Nombre d\textquotesingle{}éléments (colonnes)}
+\CommentTok{\#\textgreater{} [1] 2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1389,32 +1488,27 @@ Lignes et colonnes d'un \texttt{data.frame} sont nommées :
 \end{Highlighting}
 \end{Shaded}
 
-Sauf instruction spécifique lors de la création d'un \texttt{data.frame}, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type \texttt{character}) et ils ne doivent pas être confondu avec les indices (numérotation) des lignes.
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
-  \AttributeTok{greek =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{),}
-  \AttributeTok{home =} \FunctionTok{c}\NormalTok{(}\StringTok{"Ithaca"}\NormalTok{, }\StringTok{"Troy"}\NormalTok{, }\StringTok{"Phthia"}\NormalTok{),}
-  \AttributeTok{row.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Odysseus"}\NormalTok{, }\StringTok{"Hector"}\NormalTok{, }\StringTok{"Achilles"}\NormalTok{)}
-\NormalTok{)}
-\NormalTok{x}
-\CommentTok{\#\textgreater{}          greek   home}
-\CommentTok{\#\textgreater{} Odysseus  TRUE Ithaca}
-\CommentTok{\#\textgreater{} Hector   FALSE   Troy}
-\CommentTok{\#\textgreater{} Achilles  TRUE Phthia}
-\end{Highlighting}
-\end{Shaded}
+Sauf instruction spécifique lors de la création d'un \texttt{data.frame}, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type \texttt{character}) et ils ne doivent pas être confondu avec les indices des lignes.
+
+\end{tcolorbox}
 
 Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs \texttt{data.frame} en un seul tableau de données avec \texttt{rbind()} et \texttt{cbind()}. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des \protect\hyperlink{jointures}{jointures}.
 
 \hypertarget{subset}{%
 \chapter{Extraction et remplacement}\label{subset}}
 
+R possède un mécanisme très puissant pour naviguer parmi les valeurs d'un objet, afin d'en extraire ou d'en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.
+
+La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs \texttt{{[}} ou \texttt{{[}{[}} : \texttt{{[}} permet d'extraire un sous-ensemble, tandis que \texttt{{[}{[}} permet d'extraire un unique élément. Cette distinction correspond aux relations d'\href{https://fr.wikipedia.org/wiki/Appartenance_(math\%C3\%A9matiques)}{appartenance} et d'\href{https://fr.wikipedia.org/wiki/Inclusion_(math\%C3\%A9matiques)}{inclusion} de la théorie des ensembles en mathématiques\footnote{Par exemple, si \(M\) est un ensemble (collection) tel que \(M = \{1,2,3\}\), alors \(1\), \(2\) et \(3\) sont des éléments de \(M\), tandis que \(\{1,2\}\) ou \(\{3\}\) sont des sous-ensembles de \(M\).} (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de \protect\hyperlink{subset-list}{listes}).
+
+Ces opérateurs peuvent être utilisés conjointement avec l'affectation (\texttt{\textless{}-}) pour remplacer des valeurs. On écrira ainsi : \texttt{x{[}i{]}\ \textless{}-\ y} où \texttt{i} correspond à l'indice (position) des valeurs à remplacer dans le vecteur \texttt{x} et \texttt{y} correspond au vecteur de nouvelles valeurs.
+
 \hypertarget{subset-atomic}{%
 \section{Vecteurs atomiques}\label{subset-atomic}}
 
-Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur \texttt{{[}} (crochet) :
+Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur \texttt{{[}} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1473,22 +1567,32 @@ Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein 
 \end{Shaded}
 \end{itemize}
 
-Les éléments ainsi sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+L'utilisation de \texttt{{[}{[}} permet d'extraire un seul et unique élément au lieu d'un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre \texttt{{[}} et \texttt{{[}{[}} n'est pas évidente\footnote{Hormis qu'une tentative de sélection de plusieurs éléments avec \texttt{{[}{[}} produira une erreur.} et est sans doute mieux illustrée avec un exemple :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
-\NormalTok{x}
-\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+\NormalTok{x[}\DecValTok{1}\NormalTok{] }\CommentTok{\# L\textquotesingle{}attribut names est conservé (sous{-}ensemble)}
+\CommentTok{\#\textgreater{}   a }
+\CommentTok{\#\textgreater{} 1.3}
 
-\CommentTok{\# Remplacement du premier et du troisième élément}
-\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{300}\NormalTok{)}
-\NormalTok{x}
-\CommentTok{\#\textgreater{} [1] 100   2 300   4   5}
+\NormalTok{x[[}\DecValTok{1}\NormalTok{]] }\CommentTok{\# L\textquotesingle{}attribut names n\textquotesingle{}est pas conservé (élément)}
+\CommentTok{\#\textgreater{} [1] 1.3}
 \end{Highlighting}
 \end{Shaded}
 
-Lors de l'affectation de nouvelles valeurs à l'aide de \texttt{x{[}i{]}\ \textless{}-\ y} (où \texttt{i} correspond à l'indice des valeurs à remplacer dans \texttt{x} et \texttt{y} correspond au vecteur de nouvelles valeurs), il faut veiller à plusieurs aspects :
+Les éléments sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remplacement du premier et du troisième élément}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{300}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}     a     b     c     d     e }
+\CommentTok{\#\textgreater{} 100.0   2.4 300.0   4.6   5.7}
+\end{Highlighting}
+\end{Shaded}
+
+Lors de l'affectation de nouvelles valeurs dans un vecteur existant, il faut veiller à plusieurs aspects :
 
 \begin{itemize}
 \item
@@ -1512,7 +1616,7 @@ Lors de l'affectation de nouvelles valeurs à l'aide de \texttt{x{[}i{]}\ \textl
 \end{Highlighting}
 \end{Shaded}
 \item
-  Les mécanismes de conversions implicites :
+  Les mécanismes de \protect\hyperlink{conversion}{conversions implicites} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1541,7 +1645,7 @@ Lors de l'affectation de nouvelles valeurs à l'aide de \texttt{x{[}i{]}\ \textl
 \hypertarget{subset-list}{%
 \section{Listes}\label{subset-list}}
 
-La sélection d'éléments dans une liste s'opère de la même façon que pour un vecteur atomique :
+L'extraction de sous-ensembles dans une liste s'opère de la même façon que pour un vecteur atomique :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1561,14 +1665,14 @@ La sélection d'éléments dans une liste s'opère de la même façon que pour u
 \CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
 
 \CommentTok{\# Sélection du premier et du troisième élément}
-\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\CommentTok{\# Par position}
 \CommentTok{\#\textgreater{} $a}
 \CommentTok{\#\textgreater{} [1]  TRUE FALSE}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} $c}
 \CommentTok{\#\textgreater{} [1] "X" "Y" "Z"}
 
-\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{)]}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"c"}\NormalTok{)] }\CommentTok{\# Par nom}
 \CommentTok{\#\textgreater{} $a}
 \CommentTok{\#\textgreater{} [1]  TRUE FALSE}
 \CommentTok{\#\textgreater{} }
@@ -1582,10 +1686,15 @@ L'opérateur \texttt{{[}} retourne toujours une liste, y compris lorsqu'un uniqu
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ x[}\DecValTok{1}\NormalTok{]}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
 \FunctionTok{typeof}\NormalTok{(y)}
 \CommentTok{\#\textgreater{} [1] "list"}
 
 \NormalTok{z }\OtherTok{\textless{}{-}}\NormalTok{ x[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{z}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE}
 \FunctionTok{typeof}\NormalTok{(z)}
 \CommentTok{\#\textgreater{} [1] "logical"}
 \end{Highlighting}
@@ -1631,7 +1740,7 @@ Cette distinction entre \texttt{{[}} et \texttt{{[}{[}} est particulièrement im
 \end{Highlighting}
 \end{Shaded}
 
-L'opérateur \texttt{{[}{[}} permet également de supprimer un élément en lui affectant la valeur \texttt{NULL} :
+L'opérateur \texttt{{[}{[}} permet également de supprimer un élément dans une liste en lui affectant la valeur \texttt{NULL} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1698,7 +1807,7 @@ Si rien n'est spécifié, toutes les lignes ou toutes les colonnes sont sélecti
 \end{Highlighting}
 \end{Shaded}
 
-Par défaut, \texttt{{[}} \textbf{simplifie} les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La dimensionnalité de l'objet d'origine peut cependant être conservée à l'aide de l'argument \texttt{drop} :
+Par défaut, \texttt{{[}} \textbf{simplifie} les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La structure de l'objet d'origine peut cependant être conservée à l'aide de l'argument \texttt{drop} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1715,52 +1824,54 @@ Par défaut, \texttt{{[}} \textbf{simplifie} les résultats à la plus petite di
 \end{Highlighting}
 \end{Shaded}
 
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Avertissement,colframe=darkyellow]
+
+Un vecteur sans attribut \texttt{dim} n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
+
+\end{tcolorbox}
+
 Les matrices sont des \protect\hyperlink{r-matrix}{vecteurs possédant un attribut particulier} (\texttt{dim}), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Sélection des premières et troisièmes valeurs}
+\CommentTok{\# Sélection des première et troisième valeurs}
 \NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
 \CommentTok{\#\textgreater{} [1] 1 3}
 
-\CommentTok{\# Remplacement du triangle supérieur}
-\NormalTok{x[}\FunctionTok{upper.tri}\NormalTok{(x)] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\CommentTok{\# Remplacement des première et troisième valeurs}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{0}
 \NormalTok{x}
-\CommentTok{\#\textgreater{}   A B C D}
-\CommentTok{\#\textgreater{} x 1 0 0 0}
-\CommentTok{\#\textgreater{} y 2 5 0 0}
-\CommentTok{\#\textgreater{} z 3 6 9 0}
-
-\CommentTok{\# Remplacement du triangle inférieur}
-\NormalTok{x[}\FunctionTok{lower.tri}\NormalTok{(x)] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{x}
-\CommentTok{\#\textgreater{}   A B C D}
-\CommentTok{\#\textgreater{} x 1 0 0 0}
-\CommentTok{\#\textgreater{} y 0 5 0 0}
-\CommentTok{\#\textgreater{} z 0 0 9 0}
+\CommentTok{\#\textgreater{}   A B C  D}
+\CommentTok{\#\textgreater{} x 0 4 7 10}
+\CommentTok{\#\textgreater{} y 2 5 8 11}
+\CommentTok{\#\textgreater{} z 0 6 9 12}
 \end{Highlighting}
 \end{Shaded}
 
-Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. La première colonne doit alors contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimension supérieure (\texttt{array}) :
+Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. Cette matrice doit contenir les coordonnées (lignes et colonnes) des valeurs à sélectionner. La première colonne doit ainsi contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimensions supérieures (\texttt{array}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\# On veut sélectionner les cellules (1,2), (2,3) et (3,4)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# La première colonne contient les indices des lignes}
+\CommentTok{\# La seconde colonne contient les indices des colonnes}
 \NormalTok{y}
 \CommentTok{\#\textgreater{}      [,1] [,2]}
-\CommentTok{\#\textgreater{} [1,]    1    1}
-\CommentTok{\#\textgreater{} [2,]    2    2}
-\CommentTok{\#\textgreater{} [3,]    3    3}
+\CommentTok{\#\textgreater{} [1,]    1    2}
+\CommentTok{\#\textgreater{} [2,]    2    3}
+\CommentTok{\#\textgreater{} [3,]    3    4}
 
 \NormalTok{x[y]}
-\CommentTok{\#\textgreater{} [1] 1 5 9}
+\CommentTok{\#\textgreater{} [1]  4  8 12}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{subset-dataframe}{%
 \section{Tableaux de données}\label{subset-dataframe}}
 
-Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut utiliser deux stratégies (les \texttt{data.frame} ont les caractéristiques des listes et des matrices) :
+Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut utiliser deux stratégies. Les \texttt{data.frame} ont en effet les caractéristiques des listes et des matrices :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1769,12 +1880,6 @@ Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut util
   \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{),}
   \AttributeTok{c =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{)}
 \NormalTok{)}
-\NormalTok{x}
-\CommentTok{\#\textgreater{}       a b c}
-\CommentTok{\#\textgreater{} 1  TRUE 1 A}
-\CommentTok{\#\textgreater{} 2 FALSE 2 B}
-\CommentTok{\#\textgreater{} 3  TRUE 3 C}
-\CommentTok{\#\textgreater{} 4  TRUE 4 D}
 
 \CommentTok{\# Comme une liste !}
 \NormalTok{x[}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)] }\CommentTok{\# Colonnes nommées "a", "b" et "c"}
@@ -1807,13 +1912,281 @@ Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut util
 \end{Shaded}
 
 \hypertarget{operateurs}{%
-\chapter{Opérateurs}\label{operateurs}}
+\chapter{Opérateurs binaires}\label{operateurs}}
+
+\hypertarget{opuxe9rateurs-arithmuxe9tiques}{%
+\section{Opérateurs arithmétiques}\label{opuxe9rateurs-arithmuxe9tiques}}
+
+Les opérateurs arithmétiques (tab. \ref{tab:operateurs-math}) permettent de réaliser les opérations élémentaires :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{2}
+
+\CommentTok{\# Addition}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] 3}
+
+\CommentTok{\# Soustraction}
+\NormalTok{x }\SpecialCharTok{{-}}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] {-}1}
+
+\CommentTok{\# Multiplication}
+\NormalTok{x }\SpecialCharTok{*}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1] 2}
+
+\CommentTok{\# Exponentiation}
+\NormalTok{x}\SpecialCharTok{\^{}}\NormalTok{y}
+\CommentTok{\#\textgreater{} [1] 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}cl@{}}
+\caption{\label{tab:operateurs-math} Les principaux opérateurs arithmétiques de R.}\tabularnewline
+\toprule
+Opérateur & Description \\
+\midrule
+\endfirsthead
+\toprule
+Opérateur & Description \\
+\midrule
+\endhead
+\texttt{+} & addition \\
+\texttt{-} & soustraction \\
+\texttt{*} & multiplication \\
+\texttt{/} & division \\
+\texttt{\^{}} & exponentiation \\
+\bottomrule
+\end{longtable}
+
+Une des particularités des R est de \emph{vectoriser} de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{6}\SpecialCharTok{:}\DecValTok{10}
+
+\CommentTok{\# Addition des éléments de x et y, un à un}
+\CommentTok{\# Équivaut à réaliser 1 + 6, 2 + 7, 3 + 8, 4 + 9 et 5 + 10}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1]  7  9 11 13 15}
+\end{Highlighting}
+\end{Shaded}
+
+Cet aspect est important dans le cas d'opérations sur des matrices (souvenez-vous, une matrice est simplement un vecteur avec un attribut de dimension et est remplie colonne par colonne) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Une matrice de 5 lignes et 2 colonnes}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    1    6}
+\CommentTok{\#\textgreater{} [2,]    2    7}
+\CommentTok{\#\textgreater{} [3,]    3    8}
+\CommentTok{\#\textgreater{} [4,]    4    9}
+\CommentTok{\#\textgreater{} [5,]    5   10}
+
+\CommentTok{\# Un vecteur de 10 éléments}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{y}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+
+\CommentTok{\# Les éléments de x et y sont additionnés un à un}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    2   12}
+\CommentTok{\#\textgreater{} [2,]    4   14}
+\CommentTok{\#\textgreater{} [3,]    6   16}
+\CommentTok{\#\textgreater{} [4,]    8   18}
+\CommentTok{\#\textgreater{} [5,]   10   20}
+\end{Highlighting}
+\end{Shaded}
+
+Si deux vecteurs n'ont pas la même longueur, R va \textbf{recycler} le plus court des deux et le réutiliser autant que nécessaire. Si la taille de l'objet le plus long n'est pas multiple de la taille de l'objet le plus court, un avertissement sera également retourné :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Un vecteur de 5 éléments}
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}
+\NormalTok{i}
+\CommentTok{\#\textgreater{} [1] 1 2 3 4 5}
+
+\CommentTok{\# Les éléments de x et i sont additionnés un à un}
+\CommentTok{\# i est recyclé silencieusement}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ i}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    2    7}
+\CommentTok{\#\textgreater{} [2,]    4    9}
+\CommentTok{\#\textgreater{} [3,]    6   11}
+\CommentTok{\#\textgreater{} [4,]    8   13}
+\CommentTok{\#\textgreater{} [5,]   10   15}
+
+\CommentTok{\# Un vecteur de 3 éléments}
+\NormalTok{j }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}
+\NormalTok{j}
+\CommentTok{\#\textgreater{} [1] 1 2 3}
+
+\CommentTok{\# Les éléments de x et j sont additionnés un à un}
+\CommentTok{\# j est recyclé avec un message d\textquotesingle{}avertissement}
+\NormalTok{x }\SpecialCharTok{+}\NormalTok{ j}
+\CommentTok{\#\textgreater{} Warning in x + j: la taille d\textquotesingle{}un objet plus long n\textquotesingle{}est pas multiple}
+\CommentTok{\#\textgreater{} de la taille d\textquotesingle{}un objet plus court}
+\CommentTok{\#\textgreater{}      [,1] [,2]}
+\CommentTok{\#\textgreater{} [1,]    2    9}
+\CommentTok{\#\textgreater{} [2,]    4    8}
+\CommentTok{\#\textgreater{} [3,]    6   10}
+\CommentTok{\#\textgreater{} [4,]    5   12}
+\CommentTok{\#\textgreater{} [5,]    7   11}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{opuxe9rateurs-logiques}{%
 \section{Opérateurs logiques}\label{opuxe9rateurs-logiques}}
 
-\hypertarget{opuxe9rateurs-arithmuxe9tiques}{%
-\section{Opérateurs arithmétiques}\label{opuxe9rateurs-arithmuxe9tiques}}
+Les opérateurs logiques (tab. \ref{tab:operateurs-logiques}) permettent comparer des valeurs. Ces comparaisons se présentent sous la forme d'un test (la condition est-elle vraie ou fausse ?) et retournent donc un vecteur de type \texttt{logical} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# x contient un unique élément}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# La valeur de x est{-}elle égale à 0 ?}
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{0}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# La valeur de x est{-}elle différente de 1 ?}
+\NormalTok{x }\SpecialCharTok{!=} \DecValTok{1}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# La valeur de x est{-}elle supérieure à 0 ?}
+\NormalTok{x }\SpecialCharTok{\textgreater{}} \DecValTok{0}
+\CommentTok{\#\textgreater{} [1] TRUE}
+
+\CommentTok{\# La valeur de x est{-}elle inférieure à 2 ?}
+\NormalTok{x }\SpecialCharTok{\textless{}} \DecValTok{2}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}cl@{}}
+\caption{\label{tab:operateurs-logiques} Les opérateurs logiques de R.}\tabularnewline
+\toprule
+Opérateur & Comparaison \\
+\midrule
+\endfirsthead
+\toprule
+Opérateur & Comparaison \\
+\midrule
+\endhead
+\texttt{\textgreater{}} & strictement supérieur \\
+\texttt{\textgreater{}=} & supérieur ou égal \\
+\texttt{\textless{}} & strictement inférieur \\
+\texttt{\textless{}=} & inférieur ou égal \\
+\texttt{==} & égal \\
+\texttt{!=} & différent \\
+\texttt{\&} & ET \\
+\texttt{\textbar{}} & OU \\
+\bottomrule
+\end{longtable}
+
+Les opérateurs \texttt{\&} (ET) et \texttt{\textbar{}} (OU) permettent de combiner plusieurs conditions et de réaliser des comparaisons plus complexes. Dans ce cas, chaque condition est évaluée séparément, puis les résultats sont comparés :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La valeur de x est{-}elle comprise entre 0 et 2 ?}
+\NormalTok{x }\SpecialCharTok{\textgreater{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ x }\SpecialCharTok{\textless{}} \DecValTok{2}
+\CommentTok{\#\textgreater{} [1] TRUE}
+
+\CommentTok{\# La valeur de x est{-}elle égale à 0 ou 1 ?}
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{0} \SpecialCharTok{|}\NormalTok{ x }\SpecialCharTok{==} \DecValTok{1}
+\CommentTok{\#\textgreater{} [1] TRUE}
+
+\CommentTok{\# ET}
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{TRUE}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{FALSE}
+\CommentTok{\#\textgreater{} [1] FALSE}
+\ConstantTok{FALSE} \SpecialCharTok{\&} \ConstantTok{FALSE}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# OU}
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{TRUE}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{FALSE}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# NEGATION}
+\SpecialCharTok{!}\ConstantTok{TRUE}
+\CommentTok{\#\textgreater{} [1] FALSE}
+\SpecialCharTok{!}\ConstantTok{FALSE}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+Souvenez-vous, R vectorise de nombreuses opérations. La comparaison de deux objets est réalisée élément par élément :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+
+\CommentTok{\# Comparaison des éléments de x et y, un à un}
+\CommentTok{\# Équivaut à tester si 1 \textless{} 3, 2 \textless{} 4, 3 \textless{} 5, 4 \textless{} 6 et 5 \textless{} 7}
+\NormalTok{x }\SpecialCharTok{\textless{}}\NormalTok{ y}
+\CommentTok{\#\textgreater{} [1]  TRUE FALSE  TRUE FALSE  TRUE}
+
+\CommentTok{\# Toutes les valeurs de x sont{-}elles inférieures à y ?}
+\FunctionTok{all}\NormalTok{(x }\SpecialCharTok{\textless{}}\NormalTok{ y)}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\CommentTok{\# Au moins une des valeurs de x est{-}elle inférieure à y ?}
+\FunctionTok{any}\NormalTok{(x }\SpecialCharTok{\textless{}}\NormalTok{ y)}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Avertissement,colframe=darkyellow]
+
+Prenez garde aux valeurs manquantes ! Si une comparaison est réalisée avec une valeur manquante, le résultat sera une valeur manquante uniquement s'il est ambigu :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ConstantTok{TRUE} \SpecialCharTok{\&} \ConstantTok{NA}
+\CommentTok{\#\textgreater{} [1] NA}
+\ConstantTok{FALSE} \SpecialCharTok{\&} \ConstantTok{NA}
+\CommentTok{\#\textgreater{} [1] FALSE}
+
+\ConstantTok{TRUE} \SpecialCharTok{|} \ConstantTok{NA}
+\CommentTok{\#\textgreater{} [1] TRUE}
+\ConstantTok{FALSE} \SpecialCharTok{|} \ConstantTok{NA}
+\CommentTok{\#\textgreater{} [1] NA}
+\end{Highlighting}
+\end{Shaded}
+
+\end{tcolorbox}
+
+Utilisés conjointement avec \texttt{{[}} et \texttt{\textless{}-}, les opérateurs logiques permettent de \protect\hyperlink{filtrer}{filtrer} et \protect\hyperlink{nettoyer}{nettoyer} facilement ses données :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{:}\DecValTok{10}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}  [1]  0  1  2  3  4  5  6  7  8  9 10}
+
+\CommentTok{\# Extraire les valeurs supérieures à 5}
+\NormalTok{x[x }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{]}
+\CommentTok{\#\textgreater{} [1]  6  7  8  9 10}
+
+\CommentTok{\# Remplacer les 0 par des valeurs manquantes}
+\NormalTok{x[x }\SpecialCharTok{==} \DecValTok{0}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}  [1] NA  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{structures-de-contruxf4le}{%
 \chapter{Structures de contrôle}\label{structures-de-contruxf4le}}
@@ -1821,17 +2194,359 @@ Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut util
 \hypertarget{alternatives}{%
 \section{Alternatives}\label{alternatives}}
 
+Les alternatives permettent d'exécuter différentes instructions en fonction du résultat d'un test logique.
+
+\hypertarget{test-si}{%
+\subsection{\texorpdfstring{Test ``si\ldots{}''}{Test ``si\ldots''}}\label{test-si}}
+
+L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{si} une condition est vraie :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# On définit un test logique}
+\CommentTok{\# On encadre les instructions à exécuter avec des accolades}
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Texte affiché si la condition est vraie."}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "Texte affiché si la condition est vraie."}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{test-si-sinon}{%
+\subsection{\texorpdfstring{Test ``si\ldots{} sinon\ldots{}''}{Test ``si\ldots{} sinon\ldots''}}\label{test-si-sinon}}
+
+Il est possible de définir plusieurs choix en utilisant alternativement les instructions \texttt{if} et \texttt{else} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# On définit un test logique}
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Texte affiché si la condition est vraie."}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Texte affiché si la condition est fausse."}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] "Texte affiché si la condition est fausse."}
+\end{Highlighting}
+\end{Shaded}
+
+Plusieurs alternatives peuvent être définies en utilisant conjointement \texttt{else} et \texttt{if}. On peut alors enchaîner autant de clauses ``sinon si'' que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"chien"}
+
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{==} \StringTok{"chat"}\NormalTok{) \{}
+  \CommentTok{\# Si la première condition est vraie}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"x est un chat."}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{==} \StringTok{"chien"}\NormalTok{) \{}
+  \CommentTok{\# Si la première condition est fausse et la seconde est vraie}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"x est un chien."}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# Si toutes les conditions sont fausses}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"x est un animal inconnu."}\NormalTok{)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} x est un chien.}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{test-selon}{%
+\subsection{\texorpdfstring{Test ``selon\ldots{}''}{Test ``selon\ldots''}}\label{test-selon}}
+
+L'instruction \texttt{switch} permet de choisir un bloc de code \emph{selon} la valeur d'une variable.
+
+L'exemple précédent peut être réécrit comme suit :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"chien"}
+
+\ControlFlowTok{switch}\NormalTok{ (}
+\NormalTok{  x,}
+  \AttributeTok{chat =} \FunctionTok{message}\NormalTok{(}\StringTok{"x est un chat."}\NormalTok{),}
+  \AttributeTok{chien =} \FunctionTok{message}\NormalTok{(}\StringTok{"x est un chien."}\NormalTok{),}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"x est un animal inconnu."}\NormalTok{)}
+\NormalTok{)}
+\CommentTok{\#\textgreater{} x est un chien.}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{boucles}{%
 \section{Boucles}\label{boucles}}
 
-\hypertarget{fonctions-dordre-supuxe9rieur}{%
-\chapter{Fonctions d'ordre supérieur}\label{fonctions-dordre-supuxe9rieur}}
+Les boucles sont un moyen simple pour répéter des instructions en faisant varier un paramètre.
+
+\hypertarget{boucles-ituxe9ratives}{%
+\subsection{Boucles itératives}\label{boucles-ituxe9ratives}}
+
+Une boucle itérative est contrôlée un compteur : une variable qui va prendre une valeur différente à chaque itération de la boucle. Le nombre d'exécutions de la boucle est connu à l'avance.
+
+L'instruction \texttt{for} permet d'écrire des boucles en définissant un compteur et en spécifiant les instructions à répéter :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# On définit une variable i (le nom est libre)}
+\CommentTok{\# On précise que i va prendre successivement les valeurs 1 à 5}
+\CommentTok{\# On encadre les instructions à répéter avec des accolades}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(i) }\CommentTok{\# A chaque itération, on affiche la valeur de i}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} [1] 2}
+\CommentTok{\#\textgreater{} [1] 3}
+\CommentTok{\#\textgreater{} [1] 4}
+\CommentTok{\#\textgreater{} [1] 5}
+\end{Highlighting}
+\end{Shaded}
+
+Dans l'exemple suivant, on cherche à extraire et à afficher successivement chaque élément d'un vecteur :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Création d\textquotesingle{}un vecteur contenant 5 éléments}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{6.1}\NormalTok{, }\FloatTok{5.9}\NormalTok{, }\FloatTok{6.4}\NormalTok{)}
+
+\CommentTok{\# Faire varier i de 1 à 5}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+  \CommentTok{\# Extraire la i{-}ème valeur de x}
+  \CommentTok{\# Stocker cette valeur dans l\textquotesingle{}objet k}
+\NormalTok{  k }\OtherTok{\textless{}{-}}\NormalTok{ x[i]}
+  \CommentTok{\# Afficher la valeur de k}
+  \FunctionTok{print}\NormalTok{(k)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 1.2}
+\CommentTok{\#\textgreater{} [1] 6.5}
+\CommentTok{\#\textgreater{} [1] 6.1}
+\CommentTok{\#\textgreater{} [1] 5.9}
+\CommentTok{\#\textgreater{} [1] 6.4}
+\end{Highlighting}
+\end{Shaded}
+
+Dans l'exemple précédent, la valeur de \texttt{k} a été remplacée à chaque itération de la boucle. Si on veut récupérer les résultats des différentes étapes, il va falloir au préalable créer un objet vide susceptible de recevoir progressivement les différentes valeurs. La définition de cet objet implique d'anticiper les résultats de la boucle pour qu'il ait la structure adéquate :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Créer un vecteur vide pour récupérer les résultats}
+\CommentTok{\# Le vecteur à la même longueur que le nombre d\textquotesingle{}itérations}
+\NormalTok{k }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\AttributeTok{mode =} \StringTok{"numeric"}\NormalTok{, }\AttributeTok{length =} \DecValTok{5}\NormalTok{)}
+\NormalTok{k}
+\CommentTok{\#\textgreater{} [1] 0 0 0 0 0}
+
+\CommentTok{\# Faire varier i de 1 à 5}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+  \CommentTok{\# Extraire la i{-}ème valeur de x}
+  \CommentTok{\# Affecter cette valeur à la i{-}ème position de k}
+\NormalTok{  k[i] }\OtherTok{\textless{}{-}}\NormalTok{ x[i]}
+\NormalTok{\}}
+\NormalTok{k}
+\CommentTok{\#\textgreater{} [1] 1.2 6.5 6.1 5.9 6.4}
+\end{Highlighting}
+\end{Shaded}
+
+Dans le cas d'un tableau à deux dimensions, écrire une même série d'instructions pour chaque ligne ou colonne individuellement peut rapidement s'avérer fastidieux. On peut ainsi mettre à profit les boucles pour n'écrire qu'une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.
+
+Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont \protect\hyperlink{tidy-data}{correctement structurées}, on peut calculer cette somme pour chacune des colonnes d'un tableau de données\footnote{Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (\texttt{rowSums()}) ou des colonnes (\texttt{colSums()}) d'un tableau.} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# On charge les données d\textquotesingle{}exemple}
+\CommentTok{\# help(compiegne, package = "folio")}
+\FunctionTok{data}\NormalTok{(compiegne, }\AttributeTok{package =} \StringTok{"folio"}\NormalTok{)}
+
+\CommentTok{\# Le tableau possède 5 lignes et 16 colonnes}
+\FunctionTok{dim}\NormalTok{(compiegne)}
+\CommentTok{\#\textgreater{} [1]  5 16}
+
+\CommentTok{\# On crée un vecteur vide pour récupérer les résultats}
+\CommentTok{\# (16 valeurs sont attendues : la somme de chaque colonne)}
+\NormalTok{resultats }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\AttributeTok{mode =} \StringTok{"numeric"}\NormalTok{, }\AttributeTok{length =} \DecValTok{16}\NormalTok{)}
+
+\CommentTok{\# On fait varier i de 1 à 16}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{) \{}
+  \CommentTok{\# On extrait la i{-}ème colonne}
+\NormalTok{  colonne\_i }\OtherTok{\textless{}{-}}\NormalTok{ compiegne[, i]}
+  \CommentTok{\# On calcule la somme de la colonne}
+\NormalTok{  total\_i }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(colonne\_i)}
+  \CommentTok{\# On stocke la somme dans la i{-}ème position du vecteur de résultats}
+\NormalTok{  resultats[i] }\OtherTok{\textless{}{-}}\NormalTok{ total\_i}
+\NormalTok{\}}
+\NormalTok{resultats}
+\CommentTok{\#\textgreater{}  [1] 53200 12380 35300  8115  4825  7360  2775 10700   990  5425}
+\CommentTok{\#\textgreater{} [11] 18910 11155  2410  2835  1965  1185}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{boucles-de-parcours}{%
+\subsection{Boucles de parcours}\label{boucles-de-parcours}}
+
+R possède une famille de fonctions qui permettent d'appliquer facilement des instructions aux différents éléments d'un objet. Les principales fonctions de cette famille sont :
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{apply()} : applique une fonction sur les lignes ou les colonnes d'une matrice (ou sur les dimensions supérieures d'un \texttt{array}).
+\item
+  \texttt{lapply()} et \texttt{vapply()} : appliquent une fonction sur les différents éléments d'un vecteur ou d'une liste.
+\item
+  \texttt{tapply()} : applique une fonction sur différents groupes de valeurs.
+\end{itemize}
+
+L'exemple précédent peut ainsi être simplifié avec \texttt{apply()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inutile de créer un objet vide au préalable}
+\NormalTok{somme }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(}
+  \AttributeTok{X =}\NormalTok{ compiegne, }
+  \AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\CommentTok{\# Appliquer aux lignes (1) ou aux colonnes (2)}
+  \AttributeTok{FUN =}\NormalTok{ sum}
+\NormalTok{)}
+\NormalTok{somme}
+\CommentTok{\#\textgreater{}     A     B     C     D     E     F     G     H     I     J     K }
+\CommentTok{\#\textgreater{} 53200 12380 35300  8115  4825  7360  2775 10700   990  5425 18910 }
+\CommentTok{\#\textgreater{}     L     M     N     O     P }
+\CommentTok{\#\textgreater{} 11155  2410  2835  1965  1185}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Avertissement,colframe=darkyellow]
+
+La fonction \texttt{apply()} est conçue pour être utilisée sur une matrice (ou un \texttt{array}). Lorsqu'elle est utilisée sur un \texttt{data.frame}, elle va donc le convertir en \texttt{matrix}. Les éléments d'une matrice sont tous du même type : si les colonnes du \texttt{data.frame} sont de types différents, les règles de \protect\hyperlink{conversion}{conversions implicites} s'appliquent et peuvent entraîner des erreurs (par exemple lorsque les colonnes numériques sont transformées en chaînes de caractères, empêchant ainsi l'exécution d'une fonction mathématique).
+
+\end{tcolorbox}
+
+Dans le cas d'un \texttt{data.frame}, il est préférable d'utiliser \texttt{lapply()} lorsqu'on souhaite appliquer une même fonction aux différentes colonnes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{a =} \FunctionTok{c}\NormalTok{(}\FloatTok{3.6}\NormalTok{, }\FloatTok{7.5}\NormalTok{, }\FloatTok{7.2}\NormalTok{, }\FloatTok{7.7}\NormalTok{, }\FloatTok{4.8}\NormalTok{),}
+  \AttributeTok{b =} \FunctionTok{c}\NormalTok{(}\FloatTok{5.8}\NormalTok{, }\FloatTok{7.5}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{5.7}\NormalTok{, }\FloatTok{2.3}\NormalTok{),}
+  \AttributeTok{c =} \FunctionTok{c}\NormalTok{(}\FloatTok{7.2}\NormalTok{, }\FloatTok{6.4}\NormalTok{, }\FloatTok{3.3}\NormalTok{, }\FloatTok{3.1}\NormalTok{, }\FloatTok{8.1}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Convertir toutes les colonnes en integer}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ x, }\AttributeTok{FUN =}\NormalTok{ as.integer)}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} $a}
+\CommentTok{\#\textgreater{} [1] 3 7 7 7 4}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $b}
+\CommentTok{\#\textgreater{} [1] 5 7 1 5 2}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} $c}
+\CommentTok{\#\textgreater{} [1] 7 6 3 3 8}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{lapply()} retourne une simple liste, mais en utilisant une sélection vide, il est possible de conserver la structure du \texttt{data.frame} initial :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convertir toutes les colonnes en integer}
+\CommentTok{\# Conserve la structure du data.frame}
+\CommentTok{\# (mais remplace les données d\textquotesingle{}origine)}
+\NormalTok{x[] }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ x, }\AttributeTok{FUN =}\NormalTok{ as.integer)}
+\NormalTok{x}
+\CommentTok{\#\textgreater{}   a b c}
+\CommentTok{\#\textgreater{} 1 3 5 7}
+\CommentTok{\#\textgreater{} 2 7 7 6}
+\CommentTok{\#\textgreater{} 3 7 1 3}
+\CommentTok{\#\textgreater{} 4 7 5 3}
+\CommentTok{\#\textgreater{} 5 4 2 8}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{vapply()} est similaire à \texttt{lapply()}, mais peut être plus pratique à utiliser. \texttt{vapply()} simplifie le résultat final et retourne un vecteur ou, si cela est approprié, une matrice (comme pour \texttt{apply()}, faites attention aux règles de \protect\hyperlink{conversion}{conversions implicites}). De plus, le comportement de \texttt{vapply()} est prédictible : il est nécessaire de spécifier avec l'argument \texttt{FUN.VALUE} le type de résultat retourné.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# On spécifie le résultat de l\textquotesingle{}application de FUN aux éléments de X}
+\CommentTok{\# Celui{-}ci doit être un vecteur de type integer et de longueur 5}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{vapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ x, }\AttributeTok{FUN =}\NormalTok{ as.integer, }\AttributeTok{FUN.VALUE =} \FunctionTok{integer}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\NormalTok{z}
+\CommentTok{\#\textgreater{}      a b c}
+\CommentTok{\#\textgreater{} [1,] 3 5 7}
+\CommentTok{\#\textgreater{} [2,] 7 7 6}
+\CommentTok{\#\textgreater{} [3,] 7 1 3}
+\CommentTok{\#\textgreater{} [4,] 7 5 3}
+\CommentTok{\#\textgreater{} [5,] 4 2 8}
+\end{Highlighting}
+\end{Shaded}
+
+Si le résultat de l'application de la fonction \texttt{FUN} à chaque élément de \texttt{X} ne correspond pas à la spécification, l'exécution du code est interrompue et une erreur est retournée :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La longueur du vecteur retourné par FUN ne correspond pas}
+\FunctionTok{vapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ x, }\AttributeTok{FUN =}\NormalTok{ as.integer, }\AttributeTok{FUN.VALUE =} \FunctionTok{integer}\NormalTok{(}\DecValTok{3}\NormalTok{))}
+\CommentTok{\#\textgreater{} Error in vapply(X = x, FUN = as.integer, FUN.VALUE = integer(3)): les valeurs doivent être d\textquotesingle{}une longueur 3,}
+\CommentTok{\#\textgreater{}  mais FUN(X[[1]]) a une longueur 5}
+
+\CommentTok{\# Le type du vecteur retourné par FUN ne correspond pas}
+\FunctionTok{vapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ x, }\AttributeTok{FUN =}\NormalTok{ as.integer, }\AttributeTok{FUN.VALUE =} \FunctionTok{character}\NormalTok{(}\DecValTok{5}\NormalTok{))}
+\CommentTok{\#\textgreater{} Error in vapply(X = x, FUN = as.integer, FUN.VALUE = character(5)): les valeurs doivent être de type \textquotesingle{}character\textquotesingle{},}
+\CommentTok{\#\textgreater{}  mais FUN(X[[1]]) est de type \textquotesingle{}integer\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{tapply()} permet d'appliquer une même fonction à différents sous-ensembles d'un objet. Cette fonction est particulièrement pratique pour calculer des indicateurs statistiques par groupes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# On dispose de 5 mesures d\textquotesingle{}un paramètre quelconque}
+\NormalTok{valeurs }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{6.8}\NormalTok{, }\FloatTok{6.4}\NormalTok{, }\FloatTok{5.8}\NormalTok{, }\FloatTok{8.5}\NormalTok{, }\FloatTok{8.8}\NormalTok{)}
+\CommentTok{\# Chaque mesure appartient à un groupe particulier (A ou B)}
+\NormalTok{groupes }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{)}
+
+\CommentTok{\# On calcule la moyenne de chaque groupe}
+\NormalTok{moy }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ valeurs, }\AttributeTok{INDEX =}\NormalTok{ groupes, }\AttributeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{moy}
+\CommentTok{\#\textgreater{}        A        B }
+\CommentTok{\#\textgreater{} 7.233333 7.300000}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{boucles-uxe0-pruxe9condition}{%
+\subsection{Boucles à précondition}\label{boucles-uxe0-pruxe9condition}}
+
+Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction \texttt{if} \emph{tant que} la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (\texttt{TRUE}) les instructions sont exécutées, si la condition est fausse (\texttt{FALSE}) la boucle s'arrête sans exécuter les instructions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# On définit la valeur initiale d\textquotesingle{}une variable}
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{0}
+
+\CommentTok{\# On répète les instructions tant que i est inférieur à 5}
+\ControlFlowTok{while}\NormalTok{ (i }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(i)   }\CommentTok{\# Afficher la valeur de i}
+\NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1} \CommentTok{\# Incrémenter la valeur i}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 0}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} [1] 2}
+\CommentTok{\#\textgreater{} [1] 3}
+\CommentTok{\#\textgreater{} [1] 4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Remarque,colframe=darkblue]
+
+Il convient d'être prudent avec l'usage de l'instruction \texttt{while}, car une mauvaise définition de la condition d'arrêt peut créer une boucle infinie.
+
+\end{tcolorbox}
 
 \hypertarget{part-pruxe9paration-des-donnuxe9es}{%
 \part{Préparation des données}\label{part-pruxe9paration-des-donnuxe9es}}
 
 \hypertarget{importer}{%
 \chapter{Importer}\label{importer}}
+
+\hypertarget{nettoyer}{%
+\chapter{Nettoyer}\label{nettoyer}}
 
 \hypertarget{selectionner}{%
 \chapter{Selectionner}\label{selectionner}}
@@ -1841,6 +2556,9 @@ Pour extraire ou remplacer des valeurs dans un \texttt{data.frame}, on peut util
 
 \hypertarget{transformer}{%
 \chapter{Transformer}\label{transformer}}
+
+\hypertarget{exporter}{%
+\chapter{Exporter}\label{exporter}}
 
 \hypertarget{part-uxe9luxe9ments-de-statistiques}{%
 \part{Éléments de statistiques}\label{part-uxe9luxe9ments-de-statistiques}}
@@ -1875,16 +2593,56 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \hypertarget{part-cartographie}{%
 \part{Cartographie}\label{part-cartographie}}
 
-\hypertarget{coordonnuxe9es-et-projections}{%
-\chapter{Coordonnées et projections}\label{coordonnuxe9es-et-projections}}
-
-\hypertarget{format-de-donnuxe9es}{%
-\chapter{Format de données}\label{format-de-donnuxe9es}}
-
 \appendix
 
 \hypertarget{part-annexes}{%
 \part{Annexes}\label{part-annexes}}
+
+\hypertarget{cheat-sheet}{%
+\chapter{Fonctions utiles}\label{cheat-sheet}}
+
+\hypertarget{fonctions-sequences}{%
+\section{Séquences}\label{fonctions-sequences}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Séquence de nombres entiers}
+\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Séquence de 1 à 10}
+\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+
+\CommentTok{\# Séquence de 1 à 10 par pas de 2}
+\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 1 3 5 7 9}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Séquence de 10 entiers}
+\FunctionTok{seq\_len}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{8.6}\NormalTok{, }\FloatTok{4.1}\NormalTok{, }\FloatTok{3.9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{1.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{, }\FloatTok{1.6}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{2.6}\NormalTok{, }\FloatTok{5.5}\NormalTok{)}
+\FunctionTok{length}\NormalTok{(x)}
+\CommentTok{\#\textgreater{} [1] 10}
+
+\CommentTok{\# Séquence de même longueur qu\textquotesingle{}un objet}
+\FunctionTok{seq\_along}\NormalTok{(x)}
+\CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{bonnes-pratiques}{%
 \chapter{Bonnes pratiques}\label{bonnes-pratiques}}
@@ -1935,7 +2693,7 @@ RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/
 \caption{Création d'un projet avec RStudio.}\label{fig:rstudio-project}
 \end{figure}
 
-Un projet créé par RStudio est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers.
+Un projet créé par RStudio est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser \texttt{setwd()}.
 
 L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig.~\ref{fig:xkcd-documents}), comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}} par exemple.
 
@@ -2037,7 +2795,7 @@ Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, a
 \begin{itemize}
 \tightlist
 \item
-  Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (écrivez vos propres fonctions !).
+  Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (\protect\hyperlink{fonctions-ecrire}{écrivez vos propres fonctions !}).
 \item
   Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
 \item
@@ -2303,6 +3061,30 @@ Si vous utilisez ponctuellement une unique fonction d'un package, utilisez \text
 \end{Shaded}
 
 L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
+
+\hypertarget{boucles-1}{%
+\subsection{Boucles}\label{boucles-1}}
+
+Utilisez \texttt{seq\_along()} dans les boucles pour gérer correctement les cas où \texttt{x} est vide.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Soit un vecteur numérique de longueur nulle}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# La boucle ne s\textquotesingle{}exécute pas (OK)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(x)) \{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+
+\CommentTok{\# La boucle s\textquotesingle{}exécute pour i=1 puis i=0 (!)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(x)) \{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\CommentTok{\#\textgreater{} [1] 1}
+\CommentTok{\#\textgreater{} [1] 0}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{affectation}{%
 \subsection{Affectation}\label{affectation}}

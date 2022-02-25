@@ -49,26 +49,26 @@
 <li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
 <li><a class="active" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
 <li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
-<li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs</a></li>
+<li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
-<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">6</span> Fonctions d’ordre supérieur</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="importer.html"><span class="header-section-number">7</span> Importer</a></li>
+<li><a class="" href="importer.html"><span class="header-section-number">6</span> Importer</a></li>
+<li><a class="" href="nettoyer.html"><span class="header-section-number">7</span> Nettoyer</a></li>
 <li><a class="" href="selectionner.html"><span class="header-section-number">8</span> Selectionner</a></li>
 <li><a class="" href="filtrer.html"><span class="header-section-number">9</span> Filtrer</a></li>
 <li><a class="" href="transformer.html"><span class="header-section-number">10</span> Transformer</a></li>
+<li><a class="" href="exporter.html"><span class="header-section-number">11</span> Exporter</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">11</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">12</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">13</span> Visualisation de données</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Visualisation de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">14</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">15</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">16</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">15</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">16</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">17</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">17</span> Coordonnées et projections</a></li>
-<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">18</span> Format de données</a></li>
 <li class="book-part">Annexes</li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">18</span> Fonctions utiles</a></li>
 <li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">19</span> Bonnes pratiques</a></li>
 <li><a class="" href="style.html"><span class="header-section-number">20</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
@@ -84,15 +84,41 @@
 <span class="header-section-number">2</span> Vecteurs<a class="anchor" aria-label="anchor" href="#r-vector"><i class="fas fa-link"></i></a>
 </h1>
 <p>Le vecteur (<code>vector</code>) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>). Un vecteur est simplement un ensemble d’<strong>éléments</strong>.</p>
-<p>Un vecteur peut être un <a href="r-vector.html#r-atomic">vecteur atomique</a> (<code>atomic</code>), si tous ses éléments sont de même <strong>type</strong>, ou une <a href="r-vector.html#r-list">liste</a> (<code>list</code>), si ses éléments sont de types différents. Un vecteur peut également avoir des <a href="r-vector.html#attributs"><strong>attributs</strong></a> (sorte de métadonnées).</p>
+<p>Un vecteur peut être un <a href="r-vector.html#r-atomic">vecteur atomique</a> (<code>atomic</code>), si tous ses éléments sont de même <strong>type</strong>, ou une <a href="r-vector.html#r-list">liste</a> (<code>list</code>), si ses éléments sont de types différents (tab. <a href="r-vector.html#tab:r-data-structures">2.1</a>). Un vecteur peut également avoir des <a href="r-vector.html#attributs"><strong>attributs</strong></a> (sorte de métadonnées).</p>
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:r-vector-types"></span>
 <div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:70%;height:400px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  graph [rankdir = BT]\n  \n  node [shape = plaintext, fontname = arial]\n  vector; atomic; list; \"data.frame\";\n  logical; integer; double; character\n  \n  {atomic list} -> vector\n  \"data.frame\" -> list\n  {logical integer double character} -> atomic\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p class="caption">
-Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>48</sup></a></span>.
+Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>50</sup></a></span>.
 </p>
 </div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:r-data-structures">Tableau 2.1: </span> Structures de données des objets de R.</caption>
+<thead><tr class="header">
+<th align="left">Dimensions</th>
+<th align="left">Objet homogène</th>
+<th align="left">Objet hétérogène</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left"><code>atomic</code></td>
+<td align="left"><code>list</code></td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left"><code>matrix</code></td>
+<td align="left"><code>data.frame</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(n\)</span></td>
+<td align="left"><code>array</code></td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table></div>
 <div id="r-atomic" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> Vecteurs atomiques (<code>atomic</code>)<a class="anchor" aria-label="anchor" href="#r-atomic"><i class="fas fa-link"></i></a>
@@ -113,7 +139,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="header-section-number">2.1.1</span> Création<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation"><i class="fas fa-link"></i></a>
 </h3>
 <p>Chacun de ces types possède une syntaxe particulière pour former des vecteur contenant un unique élément (scalaires) :</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>          <span class="co"># logical</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1L</span>            <span class="co"># integer</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10.5</span>          <span class="co"># double</span>
@@ -125,25 +151,25 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <li>Une chaîne de caractère doit toujours être encadrée par des guillemets simples (<code>'</code>) ou doubles (<code>"</code>). Si les guillemets sont manquantes, R l’interprétera comme un nom d’objet (et cherchera l’objet correspondant).</li>
 </ul>
 <p>La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (<em>combine</em>) permet de construire des vecteurs longs :</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vec_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># logical</span>
 <span class="va">vec_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">3L</span><span class="op">)</span>        <span class="co"># integer</span>
 <span class="va">vec_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span>     <span class="co"># double</span>
 <span class="va">vec_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>     <span class="co"># character</span></code></pre></div>
+</div>
+<div id="description" class="section level3" number="2.1.2">
+<h3>
+<span class="header-section-number">2.1.2</span> Description<a class="anchor" aria-label="anchor" href="#description"><i class="fas fa-link"></i></a>
+</h3>
 <p>La fonction <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code> permet de connaitre le type d’un vecteur et la fonction <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> sa longueur :</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">vec_cha</span><span class="op">)</span>
 <span class="co">#&gt; [1] "character"</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">vec_cha</span><span class="op">)</span>
 <span class="co">#&gt; [1] 3</span></code></pre></div>
-</div>
-<div id="test-et-conversion" class="section level3" number="2.1.2">
-<h3>
-<span class="header-section-number">2.1.2</span> Test et conversion<a class="anchor" aria-label="anchor" href="#test-et-conversion"><i class="fas fa-link"></i></a>
-</h3>
 <p>La famille de fonctions <code>is.*()</code> permet de tester si un vecteur est d’un type particulier :</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">is.logical</a></span><span class="op">(</span><span class="va">vec_log</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 
@@ -155,9 +181,14 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 
 <span class="fu"><a href="https://rdrr.io/r/base/character.html">is.character</a></span><span class="op">(</span><span class="va">vec_cha</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
+</div>
+<div id="conversion" class="section level3" number="2.1.3">
+<h3>
+<span class="header-section-number">2.1.3</span> Conversion<a class="anchor" aria-label="anchor" href="#conversion"><i class="fas fa-link"></i></a>
+</h3>
 <p>Tous les éléments d’un vecteur atomique sont du même type. Lors de la combinaison d’éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie <code>logical</code> &lt; <code>integer</code> &lt; <code>double</code> &lt; <code>character</code>.</p>
 <p>Un vecteur contenant au moins une chaîne de caractères sera donc de type <code>character</code> :</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="st">"B"</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "character"</span>
@@ -166,7 +197,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "character"</span></code></pre></div>
 <p>Un vecteur contenant au moins un nombre réel sera de type <code>double</code> (même s’il ne possède pas de partie décimale) :</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2.1</span>, <span class="fl">3L</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "double"</span>
@@ -175,12 +206,12 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "double"</span></code></pre></div>
 <p>La création d’un <code>integer</code> avec une partie décimale sera automatiquement converti en type <code>double</code> avec un avertissement :</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10.5L</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "double"</span></code></pre></div>
 <p>Il est possible de convertir explicitement un vecteur d’un type à l’autre à l’aide de la famille de fonctions <code>as.*()</code> :</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1 2 3</span>
 
@@ -190,22 +221,22 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">2.1</span>, <span class="fl">3.2</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1.2" "2.1" "3.2"</span></code></pre></div>
 <p>Les valeurs d’un vecteur numérique peuvent être converties en valeurs logiques : les valeurs égales à 0 deviennent <code>FALSE</code>, tout autre valeur non nulle devient <code>TRUE</code> :</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1]  TRUE FALSE  TRUE</span></code></pre></div>
 <p>En cas de conversion impossible, des <a href="#valeurs-manquantes">valeurs manquantes</a> sont générées et un avertissement est retourné :</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; Warning: NAs introduced by coercion</span>
+<span class="co">#&gt; Warning: NAs introduits lors de la conversion automatique</span>
 <span class="co">#&gt; [1] NA NA NA</span></code></pre></div>
 </div>
-<div id="attributs" class="section level3" number="2.1.3">
+<div id="attributs" class="section level3" number="2.1.4">
 <h3>
-<span class="header-section-number">2.1.3</span> Attributs<a class="anchor" aria-label="anchor" href="#attributs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1.4</span> Attributs<a class="anchor" aria-label="anchor" href="#attributs"><i class="fas fa-link"></i></a>
 </h3>
 <p>Les attributs d’un vecteur peuvent être vus comme des métadonnées : des données qui fournissent des informations sur les données du vecteur.</p>
 <p>Les attributs peuvent être spécifiés individuellement à l’aide de la fonction <code><a href="https://rdrr.io/r/base/attr.html">attr()</a></code>, sous la forme de paires associant un nom et une valeur. Dans l’exemple suivant, deux attributs nommés <code>a</code> et <code>b</code> sont associés au vecteur <code>x</code> avec pour valeurs <code>"xyz"</code> et <code>1 2 3</code>, respectivement :</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"a"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"xyz"</span>
@@ -216,11 +247,11 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"b"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1 2 3</span></code></pre></div>
 <div class="rmdnote">
-<p>La syntaxe particulière <code>attr(x, "a") &lt;- "xyz"</code> indique qu’il s’agit d’une fonction de remplacement. Ces fonctions modifient l’objet correspondant au premier argument.</p>
+<p>La syntaxe particulière <code>attr(x, "a") &lt;- "xyz"</code> indique qu’il s’agit d’une fonction de <a href="subset.html#subset">remplacement</a>. Ces fonctions particulières modifient en place l’objet correspondant au premier argument (<code>x</code>).</p>
 </div>
 <p>L’utilisation des attributs requiert un peu de prudence, car à quelques exceptions près les attributs ne sont pas conservés lors d’opérations sur les vecteurs (comme lors de l’<a href="subset.html#subset">extraction de sous-ensembles</a>). Il existe cependant deux attributs particuliers qui sont généralement conservés : les noms (<code>names</code>) et la dimension (<code>dim</code>, qui transforme un vecteur en <a href="r-vector.html#r-matrix">matrice</a>).</p>
 <p>Il est possible d’associer des noms aux différents éléments d’un vecteur, soit au moment de sa création, soit <em>a posteriori</em> avec la fonction <code><a href="https://rdrr.io/r/base/names.html">names()</a></code> (qui permet également d’extraire les noms) :</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Un nom est associé à chaque élément</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span>, b <span class="op">=</span> <span class="fl">2</span>, c <span class="op">=</span> <span class="fl">3</span>, d <span class="op">=</span> <span class="fl">4</span>, e <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="va">x</span>
@@ -254,7 +285,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="header-section-number">2.2</span> Listes (<code>list</code>)<a class="anchor" aria-label="anchor" href="#r-list"><i class="fas fa-link"></i></a>
 </h2>
 <p>Une liste est un vecteur particulier, dont les éléments peuvent être de n’importe quel type. Une liste peut être créée avec avec la fonction <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> :</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Création d'une liste contenant 4 éléments</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="cn">TRUE</span>,
@@ -279,7 +310,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "list"</span>
 
-<span class="co"># Longueur de la liste</span>
+<span class="co"># Longueur de la liste (nombre d'éléments)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] 4</span>
 
@@ -302,7 +333,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; $d</span>
 <span class="co">#&gt; [1] "X" "Y" "Z"</span></code></pre></div>
 <p>Les listes permettent ainsi de créer et de manipuler des objets complexes, qui peuvent contenir d’autres listes (on parle alors de vecteurs récursifs) :</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
@@ -322,9 +353,8 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; [[2]]</span>
 <span class="co">#&gt; [1] 1 2</span></code></pre></div>
 <p>La fonction <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> permet de combiner plusieurs listes en une seule :</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Deux listes sont combinées en une seule</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span><span class="op">)</span>
@@ -342,10 +372,10 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; [1] 1</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[4]]</span>
-<span class="co">#&gt; [1] 2</span>
-
-<span class="co"># Un vecteur atomique est converti en liste avant d'être combiné</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
+<p>Un vecteur atomique est converti en liste avant d’être combiné :</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
   <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
     <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span><span class="op">)</span>
@@ -370,34 +400,32 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="header-section-number">2.3</span> Matrices (<code>matrix</code> et <code>array</code>)<a class="anchor" aria-label="anchor" href="#r-matrix"><i class="fas fa-link"></i></a>
 </h2>
 <p>Un vecteur peut être transformé en un tableau à deux (<code>matrix</code>) ou plusieurs (<code>array</code>) dimensions, en spécifiant l’attribut <code>dim</code>. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède <span class="math inline">\(m\)</span> lignes et <span class="math inline">\(n\)</span> colonnes et contient <span class="math inline">\(m \times n\)</span> éléments du même type.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Soit un vecteur contenant 12 éléments</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>
 <span class="va">x</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] "integer"</span>
-
 <span class="co"># Le vecteur est transformé en une matrice de 2 lignes et 6 colonnes</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] 2 6</span>
 <span class="va">x</span>
 <span class="co">#&gt;      [,1] [,2] [,3] [,4] [,5] [,6]</span>
 <span class="co">#&gt; [1,]    1    3    5    7    9   11</span>
-<span class="co">#&gt; [2,]    2    4    6    8   10   12</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>    <span class="co"># Dimensions de la matrice</span>
-<span class="co">#&gt; [1] 2 6</span>
+<span class="co">#&gt; [2,]    2    4    6    8   10   12</span></code></pre></div>
+<p>Les caractéristiques d’une matrice peuvent être retrouvées :</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Type des éléments</span>
+<span class="co">#&gt; [1] "integer"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Nombre d'éléments (valeurs)</span>
+<span class="co">#&gt; [1] 12</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Nombre de lignes</span>
 <span class="co">#&gt; [1] 2</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Nombre de colonnes</span>
-<span class="co">#&gt; [1] 6</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Nombre d'éléments</span>
-<span class="co">#&gt; [1] 12</span>
-<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Type des éléments</span>
-<span class="co">#&gt; [1] "integer"</span></code></pre></div>
+<span class="co">#&gt; [1] 6</span></code></pre></div>
 <p>La fonction <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> permet de créer des matrices en spécifiant le nombre de lignes et de colonnes :</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Par défaut, une matrice est remplie colonne par colonne</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
 <span class="va">x</span>
@@ -414,7 +442,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; [2,]    5    6    7    8</span>
 <span class="co">#&gt; [3,]    9   10   11   12</span></code></pre></div>
 <p>Plusieurs matrices peuvent être combinées en une seule, par lignes (<code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>) ou par colonnes (<code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code>) :</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Combine les lignes de deux matrices</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt;      [,1] [,2] [,3] [,4]</span>
@@ -432,13 +460,14 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; [2,]    2    5    8   11    5    6    7    8</span>
 <span class="co">#&gt; [3,]    3    6    9   12    9   10   11   12</span></code></pre></div>
 <p>Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes avec les fonctions <code><a href="https://rdrr.io/r/base/colnames.html">rownames()</a></code> et <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> ou avec la fonction <code><a href="https://rdrr.io/r/base/dimnames.html">dimnames()</a></code> :</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] "X" "Y" "Z"</span>
-
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; [1] "X" "Y" "Z"</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
 <span class="co">#&gt; [1] "A" "B" "C" "D"</span>
 
 <span class="va">x</span>
@@ -448,11 +477,9 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; Z 3 6 9 12</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"X"</span>, <span class="st">"Y"</span>, <span class="st">"Z"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
-<span class="co">#&gt; [[1]]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; [1] "X" "Y" "Z"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[2]]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; [1] "A" "B" "C" "D"</span>
 
 <span class="va">y</span>
@@ -460,16 +487,13 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt; X 1  2  3  4</span>
 <span class="co">#&gt; Y 5  6  7  8</span>
 <span class="co">#&gt; Z 9 10 11 12</span></code></pre></div>
-<div class="rmdwarning">
-<p>Un vecteur sans attribut <code>dim</code> n’a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !</p>
-</div>
 </div>
 <div id="r-dataframe" class="section level2" number="2.4">
 <h2>
 <span class="header-section-number">2.4</span> Tableaux de données (<code>data.frame</code>)<a class="anchor" aria-label="anchor" href="#r-dataframe"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>49</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont d’un seul type) :</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>51</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont du même type) :</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,
   b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>
@@ -478,34 +502,28 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <span class="co">#&gt;   a b</span>
 <span class="co">#&gt; 1 1 x</span>
 <span class="co">#&gt; 2 2 y</span>
-<span class="co">#&gt; 3 3 z</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] "list"</span></code></pre></div>
+<span class="co">#&gt; 3 3 z</span></code></pre></div>
+<p>Un <code>data.frame</code> est une liste :</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Type list</span>
+<span class="co">#&gt; [1] "list"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Nombre d'éléments (colonnes)</span>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
 <p>Un <code>data.frame</code> est un tableau à deux dimensions :</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Nombre de lignes</span>
 <span class="co">#&gt; [1] 3</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Nombre de colonnes</span>
 <span class="co">#&gt; [1] 2</span></code></pre></div>
 <p>Lignes et colonnes d’un <code>data.frame</code> sont nommées :</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Noms de lignes</span>
 <span class="co">#&gt; [1] "1" "2" "3"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="co"># Noms de colonnes</span>
 <span class="co">#&gt; [1] "a" "b"</span></code></pre></div>
-<p>Sauf instruction spécifique lors de la création d’un <code>data.frame</code>, les noms de lignes sont générés automatiquement à partir d’une séquence de nombres entiers. Malgré les apparences, il s’agit bien de noms de lignes (de type <code>character</code>) et ils ne doivent pas être confondu avec les indices (numérotation) des lignes.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
-  greek <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span>,
-  home <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ithaca"</span>, <span class="st">"Troy"</span>, <span class="st">"Phthia"</span><span class="op">)</span>,
-  row.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Odysseus"</span>, <span class="st">"Hector"</span>, <span class="st">"Achilles"</span><span class="op">)</span>
-<span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt;          greek   home</span>
-<span class="co">#&gt; Odysseus  TRUE Ithaca</span>
-<span class="co">#&gt; Hector   FALSE   Troy</span>
-<span class="co">#&gt; Achilles  TRUE Phthia</span></code></pre></div>
+<div class="rmdnote">
+<p>Sauf instruction spécifique lors de la création d’un <code>data.frame</code>, les noms de lignes sont générés automatiquement à partir d’une séquence de nombres entiers. Malgré les apparences, il s’agit bien de noms de lignes (de type <code>character</code>) et ils ne doivent pas être confondu avec les indices des lignes.</p>
+</div>
 <p>Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs <code>data.frame</code> en un seul tableau de données avec <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code> et <code><a href="https://rdrr.io/r/base/cbind.html">cbind()</a></code>. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des <a href="#jointures">jointures</a>.</p>
 </div>
 </div>
@@ -520,8 +538,9 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <li>
 <a class="nav-link" href="#r-atomic"><span class="header-section-number">2.1</span> Vecteurs atomiques (atomic)</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#cr%C3%A9ation"><span class="header-section-number">2.1.1</span> Création</a></li>
-<li><a class="nav-link" href="#test-et-conversion"><span class="header-section-number">2.1.2</span> Test et conversion</a></li>
-<li><a class="nav-link" href="#attributs"><span class="header-section-number">2.1.3</span> Attributs</a></li>
+<li><a class="nav-link" href="#description"><span class="header-section-number">2.1.2</span> Description</a></li>
+<li><a class="nav-link" href="#conversion"><span class="header-section-number">2.1.3</span> Conversion</a></li>
+<li><a class="nav-link" href="#attributs"><span class="header-section-number">2.1.4</span> Attributs</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#r-list"><span class="header-section-number">2.2</span> Listes (list)</a></li>
@@ -544,7 +563,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-19.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

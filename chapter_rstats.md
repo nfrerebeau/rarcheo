@@ -15,7 +15,7 @@ Il est alors possible d'entrer une **expression**, qui va être **évaluée** pa
 #> [1] 2
 ```
 
-Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'[opérateur](#operateurs) `:` (deux-points) permet de construire des [séquences](#sequences) de nombres entiers :
+Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'opérateur `:` (deux-points) permet de construire des [séquences](#fonctions-sequences) de nombres entiers :
 
 
 ```r
@@ -29,13 +29,13 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 #>  [97]  96  97  98  99 100
 ```
 
-La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice** de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence à la 17^e^ valeur, etc.).
+La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice** de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17^e^ valeur, etc.).
 
 ::: {.rmdimportant}
 Contrairement à [Python](https://www.python.org/), dans R les [indices commencent à 1](#extraction) et non à 0.
 :::
 
-Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie : 
+Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie sur plusieurs lignes : 
 
 
 ```r
@@ -73,11 +73,22 @@ x
 #> [1] 1
 ```
 
+Il est possible de copier une variable :
+
+
+```r
+y <- x
+y
+#> [1] 1
+```
+
+Une fois copié, il n'existe aucun lien entre l'objet initial et sa copie. Dans l'exemple précédent, si `x` est modifié après avoir été copié dans `y`, la valeur de `y` ne sera pas modifiée.
+
 Il est possible d'affecter plusieurs variables en même temps :
 
 
 ```r
-y <- z <- 1
+i <- j <- 1
 ```
 
 Les variables ainsi crées peuvent être réutilisées :
@@ -86,7 +97,7 @@ Les variables ainsi crées peuvent être réutilisées :
 ```r
 x + 1
 #> [1] 2
-y + z
+i + j
 #> [1] 2
 ```
 
@@ -116,7 +127,11 @@ Un objet possède un type et une structure de données particulière. Le type d'
 
 ## Fonctions {#fonctions}
 
-Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. R fournit de très nombreuses fonctions, pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#) ou d'[installer des packages](#packages) supplémentaires.
+Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. 
+
+R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#fonctions-ecrire) ou d'[installer des packages](#packages) supplémentaires.
+
+### Utiliser des fonctions
 
 Par exemple, la fonction `round()` permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction `round()` réalise un arrondi à zéro chiffre après la virgule :
 
@@ -161,9 +176,48 @@ round(3.141593, digits = 2)
 Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
 :::
 
+### Écrire des fonctions {#fonctions-ecrire}
+
+Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
+
+
+```r
+addition <- function(x, y) {
+  # On définit les instructions à exécuter
+  z <- x + y
+  # On précise le résultat à retourner au terme des calculs
+  return(z)
+}
+
+addition(1, 2)
+#> [1] 3
+```
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+
+```r
+# Définition de la fonction
+# Par défaut, la valeur de y est 2
+puissance <- function(x, y = 2) {
+  z <- x^y
+  return(z)
+}
+
+# L'utilisateur ne change pas la valeur par défaut
+puissance(2) # 2 au carré
+#> [1] 4
+
+# L'utilisateur change explicitement la valeur par défaut
+puissance(2, 3) # 2 au cube
+#> [1] 8
+```
+
 ## Packages {#packages}
 
-Lors d'une première installation de R, un premier ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
+Lors d'une première installation de R, un ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
 
 * Les packages essentiels : `base`, `compiler`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `parallel`, `splines`, `stats`, `stats4`, `tcltk`, `tools`, `translations`, `utils`.
 * Les packages recommandés : `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `MASS`, `Matrix`, `mgcv`, `nlme`, `nnet`, `rpart`, `spatial`, `survival`.
@@ -174,7 +228,7 @@ L'installation d'un package permet de bénéficier de fonctionnalités suppléme
 Une bonne pratique consiste à toujours chercher à [limiter les dépendances](#dependances).
 :::
 
-Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction `install.packages()`^[`install.packages()` permet également d'installer des packages publiés sur d'[autres dépôts](#packages-depots) que le CRAN.].
+Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction `install.packages()`^[`install.packages()` permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme [Bioconductor](https://www.bioconductor.org/).].
 
 La commande suivante permet d'installer le package [*folio*](https://packages.tesselle.org/folio/) qui contient les jeux de données utilisés par la suite :
 
@@ -187,12 +241,11 @@ install.packages("folio")
 La plupart des packages publiés sur le CRAN font l'objet de mises à jour régulières. Pour maintenir à jour les packages installés sur votre ordinateur, la fonction `old.packages()` permet de lister les packages pour lesquels il existe une nouvelle version et `update.packages()` permet de télécharger et d'installer les nouvelles versions.
 :::
 
-Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base^[La liste des packages chargés par défaut au lancement de R peut être obtenue avec `getOption('defaultPackages')`.]. Si on utilise la fonction `data()` pour charger le jeux de données `intcal20` du package *folio* sans que ce dernier soit chargé, R ne sait pas où chercher l'objet et retourne un avertissement :
+Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l'utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base^[La liste des packages chargés par défaut au lancement de R peut être obtenue avec `getOption('defaultPackages')`.]. Dans l'exemple suivant, si on utilise la fonction `data()` pour charger le jeux de données `intcal20` du package *folio* sans que ce dernier soit chargé. R ne sait pas où chercher l'objet et retourne un avertissement :
 
 
 ```r
 data(intcal20)
-#> Warning in data(intcal20): data set 'intcal20' not found
 ```
 
 Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
@@ -289,7 +342,7 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 
 Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur est simplement un ensemble d'**éléments**.
 
-Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents. Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
+Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents (tab. \@ref(tab:r-data-structures)). Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
 
 (ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
 
@@ -301,6 +354,14 @@ Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses �
 
 \caption{(ref:r-vector-types)}(\#fig:r-vector-types)
 \end{figure}
+
+Table: (\#tab:r-data-structures) Structures de données des objets de R.
+
+| Dimensions | Objet homogène | Objet hétérogène |
+|:-----------|:---------------|:-----------------|
+| 1          | `atomic`       | `list`           |
+| 2          | `matrix`       | `data.frame`     |
+| $n$        | `array`        | -                |
 
 ## Vecteurs atomiques (`atomic`) {#r-atomic}
 
@@ -338,6 +399,8 @@ vec_num <- c(1.2, 2.1, 3.2)     # double
 vec_cha <- c("A", "B", "C")     # character
 ```
 
+### Description
+
 La fonction `typeof()` permet de connaitre le type d'un vecteur et la fonction `length()` sa longueur :
 
 
@@ -348,8 +411,6 @@ typeof(vec_cha)
 length(vec_cha)
 #> [1] 3
 ```
-
-### Test et conversion
 
 La famille de fonctions `is.*()` permet de tester si un vecteur est d'un type particulier :
 
@@ -367,6 +428,8 @@ is.double(vec_num)
 is.character(vec_cha)
 #> [1] TRUE
 ```
+
+### Conversion {#conversion}
 
 Tous les éléments d'un vecteur atomique sont du même type. Lors de la combinaison d'éléments de types différents, R va réaliser une conversion implicite pour tenter de représenter tous les éléments du vecteur de manière raisonnable. Le type du vecteur final est alors déterminé par la hiérarchie `logical` < `integer` < `double` < `character`.
 
@@ -432,7 +495,7 @@ En cas de conversion impossible, des [valeurs manquantes](#valeurs-manquantes) s
 
 ```r
 as.numeric(c("A", "B", "C"))
-#> Warning: NAs introduced by coercion
+#> Warning: NAs introduits lors de la conversion automatique
 #> [1] NA NA NA
 ```
 
@@ -456,7 +519,7 @@ attr(x, "b")
 ```
 
 ::: {.rmdnote}
-La syntaxe particulière `attr(x, "a") <- "xyz"` indique qu'il s'agit d'une fonction de remplacement. Ces fonctions modifient l'objet correspondant au premier argument.
+La syntaxe particulière `attr(x, "a") <- "xyz"` indique qu'il s'agit d'une fonction de [remplacement](#subset). Ces fonctions particulières modifient en place l'objet correspondant au premier argument (`x`).
 :::
 
 L'utilisation des attributs requiert un peu de prudence, car à quelques exceptions près les attributs ne sont pas conservés lors d'opérations sur les vecteurs (comme lors de l'[extraction de sous-ensembles](#subset)). Il existe cependant deux attributs particuliers qui sont généralement conservés : les noms (`names`) et la dimension (`dim`, qui transforme un vecteur en [matrice](#r-matrix)).
@@ -524,7 +587,7 @@ x
 typeof(x)
 #> [1] "list"
 
-# Longueur de la liste
+# Longueur de la liste (nombre d'éléments)
 length(x)
 #> [1] 4
 
@@ -576,7 +639,6 @@ La fonction `c()` permet de combiner plusieurs listes en une seule :
 
 
 ```r
-# Deux listes sont combinées en une seule
 x <- c(
   list(
     c(TRUE, FALSE),
@@ -596,8 +658,12 @@ x
 #> 
 #> [[4]]
 #> [1] 2
+```
 
-# Un vecteur atomique est converti en liste avant d'être combiné
+Un vecteur atomique est converti en liste avant d'être combiné :
+
+
+```r
 x <- c(
   list(
     c(TRUE, FALSE),
@@ -630,26 +696,28 @@ x <- 1:12
 x
 #>  [1]  1  2  3  4  5  6  7  8  9 10 11 12
 
-typeof(x)
-#> [1] "integer"
-
 # Le vecteur est transformé en une matrice de 2 lignes et 6 colonnes
 dim(x) <- c(2, 6)
+dim(x)
+#> [1] 2 6
 x
 #>      [,1] [,2] [,3] [,4] [,5] [,6]
 #> [1,]    1    3    5    7    9   11
 #> [2,]    2    4    6    8   10   12
+```
 
-dim(x)    # Dimensions de la matrice
-#> [1] 2 6
+Les caractéristiques d'une matrice peuvent être retrouvées :
+
+
+```r
+typeof(x) # Type des éléments
+#> [1] "integer"
+length(x) # Nombre d'éléments (valeurs)
+#> [1] 12
 nrow(x)   # Nombre de lignes
 #> [1] 2
 ncol(x)   # Nombre de colonnes
 #> [1] 6
-length(x) # Nombre d'éléments
-#> [1] 12
-typeof(x) # Type des éléments
-#> [1] "integer"
 ```
 
 La fonction `matrix()` permet de créer des matrices en spécifiant le nombre de lignes et de colonnes :
@@ -700,11 +768,12 @@ Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes 
 
 ```r
 rownames(x) <- c("X", "Y", "Z")
-rownames(x)
-#> [1] "X" "Y" "Z"
-
 colnames(x) <- c("A", "B", "C", "D")
-colnames(x)
+dimnames(x)
+#> [[1]]
+#> [1] "X" "Y" "Z"
+#> 
+#> [[2]]
 #> [1] "A" "B" "C" "D"
 
 x
@@ -714,11 +783,9 @@ x
 #> Z 3 6 9 12
 
 dimnames(y) <- list(c("X", "Y", "Z"), c("A", "B", "C", "D"))
-dimnames(y)
-#> [[1]]
+rownames(y)
 #> [1] "X" "Y" "Z"
-#> 
-#> [[2]]
+colnames(y)
 #> [1] "A" "B" "C" "D"
 
 y
@@ -728,13 +795,9 @@ y
 #> Z 9 10 11 12
 ```
 
-::: {.rmdwarning}
-Un vecteur sans attribut `dim` n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
-:::
-
 ## Tableaux de données (`data.frame`) {#r-dataframe}
 
-Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` (fig. \@ref(fig:r-vector-types)) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont d'un seul type) :
+Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` (fig. \@ref(fig:r-vector-types)) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type) :
 
 
 ```r
@@ -747,9 +810,16 @@ x
 #> 1 1 x
 #> 2 2 y
 #> 3 3 z
+```
 
-typeof(x)
+Un `data.frame` est une liste :
+
+
+```r
+typeof(x) # Type list
 #> [1] "list"
+length(x) # Nombre d'éléments (colonnes)
+#> [1] 2
 ```
 
 Un `data.frame` est un tableau à deux dimensions :
@@ -772,29 +842,23 @@ colnames(x) # Noms de colonnes
 #> [1] "a" "b"
 ```
 
-Sauf instruction spécifique lors de la création d'un `data.frame`, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type `character`) et ils ne doivent pas être confondu avec les indices (numérotation) des lignes.
-
-
-```r
-x <- data.frame(
-  greek = c(TRUE, FALSE, TRUE),
-  home = c("Ithaca", "Troy", "Phthia"),
-  row.names = c("Odysseus", "Hector", "Achilles")
-)
-x
-#>          greek   home
-#> Odysseus  TRUE Ithaca
-#> Hector   FALSE   Troy
-#> Achilles  TRUE Phthia
-```
+::: {.rmdnote}
+Sauf instruction spécifique lors de la création d'un `data.frame`, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type `character`) et ils ne doivent pas être confondu avec les indices des lignes.
+:::
 
 Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs `data.frame` en un seul tableau de données avec `rbind()` et `cbind()`. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des [jointures](#jointures).
 
 # Extraction et remplacement {#subset}
 
+R possède un mécanisme très puissant pour naviguer parmi les valeurs d'un objet, afin d'en extraire ou d'en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.
+
+La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs `[` ou `[[` : `[` permet d'extraire un sous-ensemble, tandis que `[[` permet d'extraire un unique élément. Cette distinction correspond aux relations d'[appartenance](https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)) et d'[inclusion](https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)) de la théorie des ensembles en mathématiques^[Par exemple, si $M$ est un ensemble (collection) tel que $M = \{1,2,3\}$, alors $1$, $2$ et $3$ sont des éléments de $M$, tandis que $\{1,2\}$ ou $\{3\}$ sont des sous-ensembles de $M$.] (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de [listes](#subset-list)).
+
+Ces opérateurs peuvent être utilisés conjointement avec l'affectation (`<-`) pour remplacer des valeurs. On écrira ainsi : `x[i] <- y` où `i` correspond à l'indice (position) des valeurs à remplacer dans le vecteur `x` et `y` correspond au vecteur de nouvelles valeurs.
+
 ## Vecteurs atomiques {#subset-atomic}
 
-Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur `[` (crochet) :
+Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur `[` :
 
 
 ```r
@@ -838,20 +902,30 @@ x <- c(1.3, 2.4, 3.5, 4.6, 5.7)
   #> 1.3 3.5 5.7
   ```
 
-Les éléments ainsi sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+L'utilisation de `[[` permet d'extraire un seul et unique élément au lieu d'un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre `[` et `[[` n'est pas évidente^[Hormis qu'une tentative de sélection de plusieurs éléments avec `[[` produira une erreur.] et est sans doute mieux illustrée avec un exemple :
+
 
 ```r
-x <- 1:5
-x
-#> [1] 1 2 3 4 5
+x[1] # L'attribut names est conservé (sous-ensemble)
+#>   a 
+#> 1.3
 
+x[[1]] # L'attribut names n'est pas conservé (élément)
+#> [1] 1.3
+```
+
+Les éléments sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+
+
+```r
 # Remplacement du premier et du troisième élément
 x[c(1, 3)] <- c(100, 300)
 x
-#> [1] 100   2 300   4   5
+#>     a     b     c     d     e 
+#> 100.0   2.4 300.0   4.6   5.7
 ```
 
-Lors de l'affectation de nouvelles valeurs à l'aide de `x[i] <- y` (où `i` correspond à l'indice des valeurs à remplacer dans `x` et `y` correspond au vecteur de nouvelles valeurs), il faut veiller à plusieurs aspects :
+Lors de l'affectation de nouvelles valeurs dans un vecteur existant, il faut veiller à plusieurs aspects :
 
 * La duplication d'indices :
   
@@ -867,7 +941,7 @@ Lors de l'affectation de nouvelles valeurs à l'aide de `x[i] <- y` (où `i` cor
   x[c(5, 3, 1)] # Change l'ordre des valeurs
   #> [1] 5 3 1
   ```
-* Les mécanismes de conversions implicites :
+* Les mécanismes de [conversions implicites](#conversion) :
   
   ```r
   x <- 1:5
@@ -889,7 +963,7 @@ Lors de l'affectation de nouvelles valeurs à l'aide de `x[i] <- y` (où `i` cor
 
 ## Listes {#subset-list}
 
-La sélection d'éléments dans une liste s'opère de la même façon que pour un vecteur atomique :
+L'extraction de sous-ensembles dans une liste s'opère de la même façon que pour un vecteur atomique :
 
 
 ```r
@@ -909,14 +983,14 @@ x
 #> [1] "X" "Y" "Z"
 
 # Sélection du premier et du troisième élément
-x[c(1, 3)]
+x[c(1, 3)] # Par position
 #> $a
 #> [1]  TRUE FALSE
 #> 
 #> $c
 #> [1] "X" "Y" "Z"
 
-x[c("a", "c")]
+x[c("a", "c")] # Par nom
 #> $a
 #> [1]  TRUE FALSE
 #> 
@@ -929,10 +1003,15 @@ L'opérateur `[` retourne toujours une liste, y compris lorsqu'un unique éléme
 
 ```r
 y <- x[1]
+y
+#> $a
+#> [1]  TRUE FALSE
 typeof(y)
 #> [1] "list"
 
 z <- x[[1]]
+z
+#> [1]  TRUE FALSE
 typeof(z)
 #> [1] "logical"
 ```
@@ -975,7 +1054,7 @@ x
 #> [1] "X" "Y" "Z"
 ```
 
-L'opérateur `[[` permet également de supprimer un élément en lui affectant la valeur `NULL` :
+L'opérateur `[[` permet également de supprimer un élément dans une liste en lui affectant la valeur `NULL` :
 
 
 ```r
@@ -1038,7 +1117,7 @@ x[2:3, ]
 #> z 3 6 9 12
 ```
 
-Par défaut, `[` **simplifie** les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La dimensionnalité de l'objet d'origine peut cependant être conservée à l'aide de l'argument `drop` :
+Par défaut, `[` **simplifie** les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La structure de l'objet d'origine peut cependant être conservée à l'aide de l'argument `drop` :
 
 
 ```r
@@ -1054,49 +1133,49 @@ x[, 1, drop = FALSE] # Retourne une matrice
 #> z 3
 ```
 
+::: {.rmdwarning}
+Un vecteur sans attribut `dim` n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
+:::
+
 Les matrices sont des [vecteurs possédant un attribut particulier](#r-matrix) (`dim`), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
 
 
 ```r
-# Sélection des premières et troisièmes valeurs
+# Sélection des première et troisième valeurs
 x[c(1, 3)]
 #> [1] 1 3
 
-# Remplacement du triangle supérieur
-x[upper.tri(x)] <- 0
+# Remplacement des première et troisième valeurs
+x[c(1, 3)] <- 0
 x
-#>   A B C D
-#> x 1 0 0 0
-#> y 2 5 0 0
-#> z 3 6 9 0
-
-# Remplacement du triangle inférieur
-x[lower.tri(x)] <- 0
-x
-#>   A B C D
-#> x 1 0 0 0
-#> y 0 5 0 0
-#> z 0 0 9 0
+#>   A B C  D
+#> x 0 4 7 10
+#> y 2 5 8 11
+#> z 0 6 9 12
 ```
 
-Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. La première colonne doit alors contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimension supérieure (`array`) :
+Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. Cette matrice doit contenir les coordonnées (lignes et colonnes) des valeurs à sélectionner. La première colonne doit ainsi contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimensions supérieures (`array`) :
 
 
 ```r
-y <- matrix(c(1, 2, 3, 1, 2, 3), ncol = 2)
+# On veut sélectionner les cellules (1,2), (2,3) et (3,4)
+y <- matrix(c(1, 2, 3, 2, 3, 4), ncol = 2)
+
+# La première colonne contient les indices des lignes
+# La seconde colonne contient les indices des colonnes
 y
 #>      [,1] [,2]
-#> [1,]    1    1
-#> [2,]    2    2
-#> [3,]    3    3
+#> [1,]    1    2
+#> [2,]    2    3
+#> [3,]    3    4
 
 x[y]
-#> [1] 1 5 9
+#> [1]  4  8 12
 ```
 
 ## Tableaux de données {#subset-dataframe}
 
-Pour extraire ou remplacer des valeurs dans un `data.frame`, on peut utiliser deux stratégies (les `data.frame` ont les caractéristiques des listes et des matrices) :
+Pour extraire ou remplacer des valeurs dans un `data.frame`, on peut utiliser deux stratégies. Les `data.frame` ont en effet les caractéristiques des listes et des matrices :
 
 
 ```r
@@ -1105,12 +1184,6 @@ x <- data.frame(
   b = c(1, 2, 3, 4),
   c = c("A", "B", "C", "D")
 )
-x
-#>       a b c
-#> 1  TRUE 1 A
-#> 2 FALSE 2 B
-#> 3  TRUE 3 C
-#> 4  TRUE 4 D
 
 # Comme une liste !
 x[c("a", "b", "c")] # Colonnes nommées "a", "b" et "c"
@@ -1141,16 +1214,566 @@ x[, "b", drop = FALSE]
 #> 4 4
 ```
 
-# Opérateurs {#operateurs}
+# Opérateurs binaires {#operateurs}
+
+## Opérateurs arithmétiques
+
+Les opérateurs arithmétiques (tab. \@ref(tab:operateurs-math)) permettent de réaliser les opérations élémentaires :
+
+
+```r
+x <- 1
+y <- 2
+
+# Addition
+x + y
+#> [1] 3
+
+# Soustraction
+x - y
+#> [1] -1
+
+# Multiplication
+x * y
+#> [1] 2
+
+# Exponentiation
+x^y
+#> [1] 1
+```
+
+Table: (\#tab:operateurs-math) Les principaux opérateurs arithmétiques de R.
+
+| Opérateur | Description    |
+|:---------:|:---------------|
+| `+`       | addition       |
+| `-`       | soustraction   |
+| `*`       | multiplication |
+| `/`       | division       |
+| `^`       | exponentiation |
+
+Une des particularités des R est de *vectoriser* de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :
+
+
+```r
+x <- 1:5
+y <- 6:10
+
+# Addition des éléments de x et y, un à un
+# Équivaut à réaliser 1 + 6, 2 + 7, 3 + 8, 4 + 9 et 5 + 10
+x + y
+#> [1]  7  9 11 13 15
+```
+
+Cet aspect est important dans le cas d'opérations sur des matrices (souvenez-vous, une matrice est simplement un vecteur avec un attribut de dimension et est remplie colonne par colonne) :
+
+
+```r
+# Une matrice de 5 lignes et 2 colonnes
+x <- matrix(1:10, ncol = 2)
+x
+#>      [,1] [,2]
+#> [1,]    1    6
+#> [2,]    2    7
+#> [3,]    3    8
+#> [4,]    4    9
+#> [5,]    5   10
+
+# Un vecteur de 10 éléments
+y <- 1:10
+y
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+
+# Les éléments de x et y sont additionnés un à un
+x + y
+#>      [,1] [,2]
+#> [1,]    2   12
+#> [2,]    4   14
+#> [3,]    6   16
+#> [4,]    8   18
+#> [5,]   10   20
+```
+
+Si deux vecteurs n'ont pas la même longueur, R va **recycler** le plus court des deux et le réutiliser autant que nécessaire. Si la taille de l'objet le plus long n'est pas multiple de la taille de l'objet le plus court, un avertissement sera également retourné :
+
+
+```r
+# Un vecteur de 5 éléments
+i <- 1:5
+i
+#> [1] 1 2 3 4 5
+
+# Les éléments de x et i sont additionnés un à un
+# i est recyclé silencieusement
+x + i
+#>      [,1] [,2]
+#> [1,]    2    7
+#> [2,]    4    9
+#> [3,]    6   11
+#> [4,]    8   13
+#> [5,]   10   15
+
+# Un vecteur de 3 éléments
+j <- 1:3
+j
+#> [1] 1 2 3
+
+# Les éléments de x et j sont additionnés un à un
+# j est recyclé avec un message d'avertissement
+x + j
+#> Warning in x + j: la taille d'un objet plus long n'est pas multiple
+#> de la taille d'un objet plus court
+#>      [,1] [,2]
+#> [1,]    2    9
+#> [2,]    4    8
+#> [3,]    6   10
+#> [4,]    5   12
+#> [5,]    7   11
+```
 
 ## Opérateurs logiques
 
-## Opérateurs arithmétiques
+Les opérateurs logiques (tab. \@ref(tab:operateurs-logiques)) permettent comparer des valeurs. Ces comparaisons se présentent sous la forme d'un test (la condition est-elle vraie ou fausse ?) et retournent donc un vecteur de type `logical` :
+
+
+```r
+# x contient un unique élément
+x <- 1
+
+# La valeur de x est-elle égale à 0 ?
+x == 0
+#> [1] FALSE
+
+# La valeur de x est-elle différente de 1 ?
+x != 1
+#> [1] FALSE
+
+# La valeur de x est-elle supérieure à 0 ?
+x > 0
+#> [1] TRUE
+
+# La valeur de x est-elle inférieure à 2 ?
+x < 2
+#> [1] TRUE
+```
+
+Table: (\#tab:operateurs-logiques) Les opérateurs logiques de R.
+
+| Opérateur | Comparaison           |
+|:---------:|:----------------------|
+| `>`       | strictement supérieur |
+| `>=`      | supérieur ou égal     |
+| `<`       | strictement inférieur |
+| `<=`      | inférieur ou égal     |
+| `==`      | égal                  |
+| `!=`      | différent             |
+| `&`       | ET                    |
+| `|`       | OU                    |
+
+Les opérateurs `&` (ET) et `|` (OU) permettent de combiner plusieurs conditions et de réaliser des comparaisons plus complexes. Dans ce cas, chaque condition est évaluée séparément, puis les résultats sont comparés :
+
+
+```r
+# La valeur de x est-elle comprise entre 0 et 2 ?
+x > 0 & x < 2
+#> [1] TRUE
+
+# La valeur de x est-elle égale à 0 ou 1 ?
+x == 0 | x == 1
+#> [1] TRUE
+
+# ET
+TRUE & TRUE
+#> [1] TRUE
+TRUE & FALSE
+#> [1] FALSE
+FALSE & FALSE
+#> [1] FALSE
+
+# OU
+TRUE | TRUE
+#> [1] TRUE
+TRUE | FALSE
+#> [1] TRUE
+FALSE | FALSE
+#> [1] FALSE
+
+# NEGATION
+!TRUE
+#> [1] FALSE
+!FALSE
+#> [1] TRUE
+```
+
+Souvenez-vous, R vectorise de nombreuses opérations. La comparaison de deux objets est réalisée élément par élément :
+
+
+```r
+x <- c(1, 4, 3, 6, 5)
+y <- c(3, 2, 5, 4, 7)
+
+# Comparaison des éléments de x et y, un à un
+# Équivaut à tester si 1 < 3, 2 < 4, 3 < 5, 4 < 6 et 5 < 7
+x < y
+#> [1]  TRUE FALSE  TRUE FALSE  TRUE
+
+# Toutes les valeurs de x sont-elles inférieures à y ?
+all(x < y)
+#> [1] FALSE
+
+# Au moins une des valeurs de x est-elle inférieure à y ?
+any(x < y)
+#> [1] TRUE
+```
+
+::: {.rmdwarning}
+Prenez garde aux valeurs manquantes ! Si une comparaison est réalisée avec une valeur manquante, le résultat sera une valeur manquante uniquement s'il est ambigu :
+
+
+```r
+TRUE & NA
+#> [1] NA
+FALSE & NA
+#> [1] FALSE
+
+TRUE | NA
+#> [1] TRUE
+FALSE | NA
+#> [1] NA
+```
+:::
+
+Utilisés conjointement avec `[` et `<-`, les opérateurs logiques permettent de [filtrer](#filtrer) et [nettoyer](#nettoyer) facilement ses données :
+
+
+```r
+x <- 0:10
+x
+#>  [1]  0  1  2  3  4  5  6  7  8  9 10
+
+# Extraire les valeurs supérieures à 5
+x[x > 5]
+#> [1]  6  7  8  9 10
+
+# Remplacer les 0 par des valeurs manquantes
+x[x == 0] <- NA
+x
+#>  [1] NA  1  2  3  4  5  6  7  8  9 10
+```
 
 # Structures de contrôle
 
 ## Alternatives
 
+Les alternatives permettent d'exécuter différentes instructions en fonction du résultat d'un test logique.
+
+### Test "si..."
+
+L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
+
+
+```r
+x <- 1
+
+# On définit un test logique
+# On encadre les instructions à exécuter avec des accolades
+if (x > 0) {
+  print("Texte affiché si la condition est vraie.")
+}
+#> [1] "Texte affiché si la condition est vraie."
+```
+
+### Test "si... sinon..."
+
+Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
+
+
+```r
+x <- 1
+
+# On définit un test logique
+if (x < 0) {
+  print("Texte affiché si la condition est vraie.")
+} else {
+  print("Texte affiché si la condition est fausse.")
+}
+#> [1] "Texte affiché si la condition est fausse."
+```
+
+Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
+
+
+```r
+x <- "chien"
+
+if (x == "chat") {
+  # Si la première condition est vraie
+  message("x est un chat.")
+} else if (x == "chien") {
+  # Si la première condition est fausse et la seconde est vraie
+  message("x est un chien.")
+} else {
+  # Si toutes les conditions sont fausses
+  message("x est un animal inconnu.")
+}
+#> x est un chien.
+```
+
+### Test "selon..."
+
+L'instruction `switch` permet de choisir un bloc de code *selon* la valeur d'une variable.
+
+L'exemple précédent peut être réécrit comme suit :
+
+
+```r
+x <- "chien"
+
+switch (
+  x,
+  chat = message("x est un chat."),
+  chien = message("x est un chien."),
+  message("x est un animal inconnu.")
+)
+#> x est un chien.
+```
+
 ## Boucles
 
-# Fonctions d'ordre supérieur
+Les boucles sont un moyen simple pour répéter des instructions en faisant varier un paramètre. 
+
+### Boucles itératives
+
+Une boucle itérative est contrôlée un compteur : une variable qui va prendre une valeur différente à chaque itération de la boucle. Le nombre d'exécutions de la boucle est connu à l'avance.
+
+L'instruction `for` permet d'écrire des boucles en définissant un compteur et en spécifiant les instructions à répéter :
+
+
+```r
+# On définit une variable i (le nom est libre)
+# On précise que i va prendre successivement les valeurs 1 à 5
+# On encadre les instructions à répéter avec des accolades
+for (i in 1:5) {
+  print(i) # A chaque itération, on affiche la valeur de i
+}
+#> [1] 1
+#> [1] 2
+#> [1] 3
+#> [1] 4
+#> [1] 5
+```
+
+Dans l'exemple suivant, on cherche à extraire et à afficher successivement chaque élément d'un vecteur :
+
+
+```r
+# Création d'un vecteur contenant 5 éléments
+x <- c(1.2, 6.5, 6.1, 5.9, 6.4)
+
+# Faire varier i de 1 à 5
+for (i in 1:5) {
+  # Extraire la i-ème valeur de x
+  # Stocker cette valeur dans l'objet k
+  k <- x[i]
+  # Afficher la valeur de k
+  print(k)
+}
+#> [1] 1.2
+#> [1] 6.5
+#> [1] 6.1
+#> [1] 5.9
+#> [1] 6.4
+```
+
+Dans l'exemple précédent, la valeur de `k` a été remplacée à chaque itération de la boucle. Si on veut récupérer les résultats des différentes étapes, il va falloir au préalable créer un objet vide susceptible de recevoir progressivement les différentes valeurs. La définition de cet objet implique d'anticiper les résultats de la boucle pour qu'il ait la structure adéquate :
+
+
+```r
+# Créer un vecteur vide pour récupérer les résultats
+# Le vecteur à la même longueur que le nombre d'itérations
+k <- vector(mode = "numeric", length = 5)
+k
+#> [1] 0 0 0 0 0
+
+# Faire varier i de 1 à 5
+for (i in 1:5) {
+  # Extraire la i-ème valeur de x
+  # Affecter cette valeur à la i-ème position de k
+  k[i] <- x[i]
+}
+k
+#> [1] 1.2 6.5 6.1 5.9 6.4
+```
+
+Dans le cas d'un tableau à deux dimensions, écrire une même série d'instructions pour chaque ligne ou colonne individuellement peut rapidement s'avérer fastidieux. On peut ainsi mettre à profit les boucles pour n'écrire qu'une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.
+
+Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont [correctement structurées](#tidy-data), on peut calculer cette somme pour chacune des colonnes d'un tableau de données^[Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (`rowSums()`) ou des colonnes (`colSums()`) d'un tableau.] :
+
+
+```r
+# On charge les données d'exemple
+# help(compiegne, package = "folio")
+data(compiegne, package = "folio")
+
+# Le tableau possède 5 lignes et 16 colonnes
+dim(compiegne)
+#> [1]  5 16
+
+# On crée un vecteur vide pour récupérer les résultats
+# (16 valeurs sont attendues : la somme de chaque colonne)
+resultats <- vector(mode = "numeric", length = 16)
+
+# On fait varier i de 1 à 16
+for (i in 1:16) {
+  # On extrait la i-ème colonne
+  colonne_i <- compiegne[, i]
+  # On calcule la somme de la colonne
+  total_i <- sum(colonne_i)
+  # On stocke la somme dans la i-ème position du vecteur de résultats
+  resultats[i] <- total_i
+}
+resultats
+#>  [1] 53200 12380 35300  8115  4825  7360  2775 10700   990  5425
+#> [11] 18910 11155  2410  2835  1965  1185
+```
+
+### Boucles de parcours
+
+R possède une famille de fonctions qui permettent d'appliquer facilement des instructions aux différents éléments d'un objet. Les principales fonctions de cette famille sont :
+
+* `apply()` : applique une fonction sur les lignes ou les colonnes d'une matrice (ou sur les dimensions supérieures d'un `array`).
+* `lapply()` et `vapply()` : appliquent une fonction sur les différents éléments d'un vecteur ou d'une liste.
+* `tapply()` : applique une fonction sur différents groupes de valeurs.
+
+L'exemple précédent peut ainsi être simplifié avec `apply()` :
+
+
+```r
+# Inutile de créer un objet vide au préalable
+somme <- apply(
+  X = compiegne, 
+  MARGIN = 2, # Appliquer aux lignes (1) ou aux colonnes (2)
+  FUN = sum
+)
+somme
+#>     A     B     C     D     E     F     G     H     I     J     K 
+#> 53200 12380 35300  8115  4825  7360  2775 10700   990  5425 18910 
+#>     L     M     N     O     P 
+#> 11155  2410  2835  1965  1185
+```
+
+::: {.rmdwarning}
+La fonction `apply()` est conçue pour être utilisée sur une matrice (ou un `array`). Lorsqu'elle est utilisée sur un `data.frame`, elle va donc le convertir en `matrix`. Les éléments d'une matrice sont tous du même type : si les colonnes du `data.frame` sont de types différents, les règles de [conversions implicites](#conversion) s'appliquent et peuvent entraîner des erreurs (par exemple lorsque les colonnes numériques sont transformées en chaînes de caractères, empêchant ainsi l'exécution d'une fonction mathématique).
+:::
+
+Dans le cas d'un `data.frame`, il est préférable d'utiliser `lapply()` lorsqu'on souhaite appliquer une même fonction aux différentes colonnes :
+
+
+```r
+x <- data.frame(
+  a = c(3.6, 7.5, 7.2, 7.7, 4.8),
+  b = c(5.8, 7.5, 1.5, 5.7, 2.3),
+  c = c(7.2, 6.4, 3.3, 3.1, 8.1)
+)
+
+# Convertir toutes les colonnes en integer
+y <- lapply(X = x, FUN = as.integer)
+y
+#> $a
+#> [1] 3 7 7 7 4
+#> 
+#> $b
+#> [1] 5 7 1 5 2
+#> 
+#> $c
+#> [1] 7 6 3 3 8
+```
+
+`lapply()` retourne une simple liste, mais en utilisant une sélection vide, il est possible de conserver la structure du `data.frame` initial :
+ 
+
+```r
+# Convertir toutes les colonnes en integer
+# Conserve la structure du data.frame
+# (mais remplace les données d'origine)
+x[] <- lapply(X = x, FUN = as.integer)
+x
+#>   a b c
+#> 1 3 5 7
+#> 2 7 7 6
+#> 3 7 1 3
+#> 4 7 5 3
+#> 5 4 2 8
+```
+
+`vapply()` est similaire à `lapply()`, mais peut être plus pratique à utiliser. `vapply()` simplifie le résultat final et retourne un vecteur ou, si cela est approprié, une matrice (comme pour `apply()`, faites attention aux règles de [conversions implicites](#conversion)). De plus, le comportement de `vapply()` est prédictible : il est nécessaire de spécifier avec l'argument `FUN.VALUE` le type de résultat retourné.
+
+
+```r
+# On spécifie le résultat de l'application de FUN aux éléments de X
+# Celui-ci doit être un vecteur de type integer et de longueur 5
+z <- vapply(X = x, FUN = as.integer, FUN.VALUE = integer(5))
+z
+#>      a b c
+#> [1,] 3 5 7
+#> [2,] 7 7 6
+#> [3,] 7 1 3
+#> [4,] 7 5 3
+#> [5,] 4 2 8
+```
+
+Si le résultat de l'application de la fonction `FUN` à chaque élément de `X` ne correspond pas à la spécification, l'exécution du code est interrompue et une erreur est retournée :
+
+
+```r
+# La longueur du vecteur retourné par FUN ne correspond pas
+vapply(X = x, FUN = as.integer, FUN.VALUE = integer(3))
+#> Error in vapply(X = x, FUN = as.integer, FUN.VALUE = integer(3)): les valeurs doivent être d'une longueur 3,
+#>  mais FUN(X[[1]]) a une longueur 5
+
+# Le type du vecteur retourné par FUN ne correspond pas
+vapply(X = x, FUN = as.integer, FUN.VALUE = character(5))
+#> Error in vapply(X = x, FUN = as.integer, FUN.VALUE = character(5)): les valeurs doivent être de type 'character',
+#>  mais FUN(X[[1]]) est de type 'integer'
+```
+
+`tapply()` permet d'appliquer une même fonction à différents sous-ensembles d'un objet. Cette fonction est particulièrement pratique pour calculer des indicateurs statistiques par groupes :
+
+
+```r
+# On dispose de 5 mesures d'un paramètre quelconque
+valeurs <- c(6.8, 6.4, 5.8, 8.5, 8.8)
+# Chaque mesure appartient à un groupe particulier (A ou B)
+groupes <- c("A", "A", "B", "A", "B")
+
+# On calcule la moyenne de chaque groupe
+moy <- tapply(X = valeurs, INDEX = groupes, FUN = mean)
+moy
+#>        A        B 
+#> 7.233333 7.300000
+```
+
+### Boucles à précondition
+
+Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
+
+
+```r
+# On définit la valeur initiale d'une variable
+i <- 0
+
+# On répète les instructions tant que i est inférieur à 5
+while (i < 5) {
+  print(i)   # Afficher la valeur de i
+  i <- i + 1 # Incrémenter la valeur i
+}
+#> [1] 0
+#> [1] 1
+#> [1] 2
+#> [1] 3
+#> [1] 4
+```
+
+::: {.rmdnote}
+Il convient d'être prudent avec l'usage de l'instruction `while`, car une mauvaise définition de la condition d'arrêt peut créer une boucle infinie.
+:::

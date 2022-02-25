@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>4 Opérateurs | R pour l’archéologue</title>
+<title>4 Opérateurs binaires | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="4.1 Opérateurs logiques   4.2 Opérateurs arithmétiques">
+<meta name="description" content="4.1 Opérateurs arithmétiques Les opérateurs arithmétiques (tab. 4.1) permettent de réaliser les opérations élémentaires : x &lt;- 1 y &lt;- 2 # Addition x + y #&gt; [1] 3 # Soustraction x - y #&gt; [1] -1 #...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="4 Opérateurs | R pour l’archéologue">
+<meta property="og:title" content="4 Opérateurs binaires | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/operateurs.html">
-<meta property="og:description" content="4.1 Opérateurs logiques   4.2 Opérateurs arithmétiques">
+<meta property="og:description" content="4.1 Opérateurs arithmétiques Les opérateurs arithmétiques (tab. 4.1) permettent de réaliser les opérations élémentaires : x &lt;- 1 y &lt;- 2 # Addition x + y #&gt; [1] 3 # Soustraction x - y #&gt; [1] -1 #...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4 Opérateurs | R pour l’archéologue">
-<meta name="twitter:description" content="4.1 Opérateurs logiques   4.2 Opérateurs arithmétiques">
+<meta name="twitter:title" content="4 Opérateurs binaires | R pour l’archéologue">
+<meta name="twitter:description" content="4.1 Opérateurs arithmétiques Les opérateurs arithmétiques (tab. 4.1) permettent de réaliser les opérations élémentaires : x &lt;- 1 y &lt;- 2 # Addition x + y #&gt; [1] 3 # Soustraction x - y #&gt; [1] -1 #...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -49,26 +49,26 @@
 <li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
 <li><a class="" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
 <li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
-<li><a class="active" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs</a></li>
+<li><a class="active" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
-<li><a class="" href="fonctions-dordre-sup%C3%A9rieur.html"><span class="header-section-number">6</span> Fonctions d’ordre supérieur</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="importer.html"><span class="header-section-number">7</span> Importer</a></li>
+<li><a class="" href="importer.html"><span class="header-section-number">6</span> Importer</a></li>
+<li><a class="" href="nettoyer.html"><span class="header-section-number">7</span> Nettoyer</a></li>
 <li><a class="" href="selectionner.html"><span class="header-section-number">8</span> Selectionner</a></li>
 <li><a class="" href="filtrer.html"><span class="header-section-number">9</span> Filtrer</a></li>
 <li><a class="" href="transformer.html"><span class="header-section-number">10</span> Transformer</a></li>
+<li><a class="" href="exporter.html"><span class="header-section-number">11</span> Exporter</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">11</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">12</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">13</span> Visualisation de données</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
+<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Visualisation de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">14</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">15</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">16</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">15</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">16</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">17</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="coordonn%C3%A9es-et-projections.html"><span class="header-section-number">17</span> Coordonnées et projections</a></li>
-<li><a class="" href="format-de-donn%C3%A9es.html"><span class="header-section-number">18</span> Format de données</a></li>
 <li class="book-part">Annexes</li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">18</span> Fonctions utiles</a></li>
 <li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">19</span> Bonnes pratiques</a></li>
 <li><a class="" href="style.html"><span class="header-section-number">20</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
@@ -81,17 +81,271 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="operateurs" class="section level1" number="4">
 <h1>
-<span class="header-section-number">4</span> Opérateurs<a class="anchor" aria-label="anchor" href="#operateurs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> Opérateurs binaires<a class="anchor" aria-label="anchor" href="#operateurs"><i class="fas fa-link"></i></a>
 </h1>
-<div id="opérateurs-logiques" class="section level2" number="4.1">
+<div id="opérateurs-arithmétiques" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">4.1</span> Opérateurs logiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-logiques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Opérateurs arithmétiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-arithm%C3%A9tiques"><i class="fas fa-link"></i></a>
 </h2>
+<p>Les opérateurs arithmétiques (tab. <a href="operateurs.html#tab:operateurs-math">4.1</a>) permettent de réaliser les opérations élémentaires :</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span>
+
+<span class="co"># Addition</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+<span class="co">#&gt; [1] 3</span>
+
+<span class="co"># Soustraction</span>
+<span class="va">x</span> <span class="op">-</span> <span class="va">y</span>
+<span class="co">#&gt; [1] -1</span>
+
+<span class="co"># Multiplication</span>
+<span class="va">x</span> <span class="op">*</span> <span class="va">y</span>
+<span class="co">#&gt; [1] 2</span>
+
+<span class="co"># Exponentiation</span>
+<span class="va">x</span><span class="op">^</span><span class="va">y</span>
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:operateurs-math">Tableau 4.1: </span> Les principaux opérateurs arithmétiques de R.</caption>
+<thead><tr class="header">
+<th align="center">Opérateur</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>+</code></td>
+<td align="left">addition</td>
+</tr>
+<tr class="even">
+<td align="center"><code>-</code></td>
+<td align="left">soustraction</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>*</code></td>
+<td align="left">multiplication</td>
+</tr>
+<tr class="even">
+<td align="center"><code>/</code></td>
+<td align="left">division</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>^</code></td>
+<td align="left">exponentiation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Une des particularités des R est de <em>vectoriser</em> de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">6</span><span class="op">:</span><span class="fl">10</span>
+
+<span class="co"># Addition des éléments de x et y, un à un</span>
+<span class="co"># Équivaut à réaliser 1 + 6, 2 + 7, 3 + 8, 4 + 9 et 5 + 10</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+<span class="co">#&gt; [1]  7  9 11 13 15</span></code></pre></div>
+<p>Cet aspect est important dans le cas d’opérations sur des matrices (souvenez-vous, une matrice est simplement un vecteur avec un attribut de dimension et est remplie colonne par colonne) :</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Une matrice de 5 lignes et 2 colonnes</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="va">x</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    1    6</span>
+<span class="co">#&gt; [2,]    2    7</span>
+<span class="co">#&gt; [3,]    3    8</span>
+<span class="co">#&gt; [4,]    4    9</span>
+<span class="co">#&gt; [5,]    5   10</span>
+
+<span class="co"># Un vecteur de 10 éléments</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
+<span class="va">y</span>
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span>
+
+<span class="co"># Les éléments de x et y sont additionnés un à un</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    2   12</span>
+<span class="co">#&gt; [2,]    4   14</span>
+<span class="co">#&gt; [3,]    6   16</span>
+<span class="co">#&gt; [4,]    8   18</span>
+<span class="co">#&gt; [5,]   10   20</span></code></pre></div>
+<p>Si deux vecteurs n’ont pas la même longueur, R va <strong>recycler</strong> le plus court des deux et le réutiliser autant que nécessaire. Si la taille de l’objet le plus long n’est pas multiple de la taille de l’objet le plus court, un avertissement sera également retourné :</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Un vecteur de 5 éléments</span>
+<span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
+<span class="va">i</span>
+<span class="co">#&gt; [1] 1 2 3 4 5</span>
+
+<span class="co"># Les éléments de x et i sont additionnés un à un</span>
+<span class="co"># i est recyclé silencieusement</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">i</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    2    7</span>
+<span class="co">#&gt; [2,]    4    9</span>
+<span class="co">#&gt; [3,]    6   11</span>
+<span class="co">#&gt; [4,]    8   13</span>
+<span class="co">#&gt; [5,]   10   15</span>
+
+<span class="co"># Un vecteur de 3 éléments</span>
+<span class="va">j</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>
+<span class="va">j</span>
+<span class="co">#&gt; [1] 1 2 3</span>
+
+<span class="co"># Les éléments de x et j sont additionnés un à un</span>
+<span class="co"># j est recyclé avec un message d'avertissement</span>
+<span class="va">x</span> <span class="op">+</span> <span class="va">j</span>
+<span class="co">#&gt; Warning in x + j: la taille d'un objet plus long n'est pas multiple</span>
+<span class="co">#&gt; de la taille d'un objet plus court</span>
+<span class="co">#&gt;      [,1] [,2]</span>
+<span class="co">#&gt; [1,]    2    9</span>
+<span class="co">#&gt; [2,]    4    8</span>
+<span class="co">#&gt; [3,]    6   10</span>
+<span class="co">#&gt; [4,]    5   12</span>
+<span class="co">#&gt; [5,]    7   11</span></code></pre></div>
 </div>
-<div id="opérateurs-arithmétiques" class="section level2" number="4.2">
+<div id="opérateurs-logiques" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">4.2</span> Opérateurs arithmétiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-arithm%C3%A9tiques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Opérateurs logiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-logiques"><i class="fas fa-link"></i></a>
 </h2>
+<p>Les opérateurs logiques (tab. <a href="operateurs.html#tab:operateurs-logiques">4.2</a>) permettent comparer des valeurs. Ces comparaisons se présentent sous la forme d’un test (la condition est-elle vraie ou fausse ?) et retournent donc un vecteur de type <code>logical</code> :</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># x contient un unique élément</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+
+<span class="co"># La valeur de x est-elle égale à 0 ?</span>
+<span class="va">x</span> <span class="op">==</span> <span class="fl">0</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="co"># La valeur de x est-elle différente de 1 ?</span>
+<span class="va">x</span> <span class="op">!=</span> <span class="fl">1</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="co"># La valeur de x est-elle supérieure à 0 ?</span>
+<span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span>
+<span class="co">#&gt; [1] TRUE</span>
+
+<span class="co"># La valeur de x est-elle inférieure à 2 ?</span>
+<span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:operateurs-logiques">Tableau 4.2: </span> Les opérateurs logiques de R.</caption>
+<thead><tr class="header">
+<th align="center">Opérateur</th>
+<th align="left">Comparaison</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>&gt;</code></td>
+<td align="left">strictement supérieur</td>
+</tr>
+<tr class="even">
+<td align="center"><code>&gt;=</code></td>
+<td align="left">supérieur ou égal</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&lt;</code></td>
+<td align="left">strictement inférieur</td>
+</tr>
+<tr class="even">
+<td align="center"><code>&lt;=</code></td>
+<td align="left">inférieur ou égal</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>==</code></td>
+<td align="left">égal</td>
+</tr>
+<tr class="even">
+<td align="center"><code>!=</code></td>
+<td align="left">différent</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&amp;</code></td>
+<td align="left">ET</td>
+</tr>
+<tr class="even">
+<td align="center"><code>|</code></td>
+<td align="left">OU</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les opérateurs <code>&amp;</code> (ET) et <code>|</code> (OU) permettent de combiner plusieurs conditions et de réaliser des comparaisons plus complexes. Dans ce cas, chaque condition est évaluée séparément, puis les résultats sont comparés :</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># La valeur de x est-elle comprise entre 0 et 2 ?</span>
+<span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span>
+<span class="co">#&gt; [1] TRUE</span>
+
+<span class="co"># La valeur de x est-elle égale à 0 ou 1 ?</span>
+<span class="va">x</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">|</span> <span class="va">x</span> <span class="op">==</span> <span class="fl">1</span>
+<span class="co">#&gt; [1] TRUE</span>
+
+<span class="co"># ET</span>
+<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">TRUE</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="co"># OU</span>
+<span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">TRUE</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">FALSE</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="co"># NEGATION</span>
+<span class="op">!</span><span class="cn">TRUE</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="op">!</span><span class="cn">FALSE</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+<p>Souvenez-vous, R vectorise de nombreuses opérations. La comparaison de deux objets est réalisée élément par élément :</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">5</span><span class="op">)</span>
+<span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span>
+
+<span class="co"># Comparaison des éléments de x et y, un à un</span>
+<span class="co"># Équivaut à tester si 1 &lt; 3, 2 &lt; 4, 3 &lt; 5, 4 &lt; 6 et 5 &lt; 7</span>
+<span class="va">x</span> <span class="op">&lt;</span> <span class="va">y</span>
+<span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE</span>
+
+<span class="co"># Toutes les valeurs de x sont-elles inférieures à y ?</span>
+<span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="va">y</span><span class="op">)</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="co"># Au moins une des valeurs de x est-elle inférieure à y ?</span>
+<span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="va">y</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
+<div class="rmdwarning">
+<p>Prenez garde aux valeurs manquantes ! Si une comparaison est réalisée avec une valeur manquante, le résultat sera une valeur manquante uniquement s’il est ambigu :</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">NA</span>
+<span class="co">#&gt; [1] NA</span>
+<span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">NA</span>
+<span class="co">#&gt; [1] FALSE</span>
+
+<span class="cn">TRUE</span> <span class="op">|</span> <span class="cn">NA</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="cn">FALSE</span> <span class="op">|</span> <span class="cn">NA</span>
+<span class="co">#&gt; [1] NA</span></code></pre></div>
+</div>
+<p>Utilisés conjointement avec <code>[</code> et <code>&lt;-</code>, les opérateurs logiques permettent de <a href="filtrer.html#filtrer">filtrer</a> et <a href="nettoyer.html#nettoyer">nettoyer</a> facilement ses données :</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span>
+<span class="va">x</span>
+<span class="co">#&gt;  [1]  0  1  2  3  4  5  6  7  8  9 10</span>
+
+<span class="co"># Extraire les valeurs supérieures à 5</span>
+<span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">]</span>
+<span class="co">#&gt; [1]  6  7  8  9 10</span>
+
+<span class="co"># Remplacer les 0 par des valeurs manquantes</span>
+<span class="va">x</span><span class="op">[</span><span class="va">x</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span>
+<span class="va">x</span>
+<span class="co">#&gt;  [1] NA  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -100,9 +354,9 @@
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#operateurs"><span class="header-section-number">4</span> Opérateurs</a></li>
-<li><a class="nav-link" href="#op%C3%A9rateurs-logiques"><span class="header-section-number">4.1</span> Opérateurs logiques</a></li>
-<li><a class="nav-link" href="#op%C3%A9rateurs-arithm%C3%A9tiques"><span class="header-section-number">4.2</span> Opérateurs arithmétiques</a></li>
+<li><a class="nav-link" href="#operateurs"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
+<li><a class="nav-link" href="#op%C3%A9rateurs-arithm%C3%A9tiques"><span class="header-section-number">4.1</span> Opérateurs arithmétiques</a></li>
+<li><a class="nav-link" href="#op%C3%A9rateurs-logiques"><span class="header-section-number">4.2</span> Opérateurs logiques</a></li>
 </ul>
 
       <div class="book-extra">
@@ -120,7 +374,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-19.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
