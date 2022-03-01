@@ -246,6 +246,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 
 ```r
 data(intcal20)
+#> Warning in data(intcal20): data set 'intcal20' not found
 ```
 
 Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :

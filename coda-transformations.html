@@ -4,26 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>18 Chronologie qualitative | R pour l’archéologue</title>
+<title>16 Transformations de données | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="18 Chronologie qualitative | R pour l’archéologue">
+<meta property="og:title" content="16 Transformations de données | R pour l’archéologue">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://rstats.archaeo.science/chronologie-qualitative.html">
-<meta property="og:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta property="og:url" content="https://rstats.archaeo.science/coda-transformations.html">
+<meta property="og:description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="18 Chronologie qualitative | R pour l’archéologue">
-<meta name="twitter:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="twitter:title" content="16 Transformations de données | R pour l’archéologue">
+<meta name="twitter:description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -74,10 +65,10 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Visualisation de données</a></li>
 <li class="book-part">Données de composition</li>
 <li><a class="" href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></li>
-<li><a class="" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
+<li><a class="active" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
 <li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></li>
-<li><a class="active" href="chronologie-qualitative.html"><span class="header-section-number">18</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">18</span> Chronologie qualitative</a></li>
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
 <li class="book-part">Annexes</li>
@@ -92,22 +83,40 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="chronologie-qualitative" class="section level1" number="18">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="coda-transformations" class="section level1" number="16">
 <h1>
-<span class="header-section-number">18</span> Chronologie qualitative<a class="anchor" aria-label="anchor" href="#chronologie-qualitative"><i class="fas fa-link"></i></a>
+<span class="header-section-number">16</span> Transformations de données<a class="anchor" aria-label="anchor" href="#coda-transformations"><i class="fas fa-link"></i></a>
 </h1>
+
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:coda-simplex"></span>
+<img src="chapter_coda_files/figure-html/coda-simplex-1.png" alt="Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite)." width="100%"><p class="caption">
+Figure 16.1: Exemple de compositions projetées dans <span class="math inline">\(\mathbb{R}^3\)</span> (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).
+</p>
 </div>
+
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:coda-alr-d2"></span>
+<img src="chapter_coda_files/figure-html/coda-alr-d2-1.png" alt="Dans le cas d’une composition à deux composés, on a \(\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}\). Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans \(\mathbb{R}\)." width="70%"><p class="caption">
+Figure 16.2: Dans le cas d’une composition à deux composés, on a <span class="math inline">\(\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}\)</span>. Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans <span class="math inline">\(\mathbb{R}\)</span>.
+</p>
+</div>
+
+</div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></div>
-<div class="next"><a href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></div>
+<div class="prev"><a href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></div>
+<div class="next"><a href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#chronologie-qualitative"><span class="header-section-number">18</span> Chronologie qualitative</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#coda-transformations"><span class="header-section-number">16</span> Transformations de données</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_chronology.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_chronology.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_coda.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_coda.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

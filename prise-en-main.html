@@ -19,7 +19,8 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -62,15 +63,18 @@
 <li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
 <li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
 <li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Visualisation de données</a></li>
+<li class="book-part">Données de composition</li>
+<li><a class="" href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></li>
+<li><a class="" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">15</span> Remarques préliminaires</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">16</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">17</span> Chronologie quantitative</a></li>
+<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">18</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">18</span> Fonctions utiles</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">19</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">20</span> Style de programmation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">20</span> Fonctions utiles</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">21</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">22</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -259,7 +263,8 @@
 </div>
 <p>Installer un nouveau package est une condition nécessaire, mais pas suffisante, pour pouvoir l’utiliser. Au lancement, R ne charge pas tous les packages installés, mais uniquement les packages de base<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;La liste des packages chargés par défaut au lancement de R peut être obtenue avec &lt;code&gt;getOption('defaultPackages')&lt;/code&gt;.&lt;/p&gt;"><sup>48</sup></a>. Dans l’exemple suivant, si on utilise la fonction <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> pour charger le jeux de données <code>intcal20</code> du package <em>folio</em> sans que ce dernier soit chargé. R ne sait pas où chercher l’objet et retourne un avertissement :</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">intcal20</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">intcal20</span><span class="op">)</span>
+<span class="co">#&gt; Warning in data(intcal20): data set 'intcal20' not found</span></code></pre></div>
 <p>Il est donc nécessaire de charger un package à l’aide de la fonction <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> avant de pouvoir l’utiliser<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Dans le cas présent, une alternative serait de spécifier l’argument &lt;code&gt;package&lt;/code&gt; de la fonction &lt;code&gt;data()&lt;/code&gt;.&lt;/p&gt;"><sup>49</sup></a> :</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://folio.tesselle.org">"folio"</a></span><span class="op">)</span>
@@ -363,7 +368,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-02-25.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -114,13 +114,18 @@
 \KOMAoptions{chapterprefix=false}
 %\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
 \renewcommand\addparttocentry[2]{\addtocentrydefault{part}{}{#2}}
-\usepackage{microtype} %Détails typographiques
 
 %Langue
 \usepackage{polyglossia}
 \setmainlanguage{french}
 \gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\usepackage{microtype} %Détails typographiques
 \usepackage[autostyle=true]{csquotes}
+
+%Mathématiques
+\usepackage{amsmath} %Symboles
+\usepackage{amssymb}
+\usepackage{mathrsfs} %Alphabet cursif
 
 %Hyperliens
 \usepackage{bookmark}
@@ -183,6 +188,20 @@
 	\newline F-33607 Pessac cedex
 }
 % \lowertitleback{}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifXeTeX
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
@@ -209,7 +228,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-02-25}
+\date{2022-03-01}
 
 \begin{document}
 \maketitle
@@ -271,7 +290,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 25 Feb 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 01 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -823,6 +842,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
+\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2571,6 +2591,98 @@ Il convient d'être prudent avec l'usage de l'instruction \texttt{while}, car un
 
 \hypertarget{visualisation-de-donnuxe9es}{%
 \chapter{Visualisation de données}\label{visualisation-de-donnuxe9es}}
+
+\hypertarget{part-donnuxe9es-de-composition}{%
+\part{Données de composition}\label{part-donnuxe9es-de-composition}}
+
+\hypertarget{coda-enjeux}{%
+\chapter{Introduction}\label{coda-enjeux}}
+
+Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieurs ensembles de mobilier. On considère pour l'exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d'étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (tab. \ref{tab:coda-subcoherence}). Les résultats d'Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu'ils ont en commun devraient s'accorder.
+
+\begin{table}
+
+\caption{\label{tab:coda-subcoherence}Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues.}
+\centering
+\begin{tabular}[t]{r|r|r|r|r|r|r}
+\hline
+\multicolumn{4}{c|}{Howard} & \multicolumn{3}{c}{Arthur} \\
+\cline{1-4} \cline{5-7}
+A & B & C & D & A & B & C\\
+\hline
+0.1 & 0.2 & 0.1 & 0.6 & 0.250 & 0.500 & 0.25\\
+\hline
+0.2 & 0.1 & 0.1 & 0.6 & 0.500 & 0.250 & 0.25\\
+\hline
+0.3 & 0.3 & 0.2 & 0.2 & 0.375 & 0.375 & 0.25\\
+\hline
+\end{tabular}
+\end{table}
+
+A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent 0.5 et -1, respectivement, alors qu'ils étudient le même matériel.
+
+L'approche courante lorsque l'on cherche à explorer les relations de d'inter-dépendance dans le cas d'un jeu de données multivarié est de s'attacher à la \protect\hyperlink{covariance}{covariance} et à la \protect\hyperlink{correlation}{corrélation} entre variables. Pour deux variables aléatoires \(X\) et \(Y\), la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l'intensité de la relation entre ces deux variables.
+
+Pour une composition \(x\) de longueur \(D\) telle que \(x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]\) avec \(\sum_{i=1}^{D} x_{i} = 1\), on a :
+
+\begin{equation}
+\mathrm{Cov}(x_{1}, x_{1} + \dotsb + x_{D}) = 0
+\label{eq:negbias1}
+\end{equation}
+
+Soit :
+
+\begin{equation}
+\mathrm{Cov}(x_{1}, x_{2}) + \dotsb + \mathrm{Cov}(x_{1}, x_{D}) = - \mathrm{Var}(x_{1})
+\label{eq:negbias2}
+\end{equation}
+
+Ainsi, le membre de droite de l'équation \eqref{eq:negbias2} est toujours négatif (excepté dans le cas où le premier composé est une constante), si bien qu'au moins une des covariances du membre de gauche est forcement négative \autocite[p.~53-54]{aitchison1986}. Autrement formulé, au moins un élément de chaque ligne de la matrice de covariance doit être négatif (soit au moins \(D\) éléments de la matrice).
+
+Dans le cas des données de composition, la covariance entre deux composés est donc contrainte par la somme constante et dépend des autres composés également présents dans le jeu de données. De plus, la matrice de covariance est également singulière \autocite{vandenboogaart2013}. L'influence de la somme constante au sein de la matrice de covariance se traduit en terme de corrélation : s'agissant de compositions, le coefficient de corrélation n'est pas libre de prendre une valeur dans l'intervalle \([-1;1]\) mais correspond à une valeur arbitraire\footnote{\textcite{pearson1896} a été le premier à relever le risque que représente l'interprétation de ce qu'il nomme alors \emph{spurious correlation} (``corrélation fallacieuse''), mettant alors en évidence que la corrélation entre des rapports présentant des parties communes au dénominateur est arbitraire. Le problème est redécouvert au milieu du XX\textsuperscript{e} siècle par \textcite{chayes1960} mais il faut attendre les premiers travaux de \textcite{aitchison1986} pour qu'une solution formelle soit trouvée.}.
+
+L'exemple d'une composition à deux composés donné est particulièrement illustratif du problème \autocite[p.~54]{aitchison1986}, on a en effet :
+
+\begin{equation*}
+\mathrm{Cov}(x_{1}, x_{2}) = \mathrm{Cov}(x_{1}, 1 - x_{1}) = - \mathrm{Var}(x_{1}) = - \mathrm{Var}(x_{2})
+\label{eq:negbias3}
+\end{equation*}
+
+Soit :
+
+\begin{equation*}
+\mathrm{Corr}(x_{1}, x_{2}) = \frac{\mathrm{Cov}(x_{1}, x_{2})}{\sqrt{\mathrm{Var}(x_{1}) \mathrm{Var}(x_{2})}} = - 1
+\label{eq:negbias4}
+\end{equation*}
+
+Les définitions classiques de la covariance et de la corrélation ne respectent pas le principe de \emph{subcompositional coherence}. Ce problème se manifeste particulièrement lorsque les teneurs brutes de deux composés sont représentés au sein d'un diagramme de dispersion\footnote{Ou diagramme de Harker \autocite[p.~119]{harker1909}.}. Il n'y a en effet aucune garantie que les projections à partir du jeu de données initial ou d'une sous-composition conduisent à des observations similaires. Bien que ce type de représentation soit particulièrement courant, il est impossible de faire confiance aux tendances ainsi mises en évidence \autocite{aitchison2005}\footnote{Voir la réponse de \textcite{cortes2009}.}.
+
+Ainsi, la plupart des méthodes dédiées aux statistiques multivariées, dont la mise en œuvre repose sur l'exploitation des matrices de variance-covariance, sont inapplicables. Le recours à ces dernières requiert une transformation préalable des données, permettant de casser la contrainte de somme constante introduite par la fermeture des données et de travailler dans un espace réel.
+
+\hypertarget{coda-transformations}{%
+\chapter{Transformations de données}\label{coda-transformations}}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_coda_files/figure-latex/coda-simplex-1} 
+
+}
+
+\caption{Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L'ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).}\label{fig:coda-simplex}
+\end{figure}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_coda_files/figure-latex/coda-alr-d2-1} 
+
+}
+
+\caption{Dans le cas d'une composition à deux composés, on a \(\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}\). Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans \(\mathbb{R}\).}\label{fig:coda-alr-d2}
+\end{figure}
 
 \hypertarget{part-chronologie}{%
 \part{Chronologie}\label{part-chronologie}}
