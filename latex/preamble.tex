@@ -2,13 +2,18 @@
 \KOMAoptions{chapterprefix=false}
 %\RedeclareSectionCommand[tocnumwidth=3.5cm]{part}
 \renewcommand\addparttocentry[2]{\addtocentrydefault{part}{}{#2}}
-\usepackage{microtype} %Détails typographiques
 
 %Langue
 \usepackage{polyglossia}
 \setmainlanguage{french}
 \gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+\usepackage{microtype} %Détails typographiques
 \usepackage[autostyle=true]{csquotes}
+
+%Mathématiques
+\usepackage{amsmath} %Symboles
+\usepackage{amssymb}
+\usepackage{mathrsfs} %Alphabet cursif
 
 %Hyperliens
 \usepackage{bookmark}

@@ -25,7 +25,9 @@ Imports:
     ggplot2,
     ggraph,
     grid,
+    kableExtra,
     miniCRAN,
+    scatterplot3d,
     tidygraph
 Suggests:
     bslib,

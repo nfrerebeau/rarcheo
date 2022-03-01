@@ -28,6 +28,8 @@ rmd_files:
     "chapter_statistics.Rmd",
     
     "chapter_visualization.Rmd",
+
+    "chapter_coda.Rmd",
     
     "chapter_chronology.Rmd",
     
