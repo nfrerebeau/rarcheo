@@ -1070,6 +1070,34 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 
 ### Test "si..."
 
+<div style="float:right;">
+```{r, echo=FALSE, out.width='25%'}
+DiagrammeR::grViz(
+  'digraph {
+  splines = ortho
+  
+  node [shape = diamond, fontname = arial, width = 1.25]
+    T [label="test", group=g1]
+  node [shape = box, fontname = arial, width = 1]
+    A [label="instruction 1"]
+    B [label="instruction 2", group=g1]
+  node [shape = point, width = 0]
+    d1 [group=g1]; d2 [group=g1]; d3 [group=g1]
+  
+  edge [minlen = 1, fontname = arial]
+    d1 -> T
+    T -> A [label="  oui"]
+    A -> d2 -> B
+    T -> d2 [arrowhead = none, label="  non"]
+    B -> d3 [arrowhead = none]
+  
+  { rank = same; T; A }
+  }',
+  width = 200, height = 150
+)
+```
+</div>
+
 L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
 
 ```{r}
@@ -1084,6 +1112,43 @@ if (x > 0) {
 
 ### Test "si... sinon..."
 
+<div style="float:right;">
+```{r, echo=FALSE, out.width='25%'}
+DiagrammeR::grViz(
+  'digraph {
+  splines = ortho
+  
+  node [shape = diamond, fontname = arial, width = 1.25]
+    T [label="test", group=g1]
+  node [shape = box, fontname = arial, width = 1]
+    A [label="instruction 1", group=g2]
+    B [label="instruction 2", group=g3]
+    C [label="instruction 3", group=g1]
+  node [shape = point, width = 0]
+    d1 [group=g1]; d2 [group=g1]; d3 [group=g1]
+    d4 [group=g2]; d5 [group=g3]
+    d6 [group=g2]; d7 [group=g3]
+  
+  edge [minlen = 1, fontname = arial]
+    d1 -> T
+    d4 -> T -> d5 [arrowhead = none]
+    d4 -> A [label="  oui"]
+    d5 -> B [label="  non"]
+    A -> d6 [arrowhead = none]
+    B -> d7 [arrowhead = none]
+    d6 -> d2 -> d7 [arrowhead = none]
+    d2 -> C
+    C -> d3 [arrowhead = none]
+  
+  { rank = same; T; d4; d5 }
+  { rank = same; A; B }
+  { rank = same; d2; d6; d7 }
+  }',
+  width = 200, height = 200
+)
+```
+</div>
+
 Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
 
 ```{r}
@@ -1096,6 +1161,44 @@ if (x < 0) {
   print("Texte affiché si la condition est fausse.")
 }
 ```
+
+<div style="float:right;">
+```{r, echo=FALSE, out.width='25%'}
+DiagrammeR::grViz(
+  'digraph {
+  splines = ortho
+  
+  node [shape = diamond, fontname = arial, width = 1.25]
+    T1 [label="test 1", group=g1]
+    T2 [label="test 2", group=g1]
+  node [shape = box, fontname = arial, width = 1]
+    A [label="instruction 1", group=g2]
+    B [label="instruction 2", group=g2]
+    C [label="instruction 3", group=g1]
+  node [shape = point, width = 0]
+    d1 [group=g1]; d2 [group=g1]; d3 [group=g1];
+    d4 [group=g3]; d5 [group=g3]; d6 [group=g3]
+  
+  edge [minlen = 1, fontname = arial]
+    d1 -> T1
+    T1 -> A [label="  oui"]
+    T1 -> T2 [label="  non"]
+    T2 -> B [label="  oui"]
+    T2 -> d2 [arrowhead = none, label="  non"]
+    d2 -> C
+    A -> d4 -> d5 [arrowhead = none]
+    B -> d5 -> d6 [arrowhead = none]
+    d2 -> d6 [dir = back]
+    C -> d3 [arrowhead = none]
+  
+  { rank = same; T1; A; d4 }
+  { rank = same; T2; B; d5 }
+  { rank = same; d2; d6 }
+  }',
+  width = 200, height = 200
+)
+```
+</div>
 
 Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
 
@@ -1292,6 +1395,44 @@ moy
 ```
 
 ### Boucles à précondition
+
+<div style="float:right;">
+```{r, echo=FALSE, out.width='25%'}
+DiagrammeR::grViz(
+  'digraph {
+  splines = ortho
+  
+  node [shape = diamond, fontname = arial, width = 1.25]
+    T [label="test", group=g1]
+  node [shape = box, fontname = arial, width = 1]
+    A [label="instruction 1", group=g1]
+    B [label="instruction 2", group=g1]
+  node [shape = point, width = 0]
+    d1 [group=g1]; d2 [group=g1]; d4 [group=g1];
+    d5 [group=g2]; d7 [group=g2]; d8 [group=g2];
+    d3 [group=g3]; d6 [group=g3]
+  
+  edge [minlen = 1, fontname = arial]
+    d6 -> d2 -> T
+    d6 -> d3 -> A [arrowhead = none]
+    d1 -> d2 [arrowhead = none]
+    T -> A [label="  non"]
+    T -> d5 [arrowhead = none]
+    d5 -> d7 [arrowhead = none, label="  oui"] 
+    d7 -> d8 [arrowhead = none]
+    B -> d8 [dir = back]
+    B -> d4 [arrowhead = none]
+    
+  { rank = same; T; d5 }
+  { rank = same; A; d3; d7 }
+  { rank = same; B; d8 }
+  { rank = same; d2; d6 }
+  
+  }',
+  width = 200, height = 200
+)
+```
+</div>
 
 Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
 
