@@ -1,3 +1,9 @@
+/* Floating elements */
+.float-right {
+  float: right;
+}
+
+/* Make sure that code blocks don't wrap around floating elements */
 .sourceCode {
   clear: both;
 }

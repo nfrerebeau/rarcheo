@@ -19,7 +19,7 @@ csl: chicago-fullnote-bibliography.csl
 lang: fr
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, cache=FALSE}
 # Créer automatiquement une bibliographie des packages R utilisés
 knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 ```
