@@ -6,21 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>16 Transformations de données | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
+<meta name="description" content="Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d’analyse ne peuvent être mises en œuvre sans prendre le risque d’aboutir à des...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="16 Transformations de données | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/coda-transformations.html">
-<meta property="og:description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
+<meta property="og:description" content="Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d’analyse ne peuvent être mises en œuvre sans prendre le risque d’aboutir à des...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="16 Transformations de données | R pour l’archéologue">
-<meta name="twitter:description" content="Figure 16.1: Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).   ...">
+<meta name="twitter:description" content="Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d’analyse ne peuvent être mises en œuvre sans prendre le risque d’aboutir à des...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
 <script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -53,12 +54,12 @@
 <li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="importer.html"><span class="header-section-number">6</span> Importer</a></li>
-<li><a class="" href="nettoyer.html"><span class="header-section-number">7</span> Nettoyer</a></li>
-<li><a class="" href="selectionner.html"><span class="header-section-number">8</span> Selectionner</a></li>
-<li><a class="" href="filtrer.html"><span class="header-section-number">9</span> Filtrer</a></li>
-<li><a class="" href="transformer.html"><span class="header-section-number">10</span> Transformer</a></li>
-<li><a class="" href="exporter.html"><span class="header-section-number">11</span> Exporter</a></li>
+<li><a class="" href="tidy-data.html"><span class="header-section-number">6</span> Introduction</a></li>
+<li><a class="" href="importer.html"><span class="header-section-number">7</span> Importer et exporter</a></li>
+<li><a class="" href="nettoyer.html"><span class="header-section-number">8</span> Nettoyer</a></li>
+<li><a class="" href="selectionner.html"><span class="header-section-number">9</span> Selectionner</a></li>
+<li><a class="" href="filtrer.html"><span class="header-section-number">10</span> Filtrer</a></li>
+<li><a class="" href="transformer.html"><span class="header-section-number">11</span> Transformer</a></li>
 <li class="book-part">Éléments de statistiques</li>
 <li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
 <li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
@@ -87,22 +88,10 @@
 <h1>
 <span class="header-section-number">16</span> Transformations de données<a class="anchor" aria-label="anchor" href="#coda-transformations"><i class="fas fa-link"></i></a>
 </h1>
-
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:coda-simplex"></span>
-<img src="chapter_coda_files/figure-html/coda-simplex-1.png" alt="Exemple de compositions projetées dans \(\mathbb{R}^3\) (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite)." width="100%"><p class="caption">
-Figure 16.1: Exemple de compositions projetées dans <span class="math inline">\(\mathbb{R}^3\)</span> (gauche). L’ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).
-</p>
-</div>
-
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:coda-alr-d2"></span>
-<img src="chapter_coda_files/figure-html/coda-alr-d2-1.png" alt="Dans le cas d’une composition à deux composés, on a \(\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}\). Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans \(\mathbb{R}\)." width="70%"><p class="caption">
-Figure 16.2: Dans le cas d’une composition à deux composés, on a <span class="math inline">\(\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}\)</span>. Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans <span class="math inline">\(\mathbb{R}\)</span>.
-</p>
-</div>
+<p>Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d’analyse ne peuvent être mises en œuvre sans prendre le risque d’aboutir à des inférences erronées. Néanmoins, il est possible de trouver une transformation permettant de projeter les données de compositions dans un espace réel non contraint. <span class="citation">Aitchison<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;.&lt;/p&gt;"><sup>68</sup></a></span> a montré qu’une telle transformation peut être obtenue par le logarithme de rapports de composés.</p>
 
 </div>
+
 
 
 
@@ -128,7 +117,7 @@ Figure 16.2: Dans le cas d’une composition à deux composés, on a <span class
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-01.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

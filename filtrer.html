@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>9 Filtrer | R pour l’archéologue</title>
+<title>10 Filtrer | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
 <meta name="description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
 modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
 permet d’acquérir les connaissances et les compétences nécessaires pour
 aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="9 Filtrer | R pour l’archéologue">
+<meta property="og:title" content="10 Filtrer | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/filtrer.html">
 <meta property="og:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
@@ -19,7 +19,7 @@ modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vo
 permet d’acquérir les connaissances et les compétences nécessaires pour
 aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="9 Filtrer | R pour l’archéologue">
+<meta name="twitter:title" content="10 Filtrer | R pour l’archéologue">
 <meta name="twitter:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
 modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
 permet d’acquérir les connaissances et les compétences nécessaires pour
@@ -30,6 +30,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
 <script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -62,12 +63,12 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="importer.html"><span class="header-section-number">6</span> Importer</a></li>
-<li><a class="" href="nettoyer.html"><span class="header-section-number">7</span> Nettoyer</a></li>
-<li><a class="" href="selectionner.html"><span class="header-section-number">8</span> Selectionner</a></li>
-<li><a class="active" href="filtrer.html"><span class="header-section-number">9</span> Filtrer</a></li>
-<li><a class="" href="transformer.html"><span class="header-section-number">10</span> Transformer</a></li>
-<li><a class="" href="exporter.html"><span class="header-section-number">11</span> Exporter</a></li>
+<li><a class="" href="tidy-data.html"><span class="header-section-number">6</span> Introduction</a></li>
+<li><a class="" href="importer.html"><span class="header-section-number">7</span> Importer et exporter</a></li>
+<li><a class="" href="nettoyer.html"><span class="header-section-number">8</span> Nettoyer</a></li>
+<li><a class="" href="selectionner.html"><span class="header-section-number">9</span> Selectionner</a></li>
+<li><a class="active" href="filtrer.html"><span class="header-section-number">10</span> Filtrer</a></li>
+<li><a class="" href="transformer.html"><span class="header-section-number">11</span> Transformer</a></li>
 <li class="book-part">Éléments de statistiques</li>
 <li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
 <li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
@@ -92,17 +93,17 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="filtrer" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="filtrer" class="section level1" number="10">
 <h1>
-<span class="header-section-number">9</span> Filtrer<a class="anchor" aria-label="anchor" href="#filtrer"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Filtrer<a class="anchor" aria-label="anchor" href="#filtrer"><i class="fas fa-link"></i></a>
 </h1>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="selectionner.html"><span class="header-section-number">8</span> Selectionner</a></div>
-<div class="next"><a href="transformer.html"><span class="header-section-number">10</span> Transformer</a></div>
+<div class="prev"><a href="selectionner.html"><span class="header-section-number">9</span> Selectionner</a></div>
+<div class="next"><a href="transformer.html"><span class="header-section-number">11</span> Transformer</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#filtrer"><span class="header-section-number">9</span> Filtrer</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#filtrer"><span class="header-section-number">10</span> Filtrer</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -119,7 +120,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-01.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

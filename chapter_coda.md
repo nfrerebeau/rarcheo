@@ -1,71 +1,44 @@
 # (PART) Données de composition {-}
 
 # Introduction {#coda-enjeux}
+## Définitions {#coda-definitions}
 
-Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieurs ensembles de mobilier. On considère pour l'exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d'étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (tab. \@ref(tab:coda-subcoherence)). Les résultats d'Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu'ils ont en commun devraient s'accorder.
+Une composition décrit les parties d'un tout comme des parts mutuellement exclusives et exhaustives [@aitchison1982; @aitchison1986]. Par exemple, la composition élémentaire d'une céramique correspond aux teneurs des différents oxydes la constituant (les teneurs sont exprimées en pourcentages massiques, leur somme est égale à 100%).
 
-\begin{table}
-
-\caption{(\#tab:coda-subcoherence)Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues.}
-\centering
-\begin{tabular}[t]{r|r|r|r|r|r|r}
-\hline
-\multicolumn{4}{c|}{Howard} & \multicolumn{3}{c}{Arthur} \\
-\cline{1-4} \cline{5-7}
-A & B & C & D & A & B & C\\
-\hline
-0.1 & 0.2 & 0.1 & 0.6 & 0.250 & 0.500 & 0.25\\
-\hline
-0.2 & 0.1 & 0.1 & 0.6 & 0.500 & 0.250 & 0.25\\
-\hline
-0.3 & 0.3 & 0.2 & 0.2 & 0.375 & 0.375 & 0.25\\
-\hline
-\end{tabular}
-\end{table}
-
-A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent 0.5 et -1, respectivement, alors qu'ils étudient le même matériel.
-
-L'approche courante lorsque l'on cherche à explorer les relations de d'inter-dépendance dans le cas d'un jeu de données multivarié est de s'attacher à la [covariance](#covariance) et à la [corrélation](#correlation) entre variables. Pour deux variables aléatoires $X$ et $Y$, la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l'intensité de la relation entre ces deux variables.
-
-Pour une composition $x$ de longueur $D$ telle que $x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]$ avec $\sum_{i=1}^{D} x_{i} = 1$, on a :
+Une composition $x$ est donc définie comme un vecteur de longueur $D$ dont tous les **composés** ($x_{1}, x_{2}, \dotsc, x_{D}$) sont des réels strictement positifs ($x_{1} > 0, \dotsc, x_{D} > 0$) :
 
 \begin{equation}
-\mathrm{Cov}(x_{1}, x_{1} + \dotsb + x_{D}) = 0
-(\#eq:negbias1)
+	x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right] \forall x_{i} > 0
+  (\#eq:composition)
 \end{equation}
 
-Soit :
+Les composés portent une information relative : seuls les rapports entre ces composés sont d'intérêt, car la somme $k$ des teneurs du vecteur composition est arbitraire. Pour un ensemble de compositions cette somme est constante et est généralement égale à 1, 100, 10^6^, selon que l'on considère des parts d'une unité, des pourcentages ou, par exemple, des <abbr title="partie par million">ppm</abbr>, en fonction des conventions.
+
+L'opération qui permet la normalisation d'une composition $x$ est appelée **fermeture** des données (notée $\mathscr{C}$ pour *closure*) et consiste à diviser chaque partie par le tout, puis à multiplier le résultat par une constante $k$ \@ref(eq:closure).
 
 \begin{equation}
-\mathrm{Cov}(x_{1}, x_{2}) + \dotsb + \mathrm{Cov}(x_{1}, x_{D}) = - \mathrm{Var}(x_{1})
-(\#eq:negbias2)
+	\mathscr{C}(x) = \frac{k}{\sum_{i=1}^{D} x_{i}} \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]
+  (\#eq:closure)
 \end{equation}
 
-Ainsi, le membre de droite de l'équation \@ref(eq:negbias2) est toujours négatif (excepté dans le cas où le premier composé est une constante), si bien qu'au moins une des covariances du membre de gauche est forcement négative [@aitchison1986, p. 53-54]. Autrement formulé, au moins un élément de chaque ligne de la matrice de covariance doit être négatif (soit au moins $D$ éléments de la matrice).
+Par exemple, dans le cas d'un objet de masse totale $m$, décomposé en ses différents constituants de masses $m_{1}, m_{2}, \ldots, m_{D}$, on a : $x = \frac{1}{m} \left[ m_{1}, m_{2}, \dotsc, m_{D} \right]$.
 
-Dans le cas des données de composition, la covariance entre deux composés est donc contrainte par la somme constante et dépend des autres composés également présents dans le jeu de données. De plus, la matrice de covariance est également singulière [@vandenboogaart2013]. L'influence de la somme constante au sein de la matrice de covariance se traduit en terme de corrélation : s'agissant de compositions, le coefficient de corrélation n'est pas libre de prendre une valeur dans l'intervalle $[-1;1]$ mais correspond à une valeur arbitraire^[@pearson1896 a été le premier à relever le risque que représente l'interprétation de ce qu'il nomme alors *spurious correlation* ("corrélation fallacieuse"), mettant alors en évidence que la corrélation entre des rapports présentant des parties communes au dénominateur est arbitraire. Le problème est redécouvert au milieu du XX^e^ siècle par @chayes1960 mais il faut attendre les premiers travaux de @aitchison1986 pour qu'une solution formelle soit trouvée.].
+Pour une composition $x$ donnée, une sous-composition $y$ est définie comme un sous-ensemble de $x$ ayant subi une opération de fermeture \@ref(eq:subcomposition).
 
-L'exemple d'une composition à deux composés donné est particulièrement illustratif du problème [@aitchison1986, p. 54], on a en effet :
+\begin{equation}
+	y = \left[ y_{1}, y_{2}, \dotsc, y_{C} \right] = \mathscr{C} \left[x_{1}, x_{2}, \dotsc, x_{C} \right] \forall C < D
+  (\#eq:subcomposition)
+\end{equation}
 
-\begin{equation*}
-\mathrm{Cov}(x_{1}, x_{2}) = \mathrm{Cov}(x_{1}, 1 - x_{1}) = - \mathrm{Var}(x_{1}) = - \mathrm{Var}(x_{2})
-(\#eq:negbias3)
-\end{equation*}
+::: {.rmdnote}
+En pratique, seules des sous-compositions sont généralement connues et celles-ci dépendent du problème à traiter et de la capacité à reconnaître les différents composés d'un système et à les mesurer. On ne mesure jamais l'intégralité des éléments chimiques lors d'une analyse, on ne connaît pas l'ensemble des espèces appartenant à un écosystème, certaines catégories d'objets peuvent être ignorées lors d'une étude (ou ne pas avoir été reconnues du fait de la fragmentation du matériel), etc.
+:::
 
-Soit :
+Du fait de la fermeture des données, l'univers d'une composition (c'est-à-dire l'ensemble de toutes les valeurs susceptibles d'être prises par ses différents composés) est un espace particulier. Ce dernier possède une dimension de moins que le nombre de composés : bien qu'il y ait $D$ observations pour chaque individus, il n'y a en effet que $D-1$ valeurs indépendantes. Autrement formulé, si les $D-1$ teneurs sont connues, sachant que leur somme est constante, la dernière teneur est connue également.
 
-\begin{equation*}
-\mathrm{Corr}(x_{1}, x_{2}) = \frac{\mathrm{Cov}(x_{1}, x_{2})}{\sqrt{\mathrm{Var}(x_{1}) \mathrm{Var}(x_{2})}} = - 1
-(\#eq:negbias4)
-\end{equation*}
+Cet univers (ou espace échantillon) peut être facilement représenté dans le cas de compositions à deux ou trois composés. Lorsque ces compositions sont projetées dans un espace réel, on constate qu'elles appartiennent toutes à un même sous-espace triangulaire (simplexe ; fig. \@ref(fig:coda-simplex))^[En termes géométriques, les observations appartiennent à un hyperplan ($S^{d}$) de l'espace euclidien à $D$ dimensions $\mathbb{R}^{D}$ (avec $d = D-1$).].
 
-Les définitions classiques de la covariance et de la corrélation ne respectent pas le principe de *subcompositional coherence*. Ce problème se manifeste particulièrement lorsque les teneurs brutes de deux composés sont représentés au sein d'un diagramme de dispersion^[Ou diagramme de Harker [@harker1909, p. 119].]. Il n'y a en effet aucune garantie que les projections à partir du jeu de données initial ou d'une sous-composition conduisent à des observations similaires. Bien que ce type de représentation soit particulièrement courant, il est impossible de faire confiance aux tendances ainsi mises en évidence [@aitchison2005]^[Voir la réponse de @cortes2009.].
-
-Ainsi, la plupart des méthodes dédiées aux statistiques multivariées, dont la mise en œuvre repose sur l'exploitation des matrices de variance-covariance, sont inapplicables. Le recours à ces dernières requiert une transformation préalable des données, permettant de casser la contrainte de somme constante introduite par la fermeture des données et de travailler dans un espace réel.
-
-# Transformations de données {#coda-transformations}
-
-(ref:coda-simplex) Exemple de compositions projetées dans $\mathbb{R}^3$ (gauche). L'ensemble des points appartient à un hyperplan correspondant au diagramme ternaire des trois composés (droite).
+(ref:coda-simplex) Projection de compositions à deux (gauche) et trois composés (droite) dans un espace réel à deux et trois dimensions, respectivement. L'ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d'une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés.
 
 \begin{figure}
 
@@ -76,14 +49,88 @@ Ainsi, la plupart des méthodes dédiées aux statistiques multivariées, dont l
 \caption{(ref:coda-simplex)}(\#fig:coda-simplex)
 \end{figure}
 
-(ref:coda-alr-d2) Dans le cas d'une composition à deux composés, on a $\ln\frac{x_{2}}{x_{1}} = \ln\frac{1-x_{1}}{x_{1}}$. Bien que les valeurs des deux composés soient contraintes entre 0 et 1, le logarithme de leur rapport peut prendre toute valeur dans $\mathbb{R}$.
+## Principes {#coda-principes}
 
-\begin{figure}
+L'analyse de données de composition est régie par quatre principes :
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_coda_files/figure-latex/coda-alr-d2-1} 
+*Scale invariance*
+: La comparaison d'échantillons de tailles différentes est permise par l'opération de fermeture des données qui les force à partager la même somme $k$. Toute analyse de ces données doit donc conduire à des résultats similaires indépendamment de la valeur de $k$.
 
-}
+*Perturbation invariance*
+: Toute composition peut être exprimée à l'aide d’unités différentes selon les grandeurs mesurées (kg, pourcentages massiques, dm^3^, pourcentages volumiques, moles, pression partielle, etc.). Le choix des modalités de quantification revient alors à l'expérimentateur et plusieurs approches peuvent être également considérées comme pertinentes. Les différents composants d'une composition sont qualitativement différents : chacun portant une information qui lui est propre et il peut être utile de souligner une propriété particulière^[Par exemple, lors du passage de la masse au pourcentage volumique en utilisant la densité de chaque composant.]. Malgré le changement d'unité, la composition mesurée reste la même et toute analyse statistique sensible doit permettre d'obtenir des résultats qualitativement identiques, quelle que soit l'unité choisie.
 
-\caption{(ref:coda-alr-d2)}(\#fig:coda-alr-d2)
-\end{figure}
+*Permutation invariance*
+: Le résultat de l'analyse ne doit pas dépendre de l'ordre des composants dans le vecteur composition.
+
+*Subcompositional coherence*
+: Dans certaines situations, l'utilisation d'une sous-composition peut être pertinente et permet notamment l'inspection des données dans des espaces de moindre dimension.
+
+Ainsi, ni la somme des composants du vecteur composition, ni le choix des unités, ni la séquence des composés ou l'étude d'un sous-ensemble issu d'une composition, ne doivent affecter les résultats de l'analyse.
+
+## Étendue du problème {#coda-probleme}
+
+Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieurs ensembles de mobilier. On considère pour l'exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d'étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (tab. \@ref(tab:coda-subcoherence)). Les résultats d'Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu'ils ont en commun devraient s'accorder.
+
+\begin{table}
+
+\caption{(\#tab:coda-subcoherence)Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues.}
+\centering
+\begin{tabular}[t]{rrrrrrr}
+\toprule
+\multicolumn{4}{c}{Howard} & \multicolumn{3}{c}{Arthur} \\
+\cmidrule(l{3pt}r{3pt}){1-4} \cmidrule(l{3pt}r{3pt}){5-7}
+A & B & C & D & A & B & C\\
+\midrule
+10 & 20 & 10 & 60 & 25.0 & 50.0 & 25\\
+20 & 10 & 10 & 60 & 50.0 & 25.0 & 25\\
+30 & 30 & 20 & 20 & 37.5 & 37.5 & 25\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent 0.5 et -1, respectivement, alors qu'ils étudient le même matériel.
+
+Les définitions classiques de la covariance et de la corrélation ne respectent pas le principe de *subcompositional coherence* (voir l'encadré ci-après). Ce problème se manifeste particulièrement lorsque les teneurs brutes de deux composés sont représentés au sein d'un diagramme de dispersion^[Ou diagramme de Harker [@harker1909, p. 119].]. Il n'y a en effet aucune garantie que les projections à partir du jeu de données initial ou d'une sous-composition conduisent à des observations similaires. Bien que ce type de représentation soit particulièrement courant, il est impossible de faire confiance aux tendances ainsi mises en évidence [@aitchison2005]^[Voir la réponse de @cortes2009.].
+
+Ainsi, la plupart des méthodes dédiées aux statistiques multivariées, dont la mise en œuvre repose sur l'exploitation des matrices de variance-covariance, sont inapplicables. Le recours à ces dernières requiert une transformation préalable des données, permettant de casser la contrainte de somme constante introduite par la fermeture des données.
+
+::: {.rmdnote}
+L'approche courante lorsque l'on cherche à explorer les relations de d'inter-dépendance dans le cas d'un jeu de données multivarié est de s'attacher à la [covariance](#covariance) et à la [corrélation](#correlation) entre variables. Pour deux variables aléatoires $X$ et $Y$, la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l'intensité de la relation entre ces deux variables.
+
+Sachant les propriétés de la covariance, pour une composition $x$ de longueur $D$ telle que $x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]$ avec $\sum_{i=1}^{D} x_{i} = 1$, on a :
+
+\begin{equation}
+  \mathrm{Cov}(x_{1}, x_{1} + \dotsb + x_{D}) = 0
+  (\#eq:negbias1)
+\end{equation}
+
+Soit :
+
+\begin{equation}
+  \mathrm{Cov}(x_{1}, x_{2}) + \dotsb + \mathrm{Cov}(x_{1}, x_{D}) = - \mathrm{Var}(x_{1})
+  (\#eq:negbias2)
+\end{equation}
+
+Ainsi, le membre de droite de l'équation \@ref(eq:negbias2) est toujours négatif (excepté dans le cas où le premier composé est une constante), si bien qu'au moins une des covariances du membre de gauche est forcement négative [@aitchison1986, p. 53-54]. Autrement formulé, au moins un élément de chaque ligne de la matrice de covariance doit être négatif (soit au moins $D$ éléments de la matrice).
+
+Dans le cas des données de composition, la covariance entre deux composés est donc contrainte par la somme constante et dépend des autres composés également présents dans le jeu de données. De plus, la matrice de covariance est singulière [@vandenboogaart2013]. L'influence de la somme constante au sein de la matrice de covariance se traduit en terme de corrélation : s'agissant de compositions, le coefficient de corrélation n'est pas libre de prendre une valeur dans l'intervalle $[-1;1]$ mais correspond à une valeur arbitraire^[@pearson1896 a été le premier à relever le risque que représente l'interprétation de ce qu'il nomme alors *spurious correlation* ("corrélation fallacieuse"), mettant alors en évidence que la corrélation entre des rapports présentant des parties communes au dénominateur est arbitraire. Le problème est redécouvert au milieu du XX^e^ siècle par @chayes1960 mais il faut attendre les premiers travaux de @aitchison1982 pour qu'une solution formelle soit proposée.].
+
+L'exemple d'une composition à deux composés $x_1$ et $x_2$ tels que $x_1 + x_2 = 1$ est particulièrement illustratif du problème [@aitchison1986, p. 54], on a en effet :
+
+\begin{equation*}
+  \mathrm{Cov}(x_{1}, x_{2}) = \mathrm{Cov}(x_{1}, 1 - x_{1}) = - \mathrm{Var}(x_{1}) = - \mathrm{Var}(x_{2})
+  (\#eq:negbias3)
+\end{equation*}
+
+Soit :
+
+\begin{equation*}
+  \mathrm{Cov}(x_{1}, x_{2}) = \frac{\mathrm{Cov}(x_{1}, x_{2})}{\sqrt{\mathrm{Var}(x_{1}) \mathrm{Var}(x_{2})}} = - 1
+  (\#eq:negbias4)
+\end{equation*}
+:::
+
+# Transformations de données {#coda-transformations}
+
+Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d'analyse ne peuvent être mises en œuvre sans prendre le risque d'aboutir à des inférences erronées. Néanmoins, il est possible de trouver une transformation permettant de projeter les données de compositions dans un espace réel non contraint. @aitchison1986 a montré qu'une telle transformation peut être obtenue par le logarithme de rapports de composés.
 

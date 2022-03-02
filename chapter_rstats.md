@@ -1470,6 +1470,11 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 
 ### Test "si..."
 
+<div style="float:right;">
+
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-81-1} \end{center}
+</div>
+
 L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
 
 
@@ -1486,6 +1491,11 @@ if (x > 0) {
 
 ### Test "si... sinon..."
 
+<div style="float:right;">
+
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-83-1} \end{center}
+</div>
+
 Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
 
 
@@ -1500,6 +1510,11 @@ if (x < 0) {
 }
 #> [1] "Texte affiché si la condition est fausse."
 ```
+
+<div style="float:right;">
+
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-85-1} \end{center}
+</div>
 
 Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
 
@@ -1755,6 +1770,11 @@ moy
 ```
 
 ### Boucles à précondition
+
+<div style="float:right;">
+
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-98-1} \end{center}
+</div>
 
 Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
 
