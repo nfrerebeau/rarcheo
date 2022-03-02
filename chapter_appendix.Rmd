@@ -75,25 +75,15 @@ L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des
 knitr::include_graphics("images/xkcd_documents.png")
 ```
 
-## Structurer ses données {#tidy-data}
-
-Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse [@wickham2014]. Les principes régissant cette étape de structuration (*data tidying*) ont été exposés par @wickham2014, qui propose ainsi une approche pour lier "la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification)."
-
-Des jeux de données bien structurés se présentent sous la forme de tableaux à deux dimensions (lignes et colonnes) contenant des valeurs. Chaque valeur correspond à une observation d'une variable particulière, en conséquence :
-
-* Chaque variable doit correspondre à une colonne du tableau.
-* Chaque observation doit correspondre à une ligne du tableau.
-* Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles [@wickham2014].].
-
 ## Sauvegarder ses données {#csv}
 
 Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig. \@ref(fig:xkcd-norm)). De manière générale, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte).
 
-Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
+Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier <abbr title="comma-separated values">CSV</abbr> est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
 
-* Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
-* Le format CSV est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
-* Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un [changement dramatique de spécification](https://www.bbc.com/news/technology-54423988).
+* Un fichier <abbr title="comma-separated values">CSV</abbr> est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
+* Le format <abbr title="comma-separated values">CSV</abbr> est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier <abbr title="comma-separated values">CSV</abbr> peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
+* Le format <abbr title="comma-separated values">CSV</abbr> est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un [changement dramatique de spécification](https://www.bbc.com/news/technology-54423988).
 * Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
 
 (ref:xkcd-norm) .NORM Normal File Format. "At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts." [CC BY-NC 2.0 @munroe2019].
@@ -102,7 +92,7 @@ Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separ
 knitr::include_graphics("images/xkcd_norm_normal_file_format.png")
 ```
 
-La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier CSV. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier CSV votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier CSV dans un tableur (fig. \@ref(fig:calc-csv)).
+La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (fig. \@ref(fig:calc-csv)).
 
 ```{r calc-csv, echo=FALSE, fig.cap="Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté)."}
 knitr::include_graphics("images/calc-csv.png")
@@ -186,11 +176,11 @@ Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utili
 
 Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
 
+Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
+
 ::: {.rmdtip}
 L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
 :::
-
-Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
 
 # Style de programmation {#style}
 
