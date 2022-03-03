@@ -1125,7 +1125,7 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 ### Test "si..."
 
 ::: {.float-right}
-```{r flow-if, echo=FALSE, out.width='25%'}
+```{r flow-if, echo=FALSE, out.width='100%', fig.cap="Diagramme d'un test \"si...\"", fig.env='marginfigure'}
 DiagrammeR::grViz(
   'digraph {
   splines = ortho
@@ -1152,7 +1152,7 @@ DiagrammeR::grViz(
 ```
 :::
 
-L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
+L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie (fig. \@ref(fig:flow-if)) :
 
 ```{r}
 x <- 1
@@ -1167,7 +1167,7 @@ if (x > 0) {
 ### Test "si... sinon..."
 
 ::: {.float-right}
-```{r flow-ifelse, echo=FALSE, out.width='25%'}
+```{r flow-ifelse, echo=FALSE, out.width='100%', fig.cap="Diagramme d'un test \"si... sinon...\"", fig.env='marginfigure'}
 DiagrammeR::grViz(
   'digraph {
   splines = ortho
@@ -1203,7 +1203,7 @@ DiagrammeR::grViz(
 ```
 :::
 
-Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
+Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` (fig. \@ref(fig:flow-ifelse)) :
 
 ```{r}
 x <- 1
@@ -1217,7 +1217,7 @@ if (x < 0) {
 ```
 
 ::: {.float-right}
-```{r flow-elseif, echo=FALSE, out.width='25%'}
+```{r flow-elseif, echo=FALSE, out.width='100%', fig.cap="Diagramme d'un test \"sinon... si...\"", fig.env='marginfigure'}
 DiagrammeR::grViz(
   'digraph {
   splines = ortho
@@ -1254,7 +1254,7 @@ DiagrammeR::grViz(
 ```
 :::
 
-Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
+Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée (fig. \@ref(fig:flow-elseif)) :
 
 ```{r, message=TRUE}
 x <- "chien"
@@ -1451,7 +1451,7 @@ moy
 ### Boucles à précondition
 
 ::: {.float-right}
-```{r flow-while, echo=FALSE, out.width='25%'}
+```{r flow-while, echo=FALSE, out.width='100%', fig.cap="Diagramme d'une boucle à précondition.", fig.env='marginfigure'}
 DiagrammeR::grViz(
   'digraph {
   splines = ortho
@@ -1470,9 +1470,9 @@ DiagrammeR::grViz(
     d6 -> d2 -> T
     d6 -> d3 -> A [arrowhead = none]
     d1 -> d2 [arrowhead = none]
-    T -> A [label="  non"]
+    T -> A [label="  oui"]
     T -> d5 [arrowhead = none]
-    d5 -> d7 [arrowhead = none, label="  oui"] 
+    d5 -> d7 [arrowhead = none, label="  non"] 
     d7 -> d8 [arrowhead = none]
     B -> d8 [dir = back]
     B -> d4 [arrowhead = none]
@@ -1488,7 +1488,7 @@ DiagrammeR::grViz(
 ```
 :::
 
-Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
+Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions (fig. \@ref(fig:flow-while)).
 
 ```{r}
 # On définit la valeur initiale d'une variable
