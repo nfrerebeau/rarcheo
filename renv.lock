@@ -11,10 +11,15 @@
   "Packages": {
     "DiagrammeR": {
       "Package": "DiagrammeR",
-      "Version": "1.0.8",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "cea1d840e6f63022ccb13350662f77c6",
+      "Version": "1.0.8.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "DiagrammeR",
+      "RemoteUsername": "rich-iannone",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "7fbe83235c542f8e17921db386cd031ca536ec14",
+      "Hash": "adf367675b1b767d4cea9d2244f84661",
       "Requirements": [
         "RColorBrewer",
         "downloader",
