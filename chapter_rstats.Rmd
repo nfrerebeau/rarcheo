@@ -300,28 +300,9 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 
 # Vecteurs {#r-vector}
 
-Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur est simplement un ensemble d'**éléments**.
+Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'**éléments**.
 
 Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents (tab. \@ref(tab:r-data-structures)). Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
-
-(ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
-
-```{r r-vector-types, echo=FALSE, fig.cap="(ref:r-vector-types)"}
-DiagrammeR::grViz(
-  "digraph {
-  graph [rankdir = BT]
-  
-  node [shape = plaintext, fontname = arial]
-  vector; atomic; list; 'data.frame';
-  logical; integer; double; character
-  
-  {atomic list} -> vector
-  'data.frame' -> list
-  {logical integer double character} -> atomic
-  }",
-  height = 400
-)
-```
 
 Table: (\#tab:r-data-structures) Structures de données des objets de R.
 
@@ -333,12 +314,23 @@ Table: (\#tab:r-data-structures) Structures de données des objets de R.
 
 ## Vecteurs atomiques (`atomic`) {#r-atomic}
 
-Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les quatre principaux types de R sont les suivants :
+Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient ; fig. \@ref(fig:r-atomic)). Les quatre principaux types de R sont les suivants :
 
 * `logical` : booléen.
 * `integer` : nombre entier.
 * `double` : nombre réel, avec ou sans partie décimale.
 * `character` : chaîne de caractère.
+
+```{r r-atomic, echo=FALSE, fig.width=5, fig.height=1, out.width='33%', fig.cap="Un vecteur est un ensemble d'éléments de même type."}
+vec <- data.frame(x = 1:5, y = 1, z = "A")
+ggplot(data = vec) +
+  aes(x = x, y = y, fill = z, label = x) +
+  geom_tile(colour = "white", size = 2) +
+  geom_text(size = 6) +
+  theme_void() +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c(A = "#EECC66"))
+```
 
 ### Création
 
@@ -489,7 +481,22 @@ L'utilisation des attributs permet de créer des vecteurs particuliers, appelés
 
 ## Listes (`list`) {#r-list}
 
-Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type. Une liste peut être créée avec avec la fonction `list()` :
+Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type (fig. \@ref(fig:r-list)).
+
+```{r r-list, echo=FALSE, fig.width=5, fig.height=1, out.width='33%', fig.cap="Une liste est un vecteur dont les éléments peuvent être de différents types."}
+vec <- data.frame(x = 1:5, y = 1, z = c("A", "A", "B", "C", "B"))
+ggplot(data = vec) +
+  aes(x = x, y = y, fill = z, label = x) +
+  geom_tile(colour = "white", size = 2) +
+  geom_text(size = 6) +
+  theme_void() +
+  theme(legend.position = "none") +
+  scale_fill_manual(
+    values = c(A = "#EECC66", B = "#EE99AA", C = "#6699CC")
+  )
+```
+
+Une liste peut être créée avec avec la fonction `list()` :
 
 ```{r}
 # Création d'une liste contenant 4 éléments
@@ -556,7 +563,32 @@ x
 
 ## Matrices (`matrix` et `array`) {#r-matrix}
 
-Un vecteur peut être transformé en un tableau à deux (`matrix`) ou plusieurs (`array`) dimensions, en spécifiant l'attribut `dim`. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède $m$ lignes et $n$ colonnes et contient $m \times n$ éléments du même type.
+Un vecteur peut être transformé en un tableau à deux (`matrix`) ou plusieurs (`array`) dimensions, en spécifiant l'attribut `dim`. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède $m$ lignes et $n$ colonnes et contient $m \times n$ éléments du même type (fig. \@ref(fig:r-matrix)).
+
+```{r r-matrix, echo=FALSE, fig.width=5, fig.height=5, out.width='33%', fig.cap="Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données).", fig.show='hold'}
+vec <- data.frame(x = rep(1:5, each = 4), y = -rep(1:4, times = 5), z = c("A"))
+vec$i <- paste(vec$x, vec$y * -1, sep=",")
+col <- data.frame(x = 1:5, y = 0, z = "X", i = "")
+row <- data.frame(x = 0, y = 1:4 * -1, z = "X", i = "")
+
+ggplot(data = rbind(vec, col, row)) +
+  aes(x = x, y = y, fill = z, label = i) +
+  geom_tile(colour = "white", size = 2) +
+  geom_text(size = 6) +
+  theme_void() +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c(A = "#EECC66", X = "#997700"))
+
+ggplot(data = rbind(vec, col, row)) +
+  aes(fill = z, label = i) +
+  geom_tile(aes(x = x, y = y), colour = "white", size = 2) +
+  geom_tile(aes(x = x + 0.5, y = y -0.5), colour = "white", size = 2) +
+  geom_tile(aes(x = x + 1, y = y - 1), colour = "white", size = 2) +
+  # geom_text(aes(x = x + 1, y = y - 1), size = 6) +
+  theme_void() +
+  theme(legend.position = "none") +
+  scale_fill_manual(values = c(A = "#EECC66", X = "#997700"))
+```
 
 ```{r}
 # Soit un vecteur contenant 12 éléments
@@ -618,7 +650,29 @@ y
 
 ## Tableaux de données (`data.frame`) {#r-dataframe}
 
-Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` (fig. \@ref(fig:r-vector-types)) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type) :
+Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type ; fig. \@ref(fig:r-dataframe)).
+
+```{r r-dataframe, echo=FALSE, fig.width=5, fig.height=5, out.width='33%', fig.cap="Un data.frame est un tableau à deux dimensions dont les colonnes peuvent être de différents types."}
+vec <- data.frame(x = rep(1:5, each = 4), y = -rep(1:4, times = 5), 
+                  z = rep(c("A", "A", "B", "C", "B"), each = 4))
+vec$i <- paste(vec$x, vec$y * -1, sep=",")
+col <- data.frame(x = 1:5, y = 0, z = c("X", "X", "Y", "Z", "Y"), i = "")
+row <- data.frame(x = 0, y = 1:4 * -1, z = NA_character_, i = "")
+
+ggplot(data = rbind(vec, col, row)) +
+  aes(x = x, y = y, fill = z, label = i) +
+  geom_tile(colour = "white", size = 2) +
+  geom_text(size = 6) +
+  theme_void() +
+  theme(legend.position = "none") +
+  scale_fill_manual(
+    values = c(A = "#EECC66", B = "#EE99AA", C = "#6699CC",
+               X = "#997700", Y = "#994455", Z = "#004488"),
+    na.value = "#DDDDDD"
+  )
+```
+
+Un tableau de données peut être créé avec la fonction `data.frame()` en spécifiant les différentes colonnes (si les arguments sont nommés, ils seront utilisés comme noms de colonne) :
 
 ```{r}
 x <- data.frame(
