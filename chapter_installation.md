@@ -56,7 +56,7 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{images/rstudio-desktop} 
+{\centering \includegraphics[width=1\linewidth,angle=90]{images/rstudio-desktop} 
 
 }
 

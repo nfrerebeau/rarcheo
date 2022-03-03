@@ -341,20 +341,9 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 
 # Vecteurs {#r-vector}
 
-Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. \@ref(fig:r-vector-types)). Un vecteur est simplement un ensemble d'**éléments**.
+Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'**éléments**.
 
 Un vecteur peut être un [vecteur atomique](#r-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une [liste](#r-list) (`list`), si ses éléments sont de types différents (tab. \@ref(tab:r-data-structures)). Un vecteur peut également avoir des [**attributs**](#attributs) (sorte de métadonnées).
-
-(ref:r-vector-types) Les types d'objets de R. D'après @wickham2019.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{chapter_rstats_files/figure-latex/r-vector-types-1} 
-
-}
-
-\caption{(ref:r-vector-types)}(\#fig:r-vector-types)
-\end{figure}
 
 Table: (\#tab:r-data-structures) Structures de données des objets de R.
 
@@ -366,12 +355,21 @@ Table: (\#tab:r-data-structures) Structures de données des objets de R.
 
 ## Vecteurs atomiques (`atomic`) {#r-atomic}
 
-Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les quatre principaux types de R sont les suivants :
+Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient ; fig. \@ref(fig:r-atomic)). Les quatre principaux types de R sont les suivants :
 
 * `logical` : booléen.
 * `integer` : nombre entier.
 * `double` : nombre réel, avec ou sans partie décimale.
 * `character` : chaîne de caractère.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-atomic-1} 
+
+}
+
+\caption{Un vecteur est un ensemble d'éléments de même type.}(\#fig:r-atomic)
+\end{figure}
 
 ### Création
 
@@ -560,7 +558,18 @@ L'utilisation des attributs permet de créer des vecteurs particuliers, appelés
 
 ## Listes (`list`) {#r-list}
 
-Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type. Une liste peut être créée avec avec la fonction `list()` :
+Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type (fig. \@ref(fig:r-list)).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-list-1} 
+
+}
+
+\caption{Une liste est un vecteur dont les éléments peuvent être de différents types.}(\#fig:r-list)
+\end{figure}
+
+Une liste peut être créée avec avec la fonction `list()` :
 
 
 ```r
@@ -688,7 +697,16 @@ x
 
 ## Matrices (`matrix` et `array`) {#r-matrix}
 
-Un vecteur peut être transformé en un tableau à deux (`matrix`) ou plusieurs (`array`) dimensions, en spécifiant l'attribut `dim`. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède $m$ lignes et $n$ colonnes et contient $m \times n$ éléments du même type.
+Un vecteur peut être transformé en un tableau à deux (`matrix`) ou plusieurs (`array`) dimensions, en spécifiant l'attribut `dim`. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède $m$ lignes et $n$ colonnes et contient $m \times n$ éléments du même type (fig. \@ref(fig:r-matrix)).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-matrix-1} \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-matrix-2} 
+
+}
+
+\caption{Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données).}(\#fig:r-matrix)
+\end{figure}
 
 
 ```r
@@ -798,7 +816,18 @@ y
 
 ## Tableaux de données (`data.frame`) {#r-dataframe}
 
-Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` (fig. \@ref(fig:r-vector-types)) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type) :
+Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type ; fig. \@ref(fig:r-dataframe)).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-dataframe-1} 
+
+}
+
+\caption{Un data.frame est un tableau à deux dimensions dont les colonnes peuvent être de différents types.}(\#fig:r-dataframe)
+\end{figure}
+
+Un tableau de données peut être créé avec la fonction `data.frame()` en spécifiant les différentes colonnes (si les arguments sont nommés, ils seront utilisés comme noms de colonne) :
 
 
 ```r
@@ -1470,10 +1499,10 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 
 ### Test "si..."
 
-<div style="float:right;">
+::: {.float-right}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-81-1} \end{center}
-</div>
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} \end{center}
+:::
 
 L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
 
@@ -1491,10 +1520,10 @@ if (x > 0) {
 
 ### Test "si... sinon..."
 
-<div style="float:right;">
+::: {.float-right}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-83-1} \end{center}
-</div>
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} \end{center}
+:::
 
 Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
 
@@ -1511,10 +1540,10 @@ if (x < 0) {
 #> [1] "Texte affiché si la condition est fausse."
 ```
 
-<div style="float:right;">
+::: {.float-right}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-85-1} \end{center}
-</div>
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} \end{center}
+:::
 
 Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
 
@@ -1771,10 +1800,10 @@ moy
 
 ### Boucles à précondition
 
-<div style="float:right;">
+::: {.float-right}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-98-1} \end{center}
-</div>
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} \end{center}
+:::
 
 Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
 

@@ -15,11 +15,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5 Structures de contrôle | R pour l’archéologue">
 <meta name="twitter:description" content='5.1 Alternatives Les alternatives permettent d’exécuter différentes instructions en fonction du résultat d’un test logique.  5.1.1 Test “si…”  {"x":{"diagram":"digraph {\n splines = ortho\n \n...'>
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.8.9000/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -97,7 +97,7 @@
 <h3>
 <span class="header-section-number">5.1.1</span> Test “si…”<a class="anchor" aria-label="anchor" href="#test-si"><i class="fas fa-link"></i></a>
 </h3>
-<div style="float:right;">
+<div class="float-right">
 <div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:200px;height:150px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  splines = ortho\n  \n  node [shape = diamond, fontname = arial, width = 1.25]\n    T [label=\"test\", group=g1]\n  node [shape = box, fontname = arial, width = 1]\n    A [label=\"instruction 1\"]\n    B [label=\"instruction 2\", group=g1]\n  node [shape = point, width = 0]\n    d1 [group=g1]; d2 [group=g1]; d3 [group=g1]\n  \n  edge [minlen = 1, fontname = arial]\n    d1 -> T\n    T -> A [label=\"  oui\"]\n    A -> d2 -> B\n    T -> d2 [arrowhead = none, label=\"  non\"]\n    B -> d3 [arrowhead = none]\n  \n  { rank = same; T; A }\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -116,7 +116,7 @@
 <h3>
 <span class="header-section-number">5.1.2</span> Test “si… sinon…”<a class="anchor" aria-label="anchor" href="#test-si-sinon"><i class="fas fa-link"></i></a>
 </h3>
-<div style="float:right;">
+<div class="float-right">
 <div id="htmlwidget-d701554a25665d09d09f" style="width:200px;height:200px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-d701554a25665d09d09f">{"x":{"diagram":"digraph {\n  splines = ortho\n  \n  node [shape = diamond, fontname = arial, width = 1.25]\n    T [label=\"test\", group=g1]\n  node [shape = box, fontname = arial, width = 1]\n    A [label=\"instruction 1\", group=g2]\n    B [label=\"instruction 2\", group=g3]\n    C [label=\"instruction 3\", group=g1]\n  node [shape = point, width = 0]\n    d1 [group=g1]; d2 [group=g1]; d3 [group=g1]\n    d4 [group=g2]; d5 [group=g3]\n    d6 [group=g2]; d7 [group=g3]\n  \n  edge [minlen = 1, fontname = arial]\n    d1 -> T\n    d4 -> T -> d5 [arrowhead = none]\n    d4 -> A [label=\"  oui\"]\n    d5 -> B [label=\"  non\"]\n    A -> d6 [arrowhead = none]\n    B -> d7 [arrowhead = none]\n    d6 -> d2 -> d7 [arrowhead = none]\n    d2 -> C\n    C -> d3 [arrowhead = none]\n  \n  { rank = same; T; d4; d5 }\n  { rank = same; A; B }\n  { rank = same; d2; d6; d7 }\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -131,7 +131,7 @@
   <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Texte affiché si la condition est fausse."</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="co">#&gt; [1] "Texte affiché si la condition est fausse."</span></code></pre></div>
-<div style="float:right;">
+<div class="float-right">
 <div id="htmlwidget-27a6251d00cbd347f90b" style="width:200px;height:200px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-27a6251d00cbd347f90b">{"x":{"diagram":"digraph {\n  splines = ortho\n  \n  node [shape = diamond, fontname = arial, width = 1.25]\n    T1 [label=\"test 1\", group=g1]\n    T2 [label=\"test 2\", group=g1]\n  node [shape = box, fontname = arial, width = 1]\n    A [label=\"instruction 1\", group=g2]\n    B [label=\"instruction 2\", group=g2]\n    C [label=\"instruction 3\", group=g1]\n  node [shape = point, width = 0]\n    d1 [group=g1]; d2 [group=g1]; d3 [group=g1];\n    d4 [group=g3]; d5 [group=g3]; d6 [group=g3]\n  \n  edge [minlen = 1, fontname = arial]\n    d1 -> T1\n    T1 -> A [label=\"  oui\"]\n    T1 -> T2 [label=\"  non\"]\n    T2 -> B [label=\"  oui\"]\n    T2 -> d2 [arrowhead = none, label=\"  non\"]\n    d2 -> C\n    A -> d4 -> d5 [arrowhead = none]\n    B -> d5 -> d6 [arrowhead = none]\n    d2 -> d6 [dir = back]\n    C -> d3 [arrowhead = none]\n  \n  { rank = same; T1; A; d4 }\n  { rank = same; T2; B; d5 }\n  { rank = same; d2; d6 }\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -355,7 +355,7 @@
 <h3>
 <span class="header-section-number">5.2.3</span> Boucles à précondition<a class="anchor" aria-label="anchor" href="#boucles-%C3%A0-pr%C3%A9condition"><i class="fas fa-link"></i></a>
 </h3>
-<div style="float:right;">
+<div class="float-right">
 <div id="htmlwidget-02880d8cbf9369760f4f" style="width:200px;height:200px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-02880d8cbf9369760f4f">{"x":{"diagram":"digraph {\n  splines = ortho\n  \n  node [shape = diamond, fontname = arial, width = 1.25]\n    T [label=\"test\", group=g1]\n  node [shape = box, fontname = arial, width = 1]\n    A [label=\"instruction 1\", group=g1]\n    B [label=\"instruction 2\", group=g1]\n  node [shape = point, width = 0]\n    d1 [group=g1]; d2 [group=g1]; d4 [group=g1];\n    d5 [group=g2]; d7 [group=g2]; d8 [group=g2];\n    d3 [group=g3]; d6 [group=g3]\n  \n  edge [minlen = 1, fontname = arial]\n    d6 -> d2 -> T\n    d6 -> d3 -> A [arrowhead = none]\n    d1 -> d2 [arrowhead = none]\n    T -> A [label=\"  non\"]\n    T -> d5 [arrowhead = none]\n    d5 -> d7 [arrowhead = none, label=\"  oui\"] \n    d7 -> d8 [arrowhead = none]\n    B -> d8 [dir = back]\n    B -> d4 [arrowhead = none]\n    \n  { rank = same; T; d5 }\n  { rank = same; A; d3; d7 }\n  { rank = same; B; d8 }\n  { rank = same; d2; d6 }\n  \n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -423,7 +423,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-02.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

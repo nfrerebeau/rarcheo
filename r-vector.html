@@ -6,20 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Vecteurs | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. 2.1). Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un...">
+<meta name="description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un vecteur...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="2 Vecteurs | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/r-vector.html">
-<meta property="og:description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. 2.1). Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un...">
+<meta property="og:description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un vecteur...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Vecteurs | R pour l’archéologue">
-<meta name="twitter:description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. 2.1). Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="twitter:description" content="Le vecteur (vector) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d’éléments. Un vecteur peut être un vecteur...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.8/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.8.9000/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -88,16 +88,8 @@
 <h1>
 <span class="header-section-number">2</span> Vecteurs<a class="anchor" aria-label="anchor" href="#r-vector"><i class="fas fa-link"></i></a>
 </h1>
-<p>Le vecteur (<code>vector</code>) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>). Un vecteur est simplement un ensemble d’<strong>éléments</strong>.</p>
+<p>Le vecteur (<code>vector</code>) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d’<strong>éléments</strong>.</p>
 <p>Un vecteur peut être un <a href="r-vector.html#r-atomic">vecteur atomique</a> (<code>atomic</code>), si tous ses éléments sont de même <strong>type</strong>, ou une <a href="r-vector.html#r-list">liste</a> (<code>list</code>), si ses éléments sont de types différents (tab. <a href="r-vector.html#tab:r-data-structures">2.1</a>). Un vecteur peut également avoir des <a href="r-vector.html#attributs"><strong>attributs</strong></a> (sorte de métadonnées).</p>
-
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:r-vector-types"></span>
-<div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:70%;height:400px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  graph [rankdir = BT]\n  \n  node [shape = plaintext, fontname = arial]\n  vector; atomic; list; \"data.frame\";\n  logical; integer; double; character\n  \n  {atomic list} -> vector\n  \"data.frame\" -> list\n  {logical integer double character} -> atomic\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p class="caption">
-Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;&lt;em&gt;Advanced r&lt;/em&gt;.&lt;/p&gt;"><sup>50</sup></a></span>.
-</p>
-</div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
 <span id="tab:r-data-structures">Tableau 2.1: </span> Structures de données des objets de R.</caption>
@@ -128,7 +120,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <h2>
 <span class="header-section-number">2.1</span> Vecteurs atomiques (<code>atomic</code>)<a class="anchor" aria-label="anchor" href="#r-atomic"><i class="fas fa-link"></i></a>
 </h2>
-<p>Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d’éléments qu’il contient). Les quatre principaux types de R sont les suivants :</p>
+<p>Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d’éléments qu’il contient ; fig. <a href="r-vector.html#fig:r-atomic">2.1</a>). Les quatre principaux types de R sont les suivants :</p>
 <ul>
 <li>
 <code>logical</code> : booléen.</li>
@@ -139,6 +131,12 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <li>
 <code>character</code> : chaîne de caractère.</li>
 </ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:r-atomic"></span>
+<img src="chapter_rstats_files/figure-html/r-atomic-1.png" alt="Un vecteur est un ensemble d'éléments de même type." width="33%"><p class="caption">
+Figure 2.1: Un vecteur est un ensemble d’éléments de même type.
+</p>
+</div>
 <div id="création" class="section level3" number="2.1.1">
 <h3>
 <span class="header-section-number">2.1.1</span> Création<a class="anchor" aria-label="anchor" href="#cr%C3%A9ation"><i class="fas fa-link"></i></a>
@@ -289,7 +287,14 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <h2>
 <span class="header-section-number">2.2</span> Listes (<code>list</code>)<a class="anchor" aria-label="anchor" href="#r-list"><i class="fas fa-link"></i></a>
 </h2>
-<p>Une liste est un vecteur particulier, dont les éléments peuvent être de n’importe quel type. Une liste peut être créée avec avec la fonction <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> :</p>
+<p>Une liste est un vecteur particulier, dont les éléments peuvent être de n’importe quel type (fig. <a href="r-vector.html#fig:r-list">2.2</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:r-list"></span>
+<img src="chapter_rstats_files/figure-html/r-list-1.png" alt="Une liste est un vecteur dont les éléments peuvent être de différents types." width="33%"><p class="caption">
+Figure 2.2: Une liste est un vecteur dont les éléments peuvent être de différents types.
+</p>
+</div>
+<p>Une liste peut être créée avec avec la fonction <code><a href="https://rdrr.io/r/base/list.html">list()</a></code> :</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Création d'une liste contenant 4 éléments</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
@@ -404,7 +409,13 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <h2>
 <span class="header-section-number">2.3</span> Matrices (<code>matrix</code> et <code>array</code>)<a class="anchor" aria-label="anchor" href="#r-matrix"><i class="fas fa-link"></i></a>
 </h2>
-<p>Un vecteur peut être transformé en un tableau à deux (<code>matrix</code>) ou plusieurs (<code>array</code>) dimensions, en spécifiant l’attribut <code>dim</code>. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède <span class="math inline">\(m\)</span> lignes et <span class="math inline">\(n\)</span> colonnes et contient <span class="math inline">\(m \times n\)</span> éléments du même type.</p>
+<p>Un vecteur peut être transformé en un tableau à deux (<code>matrix</code>) ou plusieurs (<code>array</code>) dimensions, en spécifiant l’attribut <code>dim</code>. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède <span class="math inline">\(m\)</span> lignes et <span class="math inline">\(n\)</span> colonnes et contient <span class="math inline">\(m \times n\)</span> éléments du même type (fig. <a href="r-vector.html#fig:r-matrix">2.3</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:r-matrix"></span>
+<img src="chapter_rstats_files/figure-html/r-matrix-1.png" alt="Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données)." width="33%"><img src="chapter_rstats_files/figure-html/r-matrix-2.png" alt="Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données)." width="33%"><p class="caption">
+Figure 2.3: Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données).
+</p>
+</div>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Soit un vecteur contenant 12 éléments</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span>
@@ -497,7 +508,14 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <h2>
 <span class="header-section-number">2.4</span> Tableaux de données (<code>data.frame</code>)<a class="anchor" aria-label="anchor" href="#r-dataframe"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> (fig. <a href="r-vector.html#fig:r-vector-types">2.1</a>) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>51</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont du même type) :</p>
+<p>Le <code>data.frame</code> est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un <code>data.frame</code> est un cas particulier de <code>list</code> dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ainsi, la fonction &lt;code&gt;names()&lt;/code&gt; est équivalente à &lt;code&gt;rownames()&lt;/code&gt; et la fonction &lt;code&gt;length()&lt;/code&gt; retourne le nombre de colonne du tableau (équivalent à &lt;code&gt;ncol()&lt;/code&gt;).&lt;/p&gt;"><sup>51</sup></a>. Chaque colonne d’un <code>data.frame</code> peut ainsi être d’un type différent (contrairement aux matrices dont tous les éléments sont du même type ; fig. <a href="r-vector.html#fig:r-dataframe">2.4</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:r-dataframe"></span>
+<img src="chapter_rstats_files/figure-html/r-dataframe-1.png" alt="Un data.frame est un tableau à deux dimensions dont les colonnes peuvent être de différents types." width="33%"><p class="caption">
+Figure 2.4: Un data.frame est un tableau à deux dimensions dont les colonnes peuvent être de différents types.
+</p>
+</div>
+<p>Un tableau de données peut être créé avec la fonction <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> en spécifiant les différentes colonnes (si les arguments sont nommés, ils seront utilisés comme noms de colonne) :</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,
@@ -568,7 +586,7 @@ Figure 2.1: Les types d’objets de R. D’après <span class="citation">Wickham
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-02.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

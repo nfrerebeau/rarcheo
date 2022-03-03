@@ -142,7 +142,7 @@
 }
 
 %Images
-%\usepackage{subcaption}
+\usepackage{rotating}
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
@@ -224,7 +224,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-03-02}
+\date{2022-03-03}
 
 \begin{document}
 \maketitle
@@ -239,7 +239,7 @@
 \chapter*{Avant propos}\label{avant-propos}}
 \addcontentsline{toc}{chapter}{Avant propos}
 
-Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R}. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
+Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R} \autocite{R-base}. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
 
 Bien qu'il soit initialement conçu pour les étudiants du master mention \emph{Archéologie, sciences pour l'archéologie} de l'\href{https://www.u-bordeaux-montaigne.fr/}{Université Bordeaux Montaigne}, ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
 
@@ -286,7 +286,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package R \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 02 Mar 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} à l'aide de \href{https://pandoc.org/}{pandoc} version 2.14.2 (cette version a été compilée le 03 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -530,7 +530,7 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{images/rstudio-desktop} 
+{\centering \includegraphics[width=1\linewidth,angle=90]{images/rstudio-desktop} 
 
 }
 
@@ -943,20 +943,9 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 \hypertarget{r-vector}{%
 \chapter{Vecteurs}\label{r-vector}}
 
-Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites (fig.~\ref{fig:r-vector-types}). Un vecteur est simplement un ensemble d'\textbf{éléments}.
+Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'\textbf{éléments}.
 
 Un vecteur peut être un \protect\hyperlink{r-atomic}{vecteur atomique} (\texttt{atomic}), si tous ses éléments sont de même \textbf{type}, ou une \protect\hyperlink{r-list}{liste} (\texttt{list}), si ses éléments sont de types différents (tab. \ref{tab:r-data-structures}). Un vecteur peut également avoir des \protect\hyperlink{attributs}{\textbf{attributs}} (sorte de métadonnées).
-
-
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{chapter_rstats_files/figure-latex/r-vector-types-1} 
-
-}
-
-\caption{Les types d'objets de R. D'après \textcite{wickham2019}.}\label{fig:r-vector-types}
-\end{figure}
 
 \begin{longtable}[]{@{}lll@{}}
 \caption{\label{tab:r-data-structures} Structures de données des objets de R.}\tabularnewline
@@ -977,7 +966,7 @@ Dimensions & Objet homogène & Objet hétérogène \\
 \hypertarget{r-atomic}{%
 \section{\texorpdfstring{Vecteurs atomiques (\texttt{atomic})}{Vecteurs atomiques (atomic)}}\label{r-atomic}}
 
-Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient). Les quatre principaux types de R sont les suivants :
+Un vecteur atomique possède deux propriétés : son type et sa longueur (le nombre d'éléments qu'il contient ; fig.~\ref{fig:r-atomic}). Les quatre principaux types de R sont les suivants :
 
 \begin{itemize}
 \tightlist
@@ -990,6 +979,15 @@ Un vecteur atomique possède deux propriétés : son type et sa longueur (le nom
 \item
   \texttt{character} : chaîne de caractère.
 \end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-atomic-1} 
+
+}
+
+\caption{Un vecteur est un ensemble d'éléments de même type.}\label{fig:r-atomic}
+\end{figure}
 
 \hypertarget{cruxe9ation}{%
 \subsection{Création}\label{cruxe9ation}}
@@ -1206,7 +1204,18 @@ L'utilisation des attributs permet de créer des vecteurs particuliers, appelés
 \hypertarget{r-list}{%
 \section{\texorpdfstring{Listes (\texttt{list})}{Listes (list)}}\label{r-list}}
 
-Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type. Une liste peut être créée avec avec la fonction \texttt{list()} :
+Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type (fig.~\ref{fig:r-list}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-list-1} 
+
+}
+
+\caption{Une liste est un vecteur dont les éléments peuvent être de différents types.}\label{fig:r-list}
+\end{figure}
+
+Une liste peut être créée avec avec la fonction \texttt{list()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1339,7 +1348,16 @@ Un vecteur atomique est converti en liste avant d'être combiné :
 \hypertarget{r-matrix}{%
 \section{\texorpdfstring{Matrices (\texttt{matrix} et \texttt{array})}{Matrices (matrix et array)}}\label{r-matrix}}
 
-Un vecteur peut être transformé en un tableau à deux (\texttt{matrix}) ou plusieurs (\texttt{array}) dimensions, en spécifiant l'attribut \texttt{dim}. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède \(m\) lignes et \(n\) colonnes et contient \(m \times n\) éléments du même type.
+Un vecteur peut être transformé en un tableau à deux (\texttt{matrix}) ou plusieurs (\texttt{array}) dimensions, en spécifiant l'attribut \texttt{dim}. Une matrice, au sens mathématique, est un tableau rectangulaire à deux dimensions : une matrice possède \(m\) lignes et \(n\) colonnes et contient \(m \times n\) éléments du même type (fig.~\ref{fig:r-matrix}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-matrix-1} \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-matrix-2} 
+
+}
+
+\caption{Une matrice (gauche) est un tableau à deux dimensions dont tous les éléments sont de même type. Un array (droite) peut être vu comme un empilement de matrices (formant ainsi un cube de données).}\label{fig:r-matrix}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1455,7 +1473,18 @@ Enfin, il est possible de spécifier/extraire les noms de lignes et de colonnes 
 \hypertarget{r-dataframe}{%
 \section{\texorpdfstring{Tableaux de données (\texttt{data.frame})}{Tableaux de données (data.frame)}}\label{r-dataframe}}
 
-Le \texttt{data.frame} est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un \texttt{data.frame} est un cas particulier de \texttt{list} (fig.~\ref{fig:r-vector-types}) dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau\footnote{Ainsi, la fonction \texttt{names()} est équivalente à \texttt{rownames()} et la fonction \texttt{length()} retourne le nombre de colonne du tableau (équivalent à \texttt{ncol()}).}. Chaque colonne d'un \texttt{data.frame} peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type) :
+Le \texttt{data.frame} est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un \texttt{data.frame} est un cas particulier de \texttt{list} dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau\footnote{Ainsi, la fonction \texttt{names()} est équivalente à \texttt{rownames()} et la fonction \texttt{length()} retourne le nombre de colonne du tableau (équivalent à \texttt{ncol()}).}. Chaque colonne d'un \texttt{data.frame} peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type ; fig.~\ref{fig:r-dataframe}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.33\linewidth]{chapter_rstats_files/figure-latex/r-dataframe-1} 
+
+}
+
+\caption{Un data.frame est un tableau à deux dimensions dont les colonnes peuvent être de différents types.}\label{fig:r-dataframe}
+\end{figure}
+
+Un tableau de données peut être créé avec la fonction \texttt{data.frame()} en spécifiant les différentes colonnes (si les arguments sont nommés, ils seront utilisés comme noms de colonne) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2215,7 +2244,7 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 \hypertarget{test-si}{%
 \subsection{\texorpdfstring{Test ``si\ldots{}''}{Test ``si\ldots''}}\label{test-si}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-81-1} \end{center}
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} \end{center}
 
 L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{si} une condition est vraie :
 
@@ -2235,7 +2264,7 @@ L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{s
 \hypertarget{test-si-sinon}{%
 \subsection{\texorpdfstring{Test ``si\ldots{} sinon\ldots{}''}{Test ``si\ldots{} sinon\ldots''}}\label{test-si-sinon}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-83-1} \end{center}
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} \end{center}
 
 Il est possible de définir plusieurs choix en utilisant alternativement les instructions \texttt{if} et \texttt{else} :
 
@@ -2253,7 +2282,7 @@ Il est possible de définir plusieurs choix en utilisant alternativement les ins
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-85-1} \end{center}
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} \end{center}
 
 Plusieurs alternatives peuvent être définies en utilisant conjointement \texttt{else} et \texttt{if}. On peut alors enchaîner autant de clauses ``sinon si'' que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
 
@@ -2535,7 +2564,7 @@ Si le résultat de l'application de la fonction \texttt{FUN} à chaque élément
 \hypertarget{boucles-uxe0-pruxe9condition}{%
 \subsection{Boucles à précondition}\label{boucles-uxe0-pruxe9condition}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/unnamed-chunk-98-1} \end{center}
+\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} \end{center}
 
 Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction \texttt{if} \emph{tant que} la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (\texttt{TRUE}) les instructions sont exécutées, si la condition est fausse (\texttt{FALSE}) la boucle s'arrête sans exécuter les instructions.
 
