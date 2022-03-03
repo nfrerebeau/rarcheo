@@ -41,5 +41,7 @@ vignettes/*.pdf
 
 ### R.Bookdown Stack ###
 _book/
+*.log
+*.rds
 # R package: bookdown caching files
 /*_files/

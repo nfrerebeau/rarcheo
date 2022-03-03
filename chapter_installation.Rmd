@@ -49,6 +49,6 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 * Le troisième quadrant contient la [console](#console).
 * Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de [gérer les packages](#packages) et d'[afficher l'aide](#aide).
 
-```{r rstudio-desktop, echo=FALSE, out.width='100%', fig.cap="L'interface de RStudio Desktop."}
+```{r rstudio-desktop, echo=FALSE, out.width='100%', out.extra='angle=90', fig.cap="L'interface de RStudio Desktop."}
 knitr::include_graphics("images/rstudio-desktop.png")
 ```
