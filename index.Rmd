@@ -65,11 +65,11 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) à l'aide de [pandoc](https://pandoc.org/) version `r rmarkdown::pandoc_version()` (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
-Cette version du livre a été réalisée avec `r R.version.string`, les packages utilisés sont résumés dans le tableau \@ref(tab:packages).
+Cette version du livre a été réalisée avec `r R.version.string` et [pandoc](https://pandoc.org/) version `r rmarkdown::pandoc_version()`. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
 
 ```{r packages, echo=FALSE, results="asis"}
 # Lister les packages présents dans le fichier DESCRIPTION

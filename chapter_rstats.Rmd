@@ -106,8 +106,6 @@ Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : l
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#fonctions-ecrire) ou d'[installer des packages](#packages) supplémentaires.
 
-### Utiliser des fonctions
-
 Par exemple, la fonction `round()` permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction `round()` réalise un arrondi à zéro chiffre après la virgule :
 
 ```{r}
@@ -141,40 +139,6 @@ round(3.141593, digits = 2)
 ::: {.rmdtip}
 Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
 :::
-
-### Écrire des fonctions {#fonctions-ecrire}
-
-Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
-
-```{r}
-addition <- function(x, y) {
-  # On définit les instructions à exécuter
-  z <- x + y
-  # On précise le résultat à retourner au terme des calculs
-  return(z)
-}
-
-addition(1, 2)
-```
-
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
-
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-```{r}
-# Définition de la fonction
-# Par défaut, la valeur de y est 2
-puissance <- function(x, y = 2) {
-  z <- x^y
-  return(z)
-}
-
-# L'utilisateur ne change pas la valeur par défaut
-puissance(2) # 2 au carré
-
-# L'utilisateur change explicitement la valeur par défaut
-puissance(2, 3) # 2 au cube
-```
 
 ## Packages {#packages}
 

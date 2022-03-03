@@ -11,7 +11,7 @@ Des jeux de données bien structurés se présentent sous la forme de tableaux �
 * Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles [@wickham2014].].
 
 ::: {.rmdtip}
-Dans le cas de données tabulaires, utilisez le [format CSV](#csv) pour archiver et diffuser vos données.
+Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
 :::
 
 # Importer et exporter {#importer}
