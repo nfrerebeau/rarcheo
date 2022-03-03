@@ -121,6 +121,7 @@
 \gappto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
 \usepackage{microtype} %Détails typographiques
 \usepackage[autostyle=true]{csquotes}
+\usepackage{sidenotes}
 
 %Mathématiques
 \usepackage{amsmath} %Symboles
@@ -286,11 +287,11 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} à l'aide de \href{https://pandoc.org/}{pandoc} version 2.14.2 (cette version a été compilée le 03 Mar 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 03 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
-Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01), les packages utilisés sont résumés dans le tableau \ref{tab:packages}.
+Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01) et \href{https://pandoc.org/}{pandoc} version 2.14.2. Les packages R utilisés sont résumés dans le tableau \ref{tab:packages}.
 
 \begin{longtable}[]{@{}llll@{}}
 \caption{\label{tab:packages}Liste des packages utilisés.}\tabularnewline
@@ -700,9 +701,6 @@ Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : l
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'\protect\hyperlink{fonctions-ecrire}{écrire ses propres fonctions} ou d'\protect\hyperlink{packages}{installer des packages} supplémentaires.
 
-\hypertarget{utiliser-des-fonctions}{%
-\subsection{Utiliser des fonctions}\label{utiliser-des-fonctions}}
-
 Par exemple, la fonction \texttt{round()} permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction \texttt{round()} réalise un arrondi à zéro chiffre après la virgule :
 
 \begin{Shaded}
@@ -754,48 +752,6 @@ Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs 
 
 \end{tcolorbox}
 
-\hypertarget{fonctions-ecrire}{%
-\subsection{Écrire des fonctions}\label{fonctions-ecrire}}
-
-Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
-  \CommentTok{\# On définit les instructions à exécuter}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
-  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 3}
-\end{Highlighting}
-\end{Shaded}
-
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
-
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Définition de la fonction}
-\CommentTok{\# Par défaut, la valeur de y est 2}
-\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
-\CommentTok{\#\textgreater{} [1] 4}
-
-\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
-\CommentTok{\#\textgreater{} [1] 8}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{packages}{%
 \section{Packages}\label{packages}}
 
@@ -838,7 +794,6 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
-\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2244,9 +2199,16 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 \hypertarget{test-si}{%
 \subsection{\texorpdfstring{Test ``si\ldots{}''}{Test ``si\ldots''}}\label{test-si}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} \end{center}
+\begin{marginfigure}
 
-L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{si} une condition est vraie :
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} 
+
+}
+
+\caption{Diagramme d'un test "si..."}\label{fig:flow-if}
+\end{marginfigure}
+
+L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{si} une condition est vraie (fig.~\ref{fig:flow-if}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2264,9 +2226,16 @@ L'instruction \texttt{if} permet d'exécuter un bloc de code, uniquement \emph{s
 \hypertarget{test-si-sinon}{%
 \subsection{\texorpdfstring{Test ``si\ldots{} sinon\ldots{}''}{Test ``si\ldots{} sinon\ldots''}}\label{test-si-sinon}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} \end{center}
+\begin{marginfigure}
 
-Il est possible de définir plusieurs choix en utilisant alternativement les instructions \texttt{if} et \texttt{else} :
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} 
+
+}
+
+\caption{Diagramme d'un test "si... sinon..."}\label{fig:flow-ifelse}
+\end{marginfigure}
+
+Il est possible de définir plusieurs choix en utilisant alternativement les instructions \texttt{if} et \texttt{else} (fig.~\ref{fig:flow-ifelse}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2282,9 +2251,16 @@ Il est possible de définir plusieurs choix en utilisant alternativement les ins
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} \end{center}
+\begin{marginfigure}
 
-Plusieurs alternatives peuvent être définies en utilisant conjointement \texttt{else} et \texttt{if}. On peut alors enchaîner autant de clauses ``sinon si'' que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} 
+
+}
+
+\caption{Diagramme d'un test "sinon... si..."}\label{fig:flow-elseif}
+\end{marginfigure}
+
+Plusieurs alternatives peuvent être définies en utilisant conjointement \texttt{else} et \texttt{if}. On peut alors enchaîner autant de clauses ``sinon si'' que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée (fig.~\ref{fig:flow-elseif}) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2564,9 +2540,16 @@ Si le résultat de l'application de la fonction \texttt{FUN} à chaque élément
 \hypertarget{boucles-uxe0-pruxe9condition}{%
 \subsection{Boucles à précondition}\label{boucles-uxe0-pruxe9condition}}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} \end{center}
+\begin{marginfigure}
 
-Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction \texttt{if} \emph{tant que} la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (\texttt{TRUE}) les instructions sont exécutées, si la condition est fausse (\texttt{FALSE}) la boucle s'arrête sans exécuter les instructions.
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} 
+
+}
+
+\caption{Diagramme d'une boucle à précondition.}\label{fig:flow-while}
+\end{marginfigure}
+
+Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction \texttt{if} \emph{tant que} la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (\texttt{TRUE}) les instructions sont exécutées, si la condition est fausse (\texttt{FALSE}) la boucle s'arrête sans exécuter les instructions (fig.~\ref{fig:flow-while}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2614,7 +2597,7 @@ Des jeux de données bien structurés se présentent sous la forme de tableaux �
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
 
-Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format CSV} pour archiver et diffuser vos données.
+Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format CSV}.
 
 \end{tcolorbox}
 
@@ -2636,14 +2619,87 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \hypertarget{part-uxe9luxe9ments-de-statistiques}{%
 \part{Éléments de statistiques}\label{part-uxe9luxe9ments-de-statistiques}}
 
+\hypertarget{variables}{%
+\chapter{Observations et variables}\label{variables}}
+
+Une \emph{variable statistique} désigne une caractéristique mesurable qui peut prendre différentes \emph{valeurs}. On distingue les \emph{variables quantitatives} (ou numériques) qui décrivent des caractéristiques quantifiables et les \emph{variables qualitatives} (ou catégoriques) qui sont des caractéristiques non quantifiables (fig.~\ref{fig:variables}). Dans sa forme la plus simple, une variable statistique est représentée par un \protect\hyperlink{r-atomic}{vecteur atomique}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{chapter_statistics_files/figure-latex/variables-1} 
+
+}
+
+\caption{Les types de variables.}\label{fig:variables}
+\end{figure}
+
+\hypertarget{variables-quantitatives}{%
+\section{Variables quantitatives}\label{variables-quantitatives}}
+
+Les variables quantitatives prennent des valeurs numériques qui représentent des quantités mesurables. Si les valeurs d'une variable quantitative sont dénombrables et ont un nombre fini de possibilités, cette variable est dite \emph{discrète}. Les valeurs d'une variable discrète sont souvent, mais pas uniquement, des nombres entiers (la population d'un pays par exemple). À l'inverse une variable quantitative est dite \emph{continue} si les valeurs qu'elle peut prendre ne sont pas dénombrables et ont un nombre infini de possibilités dans un intervalle donné (la taille et le poids d'un groupe d'individus par exemple).
+
+\hypertarget{variables-qualitatives}{%
+\section{Variables qualitatives}\label{variables-qualitatives}}
+
+Les variables qualitatives représentent des caractéristiques non quantifiables, dont les valeurs sont appelées catégories ou \emph{modalités}.
+
+Une variable qualitative \emph{nominale} décrit une catégorie sans ordre naturel (le genre, les couleurs sont ainsi des variables nominales). À l'inverse, une variable qualitative est dite \emph{ordinale} s'il existe une relation d'ordre entre les catégories auxquelles peuvent appartenir ses différentes valeurs (une grandeur mesurée sur une échelle petit/moyen/grand est une variable ordinale).
+
+logical = variable qualitative nominale qui ne peut prendre que deux valeurs : \texttt{TRUE} (vrai) ou \texttt{FALSE} (faux)
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Attention,colframe=darkred]
+
+Il peut arriver que des variables qualitatives apparaissent sous une forme numérique dans un jeu de données. Cette dernière résulte du codage des données. Pour ne pas commettre d'erreur d'interprétation il est donc important de consulter les \textbf{métadonnées} décrivant chacune des variables du jeu de données utilisé.
+
+\end{tcolorbox}
+
 \hypertarget{statistique-descriptive}{%
 \chapter{Statistique descriptive}\label{statistique-descriptive}}
+
+\hypertarget{indicateurs-de-position}{%
+\section{Indicateurs de position}\label{indicateurs-de-position}}
+
+\hypertarget{indicateurs-de-dispersion}{%
+\section{Indicateurs de dispersion}\label{indicateurs-de-dispersion}}
 
 \hypertarget{relations-entre-variables}{%
 \chapter{Relations entre variables}\label{relations-entre-variables}}
 
-\hypertarget{visualisation-de-donnuxe9es}{%
-\chapter{Visualisation de données}\label{visualisation-de-donnuxe9es}}
+correlation vs causalité
+
+\hypertarget{covariance}{%
+\section{Covariance}\label{covariance}}
+
+\hypertarget{correlation}{%
+\section{Corrélation}\label{correlation}}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_correlation} 
+
+}
+
+\caption{Correlation. ``Correlation doesn't imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing `look over there'.'' \autocite[CC BY-NC 2.0][]{munroe2009}.}\label{fig:xkcd-correlation}
+\end{figure}
+
+\hypertarget{ruxe9gression}{%
+\section{Régression}\label{ruxe9gression}}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_curve_fitting} 
+
+}
+
+\caption{Curve-Fitting. ``Cauchy-Lorentz: `Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.'\,'' \autocite[CC BY-NC 2.0][]{munroe2018}.}\label{fig:xkcd-curve-fitting}
+\end{figure}
+
+\hypertarget{part-visualisation-de-donnuxe9es}{%
+\part{Visualisation de données}\label{part-visualisation-de-donnuxe9es}}
 
 \hypertarget{part-donnuxe9es-de-composition}{%
 \part{Données de composition}\label{part-donnuxe9es-de-composition}}
@@ -2861,6 +2917,48 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \CommentTok{\# Séquence de même longueur qu\textquotesingle{}un objet}
 \FunctionTok{seq\_along}\NormalTok{(x)}
 \CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fonctions-ecrire}{%
+\chapter{Écrire des fonctions}\label{fonctions-ecrire}}
+
+Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+  \CommentTok{\# On définit les instructions à exécuter}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition de la fonction}
+\CommentTok{\# Par défaut, la valeur de y est 2}
+\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
+\CommentTok{\#\textgreater{} [1] 4}
+
+\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
+\CommentTok{\#\textgreater{} [1] 8}
 \end{Highlighting}
 \end{Shaded}
 

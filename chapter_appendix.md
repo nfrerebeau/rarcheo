@@ -42,6 +42,45 @@ seq_along(x)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
+# Écrire des fonctions {#fonctions-ecrire}
+
+Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
+
+
+```r
+addition <- function(x, y) {
+  # On définit les instructions à exécuter
+  z <- x + y
+  # On précise le résultat à retourner au terme des calculs
+  return(z)
+}
+
+addition(1, 2)
+#> [1] 3
+```
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+
+```r
+# Définition de la fonction
+# Par défaut, la valeur de y est 2
+puissance <- function(x, y = 2) {
+  z <- x^y
+  return(z)
+}
+
+# L'utilisateur ne change pas la valeur par défaut
+puissance(2) # 2 au carré
+#> [1] 4
+
+# L'utilisateur change explicitement la valeur par défaut
+puissance(2, 3) # 2 au cube
+#> [1] 8
+```
+
 # Bonnes pratiques {#bonnes-pratiques}
 
 ## Travailler par projets {#projets}

@@ -131,8 +131,6 @@ Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : l
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#fonctions-ecrire) ou d'[installer des packages](#packages) supplémentaires.
 
-### Utiliser des fonctions
-
 Par exemple, la fonction `round()` permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction `round()` réalise un arrondi à zéro chiffre après la virgule :
 
 
@@ -176,45 +174,6 @@ round(3.141593, digits = 2)
 Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
 :::
 
-### Écrire des fonctions {#fonctions-ecrire}
-
-Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
-
-
-```r
-addition <- function(x, y) {
-  # On définit les instructions à exécuter
-  z <- x + y
-  # On précise le résultat à retourner au terme des calculs
-  return(z)
-}
-
-addition(1, 2)
-#> [1] 3
-```
-
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
-
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-
-```r
-# Définition de la fonction
-# Par défaut, la valeur de y est 2
-puissance <- function(x, y = 2) {
-  z <- x^y
-  return(z)
-}
-
-# L'utilisateur ne change pas la valeur par défaut
-puissance(2) # 2 au carré
-#> [1] 4
-
-# L'utilisateur change explicitement la valeur par défaut
-puissance(2, 3) # 2 au cube
-#> [1] 8
-```
-
 ## Packages {#packages}
 
 Lors d'une première installation de R, un ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
@@ -246,7 +205,6 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 
 ```r
 data(intcal20)
-#> Warning in data(intcal20): data set 'intcal20' not found
 ```
 
 Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
@@ -1500,11 +1458,17 @@ Les alternatives permettent d'exécuter différentes instructions en fonction du
 ### Test "si..."
 
 ::: {.float-right}
+\begin{marginfigure}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} \end{center}
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-if-1} 
+
+}
+
+\caption{Diagramme d'un test "si..."}(\#fig:flow-if)
+\end{marginfigure}
 :::
 
-L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie :
+L'instruction `if` permet d'exécuter un bloc de code, uniquement *si* une condition est vraie (fig. \@ref(fig:flow-if)) :
 
 
 ```r
@@ -1521,11 +1485,17 @@ if (x > 0) {
 ### Test "si... sinon..."
 
 ::: {.float-right}
+\begin{marginfigure}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} \end{center}
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-ifelse-1} 
+
+}
+
+\caption{Diagramme d'un test "si... sinon..."}(\#fig:flow-ifelse)
+\end{marginfigure}
 :::
 
-Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` :
+Il est possible de définir plusieurs choix en utilisant alternativement les instructions `if` et `else` (fig. \@ref(fig:flow-ifelse)) :
 
 
 ```r
@@ -1541,11 +1511,17 @@ if (x < 0) {
 ```
 
 ::: {.float-right}
+\begin{marginfigure}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} \end{center}
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-elseif-1} 
+
+}
+
+\caption{Diagramme d'un test "sinon... si..."}(\#fig:flow-elseif)
+\end{marginfigure}
 :::
 
-Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée :
+Plusieurs alternatives peuvent être définies en utilisant conjointement `else` et `if`. On peut alors enchaîner autant de clauses "sinon si" que nécessaire et, éventuellement, définir une clause finale qui sera exécutée uniquement si aucune autre clause n'a été vérifiée (fig. \@ref(fig:flow-elseif)) :
 
 
 ```r
@@ -1801,11 +1777,17 @@ moy
 ### Boucles à précondition
 
 ::: {.float-right}
+\begin{marginfigure}
 
-\begin{center}\includegraphics[width=0.25\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} \end{center}
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/flow-while-1} 
+
+}
+
+\caption{Diagramme d'une boucle à précondition.}(\#fig:flow-while)
+\end{marginfigure}
 :::
 
-Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions.
+Une dernière possibilité, d'un usage peut-être moins courant, consiste à exécuter des instructions tant qu'une condition est vérifié. Cette boucle peut être considérée comme la répétition d'une instruction `if` *tant que* la valeur d'un test est vraie. Ainsi, une condition est vérifiée avant chaque itération de la boucle : si la condition est vraie (`TRUE`) les instructions sont exécutées, si la condition est fausse (`FALSE`) la boucle s'arrête sans exécuter les instructions (fig. \@ref(fig:flow-while)).
 
 
 ```r

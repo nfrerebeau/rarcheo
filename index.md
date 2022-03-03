@@ -67,11 +67,11 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) à l'aide de [pandoc](https://pandoc.org/) version 2.14.2 (cette version a été compilée le 03 Mar 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 03 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
-Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01), les packages utilisés sont résumés dans le tableau \@ref(tab:packages).
+Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01) et [pandoc](https://pandoc.org/) version 2.14.2. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
 
 
 Table: (\#tab:packages)Liste des packages utilisés.

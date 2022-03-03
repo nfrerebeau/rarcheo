@@ -61,9 +61,10 @@
 <li><a class="" href="filtrer.html"><span class="header-section-number">10</span> Filtrer</a></li>
 <li><a class="" href="transformer.html"><span class="header-section-number">11</span> Transformer</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">12</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">13</span> Relations entre variables</a></li>
-<li><a class="" href="visualisation-de-donn%C3%A9es.html"><span class="header-section-number">14</span> Visualisation de données</a></li>
+<li><a class="" href="variables.html"><span class="header-section-number">12</span> Observations et variables</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">13</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">14</span> Relations entre variables</a></li>
+<li class="book-part">Visualisation de données</li>
 <li class="book-part">Données de composition</li>
 <li><a class="" href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></li>
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
@@ -74,8 +75,9 @@
 <li class="book-part">Cartographie</li>
 <li class="book-part">Annexes</li>
 <li><a class="" href="cheat-sheet.html"><span class="header-section-number">20</span> Fonctions utiles</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">21</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">22</span> Style de programmation</a></li>
+<li><a class="" href="fonctions-ecrire.html"><span class="header-section-number">21</span> Écrire des fonctions</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">22</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">23</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -96,12 +98,12 @@
 <span class="header-section-number">3.1</span> Vecteurs atomiques<a class="anchor" aria-label="anchor" href="#subset-atomic"><i class="fas fa-link"></i></a>
 </h2>
 <p>Il existe différentes façons d’extraire un sous-ensemble d’éléments au sein d’un vecteur à l’aide de l’opérateur <code>[</code> :</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.3</span>, <span class="fl">2.4</span>, <span class="fl">3.5</span>, <span class="fl">4.6</span>, <span class="fl">5.7</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>
 <p>Il est possible de spécifier les indices (positions) des éléments à conserver ou à enlever avec des nombres entiers :</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sélection du premier, troisième et cinquième élément</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [1] 1.3 3.5 5.7</span>
@@ -117,19 +119,19 @@
 </li>
 <li>
 <p>Il est possible de spécifier si oui (<code>TRUE</code>) ou non (<code>FALSE</code>) on souhaite conserver des éléments :</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [1] 1.3 3.5 5.7</span></code></pre></div>
 </li>
 <li>
 <p>Si rien n’est spécifié, le vecteur d’origine est retourné :</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="op">]</span>
 <span class="co">#&gt; [1] 1.3 2.4 3.5 4.6 5.7</span></code></pre></div>
 </li>
 <li>
 <p>Si les éléments sont nommés, on peut les sélectionner par leur nom :</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"e"</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt;   a   c   e </span>
@@ -137,7 +139,7 @@
 </li>
 </ul>
 <p>L’utilisation de <code>[[</code> permet d’extraire un seul et unique élément au lieu d’un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre <code>[</code> et <code>[[</code> n’est pas évidente<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Hormis qu’une tentative de sélection de plusieurs éléments avec &lt;code&gt;[[&lt;/code&gt; produira une erreur.&lt;/p&gt;"><sup>53</sup></a> et est sans doute mieux illustrée avec un exemple :</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co"># L'attribut names est conservé (sous-ensemble)</span>
 <span class="co">#&gt;   a </span>
 <span class="co">#&gt; 1.3</span>
@@ -145,7 +147,7 @@
 <span class="va">x</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># L'attribut names n'est pas conservé (élément)</span>
 <span class="co">#&gt; [1] 1.3</span></code></pre></div>
 <p>Les éléments sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Remplacement du premier et du troisième élément</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">300</span><span class="op">)</span>
 <span class="va">x</span>
@@ -155,21 +157,21 @@
 <ul>
 <li>
 <p>La duplication d’indices :</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">]</span> <span class="co"># Duplique les valeurs</span>
 <span class="co">#&gt; [1] 1 1 1</span></code></pre></div>
 </li>
 <li>
 <p>L’ordre des indices :</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">]</span> <span class="co"># Change l'ordre des valeurs</span>
 <span class="co">#&gt; [1] 5 3 1</span></code></pre></div>
 </li>
 <li>
 <p>Les mécanismes de <a href="r-vector.html#conversion">conversions implicites</a> :</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "integer"</span>
@@ -180,7 +182,7 @@
 </li>
 <li>
 <p>La taille du vecteur de remplacement. Si ce dernier est trop petit, il sera <strong>recyclé</strong> : ses valeurs seront réutilisées autant que nécessaire :</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span>
 <span class="va">x</span>
@@ -193,7 +195,7 @@
 <span class="header-section-number">3.2</span> Listes<a class="anchor" aria-label="anchor" href="#subset-list"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’extraction de sous-ensembles dans une liste s’opère de la même façon que pour un vecteur atomique :</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
   b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>,
@@ -224,7 +226,7 @@
 <span class="co">#&gt; $c</span>
 <span class="co">#&gt; [1] "X" "Y" "Z"</span></code></pre></div>
 <p>L’opérateur <code>[</code> retourne toujours une liste, y compris lorsqu’un unique élément est sélectionné. Pour extraire un unique élément <em>hors</em> de la liste, il est possible d’utiliser l’opérateur <code>[[</code> :</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
 <span class="va">y</span>
 <span class="co">#&gt; $a</span>
@@ -238,14 +240,14 @@
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span>
 <span class="co">#&gt; [1] "logical"</span></code></pre></div>
 <p>Si les éléments de la liste sont nommés, on peut extraire un unique élément en le sélectionnant par son nom avec <code>[[</code> ou avec l’opérateur <code>$</code> (dollar) :</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[[</span><span class="st">"a"</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; [1]  TRUE FALSE</span>
 
 <span class="va">x</span><span class="op">$</span><span class="va">a</span>
 <span class="co">#&gt; [1]  TRUE FALSE</span></code></pre></div>
 <p>Cette distinction entre <code>[</code> et <code>[[</code> est particulièrement importante lorsqu’on souhaite remplacer des valeurs dans une liste (puisque <code>[</code> retourne toujours une liste, la valeur de remplacement doit également être une liste) :</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt; $a</span>
@@ -268,7 +270,7 @@
 <span class="co">#&gt; $c</span>
 <span class="co">#&gt; [1] "X" "Y" "Z"</span></code></pre></div>
 <p>L’opérateur <code>[[</code> permet également de supprimer un élément dans une liste en lui affectant la valeur <code>NULL</code> :</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
 <span class="va">x</span>
 <span class="co">#&gt; $a</span>
@@ -282,7 +284,7 @@
 <span class="header-section-number">3.3</span> Matrices<a class="anchor" aria-label="anchor" href="#subset-matrix"><i class="fas fa-link"></i></a>
 </h2>
 <p>La sélection d’un sous-ensemble dans un tableau à deux dimensions (<code>matrix</code> ou <code>array</code>) est une généralisation de la sélection dans un vecteur. Il suffit de spécifier les indices des lignes et des colonnes, séparés par une virgule :</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span>
@@ -308,7 +310,7 @@
 <span class="co">#&gt; y 2 5 8</span>
 <span class="co">#&gt; z 3 6 9</span></code></pre></div>
 <p>Si rien n’est spécifié, toutes les lignes ou toutes les colonnes sont sélectionnées :</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sélection de toutes les lignes et des colonnes 1 à 3</span>
 <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
 <span class="co">#&gt;   A B C</span>
@@ -322,7 +324,7 @@
 <span class="co">#&gt; y 2 5 8 11</span>
 <span class="co">#&gt; z 3 6 9 12</span></code></pre></div>
 <p>Par défaut, <code>[</code> <strong>simplifie</strong> les résultats à la plus petite dimension possible. La sélection d’une unique valeur, d’une unique ligne ou d’une unique colonne, ne retourne donc pas une matrice mais un vecteur. La structure de l’objet d’origine peut cependant être conservée à l’aide de l’argument <code>drop</code> :</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sélection de la première colonne</span>
 <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="co"># Retourne un vecteur</span>
 <span class="co">#&gt; x y z </span>
@@ -337,7 +339,7 @@
 <p>Un vecteur sans attribut <code>dim</code> n’a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !</p>
 </div>
 <p>Les matrices sont des <a href="r-vector.html#r-matrix">vecteurs possédant un attribut particulier</a> (<code>dim</code>), il est donc également possible de sélectionner un sous-ensemble à l’aide d’un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Sélection des première et troisième valeurs</span>
 <span class="va">x</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">]</span>
 <span class="co">#&gt; [1] 1 3</span>
@@ -350,7 +352,7 @@
 <span class="co">#&gt; y 2 5 8 11</span>
 <span class="co">#&gt; z 0 6 9 12</span></code></pre></div>
 <p>Enfin, il est possible d’utiliser une matrice pour sélectionner un sous-ensemble d’un tableau à deux dimensions ou plus. Cette matrice doit contenir les coordonnées (lignes et colonnes) des valeurs à sélectionner. La première colonne doit ainsi contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimensions supérieures (<code>array</code>) :</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># On veut sélectionner les cellules (1,2), (2,3) et (3,4)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
@@ -370,7 +372,7 @@
 <span class="header-section-number">3.4</span> Tableaux de données<a class="anchor" aria-label="anchor" href="#subset-dataframe"><i class="fas fa-link"></i></a>
 </h2>
 <p>Pour extraire ou remplacer des valeurs dans un <code>data.frame</code>, on peut utiliser deux stratégies. Les <code>data.frame</code> ont en effet les caractéristiques des listes et des matrices :</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
   a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span><span class="op">)</span>,
   b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span>,
