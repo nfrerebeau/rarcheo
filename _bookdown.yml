@@ -18,8 +18,6 @@ rmd_files:
     "index.Rmd",
 
     "chapter_introduction.Rmd",
-
-    "chapter_installation.Rmd",
     
     "chapter_rstats.Rmd",
 
