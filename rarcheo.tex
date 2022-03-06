@@ -225,7 +225,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-03-03}
+\date{2022-03-06}
 
 \begin{document}
 \maketitle
@@ -287,7 +287,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 03 Mar 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 06 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -446,97 +446,6 @@ Ce choix repose sur un constat simple : l'usage de ces packages tend à considé
 Ceci étant dit, le lecteur qui le souhaite trouvera dans \href{https://juba.github.io/tidyverse}{\emph{Introduction à R et au tidyverse}} \autocite{barnier2021}, \href{https://r4ds.had.co.nz/}{\emph{R for Data Science}} \autocite{wickham2016} et \href{https://stat545.com/}{\emph{STAT 545}} \autocite{bryan2020} une introduction à l'analyse de données avec les packages du tidyverse.
 
 \end{tcolorbox}
-
-\hypertarget{installation}{%
-\chapter*{Installation}\label{installation}}
-\addcontentsline{toc}{chapter}{Installation}
-
-\hypertarget{r-installation}{%
-\section*{Installer R}\label{r-installation}}
-\addcontentsline{toc}{section}{Installer R}
-
-R est fonctionne sur les principaux systèmes d'exploitation. Vous pouvez télécharger les fichiers d'installation depuis le \href{https://cran.r-project.org/}{site du CRAN}. Sous Windows et Mac OS, lancez l'exécutable après l'avoir téléchargé et suivez les étapes d'installation en laissant les options par défaut.
-
-R est disponible dans les dépôts d'Ubuntu. Cependant, les paquets inclus dans les dépôts Ubuntu par défaut sont souvent un peu anciens. Il peut être préférable d'\href{https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html}{installer R à partir du dépôt du CRAN} pour bénéficier des dernières versions.
-
-Pour installer R sur Ubuntu :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sudo}\NormalTok{ apt update}
-\FunctionTok{sudo}\NormalTok{ apt }\AttributeTok{{-}y}\NormalTok{ install r{-}base r{-}base{-}dev}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
-
-Des changements importants peuvent subvenir entre les versions de R, entraînant parfois des problèmes de compatibilité. Il est fortement recommandé d'utiliser la dernière version mineure de R et de maintenir son installation à jour.
-
-\end{tcolorbox}
-
-\hypertarget{rstudio-installation}{%
-\section*{Installer RStudio}\label{rstudio-installation}}
-\addcontentsline{toc}{section}{Installer RStudio}
-
-RStudio est un environnement de développement intégré (\emph{interactive development environment}, IDE)\footnote{RStudio n'est pas le seul IDE, des utilisateurs avancés peuvent lui préférer \href{https://ess.r-project.org/}{\emph{Emacs Speaks Statistics}} (ESS), un plugin pour l'éditeur \href{https://www.gnu.org/software/emacs/}{Emacs}.}. RStudio \emph{n'est pas} R, pas plus qu'il n'offre une interface graphique à R. Il s'agit d'un logiciel utilitaire qui permet d'éditer et d'exécuter votre code, ainsi que de réaliser des actions connexes telles que l'installation de packages ou l'import de données. RStudio dispose notamment d'un système de \protect\hyperlink{projets}{gestion de projets} qui permet d'organiser son travail.
-
-RStudio Desktop est disponible sous licence \emph{open-source} pour les principaux systèmes d'exploitation et peut être \href{https://www.rstudio.com/products/rstudio/download/\#download}{téléchargée depuis le site de la société éditrice}.
-
-Pour installer RStudio sur Ubuntu, ouvrez un terminal dans le dossier de téléchargement et lancez la commande suivante (le nom du fichier peut différer en fonction de la version) :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sudo}\NormalTok{ dpkg }\AttributeTok{{-}i}\NormalTok{ rstudio{-}2021.09.2{-}382{-}amd64.deb}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
-
-Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales (\emph{Tools} \textgreater{} \emph{Global Options\ldots{}}) et modifiez les réglages suivants (fig.~\ref{fig:rstudio-settings}) :
-
-\begin{itemize}
-\tightlist
-\item
-  Décochez \emph{Restore .RData into workspace at startup}.
-\item
-  Réglez \emph{Save workspace to .RData on exit} sur \emph{never}.
-\end{itemize}
-
-Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}).
-
-\end{tcolorbox}
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-settings} 
-
-}
-
-\caption{Configuration globale de RStudio Desktop.}\label{fig:rstudio-settings}
-\end{figure}
-
-L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}). Par défaut, de haut en bas et de gauche à droite :
-
-\begin{itemize}
-\tightlist
-\item
-  Le premier quadrant contient les documents en cours d'édition (scripts\ldots), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document\ldots).
-\item
-  Le second quadrant permet d'accéder aux objets présent dans l'\protect\hyperlink{environnement}{environnement} et de voir l'historique des commandes.
-\item
-  Le troisième quadrant contient la \protect\hyperlink{console}{console}.
-\item
-  Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de \protect\hyperlink{packages}{gérer les packages} et d'\protect\hyperlink{aide}{afficher l'aide}.
-\end{itemize}
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,angle=90]{images/rstudio-desktop} 
-
-}
-
-\caption{L'interface de RStudio Desktop.}\label{fig:rstudio-desktop}
-\end{figure}
 
 \hypertarget{part-premiers-pas-avec-r}{%
 \part{Premiers pas avec R}\label{part-premiers-pas-avec-r}}
@@ -794,6 +703,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
+\CommentTok{\#\textgreater{} Warning in data(intcal20): data set \textquotesingle{}intcal20\textquotesingle{} not found}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2874,8 +2784,96 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \hypertarget{part-annexes}{%
 \part{Annexes}\label{part-annexes}}
 
+\hypertarget{installation}{%
+\chapter{Installation}\label{installation}}
+
+\hypertarget{r-installation}{%
+\section{Installer R}\label{r-installation}}
+
+R est fonctionne sur les principaux systèmes d'exploitation. Vous pouvez télécharger les fichiers d'installation depuis le \href{https://cran.r-project.org/}{site du CRAN}. Sous Windows et Mac OS, lancez l'exécutable après l'avoir téléchargé et suivez les étapes d'installation en laissant les options par défaut.
+
+R est disponible dans les dépôts d'Ubuntu. Cependant, les paquets inclus dans les dépôts Ubuntu par défaut sont souvent un peu anciens. Il peut être préférable d'\href{https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html}{installer R à partir du dépôt du CRAN} pour bénéficier des dernières versions.
+
+Pour installer R sur Ubuntu :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ apt update}
+\FunctionTok{sudo}\NormalTok{ apt }\AttributeTok{{-}y}\NormalTok{ install r{-}base r{-}base{-}dev}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
+
+Des changements importants peuvent subvenir entre les versions de R, entraînant parfois des problèmes de compatibilité. Il est fortement recommandé d'utiliser la dernière version mineure de R et de maintenir son installation à jour.
+
+\end{tcolorbox}
+
+\hypertarget{rstudio-installation}{%
+\section{Installer RStudio}\label{rstudio-installation}}
+
+RStudio est un environnement de développement intégré (\emph{interactive development environment}, IDE)\footnote{RStudio n'est pas le seul IDE, des utilisateurs avancés peuvent lui préférer \href{https://ess.r-project.org/}{\emph{Emacs Speaks Statistics}} (ESS), un plugin pour l'éditeur \href{https://www.gnu.org/software/emacs/}{Emacs}.}. RStudio \emph{n'est pas} R, pas plus qu'il n'offre une interface graphique à R. Il s'agit d'un logiciel utilitaire qui permet d'éditer et d'exécuter votre code, ainsi que de réaliser des actions connexes telles que l'installation de packages ou l'import de données. RStudio dispose notamment d'un système de \protect\hyperlink{projets}{gestion de projets} qui permet d'organiser son travail.
+
+RStudio Desktop est disponible sous licence \emph{open-source} pour les principaux systèmes d'exploitation et peut être \href{https://www.rstudio.com/products/rstudio/download/\#download}{téléchargée depuis le site de la société éditrice}.
+
+Pour installer RStudio sur Ubuntu, ouvrez un terminal dans le dossier de téléchargement et lancez la commande suivante (le nom du fichier peut différer en fonction de la version) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ dpkg }\AttributeTok{{-}i}\NormalTok{ rstudio{-}2021.09.2{-}382{-}amd64.deb}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
+
+Après l'installation de RStudio, la première étape consiste à en changer les réglages par défaut, pour éviter qu'il ne conserve des éléments entre deux sessions de travail. Ouvrez les options globales (\emph{Tools} \textgreater{} \emph{Global Options\ldots{}}) et modifiez les réglages suivants (fig.~\ref{fig:rstudio-settings}) :
+
+\begin{itemize}
+\tightlist
+\item
+  Décochez \emph{Restore .RData into workspace at startup}.
+\item
+  Réglez \emph{Save workspace to .RData on exit} sur \emph{never}.
+\end{itemize}
+
+Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}).
+
+\end{tcolorbox}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-settings} 
+
+}
+
+\caption{Configuration globale de RStudio Desktop.}\label{fig:rstudio-settings}
+\end{figure}
+
+L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}). Par défaut, de haut en bas et de gauche à droite :
+
+\begin{itemize}
+\tightlist
+\item
+  Le premier quadrant contient les documents en cours d'édition (scripts\ldots), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document\ldots).
+\item
+  Le second quadrant permet d'accéder aux objets présent dans l'\protect\hyperlink{environnement}{environnement} et de voir l'historique des commandes.
+\item
+  Le troisième quadrant contient la \protect\hyperlink{console}{console}.
+\item
+  Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de \protect\hyperlink{packages}{gérer les packages} et d'\protect\hyperlink{aide}{afficher l'aide}.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth,angle=90]{images/rstudio-desktop} 
+
+}
+
+\caption{L'interface de RStudio Desktop.}\label{fig:rstudio-desktop}
+\end{figure}
+
 \hypertarget{cheat-sheet}{%
-\chapter{Fonctions utiles}\label{cheat-sheet}}
+\chapter{Aide mémoire}\label{cheat-sheet}}
 
 \hypertarget{fonctions-sequences}{%
 \section{Séquences}\label{fonctions-sequences}}
@@ -2921,7 +2919,7 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \end{Shaded}
 
 \hypertarget{fonctions-ecrire}{%
-\chapter{Écrire des fonctions}\label{fonctions-ecrire}}
+\section{Écrire des fonctions}\label{fonctions-ecrire}}
 
 Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
 

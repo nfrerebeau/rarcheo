@@ -46,7 +46,6 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Avant propos</a></li>
 <li><a class="" href="introduction.html">Introduction</a></li>
-<li><a class="" href="installation.html">Installation</a></li>
 <li class="book-part">Premiers pas avec R</li>
 <li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
 <li><a class="" href="r-vector.html"><span class="header-section-number">2</span> Vecteurs</a></li>
@@ -74,8 +73,8 @@
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">20</span> Fonctions utiles</a></li>
-<li><a class="" href="fonctions-ecrire.html"><span class="header-section-number">21</span> Écrire des fonctions</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">20</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">21</span> Aide mémoire</a></li>
 <li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">22</span> Bonnes pratiques</a></li>
 <li><a class="" href="style.html"><span class="header-section-number">23</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
@@ -95,7 +94,7 @@
 <span class="header-section-number">4.1</span> Opérateurs arithmétiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-arithm%C3%A9tiques"><i class="fas fa-link"></i></a>
 </h2>
 <p>Les opérateurs arithmétiques (tab. <a href="operateurs.html#tab:operateurs-math">4.1</a>) permettent de réaliser les opérations élémentaires :</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span>
 
@@ -145,7 +144,7 @@
 </tbody>
 </table></div>
 <p>Une des particularités des R est de <em>vectoriser</em> de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">6</span><span class="op">:</span><span class="fl">10</span>
 
@@ -154,7 +153,7 @@
 <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
 <span class="co">#&gt; [1]  7  9 11 13 15</span></code></pre></div>
 <p>Cet aspect est important dans le cas d’opérations sur des matrices (souvenez-vous, une matrice est simplement un vecteur avec un attribut de dimension et est remplie colonne par colonne) :</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Une matrice de 5 lignes et 2 colonnes</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">x</span>
@@ -179,7 +178,7 @@
 <span class="co">#&gt; [4,]    8   18</span>
 <span class="co">#&gt; [5,]   10   20</span></code></pre></div>
 <p>Si deux vecteurs n’ont pas la même longueur, R va <strong>recycler</strong> le plus court des deux et le réutiliser autant que nécessaire. Si la taille de l’objet le plus long n’est pas multiple de la taille de l’objet le plus court, un avertissement sera également retourné :</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Un vecteur de 5 éléments</span>
 <span class="va">i</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>
 <span class="va">i</span>
@@ -217,7 +216,7 @@
 <span class="header-section-number">4.2</span> Opérateurs logiques<a class="anchor" aria-label="anchor" href="#op%C3%A9rateurs-logiques"><i class="fas fa-link"></i></a>
 </h2>
 <p>Les opérateurs logiques (tab. <a href="operateurs.html#tab:operateurs-logiques">4.2</a>) permettent comparer des valeurs. Ces comparaisons se présentent sous la forme d’un test (la condition est-elle vraie ou fausse ?) et retournent donc un vecteur de type <code>logical</code> :</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># x contient un unique élément</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 
@@ -279,7 +278,7 @@
 </tbody>
 </table></div>
 <p>Les opérateurs <code>&amp;</code> (ET) et <code>|</code> (OU) permettent de combiner plusieurs conditions et de réaliser des comparaisons plus complexes. Dans ce cas, chaque condition est évaluée séparément, puis les résultats sont comparés :</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># La valeur de x est-elle comprise entre 0 et 2 ?</span>
 <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;</span> <span class="fl">2</span>
 <span class="co">#&gt; [1] TRUE</span>
@@ -310,7 +309,7 @@
 <span class="op">!</span><span class="cn">FALSE</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>Souvenez-vous, R vectorise de nombreuses opérations. La comparaison de deux objets est réalisée élément par élément :</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span>
 
@@ -328,7 +327,7 @@
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <div class="rmdwarning">
 <p>Prenez garde aux valeurs manquantes ! Si une comparaison est réalisée avec une valeur manquante, le résultat sera une valeur manquante uniquement s’il est ambigu :</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="cn">TRUE</span> <span class="op">&amp;</span> <span class="cn">NA</span>
 <span class="co">#&gt; [1] NA</span>
 <span class="cn">FALSE</span> <span class="op">&amp;</span> <span class="cn">NA</span>
@@ -340,7 +339,7 @@
 <span class="co">#&gt; [1] NA</span></code></pre></div>
 </div>
 <p>Utilisés conjointement avec <code>[</code> et <code>&lt;-</code>, les opérateurs logiques permettent de <a href="filtrer.html#filtrer">filtrer</a> et <a href="nettoyer.html#nettoyer">nettoyer</a> facilement ses données :</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span>
 <span class="va">x</span>
 <span class="co">#&gt;  [1]  0  1  2  3  4  5  6  7  8  9 10</span>
@@ -381,7 +380,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-03.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
