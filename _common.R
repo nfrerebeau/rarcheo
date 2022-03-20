@@ -1,6 +1,5 @@
 # options set globally
 Sys.setenv(LANGUAGE = "fr")
-knitr::opts_chunk$set(width = 69)
 options(width = 69)
 set.seed(12345)
 
@@ -12,7 +11,8 @@ knitr::opts_chunk$set(
   dpi = 300,
   out.width = "70%",
   fig.align = "center",
-  fig.width = 6
+  fig.width = 6,
+  width = 69
 )
 
 # latex options set globally

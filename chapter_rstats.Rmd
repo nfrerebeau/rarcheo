@@ -53,7 +53,10 @@ Il est possible d'associer un nom à une valeur et ainsi de créer des **variabl
 Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur `<-` :
 
 ```{r}
-x <- 1
+x <- 1 # Le résultat d'une affection n'est pas affiché dans la console
+
+(x <- 1) # Avec des parenthèses, le résultat est affiché dans la console
+
 x
 ```
 

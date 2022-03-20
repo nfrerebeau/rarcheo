@@ -104,7 +104,7 @@ Rzine recense de nombreuses ressources, fiches et manuels, *open source* et réd
 Si les enjeux de reproductibilité et de science ouverte vous intéressent, il vous faudra sans doute compléter votre maîtrise de R par des outils supplémentaires, notamment les logiciels de contrôle de version [@bryan2021].
 
 ::: {.rmdnote}
-Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse, malgré leur popularité au sein de la communauté des utilisateurs de R.
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2*), malgré leur popularité au sein de la communauté des utilisateurs de R.
 
 Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).
 

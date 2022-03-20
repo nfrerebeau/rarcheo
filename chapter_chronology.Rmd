@@ -1,6 +1,6 @@
 # (PART) Chronologie {-}
 
-# Remarques préliminaires
+# Introduction
 
 En archéologie, le processus de datation consiste au "placement dans le temps d'événements les uns par rapport aux autres ou par rapport à toute échelle établie de mesure temporelle" [@dean1978]. Cela implique de distinguer les méthodes de datation dites *relatives* (qui fournissent une séquence chronologique ordonnée d'événements) et les méthodes de datation dites *absolues* (qui donnent une indication calendaire et peuvent fournir la durée d'un événement) [@obrien2002].
 
