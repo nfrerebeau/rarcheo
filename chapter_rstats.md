@@ -53,7 +53,7 @@ Si une commande erronée est transmise, R s'interrompt et retourne un message d'
 
 ```r
 x
-#> Error in eval(expr, envir, enclos): object 'x' not found
+#> Error in eval(expr, envir, enclos): objet 'x' introuvable
 ```
 
 ::: {.rmdtip}
@@ -68,7 +68,11 @@ Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide 
 
 
 ```r
-x <- 1
+x <- 1 # Le résultat d'une affection n'est pas affiché dans la console
+
+(x <- 1) # Avec des parenthèses, le résultat est affiché dans la console
+#> [1] 1
+
 x
 #> [1] 1
 ```

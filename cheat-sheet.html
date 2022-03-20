@@ -4,22 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>21 Aide mémoire | R pour l’archéologue</title>
+<title>24 Aide mémoire | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="21.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="21 Aide mémoire | R pour l’archéologue">
+<meta name="description" content="24.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="24 Aide mémoire | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/cheat-sheet.html">
-<meta property="og:description" content="21.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
+<meta property="og:description" content="24.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="21 Aide mémoire | R pour l’archéologue">
-<meta name="twitter:description" content="21.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="twitter:title" content="24 Aide mémoire | R pour l’archéologue">
+<meta name="twitter:description" content="24.1 Séquences # Séquence de nombres entiers 1:10 #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 seq(1, 10) #&gt; [1] 1 2 3 4 5 6 7 8 9 10 # Séquence de 1 à 10 par pas de 2 seq(1, 10, by = 2) #&gt;...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.8.9000/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -68,15 +68,18 @@
 <li><a class="" href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></li>
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></li>
+<li><a class="" href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></li>
 <li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">18</span> Chronologie qualitative</a></li>
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
+<li><a class="" href="introduction-2.html"><span class="header-section-number">20</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vector.html"><span class="header-section-number">21</span> Analyse de données vector</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">22</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">20</span> Installation</a></li>
-<li><a class="active" href="cheat-sheet.html"><span class="header-section-number">21</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">22</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">23</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">23</span> Installation</a></li>
+<li><a class="active" href="cheat-sheet.html"><span class="header-section-number">24</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">25</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">26</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -85,13 +88,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="cheat-sheet" class="section level1" number="21">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="cheat-sheet" class="section level1" number="24">
 <h1>
-<span class="header-section-number">21</span> Aide mémoire<a class="anchor" aria-label="anchor" href="#cheat-sheet"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24</span> Aide mémoire<a class="anchor" aria-label="anchor" href="#cheat-sheet"><i class="fas fa-link"></i></a>
 </h1>
-<div id="fonctions-sequences" class="section level2" number="21.1">
+<div id="fonctions-sequences" class="section level2" number="24.1">
 <h2>
-<span class="header-section-number">21.1</span> Séquences<a class="anchor" aria-label="anchor" href="#fonctions-sequences"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.1</span> Séquences<a class="anchor" aria-label="anchor" href="#fonctions-sequences"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Séquence de nombres entiers</span>
@@ -118,9 +121,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
 </div>
-<div id="fonctions-ecrire" class="section level2" number="21.2">
+<div id="fonctions-ecrire" class="section level2" number="24.2">
 <h2>
-<span class="header-section-number">21.2</span> Écrire des fonctions<a class="anchor" aria-label="anchor" href="#fonctions-ecrire"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.2</span> Écrire des fonctions<a class="anchor" aria-label="anchor" href="#fonctions-ecrire"><i class="fas fa-link"></i></a>
 </h2>
 <p>Comme son nom le laisse deviner, fonction <code>function()</code> permet de créer ses propres fonctions.</p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
@@ -153,14 +156,14 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="installation.html"><span class="header-section-number">20</span> Installation</a></div>
-<div class="next"><a href="bonnes-pratiques.html"><span class="header-section-number">22</span> Bonnes pratiques</a></div>
+<div class="prev"><a href="installation.html"><span class="header-section-number">23</span> Installation</a></div>
+<div class="next"><a href="bonnes-pratiques.html"><span class="header-section-number">25</span> Bonnes pratiques</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#cheat-sheet"><span class="header-section-number">21</span> Aide mémoire</a></li>
-<li><a class="nav-link" href="#fonctions-sequences"><span class="header-section-number">21.1</span> Séquences</a></li>
-<li><a class="nav-link" href="#fonctions-ecrire"><span class="header-section-number">21.2</span> Écrire des fonctions</a></li>
+<li><a class="nav-link" href="#cheat-sheet"><span class="header-section-number">24</span> Aide mémoire</a></li>
+<li><a class="nav-link" href="#fonctions-sequences"><span class="header-section-number">24.1</span> Séquences</a></li>
+<li><a class="nav-link" href="#fonctions-ecrire"><span class="header-section-number">24.2</span> Écrire des fonctions</a></li>
 </ul>
 
       <div class="book-extra">
@@ -178,7 +181,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-06.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

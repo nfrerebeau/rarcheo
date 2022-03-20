@@ -7,7 +7,7 @@
 <title>3 Extraction et remplacement | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
 <meta name="description" content="R possède un mécanisme très puissant pour naviguer parmi les valeurs d’un objet, afin d’en extraire ou d’en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
 <meta property="og:title" content="3 Extraction et remplacement | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/subset.html">
@@ -15,11 +15,11 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Extraction et remplacement | R pour l’archéologue">
 <meta name="twitter:description" content="R possède un mécanisme très puissant pour naviguer parmi les valeurs d’un objet, afin d’en extraire ou d’en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="libs/grViz-binding-1.0.8.9000/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -68,15 +68,18 @@
 <li><a class="" href="coda-enjeux.html"><span class="header-section-number">15</span> Introduction</a></li>
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">16</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="remarques-pr%C3%A9liminaires.html"><span class="header-section-number">17</span> Remarques préliminaires</a></li>
+<li><a class="" href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></li>
 <li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">18</span> Chronologie qualitative</a></li>
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">19</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
+<li><a class="" href="introduction-2.html"><span class="header-section-number">20</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vector.html"><span class="header-section-number">21</span> Analyse de données vector</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">22</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">20</span> Installation</a></li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">21</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">22</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">23</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">23</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">24</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">25</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">26</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -90,7 +93,7 @@
 <span class="header-section-number">3</span> Extraction et remplacement<a class="anchor" aria-label="anchor" href="#subset"><i class="fas fa-link"></i></a>
 </h1>
 <p>R possède un mécanisme très puissant pour naviguer parmi les valeurs d’un objet, afin d’en extraire ou d’en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.</p>
-<p>La façon la plus simple de sélectionner ou d’extraire des valeurs consiste à utiliser les opérateurs <code>[</code> ou <code>[[</code> : <code>[</code> permet d’extraire un sous-ensemble, tandis que <code>[[</code> permet d’extraire un unique élément. Cette distinction correspond aux relations d’<a href="https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)">appartenance</a> et d’<a href="https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)">inclusion</a> de la théorie des ensembles en mathématiques<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Par exemple, si &lt;span class="math inline"&gt;\(M\)&lt;/span&gt; est un ensemble (collection) tel que &lt;span class="math inline"&gt;\(M = \{1,2,3\}\)&lt;/span&gt;, alors &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(2\)&lt;/span&gt; et &lt;span class="math inline"&gt;\(3\)&lt;/span&gt; sont des éléments de &lt;span class="math inline"&gt;\(M\)&lt;/span&gt;, tandis que &lt;span class="math inline"&gt;\(\{1,2\}\)&lt;/span&gt; ou &lt;span class="math inline"&gt;\(\{3\}\)&lt;/span&gt; sont des sous-ensembles de &lt;span class="math inline"&gt;\(M\)&lt;/span&gt;.&lt;/p&gt;'><sup>51</sup></a> (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de <a href="subset.html#subset-list">listes</a>).</p>
+<p>La façon la plus simple de sélectionner ou d’extraire des valeurs consiste à utiliser les opérateurs <code>[</code> ou <code>[[</code> : <code>[</code> permet d’extraire un sous-ensemble, tandis que <code>[[</code> permet d’extraire un unique élément. Cette distinction correspond aux relations d’<a href="https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)">appartenance</a> et d’<a href="https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)">inclusion</a> de la théorie des ensembles en mathématiques<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Par exemple, si &lt;span class="math inline"&gt;\(M\)&lt;/span&gt; est un ensemble (collection) tel que &lt;span class="math inline"&gt;\(M = \{1,2,3\}\)&lt;/span&gt;, alors &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(2\)&lt;/span&gt; et &lt;span class="math inline"&gt;\(3\)&lt;/span&gt; sont des éléments de &lt;span class="math inline"&gt;\(M\)&lt;/span&gt;, tandis que &lt;span class="math inline"&gt;\(\{1,2\}\)&lt;/span&gt; ou &lt;span class="math inline"&gt;\(\{3\}\)&lt;/span&gt; sont des sous-ensembles de &lt;span class="math inline"&gt;\(M\)&lt;/span&gt;.&lt;/p&gt;'><sup>57</sup></a> (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de <a href="subset.html#subset-list">listes</a>).</p>
 <p>Ces opérateurs peuvent être utilisés conjointement avec l’affectation (<code>&lt;-</code>) pour remplacer des valeurs. On écrira ainsi : <code>x[i] &lt;- y</code> où <code>i</code> correspond à l’indice (position) des valeurs à remplacer dans le vecteur <code>x</code> et <code>y</code> correspond au vecteur de nouvelles valeurs.</p>
 <div id="subset-atomic" class="section level2" number="3.1">
 <h2>
@@ -137,7 +140,7 @@
 <span class="co">#&gt; 1.3 3.5 5.7</span></code></pre></div>
 </li>
 </ul>
-<p>L’utilisation de <code>[[</code> permet d’extraire un seul et unique élément au lieu d’un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre <code>[</code> et <code>[[</code> n’est pas évidente<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Hormis qu’une tentative de sélection de plusieurs éléments avec &lt;code&gt;[[&lt;/code&gt; produira une erreur.&lt;/p&gt;"><sup>52</sup></a> et est sans doute mieux illustrée avec un exemple :</p>
+<p>L’utilisation de <code>[[</code> permet d’extraire un seul et unique élément au lieu d’un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre <code>[</code> et <code>[[</code> n’est pas évidente<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Hormis qu’une tentative de sélection de plusieurs éléments avec &lt;code&gt;[[&lt;/code&gt; produira une erreur.&lt;/p&gt;"><sup>58</sup></a> et est sans doute mieux illustrée avec un exemple :</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co"># L'attribut names est conservé (sous-ensemble)</span>
 <span class="co">#&gt;   a </span>
@@ -436,7 +439,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-06.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-03-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

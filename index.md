@@ -3,7 +3,7 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2022-03-06"
+date: "2022-03-20"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -67,27 +67,33 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 06 Mar 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 20 Mar 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
-Cette version du livre a été réalisée avec R version 4.1.2 (2021-11-01) et [pandoc](https://pandoc.org/) version 2.14.2. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
+Cette version du livre a été réalisée avec R version 4.1.3 (2022-03-10) et [pandoc](https://pandoc.org/) version 2.14.2. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
 
 
 Table: (\#tab:packages)Liste des packages utilisés.
 
-|Package     |Version |Source         |Référence      |
-|:-----------|:-------|:--------------|:--------------|
-|bookdown    |0.24    |CRAN (R 4.1.2) |@R-bookdown    |
-|bslib       |0.3.1   |CRAN (R 4.1.2) |@R-bslib       |
-|desc        |1.4.0   |CRAN (R 4.1.2) |@R-desc        |
-|DiagrammeR  |1.0.8   |CRAN (R 4.1.2) |@R-DiagrammeR  |
-|downlit     |0.4.0   |CRAN (R 4.1.2) |@R-downlit     |
-|folio       |1.0.0   |CRAN (R 4.1.2) |@R-folio       |
-|knitr       |1.37    |CRAN (R 4.1.2) |@R-knitr       |
-|markdown    |1.1     |CRAN (R 4.1.2) |@R-markdown    |
-|mime        |0.12    |CRAN (R 4.1.2) |@R-mime        |
-|rmarkdown   |2.11    |CRAN (R 4.1.2) |@R-rmarkdown   |
-|sessioninfo |1.2.2   |CRAN (R 4.1.2) |@R-sessioninfo |
-|webshot     |0.5.2   |CRAN (R 4.1.2) |@R-webshot     |
-|xml2        |1.3.3   |CRAN (R 4.1.2) |@R-xml2        |
+|Package       |Version |Source         |Référence        |
+|:-------------|:-------|:--------------|:----------------|
+|bookdown      |0.25    |CRAN (R 4.1.3) |@R-bookdown      |
+|bslib         |0.3.1   |CRAN (R 4.1.3) |@R-bslib         |
+|desc          |1.4.1   |CRAN (R 4.1.3) |@R-desc          |
+|DiagrammeR    |1.0.9   |CRAN (R 4.1.3) |@R-DiagrammeR    |
+|downlit       |0.4.0   |CRAN (R 4.1.3) |@R-downlit       |
+|folio         |1.0.0   |CRAN (R 4.1.3) |@R-folio         |
+|ggplot2       |3.3.5   |CRAN (R 4.1.3) |@R-ggplot2       |
+|ggraph        |2.0.5   |CRAN (R 4.1.3) |@R-ggraph        |
+|kableExtra    |1.3.4   |CRAN (R 4.1.3) |@R-kableExtra    |
+|knitr         |1.37    |CRAN (R 4.1.3) |@R-knitr         |
+|markdown      |1.1     |CRAN (R 4.1.3) |@R-markdown      |
+|mime          |0.12    |CRAN (R 4.1.3) |@R-mime          |
+|miniCRAN      |0.2.16  |CRAN (R 4.1.3) |@R-miniCRAN      |
+|rmarkdown     |2.13    |CRAN (R 4.1.3) |@R-rmarkdown     |
+|scatterplot3d |0.3-41  |CRAN (R 4.1.3) |@R-scatterplot3d |
+|sessioninfo   |1.2.2   |CRAN (R 4.1.3) |@R-sessioninfo   |
+|tidygraph     |1.2.0   |CRAN (R 4.1.3) |@R-tidygraph     |
+|webshot       |0.5.2   |CRAN (R 4.1.3) |@R-webshot       |
+|xml2          |1.3.3   |CRAN (R 4.1.3) |@R-xml2          |
