@@ -71,7 +71,7 @@ Les données utilisées dans les exemples sont issues des packages *datasets* [@
 
 Cette version du livre a été réalisée avec `r R.version.string` et [pandoc](https://pandoc.org/) version `r rmarkdown::pandoc_version()`. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
 
-```{r packages, echo=FALSE, results="asis"}
+```{r packages, echo=FALSE, cache=FALSE, results="asis"}
 # Lister les packages présents dans le fichier DESCRIPTION
 dep <- desc::desc_get_deps()$package[-1] # Retirer R base
 # Récupérer les informations sur les packages
