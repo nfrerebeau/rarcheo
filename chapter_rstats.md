@@ -209,7 +209,7 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 
 ```r
 data(intcal20)
-#> Warning in data(intcal20): data set 'intcal20' not found
+#> Warning in data(intcal20): jeu de données 'intcal20' introuvable
 ```
 
 Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
@@ -224,7 +224,7 @@ data(intcal20)
 
 
 
-Lorsque vous ne savez pas comment utiliser une fonction particulière (difficile de mémoriser les 1172 fonctions des packages de base), votre premier réflexe doit être de [consulter la documentation](https://fr.wikipedia.org/wiki/RTFM_(expression)). La documentation couvre l'ensemble des fonctions, jeux de données et autres objets présents dans les différents packages. 
+Lorsque vous ne savez pas comment utiliser une fonction particulière (difficile de mémoriser les 1184 fonctions des packages de base), votre premier réflexe doit être de [consulter la documentation](https://fr.wikipedia.org/wiki/RTFM_(expression)). La documentation couvre l'ensemble des fonctions, jeux de données et autres objets présents dans les différents packages. 
 
 Pour un objet donné, on peut consulter la documentation associée en utilisant soit la fonction `help()`, soit l'opérateur `?`. Par exemple, pour accéder à l'aide de la fonction `round()` :
 
@@ -240,8 +240,8 @@ Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura
 
 ```r
 help(lda)
-#> No documentation for 'lda' in specified packages and libraries:
-#> you could try '??lda'
+#> Aucune documentation pour 'lda' n'a été trouvée dans les packages et les bibliothèques :
+#> vous pourriez essayer '??lda'
 ```
 
 Pour accéder à la documentation, il faudra alors charger le package au préalable ou le spécifier dans la fonction `help()` :
