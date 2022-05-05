@@ -27,6 +27,8 @@ rmd_files:
     
     "chapter_visualization.Rmd",
 
+    "chapter_artefacts.Rmd",
+
     "chapter_coda.Rmd",
     
     "chapter_chronology.Rmd",
