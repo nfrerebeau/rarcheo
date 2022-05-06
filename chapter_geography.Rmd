@@ -8,6 +8,6 @@
 knitr::include_graphics("images/xkcd_sea_chase.png")
 ```
 
-# Analyse de données vector
+# Analyse de données vectorielles
 
 # Analyse de données raster

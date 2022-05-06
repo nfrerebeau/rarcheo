@@ -22,7 +22,7 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice** de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17^e^ valeur, etc.).
 
 ::: {.rmdimportant}
-Contrairement à [Python](https://www.python.org/), dans R les [indices commencent à 1](#extraction) et non à 0.
+Contrairement à [Python](https://www.python.org/), dans R les [indices commencent à 1](#subset) et non à 0.
 :::
 
 Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie sur plusieurs lignes : 
@@ -105,6 +105,8 @@ Un objet possède un type et une structure de données particulière. Le type d'
 
 ## Fonctions {#fonctions}
 
+### Utiliser des fonction {#fonctions-utiliser}
+
 Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. 
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#fonctions-ecrire) ou d'[installer des packages](#packages) supplémentaires.
@@ -142,6 +144,40 @@ round(3.141593, digits = 2)
 ::: {.rmdtip}
 Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
 :::
+
+### Écrire des fonctions {#fonctions-ecrire}
+
+Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
+
+```{r}
+addition <- function(x, y) {
+  # On définit les instructions à exécuter
+  z <- x + y
+  # On précise le résultat à retourner au terme des calculs
+  return(z)
+}
+
+addition(1, 2)
+```
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+```{r}
+# Définition de la fonction
+# Par défaut, la valeur de y est 2
+puissance <- function(x, y = 2) {
+  z <- x^y
+  return(z)
+}
+
+# L'utilisateur ne change pas la valeur par défaut
+puissance(2) # 2 au carré
+
+# L'utilisateur change explicitement la valeur par défaut
+puissance(2, 3) # 2 au cube
+```
 
 ## Packages {#packages}
 
@@ -265,7 +301,7 @@ example(mean)
 Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex).
 :::
 
-# Vecteurs {#r-vector}
+# Structures de données {#r-vector}
 
 Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'**éléments**.
 
@@ -674,7 +710,7 @@ colnames(x) # Noms de colonnes
 Sauf instruction spécifique lors de la création d'un `data.frame`, les noms de lignes sont générés automatiquement à partir d'une séquence de nombres entiers. Malgré les apparences, il s'agit bien de noms de lignes (de type `character`) et ils ne doivent pas être confondu avec les indices des lignes.
 :::
 
-Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs `data.frame` en un seul tableau de données avec `rbind()` et `cbind()`. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des [jointures](#jointures).
+Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs `data.frame` en un seul tableau de données avec `rbind()` et `cbind()`. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des [jointures](#data-jointures).
 
 # Extraction et remplacement {#subset}
 
@@ -1069,7 +1105,7 @@ FALSE | NA
 ```
 :::
 
-Utilisés conjointement avec `[` et `<-`, les opérateurs logiques permettent de [filtrer](#filtrer) et [nettoyer](#nettoyer) facilement ses données :
+Utilisés conjointement avec `[` et `<-`, les opérateurs logiques permettent de [filtrer](#data-filtrer) et [nettoyer](#data-nettoyer) facilement ses données :
 
 ```{r}
 x <- 0:10
@@ -1309,7 +1345,7 @@ k
 
 Dans le cas d'un tableau à deux dimensions, écrire une même série d'instructions pour chaque ligne ou colonne individuellement peut rapidement s'avérer fastidieux. On peut ainsi mettre à profit les boucles pour n'écrire qu'une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.
 
-Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont [correctement structurées](#tidy-data), on peut calculer cette somme pour chacune des colonnes d'un tableau de données^[Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (`rowSums()`) ou des colonnes (`colSums()`) d'un tableau.] :
+Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont [correctement structurées](#data-tidy), on peut calculer cette somme pour chacune des colonnes d'un tableau de données^[Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (`rowSums()`) ou des colonnes (`colSums()`) d'un tableau.] :
 
 ```{r}
 # On charge les données d'exemple
