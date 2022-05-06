@@ -13,6 +13,6 @@
 \caption{(ref:xkcd-sea-chase)}(\#fig:xkcd-sea-chase)
 \end{figure}
 
-# Analyse de données vector
+# Analyse de données vectorielles
 
 # Analyse de données raster

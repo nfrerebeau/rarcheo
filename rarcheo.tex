@@ -239,7 +239,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau}
-\date{2022-05-05}
+\date{2022-05-06}
 
 \begin{document}
 \maketitle
@@ -301,7 +301,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 05 May 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 06 May 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -379,7 +379,7 @@ Les libertés offertes par la licence GNU et la structure modulaire de R permett
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
 
 }
 
@@ -400,7 +400,7 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
 
 }
 
@@ -508,7 +508,7 @@ La commande \texttt{0:100} retourne 101 valeurs qui sont affichées sur plusieur
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Important,colframe=darkgreen]
 
-Contrairement à \href{https://www.python.org/}{Python}, dans R les \protect\hyperlink{extraction}{indices commencent à 1} et non à 0.
+Contrairement à \href{https://www.python.org/}{Python}, dans R les \protect\hyperlink{subset}{indices commencent à 1} et non à 0.
 
 \end{tcolorbox}
 
@@ -630,6 +630,9 @@ Un objet possède un type et une structure de données particulière. Le type d'
 \hypertarget{fonctions}{%
 \section{Fonctions}\label{fonctions}}
 
+\hypertarget{fonctions-utiliser}{%
+\subsection{Utiliser des fonction}\label{fonctions-utiliser}}
+
 Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les \textbf{fonctions}. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés \textbf{arguments}, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction.
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'\protect\hyperlink{fonctions-ecrire}{écrire ses propres fonctions} ou d'\protect\hyperlink{packages}{installer des packages} supplémentaires.
@@ -685,6 +688,48 @@ Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs 
 
 \end{tcolorbox}
 
+\hypertarget{fonctions-ecrire}{%
+\subsection{Écrire des fonctions}\label{fonctions-ecrire}}
+
+Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+  \CommentTok{\# On définit les instructions à exécuter}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition de la fonction}
+\CommentTok{\# Par défaut, la valeur de y est 2}
+\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
+\CommentTok{\#\textgreater{} [1] 4}
+
+\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
+\CommentTok{\#\textgreater{} [1] 8}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{packages}{%
 \section{Packages}\label{packages}}
 
@@ -727,7 +772,6 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
-\CommentTok{\#\textgreater{} Warning in data(intcal20): jeu de données \textquotesingle{}intcal20\textquotesingle{} introuvable}
 \end{Highlighting}
 \end{Shaded}
 
@@ -830,7 +874,7 @@ Si vous faites face à une difficulté, il fort probable quelqu'un se soit déj�
 \end{tcolorbox}
 
 \hypertarget{r-vector}{%
-\chapter{Vecteurs}\label{r-vector}}
+\chapter{Structures de données}\label{r-vector}}
 
 Le vecteur (\texttt{vector}) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'\textbf{éléments}.
 
@@ -1428,7 +1472,7 @@ Sauf instruction spécifique lors de la création d'un \texttt{data.frame}, les 
 
 \end{tcolorbox}
 
-Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs \texttt{data.frame} en un seul tableau de données avec \texttt{rbind()} et \texttt{cbind()}. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des \protect\hyperlink{jointures}{jointures}.
+Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs \texttt{data.frame} en un seul tableau de données avec \texttt{rbind()} et \texttt{cbind()}. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des \protect\hyperlink{data-jointures}{jointures}.
 
 \hypertarget{subset}{%
 \chapter{Extraction et remplacement}\label{subset}}
@@ -2103,7 +2147,7 @@ Prenez garde aux valeurs manquantes ! Si une comparaison est réalisée avec une
 
 \end{tcolorbox}
 
-Utilisés conjointement avec \texttt{{[}} et \texttt{\textless{}-}, les opérateurs logiques permettent de \protect\hyperlink{filtrer}{filtrer} et \protect\hyperlink{nettoyer}{nettoyer} facilement ses données :
+Utilisés conjointement avec \texttt{{[}} et \texttt{\textless{}-}, les opérateurs logiques permettent de \protect\hyperlink{data-filtrer}{filtrer} et \protect\hyperlink{data-nettoyer}{nettoyer} facilement ses données :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2309,7 +2353,7 @@ Dans l'exemple précédent, la valeur de \texttt{k} a été remplacée à chaque
 
 Dans le cas d'un tableau à deux dimensions, écrire une même série d'instructions pour chaque ligne ou colonne individuellement peut rapidement s'avérer fastidieux. On peut ainsi mettre à profit les boucles pour n'écrire qu'une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.
 
-Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont \protect\hyperlink{tidy-data}{correctement structurées}, on peut calculer cette somme pour chacune des colonnes d'un tableau de données\footnote{Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (\texttt{rowSums()}) ou des colonnes (\texttt{colSums()}) d'un tableau.} :
+Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont \protect\hyperlink{data-tidy}{correctement structurées}, on peut calculer cette somme pour chacune des colonnes d'un tableau de données\footnote{Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (\texttt{rowSums()}) ou des colonnes (\texttt{colSums()}) d'un tableau.} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2512,8 +2556,8 @@ Il convient d'être prudent avec l'usage de l'instruction \texttt{while}, car un
 \hypertarget{part-pruxe9paration-des-donnuxe9es}{%
 \part{Préparation des données}\label{part-pruxe9paration-des-donnuxe9es}}
 
-\hypertarget{tidy-data}{%
-\chapter{Introduction}\label{tidy-data}}
+\hypertarget{data-tidy}{%
+\chapter{Introduction}\label{data-tidy}}
 
 Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse \autocite{wickham2014}. Les principes régissant cette étape de structuration (\emph{data tidying}) sont exposés par \textcite{wickham2014}, qui propose ainsi une approche pour lier ``la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification).''
 
@@ -2535,17 +2579,64 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 
 \end{tcolorbox}
 
-\hypertarget{importer}{%
-\chapter{Importer et exporter}\label{importer}}
+\hypertarget{data-importer}{%
+\chapter{Importer et exporter}\label{data-importer}}
 
-\hypertarget{nettoyer}{%
-\chapter{Nettoyer}\label{nettoyer}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read.table()}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{selectionner}{%
-\chapter{Selectionner}\label{selectionner}}
+\hypertarget{data-nettoyer}{%
+\chapter{Nettoyer}\label{data-nettoyer}}
 
-\hypertarget{filtrer}{%
-\chapter{Filtrer}\label{filtrer}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# abbreviate()}
+\CommentTok{\# replace()}
+\CommentTok{\# tolower() / toupper()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-selectionner}{%
+\chapter{Selectionner}\label{data-selectionner}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# startsWith()}
+
+\CommentTok{\# endsWith()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-filtrer}{%
+\chapter{Filtrer}\label{data-filtrer}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# subset()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-transformer}{%
+\chapter{Transformer}\label{data-transformer}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# transform()}
+\CommentTok{\# with()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-jointure}{%
+\chapter{Fusionner}\label{data-jointure}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# merge()}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{transformer}{%
 \chapter{Transformer}\label{transformer}}
@@ -2560,7 +2651,7 @@ Une \emph{variable statistique} désigne une caractéristique mesurable qui peut
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_statistics_files/figure-latex/variables-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_statistics_files/figure-latex/variables-1} 
 
 }
 
@@ -2602,7 +2693,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_correlation} 
+{\centering \includegraphics[width=1\linewidth]{images/xkcd_correlation} 
 
 }
 
@@ -2616,7 +2707,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_curve_fitting} 
+{\centering \includegraphics[width=1\linewidth]{images/xkcd_curve_fitting} 
 
 }
 
@@ -2628,6 +2719,92 @@ correlation vs causalité
 
 \hypertarget{introduction-1}{%
 \chapter{Introduction}\label{introduction-1}}
+
+\hypertarget{graph-quantites}{%
+\chapter{Représenter des quantités}\label{graph-quantites}}
+
+On peut créer un diagramme en barres à l'aide de la fonction \texttt{barplot()}, dont l'argument \texttt{height} accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Charger les données depuis le package folio}
+\FunctionTok{data}\NormalTok{(chevelon, }\AttributeTok{package =} \StringTok{"folio"}\NormalTok{)}
+
+\CommentTok{\# Calculer la somme de chaque colonne (type d\textquotesingle{}artefact)}
+\CommentTok{\# Trier dans l\textquotesingle{}ordre croissant}
+\NormalTok{chevelon\_total }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(}\FunctionTok{colSums}\NormalTok{(chevelon))}
+
+\FunctionTok{barplot}\NormalTok{(}
+  \AttributeTok{height =}\NormalTok{ chevelon\_total,}
+  \AttributeTok{ylab =} \StringTok{"Nombre d\textquotesingle{}artefacts"}\NormalTok{,}
+  \AttributeTok{las =} \DecValTok{2} \CommentTok{\# étiquettes perpendiculaires aux axes}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{chapter_visualization_files/figure-latex/unnamed-chunk-1-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Charger les données depuis le package folio}
+\FunctionTok{data}\NormalTok{(mississippi, }\AttributeTok{package =} \StringTok{"folio"}\NormalTok{)}
+
+\CommentTok{\# Calculer la somme de chaque colonne (type d\textquotesingle{}artéfact)}
+\CommentTok{\# Trier dans l\textquotesingle{}ordre croissant}
+\NormalTok{mississippi\_total }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(}\FunctionTok{colSums}\NormalTok{(mississippi))}
+
+\CommentTok{\# Ajuster les marges autour du graphique}
+\CommentTok{\# (permet de ne pas tronquer les étiquettes)}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FloatTok{0.1}\NormalTok{)}
+\FunctionTok{barplot}\NormalTok{(}
+  \AttributeTok{height =}\NormalTok{ mississippi\_total, }
+  \AttributeTok{horiz =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# dessiner les barres horizontalement}
+  \AttributeTok{xlab =} \StringTok{"Nombre d\textquotesingle{}artefacts"}\NormalTok{,}
+  \AttributeTok{las =} \DecValTok{1} \CommentTok{\# étiquettes des axes horizontales}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{chapter_visualization_files/figure-latex/unnamed-chunk-2-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Charger les données depuis le package folio}
+\FunctionTok{data}\NormalTok{(compiegne, }\AttributeTok{package =} \StringTok{"folio"}\NormalTok{)}
+
+\CommentTok{\# Déterminer l\textquotesingle{}ordre des colonnes à partir de leurs sommes}
+\CommentTok{\# (ici dans l\textquotesingle{}ordre décroissant)}
+\NormalTok{compiegne\_order }\OtherTok{\textless{}{-}} \FunctionTok{order}\NormalTok{(}\FunctionTok{colSums}\NormalTok{(compiegne), }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\# Permuter les colonnes}
+\NormalTok{compiegne\_sorted }\OtherTok{\textless{}{-}}\NormalTok{ compiegne[, compiegne\_order]}
+
+\FunctionTok{barplot}\NormalTok{(}
+  \AttributeTok{height =} \FunctionTok{as.matrix}\NormalTok{(compiegne\_sorted), }\CommentTok{\# doit être une matrice}
+  \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"\#E69F00"}\NormalTok{, }\StringTok{"\#56B4E9"}\NormalTok{, }\StringTok{"\#009E73"}\NormalTok{, }\StringTok{"\#F0E442"}\NormalTok{, }\StringTok{"\#0072B2"}\NormalTok{),}
+  \AttributeTok{legend.text =} \FunctionTok{rownames}\NormalTok{(compiegne),}
+  \AttributeTok{beside =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{ylab =} \StringTok{"Nombre d\textquotesingle{}artefacts"}\NormalTok{,}
+  \AttributeTok{las =} \DecValTok{1}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=1\linewidth]{chapter_visualization_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\hypertarget{graph-propotions}{%
+\chapter{Représenter des propotions}\label{graph-propotions}}
+
+\hypertarget{graph-distributions}{%
+\chapter{Représenter des distributions}\label{graph-distributions}}
+
+\hypertarget{graph-xy}{%
+\chapter{Réprésenter des relations entre variables}\label{graph-xy}}
+
+\hypertarget{graph-series}{%
+\chapter{Représenter des séries temporelles}\label{graph-series}}
+
+\hypertarget{graph-tendances}{%
+\chapter{Représenter des tendances}\label{graph-tendances}}
 
 \hypertarget{part-donnuxe9es-de-comptage}{%
 \part{Données de comptage}\label{part-donnuxe9es-de-comptage}}
@@ -2817,8 +2994,8 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \caption{Sea Chase. ``There are two rules on this ship: Never gaze back into the projection abyss, and never touch the red button labeled DYMAXION.'' \autocite[CC BY-NC 2.0][]{munroe2022}.}\label{fig:xkcd-sea-chase}
 \end{figure}
 
-\hypertarget{analyse-de-donnuxe9es-vector}{%
-\chapter{Analyse de données vector}\label{analyse-de-donnuxe9es-vector}}
+\hypertarget{analyse-de-donnuxe9es-vectorielles}{%
+\chapter{Analyse de données vectorielles}\label{analyse-de-donnuxe9es-vectorielles}}
 
 \hypertarget{analyse-de-donnuxe9es-raster}{%
 \chapter{Analyse de données raster}\label{analyse-de-donnuxe9es-raster}}
@@ -2952,55 +3129,10 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Séquence de même longueur qu\textquotesingle{}un objet (ici de 1 à 10)}
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{8.6}\NormalTok{, }\FloatTok{4.1}\NormalTok{, }\FloatTok{3.9}\NormalTok{, }\DecValTok{7}\NormalTok{, }\FloatTok{1.8}\NormalTok{, }\FloatTok{6.9}\NormalTok{, }\FloatTok{1.6}\NormalTok{, }\FloatTok{3.8}\NormalTok{, }\FloatTok{2.6}\NormalTok{, }\FloatTok{5.5}\NormalTok{)}
-\FunctionTok{length}\NormalTok{(x)}
-\CommentTok{\#\textgreater{} [1] 10}
-
-\CommentTok{\# Séquence de même longueur qu\textquotesingle{}un objet}
 \FunctionTok{seq\_along}\NormalTok{(x)}
 \CommentTok{\#\textgreater{}  [1]  1  2  3  4  5  6  7  8  9 10}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{fonctions-ecrire}{%
-\section{Écrire des fonctions}\label{fonctions-ecrire}}
-
-Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
-  \CommentTok{\# On définit les instructions à exécuter}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
-  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 3}
-\end{Highlighting}
-\end{Shaded}
-
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
-
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Définition de la fonction}
-\CommentTok{\# Par défaut, la valeur de y est 2}
-\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
-\CommentTok{\#\textgreater{} [1] 4}
-
-\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
-\CommentTok{\#\textgreater{} [1] 8}
 \end{Highlighting}
 \end{Shaded}
 

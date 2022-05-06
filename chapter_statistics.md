@@ -7,7 +7,7 @@ Une *variable statistique* désigne une caractéristique mesurable qui peut pren
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_statistics_files/figure-latex/variables-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_statistics_files/figure-latex/variables-1} 
 
 }
 
@@ -41,7 +41,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_correlation} 
+{\centering \includegraphics[width=1\linewidth]{images/xkcd_correlation} 
 
 }
 
@@ -54,7 +54,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{images/xkcd_curve_fitting} 
+{\centering \includegraphics[width=1\linewidth]{images/xkcd_curve_fitting} 
 
 }
 

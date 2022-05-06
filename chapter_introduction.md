@@ -19,7 +19,7 @@ R est modulable
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_introduction_files/figure-latex/cran-packages-year-1} 
 
 }
 
@@ -37,7 +37,7 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.7\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
+{\centering \includegraphics[width=1\linewidth]{chapter_introduction_files/figure-latex/wos-archaeo-1} 
 
 }
 

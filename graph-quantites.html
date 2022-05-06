@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Page not found | R pour l’archéologue</title>
+<title>18 Représenter des quantités | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<meta name="description" content="On peut créer un diagramme en barres à l’aide de la fonction barplot(), dont l’argument height accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique. #...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Page not found | R pour l’archéologue">
+<meta property="og:title" content="18 Représenter des quantités | R pour l’archéologue">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://rstats.archaeo.science/404.html">
-<meta property="og:description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<meta property="og:url" content="https://rstats.archaeo.science/graph-quantites.html">
+<meta property="og:description" content="On peut créer un diagramme en barres à l’aide de la fonction barplot(), dont l’argument height accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique. #...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Page not found | R pour l’archéologue">
-<meta name="twitter:description" content="The page you requested cannot be found (perhaps it was moved or renamed). You may want to try searching to find the page's new location, or use the table of contents to find the page you are...">
+<meta name="twitter:title" content="18 Représenter des quantités | R pour l’archéologue">
+<meta name="twitter:description" content="On peut créer un diagramme en barres à l’aide de la fonction barplot(), dont l’argument height accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique. #...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 <li><a class="" href="relations-entre-variables.html"><span class="header-section-number">16</span> Relations entre variables</a></li>
 <li class="book-part">Visualisation de données</li>
 <li><a class="" href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></li>
-<li><a class="" href="graph-quantites.html"><span class="header-section-number">18</span> Représenter des quantités</a></li>
+<li><a class="active" href="graph-quantites.html"><span class="header-section-number">18</span> Représenter des quantités</a></li>
 <li><a class="" href="graph-propotions.html"><span class="header-section-number">19</span> Représenter des propotions</a></li>
 <li><a class="" href="graph-distributions.html"><span class="header-section-number">20</span> Représenter des distributions</a></li>
 <li><a class="" href="graph-xy.html"><span class="header-section-number">21</span> Réprésenter des relations entre variables</a></li>
@@ -99,18 +99,78 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="page-not-found" class="section level1">
-<h1>Page not found<a class="anchor" aria-label="anchor" href="#page-not-found"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graph-quantites" class="section level1" number="18">
+<h1>
+<span class="header-section-number">18</span> Représenter des quantités<a class="anchor" aria-label="anchor" href="#graph-quantites"><i class="fas fa-link"></i></a>
 </h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<p>On peut créer un diagramme en barres à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/barplot.html">barplot()</a></code>, dont l’argument <code>height</code> accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique.</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Charger les données depuis le package folio</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">chevelon</span>, package <span class="op">=</span> <span class="st">"folio"</span><span class="op">)</span>
+
+<span class="co"># Calculer la somme de chaque colonne (type d'artefact)</span>
+<span class="co"># Trier dans l'ordre croissant</span>
+<span class="va">chevelon_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">chevelon</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
+  height <span class="op">=</span> <span class="va">chevelon_total</span>,
+  ylab <span class="op">=</span> <span class="st">"Nombre d'artefacts"</span>,
+  las <span class="op">=</span> <span class="fl">2</span> <span class="co"># étiquettes perpendiculaires aux axes</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="chapter_visualization_files/figure-html/unnamed-chunk-1-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Charger les données depuis le package folio</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mississippi</span>, package <span class="op">=</span> <span class="st">"folio"</span><span class="op">)</span>
+
+<span class="co"># Calculer la somme de chaque colonne (type d'artéfact)</span>
+<span class="co"># Trier dans l'ordre croissant</span>
+<span class="va">mississippi_total</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">mississippi</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Ajuster les marges autour du graphique</span>
+<span class="co"># (permet de ne pas tronquer les étiquettes)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
+  height <span class="op">=</span> <span class="va">mississippi_total</span>, 
+  horiz <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># dessiner les barres horizontalement</span>
+  xlab <span class="op">=</span> <span class="st">"Nombre d'artefacts"</span>,
+  las <span class="op">=</span> <span class="fl">1</span> <span class="co"># étiquettes des axes horizontales</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="chapter_visualization_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Charger les données depuis le package folio</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">compiegne</span>, package <span class="op">=</span> <span class="st">"folio"</span><span class="op">)</span>
+
+<span class="co"># Déterminer l'ordre des colonnes à partir de leurs sommes</span>
+<span class="co"># (ici dans l'ordre décroissant)</span>
+<span class="va">compiegne_order</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">compiegne</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co"># Permuter les colonnes</span>
+<span class="va">compiegne_sorted</span> <span class="op">&lt;-</span> <span class="va">compiegne</span><span class="op">[</span>, <span class="va">compiegne_order</span><span class="op">]</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html">barplot</a></span><span class="op">(</span>
+  height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">compiegne_sorted</span><span class="op">)</span>, <span class="co"># doit être une matrice</span>
+  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#009E73"</span>, <span class="st">"#F0E442"</span>, <span class="st">"#0072B2"</span><span class="op">)</span>,
+  legend.text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">compiegne</span><span class="op">)</span>,
+  beside <span class="op">=</span> <span class="cn">TRUE</span>,
+  ylab <span class="op">=</span> <span class="st">"Nombre d'artefacts"</span>,
+  las <span class="op">=</span> <span class="fl">1</span>
+<span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="chapter_visualization_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></div>
+<div class="next"><a href="graph-propotions.html"><span class="header-section-number">19</span> Représenter des propotions</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    </div>
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#graph-quantites"><span class="header-section-number">18</span> Représenter des quantités</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_visualization.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_visualization.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
 </div> <!-- .container -->

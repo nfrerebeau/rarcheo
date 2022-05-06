@@ -1,6 +1,6 @@
 # (PART) Préparation des données {-}
 
-# Introduction {#tidy-data}
+# Introduction {#data-tidy}
 
 Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse [@wickham2014]. Les principes régissant cette étape de structuration (*data tidying*) sont exposés par @wickham2014, qui propose ainsi une approche pour lier "la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification)."
 
@@ -14,12 +14,52 @@ Des jeux de données bien structurés se présentent sous la forme de tableaux �
 Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
 :::
 
-# Importer et exporter {#importer}
+# Importer et exporter {#data-importer}
 
-# Nettoyer {#nettoyer}
 
-# Selectionner {#selectionner}
+```r
+# read.table()
+```
 
-# Filtrer {#filtrer}
+# Nettoyer {#data-nettoyer}
+
+
+```r
+# abbreviate()
+# replace()
+# tolower() / toupper()
+```
+
+# Selectionner {#data-selectionner}
+
+
+```r
+# startsWith()
+
+# endsWith()
+```
+
+# Filtrer {#data-filtrer}
+
+
+```r
+# subset()
+```
+
+# Transformer {#data-transformer}
+
+
+```r
+# transform()
+# with()
+```
+
+# Fusionner {#data-jointure}
+
+
+```r
+# merge()
+```
+
 
 # Transformer {#transformer}
