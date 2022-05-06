@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   cache = TRUE,
   dpi = 300,
-  out.width = "70%",
+  out.width = "100%",
   fig.align = "center",
   fig.width = 6,
   width = 69

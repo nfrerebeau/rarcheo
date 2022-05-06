@@ -42,7 +42,7 @@ Après l'installation de RStudio, la première étape consiste à en changer les
 Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par `rm(list = ls())`).
 :::
 
-```{r rstudio-settings, echo=FALSE, fig.cap="Configuration globale de RStudio Desktop."}
+```{r rstudio-settings, echo=FALSE, out.width="70%", fig.cap="Configuration globale de RStudio Desktop."}
 knitr::include_graphics("images/rstudio-settings.png")
 ```
 
@@ -150,7 +150,7 @@ Pour pallier ce problème qui rend difficilement déplaçable un dossier de proj
 
 RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
 
-```{r rstudio-project, echo=FALSE, fig.cap="Création d'un projet avec RStudio."}
+```{r rstudio-project, echo=FALSE, out.width="70%", fig.cap="Création d'un projet avec RStudio."}
 knitr::include_graphics("images/rstudio-project.png")
 ```
 
@@ -183,7 +183,7 @@ knitr::include_graphics("images/xkcd_norm_normal_file_format.png")
 
 La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (fig. \@ref(fig:calc-csv)).
 
-```{r calc-csv, echo=FALSE, fig.cap="Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté)."}
+```{r calc-csv, echo=FALSE, out.width="70%", fig.cap="Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté)."}
 knitr::include_graphics("images/calc-csv.png")
 ```
 
@@ -199,7 +199,7 @@ Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le packag
 
 (ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
 
-```{r factominer-dependency, echo=FALSE, fig.width=7, fig.height=7, out.width='100%', fig.cap="(ref:factominer-dependency)"}
+```{r factominer-dependency, echo=FALSE, fig.width=7, fig.height=7, fig.cap="(ref:factominer-dependency)"}
 facto_dep <- miniCRAN::makeDepGraph(
   pkg = "FactoMineR", 
   suggests = FALSE, 
