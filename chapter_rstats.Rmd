@@ -1,7 +1,7 @@
 # (PART) Premiers pas avec R {-}
 
 # Prise en main
-## Invite de commande
+## Invite de commande {#r-console}
 
 R se présente sous la forme d'une [interface en ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande), permettant de donner des instructions à l'ordinateur. Dans RStudio, cette interface est accessible dans l'onglet *Console*.
 

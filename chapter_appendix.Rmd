@@ -39,23 +39,30 @@ Après l'installation de RStudio, la première étape consiste à en changer les
 * Décochez *Restore .RData into workspace at startup*.
 * Réglez *Save workspace to .RData on exit* sur *never*.
 
-Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par `rm(list = ls())`).
+Un fichier .RData stocke les données et les fonctions que vous créez dans chaque session de travail. Par défaut, RStudio enregistre automatiquement ce fichier à la fermeture, et le recharge lorsque vous démarrez RStudio. C'est une source de problèmes et de confusion. En effet, il peut en résulter que des objets temporaires créés au cours de brèves expériences et explorations s'attardent sur plusieurs sessions car ils sont automatiquement rechargés, contaminant ainsi l'espace de travail. La modification de ces deux paramètres vous épargnera bien des soucis lorsque vous apprendrez à utiliser l'environnement de R, et vous aidera à prendre le contrôle des données et des fonctions que vous créez avec R (en vous évitant de faire débuter tous vos scripts par `rm(list = ls())`). Dans la plupart des cas, il est plus simple et plus efficace de considérer le code que vous écrivez comme le produit le plus important lorsque vous travaillez sur l'analyse, et d'écrire des instructions spécifiques pour exporter (ou enregistrer) uniquement les résultats les plus importants (par exemple, certaines sorties tabulaires sous forme de [fichiers CSV](#csv), et des graphiques sous forme de fichiers PNG).
 :::
 
 ```{r rstudio-settings, echo=FALSE, out.width="70%", fig.cap="Configuration globale de RStudio Desktop."}
 knitr::include_graphics("images/rstudio-settings.png")
 ```
 
-L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig. \@ref(fig:rstudio-desktop)). Par défaut, de haut en bas et de gauche à droite :
-
-* Le premier quadrant contient les documents en cours d'édition (scripts...), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document...).
-* Le second quadrant permet d'accéder aux objets présent dans l'[environnement](#environnement) et de voir l'historique des commandes.
-* Le troisième quadrant contient la [console](#console).
-* Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de [gérer les packages](#packages) et d'[afficher l'aide](#aide).
+L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig. \@ref(fig:rstudio-desktop)). Par défaut, de haut en bas et de gauche à droite^[Pour plus de détails sur l'interface de RStudio, voir @verzani2012, @gandrud2018 et @racine2012] :
 
 ```{r rstudio-desktop, echo=FALSE, out.width='100%', out.extra='angle=90', fig.cap="L'interface de RStudio Desktop."}
 knitr::include_graphics("images/rstudio-desktop.png")
 ```
+
+* Le quadrant supérieur gauche est l'éditeur de texte : il contient les documents en cours d'édition (scripts...), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document...). C'est là que vous écrivez et éditez le code et le texte. Écrire du code signifie écrire en texte brut, sans gras, soulignement, italique ou autre formatage. L'apparence de l'éditeur de texte peut être modifiée dans RStudio en allant dans le menu déroulant *Tools*, et en sélectionnant *Global Options...*, puis en parcourant les options dans les sections *Code* et *Appearance* sur la liste de gauche. Il peut être utile d'afficher les caractères d'espacement (dans la section *Code*, onglet *Display*), et de vérifier toutes les options de complétion et de diagnostic (section *Code*, onglet *Completion* et *Diagnostics*). Le code dans l'éditeur de texte est le produit le plus important de votre travail, c'est donc une bonne idée de l'enregistrer dans un [endroit adapté](#projets), avec un nom significatif (généralement les fichiers de code R se terminent par .R, avec un R majuscule après le point), et de l'enregistrer fréquemment pendant que vous travaillez dessus pour minimiser le risque de perte accidentelle.
+* Le quadrant supérieur droit peut comporter plusieurs onglets, en fonction de ce que vous faites. La plupart du temps, vous verrez un onglet *Environment* et un onglet *History*. L'onglet *History* contient l'historique des commandes exécutées dans la console. L'onglet *Environment* répertorie les objets qui sont actuellement disponibles dans votre session R. L'environnement est l'endroit où R stocke les résultats des calculs et des fonctions. Par exemple, si vous avez exécuté un code qui lit une feuille de calcul dans R et la stocke en tant qu'objet R, vous verrez cet objet répertorié dans l'onglet *Environment*. Cet onglet est utile car il vous permet d'obtenir en un coup d'œil des informations de base sur la taille des objets que vous créez (par exemple, le nombre de lignes et de colonnes). Il permet de vérifier rapidement le résultat de vos calculs et voir si votre code fonctionne comme prévu. L'environnement est un aspect important de R car il nous offre un système cohérent et flexible pour créer, combiner et manipuler différents types de données pendant notre analyse. Les environnements sont un concept de programmation avancé, et tout ce que nous devons faire ici est de noter qu'ils sont utiles, et qu'il n'y a rien de comparable à eux dans les tableurs.
+L'onglet *History* contient l'historique des commandes que vous avez précédemment exécutées dans votre session R. Il est vivement recommande de sauvegarder votre code dans un fichier .R, même pour les analyses et les expériences les plus brèves. Si vous travaillez de manière expéditive sans enregistrer, vous pouvez utiliser l'historique pour parcourir vos commandes précédentes afin de les réutiliser et de les modifier. Vous pouvez également enregistrer l'historique de vos commandes R dans un fichier texte. Ce n'est cependant pas une méthode efficace pour garder une trace de votre travail. Une meilleure stratégie consiste à écrire du code dans l'éditeur de texte, entrecoupé de commentaires qui expliquent ce que fait le code, et d'enregistrer ce document sur votre ordinateur.
+* Le quadrant inférieur droit permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de [gérer les packages](#packages) et d'[afficher l'aide](#aide). Vous pouvez revenir aux graphiques précédents créés dans votre session actuelle. L'onglet *Plots* comporte un bouton *Export*" qui permet d'enregistrer facilement vos graphiques sous forme de fichiers image sur votre ordinateur (dans différents formats) ou de les copier dans le presse-papiers pour un transfert rapide par copier-coller. Ces fonctionnalités sont utiles pour itérer vers un graphique de qualité publication.
+* Le quadrant inférieur gauche contient la [console](#r-console) où le code est exécuté. Il n'y a pas de boutons spécifiques à la console, l'interaction directe avec ce volet est donc limitée. La partie la plus importante de ce volet est l'invite de commande, qui débute par un chevron `>`, et lorsque ce volet est actif, un curseur clignotant apparaît.
+
+::: {.rmdtip}
+
+Il existe deux fonctions utiles de la console qui vous feront gagner du temps lorsque vous travaillerez avec R. La première est la touche de déplacement vers le haut de votre clavier, qui vous permet de réexécuter les commandes précédentes. Si vous placez votre curseur à l'invite et appuyez sur la touche de déplacement vers le haut, vous pouvez parcourir les lignes de code précédemment exécutées. Une fois que vous avez trouvé le code que vous voulez réexécuter, vous pouvez le modifier dans la console, si vous le souhaitez, ou simplement appuyer sur Entrée pour l'envoyer à l'interpréteur. La deuxième fonctionnalité pratique du volet console de RStudio est la petite icône en forme de flèche située à droite de la barre de titre de la console. Si vous regardez en haut du panneau de la console, vous verrez le mot *Console*, puis vous verrez un chemin d'accès à un dossier sur votre ordinateur, et à la fin de celui-ci, vous verrez une petite icône en forme de flèche courbée pointant vers la droite. Le chemin sur votre ordinateur dans la barre de titre de la console est votre [répertoire de travail](#projets). Si vous cliquez sur la petite flèche, le volet des fichiers s'ouvre pour afficher le contenu de votre répertoire de travail.
+
+:::
 
 # Aide mémoire {#cheat-sheet}
 
@@ -89,9 +96,11 @@ seq_along(x)
 
 ## Travailler par projets {#projets}
 
-Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://rstats.wtf/project-oriented-workflow.html), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...).
+Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://rstats.wtf/project-oriented-workflow.html), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...). Ce dossier est appelé répertoire de travail (*working directory*).
 
-Ce dossier, ou répertoire de travail (*working directory*), peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
+Le répertoire de travail est un concept important à comprendre car il est différent de tout ce que vous avez pu voir dans un tableur. Le répertoire de travail est le répertoire (ou dossier) de votre ordinateur dans lequel R travaille actuellement. Il s'agit de l'emplacement sur votre ordinateur où R cherchera lorsque vous lirez des fichiers ou enregistrerez des résultats. Par défaut, le répertoire de travail de R a probablement été défini dans un répertoire peu pratique lors de l'installation de R, mais il est facile de le modifier.
+
+Le répertoire de travail peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
 
 ```{r, eval=FALSE}
 # Définition du répertoire de travail
@@ -100,12 +109,14 @@ setwd("/chemin/vers/mon/dossier")
 
 Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
 
-Cependant, le risque est de se retrouver dans la situation suivante :
+Cependant, cette approche n'est pas recommandée car le risque est de se retrouver dans la situation suivante :
 
 ```{r, eval=FALSE}
 # Définition du répertoire de travail
 setwd("/chemin/uniquement/valide/sur/mon/ordinateur")
 ```
+
+Si vous utilisez la commande `setwd()` pour définir le répertoire de travail, votre code ne fonctionnera que sur votre ordinateur, dans sa configuration actuelle de fichiers et de dossiers. Cela signifie que votre code n'est pas portable et n'est pas robuste au changement. Si vous réorganisez vos fichiers ou si vous donnez votre code à un collaborateur, le répertoire de travail réel où se trouvent vos fichiers ne correspondra plus à ce qui est écrit dans le code. Cela peut entraîner des erreurs et de la frustration. Ainsi, bien qu'il soit important de connaître le concept de répertoire de travail pour travailler avec R, vous ne devez pas l'inclure dans votre code R.
 
 Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
 
@@ -120,7 +131,7 @@ knitr::include_graphics("images/rstudio-project.png")
 
 Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser `setwd()`.
 
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
+Vous pouvez avoir besoin que votre code fasse référence à d'autres répertoires par rapport au répertoire principal de votre projet (par exemple, un répertoire appelé "data" qui contient des feuilles de calcul, etc.). L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
 
 (ref:xkcd-documents) Documents. "Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc" [CC BY-NC 2.0 @munroe2014].
 

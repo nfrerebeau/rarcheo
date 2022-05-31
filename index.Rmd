@@ -27,17 +27,40 @@ knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 
 # Avant propos {-}
 
-Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
-
-Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
-
-Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
-
 **Ce livre est en cours de rédaction.**
 
 `r if (knitr::is_html_output()) '
 <a class="btn btn-primary" href="rarcheo.pdf" role="button">Téléchargez le pdf</a>
 '`
+
+## Que contient ce livre ? {-}
+
+L'objectif de ce livre est de vous donner des bases solides pour utiliser le [langage R](https://www.r-project.org/) [@R-base] dans le cadre des sciences archéologiques. Par science archéologique, nous entendons ici une recherche systématique, objective et empirique sur les comportements humains passés, à l'aide de données recueillies à partir de vestiges et de traces matérielles.
+
+Le but n'est pas d'être exhaustif, mais plutôt de se concentrer sur ce que nous pensons être les compétences essentielles pour faire de l'archéologie avec R. Certains archéologues utilisent déjà R de manière *ad hoc*, pour un tracer un graphique par-ci, ou ajuster un modèle linéaire par-là. Si vous êtes l'une de ces personnes, vous verrez des choses familières dans ce livre. Mais vous verrez aussi beaucoup de nouvelles idées (nous l'esperons), car ce livre vous montrera comment R peut être au centre de l'ensemble de votre flux de travail de recherche, depuis le moment où vous commencez à travailler avec des données brutes jusqu'à la finalisation de votre thèse, rapport ou manuscrit.
+
+Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Il ne contient pas (ou peu) de discussions détaillées sur la théorie statistique, et le lecteur sera invité à consulter à d'autres textes concernant les détails techniques des algorithmes, etc. Le lecteur trouvera ainsi des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
+
+Ce livre se veut une introduction pratique au langage R pour la mise en oeuvre efficaces de tâches courantes en archéologie, et doit servir de tremplin vers une utilisation de R plus avancée. Les principaux sujets abordés dans ce livre sont les suivants :
+
+* Travailler avec des structures de données courantes en archéologie, les lire avec R et les manipuler pour passer de formats désordonnés à des formats ordonnés prêts à être analysés.
+* Travailler avec des données provenant d'artefacts en pierre, de restes de faune, de poterie, de verre et d'artefacts métalliques.
+* Analyser des données de composition multivariées à l'aide d'analyses en grappes et en composantes principales.
+* Travailler avec des chronologies relatives et absolues en faisant de la sériation, et en calibrant, analysant et visualisant des datation radiocarbone.
+* Visualiser et analyser des données stratigraphiques provenant de fouilles archéologiques.
+* Visualiser les données spatiales en réalisant des cartes, en effectuant des analyses spatiales et en classifiant des sites.
+* Mettre en œuvre une recherche reproductible (une pratique bonne pour la science en général, et bonne pour votre productivité individuelle).
+* Simplifier la recherche collaborative grâce au contrôle de version.
+
+## Pour qui ce livre est-il écrit ? {-}
+
+Ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques. Il s'adresse ainsi aux archéologues désireux d'élargir leurs horizons analytiques et d'accéder à de nouvelles méthodes et à des moyens plus efficaces d'organiser leur processus de recherche. 
+
+Il est écrit pour des utilisateurs débutants et aucune connaissance préalable de R, de l'informatique ou de la programmation n'est attendue. Cependant, un peu de curiosité pour les statistiques sera un avantage, ainsi que la volonté de lire au-delà de ce livre, pour prendre judicieusement des décisions quant à la pertinence d'une méthode statistique au regard d'un problème spécifique.
+
+La plupart des méthodes présentées ici sont destinées à des données rectangulaires, c'est-à-dire des données qui sont généralement saisies dans des feuilles de calcul et des bases de données. Plus précisément, le livre s'adresse aux archéologues qui utilisent des données organisées en lignes (c'est-à-dire des variables) et en colonnes (c'est-à-dire des spécimens, des échantillons ou des observations). De nombreux jeux de données archéologiques sont organisés différemment, comme les images ou le texte. Bien que R soit également utile pour ces derniers, nous ne les abordons pas en détail ici. Les données rectangulaires sont très courantes en archéologie, et dans de nombreux autres domaines, c'est pourquoi nous nous concentrons sur celles-ci ici.
+
+Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, donc les méthodes présentées ici seront utiles pour la majorité des applications archéologiques. Si vos données sont plus grandes que cela, vous faites probablement quelque chose de très spécialisé et vous aurez des défis uniques à relever pour rendre votre recherche reproductible. Cependant, vous pouvez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
 ## Licence {-}
 
@@ -49,7 +72,7 @@ Le code contenu dans ce livre est simultanément disponible sous la [licence MIT
 
 Une entrée BibTeX pour citer ce document :
 
-```{r citation, echo=FALSE, comment=""}
+```{r citation, echo=FALSE, cache=FALSE, comment=""}
 ref <- utils::readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))
 print(ref, style = "Bibtex")
 ```
