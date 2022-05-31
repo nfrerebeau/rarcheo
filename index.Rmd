@@ -3,6 +3,7 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
+- Ben Marwick
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: scrbook

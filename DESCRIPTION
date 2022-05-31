@@ -2,12 +2,18 @@ Package: rarcheo
 Title: R pour l'archéologue
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Nicolas",
+    c(person(given = "Nicolas",
            family = "Frerebeau",
            role = c("aut", "cre"),
            email = "nicolas.frerebeau@u-bordeaux-montaigne.fr",
            comment = c(ORCID = "0000-0001-5759-4944", 
-                       affiliation = "Université Bordeaux Montaigne"))
+                       affiliation = "Université Bordeaux Montaigne")),
+      person(given = "Ben",
+             family = "Marwick",
+             role = "aut",
+             email = "bmarwick@uw.edu",
+             comment = c(ORCID = "0000-0001-7879-4531", 
+                         affiliation = "University of Washington")))
 Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: Ce livre s'adresse aux personnes qui souhaitent analyser,
     visualiser et modéliser des données archéologiques à l'aide du langage

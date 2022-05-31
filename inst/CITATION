@@ -3,15 +3,17 @@ citHeader("To cite this book in publications use:")
 citEntry(
   entry        = "Book",
   key          = "rarcheo",
-  title        = "R pour l'archéologue: Exploration, visualisation et analyse de données",
-  author       = c(person("Nicolas", "Frerebeau", role = "aut")),
+  title        = "R pour l'archéologue: Exploration, visualisation et 
+                  analyse de données",
+  author       = c(person("Nicolas", "Frerebeau", role = "aut"),
+                   person("Ben", "Marwick", role = "aut")),
   year         = "2021",
   publisher    = "Université Bordeaux Montaigne",
   address      = "Pessac, France",
   url          = "https://rstats.archaeo.science",
 
   textVersion  =
-  paste("Frerebeau, Nicolas.",
+  paste("Frerebeau, Nicolas, Marwick, Ben",
         "R pour l'archéologue: Exploration, visualisation et analyse de données.",
         "Pessac, France: Université Bordeaux Montaigne, 2021.",
         "URL https://rstats.archaeo.science.")
