@@ -202,7 +202,7 @@ puissance(2, 3) # 2 au cube
 ```
 
 ## Packages {#packages}
-
+### Installer et utiliser des packages
 Les fonctions sont organisées en **packages**, que vous pouvez télécharger pour étendre l'utilisation de R. Lors d'une première installation de R, un ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
 
 * Les packages essentiels : `base`, `compiler`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `parallel`, `splines`, `stats`, `stats4`, `tcltk`, `tools`, `translations`, `utils`.
@@ -244,11 +244,72 @@ data(intcal20)
 
 L'une des forces de R, la communauté dynamique de chercheurs-développeurs, est aussi l'une de ses faiblesses. En effet, cela signifie que certains packages sont mis à jour fréquemment, et d'autres non. Parfois, ces mises à jour peuvent modifier le fonctionnement de votre code, ou l'empêcher complètement de fonctionner. Nous aborderons des solutions détaillées à ce problème par la suite. Pour l'instant, nous noterons simplement que c'est une bonne pratique d'inclure la sortie de `sessionInfo()` dans les résultats de votre analyse, car elle vous indique les numéros de version spécifiques de tous les paquets utilisés. Cela signifie que s'il y a des changements drastiques dans certains des packages que vous utilisez au cours de la vie de votre projet, vous avez un enregistrement de la dernière version des packages qui a fonctionné pour vous.
 
-::: {.rmdtip}
-Une bonne pratique consiste à toujours chercher à [limiter les dépendances](#dependances).
-:::
+### Limiter les dépendances {#dependances}
+
+Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances^[Sur le sujet, voir les billets regroupés sur le site du [tinyverse](https://www.tinyverse.org/).].
+
+Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le package le plus utilisé pour l'analyse de données multivariées. *FactoMineR* possède `r length(tools::package_dependencies("FactoMineR")[[1]])` dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que *FactoMineR* a en réalité une longue chaîne de `r length(tools::package_dependencies("FactoMineR", recursive = TRUE)[[1]])` (!) dépendances (fig. \@ref(fig:factominer-dependency)).
+
+(ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
+
+```{r factominer-dependency, echo=FALSE, fig.width=7, fig.height=7, fig.cap="(ref:factominer-dependency)"}
+facto_dep <- miniCRAN::makeDepGraph(
+  pkg = "FactoMineR", 
+  suggests = FALSE, 
+  enhances = FALSE,
+  includeBasePkgs = FALSE
+)
+# plot(facto_dep, main = "", vertex.size = 8, cex = 0.9)
+
+facto_dep |> 
+  tidygraph::as_tbl_graph() |> 
+  ggraph::ggraph(layout = "stress") + 
+  ggraph::geom_edge_link(
+    mapping = ggplot2::aes(edge_colour = type),
+    arrow = grid::arrow(length = grid::unit(2, "mm")),
+    end_cap = ggraph::circle(3, "mm")
+  ) +
+  ggraph::geom_node_point(
+    mapping = ggplot2::aes(
+      color = name == "FactoMineR",
+      size = name == "FactoMineR",
+      shape = name == "FactoMineR"
+    ),
+    show.legend = FALSE
+  ) + 
+  # ggraph::geom_node_text(
+  #   mapping = ggplot2::aes(label = name),
+  #   vjust = 0.4
+  # ) +
+  ggplot2::theme_void() +
+  ggplot2::theme(legend.position = "bottom") +
+  ggraph::scale_edge_color_manual(
+    name = "Dependency",
+    values = c(`Depends` = "#004488", `Imports` = "#BB5566", 
+               `LinkingTo` = "#DDAA33")
+  ) +
+  ggplot2::scale_color_manual(
+    values = c(`TRUE` = "black", `FALSE` = "grey")
+  ) +
+  ggplot2::scale_size_manual(values = c(`TRUE` = 7, `FALSE` = 5))
+```
+
+Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
+
+* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
+* Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
+* N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
+
+(ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
+
+```{r xkcd-dependency, echo=FALSE, out.width='50%', fig.cap="(ref:xkcd-dependency)"}
+knitr::include_graphics("images/xkcd_dependency.png")
+```
+
+Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme [rOpenSci](https://ropensci.org/) œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
 
 ## Obtenir de l'aide {#aide}
+### Utiliser la documentation
 
 La maîtrise d'une langue étrangère comme l'allemand ou le chinois demande du temps, de la pratique et des hauts et des bas. L'apprentissage d'un langage de programmation comme R est un processus similaire, et vous devez vous attendre à des hauts et des bas à mesure que R devient un élément de plus en plus central de votre flux de travail. R est fourni avec une documentation intégrée très complète, très structurée et contenant très souvent des exemples de code que vous pouvez exécuter pour explorer le fonctionnement d'une fonction.
 
@@ -331,7 +392,23 @@ example(mean)
 ```
 
 ::: {.rmdtip}
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#rstats-reprex).
+:::
+
+### Écrire des exemples reproductibles {#rstats-reprex}
+
+Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur [Stack Overflow](https://stackoverflow.com/questions)^[Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les [recommandations d'écriture](https://stackoverflow.com/help/how-to-ask).] ou sur les [listes de diffusion](https://www.r-project.org/mail.html), la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
+
+* Minimal : utilisez le moins de code possible tout en produisant le même problème.
+* Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
+* Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
+
+Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
+
+Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
+
+::: {.rmdtip}
+L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
 :::
 
 # Structures de données {#r-vector}

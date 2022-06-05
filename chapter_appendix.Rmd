@@ -92,159 +92,19 @@ x <- c(8.6, 4.1, 3.9, 7, 1.8, 6.9, 1.6, 3.8, 2.6, 5.5)
 seq_along(x)
 ```
 
+## Pipes {#fonctions-pipe}
+
+L'opérateur `|>` (*pipe*) a été introduit dans la version 4.1 de R^[Pour les versions de R antérieures 4.1, on peut utiliser l'opérateur `%>%` du package [*magrittr*](https://magrittr.tidyverse.org/)]. Ainsi, `x |> f(y)` est interprété comme `f(x, y)`.
+
+```{r}
+mtcars |> 
+  transform(avg = mpg / wt) |> 
+  subset(avg > 5, select = c(mpg, wt, avg))
+```
+
+L'utilisation des *pipes* à l'avantage de clarifier et de faciliter la lecture du code, mais peut considérablement complexifier le débuggage en cas de problème. Il est recommandé d'utiliser cet opérateur avec parcimonie.
+
 # Bonnes pratiques {#bonnes-pratiques}
-
-## Travailler par projets {#projets}
-
-Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://rstats.wtf/project-oriented-workflow.html), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...). Ce dossier est appelé répertoire de travail (*working directory*).
-
-Le répertoire de travail est un concept important à comprendre car il est différent de tout ce que vous avez pu voir dans un tableur. Le répertoire de travail est le répertoire (ou dossier) de votre ordinateur dans lequel R travaille actuellement. Il s'agit de l'emplacement sur votre ordinateur où R cherchera lorsque vous lirez des fichiers ou enregistrerez des résultats. Par défaut, le répertoire de travail de R a probablement été défini dans un répertoire peu pratique lors de l'installation de R, mais il est facile de le modifier.
-
-Le répertoire de travail peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
-
-```{r, eval=FALSE}
-# Définition du répertoire de travail
-setwd("/chemin/vers/mon/dossier")
-```
-
-Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
-
-Cependant, cette approche n'est pas recommandée car le risque est de se retrouver dans la situation suivante :
-
-```{r, eval=FALSE}
-# Définition du répertoire de travail
-setwd("/chemin/uniquement/valide/sur/mon/ordinateur")
-```
-
-Si vous utilisez la commande `setwd()` pour définir le répertoire de travail, votre code ne fonctionnera que sur votre ordinateur, dans sa configuration actuelle de fichiers et de dossiers. Cela signifie que votre code n'est pas portable et n'est pas robuste au changement. Si vous réorganisez vos fichiers ou si vous donnez votre code à un collaborateur, le répertoire de travail réel où se trouvent vos fichiers ne correspondra plus à ce qui est écrit dans le code. Cela peut entraîner des erreurs et de la frustration. Ainsi, bien qu'il soit important de connaître le concept de répertoire de travail pour travailler avec R, vous ne devez pas l'inclure dans votre code R.
-
-Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
-
-* L'utilisation du package [*here*](https://here.r-lib.org/),
-* L'utilisation de la gestion de projet dans RStudio.
-
-RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
-
-```{r rstudio-project, echo=FALSE, out.width="70%", fig.cap="Création d'un projet avec RStudio."}
-knitr::include_graphics("images/rstudio-project.png")
-```
-
-Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser `setwd()`.
-
-Vous pouvez avoir besoin que votre code fasse référence à d'autres répertoires par rapport au répertoire principal de votre projet (par exemple, un répertoire appelé "data" qui contient des feuilles de calcul, etc.). L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
-
-(ref:xkcd-documents) Documents. "Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc" [CC BY-NC 2.0 @munroe2014].
-
-```{r xkcd-documents, echo=FALSE, out.width='50%', fig.cap="(ref:xkcd-documents)"}
-knitr::include_graphics("images/xkcd_documents.png")
-```
-
-## Sauvegarder ses données {#csv}
-
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig. \@ref(fig:xkcd-norm)). De manière générale, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte).
-
-Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier <abbr title="comma-separated values">CSV</abbr> est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
-
-* Un fichier <abbr title="comma-separated values">CSV</abbr> est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
-* Le format <abbr title="comma-separated values">CSV</abbr> est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier <abbr title="comma-separated values">CSV</abbr> peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
-* Le format <abbr title="comma-separated values">CSV</abbr> est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un [changement dramatique de spécification](https://www.bbc.com/news/technology-54423988).
-* Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
-
-(ref:xkcd-norm) .NORM Normal File Format. "At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts." [CC BY-NC 2.0 @munroe2019].
-
-```{r xkcd-norm, echo=FALSE, out.width='50%', fig.cap="(ref:xkcd-norm)"}
-knitr::include_graphics("images/xkcd_norm_normal_file_format.png")
-```
-
-La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (fig. \@ref(fig:calc-csv)).
-
-```{r calc-csv, echo=FALSE, out.width="70%", fig.cap="Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté)."}
-knitr::include_graphics("images/calc-csv.png")
-```
-
-::: {.rmdcaution}
-Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans [conséquences](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates) lors de l'ouverture d'un fichier.
-:::
-
-## Limiter les dépendances {#dependances}
-
-Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances^[Sur le sujet, voir les billets regroupés sur le site du [tinyverse](https://www.tinyverse.org/).].
-
-Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le package le plus utilisé pour l'analyse de données multivariées. *FactoMineR* possède `r length(tools::package_dependencies("FactoMineR")[[1]])` dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que *FactoMineR* a en réalité une longue chaîne de `r length(tools::package_dependencies("FactoMineR", recursive = TRUE)[[1]])` (!) dépendances (fig. \@ref(fig:factominer-dependency)).
-
-(ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
-
-```{r factominer-dependency, echo=FALSE, fig.width=7, fig.height=7, fig.cap="(ref:factominer-dependency)"}
-facto_dep <- miniCRAN::makeDepGraph(
-  pkg = "FactoMineR", 
-  suggests = FALSE, 
-  enhances = FALSE,
-  includeBasePkgs = FALSE
-)
-# plot(facto_dep, main = "", vertex.size = 8, cex = 0.9)
-
-facto_dep |> 
-  tidygraph::as_tbl_graph() |> 
-  ggraph::ggraph(layout = "stress") + 
-  ggraph::geom_edge_link(
-    mapping = ggplot2::aes(edge_colour = type),
-    arrow = grid::arrow(length = grid::unit(2, "mm")),
-    end_cap = ggraph::circle(3, "mm")
-  ) +
-  ggraph::geom_node_point(
-    mapping = ggplot2::aes(
-      color = name == "FactoMineR",
-      size = name == "FactoMineR",
-      shape = name == "FactoMineR"
-    ),
-    show.legend = FALSE
-  ) + 
-  # ggraph::geom_node_text(
-  #   mapping = ggplot2::aes(label = name),
-  #   vjust = 0.4
-  # ) +
-  ggplot2::theme_void() +
-  ggplot2::theme(legend.position = "bottom") +
-  ggraph::scale_edge_color_manual(
-    name = "Dependency",
-    values = c(`Depends` = "#004488", `Imports` = "#BB5566", 
-               `LinkingTo` = "#DDAA33")
-  ) +
-  ggplot2::scale_color_manual(
-    values = c(`TRUE` = "black", `FALSE` = "grey")
-  ) +
-  ggplot2::scale_size_manual(values = c(`TRUE` = 7, `FALSE` = 5))
-```
-
-Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
-
-* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
-* Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
-* N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
-
-(ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
-
-```{r xkcd-dependency, echo=FALSE, out.width='50%', fig.cap="(ref:xkcd-dependency)"}
-knitr::include_graphics("images/xkcd_dependency.png")
-```
-
-Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme [rOpenSci](https://ropensci.org/) œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
-
-## Écrire des exemples reproductibles {#reprex}
-
-Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur [Stack Overflow](https://stackoverflow.com/questions)^[Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les [recommandations d'écriture](https://stackoverflow.com/help/how-to-ask).] ou sur les [listes de diffusion](https://www.r-project.org/mail.html), la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
-
-* Minimal : utilisez le moins de code possible tout en produisant le même problème.
-* Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
-* Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
-
-Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
-
-Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
-
-::: {.rmdtip}
-L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
-:::
 
 # Style de programmation {#style}
 

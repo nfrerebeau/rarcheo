@@ -58,16 +58,17 @@ cran_pkg |>
   labs(x = "Année", y = "Nombre de packages", caption = "Source : CRAN")
 ```
 
+R est robuste
+: R est un langage spécialisé pour l'analyse statistique et la visualisation de données. R a été développé à l'origine par des statisticiens, et continue d'être largement utilisé par des statisticiens professionnels et universitaires. Cela signifie que le langage entretient des liens forts avec la littérature scientifique en statistique. Nombre de ses algorithmes ont été validés par des publications et testés de manière approfondie par une utilisation intensive. Il est facile de passer de la théorie statistique à la pratique en utilisant R.
+
 R facilite la reproductibilité
 : R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible. R est disponible pour tous les principaux types d'ordinateurs. Par conséquent, si vous effectuez votre analyse avec R, il y a de fortes chances pour que toute personne disposant d'un ordinateur puisse facilement la reproduire.
 
 R facilite la publication
 : R propose des outils flexibles pour communiquer vos résultats, en permettent de produire facilement des documents complexes comprenant du texte, des tableaux et des figures, le tout généré à partir du code (comme ce livre !). C'est un gain de temps considérable, surtout lorsque des semaines ou des mois s'écoulent entre deux projets et que le souvenir des détails du dernier travail s'estompe. Lorsque je consulte mon code R, je peux rapidement me souvenir de mon plan d'analyse et reprendre là où je me suis arrêté.
 
-R est robuste
-: R est un langage spécialisé pour l'analyse statistique et la visualisation de données. R a été développé à l'origine par des statisticiens, et continue d'être largement utilisé par des statisticiens professionnels et universitaires. Cela signifie que le langage entretient des liens forts avec la littérature scientifique en statistique. Nombre de ses algorithmes ont été validés par des publications et testés de manière approfondie par une utilisation intensive. Il est facile de passer de la théorie statistique à la pratique en utilisant R.
-
-R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, la documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne ou par le biais de nombreux groupes d'utilisateurs locaux. De plus, R bénéficie d'une communauté étendue d'utilisateurs, de contributeurs et de développeurs. Cette communauté est très active, solidaire et généralement progressiste. Les auteurs d'extensions sont souvent heureux de voir que leur travail est utilisé par d'autres et sont prêts à répondre à des questions sur leur utilisation.
+R est collaboratif
+: R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig. \@ref(fig:wos-archaeo)). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, la documentation est abondante et il est toujours possible de [trouver de l'aide](#aide) en ligne ou par le biais de nombreux groupes d'utilisateurs locaux. R bénéficie d'une communauté étendue d'utilisateurs, de contributeurs et de développeurs. Cette communauté est très active, solidaire et généralement progressiste. Les auteurs d'extensions sont souvent heureux de voir que leur travail est utilisé par d'autres et sont prêts à répondre à des questions sur leur utilisation.
 
 Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
 
