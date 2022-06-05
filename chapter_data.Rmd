@@ -2,17 +2,11 @@
 
 # Introduction {#data-tidy}
 
-Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse [@wickham2014]. Les principes régissant cette étape de structuration (*data tidying*) sont exposés par @wickham2014, qui propose ainsi une approche pour lier "la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification)."
+Dans ce chapitre, nous allons passer en revue quelques-unes des principales méthodes permettant de transférer des données dans R. Depuis de nombreuses années, la méthode la plus courante consiste à utiliser la fonction read.csv avec un fichier CSV (comma separated variables). Il s'agit d'une approche décente car la plupart des types de fichiers qui contiennent des données tabulaires peuvent être enregistrés au format CSV. Par exemple, nous pouvons enregistrer des fichiers Excel au format CSV à l'aide de Microsoft Excel. Le format CSV est également idéal car il s'agit d'un format ouvert, en texte clair, qui peut être lu et modifié par de nombreux programmes différents. Il convient à l'archivage à long terme car c'est un format stable. Cependant, il est souvent plus pratique de travailler directement avec le fichier dans lequel les données ont été saisies, et de travailler avec un format avec lequel nos collaborateurs sont à l'aise, comme une feuille de calcul Excel. Heureusement, il existe plusieurs paquets qui permettent de lire Excel, d'autres formats de fichiers de données tabulaires courants et même des bases de données, directement dans R. Une grande partie de ce chapitre est consacrée à l'introduction dans R de données stockées dans des feuilles de calcul, prêtes à être analysées. Si vous disposez de fichiers de données de type tableur provenant d'un autre logiciel, tel que SPSS, vous pouvez utiliser les fonctions read_* du paquet haven de Hadley Wickham de la même manière que read_excel dans ce chapitre.
 
-Des jeux de données bien structurés se présentent sous la forme de tableaux à deux dimensions (lignes et colonnes) contenant des valeurs. Chaque valeur correspond à une observation d'une [variable](#variables) particulière, en conséquence :
+R est également capable de gérer des situations plus difficiles, comme le travail avec des centaines ou des milliers de fichiers de données, la lecture de données tabulaires à partir de documents Microsoft Word ou de PDF, et la lecture de données à partir de fichiers de texte brut non structurés. Dans ce chapitre, nous allons brièvement montrer comment gérer ces situations.
 
-* Chaque variable doit correspondre à une colonne du tableau.
-* Chaque observation doit correspondre à une ligne du tableau.
-* Un tableau doit correspondre à une unique unité d'observation^[On reconnait ici la troisième forme normale, dans le cas des bases de données relationnelles [@wickham2014].].
-
-::: {.rmdtip}
-Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
-:::
+Il est rare que les données issues du travail sur le terrain ou obtenues directement d'un instrument soient immédiatement prêtes pour l'analyse et la visualisation. Souvent, les données contiennent des incohérences et des erreurs mineures qui doivent être éliminées. L'identification et la suppression de ces contaminants sont rarement enseignées au cours de la formation de premier ou de deuxième cycle, et par conséquent, de nombreux chercheurs passent beaucoup de temps à se battre pour que leurs données soient prêtes à être analysées et visualisées. L'objectif de ce chapitre est d'étudier cinq concepts clés pour le nettoyage des données avec R. Ce chapitre vous donnera les outils nécessaires pour identifier les problèmes avec vos données, les corriger rapidement et simplement, et donner à vos données une forme appropriée pour l'analyse et la visualisation. Tout d'abord, nous nous assurerons que vous pouvez naviguer facilement dans vos données, puis nous décrirons cinq concepts de nettoyage de données, et enfin nous explorerons quelques méthodes pour joindre des tableaux ensemble.
 
 # Importer et exporter {#data-importer}
 
@@ -20,7 +14,8 @@ Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
 # read.table()
 ```
 
-# Nettoyer {#data-nettoyer}
+# Traitement des données {#data-traitement}
+## Nettoyer {#data-nettoyer}
 
 ```{r}
 # abbreviate()
@@ -28,7 +23,7 @@ Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
 # tolower() / toupper()
 ```
 
-# Selectionner {#data-selectionner}
+## Selectionner {#data-selectionner}
 
 ```{r}
 # startsWith()
@@ -36,24 +31,21 @@ Dans le cas de données tabulaires, utilisez le [format CSV](#csv).
 # endsWith()
 ```
 
-# Filtrer {#data-filtrer}
+## Filtrer {#data-filtrer}
 
 ```{r}
 # subset()
 ```
 
-# Transformer {#data-transformer}
+## Transformer {#data-transformer}
 
 ```{r}
 # transform()
 # with()
 ```
 
-# Fusionner {#data-jointure}
+## Fusionner {#data-jointure}
 
 ```{r}
 # merge()
 ```
-
-
-# Transformer {#transformer}

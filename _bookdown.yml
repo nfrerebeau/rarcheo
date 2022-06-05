@@ -21,6 +21,8 @@ rmd_files:
     
     "chapter_rstats.Rmd",
 
+    "chapter_collect.Rmd",
+
     "chapter_data.Rmd",
     
     "chapter_statistics.Rmd",
