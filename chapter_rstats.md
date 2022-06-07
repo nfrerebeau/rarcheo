@@ -1,7 +1,14 @@
 # (PART) Premiers pas avec R {-}
 
 # Prise en main
-## Invite de commande
+
+Maintenant que nous avons établi les motivations principales justifiant l'apprentissage de R et son usage en archéologie, il est temps d'introduire certains termes et concepts clés qui apparaissent fréquemment dans ce livre. Se familiariser avec ces termes vous aidera à trouver votre chemin lorsque vous commencerez à utiliser R.
+
+Jusque là, nous avons utilisé le mot code sans vraiment le définir. Le **code** désigne tout ce qui est écrit dans un langage de programmation, d'un simple mot à une fonction de plusieurs milliers de lignes. Un **script** est un fichier qui contient du code, les noms de fichiers de scripts R se terminent par l'extension `.R`. Vous pouvez ouvrir ces fichiers avec n'importe quel éditeur de texte. 
+
+Le code contient souvent des **commentaires**, que vous pouvez reconnaître dans le langage R par un symbole `#` (dièse) en début de ligne. Le symbole `#` indique à l'interpréteur R d'ignorer tout ce qui se trouve à droite de ce symbole et de passer à la ligne de code suivante. Il n'y a pas de règles strictes sur le nombre de commentaires que vous devez inclure dans votre code, mais un bon point de départ serait une ligne de commentaire pour chaque 10 lignes ou section majeure de code. Les commentaires de code sont importants car ils vous aident, ainsi que d'autres personnes, à comprendre l'objectif du code. Les commentaires doivent expliquer le pourquoi, et non le comment (il suffit de lire le script pour cela) de votre code : ils doivent expliquer l'intention générale du code. Plus généralement, vos commentaires doivent vous dire ce que vous devrez savoir dans quelques semaines ou mois, lorsque vous reprendrez le travail après une pause et que vous ne vous souviendrez plus des détails. 
+
+## Invite de commande {#r-console}
 
 R se présente sous la forme d'une [interface en ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande), permettant de donner des instructions à l'ordinateur. Dans RStudio, cette interface est accessible dans l'onglet *Console*.
 
@@ -62,9 +69,9 @@ Il est possible de naviguer dans l'historique des commandes précédemment exéc
 
 ## Objets {#objets}
 
-Il est possible d'associer un nom à une valeur et ainsi de créer des **variables** (au sens informatique) qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur. 
+Il est possible d'associer un nom à une valeur et ainsi de créer des **variables** (au sens informatique) qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur.
 
-Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur `<-` :
+Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur `<-` (flèche) :
 
 
 ```r
@@ -129,11 +136,15 @@ Dans R les variables stockent des **objets**^[En informatique, un objet est une 
 
 Un objet possède un type et une structure de données particulière. Le type d'un objet est lié au type d'information qu'il contient et à la façon dont il est stocké dans la mémoire^[Votre système d'exploitation alloue la mémoire en fonction du type de donnée et décide de ce qui peut être stocké dans la mémoire réservée lors de la création d'une variable.]. La structure de données d'un objet correspond à la manière dont sont organisées les données.
 
+Ainsi, pour conserver les résultats d'un calcul, nous affectons la sortie d'une instruction à une variable. Ce processus d'affectation enregistre la sortie dans notre **environnement** afin qu'elle soit disponible pour une réutilisation ultérieure dans notre session. L'affectation n'enregistre pas les données dans un fichier qui peut être utilisé ailleurs : l'export de données est un processus distinct que nous aborderons plus tard.
+
+## Environnement {#environnement}
+
 ## Fonctions {#fonctions}
 
-### Utiliser des fonction {#fonctions-utiliser}
+Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Une fonction désigne un bloc de code qui exécute des instructions pour effectuer une tâche précise. Par exemple, la fonction `mean()` permet de calculer la moyenne d'un ensemble de nombres. Dans ce livre, vous serez toujours en mesure de reconnaître une fonction car elle sera toujours suivie d'une paire de parenthèses, avec souvent du code entre les parenthèses. Une fonction est un moyen efficace d'organiser le code, car une seule fonction peut entraîner l'exécution de centaines de lignes de code pour produire un résultat. Plutôt que d'exécuter ces centaines de lignes, une par une, encore et encore, nous pouvons simplement taper le nom de la fonction qui les invoque et nous épargner beaucoup de saisies. Minimiser la saisie est une bonne chose : cela permet de gagner du temps et de réduire les risques d'erreurs en faisant des fautes de frappe.
 
-Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les **fonctions**. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. 
+Les fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. 
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#fonctions-ecrire) ou d'[installer des packages](#packages) supplémentaires.
 
@@ -180,65 +191,39 @@ round(3.141593, digits = 2)
 Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#aide).
 :::
 
-### Écrire des fonctions {#fonctions-ecrire}
-
-Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
+Par exemple, on peut vouloir calculer la moyenne des longueurs d'un assemblage d'artefacts. Cet exemple montre l'utilisation de deux fonctions simples pour calculer une valeur moyenne :
 
 
 ```r
-addition <- function(x, y) {
-  # On définit les instructions à exécuter
-  z <- x + y
-  # On précise le résultat à retourner au terme des calculs
-  return(z)
-}
-
-addition(1, 2)
-#> [1] 3
+x <- c(4, 7, 12) # Combine la longueur de trois artefacts
+y <- mean(x)     # Calcule la longueur moyenne
 ```
 
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+La fonction `c()` permet de combiner ("c" pour combiner) nos mesures d'artefacts dans un objet appelé [vecteur](#r-atomic). Un vecteur est une séquence simple d'éléments du même type. Dans notre exemple, tous les éléments sont des nombres. Il existe deux autres vecteurs couramment utilisés dans R : un vecteur de chaînes de caractères où tous les éléments peuvent être des lettres ou des mots, et un vecteur logique où tous les éléments sont des constantes logiques, soit `TRUE` (vrai) ou `FALSE` (faux). Le vecteur est un type de données fondamental en R que nous utiliserons très souvent. Dans l'exemple ci-dessus, nous avons stocké le résultat de la fonction `c()` dans un objet que nous appelons `x` (nous pouvons l'appeler comme bon nous semble, et nous n'avons pas besoin de créer `x` à l'avance). La deuxième ligne de code permet de calculer la moyenne de 4, 7 et 12 (c'est-à-dire $(4 + 7 + 12)/3$), puis d'affecter, ou stocker, le résultat dans un objet appelé `y`. Nous pouvons ensuite utiliser `x` et `y` plus tard dans notre flux de travail pour d'autres tâches. C'est utile car cela signifie que nous n'avons pas à recalculer la moyenne à plusieurs reprises.
 
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-
-```r
-# Définition de la fonction
-# Par défaut, la valeur de y est 2
-puissance <- function(x, y = 2) {
-  z <- x^y
-  return(z)
-}
-
-# L'utilisateur ne change pas la valeur par défaut
-puissance(2) # 2 au carré
-#> [1] 4
-
-# L'utilisateur change explicitement la valeur par défaut
-puissance(2, 3) # 2 au cube
-#> [1] 8
-```
+Les fonctions, telles que `c()` et `mean()` dans l'exemple ci-dessus, sont au cœur du travail avec R, et expliquent en partie la grande polyvalence de R. Elles permettent de gagner beaucoup de temps en minimisant la saisie et le copier-coller, il est donc utile d'investir quelques efforts pour apprendre à utiliser les fonctions, et à écrire vos propres fonctions. 
 
 ## Packages {#packages}
-
-Lors d'une première installation de R, un ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
+### Installer et utiliser des packages
+Les fonctions sont organisées en **packages**, que vous pouvez télécharger pour étendre l'utilisation de R. Lors d'une première installation de R, un ensemble de packages contenant les [fonctions](#fonctions) fondamentales est installé :
 
 * Les packages essentiels : `base`, `compiler`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `parallel`, `splines`, `stats`, `stats4`, `tcltk`, `tools`, `translations`, `utils`.
 * Les packages recommandés : `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `MASS`, `Matrix`, `mgcv`, `nlme`, `nnet`, `rpart`, `spatial`, `survival`.
 
 L'installation d'un package permet de bénéficier de fonctionnalités supplémentaires, généralement dédiées à une tâche bien spécifique. Pour ne pas se perdre dans la multitude de ressources disponibles, le CRAN propose des [répertoires de packages](https://cran.r-project.org/web/views/) par domaine (*Task Views*) pour faciliter le choix des packages pour une analyse spécifique. Il existe ainsi des répertoires pour les [sciences sociales](https://cran.r-project.org/web/views/SocialSciences.html), l'analyse de [données environnementales](https://cran.r-project.org/web/views/Environmetrics.html) ou encore l'analyse de [données spatiales](https://cran.r-project.org/web/views/Spatial.html). Pour l'archéologie, il existe une [*Task View* non officielle](https://github.com/benmarwick/ctv-archaeology), maintenue par Ben Marwick.
 
-::: {.rmdtip}
-Une bonne pratique consiste à toujours chercher à [limiter les dépendances](#dependances).
-:::
+Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction `install.packages()`^[`install.packages()` permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme [Bioconductor](https://www.bioconductor.org/).]. Par exemple, si vous exécutez `install.packages("binford")`, vous allez télécharger automatiquement le package [*binford*](https://cran.r-project.org/package=binford) depuis le CRAN (vous devez être connecté à Internet) et l'installer dans votre bibliothèque. Le package *binford* contient les données de son livre de *Constructing Frames of Reference : An Analytical Method for Archaeological Theory Building Using Ethnographic and Environmental Data Sets* (2001).
 
-Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction `install.packages()`^[`install.packages()` permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme [Bioconductor](https://www.bioconductor.org/).].
-
-La commande suivante permet d'installer le package [*folio*](https://packages.tesselle.org/folio/) qui contient les jeux de données utilisés par la suite :
+Essayez vous-même en exécutant les commandes suivantes pour installer certains des packages que nous utiliserons dans les chapitres suivants. Vous ne devez utiliser `install.packages()` qu'une seule fois (par ordinateur et par utilisateur) : vous n'avez pas besoin de le faire à chaque nouvelle session de travail. Remarquez comment nous utilisons la fonction `c()` ici pour créer un vecteur de noms de packages (chaînes de caractères) sur lequel la fonction `install.packages()` peut travailler :
 
 
 ```r
+# Installer un seul package
 install.packages("folio")
+
+# Installer plusieurs packages à la fois
+pkg <- c("dplyr", "ggplot2", "knitr", "readr", "rmarkdown", "scales", "stringr", "tidyr")
+install.packages(pkg)
 ```
 
 ::: {.rmdtip}
@@ -250,9 +235,12 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 
 ```r
 data(intcal20)
+#> Warning in data(intcal20): jeu de données 'intcal20' introuvable
 ```
 
-Il est donc nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
+Lorsque R installe un package, il le télécharge dans votre bibliothèque. Vous devez utiliser la fonction `library()` pour mettre le contenu du package à la disposition de votre session R actuelle. Chaque fois que vous lancez R, vous devrez exécuter `library()` pour utiliser les fonctions des package que vous avez précédemment installés. Une bonne pratique consiste à placer les appels à la fonctions `library()` parmi les premières lignes de votre script, afin que les autres utilisateurs puissent rapidement voir quels paquets ils devront avoir pour exécuter votre code.
+
+Il est ainsi nécessaire de charger un package à l'aide de la fonction `library()` avant de pouvoir l'utiliser^[Dans le cas présent, une alternative serait de spécifier l'argument `package` de la fonction `data()`.] :
 
 
 ```r
@@ -260,7 +248,48 @@ library("folio")
 data(intcal20)
 ```
 
+L'une des forces de R, la communauté dynamique de chercheurs-développeurs, est aussi l'une de ses faiblesses. En effet, cela signifie que certains packages sont mis à jour fréquemment, et d'autres non. Parfois, ces mises à jour peuvent modifier le fonctionnement de votre code, ou l'empêcher complètement de fonctionner. Nous aborderons des solutions détaillées à ce problème par la suite. Pour l'instant, nous noterons simplement que c'est une bonne pratique d'inclure la sortie de `sessionInfo()` dans les résultats de votre analyse, car elle vous indique les numéros de version spécifiques de tous les paquets utilisés. Cela signifie que s'il y a des changements drastiques dans certains des packages que vous utilisez au cours de la vie de votre projet, vous avez un enregistrement de la dernière version des packages qui a fonctionné pour vous.
+
+### Limiter les dépendances {#dependances}
+
+Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances^[Sur le sujet, voir les billets regroupés sur le site du [tinyverse](https://www.tinyverse.org/).].
+
+Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le package le plus utilisé pour l'analyse de données multivariées. *FactoMineR* possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que *FactoMineR* a en réalité une longue chaîne de 104 (!) dépendances (fig. \@ref(fig:factominer-dependency)).
+
+(ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/factominer-dependency-1} 
+
+}
+
+\caption{(ref:factominer-dependency)}(\#fig:factominer-dependency)
+\end{figure}
+
+Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
+
+* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
+* Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
+* N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
+
+(ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
+
+}
+
+\caption{(ref:xkcd-dependency)}(\#fig:xkcd-dependency)
+\end{figure}
+
+Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme [rOpenSci](https://ropensci.org/) œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
+
 ## Obtenir de l'aide {#aide}
+### Utiliser la documentation
+
+La maîtrise d'une langue étrangère comme l'allemand ou le chinois demande du temps, de la pratique et des hauts et des bas. L'apprentissage d'un langage de programmation comme R est un processus similaire, et vous devez vous attendre à des hauts et des bas à mesure que R devient un élément de plus en plus central de votre flux de travail. R est fourni avec une documentation intégrée très complète, très structurée et contenant très souvent des exemples de code que vous pouvez exécuter pour explorer le fonctionnement d'une fonction.
 
 
 
@@ -280,8 +309,6 @@ Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura
 
 ```r
 help(lda)
-#> Aucune documentation pour 'lda' n'a été trouvée dans les packages et les bibliothèques :
-#> vous pourriez essayer '??lda'
 ```
 
 Pour accéder à la documentation, il faudra alors charger le package au préalable ou le spécifier dans la fonction `help()` :
@@ -296,7 +323,7 @@ Si on ignore le nom de la fonction à utiliser, deux approches permettent d'expl
 * On peut parcourir la documentation d'un package particulier, dont on sait qu'il doit contenir la fonction recherchée (par exemple, `help(package = "MASS")` permet d'afficher le sommaire de la documentation du package *MASS*).
 * On peut rechercher dans l'aide par mot-clé à l'aide de l'opérateur `??` ou de la fonction `help.search()`.
 
-Par exemple, pour chercher toutes les pages de la documentation contenant le terme "correlation" :
+Par exemple, pour chercher toutes les pages de la documentation contenant le terme "correlation"^[Attention, la documentation est écrite en anglais. Pour chercher les pages de la documentation concernant les méthodes de régression linéaire il vous faudra utiliser `??"linear model"` (ou similaire).] :
 
 
 ```r
@@ -336,10 +363,33 @@ Pour exécuter les exemples illustrant la documentation de la fonction `mean()` 
 
 ```r
 example(mean)
+#> 
+#> mean> x <- c(0:10, 50)
+#> 
+#> mean> xm <- mean(x)
+#> 
+#> mean> c(xm, mean(x, trim = 0.10))
+#> [1] 8.75 5.50
 ```
 
 ::: {.rmdtip}
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#reprex).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#rstats-reprex).
+:::
+
+### Écrire des exemples reproductibles {#rstats-reprex}
+
+Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur [Stack Overflow](https://stackoverflow.com/questions)^[Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les [recommandations d'écriture](https://stackoverflow.com/help/how-to-ask).] ou sur les [listes de diffusion](https://www.r-project.org/mail.html), la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
+
+* Minimal : utilisez le moins de code possible tout en produisant le même problème.
+* Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
+* Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
+
+Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
+
+Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
+
+::: {.rmdtip}
+L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
 :::
 
 # Structures de données {#r-vector}
@@ -1854,3 +1904,42 @@ while (i < 5) {
 ::: {.rmdnote}
 Il convient d'être prudent avec l'usage de l'instruction `while`, car une mauvaise définition de la condition d'arrêt peut créer une boucle infinie.
 :::
+
+# Écrire des fonctions {#fonctions-ecrire}
+
+Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
+
+
+```r
+addition <- function(x, y) {
+  # On définit les instructions à exécuter
+  z <- x + y
+  # On précise le résultat à retourner au terme des calculs
+  return(z)
+}
+
+addition(1, 2)
+#> [1] 3
+```
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+
+```r
+# Définition de la fonction
+# Par défaut, la valeur de y est 2
+puissance <- function(x, y = 2) {
+  z <- x^y
+  return(z)
+}
+
+# L'utilisateur ne change pas la valeur par défaut
+puissance(2) # 2 au carré
+#> [1] 4
+
+# L'utilisateur change explicitement la valeur par défaut
+puissance(2, 3) # 2 au cube
+#> [1] 8
+```

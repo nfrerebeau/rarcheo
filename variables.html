@@ -4,16 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>14 Introduction | R pour l’archéologue</title>
+<title>13 Introduction | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
+<meta name="author" content="Ben Marwick">
 <meta name="description" content="Une variable statistique désigne une caractéristique mesurable qui peut prendre différentes valeurs. On distingue les variables quantitatives (ou numériques) qui décrivent des caractéristiques...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="14 Introduction | R pour l’archéologue">
+<meta property="og:title" content="13 Introduction | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/variables.html">
 <meta property="og:description" content="Une variable statistique désigne une caractéristique mesurable qui peut prendre différentes valeurs. On distingue les variables quantitatives (ou numériques) qui décrivent des caractéristiques...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="14 Introduction | R pour l’archéologue">
+<meta name="twitter:title" content="13 Introduction | R pour l’archéologue">
 <meta name="twitter:description" content="Une variable statistique désigne une caractéristique mesurable qui peut prendre différentes valeurs. On distingue les variables quantitatives (ou numériques) qui décrivent des caractéristiques...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -52,45 +53,40 @@
 <li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
 <li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-ecrire.html"><span class="header-section-number">6</span> Écrire des fonctions</a></li>
+<li class="book-part">Collecter et organiser ses données</li>
+<li><a class="" href="collect-introduction.html"><span class="header-section-number">7</span> Introduction</a></li>
+<li><a class="" href="g%C3%A9rer-ses-fichiers.html"><span class="header-section-number">8</span> Gérer ses fichiers</a></li>
+<li><a class="" href="organiser-ses-donn%C3%A9es.html"><span class="header-section-number">9</span> Organiser ses données</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="data-tidy.html"><span class="header-section-number">6</span> Introduction</a></li>
-<li><a class="" href="data-importer.html"><span class="header-section-number">7</span> Importer et exporter</a></li>
-<li><a class="" href="data-nettoyer.html"><span class="header-section-number">8</span> Nettoyer</a></li>
-<li><a class="" href="data-selectionner.html"><span class="header-section-number">9</span> Selectionner</a></li>
-<li><a class="" href="data-filtrer.html"><span class="header-section-number">10</span> Filtrer</a></li>
-<li><a class="" href="data-transformer.html"><span class="header-section-number">11</span> Transformer</a></li>
-<li><a class="" href="data-jointure.html"><span class="header-section-number">12</span> Fusionner</a></li>
-<li><a class="" href="transformer.html"><span class="header-section-number">13</span> Transformer</a></li>
+<li><a class="" href="data-tidy.html"><span class="header-section-number">10</span> Introduction</a></li>
+<li><a class="" href="data-importer.html"><span class="header-section-number">11</span> Importer et exporter</a></li>
+<li><a class="" href="data-traitement.html"><span class="header-section-number">12</span> Traitement des données</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="active" href="variables.html"><span class="header-section-number">14</span> Introduction</a></li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">15</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">16</span> Relations entre variables</a></li>
+<li><a class="active" href="variables.html"><span class="header-section-number">13</span> Introduction</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">14</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">15</span> Relations entre variables</a></li>
 <li class="book-part">Visualisation de données</li>
-<li><a class="" href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></li>
-<li><a class="" href="graph-quantites.html"><span class="header-section-number">18</span> Représenter des quantités</a></li>
-<li><a class="" href="graph-propotions.html"><span class="header-section-number">19</span> Représenter des propotions</a></li>
-<li><a class="" href="graph-distributions.html"><span class="header-section-number">20</span> Représenter des distributions</a></li>
-<li><a class="" href="graph-xy.html"><span class="header-section-number">21</span> Réprésenter des relations entre variables</a></li>
-<li><a class="" href="graph-series.html"><span class="header-section-number">22</span> Représenter des séries temporelles</a></li>
-<li><a class="" href="graph-tendances.html"><span class="header-section-number">23</span> Représenter des tendances</a></li>
+<li><a class="" href="introduction-1.html"><span class="header-section-number">16</span> Introduction</a></li>
+<li><a class="" href="repr%C3%A9sentations.html"><span class="header-section-number">17</span> Représentations</a></li>
 <li class="book-part">Données de comptage</li>
-<li><a class="" href="introduction-2.html"><span class="header-section-number">24</span> Introduction</a></li>
+<li><a class="" href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></li>
 <li class="book-part">Données de composition</li>
-<li><a class="" href="coda-enjeux.html"><span class="header-section-number">25</span> Introduction</a></li>
-<li><a class="" href="coda-transformations.html"><span class="header-section-number">26</span> Transformations de données</a></li>
+<li><a class="" href="coda-enjeux.html"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">27</span> Introduction</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">28</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">29</span> Chronologie quantitative</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">21</span> Introduction</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">22</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">23</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">30</span> Introduction</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">31</span> Analyse de données vectorielles</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">32</span> Analyse de données raster</a></li>
+<li><a class="" href="introduction-4.html"><span class="header-section-number">24</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">25</span> Analyse de données vectorielles</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">26</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">33</span> Installation</a></li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">34</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">35</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">36</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">27</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">28</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">29</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">30</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -99,16 +95,16 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="variables" class="section level1" number="14">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="variables" class="section level1" number="13">
 <h1>
-<span class="header-section-number">14</span> Introduction<a class="anchor" aria-label="anchor" href="#variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13</span> Introduction<a class="anchor" aria-label="anchor" href="#variables"><i class="fas fa-link"></i></a>
 </h1>
-<p>Une <em>variable statistique</em> désigne une caractéristique mesurable qui peut prendre différentes <em>valeurs</em>. On distingue les <em>variables quantitatives</em> (ou numériques) qui décrivent des caractéristiques quantifiables et les <em>variables qualitatives</em> (ou catégoriques) qui sont des caractéristiques non quantifiables (fig. <a href="variables.html#fig:variables">14.1</a>). Dans sa forme la plus simple, une variable statistique est représentée par un <a href="r-vector.html#r-atomic">vecteur atomique</a>.</p>
+<p>Une <em>variable statistique</em> désigne une caractéristique mesurable qui peut prendre différentes <em>valeurs</em>. On distingue les <em>variables quantitatives</em> (ou numériques) qui décrivent des caractéristiques quantifiables et les <em>variables qualitatives</em> (ou catégoriques) qui sont des caractéristiques non quantifiables (fig. <a href="variables.html#fig:variables">13.1</a>). Dans sa forme la plus simple, une variable statistique est représentée par un <a href="r-vector.html#r-atomic">vecteur atomique</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:variables"></span>
 <div id="htmlwidget-8d32cfd9db97395c4a5f" style="width:100%;height:200px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8d32cfd9db97395c4a5f">{"x":{"diagram":"digraph {\n  node [shape = box, fontname = arial]\n    variable; qualitative; quantitative;\n    nominale; ordinale; discrète; continue\n  \n  variable -> {qualitative quantitative}\n  qualitative -> {nominale ordinale}\n  quantitative -> {discrète continue}\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><p class="caption">
-Figure 14.1: Les types de variables.
+Figure 13.1: Les types de variables.
 </p>
 </div>
 <dl>
@@ -116,7 +112,7 @@ Figure 14.1: Les types de variables.
 <dd>Les variables quantitatives prennent des valeurs numériques qui représentent des quantités mesurables. Si les valeurs d’une variable quantitative sont dénombrables et ont un nombre fini de possibilités, cette variable est dite <em>discrète</em>. Les valeurs d’une variable discrète sont souvent, mais pas uniquement, des nombres entiers (la population d’un pays par exemple). À l’inverse une variable quantitative est dite <em>continue</em> si les valeurs qu’elle peut prendre ne sont pas dénombrables et ont un nombre infini de possibilités dans un intervalle donné (la taille et le poids d’un groupe d’individus par exemple).
 </dd>
 <dt>Variables qualitatives</dt>
-<dd>Les variables qualitatives représentent des caractéristiques non quantifiables, dont les valeurs sont appelées catégories ou <em>modalités</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Il peut arriver que des variables qualitatives apparaissent sous une forme numérique dans un jeu de données. Cette dernière résulte du codage des données. Pour ne pas commettre d’erreur d’interprétation il est donc important de consulter les &lt;strong&gt;métadonnées&lt;/strong&gt; décrivant chacune des variables du jeu de données utilisé.&lt;/p&gt;"><sup>63</sup></a>.
+<dd>Les variables qualitatives représentent des caractéristiques non quantifiables, dont les valeurs sont appelées catégories ou <em>modalités</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Il peut arriver que des variables qualitatives apparaissent sous une forme numérique dans un jeu de données. Cette dernière résulte du codage des données. Pour ne pas commettre d’erreur d’interprétation il est donc important de consulter les &lt;strong&gt;métadonnées&lt;/strong&gt; décrivant chacune des variables du jeu de données utilisé.&lt;/p&gt;"><sup>86</sup></a>.
 Une variable qualitative <em>nominale</em> décrit une catégorie sans ordre naturel (le genre, les couleurs sont ainsi des variables nominales). À l’inverse, une variable qualitative est dite <em>ordinale</em> s’il existe une relation d’ordre entre les catégories auxquelles peuvent appartenir ses différentes valeurs (une grandeur mesurée sur une échelle petit/moyen/grand est une variable ordinale).
 </dd>
 </dl>
@@ -124,11 +120,11 @@ Une variable qualitative <em>nominale</em> décrit une catégorie sans ordre nat
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="transformer.html"><span class="header-section-number">13</span> Transformer</a></div>
-<div class="next"><a href="statistique-descriptive.html"><span class="header-section-number">15</span> Statistique descriptive</a></div>
+<div class="prev"><a href="data-traitement.html"><span class="header-section-number">12</span> Traitement des données</a></div>
+<div class="next"><a href="statistique-descriptive.html"><span class="header-section-number">14</span> Statistique descriptive</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#variables"><span class="header-section-number">14</span> Introduction</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#variables"><span class="header-section-number">13</span> Introduction</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -145,7 +141,7 @@ Une variable qualitative <em>nominale</em> décrit une catégorie sans ordre nat
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-05-06.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

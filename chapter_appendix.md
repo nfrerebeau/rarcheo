@@ -39,7 +39,7 @@ Après l'installation de RStudio, la première étape consiste à en changer les
 * Décochez *Restore .RData into workspace at startup*.
 * Réglez *Save workspace to .RData on exit* sur *never*.
 
-Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par `rm(list = ls())`).
+Un fichier .RData stocke les données et les fonctions que vous créez dans chaque session de travail. Par défaut, RStudio enregistre automatiquement ce fichier à la fermeture, et le recharge lorsque vous démarrez RStudio. C'est une source de problèmes et de confusion. En effet, il peut en résulter que des objets temporaires créés au cours de brèves expériences et explorations s'attardent sur plusieurs sessions car ils sont automatiquement rechargés, contaminant ainsi l'espace de travail. La modification de ces deux paramètres vous épargnera bien des soucis lorsque vous apprendrez à utiliser l'environnement de R, et vous aidera à prendre le contrôle des données et des fonctions que vous créez avec R (en vous évitant de faire débuter tous vos scripts par `rm(list = ls())`). Dans la plupart des cas, il est plus simple et plus efficace de considérer le code que vous écrivez comme le produit le plus important lorsque vous travaillez sur l'analyse, et d'écrire des instructions spécifiques pour exporter (ou enregistrer) uniquement les résultats les plus importants (par exemple, certaines sorties tabulaires sous forme de [fichiers CSV](#csv), et des graphiques sous forme de fichiers PNG).
 :::
 
 \begin{figure}
@@ -51,12 +51,7 @@ Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront 
 \caption{Configuration globale de RStudio Desktop.}(\#fig:rstudio-settings)
 \end{figure}
 
-L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig. \@ref(fig:rstudio-desktop)). Par défaut, de haut en bas et de gauche à droite :
-
-* Le premier quadrant contient les documents en cours d'édition (scripts...), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document...).
-* Le second quadrant permet d'accéder aux objets présent dans l'[environnement](#environnement) et de voir l'historique des commandes.
-* Le troisième quadrant contient la [console](#console).
-* Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de [gérer les packages](#packages) et d'[afficher l'aide](#aide).
+L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig. \@ref(fig:rstudio-desktop)). Par défaut, de haut en bas et de gauche à droite^[Pour plus de détails sur l'interface de RStudio, voir @verzani2012, @gandrud2018 et @racine2012] :
 
 \begin{figure}
 
@@ -66,6 +61,18 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 
 \caption{L'interface de RStudio Desktop.}(\#fig:rstudio-desktop)
 \end{figure}
+
+* Le quadrant supérieur gauche est l'éditeur de texte : il contient les documents en cours d'édition (scripts...), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document...). C'est là que vous écrivez et éditez le code et le texte. Écrire du code signifie écrire en texte brut, sans gras, soulignement, italique ou autre formatage. L'apparence de l'éditeur de texte peut être modifiée dans RStudio en allant dans le menu déroulant *Tools*, et en sélectionnant *Global Options...*, puis en parcourant les options dans les sections *Code* et *Appearance* sur la liste de gauche. Il peut être utile d'afficher les caractères d'espacement (dans la section *Code*, onglet *Display*), et de vérifier toutes les options de complétion et de diagnostic (section *Code*, onglet *Completion* et *Diagnostics*). Le code dans l'éditeur de texte est le produit le plus important de votre travail, c'est donc une bonne idée de l'enregistrer dans un [endroit adapté](#projets), avec un nom significatif (généralement les fichiers de code R se terminent par .R, avec un R majuscule après le point), et de l'enregistrer fréquemment pendant que vous travaillez dessus pour minimiser le risque de perte accidentelle.
+* Le quadrant supérieur droit peut comporter plusieurs onglets, en fonction de ce que vous faites. La plupart du temps, vous verrez un onglet *Environment* et un onglet *History*. L'onglet *History* contient l'historique des commandes exécutées dans la console. L'onglet *Environment* répertorie les objets qui sont actuellement disponibles dans votre session R. L'environnement est l'endroit où R stocke les résultats des calculs et des fonctions. Par exemple, si vous avez exécuté un code qui lit une feuille de calcul dans R et la stocke en tant qu'objet R, vous verrez cet objet répertorié dans l'onglet *Environment*. Cet onglet est utile car il vous permet d'obtenir en un coup d'œil des informations de base sur la taille des objets que vous créez (par exemple, le nombre de lignes et de colonnes). Il permet de vérifier rapidement le résultat de vos calculs et voir si votre code fonctionne comme prévu. L'environnement est un aspect important de R car il nous offre un système cohérent et flexible pour créer, combiner et manipuler différents types de données pendant notre analyse. Les environnements sont un concept de programmation avancé, et tout ce que nous devons faire ici est de noter qu'ils sont utiles, et qu'il n'y a rien de comparable à eux dans les tableurs.
+L'onglet *History* contient l'historique des commandes que vous avez précédemment exécutées dans votre session R. Il est vivement recommande de sauvegarder votre code dans un fichier .R, même pour les analyses et les expériences les plus brèves. Si vous travaillez de manière expéditive sans enregistrer, vous pouvez utiliser l'historique pour parcourir vos commandes précédentes afin de les réutiliser et de les modifier. Vous pouvez également enregistrer l'historique de vos commandes R dans un fichier texte. Ce n'est cependant pas une méthode efficace pour garder une trace de votre travail. Une meilleure stratégie consiste à écrire du code dans l'éditeur de texte, entrecoupé de commentaires qui expliquent ce que fait le code, et d'enregistrer ce document sur votre ordinateur.
+* Le quadrant inférieur droit permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de [gérer les packages](#packages) et d'[afficher l'aide](#aide). Vous pouvez revenir aux graphiques précédents créés dans votre session actuelle. L'onglet *Plots* comporte un bouton *Export*" qui permet d'enregistrer facilement vos graphiques sous forme de fichiers image sur votre ordinateur (dans différents formats) ou de les copier dans le presse-papiers pour un transfert rapide par copier-coller. Ces fonctionnalités sont utiles pour itérer vers un graphique de qualité publication.
+* Le quadrant inférieur gauche contient la [console](#r-console) où le code est exécuté. Il n'y a pas de boutons spécifiques à la console, l'interaction directe avec ce volet est donc limitée. La partie la plus importante de ce volet est l'invite de commande, qui débute par un chevron `>`, et lorsque ce volet est actif, un curseur clignotant apparaît.
+
+::: {.rmdtip}
+
+Il existe deux fonctions utiles de la console qui vous feront gagner du temps lorsque vous travaillerez avec R. La première est la touche de déplacement vers le haut de votre clavier, qui vous permet de réexécuter les commandes précédentes. Si vous placez votre curseur à l'invite et appuyez sur la touche de déplacement vers le haut, vous pouvez parcourir les lignes de code précédemment exécutées. Une fois que vous avez trouvé le code que vous voulez réexécuter, vous pouvez le modifier dans la console, si vous le souhaitez, ou simplement appuyer sur Entrée pour l'envoyer à l'interpréteur. La deuxième fonctionnalité pratique du volet console de RStudio est la petite icône en forme de flèche située à droite de la barre de titre de la console. Si vous regardez en haut du panneau de la console, vous verrez le mot *Console*, puis vous verrez un chemin d'accès à un dossier sur votre ordinateur, et à la fin de celui-ci, vous verrez une petite icône en forme de flèche courbée pointant vers la droite. Le chemin sur votre ordinateur dans la barre de titre de la console est votre [répertoire de travail](#projets). Si vous cliquez sur la petite flèche, le volet des fichiers s'ouvre pour afficher le contenu de votre répertoire de travail.
+
+:::
 
 # Aide mémoire {#cheat-sheet}
 
@@ -104,149 +111,40 @@ seq_along(x)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
+## Pipes {#fonctions-pipe}
+
+L'opérateur `|>` (*pipe*) a été introduit dans la version 4.1 de R^[Pour les versions de R antérieures 4.1, on peut utiliser l'opérateur `%>%` du package [*magrittr*](https://magrittr.tidyverse.org/)]. Ainsi, `x |> f(y)` est interprété comme `f(x, y)`.
+
+
+```r
+mtcars |> 
+  transform(avg = mpg / wt) |> 
+  subset(avg > 5, select = c(mpg, wt, avg))
+#>                    mpg    wt       avg
+#> Mazda RX4         21.0 2.620  8.015267
+#> Mazda RX4 Wag     21.0 2.875  7.304348
+#> Datsun 710        22.8 2.320  9.827586
+#> Hornet 4 Drive    21.4 3.215  6.656299
+#> Hornet Sportabout 18.7 3.440  5.436047
+#> Valiant           18.1 3.460  5.231214
+#> Merc 240D         24.4 3.190  7.648903
+#> Merc 230          22.8 3.150  7.238095
+#> Merc 280          19.2 3.440  5.581395
+#> Merc 280C         17.8 3.440  5.174419
+#> Fiat 128          32.4 2.200 14.727273
+#> Honda Civic       30.4 1.615 18.823529
+#> Toyota Corolla    33.9 1.835 18.474114
+#> Toyota Corona     21.5 2.465  8.722110
+#> Fiat X1-9         27.3 1.935 14.108527
+#> Porsche 914-2     26.0 2.140 12.149533
+#> Lotus Europa      30.4 1.513 20.092531
+#> Ferrari Dino      19.7 2.770  7.111913
+#> Volvo 142E        21.4 2.780  7.697842
+```
+
+L'utilisation des *pipes* à l'avantage de clarifier et de faciliter la lecture du code, mais peut considérablement complexifier le débuggage en cas de problème. Il est recommandé d'utiliser cet opérateur avec parcimonie.
+
 # Bonnes pratiques {#bonnes-pratiques}
-
-## Travailler par projets {#projets}
-
-Une bonne pratique liée à l'utilisation de R consiste à [organiser l'ensemble de son analyse en un projet](https://rstats.wtf/project-oriented-workflow.html), c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes...).
-
-Ce dossier, ou répertoire de travail (*working directory*), peut être défini ou retrouvé à l'aide des fonctions `setwd()` et `getwd()`, respectivement :
-
-
-```r
-# Définition du répertoire de travail
-setwd("/chemin/vers/mon/dossier")
-```
-
-Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
-
-Cependant, le risque est de se retrouver dans la situation suivante :
-
-
-```r
-# Définition du répertoire de travail
-setwd("/chemin/uniquement/valide/sur/mon/ordinateur")
-```
-
-Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
-
-* L'utilisation du package [*here*](https://here.r-lib.org/),
-* L'utilisation de la gestion de projet dans RStudio.
-
-RStudio dispose d'un mécanisme permettant de [créer facilement de tels projets](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects). Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur *New Project...* depuis le menu *File*. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig. \@ref(fig:rstudio-project)).
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-project} 
-
-}
-
-\caption{Création d'un projet avec RStudio.}(\#fig:rstudio-project)
-\end{figure}
-
-Un projet créé par RStudio est reconnaissable par la présence d'un fichier `.Rproj`. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser `setwd()`.
-
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig. \@ref(fig:xkcd-documents)), comme celles utilisées par le package [*rrtools*](https://github.com/benmarwick/rrtools) par exemple.
-
-(ref:xkcd-documents) Documents. "Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc" [CC BY-NC 2.0 @munroe2014].
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_documents} 
-
-}
-
-\caption{(ref:xkcd-documents)}(\#fig:xkcd-documents)
-\end{figure}
-
-## Sauvegarder ses données {#csv}
-
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig. \@ref(fig:xkcd-norm)). De manière générale, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte).
-
-Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier <abbr title="comma-separated values">CSV</abbr> est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
-
-* Un fichier <abbr title="comma-separated values">CSV</abbr> est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
-* Le format <abbr title="comma-separated values">CSV</abbr> est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier <abbr title="comma-separated values">CSV</abbr> peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
-* Le format <abbr title="comma-separated values">CSV</abbr> est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un [changement dramatique de spécification](https://www.bbc.com/news/technology-54423988).
-* Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
-
-(ref:xkcd-norm) .NORM Normal File Format. "At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts." [CC BY-NC 2.0 @munroe2019].
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_norm_normal_file_format} 
-
-}
-
-\caption{(ref:xkcd-norm)}(\#fig:xkcd-norm)
-\end{figure}
-
-La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (fig. \@ref(fig:calc-csv)).
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{images/calc-csv} 
-
-}
-
-\caption{Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté).}(\#fig:calc-csv)
-\end{figure}
-
-::: {.rmdcaution}
-Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans [conséquences](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates) lors de l'ouverture d'un fichier.
-:::
-
-## Limiter les dépendances {#dependances}
-
-Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances^[Sur le sujet, voir les billets regroupés sur le site du [tinyverse](https://www.tinyverse.org/).].
-
-Par exemple, [*FactoMineR*](http://factominer.free.fr/) est sans doute le package le plus utilisé pour l'analyse de données multivariées. *FactoMineR* possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que *FactoMineR* a en réalité une longue chaîne de 104 (!) dépendances (fig. \@ref(fig:factominer-dependency)).
-
-(ref:factominer-dependency) Réseau des dépendances du package *FactoMineR* (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (*FactoMineR* est représenté par un triangle noir, les autres packages sont représentés par des points gris).
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{chapter_appendix_files/figure-latex/factominer-dependency-1} 
-
-}
-
-\caption{(ref:factominer-dependency)}(\#fig:factominer-dependency)
-\end{figure}
-
-Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig. \@ref(fig:xkcd-dependency)) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
-
-* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
-* Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
-* N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
-
-(ref:xkcd-dependency) Dependency. "Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble." [CC BY-NC 2.0 @munroe2020].
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
-
-}
-
-\caption{(ref:xkcd-dependency)}(\#fig:xkcd-dependency)
-\end{figure}
-
-Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme [rOpenSci](https://ropensci.org/) œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
-
-## Écrire des exemples reproductibles {#reprex}
-
-Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur [Stack Overflow](https://stackoverflow.com/questions)^[Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les [recommandations d'écriture](https://stackoverflow.com/help/how-to-ask).] ou sur les [listes de diffusion](https://www.r-project.org/mail.html), la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
-
-* Minimal : utilisez le moins de code possible tout en produisant le même problème.
-* Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
-* Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
-
-Ces trois aspects sont détaillés dans l'[aide de Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example), il existe également une [question dédié](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) à l'écriture d'un exemple reproductible ([*reprex*](https://twitter.com/romain_francois/status/530011023743655936)) avec R.
-
-Comme le souligne @wickham2016, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
-
-::: {.rmdtip}
-L'utilisation du package [*reprex*](https://reprex.tidyverse.org/)^[Voir <https://reprex.tidyverse.org/articles/articles/learn-reprex.html>.] peut vous aider à écrire un exemple reproductible.
-:::
 
 # Style de programmation {#style}
 

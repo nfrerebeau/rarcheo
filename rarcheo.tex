@@ -38,7 +38,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={R pour l'archéologue},
-  pdfauthor={Nicolas Frerebeau},
+  pdfauthor={Nicolas Frerebeau; Ben Marwick},
   pdflang={fr},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -123,6 +123,8 @@
 \usepackage[autostyle=true]{csquotes}
 \usepackage{sidenotes}
 
+\setmonofont{DejaVu Sans Mono}
+
 %Mathématiques
 \usepackage{amsmath} %Symboles
 \usepackage{amssymb}
@@ -132,6 +134,7 @@
 \usepackage{bookmark}
 \usepackage{hyperref}
 \hypersetup{
+  backref=page,
   colorlinks=true,
   linkcolor=blue,
   anchorcolor=black,
@@ -171,32 +174,28 @@
 % \title{}
 % \subtitle{}
 % \author{}
-\publishers{Université Bordeaux Montaigne\\Département d'Histoire de l'Art et d'Archéologie}
+\publishers{Université Bordeaux Montaigne\\University of Washington}
 % \date{}
 % \thanks{}
 \uppertitleback{
 	\textbf{Nicolas \textsc{Frerebeau}}
 	\vspace{1em}
-	\newline MSHS-Toulouse (UAR 3414)
-  \newline Maison de la Recherche
-	\newline Université Fédérale de Toulouse -- Jean Jaurès
-  \newline 5 allées Antonio Machado
-  \newline F-31058 Toulouse cedex 9
-	\vspace{1em}
 	\newline Archéosciences Bordeaux (UMR 6034)
 	\newline Maison de l'Archéologie
 	\newline Université Bordeaux Montaigne
 	\newline F-33607 Pessac cedex
+	\vspace{1em}
+	\newline \textbf{Ben \textsc{Marwick}}
+	\vspace{1em}
+	\newline Department of Anthropology
+	\newline University of Washington
+	\newline Seattle, USA
 }
 \lowertitleback{
 	\begin{center}
-		\includegraphics[height=1.5cm]{logo-mshs}
-		\hspace{1em}
-		\includegraphics[height=1.5cm]{logo-cnrs}
-		\hspace{1em}
-		\includegraphics[height=1.5cm]{logo-uftmp}
-		\hspace{1em}
 		\includegraphics[height=1.5cm]{logo-ubm}
+		\hspace{1em}
+		\includegraphics[height=1.5cm]{logo-uw}
 	\end{center}
 }
 \usepackage{booktabs}
@@ -238,8 +237,8 @@
 }
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
-\author{Nicolas Frerebeau}
-\date{2022-05-06}
+\author{Nicolas Frerebeau \and Ben Marwick}
+\date{2022-06-07}
 
 \begin{document}
 \maketitle
@@ -254,13 +253,59 @@
 \chapter*{Avant propos}\label{avant-propos}}
 \addcontentsline{toc}{chapter}{Avant propos}
 
-Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R} \autocite{R-base}. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
-
-Bien qu'il soit initialement conçu pour les étudiants du master mention \emph{Archéologie, sciences pour l'archéologie} de l'\href{https://www.u-bordeaux-montaigne.fr/}{Université Bordeaux Montaigne}, ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
-
-Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des \protect\hyperlink{ressources-compluxe9mentaires}{suggestions de lecture} complémentaires à la fin de l'introduction\footnote{L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une \href{https://www.zotero.org/groups/4507200/rarcheo/library}{bibliographie Zotero}}.
+Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du \href{https://www.r-project.org/}{langage R} \autocite{R-base}. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques. Par science archéologique, nous entendons ici une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
 
 \textbf{Ce livre est en cours de rédaction.}
+
+\hypertarget{que-contient-ce-livre}{%
+\section*{Que contient ce livre ?}\label{que-contient-ce-livre}}
+\addcontentsline{toc}{section}{Que contient ce livre ?}
+
+Le but n'est pas d'être exhaustif, mais de se concentrer sur ce que nous pensons être les compétences essentielles à tout archéologue souhaitant utiliser R. Certains archéologues utilisent déjà R de manière \emph{ad hoc}, pour un tracer un graphique par-ci, ou ajuster un modèle linéaire par-là. Si vous êtes l'une de ces personnes, vous serrez sans doute déjà familier de certains aspects développés dans ce livre. Notre objectif est que vous y trouviez également, quelque soit votre pratique, de nouvelles idées en vous montrant comment R peut être au centre de votre travail de recherche, de l'acquisition des données brutes jusqu'à la finalisation de votre thèse, rapport ou manuscrit.
+
+Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Il ne contient pas (ou peu) de discussions détaillées sur la théorie statistique, et le lecteur sera invité à consulter à d'autres textes concernant les détails techniques des algorithmes, etc. Le lecteur trouvera ainsi des \protect\hyperlink{ressources-compluxe9mentaires}{suggestions de lecture} complémentaires à la fin de l'introduction générale et au début de chaque partie du livre\footnote{L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une \href{https://www.zotero.org/groups/4507200/rarcheo/library}{bibliographie Zotero}}.
+
+Ce livre se veut une introduction pratique au langage R pour la réalisation efficaces de tâches courantes en archéologie. Sa lecture doit servir de tremplin vers une utilisation de R plus avancée. Les principaux sujets abordés dans ce livre sont les suivants :
+
+\begin{itemize}
+\tightlist
+\item
+  Le chapitre XX vous permettra de vous familiariser avec le langage R et d'acquérir les notions élémentaires qui vous permettrons de progresser dans la lecture de l'ouvrage. Ce premier chapitre constitue également un aide-mémoire, vers lequel vous tourner au cours de la lecture des différents chapitres.
+\item
+  Le chapitre XX expose les motivations et modalités conduisant à mettre en œuvre une recherche ouverte et reproductible en archéologie (une bonne pratique pour la science en général, et pour votre productivité individuelle en particulier).
+\item
+  Le chapitre XX propose un certain nombre de recommandations quant à l'organisation de votre travail en amont de l'analyse pour en faciliter la réalisation.
+\item
+  Le chapitre X doit vous permettre de travailler avec des structures de données courantes en archéologie, les lire avec R et les manipuler pour les préparer en vue d'être analysées.
+\item
+  Le chapitre XX
+\item
+  Le chapitre XX
+\item
+  Le chapitre XX Travailler avec des données de comptage d'artéfacts ou de restes de faune ou de flore.
+\item
+  Le chapitre XX : biométrie.
+\item
+  Le chapitre XX vous guidera dans l'univers très contraint de l'analyse des données de composition.
+\item
+  Le chapitre XX détaille comment travailler avec des données chronologiques (relatives et absolues) en analysant des données stratigraphiques, en réalisant des sériations, et en calibrant, analysant et visualisant des datation radiocarbone.
+\item
+  Le chapitre XX est une introduction à l'analyse de données spatiales et à la cartographie.
+\item
+  Le chapitre XX : simplifier la recherche collaborative grâce au contrôle de version.
+\end{itemize}
+
+\hypertarget{pour-qui-ce-livre-est-il-uxe9crit}{%
+\section*{Pour qui ce livre est-il écrit ?}\label{pour-qui-ce-livre-est-il-uxe9crit}}
+\addcontentsline{toc}{section}{Pour qui ce livre est-il écrit ?}
+
+Ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques. Il s'adresse ainsi aux archéologues désireux d'élargir leurs horizons analytiques et d'accéder à de nouvelles méthodes et à des moyens plus efficaces d'organiser leur processus de recherche.
+
+Il est écrit pour des utilisateurs débutants et aucune connaissance préalable de R, de l'informatique ou de la programmation n'est attendue. Cependant, un peu de curiosité pour les statistiques sera nécessaire, ainsi que la volonté de lire au-delà de ce livre, pour prendre judicieusement des décisions quant à la pertinence d'une méthode statistique au regard d'un problème spécifique.
+
+La plupart des méthodes présentées ici sont destinées à des données tabulaires, c'est-à-dire des données qui sont généralement saisies dans des feuilles de calcul et des bases de données. Plus précisément, le livre s'adresse aux archéologues qui utilisent des données organisées en lignes (c'est-à-dire des variables) et en colonnes (c'est-à-dire des spécimens, des échantillons ou des observations). De nombreux jeux de données archéologiques sont organisés différemment, comme les images ou les textes. Bien que R soit également utile pour ces derniers, nous ne les abordons pas en détail ici. Les données tabulaires sont la forme la plus courante en archéologie, comme dans de nombreux autres domaines, c'est pourquoi nous nous concentrons sur celles-ci ici.
+
+Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, les méthodes présentées ici devraient donc être utiles à la majorité des applications archéologiques. Si vos données sont plus grandes que cela, vous faites probablement quelque chose de très spécialisé et vous aurez des défis particuliers à relever pour rendre votre recherche reproductible. Cependant, vous pourrez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
 \hypertarget{licence}{%
 \section*{Licence}\label{licence}}
@@ -275,7 +320,7 @@ Une entrée BibTeX pour citer ce document :
 \begin{verbatim}
 @Book{rarcheo,
   title = {R pour l'archéologue: Exploration, visualisation et analyse de données},
-  author = {Nicolas Frerebeau},
+  author = {Nicolas Frerebeau and Ben Marwick},
   year = {2021},
   publisher = {Université Bordeaux Montaigne},
   address = {Pessac, France},
@@ -301,7 +346,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 06 May 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 07 Jun 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -322,7 +367,7 @@ bslib & 0.3.1 & CRAN (R 4.2.0) & \textcite{R-bslib} \\
 desc & 1.4.1 & CRAN (R 4.2.0) & \textcite{R-desc} \\
 DiagrammeR & 1.0.9 & CRAN (R 4.2.0) & \textcite{R-DiagrammeR} \\
 downlit & 0.4.0 & CRAN (R 4.2.0) & \textcite{R-downlit} \\
-folio & 1.0.0 & CRAN (R 4.2.0) & \textcite{R-folio} \\
+folio & 1.1.0 & CRAN (R 4.2.0) & \textcite{R-folio} \\
 ggplot2 & 3.3.6 & CRAN (R 4.2.0) & \textcite{R-ggplot2} \\
 ggraph & 2.0.5 & CRAN (R 4.2.0) & \textcite{R-ggraph} \\
 kableExtra & 1.3.4 & CRAN (R 4.2.0) & \textcite{R-kableExtra} \\
@@ -345,14 +390,48 @@ xml2 & 1.3.3 & CRAN (R 4.2.0) & \textcite{R-xml2} \\
 \chapter*{Introduction}\label{introduction}}
 \addcontentsline{toc}{chapter}{Introduction}
 
+\hypertarget{pourquoi-les-archuxe9ologues-devraient-ils-apprendre-uxe0-programmer}{%
+\section*{Pourquoi les archéologues devraient-ils apprendre à programmer ?}\label{pourquoi-les-archuxe9ologues-devraient-ils-apprendre-uxe0-programmer}}
+\addcontentsline{toc}{section}{Pourquoi les archéologues devraient-ils apprendre à programmer ?}
+
+Ce livre vise à résoudre un problème spécifique : la majorité des archéologues reçoivent peu ou pas de formation en programmation scientifique pour l'analyse, la modélisation et la visualisation des données, bien qu'il s'agisse de tâches courantes en archéologie. Un programme à \href{https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande}{interface en ligne de commande} tel que R est idéal pour accomplir ce type de travail et, pourtant, il est peu familier et exotique pour la plupart des archéologues. Une interface de ligne de commande permet d'interagir avec un logiciel en envoyant des instructions au programme sous forme de lignes de texte brut. Au lieu de cela, la plupart des archéologues utilisent Microsoft Excel, SPSS ou un logiciel commercial similaire de type ``pointer-cliquer'' (à interface graphique). Ceci pose quatre problèmes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Il en résulte généralement beaucoup de répétitions fastidieuses, comme le copier-coller entre des feuilles de calcul, ou entre un tableur et un logiciel de traitement de texte. Ces dernières années, les biologistes ont vu le volume des données génomiques augmenter considérablement en raison des progrès des méthodes de séquençage. Cela les a amenés à rechercher des moyens plus efficaces d'analyser leurs données et d'automatiser leurs analyses. Ils ont notamment constaté que les tableurs n'offraient pas suffisamment de souplesse pour mener à bien leurs travaux de recherche. Par conséquent, beaucoup se sont tournés vers R, Python et d'autres langages de programmation similaires pour surmonter les limites et l'inefficacité des tableurs. Le détail clé ici est le passage de l'interface graphique d'un tableur à l'interface en ligne de commande d'un langage de programmation, où des instructions sont fournies à l'ordinateur en texte brut.
+\item
+  Cela limite le développement de nouvelles méthodes, car l'utilisateur est limité à ce qui est disponible dans le logiciel commercial. Avec la plupart des logiciels commerciaux, vous êtes limité à l'ensemble des fonctions que l'éditeur choisit de mettre à votre disposition. Avec un langage de programmation sous \href{https://fr.wikipedia.org/wiki/Licence_libre}{licence libre} (\ref{pourquoi-travailler-avec-r}), vous et toute autre personne êtes libres de mettre en œuvre de nouvelles méthodes. R dispose de fonctions étendues pour l'analyse des données, mais plus important encore, R dispose d'un large éventail d'extensions (\ref{pourquoi-travailler-avec-r}) pour l'analyse quantitative, la visualisation, l'import et la manipulation des données\ldots{} Pour la plupart des archéologues, quelle que soit la tâche que vous cherchez à réaliser, il y a de fortes chances que quelqu'un l'ait déjà réalisée, ou quelque chose de très similaire, et ait rendu le code disponible. R est également la \emph{lingua franca} des chercheurs en statistiques, qui publient souvent une extension à R pour accompagner leurs articles scientifiques. Cela signifie souvent un accès immédiat aux toutes dernières techniques et implémentations statistiques.
+\item
+  Les logiciels commerciaux (et même certains logiciels libres) rendent difficile la démonstration et la reproductibilité en raison de la nature éphémère des interfaces graphiques. Ces interfaces sont familières et faciles à utiliser pour la plupart des gens, car elles sont associées au développement de l'informatique domestique. Il est cependant très difficile d'enregistrer efficacement une séquence de clics complexes afin qu'une autre personne (ou vous-même à l'avenir) puisse répéter la procédure sans ambiguïté. Il est donc difficile de rendre vos analyses reproductibles si tout votre travail est effectué avec une souris. Il n'est pas pratique d'abandonner complètement l'utilisation de la souris lorsqu'on utilise un ordinateur, mais en utilisant un programme en ligne de commande tel que R, il devient possible d'enregistrer en texte brut les étapes les plus importantes de l'analyse. Nous disposons alors d'un enregistrement détaillé des étapes de notre analyse : nous pouvons facilement la partager avec d'autres et la réutiliser nous-mêmes, des mois ou des années plus tard.
+\item
+  Les logiciels commerciaux limitent la transparence de la recherche, car les algorithmes qui sous-tendent les fonctions utilisées ne peuvent pas être inspectés et les modifications ne sont pas autorisées. Les statisticiens ont observés depuis longtemps qu'Excel comporte des procédures statistiques inexactes \autocite{mccullough2008,yalta2008}, et les manuels d'introduction aux statistiques avertissent généralement les étudiants de ne pas utiliser Excel lorsque les résultats sont importants \autocite[voir par exemple][]{keller2000}. Avec un logiciel libre tel que R, vous pouvez facilement inspecter et modifier les algorithmes derrière chaque opération. R, en particulier, présente l'avantage supplémentaire d'être l'un des logiciels les plus précis pour l'analyse statistique \autocite{almiron2009,keeling2007}.
+\end{enumerate}
+
+L'utilisation d'un programme en ligne de commande tel que R contribue pour beaucoup à la résolution de ces quatre problèmes.
+
+Ce livre est complémentaire aux \protect\hyperlink{ressources-compluxe9mentaires}{principaux manuels d'archéologie quantitative}. Ces ouvrages sont de très bon supports pour les aspects théoriques, les discussions détaillées et la pertinence des exemples qu'ils proposent : ce livre ne les remplacera pas sur votre étagère. Cependant, ces livres ont trois limites que nous développerons dans les chapitres suivants.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  La première de ces limites est l'absence d'exemples prêts à l'emploi, ce qui oblige le lecteur à déployer des efforts considérables pour mettre en œuvre une méthode décrite à l'aide de formules et cré de nombreuses possibilités d'erreur. \textcite{vanpool2010} demandent ainsi à leurs lecteurs de faire leurs analyses statistiques à la main, une recommandation peu pratique et dépassée alors que les ordinateurs sont facilement disponibles. La quantité d'efforts requis par ces textes est prohibitive pour l'exploration rapides de données et l'expérimentation à l'aide de nouvelles méthodes. Le présent livre comprend des exemples reproductibles utilisant des jeux de données réels, de sorte que vous pourrez facilement procéder à l'analyse pour explorer les effets de différents paramètres et les modifier pour utiliser vos propres données.
+\item
+  Les ouvrages existants n'accordent que peu de place aux méthodes intuitives et méthodologiquement plus robustes, telles que le rééchantillonnage et les analyses bayésiennes, privilégiant les méthodes paramétriques traditionnelles. Cela reflète une époque où la puissance de calcul était une ressource rare et où les calculs étaient souvent effectués à la main ou à l'aide d'une calculatrice \autocite[voir par exemple][]{fletcher1991}. Les ordinateurs modernes peuvent maintenant facilement gérer le rééchantillonnage et les méthodes bayésiennes, et R est unique en ce qu'il possède un ensemble mature de méthodes pour calculer les tests courants dans ces situations. Ces méthodes sont également de plus en plus courantes dans la littérature scientifique. Ce livre présente ces approches alternatives afin de vous permettre de développer votre boîte à outils analytique.
+\item
+  Les ouvrages actuellement disponibles sont muets sur les aspects pratiques de nombreuses tâches d'analyse et de visualisation de données, courantes en archéologie bien qu'elles ne soient traditionnellement pas considérées comme des statistiques. Il s'agit notamment de la visualisation et de l'analyse d'informations stratigraphiques issues de fouilles et de données spatiales provenant d'enquêtes. L'apprentissage d'outils pour ces tâches se fait traditionnellement en autodidacte et souvent à grands frais avec des logiciels propriétaires. Ce livre essaie ainsi de répondre à un besoin de formation à l'usage d'outils libres pour la réalisation de tâches courantes en archéologie. Pour ce faire, il présente un environnement de travail reproductible afin de montrer comment R et ses extensions peuvent être utilisés pour mener de bout en bout sa recherche à partir de données de prospection, de fouille ou issues du laboratoire.
+\end{enumerate}
+
 \hypertarget{pourquoi-travailler-avec-r}{%
 \section*{Pourquoi travailler avec R ?}\label{pourquoi-travailler-avec-r}}
 \addcontentsline{toc}{section}{Pourquoi travailler avec R ?}
 
+Si vous êtes novice en matière de R, vous vous demandez peut-être quel est l'attrait de ce logiciel, surtout quand il existe tant d'autres programmes et langages couramment utilisés. Voici quelques-unes des caractéristiques qui nous ont incité à apprendre R :
+
 \begin{description}
 \tightlist
 \item[R est libre et gratuit]
-Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Robert Gentleman au sein du département de statistiques de l'université d'Auckland (Nouvelle-Zélande). En 1995 la première version officielle est publiée et R devient un logiciel libre, distribué sous \href{https://www.gnu.org/philosophy/free-sw.html}{licence GNU}. Le code source de l'ensemble du système R est ainsi accessible à tous, en garantissant quatre libertés essentielles :
+Il n'est pas nécessaire d'acheter une licence ou un abonnement pour utiliser R. Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Robert Gentleman au sein du département de statistiques de l'université d'Auckland (Nouvelle-Zélande). En 1995 la première version officielle est publiée et R devient un logiciel libre, distribué sous \href{https://www.gnu.org/philosophy/free-sw.html}{licence GNU}. Le code source de l'ensemble du système R est ainsi accessible à tous, en garantissant quatre libertés essentielles :
 \end{description}
 
 \begin{quote}
@@ -388,11 +467,15 @@ Les libertés offertes par la licence GNU et la structure modulaire de R permett
 
 \begin{description}
 \tightlist
+\item[R est robuste]
+R est un langage spécialisé pour l'analyse statistique et la visualisation de données. R a été développé à l'origine par des statisticiens et continue d'être largement utilisé par des statisticiens professionnels et universitaires. Cela signifie que le langage entretient des liens forts avec la littérature scientifique en statistique. Nombre de ses algorithmes ont été validés par des publications et testés de manière approfondie par une utilisation intensive. Il est facile de passer de la théorie statistique à la pratique en utilisant R.
 \item[R facilite la reproductibilité]
-R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible.
+R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible. R est disponible pour tous les principaux types d'ordinateurs. Par conséquent, si vous effectuez votre analyse avec R, il y a de fortes chances pour que toute personne disposant d'un ordinateur puisse facilement la reproduire.
+\item[R facilite la publication]
+R propose des outils flexibles pour communiquer vos résultats, en permettant de produire facilement des documents complexes comprenant du texte, des tableaux et des figures, le tout généré à partir du code (comme ce livre !). C'est un gain de temps considérable, surtout lorsque des semaines ou des mois s'écoulent entre deux projets et que le souvenir des détails du dernier travail s'estompe. En consultant mon code R, je peux rapidement me souvenir de mon plan d'analyse et reprendre là où je me suis arrêté.
+\item[R est collaboratif]
+R s'est progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, la documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne ou par le biais de nombreux groupes d'utilisateurs locaux. R bénéficie d'une communauté étendue d'utilisateurs, de contributeurs et de développeurs. Cette communauté est très active, solidaire et généralement progressiste. Les auteurs d'extensions sont souvent heureux de voir que leur travail est utilisé par d'autres et sont prêts à répondre à des questions sur leur utilisation.
 \end{description}
-
-R s'est ainsi progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (fig.~\ref{fig:wos-archaeo}). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, R bénéficie d'une communauté très active d'utilisateurs, de contributeurs et de développeurs. La documentation est abondante et il est toujours possible de \protect\hyperlink{aide}{trouver de l'aide} en ligne.
 
 Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
 
@@ -414,6 +497,8 @@ Enfin, l'usage de R, comme de tout autre langage des programmation, conduit trè
 \hypertarget{uxe9luxe9ments-de-statistiques}{%
 \subsection*{Éléments de statistiques}\label{uxe9luxe9ments-de-statistiques}}
 \addcontentsline{toc}{subsection}{Éléments de statistiques}
+
+(Baxter 2003 ; 1994, Van Pool et Leonard 2011, Drennan 2009, Shennan 1997)
 
 \hypertarget{utiliser-r}{%
 \subsection*{Utiliser R}\label{utiliser-r}}
@@ -452,8 +537,8 @@ Rzine recense de nombreuses ressources, fiches et manuels, \emph{open source} et
 \end{tcolorbox}
 
 \hypertarget{pour-aller-plus-loin}{%
-\section*{Pour aller plus loin}\label{pour-aller-plus-loin}}
-\addcontentsline{toc}{section}{Pour aller plus loin}
+\subsection*{Pour aller plus loin}\label{pour-aller-plus-loin}}
+\addcontentsline{toc}{subsection}{Pour aller plus loin}
 
 Si les enjeux de reproductibilité et de science ouverte vous intéressent, il vous faudra sans doute compléter votre maîtrise de R par des outils supplémentaires, notamment les logiciels de contrôle de version \autocite{bryan2021}.
 
@@ -473,8 +558,14 @@ Ceci étant dit, le lecteur qui le souhaite trouvera dans \href{https://juba.git
 \hypertarget{prise-en-main}{%
 \chapter{Prise en main}\label{prise-en-main}}
 
-\hypertarget{invite-de-commande}{%
-\section{Invite de commande}\label{invite-de-commande}}
+Maintenant que nous avons établi les motivations principales justifiant l'apprentissage de R et son usage en archéologie, il est temps d'introduire certains termes et concepts clés qui apparaissent fréquemment dans ce livre. Se familiariser avec ces termes vous aidera à trouver votre chemin lorsque vous commencerez à utiliser R.
+
+Jusque là, nous avons utilisé le mot code sans vraiment le définir. Le \textbf{code} désigne tout ce qui est écrit dans un langage de programmation, d'un simple mot à une fonction de plusieurs milliers de lignes. Un \textbf{script} est un fichier qui contient du code, les noms de fichiers de scripts R se terminent par l'extension \texttt{.R}. Vous pouvez ouvrir ces fichiers avec n'importe quel éditeur de texte.
+
+Le code contient souvent des \textbf{commentaires}, que vous pouvez reconnaître dans le langage R par un symbole \texttt{\#} (dièse) en début de ligne. Le symbole \texttt{\#} indique à l'interpréteur R d'ignorer tout ce qui se trouve à droite de ce symbole et de passer à la ligne de code suivante. Il n'y a pas de règles strictes sur le nombre de commentaires que vous devez inclure dans votre code, mais un bon point de départ serait une ligne de commentaire pour chaque 10 lignes ou section majeure de code. Les commentaires de code sont importants car ils vous aident, ainsi que d'autres personnes, à comprendre l'objectif du code. Les commentaires doivent expliquer le pourquoi, et non le comment (il suffit de lire le script pour cela) de votre code : ils doivent expliquer l'intention générale du code. Plus généralement, vos commentaires doivent vous dire ce que vous devrez savoir dans quelques semaines ou mois, lorsque vous reprendrez le travail après une pause et que vous ne vous souviendrez plus des détails.
+
+\hypertarget{r-console}{%
+\section{Invite de commande}\label{r-console}}
 
 R se présente sous la forme d'une \href{https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande}{interface en ligne de commande}, permettant de donner des instructions à l'ordinateur. Dans RStudio, cette interface est accessible dans l'onglet \emph{Console}.
 
@@ -548,7 +639,7 @@ Il est possible de naviguer dans l'historique des commandes précédemment exéc
 
 Il est possible d'associer un nom à une valeur et ainsi de créer des \textbf{variables} (au sens informatique) qui peuvent ensuite être appelées dans l'invite de commande. Une variables n'est rien d'autre qu'un emplacement de la mémoire de l'ordinateur, réservé pour stocker une valeur.
 
-Cette \textbf{affectation} (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur \texttt{\textless{}-} :
+Cette \textbf{affectation} (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur \texttt{\textless{}-} (flèche) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -627,13 +718,17 @@ Dans R les variables stockent des \textbf{objets}\footnote{En informatique, un o
 
 Un objet possède un type et une structure de données particulière. Le type d'un objet est lié au type d'information qu'il contient et à la façon dont il est stocké dans la mémoire\footnote{Votre système d'exploitation alloue la mémoire en fonction du type de donnée et décide de ce qui peut être stocké dans la mémoire réservée lors de la création d'une variable.}. La structure de données d'un objet correspond à la manière dont sont organisées les données.
 
+Ainsi, pour conserver les résultats d'un calcul, nous affectons la sortie d'une instruction à une variable. Ce processus d'affectation enregistre la sortie dans notre \textbf{environnement} afin qu'elle soit disponible pour une réutilisation ultérieure dans notre session. L'affectation n'enregistre pas les données dans un fichier qui peut être utilisé ailleurs : l'export de données est un processus distinct que nous aborderons plus tard.
+
+\hypertarget{environnement}{%
+\section{Environnement}\label{environnement}}
+
 \hypertarget{fonctions}{%
 \section{Fonctions}\label{fonctions}}
 
-\hypertarget{fonctions-utiliser}{%
-\subsection{Utiliser des fonction}\label{fonctions-utiliser}}
+Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les \textbf{fonctions}. Une fonction désigne un bloc de code qui exécute des instructions pour effectuer une tâche précise. Par exemple, la fonction \texttt{mean()} permet de calculer la moyenne d'un ensemble de nombres. Dans ce livre, vous serez toujours en mesure de reconnaître une fonction car elle sera toujours suivie d'une paire de parenthèses, avec souvent du code entre les parenthèses. Une fonction est un moyen efficace d'organiser le code, car une seule fonction peut entraîner l'exécution de centaines de lignes de code pour produire un résultat. Plutôt que d'exécuter ces centaines de lignes, une par une, encore et encore, nous pouvons simplement taper le nom de la fonction qui les invoque et nous épargner beaucoup de saisies. Minimiser la saisie est une bonne chose : cela permet de gagner du temps et de réduire les risques d'erreurs en faisant des fautes de frappe.
 
-Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : les \textbf{fonctions}. Ces fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés \textbf{arguments}, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction.
+Les fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés \textbf{arguments}, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction.
 
 R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'\protect\hyperlink{fonctions-ecrire}{écrire ses propres fonctions} ou d'\protect\hyperlink{packages}{installer des packages} supplémentaires.
 
@@ -688,52 +783,26 @@ Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs 
 
 \end{tcolorbox}
 
-\hypertarget{fonctions-ecrire}{%
-\subsection{Écrire des fonctions}\label{fonctions-ecrire}}
-
-Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
+Par exemple, on peut vouloir calculer la moyenne des longueurs d'un assemblage d'artefacts. Cet exemple montre l'utilisation de deux fonctions simples pour calculer une valeur moyenne :
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
-  \CommentTok{\# On définit les instructions à exécuter}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
-  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\CommentTok{\#\textgreater{} [1] 3}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{12}\NormalTok{) }\CommentTok{\# Combine la longueur de trois artefacts}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(x)     }\CommentTok{\# Calcule la longueur moyenne}
 \end{Highlighting}
 \end{Shaded}
 
-Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+La fonction \texttt{c()} permet de combiner (``c'' pour combiner) nos mesures d'artefacts dans un objet appelé \protect\hyperlink{r-atomic}{vecteur}. Un vecteur est une séquence simple d'éléments du même type. Dans notre exemple, tous les éléments sont des nombres. Il existe deux autres vecteurs couramment utilisés dans R : un vecteur de chaînes de caractères où tous les éléments peuvent être des lettres ou des mots, et un vecteur logique où tous les éléments sont des constantes logiques, soit \texttt{TRUE} (vrai) ou \texttt{FALSE} (faux). Le vecteur est un type de données fondamental en R que nous utiliserons très souvent. Dans l'exemple ci-dessus, nous avons stocké le résultat de la fonction \texttt{c()} dans un objet que nous appelons \texttt{x} (nous pouvons l'appeler comme bon nous semble, et nous n'avons pas besoin de créer \texttt{x} à l'avance). La deuxième ligne de code permet de calculer la moyenne de 4, 7 et 12 (c'est-à-dire \((4 + 7 + 12)/3\)), puis d'affecter, ou stocker, le résultat dans un objet appelé \texttt{y}. Nous pouvons ensuite utiliser \texttt{x} et \texttt{y} plus tard dans notre flux de travail pour d'autres tâches. C'est utile car cela signifie que nous n'avons pas à recalculer la moyenne à plusieurs reprises.
 
-La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Définition de la fonction}
-\CommentTok{\# Par défaut, la valeur de y est 2}
-\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
-\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
-  \FunctionTok{return}\NormalTok{(z)}
-\NormalTok{\}}
-
-\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
-\CommentTok{\#\textgreater{} [1] 4}
-
-\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
-\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
-\CommentTok{\#\textgreater{} [1] 8}
-\end{Highlighting}
-\end{Shaded}
+Les fonctions, telles que \texttt{c()} et \texttt{mean()} dans l'exemple ci-dessus, sont au cœur du travail avec R, et expliquent en partie la grande polyvalence de R. Elles permettent de gagner beaucoup de temps en minimisant la saisie et le copier-coller, il est donc utile d'investir quelques efforts pour apprendre à utiliser les fonctions, et à écrire vos propres fonctions.
 
 \hypertarget{packages}{%
 \section{Packages}\label{packages}}
 
-Lors d'une première installation de R, un ensemble de packages contenant les \protect\hyperlink{fonctions}{fonctions} fondamentales est installé :
+\hypertarget{installer-et-utiliser-des-packages}{%
+\subsection{Installer et utiliser des packages}\label{installer-et-utiliser-des-packages}}
+
+Les fonctions sont organisées en \textbf{packages}, que vous pouvez télécharger pour étendre l'utilisation de R. Lors d'une première installation de R, un ensemble de packages contenant les \protect\hyperlink{fonctions}{fonctions} fondamentales est installé :
 
 \begin{itemize}
 \tightlist
@@ -745,19 +814,18 @@ Lors d'une première installation de R, un ensemble de packages contenant les \p
 
 L'installation d'un package permet de bénéficier de fonctionnalités supplémentaires, généralement dédiées à une tâche bien spécifique. Pour ne pas se perdre dans la multitude de ressources disponibles, le CRAN propose des \href{https://cran.r-project.org/web/views/}{répertoires de packages} par domaine (\emph{Task Views}) pour faciliter le choix des packages pour une analyse spécifique. Il existe ainsi des répertoires pour les \href{https://cran.r-project.org/web/views/SocialSciences.html}{sciences sociales}, l'analyse de \href{https://cran.r-project.org/web/views/Environmetrics.html}{données environnementales} ou encore l'analyse de \href{https://cran.r-project.org/web/views/Spatial.html}{données spatiales}. Pour l'archéologie, il existe une \href{https://github.com/benmarwick/ctv-archaeology}{\emph{Task View} non officielle}, maintenue par Ben Marwick.
 
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction \texttt{install.packages()}\footnote{\texttt{install.packages()} permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme \href{https://www.bioconductor.org/}{Bioconductor}.}. Par exemple, si vous exécutez \texttt{install.packages("binford")}, vous allez télécharger automatiquement le package \href{https://cran.r-project.org/package=binford}{\emph{binford}} depuis le CRAN (vous devez être connecté à Internet) et l'installer dans votre bibliothèque. Le package \emph{binford} contient les données de son livre de \emph{Constructing Frames of Reference : An Analytical Method for Archaeological Theory Building Using Ethnographic and Environmental Data Sets} (2001).
 
-Une bonne pratique consiste à toujours chercher à \protect\hyperlink{dependances}{limiter les dépendances}.
-
-\end{tcolorbox}
-
-Lorsqu'un package est disponible sur le CRAN, il peut aisément être installé à l'aide de la fonction \texttt{install.packages()}\footnote{\texttt{install.packages()} permet également d'installer des packages publiés sur d'autres dépôts que le CRAN, comme \href{https://www.bioconductor.org/}{Bioconductor}.}.
-
-La commande suivante permet d'installer le package \href{https://packages.tesselle.org/folio/}{\emph{folio}} qui contient les jeux de données utilisés par la suite :
+Essayez vous-même en exécutant les commandes suivantes pour installer certains des packages que nous utiliserons dans les chapitres suivants. Vous ne devez utiliser \texttt{install.packages()} qu'une seule fois (par ordinateur et par utilisateur) : vous n'avez pas besoin de le faire à chaque nouvelle session de travail. Remarquez comment nous utilisons la fonction \texttt{c()} ici pour créer un vecteur de noms de packages (chaînes de caractères) sur lequel la fonction \texttt{install.packages()} peut travailler :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Installer un seul package}
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"folio"}\NormalTok{)}
+
+\CommentTok{\# Installer plusieurs packages à la fois}
+\NormalTok{pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{, }\StringTok{"ggplot2"}\NormalTok{, }\StringTok{"knitr"}\NormalTok{, }\StringTok{"readr"}\NormalTok{, }\StringTok{"rmarkdown"}\NormalTok{, }\StringTok{"scales"}\NormalTok{, }\StringTok{"stringr"}\NormalTok{, }\StringTok{"tidyr"}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(pkg)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -772,10 +840,13 @@ Installer un nouveau package est une condition nécessaire, mais pas suffisante,
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(intcal20)}
+\CommentTok{\#\textgreater{} Warning in data(intcal20): jeu de données \textquotesingle{}intcal20\textquotesingle{} introuvable}
 \end{Highlighting}
 \end{Shaded}
 
-Il est donc nécessaire de charger un package à l'aide de la fonction \texttt{library()} avant de pouvoir l'utiliser\footnote{Dans le cas présent, une alternative serait de spécifier l'argument \texttt{package} de la fonction \texttt{data()}.} :
+Lorsque R installe un package, il le télécharge dans votre bibliothèque. Vous devez utiliser la fonction \texttt{library()} pour mettre le contenu du package à la disposition de votre session R actuelle. Chaque fois que vous lancez R, vous devrez exécuter \texttt{library()} pour utiliser les fonctions des package que vous avez précédemment installés. Une bonne pratique consiste à placer les appels à la fonctions \texttt{library()} parmi les premières lignes de votre script, afin que les autres utilisateurs puissent rapidement voir quels paquets ils devront avoir pour exécuter votre code.
+
+Il est ainsi nécessaire de charger un package à l'aide de la fonction \texttt{library()} avant de pouvoir l'utiliser\footnote{Dans le cas présent, une alternative serait de spécifier l'argument \texttt{package} de la fonction \texttt{data()}.} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -784,8 +855,58 @@ Il est donc nécessaire de charger un package à l'aide de la fonction \texttt{l
 \end{Highlighting}
 \end{Shaded}
 
+L'une des forces de R, la communauté dynamique de chercheurs-développeurs, est aussi l'une de ses faiblesses. En effet, cela signifie que certains packages sont mis à jour fréquemment, et d'autres non. Parfois, ces mises à jour peuvent modifier le fonctionnement de votre code, ou l'empêcher complètement de fonctionner. Nous aborderons des solutions détaillées à ce problème par la suite. Pour l'instant, nous noterons simplement que c'est une bonne pratique d'inclure la sortie de \texttt{sessionInfo()} dans les résultats de votre analyse, car elle vous indique les numéros de version spécifiques de tous les paquets utilisés. Cela signifie que s'il y a des changements drastiques dans certains des packages que vous utilisez au cours de la vie de votre projet, vous avez un enregistrement de la dernière version des packages qui a fonctionné pour vous.
+
+\hypertarget{dependances}{%
+\subsection{Limiter les dépendances}\label{dependances}}
+
+Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances\footnote{Sur le sujet, voir les billets regroupés sur le site du \href{https://www.tinyverse.org/}{tinyverse}.}.
+
+Par exemple, \href{http://factominer.free.fr/}{\emph{FactoMineR}} est sans doute le package le plus utilisé pour l'analyse de données multivariées. \emph{FactoMineR} possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que \emph{FactoMineR} a en réalité une longue chaîne de 104 (!) dépendances (fig.~\ref{fig:factominer-dependency}).
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_rstats_files/figure-latex/factominer-dependency-1} 
+
+}
+
+\caption{Réseau des dépendances du package \emph{FactoMineR} (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (\emph{FactoMineR} est représenté par un triangle noir, les autres packages sont représentés par des points gris).}\label{fig:factominer-dependency}
+\end{figure}
+
+Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig.~\ref{fig:xkcd-dependency}) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
+
+\begin{itemize}
+\tightlist
+\item
+  Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (\protect\hyperlink{fonctions-ecrire}{écrivez vos propres fonctions !}).
+\item
+  Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
+\item
+  N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
+\end{itemize}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
+
+}
+
+\caption{Dependency. ``Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble.'' \autocite[CC BY-NC 2.0][]{munroe2020}.}\label{fig:xkcd-dependency}
+\end{figure}
+
+Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme \href{https://ropensci.org/}{rOpenSci} œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
+
 \hypertarget{aide}{%
 \section{Obtenir de l'aide}\label{aide}}
+
+\hypertarget{utiliser-la-documentation}{%
+\subsection{Utiliser la documentation}\label{utiliser-la-documentation}}
+
+La maîtrise d'une langue étrangère comme l'allemand ou le chinois demande du temps, de la pratique et des hauts et des bas. L'apprentissage d'un langage de programmation comme R est un processus similaire, et vous devez vous attendre à des hauts et des bas à mesure que R devient un élément de plus en plus central de votre flux de travail. R est fourni avec une documentation intégrée très complète, très structurée et contenant très souvent des exemples de code que vous pouvez exécuter pour explorer le fonctionnement d'une fonction.
 
 Lorsque vous ne savez pas comment utiliser une fonction particulière (difficile de mémoriser les 1184 fonctions des packages de base), votre premier réflexe doit être de \href{https://fr.wikipedia.org/wiki/RTFM_(expression)}{consulter la documentation}. La documentation couvre l'ensemble des fonctions, jeux de données et autres objets présents dans les différents packages.
 
@@ -804,8 +925,6 @@ Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{help}\NormalTok{(lda)}
-\CommentTok{\#\textgreater{} Aucune documentation pour \textquotesingle{}lda\textquotesingle{} n\textquotesingle{}a été trouvée dans les packages et les bibliothèques :}
-\CommentTok{\#\textgreater{} vous pourriez essayer \textquotesingle{}??lda\textquotesingle{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -827,7 +946,7 @@ Si on ignore le nom de la fonction à utiliser, deux approches permettent d'expl
   On peut rechercher dans l'aide par mot-clé à l'aide de l'opérateur \texttt{??} ou de la fonction \texttt{help.search()}.
 \end{itemize}
 
-Par exemple, pour chercher toutes les pages de la documentation contenant le terme ``correlation'' :
+Par exemple, pour chercher toutes les pages de la documentation contenant le terme ``correlation''\footnote{Attention, la documentation est écrite en anglais. Pour chercher les pages de la documentation concernant les méthodes de régression linéaire il vous faudra utiliser \texttt{??"linear\ model"} (ou similaire).} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -864,12 +983,44 @@ Pour exécuter les exemples illustrant la documentation de la fonction \texttt{m
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{example}\NormalTok{(mean)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} mean\textgreater{} x \textless{}{-} c(0:10, 50)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} mean\textgreater{} xm \textless{}{-} mean(x)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} mean\textgreater{} c(xm, mean(x, trim = 0.10))}
+\CommentTok{\#\textgreater{} [1] 8.75 5.50}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
 
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{reprex}{écrire des exemples reproductibles}.
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur \href{https://stackoverflow.com/questions/tagged/r}{Stack Overflow} ou sur les listes de diffusions \href{https://stat.ethz.ch/mailman/listinfo/r-help}{R-help} et \href{https://stat.ethz.ch/mailman/listinfo/r-devel}{R-devel} (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à \protect\hyperlink{rstats-reprex}{écrire des exemples reproductibles}.
+
+\end{tcolorbox}
+
+\hypertarget{rstats-reprex}{%
+\subsection{Écrire des exemples reproductibles}\label{rstats-reprex}}
+
+Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur \href{https://stackoverflow.com/questions}{Stack Overflow}\footnote{Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les \href{https://stackoverflow.com/help/how-to-ask}{recommandations d'écriture}.} ou sur les \href{https://www.r-project.org/mail.html}{listes de diffusion}, la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
+
+\begin{itemize}
+\tightlist
+\item
+  Minimal : utilisez le moins de code possible tout en produisant le même problème.
+\item
+  Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
+\item
+  Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
+\end{itemize}
+
+Ces trois aspects sont détaillés dans l'\href{https://stackoverflow.com/help/minimal-reproducible-example}{aide de Stack Overflow}, il existe également une \href{https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example}{question dédié} à l'écriture d'un exemple reproductible (\href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}) avec R.
+
+Comme le souligne \textcite{wickham2016}, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+L'utilisation du package \href{https://reprex.tidyverse.org/}{\emph{reprex}}\footnote{Voir \url{https://reprex.tidyverse.org/articles/articles/learn-reprex.html}.} peut vous aider à écrire un exemple reproductible.
 
 \end{tcolorbox}
 
@@ -2553,11 +2704,291 @@ Il convient d'être prudent avec l'usage de l'instruction \texttt{while}, car un
 
 \end{tcolorbox}
 
-\hypertarget{part-pruxe9paration-des-donnuxe9es}{%
-\part{Préparation des données}\label{part-pruxe9paration-des-donnuxe9es}}
+\hypertarget{fonctions-ecrire}{%
+\chapter{Écrire des fonctions}\label{fonctions-ecrire}}
 
-\hypertarget{data-tidy}{%
-\chapter{Introduction}\label{data-tidy}}
+Comme son nom le laisse deviner, fonction \texttt{function()} permet de créer ses propres fonctions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{addition }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+  \CommentTok{\# On définit les instructions à exécuter}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+  \CommentTok{\# On précise le résultat à retourner au terme des calculs}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\FunctionTok{addition}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\textgreater{} [1] 3}
+\end{Highlighting}
+\end{Shaded}
+
+Il est possible de définir des arguments facultatifs et ainsi de spécifier le comportement par défaut d'une fonction.
+
+La fonction suivante permet d'élever un nombre à la puissance désirée. En spécifiant la valeur du second argument (qui correspond à l'exposant) dans la définition de la fonction, on peut prédéfinir son comportement : par défaut, notre fonction va élever le nombre désiré au carré :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition de la fonction}
+\CommentTok{\# Par défaut, la valeur de y est 2}
+\NormalTok{puissance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{y =} \DecValTok{2}\NormalTok{) \{}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\NormalTok{y}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+
+\CommentTok{\# L\textquotesingle{}utilisateur ne change pas la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{) }\CommentTok{\# 2 au carré}
+\CommentTok{\#\textgreater{} [1] 4}
+
+\CommentTok{\# L\textquotesingle{}utilisateur change explicitement la valeur par défaut}
+\FunctionTok{puissance}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{\# 2 au cube}
+\CommentTok{\#\textgreater{} [1] 8}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-collecter-et-organiser-ses-donnuxe9es}{%
+\part{Collecter et organiser ses données}\label{part-collecter-et-organiser-ses-donnuxe9es}}
+
+\hypertarget{collect-introduction}{%
+\chapter{Introduction}\label{collect-introduction}}
+
+L'objectif de ce chapitre est d'expliquer comment des décisions prises avant et pendant la collecte des données peuvent permettre d'économiser du temps et des efforts plus tard, pendant le processus d'analyse et de visualisation des données, en utilisant R ou tout autre outil. Le chapitre est organisé de manière hiérarchique, en commençant par l'organisation des fichiers au niveau du projet, puis en descendant pour discuter de l'organisation efficace des feuilles de calcul (l'un des outils les plus courants pour collecter, partager et stocker les données archéologiques), et enfin au niveau très granulaire de la cellule individuelle dans une feuille de calcul.
+
+Le gain de temps et d'efforts est bien sûr une motivation importante pour modifier vos pratiques en matière de collecte et d'organisation des données, mais il existe un objectif plus large. Cet objectif est double :
+
+\begin{itemize}
+\tightlist
+\item
+  D'une part, cela permet participe à améliorer la reproductibilité de la recherche. Lorsqu'un projet est bien organisé, il est plus facile de trouver les fichiers clés pour vérifier les résultats obtenus.
+\item
+  D'autre part, cela doit conduire à la production de jeux de données interopérables à grande échelle. De sorte que les données de divers projets puissent être facilement combinées pour répondre à des questions qu'aucun projet ne peut résoudre seul.
+\end{itemize}
+
+Cette double approche de l'organisation des données repose sur d'autres aspects, telles que la volonté de partager les données et de les rendre accessibles au public, ainsi qu'un consensus sur ce qu'il faut mesurer et comment nommer les variables. Si le partage de vos données est la première étape pour permettre leur réutilisation --- ce qui n'est pas encore courant en archéologie --- elles doivent également être faciles à comprendre pour que d'autres puissent facilement les réutiliser \autocite{white2013}.
+
+Une grande partie de ce chapitre ne présente pas de complexité particulière et peut sembler relever du bon sens. Cependant, les pratiques décrites ici font une grande différence quant à la réutilisation des données. Il nous semble donc important de les discuter directement et explicitement, plutôt que de supposer que tout un chacun les assimilera en cours de route sans conseils ou instructions spécifiques. Ce chapitre s'appuie sur des documents du domaine public, préparés à l'origine par Jenny Bryan, Karl Broman et d'autres pour le programme science reproductible de Data Carpentry, ainsi que sur des sources provenant d'autres disciplines, comme \textcite{borer2009}, \textcite{sutter2015}, \textcite{volk2014}, \textcite{hampton2013}, \textcite{strasser2012}.
+
+\hypertarget{guxe9rer-ses-fichiers}{%
+\chapter{Gérer ses fichiers}\label{guxe9rer-ses-fichiers}}
+
+Le principe fondamental à suivre pour améliorer l'organisation de ses dossiers et fichiers est simplement d'avoir une stratégie et de s'y tenir. L'une des principales motivations pour bien organiser ses fichiers est de faciliter leur utilisation, à la fois pendant la durée de l'analyse et à l'avenir, lorsque vous ou d'autres personnes les utiliserez. Si vos fichiers sont bien organisés, une personne qui n'est pas familière avec votre projet (ce qui pourrait aussi être vous dans le futur) devrait être capable de les regarder et de comprendre rapidement en détail ce que vous avez fait et pourquoi \autocite{noble2009}. Une deuxième motivation réside dans le caractère souvent itératif de l'analyse de données : tout ce que vous faites pendant votre analyse, vous aurez probablement à le refaire. Nous explorons généralement de nombreuses options analytiques avec nos données, de sorte que le processus d'analyse ressemble davantage à un arbre ramifié qu'à une séquence unique d'actions consécutives. Nous revenons souvent à une étape antérieure de l'analyse pour étudier l'effet de la sélection de données particulières ou de l'ajustement des paramètres d'un modèle. Si nous avons organisé et documenté clairement notre travail, il sera beaucoup plus facile de répéter les étapes précédentes de l'analyse avec des variations mineures.
+
+\hypertarget{projets}{%
+\section{Travailler par projets}\label{projets}}
+
+Une bonne pratique liée à l'utilisation de R consiste ainsi à \href{https://rstats.wtf/project-oriented-workflow.html}{organiser l'ensemble de son analyse en un projet}, c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et les fichiers générés en cours d'analyse). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes\ldots). Ce dossier, appelé répertoire de travail (\emph{working directory}), doit être \textbf{portable}.
+
+Le répertoire de travail est un concept important à comprendre, car il diffère de la façon dont on travaille avec un tableur. Le répertoire de travail est le répertoire (ou dossier) de votre ordinateur dans lequel R va travailler. Il s'agit de l'emplacement sur votre ordinateur où R cherchera lorsque vous lirez des fichiers ou enregistrerez des résultats. Par défaut, le répertoire de travail a probablement été défini dans un répertoire peu pratique lors de l'installation de R, mais il est facile de le modifier.
+
+Le répertoire de travail peut être défini ou retrouvé à l'aide des fonctions \texttt{setwd()} et \texttt{getwd()}, respectivement :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition du répertoire de travail}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/vers/mon/dossier"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
+
+Cependant, cette approche n'est pas recommandée car le risque est de se retrouver dans la situation suivante :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Définition du répertoire de travail}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/uniquement/valide/sur/mon/ordinateur"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si vous utilisez la commande \texttt{setwd()} pour définir le répertoire de travail, votre code ne fonctionnera que sur votre ordinateur, dans sa configuration actuelle de fichiers et de dossiers. Cela signifie que votre code n'est pas portable et n'est pas robuste face au changement. Si vous réorganisez vos fichiers ou si vous donnez votre code à un collaborateur, le répertoire de travail réel où se trouvent vos fichiers ne correspondra plus à ce qui est écrit dans le code. Cela peut entraîner des erreurs et de la frustration. Ainsi, bien qu'il soit important de connaître le concept de répertoire de travail pour travailler avec R, vous ne devez pas inclure sa définition dans votre code R.
+
+Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions (utilisable conjointement) parmi lesquelles :
+
+\begin{itemize}
+\tightlist
+\item
+  L'utilisation du package \href{https://here.r-lib.org/}{\emph{here}},
+\item
+  L'utilisation de la gestion de projet dans RStudio.
+\end{itemize}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
+
+Un projet créé par RStudio est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser \texttt{setwd()}.
+
+\end{tcolorbox}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-project} 
+
+}
+
+\caption{Création d'un projet avec RStudio.}\label{fig:rstudio-project}
+\end{figure}
+
+Il peut être nécessaire que votre code fasse référence à d'autres répertoires par rapport au répertoire principal de votre projet (par exemple, un répertoire appelé ``data'' qui contient des feuilles de calcul, etc.). L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig.~\ref{fig:xkcd-documents}).
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_documents} 
+
+}
+
+\caption{Documents. ``Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc'' \autocite[CC BY-NC 2.0][]{munroe2014}.}\label{fig:xkcd-documents}
+\end{figure}
+
+\hypertarget{organiser-ses-fichiers}{%
+\section{Organiser ses fichiers}\label{organiser-ses-fichiers}}
+
+Au-delà d'avoir une stratégie pour organiser ses dossiers et fichiers, il existe plusieurs lignes directrices qui ont été proposées par des biologistes et des écologistes et qui sont applicables à la recherche archéologique \autocite{noble2009,white2013}. Ces recommandations reposent sur un principe élémentaire qui veut que l'organisation des fichiers indique les entrées et les sorties, ainsi que le flux d'informations pendant l'analyse des données. Les recommandations les plus importantes sont que (1) les données brutes doivent être séparées des données dérivées, et (2) les données doivent être séparées du code.
+
+Les \textbf{données brutes} désignent les fichiers de données tels qu'ils étaient lorsque vous les avez reçus à l'origine, par exemple transcrits à partir d'un cahier, saisis directement dans une base de données ou un tableur, ou téléchargés à partir d'un instrument tel qu'une station totale ou un analyseur XRF. Les \textbf{données dérivées} sont les données qui résultent des actions que vous entreprenez après avoir reçu les fichiers de données. Il s'agit de manipulations manuelles, telles que des modifications dans une feuille de calcul et de manipulations programmatiques qui se produisent lorsque vous utilisez R pour produire une version actualisée de vos données. Les manipulations manuelles sont à éviter autant que possible, car elles ne laissent aucune trace --- contrairement à une manipulation effectuée par un script --- ce qui les rend difficiles à défaire si vous changez d'avis. Si une manipulation manuelle est nécessaire dans vos données, vous devriez conserver un fichier de texte brut avec le fichier de données et y consigner un bref récit des modifications apportées afin d'en avoir une trace. Une façon simple de séparer les données brutes des données dérivées consiste à avoir un dossier appelé \texttt{data/} qui contient deux répertoires, \texttt{raw\_data/} et \texttt{derived\_data/} (voir le schéma ci-dessous). L'utilisation d'une structure simple comme celle-ci signifie que vous n'avez besoin que d'une seule copie des fichiers de données originaux dans votre projet, plutôt que de les dupliquer à travers toute votre structure de fichiers (ce qui peut être une source de confusion importante pour savoir quel fichier est le bon).
+
+\begin{verbatim}
+├── data/              # Données brutes et dérivées
+|   ├── raw_data/      # Données brutes collectées avant l'analyse
+|   └── derived_data/  # Données générées au cours de l'analyse
+\end{verbatim}
+
+Cette pratique consistant à conserver les données brutes isolées de tout le reste signifie que vous êtes toujours en mesure de revenir aux premières étapes de votre analyse (lecture des données brutes) au cas où vous auriez besoin d'explorer une autre voie ou de vérifier vos résultats. Ce point est essentiel pour garantir la reproductibilité de votre recherche et pour avoir l'esprit tranquille en sachant que vous pouvez vérifier vos résultats. Si vous apportez de nombreuses modifications à vos fichiers de données brutes au cours de votre analyse, vous ne pourrez peut-être jamais revenir au début de votre analyse, vous n'aurez pas la possibilité de vérifier vos résultats et votre travail sera impossible à reproduire. Le fait de conserver les données brutes intactes offre également aux autres chercheurs davantage d'options lorsqu'ils réutilisent vos données, ce qui augmente la valeur de votre travail pour l'ensemble de la communauté scientifique.
+
+Le second principe d'organisation des fichiers dont nous pouvons nous inspirer des biologistes et des écologistes est étroitement lié au premier : les données sont séparées du code. Utiliser un tableur est une façon très peu naturelle de travailler. Dans une feuille de calcul, les formules qui calculent à partir les données sont situées directement à côté des cellules qui contiennent les données (par exemple, dans les lignes à droite ou sous les données). Bien que cela puisse être pratique pour travailler avec de petits tableaux de données, il est rapidement difficile de distinguer les données brutes des données dérivées et de distinguer les données et les méthodes (c'est-à-dire les fonctions dans les cellules de la feuille de calcul). Ce mélange des données et des méthodes est un obstacle majeur à la reproductibilité et à l'ouverture de la recherche, car la séquence des décisions prises au cours de l'analyse n'est pas explicite.
+
+Votre code changera fréquemment pendant que vous travaillez, mais vos données brutes ne devraient être modifiées. Si vous conservez ces fichiers dans des dossiers séparés, vous serez moins tenté de modifier les données brutes à la main pendant que vous écrivez du code. Il s'agit d'un principe de base de la conception de logiciels, qui permet de minimiser la confusion lors de la navigation dans les fichiers d'un projet. Une raison supplémentaire devant conduire à séparer le code et les données est que vous pouvez ne pas être en mesure de partager vos données brutes (par exemple, elles peuvent contenir des informations sensibles sur l'emplacement de sites archéologiques), mais vous pouvez être disposé à partager votre code. Lorsque ces deux composantes du projet sont bien séparées, il est facile de contrôler ce qui peut être rendu public et ce qui doit rester privé. Voici un exemple de structure de dossier de projet qui montre comment le code et les données peuvent être séparés :
+
+\begin{verbatim}
+├── data/              # Données brutes et dérivées
+|   ├── raw_data/      # Données brutes collectées avant l'analyse
+|   └── derived_data/  # Données générées au cours de l'analyse
+|
+├── scripts/           # Tout code, par exemple des fichiers de script R
+\end{verbatim}
+
+Une troisième recommandation consiste à garder les fichiers associés à la production de manuscrits ou de rapports séparés de tout le reste. Dans l'exemple ci-dessous, cela est représenté par le répertoire \texttt{paper/}. Ce dossier contient un (ou plusieurs) fichiers R Markdown qui documentent l'analyse sous une forme exécutable. Cela signifie qu'il devrait être possible de convertir le document R Markdown en un fichier HTML/PDF/Word présentant les principales méthodes, décisions et résultats de l'analyse. Ce fichier R Markdown peut, par exemple, importer le code d'un script présent dans dans le répertoire \texttt{scripts/} en utilisant la fonction \texttt{source()}. Cet exemple montre également comment organiser les figures et autres images :
+
+\begin{verbatim}
+├── data/              # Données brutes et dérivées
+|   ├── raw_data/      # Données brutes collectées avant l'analyse
+|   └── derived_data/  # Données générées au cours de l'analyse
+|
+├── scripts/           # Tout code, par exemple des fichiers de script R
+|
+├── figures/           # Figures produites au cours de l'analyse
+|
+├── paper/             # Rédaction du manuscrit
+|   ├── paper.Rmd      # Un ou plusieurs fichier R markdown
+|   └── references.bib # Fichier bibliographique
+\end{verbatim}
+
+Une dernière recommandation est d'avoir un répertoire \texttt{scratch/} (brouillon) dans lequel expérimenter. Ce répertoire doit contenir des bribes de code et des résultats produits lors de courtes excursions sur des voies alternatives lors de l'analyse (lorsque vous voulez explorer certaines idées, mais que vous n'êtes pas sûr qu'elles seront pertinentes pour l'analyse principale). Si l'expérimentation s'avère utile, vous pouvez alors l'incorporer à l'endroit approprié dans les dossiers du projet principal. Si l'expérience n'est pas directement pertinente, vous pouvez la laisser dans le répertoire \texttt{scratch/} ou la supprimer (tout ce qui se trouve dans ce répertoire doit pouvoir être supprimé à tout moment sans aucune conséquence pour votre projet). En général, le répertoire \texttt{scratch/} est supprimé après la soumission ou la publication de l'article.
+
+Enfin, une recommandation supplémentaire peut être formulée, bien qu'elle ne relève pas de la même logique. Elle consiste à inclure un fichier texte simple nommé ``README'' (par exemple ``README.txt'' ou ``README.md'') à la racine de l'arborescence des fichiers d'un projet. Ce fichier est destiné à documenter quelques détails de base sur le projet. Cela peut inclure une douzaine de lignes de texte fournissant le nom du projet, les noms des personnes impliquées, une brève description du projet et un bref résumé du contenu des dossiers du projet. Vous pouvez également inclure des fichiers README similaires dans d'autres dossiers de votre projet, par exemple pour documenter les paramètres des instruments qui sont importants pour l'utilisation des données brutes. Vous trouverez ci-dessous un exemple de projet comprenant un répertoire brouillon et un fichier README :
+
+\begin{verbatim}
+├── data/              # Données brutes et dérivées
+|   ├── raw_data/      # Données brutes collectées avant l'analyse
+|   └── derived_data/  # Données générées au cours de l'analyse
+|
+├── scripts/           # Tout code, par exemple des fichiers de script R
+|
+├── scratch/           # Expériementations (peut être supprimé)
+|
+├── figures/           # Figures produites au cours de l'analyse
+|
+├── paper/             # Rédaction du manuscrit
+|   ├── paper.Rmd      # Un ou plusieurs fichier R markdown
+|   └── references.bib # Fichier bibliographique
+|
+├── README.txt         # La description du projet et de son contenu
+\end{verbatim}
+
+Ces recommandations sont largement applicables à la plupart des projets archéologiques, quelle que soit leur échelle ou leurs méthodes. Certains ajustements peuvent être nécessaires pour les jeux de données volumineux, distant ou contenant des informations sensibles (de même dans les situations où les calculs prennent beaucoup de temps). Dans tous les cas, le principe général de séparation doit gouverner les décisions prises en matière d'organisation des fichiers.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}} permet de structurer rapidement son travail en suivant certaines conventions d'organisation des fichiers.
+
+\end{tcolorbox}
+
+\hypertarget{nommer-ses-fichiers}{%
+\section{Nommer ses fichiers}\label{nommer-ses-fichiers}}
+
+En tant qu'archéologues, nous sommes habitués à nommer les choses, lorsque nous faisons face à des objets qui ne correspondent pas exactement aux typologies existantes ou lorsque nous identifions des fragments d'objets qui n'ont pas d'attributs distinctifs \autocite{kleindienst2006,ferris1999}. Nous faisons souvent attention lorsque nous nommons des objets, car les noms sont une forme de communication et privilégient certaines interprétations et significations par rapport à d'autres. Souvent, en tant qu'archéologues, lorsque nous attribuons un nom, nous donnons naissance à quelque chose et délimitons ses frontières. Nous discutons de la signification des noms, tels que ``Paléolithique moyen'' ou ``Acheuléen''.
+
+Les nombreux produits numériques de notre travail analytique sont rarement rendus publics, si bien que nous ne mettons pas autant de soin et d'efforts à les nommer. De nombreux archéologues considèrent que les fichiers créés dans le cadre de l'analyse des données d'un projet sont leur propriété privée et peuvent être utilisés en l'état. Ils ne pensent donc pas à les nommer de manière à gagner du temps et à faciliter la recherche de ces fichiers. Ceci est peut-être moins vrai dans les grands projets, mais par expérience, en travaillant avec une douzaine de collaborateurs ou plus, le nommage des fichiers est souvent chaotique. Voici un exemple de noms de fichiers mal choisis :
+
+\begin{verbatim}
+resumé.docx
+figure 1.png
+Fig 2.png
+article FINAL v.3 Jan22 introcorrigée.pdf
+\end{verbatim}
+
+Pour remédier à ce chaos et rendre les fichiers plus faciles à (ré)utiliser, nous pouvons suivre un principe élémentaire pour nommer les fichiers : les noms de fichiers doivent lisibles à la fois par les machines et par les humains. Rendre les noms de fichiers lisibles par les humains signifie inclure des informations sur le contenu du fichier dans son nom. Lorsqu'un nom de fichier contient des informations sur son contenu, il est facile pour les autres utilisateurs de comprendre ce qu'est le fichier et de décider comment l'utiliser. Voici les fichiers précédents renommés en suivant cette directive :
+
+\begin{verbatim}
+2022-01-17_resume_eaa.docx
+fig01_dispersion-lithique-silex.png
+fig02_histogramme-lithique-silex-eclats.png
+\end{verbatim}
+
+Une attention particulière doit ainsi être portée à trois éléments. Le premier point consiste à ne pas utiliser d'espaces, de signes de ponctuation (à quelques exceptions près) ou de caractères exotiques tels que les accents. Ceci en veillant à un usage cohérent de la casse des caractères, car pour une machine les majuscules et les minuscules d'une même lettre sont presque aussi différentes que A et Z le sont pour nous.
+
+Le second point consiste à nommer les fichiers de sorte qu'il est possible d'en extraire de l'information. De tels noms de fichiers utilisent délibérément des délimiteurs tels que le trait d'union (\texttt{-}) et le trait de soulignement (\texttt{\_}). Dans les exemples ci-dessus, les traits d'union sont utilisés pour délimiter les chiffres et les mots dans le nom des fichiers. Le trait de soulignement est, quant à lui, utilisé pour délimiter les unités de métadonnées, par exemple pour séparer la date de la description, ou le numéro de figure de sa description. Cette utilisation des délimiteurs permet d'extraire des métadonnées des noms de fichiers. Par exemple, on peut obtenir des données pertinentes pour notre analyse à partir des noms de fichiers suivants :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lister les fichiers}
+\NormalTok{(fichiers }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"data/raw\_data/"}\NormalTok{))}
+\CommentTok{\#\textgreater{} [1] "2017{-}03{-}03\_Zone{-}3\_Unite{-}1\_lithique.csv"}
+\CommentTok{\#\textgreater{} [2] "2017{-}03{-}03\_Zone{-}3\_Unite{-}2\_lithique.csv"}
+\CommentTok{\#\textgreater{} [3] "2017{-}03{-}03\_Zone{-}3\_Unite{-}3\_lithique.csv"}
+\CommentTok{\#\textgreater{} [4] "2017{-}03{-}03\_Zone{-}3\_Unite{-}4\_lithique.csv"}
+\CommentTok{\#\textgreater{} [5] "2017{-}03{-}03\_Zone{-}4\_Unite{-}1\_lithique.csv"}
+\CommentTok{\#\textgreater{} [6] "2017{-}03{-}03\_Zone{-}4\_Unite{-}2\_lithique.csv"}
+
+\CommentTok{\# Découper les noms de fichiers}
+\CommentTok{\# (récupère les informations contenues dans les noms)}
+\NormalTok{info }\OtherTok{\textless{}{-}} \FunctionTok{strsplit}\NormalTok{(fichiers, }\AttributeTok{split =} \StringTok{"\_"}\NormalTok{)}
+
+\CommentTok{\# Construire un tableau de métadonnées}
+\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{do.call}\NormalTok{(rbind, info))}
+\CommentTok{\#\textgreater{}           V1     V2      V3           V4}
+\CommentTok{\#\textgreater{} 1 2017{-}03{-}03 Zone{-}3 Unite{-}1 lithique.csv}
+\CommentTok{\#\textgreater{} 2 2017{-}03{-}03 Zone{-}3 Unite{-}2 lithique.csv}
+\CommentTok{\#\textgreater{} 3 2017{-}03{-}03 Zone{-}3 Unite{-}3 lithique.csv}
+\CommentTok{\#\textgreater{} 4 2017{-}03{-}03 Zone{-}3 Unite{-}4 lithique.csv}
+\CommentTok{\#\textgreater{} 5 2017{-}03{-}03 Zone{-}4 Unite{-}1 lithique.csv}
+\CommentTok{\#\textgreater{} 6 2017{-}03{-}03 Zone{-}4 Unite{-}2 lithique.csv}
+\end{Highlighting}
+\end{Shaded}
+
+L'utilisation judicieuse des délimiteurs peut alors rendre le travail avec un grand nombre de fichiers très aisé. En effet, il alors possible utiliser R pour rechercher des fichiers ou des groupes de fichiers spécifiques et extraire les informations contenues dans les noms de fichiers, comme illustré ci-dessus.
+
+Le troisième point consiste à s'assurer que les noms de fichiers vont être automatiquement triés de manière pertinente. La façon la plus simple de le faire est d'ajouter un préfixe numérique, comme une date ou une autre séquence de chiffres.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Pour classer des fichiers par date vous devez utiliser la norme ISO 8601 (\texttt{AAAA-MM-JJ}), afin d'obtenir un tri par année, mois puis jour.
+
+Par défaut, la plupart des systèmes d'exploitation considèrent les chiffres dans les noms de fichiers comme des caractères. Ainsi, des fichiers préfixés par \texttt{1\_}, \texttt{2\_}, \texttt{3\_}\ldots{} seront triés de manière non naturelle, car \texttt{10\_} sera placé entre \texttt{1\_} et \texttt{2\_}, plutôt qu'après \texttt{9\_}, comme vous vous y attendriez. Pour obtenir un tri naturel, vous devez donc ajouter des zéro non significatifs à gauche, par exemple : \texttt{001\_}, \texttt{002\_}, \texttt{003\_}, etc. (les valeurs 10 à 19 seront ainsi reconnues par votre ordinateur comme supérieures à 2). Ce principe est également valable lorsque les noms de fichiers sont préfixés par des caractères, par exemple : \texttt{Fig-01\_}, \texttt{Fig-02\_}, \texttt{Fig-03\_}, etc.
+
+\end{tcolorbox}
+
+\hypertarget{organiser-ses-donnuxe9es}{%
+\chapter{Organiser ses données}\label{organiser-ses-donnuxe9es}}
+
+\hypertarget{variables-et-observations}{%
+\section{Variables et observations}\label{variables-et-observations}}
+
+Les feuilles de calcul sont omniprésentes en archéologie, comme dans de nombreux autres domaines. Pour de nombreux chercheurs, la feuille de calcul est le pivot de leurs activités d'analyse de données. Ils y collectent des données, analysent et visualisent les résultats et ils copient et collent les données de la feuille de calcul vers leurs rapports et manuscrits pour la publication. Les tableurs sont utiles pour collecter des données, mais ils sont inefficaces pour l'analyse (lorsque vous souhaitez modifier une variable ou effectuer une analyse avec un nouveau jeu de données, vous devez généralement tout refaire à la main), et ils rendent votre travail analytique difficile à suivre. En effet, les tableurs fonctionnent principalement par des opérations de glisser-déposer effectuées à l'aide de la souris et n'imposent donc pas un ordre linéaire facile à suivre.
+
+En bref, l'utilisation de feuilles de calcul pour l'analyse des données est néfaste pour la reproductibilité et la transparence de votre recherche. Dans cette section, nous allons passer en revue quelques règles d'organisation des données dans les feuilles de calcul afin de faciliter leur exploitation. Ces règles sont valables pour tout langage de programmation, que vous utilisiez R, \href{https://www.python.org/}{Python} ou \href{https://juliastats.org/}{Julia}.
 
 Lors de l'acquisition puis lors de la préparation de vos données en vue d'une étude, toutes vos actions doivent être guidées par un impératif : structurer au mieux vos jeux de données pour en faciliter l'analyse \autocite{wickham2014}. Les principes régissant cette étape de structuration (\emph{data tidying}) sont exposés par \textcite{wickham2014}, qui propose ainsi une approche pour lier ``la structure d'un jeu de données (sa mise en forme) avec sa dimension sémantique (sa signification).''
 
@@ -2579,6 +3010,135 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 
 \end{tcolorbox}
 
+Les règles sont les suivantes : premièrement, placez toutes vos variables dans leurs propres colonnes (une variable est la caractéristique mesurée, comme la masse ou la longueur) et, deuxièmement, placez chaque observation dans sa propre ligne. La violation la plus courante de ces règles consiste à ne pas placer chaque variable dans sa propre colonne, de sorte qu'une même colonne représente plus d'une variable.
+
+Par exemple, le tableau ci-dessous est partiellement structuré. Chaque observation (c'est-à-dire chaque site archéologique) correspond bien à une ligne et le tableau dans son ensemble décrit une unique unité d'observation. Cependant, c'est un exemple typique de violation de la première règle.
+
+\begin{longtable}[]{@{}llr@{}}
+\toprule
+secteur & materiau & total \\
+\midrule
+\endhead
+A & cuivre & 5 \\
+A & ceramique cuivre & 9 \\
+A & ceramique os & 30 \\
+B & ceramique os & 12 \\
+B & ceramique & 40 \\
+B & ceramique os cuivre & 32 \\
+\bottomrule
+\end{longtable}
+
+La colonne \emph{materiau}, contient le type de matériau observé sur chaque site. Sous cette forme, il est difficile de regrouper les sites par caractéristiques, par exemple pour n'extraire que les sites contenant des ossements. Une approche plus structurée serait d'avoir une colonne pour la présence de céramique, une colonne pour la la présence d'alliages cuivreux, et ainsi de suite. Chacune de ces colonnes peut alors être exploitée individuellement, et nous avons un contrôle plus fin sur les données.
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule
+secteur & ceramique & cuivre & os & total \\
+\midrule
+\endhead
+A & 0 & 1 & 0 & 5 \\
+A & 1 & 1 & 0 & 9 \\
+A & 1 & 0 & 1 & 30 \\
+B & 1 & 0 & 1 & 12 \\
+B & 1 & 0 & 0 & 40 \\
+B & 1 & 1 & 1 & 32 \\
+\bottomrule
+\end{longtable}
+
+Il est souvent tentant de combiner plusieurs informations dans une seule cellule, car cela permet d'accélérer la collecte des données en réduisant le temps passé à naviguer entre les champs. S'il vous est impossible d'éviter de combiner des informations dans une seule cellule, ou si les données ont été collectées par quelqu'un d'autre et qu'elles présentent déjà ce problème, il existe dans R des méthodes de nettoyage et de séparation que nous explorerons au chapitre \ref{data-traitement}. L'essentiel ici est de nettoyer et d'ordonner les données avant de les analyser et avant de les archiver pour que d'autres puissent les utiliser.
+
+La deuxième caractéristique des données ordonnées (chaque ligne du tableau correspond à une observation), est facile à réaliser lorsque l'on enregistre les données d'un ensemble de spécimens, tels que des artefacts ou des restes de faune. Dans cette situation, il est naturel qu'un artefact soit représenté par une ligne du tableau. Il est moins naturel de suivre cette règle lorsque, par exemple, chaque ligne représente un site, et que certaines des colonnes sont des comptages de types de poteries. Dans ce cas, la forme propre et ordonnée serait une ligne pour chaque combinaison site/type de poterie, mais cette forme est très peu pratique pour la collecte de données. Ainsi, pendant l'acquisition des données, nous pouvons tolérer un peu de désordre afin d'optimiser la vitesse et la commodité de la saisie des données. Dans le chapitre \ref{data-traitement}, nous explorerons les méthodes permettant de rendre les données collectées sur le terrain vraiment ordonnées et adaptées à leur exploitation.
+
+En revanche, la troisième caractéristique des données ordonnées (un tableau doit correspondre à une unique unité) est simple à mettre en œuvre. Au sein d'une feuille de calcul, chaque feuille ne doit contiennir qu'un seul tableau. Chaque feuille doit comporter un seul rectangle contigu de données. Il faut donc résister à la tentation d'organiser une grille de petits tableaux sur une seule feuille (fig.~\ref{fig:data-messy-spreadsheet}). Bien qu'il s'agisse d'une stratégie courante pour organiser les données, car elle permet de jeter un coup d'œil sur les petits tableaux pour les comparer, elle pose un sérieux problème : chaque ligne de cette feuille contient plus d'une observation, une ligne couvrant plusieurs petits tableaux. De même, les noms des colonnes sont susceptibles d'être dupliqués car ils apparaissent dans chacun des petits tableaux. Ces complications rendent plus difficile le nettoyage et l'organisation de vos données sous une forme utile pour l'analyse et la visualisation. La règle est de créer un tableau par feuille, et si vous suivez cette règle, l'organisation finale de vos données pour l'analyse sera beaucoup plus simple et rapide. En apportant de petits changements à la façon dont vous organisez vos données dans les feuilles de calcul, vous pouvez avoir un impact considérable sur l'efficacité et la fiabilité des étapes d'analyse.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/data-messy-spreadsheet} 
+
+}
+
+\caption{Cette capture d'écran montre des données archéologiques désordonnées : plusieurs tableaux sur une feuille, plusieurs valeurs dans une colonne, plusieurs lignes d'en-tête pour un tableau, etc.}\label{fig:data-messy-spreadsheet}
+\end{figure}
+
+Au niveau le plus granulaire de la collecte de données, on trouve la cellule individuelle d'une feuille de calcul (ou le champ de saisie des données). De mauvaises habitudes dans la saisie des données peuvent nécessiter un temps considérable pour les corriger avant que ces dernières ne soient adaptées à l'analyse, et peuvent conduire à des erreurs, quel que soit le logiciel que vous utilisez. Nous passons ici brièvement en revue certaines des erreurs courantes d'organisation des cellules dans l'espoir que si vous en êtes conscient, vous serez peut-être motivé pour les éviter dans votre collecte de données.
+
+Le choix d'une valeur nulle adaptée nécessite une réflexion approfondie. Lorsque vous savez que la valeur est égale à zéro, vous devez bien sûr entrer zéro. Cependant, lorsque la valeur n'a pas été mesurée, ou n'a pas pu être mesurée, vous ne voulez pas entrer zéro car cela implique que vous savez quelque chose sur la valeur. Vous ne voulez pas non plus laisser ce champ vide, car cela pourrait être interprété comme une omission de l'enregistrement de cette donnée. Les cellules vides sont ambiguës : le collecteur de données a-t-il omis ce champ par accident, ou n'a-t-il pas été en mesure d'enregistrer une valeur pour ce champ, ou encore la valeur était-elle nulle ? Le meilleur choix dans cette situation est d'utiliser \texttt{NA} (\emph{Not Available}) ou \texttt{NULL} \autocite{white2013}. \texttt{NA} est un bon choix, car il s'agit d'un mot spécial (ou réservé) dans le langage R (R peut donc gérer les \texttt{NA} facilement). \texttt{NULL} peut être préférable si vos données utilisent \texttt{NA} comme abréviation, par exemple ``Nouvelle-Aquitaine'' (\texttt{NULL} est également un mot spécial dans R).
+
+Un autre point problématique (néanmoins courant) lors du passage de la collecte à l'analyse des données concerne l'utilisation de formatage dans les feuilles de calcul pour transmettre des informations. Par exemple, lorsqu'une cellule comporte un texte en couleur ou est surlignée pour indiquer une information supplémentaire sur ce spécimen ou cet enregistrement (fig.~\ref{fig:data-messy-spreadsheet-cell}). Des problèmes similaires se produisent lorsque du texte en gras ou en italique est utilisé pour signaler une qualité importante des données. Ce type d'utilisation est bien connu dans les tableaux publiés (par exemple l'utilisation du gras pour indiquer des valeurs statistiquement significatives). Cependant, cette décoration des cellules et du texte pour transmettre de l'information rend très difficile le calcul sur ces valeurs. Il est toujours préférable d'avoir une autre colonne pour capturer cette information, plutôt que de mettre en évidence la cellule ou de formater le texte.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/data-messy-spreadsheet-cell} 
+
+}
+
+\caption{Cette capture d'écran montre le formatage d'une feuille de calcul. Dans ce cas, le surlignage jaune indique que des récipients complets ont été trouvés dans ce niveau. Une meilleure approche serait d'avoir une colonne appelée 'pots\_complets', avec des valeurs indiquant le nombre de récipients complets dans chaque unité.}\label{fig:data-messy-spreadsheet-cell}
+\end{figure}
+
+Parmi la quantité d'éléments perturbateurs présents dans les feuilles de calculs on trouve également : les cellules fusionnées, les commentaires de cellule et l'inclusion d'unités de mesure dans une cellule, comme le symbole du pourcentage. Les cellules fusionnées peuvent rendre difficile le tri et le filtrage des données, ainsi que leur transfert dans d'autres programmes pour analyse.
+
+Enfin, l'endroit approprié pour les commentaires est une colonne nommée ``commentaires'' et les unités doivent être exprimées dans l'en-tête de colonne, la même unité de mesure devant être utilisée pour chaque ligne d'une colonne. Lorsque vous ajoutez des en-têtes à vos colonnes, veillez à ne pas inclure d'espaces, de chiffres ou de caractères spéciaux. Une bonne alternative aux espaces dans les en-têtes de colonne sont les traits de soulignement (``\_``), par exemple,''longueur\_mm'' est préférable à ``Longueur (mm)'', pour une colonne de valeurs de longueur exprimées en millimètres. Les noms de champ courts ou abrégés sont souvent souhaitables pendant la collecte des données pour économiser de l'espace à l'écran, mais ils peuvent devenir déroutants plus tard lorsque vous réexaminez les données pour les analyser. Il faut donc veiller à ce que les en-têtes ne soient pas trop ambigus et envisager de conserver la liste des codes utilisés ou un dictionnaire de données qui associe chaque en-tête de colonne à une description de la variable et à la manière dont elle a été mesurée.
+
+L'idée générale est de faire preuve de retenue lorsque vous travaillez avec des feuilles de calcul et de résister à la tentation d'utiliser toutes ses fonctionnalités. Soyez attentif à l'utilisation en aval de vos données, par vous dans R ou par d'autres dans d'autres environnements logiciels. Nous ne pouvons pas optimiser notre collecte de données pour toutes les situations possibles, mais avec quelques règles, nous pouvons en améliorer l'organisation pour en faciliter l'analyse avec d'autres outils.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Attention,colframe=darkred]
+
+De manière générale, méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans \href{https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates}{conséquences} lors de l'ouverture d'un fichier.
+
+\end{tcolorbox}
+
+\hypertarget{csv}{%
+\section{Enregistrer ses données}\label{csv}}
+
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig.~\ref{fig:xkcd-norm}). De manière générale, conservez vos données dans un \href{https://fr.wikipedia.org/wiki/Fichier_texte}{fichier texte}.
+
+Dans le cas des données tabulaires, utilisez le format CSV. Comme son nom l'indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
+
+\begin{itemize}
+\tightlist
+\item
+  Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
+\item
+  Le format CSV est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
+\item
+  Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un \href{https://www.bbc.com/news/technology-54423988}{changement dramatique de spécification}.
+\item
+  Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
+\end{itemize}
+
+
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_norm_normal_file_format} 
+
+}
+
+\caption{.NORM Normal File Format. ``At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts.'' \autocite[CC BY-NC 2.0][]{munroe2019}.}\label{fig:xkcd-norm}
+\end{figure}
+
+La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier CSV. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier CSV votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier CSV dans un tableur (fig.~\ref{fig:calc-csv}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{images/calc-csv} 
+
+}
+
+\caption{Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté).}\label{fig:calc-csv}
+\end{figure}
+
+\hypertarget{part-pruxe9paration-des-donnuxe9es}{%
+\part{Préparation des données}\label{part-pruxe9paration-des-donnuxe9es}}
+
+\hypertarget{data-tidy}{%
+\chapter{Introduction}\label{data-tidy}}
+
+Dans ce chapitre, nous allons passer en revue quelques-unes des principales méthodes permettant d'importer des données dans R. La méthode la plus courante consiste à utiliser la fonction \texttt{read.csv()} avec un fichier CSV. Il s'agit d'une approche recommandée, car la plupart des types de fichiers qui contiennent des données tabulaires peuvent être enregistrés au format CSV. Le format CSV est idéal car il s'agit d'un format ouvert, en texte clair, qui peut être lu et modifié par de nombreux programmes différents. Il convient à l'archivage à long terme, car c'est un format stable. Cependant, il est souvent plus pratique de travailler directement avec le fichier dans lequel les données ont été saisies, et de travailler avec un format avec lequel nos collaborateurs sont à l'aise, comme une feuille de calcul. Il existe plusieurs packages qui permettent de lire différents format de feuilles de calcul, d'autres formats de fichiers de données tabulaires courants et même des bases de données, directement dans R. Une grande partie de ce chapitre est consacrée à l'import dans R de données stockées dans des feuilles de calcul, prêtes à être analysées. Si vous disposez de fichiers de données provenant d'un autre logiciel, tel que SPSS, vous pouvez utiliser les fonctions \texttt{read\_*()} du paquet \emph{haven} de Hadley Wickham de la même manière que \texttt{read\_excel()} dans ce chapitre.
+
+R est également capable de gérer des situations plus difficiles, comme le travail avec des centaines ou des milliers de fichiers de données, la lecture de données tabulaires à partir de documents Microsoft Word ou de PDF, et la lecture de données à partir de fichiers de texte brut non structurés. Dans ce chapitre, nous allons brièvement montrer comment gérer ces situations.
+
+Il est rare que les données issues du travail sur le terrain ou obtenues directement d'un instrument soient immédiatement prêtes à être utilisées. Souvent, les données contiennent des incohérences et des erreurs mineures qui doivent être éliminées. L'identification et la suppression de ces contaminants sont rarement enseignées au cours de la formation de premier ou de deuxième cycle, et par conséquent, de nombreux chercheurs passent beaucoup de temps à se battre pour que leurs données soient exploitables. L'objectif de ce chapitre est d'étudier cinq concepts clés pour le nettoyage des données avec R. Ce chapitre vous donnera les outils nécessaires pour identifier les problèmes avec vos données, les corriger rapidement et simplement, et donner à vos données une forme appropriée pour l'analyse et la visualisation.
+
 \hypertarget{data-importer}{%
 \chapter{Importer et exporter}\label{data-importer}}
 
@@ -2588,8 +3148,11 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{data-traitement}{%
+\chapter{Traitement des données}\label{data-traitement}}
+
 \hypertarget{data-nettoyer}{%
-\chapter{Nettoyer}\label{data-nettoyer}}
+\section{Nettoyer}\label{data-nettoyer}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2600,7 +3163,7 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \end{Shaded}
 
 \hypertarget{data-selectionner}{%
-\chapter{Selectionner}\label{data-selectionner}}
+\section{Selectionner}\label{data-selectionner}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2611,7 +3174,7 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \end{Shaded}
 
 \hypertarget{data-filtrer}{%
-\chapter{Filtrer}\label{data-filtrer}}
+\section{Filtrer}\label{data-filtrer}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2620,7 +3183,7 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \end{Shaded}
 
 \hypertarget{data-transformer}{%
-\chapter{Transformer}\label{data-transformer}}
+\section{Transformer}\label{data-transformer}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2630,16 +3193,13 @@ Dans le cas de données tabulaires, utilisez le \protect\hyperlink{csv}{format C
 \end{Shaded}
 
 \hypertarget{data-jointure}{%
-\chapter{Fusionner}\label{data-jointure}}
+\section{Fusionner}\label{data-jointure}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# merge()}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{transformer}{%
-\chapter{Transformer}\label{transformer}}
 
 \hypertarget{part-uxe9luxe9ments-de-statistiques}{%
 \part{Éléments de statistiques}\label{part-uxe9luxe9ments-de-statistiques}}
@@ -2707,7 +3267,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{images/xkcd_curve_fitting} 
+{\centering \includegraphics[width=0.8\linewidth]{images/xkcd_curve_fitting} 
 
 }
 
@@ -2720,8 +3280,26 @@ correlation vs causalité
 \hypertarget{introduction-1}{%
 \chapter{Introduction}\label{introduction-1}}
 
+\hypertarget{recherche-empirique-en-matiuxe8re-de-visualisation-de-donnuxe9es}{%
+\section{Recherche empirique en matière de visualisation de données}\label{recherche-empirique-en-matiuxe8re-de-visualisation-de-donnuxe9es}}
+
+Il n'existe pas de principes absolus ou de pratiques idéales en matière de visualisation de données, mais il existe une abondante littérature sur la question. Il résulte de cette dernière quelques principes récurrents, souvent motivés par des préoccupations éthiques et esthétiques. Un exemple de préoccupation éthique est le principe selon lequel seules les données séquentielles peuvent être reliées à un graphique linéaire, car la ligne implique un changement continu entre les points. Les mesures de catégories, telles que les types d'artefacts, les lieux et les méthodes, ne doivent pas être reliées par des lignes (par exemple, il n'y a pas de séquence continue entre un artefact en pierre et un os d'animal). Un principe connexe est que, lorsque les magnitudes absolues des données sont importantes, l'axe vertical doit commencer à zéro \autocite{robbins2005,strange2007}. L'affichage des données le long d'un axe vertical qui ne comprend pas le zéro peut donner une fausse représentation de l'étendue des données et exagérer l'ampleur relative entre les valeurs. Un autre ensemble influent d'idées provient des mantras minimalistes de \textcite{tufte2001}. L'un de ses principes les plus fréquemment cités est ``maximiser le rapport données-encre, dans la limite du raisonnable'' \autocite{tufte1990}. L'``encre de données'' fait référence à l'encre utilisée pour afficher les données, et le rapport entre les données et l'encre est donc la quantité d'encre de données par rapport à l'encre totale utilisée dans une visualisation. Ces principes garantissent que les données ne sont pas cachées ou déformées par de mauvais choix ou des éléments non pertinents sur la visualisation, et que le lecteur peut apprécier les données dans la visualisation sans distraction ni confusion. Les conséquences pratiques de ce conseil sont notamment d'éviter les graphiques tridimensionnels lorsque des graphiques bidimensionnels suffisent (par exemple, les diagrammes à barres et les diagrammes circulaires). De même, le fait d'omettre les éléments superflus --- grilles, couleurs et éléments artistiques sur les graphiques --- contribue à améliorer le rapport données-encre.
+
+Si ces principes ont un attrait intuitif et sont largement répétés, ils peuvent conduire à des graphiques très minimalistes difficiles à interpréter \autocite{tukey1990}. \textcite{inbar2007} et \textcite{kulla-mader2007} ont constaté que les graphiques standard étaient largement préférés aux graphiques minimalistes de style Tufte. \textcite{kosslyn1992} et \textcite{carswell1992}, ont soulevé la question de savoir comment décider ce qui est de l'encre de données et ce qui ne l'est pas, et ont conclu que cela est souvent très subjectif. \textcite{hullman2011} ont suggéré que certaines données-encres peuvent profiter aux lecteurs en favorisant l'engagement avec la visualisation. Par exemple, \textcite{bateman2010} ainsi que \textcite{li2014} ont constaté que les sujets à qui l'on présentait des graphiques avec des éléments graphiques avaient beaucoup plus de chances de comprendre le message du graphique que ceux à qui l'on présentait des graphiques sans éléments graphiques. \textcite{kelly1989} n'a trouvé aucune différence dans le rappel immédiat d'informations provenant de graphiques à encres de données élevées et faibles dans un format de journal. De même, \textcite{mcgurgan2015} a constaté que les participants ont signalé des niveaux similaires de précision et d'effort mental lorsqu'ils ont répondu à des questions de compréhension de graphiques à l'aide de diagrammes à barres et de boxplots avec des ratios d'encre de données variables. D'autre part, Gillan et Richman \autocite*{gillan1994,gillan1994} ont trouvé un soutien empirique pour le principe de maximisation de l'encrage des données. Ils ont constaté que le pourcentage d'interprétations correctes des données des graphiques était significativement plus faible pour les graphiques à faible encrage que pour les graphiques à encrage moyen et élevé. Ce bref résumé des recherches sur le ratio data-ink montre qu'il s'agit d'un concept problématique, qui ne bénéficie que d'un soutien empirique équivoque. En somme, il semble que les principes fondés sur des questions subjectives d'esthétique des graphiques, souvent observés dans les conceptions de graphiques de style Tufte, ne conduisent pas toujours aux visualisations les plus efficaces.
+
+Ces résultats mitigés suggèrent que le minimalisme esthétique ne garantit pas toujours que nos visualisations de données soient faciles à interpréter avec précision. Quels sont donc les principes de base pour optimiser la vitesse à laquelle un lecteur peut percevoir les modèles dans les données, et la précision des informations qu'il peut extraire de la visualisation ? Dans le contexte d'une présentation de poster, ces optimisations sont hautement souhaitables, car le lecteur d'un poster espère généralement obtenir des informations beaucoup plus rapidement que s'il était assis à lire un article savant.
+
+\textcite{cleveland1984} ont mené des expériences en utilisant plusieurs types courants de visualisation de données pour tester la précision avec laquelle les sujets pouvaient lire des valeurs ponctuelles et faire des comparaisons dans les données. Ils ont constaté que les types de graphiques basés sur la longueur (tels que les graphiques à points et les graphiques à barres) étaient lus avec beaucoup plus de précision que les types de graphiques basés sur l'angle, la surface ou le volume (tels que les graphiques circulaires et les graphiques tridimensionnels). En outre, ils ont constaté que les performances sont nettement moins bonnes sur des diagrammes à barres empilées que sur des diagrammes à barres alignées, et que les comparaisons entre barres adjacentes sont plus précises qu'entre barres très éloignées. De nombreuses études ultérieures ont généralement confirmé ces résultats \autocite{heer2010,kosara2010,talbot2014}. \textcite{heer2010} ont reproduit les résultats de base pour la comparaison des tailles entre catégories, et ont également constaté que l'ajout de lignes de quadrillage sur une parcelle améliorait la précision. \textcite{kosara2010} ont testé des diagrammes de type tarte carrée ou gaufre (un carré divisé en 10 x 10 = 100 cellules) ainsi que des diagrammes de type tarte, barre empilée et beignet, et ont constaté que les répondants étaient plus confiants dans leur lecture des diagrammes de type tarte carrée et plus précis dans la lecture des valeurs du diagramme, par rapport aux autres types. \textcite{zubiaga2015} ont testé les répondants avec cinq types de graphiques (diagrammes à barres montrant la valeur moyenne de la distribution, diagrammes en essaims, boîtes à moustaches, diagrammes à barres empilées et histogrammes) afin de déterminer leur efficacité relative pour visualiser les distributions de variables. Ils ont constaté que les histogrammes sont les plus complets en termes de détails fournis, et qu'ils constituent le type de graphique qui conduit les répondants à la compréhension la plus précise des données sous-jacentes. \textcite{rangecroft2003} et \textcite{schonlau2012} ont constaté que les répondants peuvent lire les diagrammes circulaires en 2D avec plus de précision que les diagrammes circulaires en 3D. \textcite{zacks1998} ont trouvé un résultat similaire pour les diagrammes à barres 2D par rapport aux diagrammes à barres 3D.
+
+Des expériences récentes ont jeté un peu de lumière sur la rivalité traditionnelle entre les diagrammes en secteurs et les diagrammes en barres \autocite{spence2005}. Pour les jugements de comparaison entre catégories, les barres sont jugées plus précisément que les tartes \autocite{feldman-stewart2000}. Cependant, pour les estimations de la proportion du tout, les diagrammes en camembert sont aussi précis que les diagrammes en bâtons \autocite{simkin1987,spence1990}. Pour les comparaisons par paires, les diagrammes circulaires et les diagrammes à barres ont également des performances similaires \autocite{spence1991,meyer1997}. Ces études montrent que, dans certaines conditions, les graphiques en secteurs peuvent être plus efficaces que les graphiques en barres. Le meilleur choix du type de graphique dépend de l'objectif du graphique \autocite{kosslyn1992}, et les preuves ne permettent pas de faire une prescription universelle sur les types de graphiques.
+
+Bien que ces études empiriques démontrent une relation complexe entre le type de graphique et l'efficacité, elles peuvent fournir un classement simple, bien qu'approximatif, des stratégies de visualisation des données. Les diagrammes à points et les diagrammes à barres se situent généralement à l'extrémité supérieure du spectre, ainsi que des styles plus exotiques comme les diagrammes en gaufre et les histogrammes. Parmi les types de graphiques de rang inférieur, on trouve les diagrammes à barres empilées et les diagrammes circulaires. Tout type de graphique en 3D est classé en dernier.
+
+\hypertarget{repruxe9sentations}{%
+\chapter{Représentations}\label{repruxe9sentations}}
+
 \hypertarget{graph-quantites}{%
-\chapter{Représenter des quantités}\label{graph-quantites}}
+\section{Représenter des quantités}\label{graph-quantites}}
 
 On peut créer un diagramme en barres à l'aide de la fonction \texttt{barplot()}, dont l'argument \texttt{height} accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique.
 
@@ -2792,19 +3370,24 @@ On peut créer un diagramme en barres à l'aide de la fonction \texttt{barplot()
 \begin{center}\includegraphics[width=1\linewidth]{chapter_visualization_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 \hypertarget{graph-propotions}{%
-\chapter{Représenter des propotions}\label{graph-propotions}}
+\section{Représenter des propotions}\label{graph-propotions}}
 
 \hypertarget{graph-distributions}{%
-\chapter{Représenter des distributions}\label{graph-distributions}}
+\section{Représenter des distributions}\label{graph-distributions}}
 
 \hypertarget{graph-xy}{%
-\chapter{Réprésenter des relations entre variables}\label{graph-xy}}
+\section{Réprésenter des relations entre variables}\label{graph-xy}}
 
 \hypertarget{graph-series}{%
-\chapter{Représenter des séries temporelles}\label{graph-series}}
+\section{Représenter des séries temporelles}\label{graph-series}}
 
 \hypertarget{graph-tendances}{%
-\chapter{Représenter des tendances}\label{graph-tendances}}
+\section{Représenter des tendances}\label{graph-tendances}}
+
+\hypertarget{diagrammes-3d}{%
+\section{Diagrammes 3D}\label{diagrammes-3d}}
+
+Ne faites pas ça.
 
 \hypertarget{part-donnuxe9es-de-comptage}{%
 \part{Données de comptage}\label{part-donnuxe9es-de-comptage}}
@@ -3057,7 +3640,7 @@ Après l'installation de RStudio, la première étape consiste à en changer les
   Réglez \emph{Save workspace to .RData on exit} sur \emph{never}.
 \end{itemize}
 
-Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}).
+Un fichier .RData stocke les données et les fonctions que vous créez dans chaque session de travail. Par défaut, RStudio enregistre automatiquement ce fichier à la fermeture, et le recharge lorsque vous démarrez RStudio. C'est une source de problèmes et de confusion. En effet, il peut en résulter que des objets temporaires créés au cours de brèves expériences et explorations s'attardent sur plusieurs sessions car ils sont automatiquement rechargés, contaminant ainsi l'espace de travail. La modification de ces deux paramètres vous épargnera bien des soucis lorsque vous apprendrez à utiliser l'environnement de R, et vous aidera à prendre le contrôle des données et des fonctions que vous créez avec R (en vous évitant de faire débuter tous vos scripts par \texttt{rm(list\ =\ ls())}). Dans la plupart des cas, il est plus simple et plus efficace de considérer le code que vous écrivez comme le produit le plus important lorsque vous travaillez sur l'analyse, et d'écrire des instructions spécifiques pour exporter (ou enregistrer) uniquement les résultats les plus importants (par exemple, certaines sorties tabulaires sous forme de \protect\hyperlink{csv}{fichiers CSV}, et des graphiques sous forme de fichiers PNG).
 
 \end{tcolorbox}
 
@@ -3070,19 +3653,7 @@ Ces deux réglages vous épargneront de mauvaises surprises (et vous éviteront 
 \caption{Configuration globale de RStudio Desktop.}\label{fig:rstudio-settings}
 \end{figure}
 
-L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}). Par défaut, de haut en bas et de gauche à droite :
-
-\begin{itemize}
-\tightlist
-\item
-  Le premier quadrant contient les documents en cours d'édition (scripts\ldots), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document\ldots).
-\item
-  Le second quadrant permet d'accéder aux objets présent dans l'\protect\hyperlink{environnement}{environnement} et de voir l'historique des commandes.
-\item
-  Le troisième quadrant contient la \protect\hyperlink{console}{console}.
-\item
-  Le quatrième quadrant permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de \protect\hyperlink{packages}{gérer les packages} et d'\protect\hyperlink{aide}{afficher l'aide}.
-\end{itemize}
+L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répartis en quadrants (fig.~\ref{fig:rstudio-desktop}). Par défaut, de haut en bas et de gauche à droite\footnote{Pour plus de détails sur l'interface de RStudio, voir \textcite{verzani2012}, \textcite{gandrud2018} et \textcite{racine2012}} :
 
 \begin{figure}
 
@@ -3092,6 +3663,25 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 
 \caption{L'interface de RStudio Desktop.}\label{fig:rstudio-desktop}
 \end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Le quadrant supérieur gauche est l'éditeur de texte : il contient les documents en cours d'édition (scripts\ldots), permet d'explorer les données et offre un accès rapide à certaines commandes en fonction du contexte (exécuter un script, compiler un document\ldots). C'est là que vous écrivez et éditez le code et le texte. Écrire du code signifie écrire en texte brut, sans gras, soulignement, italique ou autre formatage. L'apparence de l'éditeur de texte peut être modifiée dans RStudio en allant dans le menu déroulant \emph{Tools}, et en sélectionnant \emph{Global Options\ldots{}}, puis en parcourant les options dans les sections \emph{Code} et \emph{Appearance} sur la liste de gauche. Il peut être utile d'afficher les caractères d'espacement (dans la section \emph{Code}, onglet \emph{Display}), et de vérifier toutes les options de complétion et de diagnostic (section \emph{Code}, onglet \emph{Completion} et \emph{Diagnostics}). Le code dans l'éditeur de texte est le produit le plus important de votre travail, c'est donc une bonne idée de l'enregistrer dans un \protect\hyperlink{projets}{endroit adapté}, avec un nom significatif (généralement les fichiers de code R se terminent par .R, avec un R majuscule après le point), et de l'enregistrer fréquemment pendant que vous travaillez dessus pour minimiser le risque de perte accidentelle.
+\item
+  Le quadrant supérieur droit peut comporter plusieurs onglets, en fonction de ce que vous faites. La plupart du temps, vous verrez un onglet \emph{Environment} et un onglet \emph{History}. L'onglet \emph{History} contient l'historique des commandes exécutées dans la console. L'onglet \emph{Environment} répertorie les objets qui sont actuellement disponibles dans votre session R. L'environnement est l'endroit où R stocke les résultats des calculs et des fonctions. Par exemple, si vous avez exécuté un code qui lit une feuille de calcul dans R et la stocke en tant qu'objet R, vous verrez cet objet répertorié dans l'onglet \emph{Environment}. Cet onglet est utile car il vous permet d'obtenir en un coup d'œil des informations de base sur la taille des objets que vous créez (par exemple, le nombre de lignes et de colonnes). Il permet de vérifier rapidement le résultat de vos calculs et voir si votre code fonctionne comme prévu. L'environnement est un aspect important de R car il nous offre un système cohérent et flexible pour créer, combiner et manipuler différents types de données pendant notre analyse. Les environnements sont un concept de programmation avancé, et tout ce que nous devons faire ici est de noter qu'ils sont utiles, et qu'il n'y a rien de comparable à eux dans les tableurs.
+  L'onglet \emph{History} contient l'historique des commandes que vous avez précédemment exécutées dans votre session R. Il est vivement recommande de sauvegarder votre code dans un fichier .R, même pour les analyses et les expériences les plus brèves. Si vous travaillez de manière expéditive sans enregistrer, vous pouvez utiliser l'historique pour parcourir vos commandes précédentes afin de les réutiliser et de les modifier. Vous pouvez également enregistrer l'historique de vos commandes R dans un fichier texte. Ce n'est cependant pas une méthode efficace pour garder une trace de votre travail. Une meilleure stratégie consiste à écrire du code dans l'éditeur de texte, entrecoupé de commentaires qui expliquent ce que fait le code, et d'enregistrer ce document sur votre ordinateur.
+\item
+  Le quadrant inférieur droit permet de naviguer dans les fichiers, de visualiser les graphiques (générés depuis la console ou à l'aide d'un script), de \protect\hyperlink{packages}{gérer les packages} et d'\protect\hyperlink{aide}{afficher l'aide}. Vous pouvez revenir aux graphiques précédents créés dans votre session actuelle. L'onglet \emph{Plots} comporte un bouton \emph{Export}'' qui permet d'enregistrer facilement vos graphiques sous forme de fichiers image sur votre ordinateur (dans différents formats) ou de les copier dans le presse-papiers pour un transfert rapide par copier-coller. Ces fonctionnalités sont utiles pour itérer vers un graphique de qualité publication.
+\item
+  Le quadrant inférieur gauche contient la \protect\hyperlink{r-console}{console} où le code est exécuté. Il n'y a pas de boutons spécifiques à la console, l'interaction directe avec ce volet est donc limitée. La partie la plus importante de ce volet est l'invite de commande, qui débute par un chevron \texttt{\textgreater{}}, et lorsque ce volet est actif, un curseur clignotant apparaît.
+\end{itemize}
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Il existe deux fonctions utiles de la console qui vous feront gagner du temps lorsque vous travaillerez avec R. La première est la touche de déplacement vers le haut de votre clavier, qui vous permet de réexécuter les commandes précédentes. Si vous placez votre curseur à l'invite et appuyez sur la touche de déplacement vers le haut, vous pouvez parcourir les lignes de code précédemment exécutées. Une fois que vous avez trouvé le code que vous voulez réexécuter, vous pouvez le modifier dans la console, si vous le souhaitez, ou simplement appuyer sur Entrée pour l'envoyer à l'interpréteur. La deuxième fonctionnalité pratique du volet console de RStudio est la petite icône en forme de flèche située à droite de la barre de titre de la console. Si vous regardez en haut du panneau de la console, vous verrez le mot \emph{Console}, puis vous verrez un chemin d'accès à un dossier sur votre ordinateur, et à la fin de celui-ci, vous verrez une petite icône en forme de flèche courbée pointant vers la droite. Le chemin sur votre ordinateur dans la barre de titre de la console est votre \protect\hyperlink{projets}{répertoire de travail}. Si vous cliquez sur la petite flèche, le volet des fichiers s'ouvre pour afficher le contenu de votre répertoire de travail.
+
+\end{tcolorbox}
 
 \hypertarget{cheat-sheet}{%
 \chapter{Aide mémoire}\label{cheat-sheet}}
@@ -3136,184 +3726,43 @@ L'interface de RStudio se présente sous la forme d'un ensemble d'onglets répar
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{fonctions-pipe}{%
+\section{Pipes}\label{fonctions-pipe}}
+
+L'opérateur \texttt{\textbar{}\textgreater{}} (\emph{pipe}) a été introduit dans la version 4.1 de R\footnote{Pour les versions de R antérieures 4.1, on peut utiliser l'opérateur \texttt{\%\textgreater{}\%} du package \href{https://magrittr.tidyverse.org/}{\emph{magrittr}}}. Ainsi, \texttt{x\ \textbar{}\textgreater{}\ f(y)} est interprété comme \texttt{f(x,\ y)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{|}\ErrorTok{\textgreater{}} 
+  \FunctionTok{transform}\NormalTok{(}\AttributeTok{avg =}\NormalTok{ mpg }\SpecialCharTok{/}\NormalTok{ wt) }\SpecialCharTok{|}\ErrorTok{\textgreater{}} 
+  \FunctionTok{subset}\NormalTok{(avg }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{, }\AttributeTok{select =} \FunctionTok{c}\NormalTok{(mpg, wt, avg))}
+\CommentTok{\#\textgreater{}                    mpg    wt       avg}
+\CommentTok{\#\textgreater{} Mazda RX4         21.0 2.620  8.015267}
+\CommentTok{\#\textgreater{} Mazda RX4 Wag     21.0 2.875  7.304348}
+\CommentTok{\#\textgreater{} Datsun 710        22.8 2.320  9.827586}
+\CommentTok{\#\textgreater{} Hornet 4 Drive    21.4 3.215  6.656299}
+\CommentTok{\#\textgreater{} Hornet Sportabout 18.7 3.440  5.436047}
+\CommentTok{\#\textgreater{} Valiant           18.1 3.460  5.231214}
+\CommentTok{\#\textgreater{} Merc 240D         24.4 3.190  7.648903}
+\CommentTok{\#\textgreater{} Merc 230          22.8 3.150  7.238095}
+\CommentTok{\#\textgreater{} Merc 280          19.2 3.440  5.581395}
+\CommentTok{\#\textgreater{} Merc 280C         17.8 3.440  5.174419}
+\CommentTok{\#\textgreater{} Fiat 128          32.4 2.200 14.727273}
+\CommentTok{\#\textgreater{} Honda Civic       30.4 1.615 18.823529}
+\CommentTok{\#\textgreater{} Toyota Corolla    33.9 1.835 18.474114}
+\CommentTok{\#\textgreater{} Toyota Corona     21.5 2.465  8.722110}
+\CommentTok{\#\textgreater{} Fiat X1{-}9         27.3 1.935 14.108527}
+\CommentTok{\#\textgreater{} Porsche 914{-}2     26.0 2.140 12.149533}
+\CommentTok{\#\textgreater{} Lotus Europa      30.4 1.513 20.092531}
+\CommentTok{\#\textgreater{} Ferrari Dino      19.7 2.770  7.111913}
+\CommentTok{\#\textgreater{} Volvo 142E        21.4 2.780  7.697842}
+\end{Highlighting}
+\end{Shaded}
+
+L'utilisation des \emph{pipes} à l'avantage de clarifier et de faciliter la lecture du code, mais peut considérablement complexifier le débuggage en cas de problème. Il est recommandé d'utiliser cet opérateur avec parcimonie.
+
 \hypertarget{bonnes-pratiques}{%
 \chapter{Bonnes pratiques}\label{bonnes-pratiques}}
-
-\hypertarget{projets}{%
-\section{Travailler par projets}\label{projets}}
-
-Une bonne pratique liée à l'utilisation de R consiste à \href{https://rstats.wtf/project-oriented-workflow.html}{organiser l'ensemble de son analyse en un projet}, c'est à dire un dossier autonome contenant l'ensemble des fichiers nécessaires à l'analyse (dont les données brutes et le fichiers générés). Une telle organisation doit permettre de déplacer le dossier sur son ordinateur ou sur un autre ordinateur, tout en maintenant le bon fonctionnement du code (absence de liens brisés, de dépendances manquantes\ldots).
-
-Ce dossier, ou répertoire de travail (\emph{working directory}), peut être défini ou retrouvé à l'aide des fonctions \texttt{setwd()} et \texttt{getwd()}, respectivement :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Définition du répertoire de travail}
-\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/vers/mon/dossier"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Une fois le répertoire de travail défini, toute référence à un fichier en utilisant un simple nom de fichier ou un chemin relatif sera interprétée relativement au répertoire de travail.
-
-Cependant, le risque est de se retrouver dans la situation suivante :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Définition du répertoire de travail}
-\FunctionTok{setwd}\NormalTok{(}\StringTok{"/chemin/uniquement/valide/sur/mon/ordinateur"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Pour pallier ce problème qui rend difficilement déplaçable un dossier de projet, il existe différentes solutions parmi lesquelles :
-
-\begin{itemize}
-\tightlist
-\item
-  L'utilisation du package \href{https://here.r-lib.org/}{\emph{here}},
-\item
-  L'utilisation de la gestion de projet dans RStudio.
-\end{itemize}
-
-RStudio dispose d'un mécanisme permettant de \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{créer facilement de tels projets}. Il est possible de créer un projet dans RStudio à partir du menu déroulant situé en haut à droite de l'interface ou en cliquant sur \emph{New Project\ldots{}} depuis le menu \emph{File}. Le projet peut alors être créé soit dans un nouveau dossier, soit en transformant un dossier existant (fig.~\ref{fig:rstudio-project}).
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{images/rstudio-project} 
-
-}
-
-\caption{Création d'un projet avec RStudio.}\label{fig:rstudio-project}
-\end{figure}
-
-Un projet créé par RStudio est reconnaissable par la présence d'un fichier \texttt{.Rproj}. Ce fichier marque le dossier de plus haut niveau au sein d'un projet (répertoire de travail), à partir duquel des chemins d'accès relatifs peuvent être utilisés pour lire ou écrire des fichiers. Le répertoire de travail est automatiquement définit lors de l'ouverture d'un projet RStudio : il n'est plus nécessaire d'utiliser \texttt{setwd()}.
-
-L'organisation des fichiers et des sous-dossiers au sein d'un projet relève des habitudes de travail de chacun. S'il n'existe pas de consensus sur la manière d'organiser les fichiers à l'intérieur d'un projet, il peut cependant être avantageux de suivre certaines conventions (fig.~\ref{fig:xkcd-documents}), comme celles utilisées par le package \href{https://github.com/benmarwick/rrtools}{\emph{rrtools}} par exemple.
-
-
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_documents} 
-
-}
-
-\caption{Documents. ``Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Copy of Untitled.doc'' \autocite[CC BY-NC 2.0][]{munroe2014}.}\label{fig:xkcd-documents}
-\end{figure}
-
-\hypertarget{csv}{%
-\section{Sauvegarder ses données}\label{csv}}
-
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (fig.~\ref{fig:xkcd-norm}). De manière générale, conservez vos données dans un \href{https://fr.wikipedia.org/wiki/Fichier_texte}{fichier texte}.
-
-Dans le cas des données tabulaires, utilisez le format CSV. Comme son nom l'indique, un fichier CSV est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
-
-\begin{itemize}
-\tightlist
-\item
-  Un fichier CSV est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
-\item
-  Le format CSV est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier CSV peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
-\item
-  Le format CSV est un format bien établi (ses origines remontent aux années 1970), il ne risque pas de subir un \href{https://www.bbc.com/news/technology-54423988}{changement dramatique de spécification}.
-\item
-  Son apparente austérité (il ne contient pas de formatage) oblige a structurer correctement ses données.
-\end{itemize}
-
-
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_norm_normal_file_format} 
-
-}
-
-\caption{.NORM Normal File Format. ``At some point, compression becomes an aesthetic design choice. Luckily, SVG is a really flexible format, so there's no reason it can't support vector JPEG artifacts.'' \autocite[CC BY-NC 2.0][]{munroe2019}.}\label{fig:xkcd-norm}
-\end{figure}
-
-La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier CSV. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier CSV votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier CSV dans un tableur (fig.~\ref{fig:calc-csv}).
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth]{images/calc-csv} 
-
-}
-
-\caption{Paramètres lors de l'export d'un fichier au format CSV avec LibreOffice Calc (choisissez l'encodage de caractères UTF-8 et un séparateur de champ adapté).}\label{fig:calc-csv}
-\end{figure}
-
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Attention,colframe=darkred]
-
-Méfiez-vous de votre tableur ! Ces derniers ont tendance à réaliser automatiquement des conversions qui ne sont pas sans \href{https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates}{conséquences} lors de l'ouverture d'un fichier.
-
-\end{tcolorbox}
-
-\hypertarget{dependances}{%
-\section{Limiter les dépendances}\label{dependances}}
-
-Si les packages de base de R offrent de nombreuses possibilités, il est courant d'avoir besoin de fonctionnalités supplémentaires au cours d'une étude. Pour une analyse spécifique, il est très probable qu'il existe déjà un ou plusieurs packages offrant les fonctionnalités recherchées et installable depuis le CRAN. Cette offre pléthorique a cependant un revers : à chaque package supplémentaire utilisé dans votre projet, vous augmentez le risque de voir apparaître des problèmes liés à ces dépendances\footnote{Sur le sujet, voir les billets regroupés sur le site du \href{https://www.tinyverse.org/}{tinyverse}.}.
-
-Par exemple, \href{http://factominer.free.fr/}{\emph{FactoMineR}} est sans doute le package le plus utilisé pour l'analyse de données multivariées. \emph{FactoMineR} possède 15 dépendances directes : d'autres packages dont il utilise les fonctionnalités. Cependant, chacune de ces dépendances est susceptible d'avoir elle même des dépendances, et ainsi de suite, si bien que \emph{FactoMineR} a en réalité une longue chaîne de 104 (!) dépendances (fig.~\ref{fig:factominer-dependency}).
-
-
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{chapter_appendix_files/figure-latex/factominer-dependency-1} 
-
-}
-
-\caption{Réseau des dépendances du package \emph{FactoMineR} (hors packages de base). Les noms des packages ont été omis pour faciliter la lecture (\emph{FactoMineR} est représenté par un triangle noir, les autres packages sont représentés par des points gris).}\label{fig:factominer-dependency}
-\end{figure}
-
-Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (fig.~\ref{fig:xkcd-dependency}) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
-
-\begin{itemize}
-\tightlist
-\item
-  Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique (\protect\hyperlink{fonctions-ecrire}{écrivez vos propres fonctions !}).
-\item
-  Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
-\item
-  N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
-\end{itemize}
-
-
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/xkcd_dependency} 
-
-}
-
-\caption{Dependency. ``Someday ImageMagick will finally break for good and we'll have a long period of scrambling as we try to reassemble civilization from the rubble.'' \autocite[CC BY-NC 2.0][]{munroe2020}.}\label{fig:xkcd-dependency}
-\end{figure}
-
-Le tableau n'est cependant pas totalement noir. Les packages publiés sur le CRAN doivent se conformer à des règles strictes et sont continuellement testés dans différentes configurations (systèmes d'exploitation et versions de R), obligeant les développeurs à réagir rapidement lorsqu'un bug est observé. De plus, lorsqu'un package n'est plus disponible sur le CRAN, les versions antérieures sont archivées et restent disponibles au téléchargement. Enfin, des initiatives comme \href{https://ropensci.org/}{rOpenSci} œuvrent pour garantir un écosystème fonctionnel, en favorisant l'évaluation et la maintenance des packages.
-
-\hypertarget{reprex}{%
-\section{Écrire des exemples reproductibles}\label{reprex}}
-
-Si vous souhaitez obtenir de l'aide en ligne auprès de la communauté des utilisateurs de R, sur \href{https://stackoverflow.com/questions}{Stack Overflow}\footnote{Avant de poster votre question sur Stack Overflow, prenez le temps de bien lire les \href{https://stackoverflow.com/help/how-to-ask}{recommandations d'écriture}.} ou sur les \href{https://www.r-project.org/mail.html}{listes de diffusion}, la seule description de votre difficulté ne sera pas suffisante. Vous devez permettre aux autres de reproduire le problème sur leur machine pour qu'ils puissent vous proposer une solution. Pour cela, inutile de diffuser l'intégralité de votre code et de vos données, préparez un exemple qui soit :
-
-\begin{itemize}
-\tightlist
-\item
-  Minimal : utilisez le moins de code possible tout en produisant le même problème.
-\item
-  Complet : fournissez tous les éléments (version de R, packages utilisés, etc.) dont un tiers a besoin pour reproduire votre problème. Utilisez les données d'exemple de R.
-\item
-  Reproductible : le code que vous vous apprêtez à fournir doit reproduire le problème.
-\end{itemize}
-
-Ces trois aspects sont détaillés dans l'\href{https://stackoverflow.com/help/minimal-reproducible-example}{aide de Stack Overflow}, il existe également une \href{https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example}{question dédié} à l'écriture d'un exemple reproductible (\href{https://twitter.com/romain_francois/status/530011023743655936}{\emph{reprex}}) avec R.
-
-Comme le souligne \textcite{wickham2016}, la plupart du temps, l'écriture d'un exemple reproductible vous permettra d'identifier et de résoudre vous-même le problème.
-
-\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
-
-L'utilisation du package \href{https://reprex.tidyverse.org/}{\emph{reprex}}\footnote{Voir \url{https://reprex.tidyverse.org/articles/articles/learn-reprex.html}.} peut vous aider à écrire un exemple reproductible.
-
-\end{tcolorbox}
 
 \hypertarget{style}{%
 \chapter{Style de programmation}\label{style}}

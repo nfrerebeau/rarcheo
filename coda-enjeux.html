@@ -4,17 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>25 Introduction | R pour l’archéologue</title>
+<title>19 Introduction | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
-<meta name="description" content="25.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.66 Par exemple, la composition élémentaire d’une céramique correspond aux...">
+<meta name="author" content="Ben Marwick">
+<meta name="description" content="19.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.116 Par exemple, la composition élémentaire d’une céramique correspond aux...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="25 Introduction | R pour l’archéologue">
+<meta property="og:title" content="19 Introduction | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/coda-enjeux.html">
-<meta property="og:description" content="25.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.66 Par exemple, la composition élémentaire d’une céramique correspond aux...">
+<meta property="og:description" content="19.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.116 Par exemple, la composition élémentaire d’une céramique correspond aux...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="25 Introduction | R pour l’archéologue">
-<meta name="twitter:description" content="25.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.66 Par exemple, la composition élémentaire d’une céramique correspond aux...">
+<meta name="twitter:title" content="19 Introduction | R pour l’archéologue">
+<meta name="twitter:description" content="19.1 Définitions Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.116 Par exemple, la composition élémentaire d’une céramique correspond aux...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -52,45 +53,40 @@
 <li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
 <li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
 <li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-ecrire.html"><span class="header-section-number">6</span> Écrire des fonctions</a></li>
+<li class="book-part">Collecter et organiser ses données</li>
+<li><a class="" href="collect-introduction.html"><span class="header-section-number">7</span> Introduction</a></li>
+<li><a class="" href="g%C3%A9rer-ses-fichiers.html"><span class="header-section-number">8</span> Gérer ses fichiers</a></li>
+<li><a class="" href="organiser-ses-donn%C3%A9es.html"><span class="header-section-number">9</span> Organiser ses données</a></li>
 <li class="book-part">Préparation des données</li>
-<li><a class="" href="data-tidy.html"><span class="header-section-number">6</span> Introduction</a></li>
-<li><a class="" href="data-importer.html"><span class="header-section-number">7</span> Importer et exporter</a></li>
-<li><a class="" href="data-nettoyer.html"><span class="header-section-number">8</span> Nettoyer</a></li>
-<li><a class="" href="data-selectionner.html"><span class="header-section-number">9</span> Selectionner</a></li>
-<li><a class="" href="data-filtrer.html"><span class="header-section-number">10</span> Filtrer</a></li>
-<li><a class="" href="data-transformer.html"><span class="header-section-number">11</span> Transformer</a></li>
-<li><a class="" href="data-jointure.html"><span class="header-section-number">12</span> Fusionner</a></li>
-<li><a class="" href="transformer.html"><span class="header-section-number">13</span> Transformer</a></li>
+<li><a class="" href="data-tidy.html"><span class="header-section-number">10</span> Introduction</a></li>
+<li><a class="" href="data-importer.html"><span class="header-section-number">11</span> Importer et exporter</a></li>
+<li><a class="" href="data-traitement.html"><span class="header-section-number">12</span> Traitement des données</a></li>
 <li class="book-part">Éléments de statistiques</li>
-<li><a class="" href="variables.html"><span class="header-section-number">14</span> Introduction</a></li>
-<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">15</span> Statistique descriptive</a></li>
-<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">16</span> Relations entre variables</a></li>
+<li><a class="" href="variables.html"><span class="header-section-number">13</span> Introduction</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">14</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">15</span> Relations entre variables</a></li>
 <li class="book-part">Visualisation de données</li>
-<li><a class="" href="introduction-1.html"><span class="header-section-number">17</span> Introduction</a></li>
-<li><a class="" href="graph-quantites.html"><span class="header-section-number">18</span> Représenter des quantités</a></li>
-<li><a class="" href="graph-propotions.html"><span class="header-section-number">19</span> Représenter des propotions</a></li>
-<li><a class="" href="graph-distributions.html"><span class="header-section-number">20</span> Représenter des distributions</a></li>
-<li><a class="" href="graph-xy.html"><span class="header-section-number">21</span> Réprésenter des relations entre variables</a></li>
-<li><a class="" href="graph-series.html"><span class="header-section-number">22</span> Représenter des séries temporelles</a></li>
-<li><a class="" href="graph-tendances.html"><span class="header-section-number">23</span> Représenter des tendances</a></li>
+<li><a class="" href="introduction-1.html"><span class="header-section-number">16</span> Introduction</a></li>
+<li><a class="" href="repr%C3%A9sentations.html"><span class="header-section-number">17</span> Représentations</a></li>
 <li class="book-part">Données de comptage</li>
-<li><a class="" href="introduction-2.html"><span class="header-section-number">24</span> Introduction</a></li>
+<li><a class="" href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></li>
 <li class="book-part">Données de composition</li>
-<li><a class="active" href="coda-enjeux.html"><span class="header-section-number">25</span> Introduction</a></li>
-<li><a class="" href="coda-transformations.html"><span class="header-section-number">26</span> Transformations de données</a></li>
+<li><a class="active" href="coda-enjeux.html"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">27</span> Introduction</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">28</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">29</span> Chronologie quantitative</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">21</span> Introduction</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">22</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">23</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">30</span> Introduction</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">31</span> Analyse de données vectorielles</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">32</span> Analyse de données raster</a></li>
+<li><a class="" href="introduction-4.html"><span class="header-section-number">24</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">25</span> Analyse de données vectorielles</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">26</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">33</span> Installation</a></li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">34</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">35</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">36</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">27</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">28</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">29</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">30</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -99,48 +95,48 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="coda-enjeux" class="section level1" number="25">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="coda-enjeux" class="section level1" number="19">
 <h1>
-<span class="header-section-number">25</span> Introduction<a class="anchor" aria-label="anchor" href="#coda-enjeux"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19</span> Introduction<a class="anchor" aria-label="anchor" href="#coda-enjeux"><i class="fas fa-link"></i></a>
 </h1>
-<div id="coda-definitions" class="section level2" number="25.1">
+<div id="coda-definitions" class="section level2" number="19.1">
 <h2>
-<span class="header-section-number">25.1</span> Définitions<a class="anchor" aria-label="anchor" href="#coda-definitions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.1</span> Définitions<a class="anchor" aria-label="anchor" href="#coda-definitions"><i class="fas fa-link"></i></a>
 </h2>
-<p>Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;J. Aitchison, &lt;span&gt;« The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Journal of the Royal Statistical Society: Series B (Methodological)&lt;/em&gt; 44, nᵒ 2 (janvier 1982): 139‑60, &lt;a href="https://doi.org/10.1111/j.2517-6161.1982.tb01195.x" role="doc-biblioref"&gt;https://doi.org/10.1111/j.2517-6161.1982.tb01195.x&lt;/a&gt;; J. Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, Monographs on Statistics Et Applied Probability (&lt;span&gt;Londres, UK ; New York, USA&lt;/span&gt;: &lt;span&gt;Chapman and Hall&lt;/span&gt;, 1986), &lt;a href="http://dx.doi.org/10.1007/978-94-009-4109-0" role="doc-biblioref"&gt;http://dx.doi.org/10.1007/978-94-009-4109-0&lt;/a&gt;.&lt;/p&gt;'><sup>66</sup></a></span> Par exemple, la composition élémentaire d’une céramique correspond aux teneurs des différents oxydes la constituant (les teneurs sont exprimées en pourcentages massiques, leur somme est égale à 100%).</p>
+<p>Une composition décrit les parties d’un tout comme des parts mutuellement exclusives et exhaustives.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;J. Aitchison, &lt;span&gt;« The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Journal of the Royal Statistical Society: Series B (Methodological)&lt;/em&gt; 44, nᵒ 2 (janvier 1982): 139‑60, &lt;a href="https://doi.org/10.1111/j.2517-6161.1982.tb01195.x" role="doc-biblioref"&gt;https://doi.org/10.1111/j.2517-6161.1982.tb01195.x&lt;/a&gt;; J. Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, Monographs on Statistics Et Applied Probability (&lt;span&gt;Londres, UK ; New York, USA&lt;/span&gt;: &lt;span&gt;Chapman and Hall&lt;/span&gt;, 1986), &lt;a href="http://dx.doi.org/10.1007/978-94-009-4109-0" role="doc-biblioref"&gt;http://dx.doi.org/10.1007/978-94-009-4109-0&lt;/a&gt;.&lt;/p&gt;'><sup>116</sup></a></span> Par exemple, la composition élémentaire d’une céramique correspond aux teneurs des différents oxydes la constituant (les teneurs sont exprimées en pourcentages massiques, leur somme est égale à 100%).</p>
 <p>Une composition <span class="math inline">\(x\)</span> est donc définie comme un vecteur de longueur <span class="math inline">\(D\)</span> dont tous les <strong>composés</strong> (<span class="math inline">\(x_{1}, x_{2}, \dotsc, x_{D}\)</span>) sont des réels strictement positifs (<span class="math inline">\(x_{1} &gt; 0, \dotsc, x_{D} &gt; 0\)</span>) :</p>
 <p><span class="math display" id="eq:composition">\[\begin{equation}
     x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right] \forall x_{i} &gt; 0
-  \tag{25.1}
+  \tag{19.1}
 \end{equation}\]</span></p>
 <p>Les composés portent une information relative : seuls les rapports entre ces composés sont d’intérêt, car la somme <span class="math inline">\(k\)</span> des teneurs du vecteur composition est arbitraire. Pour un ensemble de compositions cette somme est constante et est généralement égale à 1, 100, 10<sup>6</sup>, selon que l’on considère des parts d’une unité, des pourcentages ou, par exemple, des <abbr title="partie par million">ppm</abbr>, en fonction des conventions.</p>
-<p>L’opération qui permet la normalisation d’une composition <span class="math inline">\(x\)</span> est appelée <strong>fermeture</strong> des données (notée <span class="math inline">\(\mathscr{C}\)</span> pour <em>closure</em>) et consiste à diviser chaque partie par le tout, puis à multiplier le résultat par une constante <span class="math inline">\(k\)</span> <a href="coda-enjeux.html#eq:closure">(25.2)</a>.</p>
+<p>L’opération qui permet la normalisation d’une composition <span class="math inline">\(x\)</span> est appelée <strong>fermeture</strong> des données (notée <span class="math inline">\(\mathscr{C}\)</span> pour <em>closure</em>) et consiste à diviser chaque partie par le tout, puis à multiplier le résultat par une constante <span class="math inline">\(k\)</span> <a href="coda-enjeux.html#eq:closure">(19.2)</a>.</p>
 <p><span class="math display" id="eq:closure">\[\begin{equation}
     \mathscr{C}(x) = \frac{k}{\sum_{i=1}^{D} x_{i}} \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]
-  \tag{25.2}
+  \tag{19.2}
 \end{equation}\]</span></p>
 <p>Par exemple, dans le cas d’un objet de masse totale <span class="math inline">\(m\)</span>, décomposé en ses différents constituants de masses <span class="math inline">\(m_{1}, m_{2}, \ldots, m_{D}\)</span>, on a : <span class="math inline">\(x = \frac{1}{m} \left[ m_{1}, m_{2}, \dotsc, m_{D} \right]\)</span>.</p>
-<p>Pour une composition <span class="math inline">\(x\)</span> donnée, une sous-composition <span class="math inline">\(y\)</span> est définie comme un sous-ensemble de <span class="math inline">\(x\)</span> ayant subi une opération de fermeture <a href="coda-enjeux.html#eq:subcomposition">(25.3)</a>.</p>
+<p>Pour une composition <span class="math inline">\(x\)</span> donnée, une sous-composition <span class="math inline">\(y\)</span> est définie comme un sous-ensemble de <span class="math inline">\(x\)</span> ayant subi une opération de fermeture <a href="coda-enjeux.html#eq:subcomposition">(19.3)</a>.</p>
 <p><span class="math display" id="eq:subcomposition">\[\begin{equation}
     y = \left[ y_{1}, y_{2}, \dotsc, y_{C} \right] = \mathscr{C} \left[x_{1}, x_{2}, \dotsc, x_{C} \right] \forall C &lt; D
-  \tag{25.3}
+  \tag{19.3}
 \end{equation}\]</span></p>
 <div class="rmdnote">
 <p>En pratique, seules des sous-compositions sont généralement connues et celles-ci dépendent du problème à traiter et de la capacité à reconnaître les différents composés d’un système et à les mesurer. On ne mesure jamais l’intégralité des éléments chimiques lors d’une analyse, on ne connaît pas l’ensemble des espèces appartenant à un écosystème, certaines catégories d’objets peuvent être ignorées lors d’une étude (ou ne pas avoir été reconnues du fait de la fragmentation du matériel), etc.</p>
 </div>
 <p>Du fait de la fermeture des données, l’univers d’une composition (c’est-à-dire l’ensemble de toutes les valeurs susceptibles d’être prises par ses différents composés) est un espace particulier. Ce dernier possède une dimension de moins que le nombre de composés : bien qu’il y ait <span class="math inline">\(D\)</span> observations pour chaque individus, il n’y a en effet que <span class="math inline">\(D-1\)</span> valeurs indépendantes. Autrement formulé, si les <span class="math inline">\(D-1\)</span> teneurs sont connues, sachant que leur somme est constante, la dernière teneur est connue également.</p>
-<p>Cet univers (ou espace échantillon) peut être facilement représenté dans le cas de compositions à deux ou trois composés. Lorsque ces compositions sont projetées dans un espace réel, on constate qu’elles appartiennent toutes à un même sous-espace triangulaire (simplexe ; fig. <a href="coda-enjeux.html#fig:coda-simplex">25.1</a>)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;En termes géométriques, les observations appartiennent à un hyperplan (&lt;span class="math inline"&gt;\(S^{d}\)&lt;/span&gt;) de l’espace euclidien à &lt;span class="math inline"&gt;\(D\)&lt;/span&gt; dimensions &lt;span class="math inline"&gt;\(\mathbb{R}^{D}\)&lt;/span&gt; (avec &lt;span class="math inline"&gt;\(d = D-1\)&lt;/span&gt;).&lt;/p&gt;'><sup>67</sup></a>.</p>
+<p>Cet univers (ou espace échantillon) peut être facilement représenté dans le cas de compositions à deux ou trois composés. Lorsque ces compositions sont projetées dans un espace réel, on constate qu’elles appartiennent toutes à un même sous-espace triangulaire (simplexe ; fig. <a href="coda-enjeux.html#fig:coda-simplex">19.1</a>)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;En termes géométriques, les observations appartiennent à un hyperplan (&lt;span class="math inline"&gt;\(S^{d}\)&lt;/span&gt;) de l’espace euclidien à &lt;span class="math inline"&gt;\(D\)&lt;/span&gt; dimensions &lt;span class="math inline"&gt;\(\mathbb{R}^{D}\)&lt;/span&gt; (avec &lt;span class="math inline"&gt;\(d = D-1\)&lt;/span&gt;).&lt;/p&gt;'><sup>117</sup></a>.</p>
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:coda-simplex"></span>
 <img src="chapter_coda_files/figure-html/coda-simplex-1.png" alt="Projection de compositions à deux (gauche) et trois composés (droite) dans un espace réel à deux et trois dimensions, respectivement. L’ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d’une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés." width="100%"><p class="caption">
-Figure 25.1: Projection de compositions à deux (gauche) et trois composés (droite) dans un espace réel à deux et trois dimensions, respectivement. L’ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d’une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés.
+Figure 19.1: Projection de compositions à deux (gauche) et trois composés (droite) dans un espace réel à deux et trois dimensions, respectivement. L’ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d’une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés.
 </p>
 </div>
 </div>
-<div id="coda-principes" class="section level2" number="25.2">
+<div id="coda-principes" class="section level2" number="19.2">
 <h2>
-<span class="header-section-number">25.2</span> Principes<a class="anchor" aria-label="anchor" href="#coda-principes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.2</span> Principes<a class="anchor" aria-label="anchor" href="#coda-principes"><i class="fas fa-link"></i></a>
 </h2>
 <p>L’analyse de données de composition est régie par quatre principes :</p>
 <dl>
@@ -148,7 +144,7 @@ Figure 25.1: Projection de compositions à deux (gauche) et trois composés (dro
 <dd>La comparaison d’échantillons de tailles différentes est permise par l’opération de fermeture des données qui les force à partager la même somme <span class="math inline">\(k\)</span>. Toute analyse de ces données doit donc conduire à des résultats similaires indépendamment de la valeur de <span class="math inline">\(k\)</span>.
 </dd>
 <dt><em>Perturbation invariance</em></dt>
-<dd>Toute composition peut être exprimée à l’aide d’unités différentes selon les grandeurs mesurées (kg, pourcentages massiques, dm<sup>3</sup>, pourcentages volumiques, moles, pression partielle, etc.). Le choix des modalités de quantification revient alors à l’expérimentateur et plusieurs approches peuvent être également considérées comme pertinentes. Les différents composants d’une composition sont qualitativement différents : chacun portant une information qui lui est propre et il peut être utile de souligner une propriété particulière<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Par exemple, lors du passage de la masse au pourcentage volumique en utilisant la densité de chaque composant.&lt;/p&gt;"><sup>68</sup></a>. Malgré le changement d’unité, la composition mesurée reste la même et toute analyse statistique sensible doit permettre d’obtenir des résultats qualitativement identiques, quelle que soit l’unité choisie.
+<dd>Toute composition peut être exprimée à l’aide d’unités différentes selon les grandeurs mesurées (kg, pourcentages massiques, dm<sup>3</sup>, pourcentages volumiques, moles, pression partielle, etc.). Le choix des modalités de quantification revient alors à l’expérimentateur et plusieurs approches peuvent être également considérées comme pertinentes. Les différents composants d’une composition sont qualitativement différents : chacun portant une information qui lui est propre et il peut être utile de souligner une propriété particulière<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Par exemple, lors du passage de la masse au pourcentage volumique en utilisant la densité de chaque composant.&lt;/p&gt;"><sup>118</sup></a>. Malgré le changement d’unité, la composition mesurée reste la même et toute analyse statistique sensible doit permettre d’obtenir des résultats qualitativement identiques, quelle que soit l’unité choisie.
 </dd>
 <dt><em>Permutation invariance</em></dt>
 <dd>Le résultat de l’analyse ne doit pas dépendre de l’ordre des composants dans le vecteur composition.
@@ -159,14 +155,14 @@ Figure 25.1: Projection de compositions à deux (gauche) et trois composés (dro
 </dl>
 <p>Ainsi, ni la somme des composants du vecteur composition, ni le choix des unités, ni la séquence des composés ou l’étude d’un sous-ensemble issu d’une composition, ne doivent affecter les résultats de l’analyse.</p>
 </div>
-<div id="coda-probleme" class="section level2" number="25.3">
+<div id="coda-probleme" class="section level2" number="19.3">
 <h2>
-<span class="header-section-number">25.3</span> Étendue du problème<a class="anchor" aria-label="anchor" href="#coda-probleme"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.3</span> Étendue du problème<a class="anchor" aria-label="anchor" href="#coda-probleme"><i class="fas fa-link"></i></a>
 </h2>
-<p>Soient deux archéologues, Howard et Arthur qui se partagent l’étude de plusieurs ensembles de mobilier. On considère pour l’exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d’étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (tab. <a href="coda-enjeux.html#tab:coda-subcoherence">25.1</a>). Les résultats d’Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu’ils ont en commun devraient s’accorder.</p>
+<p>Soient deux archéologues, Howard et Arthur qui se partagent l’étude de plusieurs ensembles de mobilier. On considère pour l’exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d’étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (tab. <a href="coda-enjeux.html#tab:coda-subcoherence">19.1</a>). Les résultats d’Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu’ils ont en commun devraient s’accorder.</p>
 <div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:coda-subcoherence">Tableau 25.1: </span>Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues.
+<span id="tab:coda-subcoherence">Tableau 19.1: </span>Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues.
 </caption>
 <thead>
 <tr>
@@ -278,46 +274,46 @@ C
 </tbody>
 </table></div>
 <p>A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent 0.5 et -1, respectivement, alors qu’ils étudient le même matériel.</p>
-<p>Les définitions classiques de la covariance et de la corrélation ne respectent pas le principe de <em>subcompositional coherence</em> (voir l’encadré ci-après). Ce problème se manifeste particulièrement lorsque les teneurs brutes de deux composés sont représentés au sein d’un diagramme de dispersion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Ou diagramme de Harker &lt;span class="citation"&gt; (Alfred Harker, &lt;em&gt;The &lt;span&gt;Natural History&lt;/span&gt; of &lt;span&gt;Igneous Rocks&lt;/span&gt;&lt;/em&gt; (&lt;span&gt;New York&lt;/span&gt;: &lt;span&gt;Macmillan&lt;/span&gt;, 1909), 119)&lt;/span&gt;.&lt;/p&gt;'><sup>69</sup></a>. Il n’y a en effet aucune garantie que les projections à partir du jeu de données initial ou d’une sous-composition conduisent à des observations similaires. Bien que ce type de représentation soit particulièrement courant, il est impossible de faire confiance aux tendances ainsi mises en évidence.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;J. Aitchison et K. W. Ng, &lt;span&gt;« The Role of Perturbation in Compositional Data Analysis »&lt;/span&gt;, &lt;em&gt;Statistical Modelling: An International Journal&lt;/em&gt; 5, nᵒ 2 (juillet 2005): 173‑85, &lt;a href="https://doi.org/10.1191/1471082X05st091oa" role="doc-biblioref"&gt;https://doi.org/10.1191/1471082X05st091oa&lt;/a&gt;.&lt;/p&gt;'><sup>70</sup></a></span><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Voir la réponse de &lt;span class="citation"&gt;Joaquín A. Cortés, &lt;span&gt;« On the &lt;span&gt;Harker Variation Diagrams&lt;/span&gt;; &lt;span&gt;A Comment&lt;/span&gt; on &lt;span&gt;“&lt;span&gt;The Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;. &lt;span&gt;Where Are We&lt;/span&gt; and &lt;span&gt;Where Should We Be Heading&lt;/span&gt;?”&lt;/span&gt; By &lt;span&gt;Aitchison&lt;/span&gt; and &lt;span&gt;Egozcue&lt;/span&gt; (2005) »&lt;/span&gt;, &lt;em&gt;Mathematical Geosciences&lt;/em&gt; 41, nᵒ 7 (octobre 2009): 817‑28, &lt;a href="https://doi.org/10.1007/s11004-009-9222-8" role="doc-biblioref"&gt;https://doi.org/10.1007/s11004-009-9222-8&lt;/a&gt;&lt;/span&gt;.&lt;/p&gt;'><sup>71</sup></a>.</p>
+<p>Les définitions classiques de la covariance et de la corrélation ne respectent pas le principe de <em>subcompositional coherence</em> (voir l’encadré ci-après). Ce problème se manifeste particulièrement lorsque les teneurs brutes de deux composés sont représentés au sein d’un diagramme de dispersion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Ou diagramme de Harker &lt;span class="citation"&gt; (Alfred Harker, &lt;em&gt;The &lt;span&gt;Natural History&lt;/span&gt; of &lt;span&gt;Igneous Rocks&lt;/span&gt;&lt;/em&gt; (&lt;span&gt;New York&lt;/span&gt;: &lt;span&gt;Macmillan&lt;/span&gt;, 1909), 119)&lt;/span&gt;.&lt;/p&gt;'><sup>119</sup></a>. Il n’y a en effet aucune garantie que les projections à partir du jeu de données initial ou d’une sous-composition conduisent à des observations similaires. Bien que ce type de représentation soit particulièrement courant, il est impossible de faire confiance aux tendances ainsi mises en évidence.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;J. Aitchison et K. W. Ng, &lt;span&gt;« The Role of Perturbation in Compositional Data Analysis »&lt;/span&gt;, &lt;em&gt;Statistical Modelling: An International Journal&lt;/em&gt; 5, nᵒ 2 (juillet 2005): 173‑85, &lt;a href="https://doi.org/10.1191/1471082X05st091oa" role="doc-biblioref"&gt;https://doi.org/10.1191/1471082X05st091oa&lt;/a&gt;.&lt;/p&gt;'><sup>120</sup></a></span><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Voir la réponse de &lt;span class="citation"&gt;Joaquín A. Cortés, &lt;span&gt;« On the &lt;span&gt;Harker Variation Diagrams&lt;/span&gt;; &lt;span&gt;A Comment&lt;/span&gt; on &lt;span&gt;“&lt;span&gt;The Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;. &lt;span&gt;Where Are We&lt;/span&gt; and &lt;span&gt;Where Should We Be Heading&lt;/span&gt;?”&lt;/span&gt; By &lt;span&gt;Aitchison&lt;/span&gt; and &lt;span&gt;Egozcue&lt;/span&gt; (2005) »&lt;/span&gt;, &lt;em&gt;Mathematical Geosciences&lt;/em&gt; 41, nᵒ 7 (octobre 2009): 817‑28, &lt;a href="https://doi.org/10.1007/s11004-009-9222-8" role="doc-biblioref"&gt;https://doi.org/10.1007/s11004-009-9222-8&lt;/a&gt;&lt;/span&gt;.&lt;/p&gt;'><sup>121</sup></a>.</p>
 <p>Ainsi, la plupart des méthodes dédiées aux statistiques multivariées, dont la mise en œuvre repose sur l’exploitation des matrices de variance-covariance, sont inapplicables. Le recours à ces dernières requiert une transformation préalable des données, permettant de casser la contrainte de somme constante introduite par la fermeture des données.</p>
 <div class="rmdnote">
 <p>L’approche courante lorsque l’on cherche à explorer les relations de d’inter-dépendance dans le cas d’un jeu de données multivarié est de s’attacher à la <a href="relations-entre-variables.html#covariance">covariance</a> et à la <a href="relations-entre-variables.html#correlation">corrélation</a> entre variables. Pour deux variables aléatoires <span class="math inline">\(X\)</span> et <span class="math inline">\(Y\)</span>, la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l’intensité de la relation entre ces deux variables.</p>
 <p>Sachant les propriétés de la covariance, pour une composition <span class="math inline">\(x\)</span> de longueur <span class="math inline">\(D\)</span> telle que <span class="math inline">\(x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]\)</span> avec <span class="math inline">\(\sum_{i=1}^{D} x_{i} = 1\)</span>, on a :</p>
 <p><span class="math display" id="eq:negbias1">\[\begin{equation}
   \mathrm{Cov}(x_{1}, x_{1} + \dotsb + x_{D}) = 0
-  \tag{25.4}
+  \tag{19.4}
 \end{equation}\]</span></p>
 <p>Soit :</p>
 <p><span class="math display" id="eq:negbias2">\[\begin{equation}
   \mathrm{Cov}(x_{1}, x_{2}) + \dotsb + \mathrm{Cov}(x_{1}, x_{D}) = - \mathrm{Var}(x_{1})
-  \tag{25.5}
+  \tag{19.5}
 \end{equation}\]</span></p>
-<p>Ainsi, le membre de droite de l’équation <a href="coda-enjeux.html#eq:negbias2">(25.5)</a> est toujours négatif (excepté dans le cas où le premier composé est une constante), si bien qu’au moins une des covariances du membre de gauche est forcement négative.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, 53‑54.&lt;/p&gt;"><sup>72</sup></a></span> Autrement formulé, au moins un élément de chaque ligne de la matrice de covariance doit être négatif (soit au moins <span class="math inline">\(D\)</span> éléments de la matrice).</p>
-<p>Dans le cas des données de composition, la covariance entre deux composés est donc contrainte par la somme constante et dépend des autres composés également présents dans le jeu de données. De plus, la matrice de covariance est singulière.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;K. Gerald van den Boogaart et Raimon Tolosana-Delgado, &lt;em&gt;Analyzing &lt;span&gt;Compositional Data&lt;/span&gt; with &lt;span&gt;R&lt;/span&gt;&lt;/em&gt;, Use &lt;span&gt;R&lt;/span&gt;! (&lt;span&gt;Berlin Heidelberg&lt;/span&gt;: &lt;span&gt;Springer-Verlag&lt;/span&gt;, 2013), &lt;a href="https://doi.org/10.1007/978-3-642-36809-7" role="doc-biblioref"&gt;https://doi.org/10.1007/978-3-642-36809-7&lt;/a&gt;.&lt;/p&gt;'><sup>73</sup></a></span> L’influence de la somme constante au sein de la matrice de covariance se traduit en terme de corrélation : s’agissant de compositions, le coefficient de corrélation n’est pas libre de prendre une valeur dans l’intervalle <span class="math inline">\([-1;1]\)</span> mais correspond à une valeur arbitraire<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="citation"&gt;Karl Pearson, &lt;span&gt;« Mathematical &lt;span&gt;Contributions&lt;/span&gt; to the &lt;span&gt;Theory&lt;/span&gt; of &lt;span&gt;Evolution&lt;/span&gt; – &lt;span&gt;On&lt;/span&gt; a &lt;span&gt;Form&lt;/span&gt; of &lt;span&gt;Spurious Correlation Which May Arise When Indices Are Used&lt;/span&gt; in the &lt;span&gt;Measurement&lt;/span&gt; of &lt;span&gt;Organs&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Proceedings of the Royal Society of London (1854-1905)&lt;/em&gt; 60, nᵒ 1 (1896): 489‑98, &lt;a href="https://doi.org/10.1098/rspl.1896.0076" role="doc-biblioref"&gt;https://doi.org/10.1098/rspl.1896.0076&lt;/a&gt;&lt;/span&gt; a été le premier à relever le risque que représente l’interprétation de ce qu’il nomme alors &lt;em&gt;spurious correlation&lt;/em&gt; (“corrélation fallacieuse”), mettant alors en évidence que la corrélation entre des rapports présentant des parties communes au dénominateur est arbitraire. Le problème est redécouvert au milieu du XX&lt;sup&gt;e&lt;/sup&gt; siècle par &lt;span class="citation"&gt;F. Chayes, &lt;span&gt;« On Correlation Between Variables of Constant Sum »&lt;/span&gt;, &lt;em&gt;Journal of Geophysical Research&lt;/em&gt; 65, nᵒ 12 (décembre 1960): 4185‑93, &lt;a href="https://doi.org/10.1029/JZ065i012p04185" role="doc-biblioref"&gt;https://doi.org/10.1029/JZ065i012p04185&lt;/a&gt;&lt;/span&gt; mais il faut attendre les premiers travaux de &lt;span class="citation"&gt;Aitchison, &lt;span&gt;« The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt; »&lt;/span&gt;&lt;/span&gt; pour qu’une solution formelle soit proposée.&lt;/p&gt;'><sup>74</sup></a>.</p>
-<p>L’exemple d’une composition à deux composés <span class="math inline">\(x_1\)</span> et <span class="math inline">\(x_2\)</span> tels que <span class="math inline">\(x_1 + x_2 = 1\)</span> est particulièrement illustratif du problème,<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, 54.&lt;/p&gt;"><sup>75</sup></a></span> on a en effet :</p>
+<p>Ainsi, le membre de droite de l’équation <a href="coda-enjeux.html#eq:negbias2">(19.5)</a> est toujours négatif (excepté dans le cas où le premier composé est une constante), si bien qu’au moins une des covariances du membre de gauche est forcement négative.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, 53‑54.&lt;/p&gt;"><sup>122</sup></a></span> Autrement formulé, au moins un élément de chaque ligne de la matrice de covariance doit être négatif (soit au moins <span class="math inline">\(D\)</span> éléments de la matrice).</p>
+<p>Dans le cas des données de composition, la covariance entre deux composés est donc contrainte par la somme constante et dépend des autres composés également présents dans le jeu de données. De plus, la matrice de covariance est singulière.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;K. Gerald van den Boogaart et Raimon Tolosana-Delgado, &lt;em&gt;Analyzing &lt;span&gt;Compositional Data&lt;/span&gt; with &lt;span&gt;R&lt;/span&gt;&lt;/em&gt;, Use &lt;span&gt;R&lt;/span&gt;! (&lt;span&gt;Berlin Heidelberg&lt;/span&gt;: &lt;span&gt;Springer-Verlag&lt;/span&gt;, 2013), &lt;a href="https://doi.org/10.1007/978-3-642-36809-7" role="doc-biblioref"&gt;https://doi.org/10.1007/978-3-642-36809-7&lt;/a&gt;.&lt;/p&gt;'><sup>123</sup></a></span> L’influence de la somme constante au sein de la matrice de covariance se traduit en terme de corrélation : s’agissant de compositions, le coefficient de corrélation n’est pas libre de prendre une valeur dans l’intervalle <span class="math inline">\([-1;1]\)</span> mais correspond à une valeur arbitraire<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="citation"&gt;Karl Pearson, &lt;span&gt;« Mathematical &lt;span&gt;Contributions&lt;/span&gt; to the &lt;span&gt;Theory&lt;/span&gt; of &lt;span&gt;Evolution&lt;/span&gt; – &lt;span&gt;On&lt;/span&gt; a &lt;span&gt;Form&lt;/span&gt; of &lt;span&gt;Spurious Correlation Which May Arise When Indices Are Used&lt;/span&gt; in the &lt;span&gt;Measurement&lt;/span&gt; of &lt;span&gt;Organs&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Proceedings of the Royal Society of London (1854-1905)&lt;/em&gt; 60, nᵒ 1 (1896): 489‑98, &lt;a href="https://doi.org/10.1098/rspl.1896.0076" role="doc-biblioref"&gt;https://doi.org/10.1098/rspl.1896.0076&lt;/a&gt;&lt;/span&gt; a été le premier à relever le risque que représente l’interprétation de ce qu’il nomme alors &lt;em&gt;spurious correlation&lt;/em&gt; (“corrélation fallacieuse”), mettant alors en évidence que la corrélation entre des rapports présentant des parties communes au dénominateur est arbitraire. Le problème est redécouvert au milieu du XX&lt;sup&gt;e&lt;/sup&gt; siècle par &lt;span class="citation"&gt;F. Chayes, &lt;span&gt;« On Correlation Between Variables of Constant Sum »&lt;/span&gt;, &lt;em&gt;Journal of Geophysical Research&lt;/em&gt; 65, nᵒ 12 (décembre 1960): 4185‑93, &lt;a href="https://doi.org/10.1029/JZ065i012p04185" role="doc-biblioref"&gt;https://doi.org/10.1029/JZ065i012p04185&lt;/a&gt;&lt;/span&gt; mais il faut attendre les premiers travaux de &lt;span class="citation"&gt;Aitchison, &lt;span&gt;« The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt; »&lt;/span&gt;&lt;/span&gt; pour qu’une solution formelle soit proposée.&lt;/p&gt;'><sup>124</sup></a>.</p>
+<p>L’exemple d’une composition à deux composés <span class="math inline">\(x_1\)</span> et <span class="math inline">\(x_2\)</span> tels que <span class="math inline">\(x_1 + x_2 = 1\)</span> est particulièrement illustratif du problème,<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Aitchison, &lt;em&gt;The &lt;span&gt;Statistical Analysis&lt;/span&gt; of &lt;span&gt;Compositional Data&lt;/span&gt;&lt;/em&gt;, 54.&lt;/p&gt;"><sup>125</sup></a></span> on a en effet :</p>
 <p><span class="math display" id="eq:negbias3">\[\begin{equation*}
   \mathrm{Cov}(x_{1}, x_{2}) = \mathrm{Cov}(x_{1}, 1 - x_{1}) = - \mathrm{Var}(x_{1}) = - \mathrm{Var}(x_{2})
-  \tag{25.6}
+  \tag{19.6}
 \end{equation*}\]</span></p>
 <p>Soit :</p>
 <p><span class="math display" id="eq:negbias4">\[\begin{equation*}
   \mathrm{Cov}(x_{1}, x_{2}) = \frac{\mathrm{Cov}(x_{1}, x_{2})}{\sqrt{\mathrm{Var}(x_{1}) \mathrm{Var}(x_{2})}} = - 1
-  \tag{25.7}
+  \tag{19.7}
 \end{equation*}\]</span></p>
 </div>
 </div>
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="introduction-2.html"><span class="header-section-number">24</span> Introduction</a></div>
-<div class="next"><a href="coda-transformations.html"><span class="header-section-number">26</span> Transformations de données</a></div>
+<div class="prev"><a href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></div>
+<div class="next"><a href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#coda-enjeux"><span class="header-section-number">25</span> Introduction</a></li>
-<li><a class="nav-link" href="#coda-definitions"><span class="header-section-number">25.1</span> Définitions</a></li>
-<li><a class="nav-link" href="#coda-principes"><span class="header-section-number">25.2</span> Principes</a></li>
-<li><a class="nav-link" href="#coda-probleme"><span class="header-section-number">25.3</span> Étendue du problème</a></li>
+<li><a class="nav-link" href="#coda-enjeux"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="nav-link" href="#coda-definitions"><span class="header-section-number">19.1</span> Définitions</a></li>
+<li><a class="nav-link" href="#coda-principes"><span class="header-section-number">19.2</span> Principes</a></li>
+<li><a class="nav-link" href="#coda-probleme"><span class="header-section-number">19.3</span> Étendue du problème</a></li>
 </ul>
 
       <div class="book-extra">
@@ -335,7 +331,7 @@ C
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau. Dernière compilation le 2022-05-06.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

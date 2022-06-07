@@ -3,7 +3,8 @@ title: "R pour l'archéologue"
 subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
-date: "2022-05-06"
+- Ben Marwick
+date: "2022-06-07"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -23,15 +24,42 @@ lang: fr
 
 # Avant propos {-}
 
-Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage vous permet d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes liés aux données archéologiques.
-
-Bien qu'il soit initialement conçu pour les étudiants du master mention *Archéologie, sciences pour l'archéologie* de l'[Université Bordeaux Montaigne](https://www.u-bordeaux-montaigne.fr/), ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques.
-
-Ce livre s'adresse à des utilisateurs débutants, il ne demande aucun prérequis en programmation. Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Le lecteur trouvera des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
+Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques. Par science archéologique, nous entendons ici une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
 
 **Ce livre est en cours de rédaction.**
 
 
+
+## Que contient ce livre ? {-}
+
+Le but n'est pas d'être exhaustif, mais de se concentrer sur ce que nous pensons être les compétences essentielles à tout archéologue souhaitant utiliser R. Certains archéologues utilisent déjà R de manière *ad hoc*, pour un tracer un graphique par-ci, ou ajuster un modèle linéaire par-là. Si vous êtes l'une de ces personnes, vous serrez sans doute déjà familier de certains aspects développés dans ce livre. Notre objectif est que vous y trouviez également, quelque soit votre pratique, de nouvelles idées en vous montrant comment R peut être au centre de votre travail de recherche, de l'acquisition des données brutes jusqu'à la finalisation de votre thèse, rapport ou manuscrit.
+
+Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce livre n'est pas un manuel de statistiques. Il ne contient pas (ou peu) de discussions détaillées sur la théorie statistique, et le lecteur sera invité à consulter à d'autres textes concernant les détails techniques des algorithmes, etc. Le lecteur trouvera ainsi des [suggestions de lecture](#ressources-complémentaires) complémentaires à la fin de l'introduction générale et au début de chaque partie du livre^[L'ensemble des références citées dans cet ouvrage est disponible sous la forme d'une [bibliographie Zotero](https://www.zotero.org/groups/4507200/rarcheo/library)].
+
+Ce livre se veut une introduction pratique au langage R pour la réalisation efficaces de tâches courantes en archéologie. Sa lecture doit servir de tremplin vers une utilisation de R plus avancée. Les principaux sujets abordés dans ce livre sont les suivants :
+
+* Le chapitre XX vous permettra de vous familiariser avec le langage R et d'acquérir les notions élémentaires qui vous permettrons de progresser dans la lecture de l'ouvrage. Ce premier chapitre constitue également un aide-mémoire, vers lequel vous tourner au cours de la lecture des différents chapitres.
+* Le chapitre XX expose les motivations et modalités conduisant à mettre en œuvre une recherche ouverte et reproductible en archéologie (une bonne pratique pour la science en général, et pour votre productivité individuelle en particulier).
+* Le chapitre XX propose un certain nombre de recommandations quant à l'organisation de votre travail en amont de l'analyse pour en faciliter la réalisation.
+* Le chapitre X doit vous permettre de travailler avec des structures de données courantes en archéologie, les lire avec R et les manipuler pour les préparer en vue d'être analysées.
+* Le chapitre XX
+* Le chapitre XX
+* Le chapitre XX Travailler avec des données de comptage d'artéfacts ou de restes de faune ou de flore.
+* Le chapitre XX : biométrie.
+* Le chapitre XX vous guidera dans l'univers très contraint de l'analyse des données de composition.
+* Le chapitre XX détaille comment travailler avec des données chronologiques (relatives et absolues) en analysant des données stratigraphiques, en réalisant des sériations, et en calibrant, analysant et visualisant des datation radiocarbone.
+* Le chapitre XX est une introduction à l'analyse de données spatiales et à la cartographie.
+* Le chapitre XX : simplifier la recherche collaborative grâce au contrôle de version.
+
+## Pour qui ce livre est-il écrit ? {-}
+
+Ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques. Il s'adresse ainsi aux archéologues désireux d'élargir leurs horizons analytiques et d'accéder à de nouvelles méthodes et à des moyens plus efficaces d'organiser leur processus de recherche. 
+
+Il est écrit pour des utilisateurs débutants et aucune connaissance préalable de R, de l'informatique ou de la programmation n'est attendue. Cependant, un peu de curiosité pour les statistiques sera nécessaire, ainsi que la volonté de lire au-delà de ce livre, pour prendre judicieusement des décisions quant à la pertinence d'une méthode statistique au regard d'un problème spécifique.
+
+La plupart des méthodes présentées ici sont destinées à des données tabulaires, c'est-à-dire des données qui sont généralement saisies dans des feuilles de calcul et des bases de données. Plus précisément, le livre s'adresse aux archéologues qui utilisent des données organisées en lignes (c'est-à-dire des variables) et en colonnes (c'est-à-dire des spécimens, des échantillons ou des observations). De nombreux jeux de données archéologiques sont organisés différemment, comme les images ou les textes. Bien que R soit également utile pour ces derniers, nous ne les abordons pas en détail ici. Les données tabulaires sont la forme la plus courante en archéologie, comme dans de nombreux autres domaines, c'est pourquoi nous nous concentrons sur celles-ci ici.
+
+Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, les méthodes présentées ici devraient donc être utiles à la majorité des applications archéologiques. Si vos données sont plus grandes que cela, vous faites probablement quelque chose de très spécialisé et vous aurez des défis particuliers à relever pour rendre votre recherche reproductible. Cependant, vous pourrez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
 ## Licence {-}
 
@@ -47,7 +75,7 @@ Une entrée BibTeX pour citer ce document :
 ```
 @Book{rarcheo,
   title = {R pour l'archéologue: Exploration, visualisation et analyse de données},
-  author = {Nicolas Frerebeau},
+  author = {Nicolas Frerebeau and Ben Marwick},
   year = {2021},
   publisher = {Université Bordeaux Montaigne},
   address = {Pessac, France},
@@ -67,7 +95,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 06 May 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 07 Jun 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
@@ -83,7 +111,7 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |desc          |1.4.1   |CRAN (R 4.2.0) |@R-desc          |
 |DiagrammeR    |1.0.9   |CRAN (R 4.2.0) |@R-DiagrammeR    |
 |downlit       |0.4.0   |CRAN (R 4.2.0) |@R-downlit       |
-|folio         |1.0.0   |CRAN (R 4.2.0) |@R-folio         |
+|folio         |1.1.0   |CRAN (R 4.2.0) |@R-folio         |
 |ggplot2       |3.3.6   |CRAN (R 4.2.0) |@R-ggplot2       |
 |ggraph        |2.0.5   |CRAN (R 4.2.0) |@R-ggraph        |
 |kableExtra    |1.3.4   |CRAN (R 4.2.0) |@R-kableExtra    |

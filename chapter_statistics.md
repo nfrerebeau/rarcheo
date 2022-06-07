@@ -54,7 +54,7 @@ correlation vs causalité
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{images/xkcd_curve_fitting} 
+{\centering \includegraphics[width=0.8\linewidth]{images/xkcd_curve_fitting} 
 
 }
 
