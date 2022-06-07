@@ -53,6 +53,6 @@ knitr::include_graphics("images/xkcd_correlation.png")
 
 (ref:xkcd-curve-fitting) Curve-Fitting. "Cauchy-Lorentz: 'Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.'" [CC BY-NC 2.0 @munroe2018].
 
-```{r xkcd-curve-fitting, echo=FALSE, fig.cap="(ref:xkcd-curve-fitting)"}
+```{r xkcd-curve-fitting, echo=FALSE, out.width='80%', fig.cap="(ref:xkcd-curve-fitting)"}
 knitr::include_graphics("images/xkcd_curve_fitting.png")
 ```

@@ -15,6 +15,7 @@ Des expériences récentes ont jeté un peu de lumière sur la rivalité traditi
 
 Bien que ces études empiriques démontrent une relation complexe entre le type de graphique et l'efficacité, elles peuvent fournir un classement simple, bien qu'approximatif, des stratégies de visualisation des données. Les diagrammes à points et les diagrammes à barres se situent généralement à l'extrémité supérieure du spectre, ainsi que des styles plus exotiques comme les diagrammes en gaufre et les histogrammes. Parmi les types de graphiques de rang inférieur, on trouve les diagrammes à barres empilées et les diagrammes circulaires. Tout type de graphique en 3D est classé en dernier.
 
+# Représentations
 ## Représenter des quantités {#graph-quantites}
 
 On peut créer un diagramme en barres à l'aide de la fonction `barplot()`, dont l'argument `height` accepte un vecteur ou une matrice permettant de décrire les barres qui composent le graphique.
