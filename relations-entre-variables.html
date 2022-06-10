@@ -72,21 +72,22 @@
 <li class="book-part">Données de comptage</li>
 <li><a class="" href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></li>
 <li class="book-part">Données de composition</li>
-<li><a class="" href="coda-enjeux.html"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="" href="coda-introduction.html"><span class="header-section-number">19</span> Introduction</a></li>
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
+<li><a class="" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">21</span> Introduction</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">22</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">23</span> Chronologie quantitative</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">24</span> Introduction</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">25</span> Analyse de données vectorielles</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">26</span> Analyse de données raster</a></li>
+<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">27</span> Installation</a></li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">28</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">29</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">30</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">28</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">29</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">30</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">31</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -112,8 +113,8 @@
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:xkcd-correlation"></span>
-<img src="images/xkcd_correlation.png" alt="Correlation. “Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’.”.87" width="100%"><p class="caption">
-Figure 15.1: Correlation. “Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Correlation »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 6 mars 2009), &lt;a href="https://xkcd.com/552/" role="doc-biblioref"&gt;https://xkcd.com/552/&lt;/a&gt;.&lt;/p&gt;'><sup>87</sup></a></span>
+<img src="images/xkcd_correlation.png" alt="Correlation. “Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’.”.89" width="100%"><p class="caption">
+Figure 15.1: Correlation. “Correlation doesn’t imply causation, but it does waggle its eyebrows suggestively and gesture furtively while mouthing ‘look over there’.”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Correlation »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 6 mars 2009), &lt;a href="https://xkcd.com/552/" role="doc-biblioref"&gt;https://xkcd.com/552/&lt;/a&gt;.&lt;/p&gt;'><sup>89</sup></a></span>
 </p>
 </div>
 </div>
@@ -124,8 +125,8 @@ Figure 15.1: Correlation. “Correlation doesn’t imply causation, but it does 
 
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:xkcd-curve-fitting"></span>
-<img src="images/xkcd_curve_fitting.png" alt="Curve-Fitting. “Cauchy-Lorentz: ‘Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.’”.88" width="80%"><p class="caption">
-Figure 15.2: Curve-Fitting. “Cauchy-Lorentz: ‘Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.’”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Curve-&lt;span&gt;Fitting&lt;/span&gt; »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 19 septembre 2018), &lt;a href="https://xkcd.com/2048/" role="doc-biblioref"&gt;https://xkcd.com/2048/&lt;/a&gt;.&lt;/p&gt;'><sup>88</sup></a></span>
+<img src="images/xkcd_curve_fitting.png" alt="Curve-Fitting. “Cauchy-Lorentz: ‘Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.’”.90" width="80%"><p class="caption">
+Figure 15.2: Curve-Fitting. “Cauchy-Lorentz: ‘Something alarmingly mathematical is happening, and you should probably pause to Google my name and check what field I originally worked in.’”.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;CC BY-NC 2.0 Randall Munroe, &lt;span&gt;« Curve-&lt;span&gt;Fitting&lt;/span&gt; »&lt;/span&gt; (&lt;span&gt;xkcd&lt;/span&gt;, 19 septembre 2018), &lt;a href="https://xkcd.com/2048/" role="doc-biblioref"&gt;https://xkcd.com/2048/&lt;/a&gt;.&lt;/p&gt;'><sup>90</sup></a></span>
 </p>
 </div>
 
@@ -162,7 +163,7 @@ Figure 15.2: Curve-Fitting. “Cauchy-Lorentz: ‘Something alarmingly mathemati
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-07.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

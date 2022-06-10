@@ -72,21 +72,22 @@
 <li class="book-part">Données de comptage</li>
 <li><a class="" href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></li>
 <li class="book-part">Données de composition</li>
-<li><a class="" href="coda-enjeux.html"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="" href="coda-introduction.html"><span class="header-section-number">19</span> Introduction</a></li>
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
+<li><a class="" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">21</span> Introduction</a></li>
-<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">22</span> Chronologie qualitative</a></li>
-<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">23</span> Chronologie quantitative</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">24</span> Introduction</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">25</span> Analyse de données vectorielles</a></li>
-<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">26</span> Analyse de données raster</a></li>
+<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
-<li><a class="" href="installation.html"><span class="header-section-number">27</span> Installation</a></li>
-<li><a class="" href="cheat-sheet.html"><span class="header-section-number">28</span> Aide mémoire</a></li>
-<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">29</span> Bonnes pratiques</a></li>
-<li><a class="" href="style.html"><span class="header-section-number">30</span> Style de programmation</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">28</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">29</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">30</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">31</span> Style de programmation</a></li>
 <li><a class="" href="bibliographie.html">Bibliographie</a></li>
 </ul>
 
@@ -253,7 +254,7 @@ Figure 5.3: Diagramme d’un test “sinon… si…”
 <span class="va">k</span>
 <span class="co">#&gt; [1] 1.2 6.5 6.1 5.9 6.4</span></code></pre></div>
 <p>Dans le cas d’un tableau à deux dimensions, écrire une même série d’instructions pour chaque ligne ou colonne individuellement peut rapidement s’avérer fastidieux. On peut ainsi mettre à profit les boucles pour n’écrire qu’une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.</p>
-<p>Imaginons que l’on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont <a href="data-tidy.html#data-tidy">correctement structurées</a>, on peut calculer cette somme pour chacune des colonnes d’un tableau de données<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Il s’agit d’un exemple : dans le cas présent une boucle n’est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (&lt;code&gt;rowSums()&lt;/code&gt;) ou des colonnes (&lt;code&gt;colSums()&lt;/code&gt;) d’un tableau.&lt;/p&gt;"><sup>70</sup></a> :</p>
+<p>Imaginons que l’on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont <a href="data-tidy.html#data-tidy">correctement structurées</a>, on peut calculer cette somme pour chacune des colonnes d’un tableau de données<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Il s’agit d’un exemple : dans le cas présent une boucle n’est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (&lt;code&gt;rowSums()&lt;/code&gt;) ou des colonnes (&lt;code&gt;colSums()&lt;/code&gt;) d’un tableau.&lt;/p&gt;"><sup>72</sup></a> :</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># On charge les données d'exemple</span>
 <span class="co"># help(compiegne, package = "folio")</span>
@@ -450,7 +451,7 @@ Figure 5.4: Diagramme d’une boucle à précondition.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-07.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

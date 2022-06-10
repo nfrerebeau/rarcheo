@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>21 Détection des valeurs aberrantes | R pour l’archéologue</title>
+<meta name="author" content="Nicolas Frerebeau">
+<meta name="author" content="Ben Marwick">
+<meta name="description" content="La détection de valeurs aberrantes (outliers), ou considérées comme inattendues, est une tâche courante lors de l’analyse de données de composition. Cette dernière repose sur la définition d’un...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="21 Détection des valeurs aberrantes | R pour l’archéologue">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://rstats.archaeo.science/coda-outliers.html">
+<meta property="og:description" content="La détection de valeurs aberrantes (outliers), ou considérées comme inattendues, est une tâche courante lors de l’analyse de données de composition. Cette dernière repose sur la définition d’un...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="21 Détection des valeurs aberrantes | R pour l’archéologue">
+<meta name="twitter:description" content="La détection de valeurs aberrantes (outliers), ou considérées comme inattendues, est une tâche courante lors de l’analyse de données de composition. Cette dernière repose sur la définition d’un...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/viz-1.8.2/viz.js"></script><link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Exploration, visualisation et analyse de données">R pour l’archéologue</a>:
+        <small class="text-muted">Exploration, visualisation et analyse de données</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Sommaire</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Avant propos</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
+<li class="book-part">Premiers pas avec R</li>
+<li><a class="" href="prise-en-main.html"><span class="header-section-number">1</span> Prise en main</a></li>
+<li><a class="" href="r-vector.html"><span class="header-section-number">2</span> Structures de données</a></li>
+<li><a class="" href="subset.html"><span class="header-section-number">3</span> Extraction et remplacement</a></li>
+<li><a class="" href="operateurs.html"><span class="header-section-number">4</span> Opérateurs binaires</a></li>
+<li><a class="" href="structures-de-contr%C3%B4le.html"><span class="header-section-number">5</span> Structures de contrôle</a></li>
+<li><a class="" href="fonctions-ecrire.html"><span class="header-section-number">6</span> Écrire des fonctions</a></li>
+<li class="book-part">Collecter et organiser ses données</li>
+<li><a class="" href="collect-introduction.html"><span class="header-section-number">7</span> Introduction</a></li>
+<li><a class="" href="g%C3%A9rer-ses-fichiers.html"><span class="header-section-number">8</span> Gérer ses fichiers</a></li>
+<li><a class="" href="organiser-ses-donn%C3%A9es.html"><span class="header-section-number">9</span> Organiser ses données</a></li>
+<li class="book-part">Préparation des données</li>
+<li><a class="" href="data-tidy.html"><span class="header-section-number">10</span> Introduction</a></li>
+<li><a class="" href="data-importer.html"><span class="header-section-number">11</span> Importer et exporter</a></li>
+<li><a class="" href="data-traitement.html"><span class="header-section-number">12</span> Traitement des données</a></li>
+<li class="book-part">Éléments de statistiques</li>
+<li><a class="" href="variables.html"><span class="header-section-number">13</span> Introduction</a></li>
+<li><a class="" href="statistique-descriptive.html"><span class="header-section-number">14</span> Statistique descriptive</a></li>
+<li><a class="" href="relations-entre-variables.html"><span class="header-section-number">15</span> Relations entre variables</a></li>
+<li class="book-part">Visualisation de données</li>
+<li><a class="" href="introduction-1.html"><span class="header-section-number">16</span> Introduction</a></li>
+<li><a class="" href="repr%C3%A9sentations.html"><span class="header-section-number">17</span> Représentations</a></li>
+<li class="book-part">Données de comptage</li>
+<li><a class="" href="introduction-2.html"><span class="header-section-number">18</span> Introduction</a></li>
+<li class="book-part">Données de composition</li>
+<li><a class="" href="coda-introduction.html"><span class="header-section-number">19</span> Introduction</a></li>
+<li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
+<li><a class="active" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
+<li class="book-part">Chronologie</li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
+<li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
+<li class="book-part">Cartographie</li>
+<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
+<li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
+<li class="book-part">Annexes</li>
+<li><a class="" href="installation.html"><span class="header-section-number">28</span> Installation</a></li>
+<li><a class="" href="cheat-sheet.html"><span class="header-section-number">29</span> Aide mémoire</a></li>
+<li><a class="" href="bonnes-pratiques.html"><span class="header-section-number">30</span> Bonnes pratiques</a></li>
+<li><a class="" href="style.html"><span class="header-section-number">31</span> Style de programmation</a></li>
+<li><a class="" href="bibliographie.html">Bibliographie</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/nfrerebeau/rarcheo">Voir le code <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="coda-outliers" class="section level1" number="21">
+<h1>
+<span class="header-section-number">21</span> Détection des valeurs aberrantes<a class="anchor" aria-label="anchor" href="#coda-outliers"><i class="fas fa-link"></i></a>
+</h1>
+<p>La détection de valeurs aberrantes (<em>outliers</em>), ou considérées comme inattendues, est une tâche courante lors de l’analyse de données de composition. Cette dernière repose sur la définition d’un seuil ou d’une valeur limite permettant de séparer les valeurs aberrantes du reste des données.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Peter Filzmoser, Robert G. Garrett, et Clemens Reimann, &lt;span&gt;« Multivariate Outlier Detection in Exploration Geochemistry »&lt;/span&gt;, &lt;em&gt;Computers &amp;amp; Geosciences&lt;/em&gt; 31, nᵒ 5 (juin 2005): 579‑87, &lt;a href="https://doi.org/10.1016/j.cageo.2004.11.013" role="doc-biblioref"&gt;https://doi.org/10.1016/j.cageo.2004.11.013&lt;/a&gt;; Clemens Reimann, Peter Filzmoser, et Robert G. Garrett, &lt;span&gt;« Background and Threshold: Critical Comparison of Methods of Determination »&lt;/span&gt;, &lt;em&gt;Science of The Total Environment&lt;/em&gt; 346, nᵒ 1-3 (juin 2005): 1‑16, &lt;a href="https://doi.org/10.1016/j.scitotenv.2004.11.023" role="doc-biblioref"&gt;https://doi.org/10.1016/j.scitotenv.2004.11.023&lt;/a&gt;.&lt;/p&gt;'><sup>129</sup></a></span> Ce seuil correspond généralement à une distance limite par rapport au centre du jeu de données, au-delà de laquelle les individus ne sont pas uniquement affectés par la variation naturelle du phénomène étudié, voire relèvent d’un ou de plusieurs processus complètement différents.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Filzmoser, Garrett, et Reimann, &lt;span&gt;« Multivariate Outlier Detection in Exploration Geochemistry »&lt;/span&gt;.&lt;/p&gt;"><sup>130</sup></a></span></p>
+<p>Une telle approche nécessite de bien distinguer les valeurs aberrantes (observations issues d’une ou plusieurs distributions différentes) des valeurs extrêmes (issues de la même distribution malgré leur éloignement du centre).<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Reimann, Filzmoser, et Garrett, &lt;span&gt;« Background and Threshold »&lt;/span&gt;.&lt;/p&gt;"><sup>131</sup></a></span> Cette distinction constitue une des principales difficultés : les valeurs aberrantes ne sont pas nécessairement des valeurs extrêmes, en particulier lorsqu’elles résultent de phénomènes secondaires (taphonomie, contaminations…). Ainsi, les approches univariées sont généralement inefficaces pour détecter les valeurs aberrantes.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Filzmoser, Garrett, et Reimann, &lt;span&gt;« Multivariate Outlier Detection in Exploration Geochemistry »&lt;/span&gt;.&lt;/p&gt;"><sup>132</sup></a></span> Les données de composition sont par nature mutlivariées. La détection de valeurs abbérantes doit donc reposer sur la position des données (distance par rapport au centroïde), mais prendre également en compte la forme de ces dernières.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Filzmoser, Garrett, et Reimann.&lt;/p&gt;"><sup>133</sup></a></span></p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis">distance de Mahalanobis</a> <a href="coda-outliers.html#eq:mahalanobis">(21.1)</a> permet de déterminer la similarité entre un individu <span class="math inline">\(x\)</span> multivarié et un ensemble d’observations en prenant en compte la position (moyenne <span class="math inline">\(\mu\)</span>), ainsi que la forme et la taille (quantifiées par la matrice de covariance <span class="math inline">\(\Sigma\)</span>) de cet ensemble.</p>
+<p><span class="math display" id="eq:mahalanobis">\[\begin{equation}
+  d_M = \sqrt{ (x - \mu)^T \Sigma^{-1} (x - \mu) }
+  \tag{21.1}
+\end{equation}\]</span></p>
+<p>Dans le cas de données multivariées à <span class="math inline">\(p\)</span> dimensions distribuées normalement, la distribution du carré des distances de Mahalanobis (<span class="math inline">\(d_M^2\)</span>) de l’ensemble des observations suit approximativement une loi du <span class="math inline">\(\chi^2\)</span> à <span class="math inline">\(p\)</span> degrés de liberté (fig. <a href="coda-outliers.html#fig:mahalanobis-khi2">21.1</a>).</p>
+
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Simuler 500 observations de deux variables </span>
+<span class="co">## Les deux variables ont pour moyenne 0 et écart-type 1</span>
+<span class="co">## La corrélation entre les deux variables est fixée à 0.8</span>
+<span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># covariance</span>
+<span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">500</span>, mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, Sigma <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span>
+
+<span class="co">## Calculer les distances de Mahalanobis</span>
+<span class="co">## (chaque observation par rapport à l'ensemble des données)</span>
+<span class="co">## NB : mahalanobis() retourne le carré de la distance</span>
+<span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/mahalanobis.html">mahalanobis</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">z</span>, center <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span>, cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co">## Paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co">## Diagramme de dispersion des observations</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">z</span>, type <span class="op">=</span> <span class="st">"p"</span>, xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">""</span>, asp <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, v <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
+<span class="co">## Histogramme des distances</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">d2</span>, freq <span class="op">=</span> <span class="cn">FALSE</span>, main <span class="op">=</span> <span class="st">""</span>, xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">"Densité"</span><span class="op">)</span>
+
+<span class="co">## Loi du khi-deux à 2 degrés de liberté</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">dchisq</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">d2</span><span class="op">)</span>,
+      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:mahalanobis-khi2"></span>
+<img src="chapter_coda_files/figure-html/mahalanobis-khi2-1.png" alt="Gauche : données simulées distribuées normalement. Droite : histogramme des distances de Mahalanobis et densité de probabilité de la loi du \(\chi^2\) à 2 degrés de liberté (en rouge)." width="100%"><p class="caption">
+Figure 21.1: Gauche : données simulées distribuées normalement. Droite : histogramme des distances de Mahalanobis et densité de probabilité de la loi du <span class="math inline">\(\chi^2\)</span> à 2 degrés de liberté (en rouge).
+</p>
+</div>
+<p>Une valeur abérrante peut ainsi être définie comme ayant une distance de Mahalanobis très importante par rapport à l’ensemble des observations. De cette façon, une certaine proportion des observations peut être isolée, par exemple : les 2% de valeurs les plus élevées, soit les valeurs supérieures au quantile d’ordre 0,98 (98<sup>e</sup> centile) de la loi du <span class="math inline">\(\chi^2\)</span>. Pour un seuil donné, on peut ainsi définir des ellipsoïdes ayant la même distance de Mahalanobis par rapport au centre des données (fig. <a href="coda-outliers.html#fig:mahalanobis-robuste">21.2</a>). Une telle approche soulève cependant quelques difficultés.</p>
+<p>D’une part, la distance de Mahalanobis est susceptible d’être fortement affectée par la présence de valeurs aberrantes. <span class="citation">Peter J. Rousseeuw et Bert C. van Zomeren<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span&gt;« Unmasking &lt;span&gt;Multivariate Outliers&lt;/span&gt; and &lt;span&gt;Leverage Points&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Journal of the American Statistical Association&lt;/em&gt; 85, nᵒ 411 (septembre 1990): 633‑39, &lt;a href="https://doi.org/10.1080/01621459.1990.10474920" role="doc-biblioref"&gt;https://doi.org/10.1080/01621459.1990.10474920&lt;/a&gt;.&lt;/p&gt;'><sup>134</sup></a></span> recommandent ainsi d’utiliser des méthodes robustes (qui ne sont pas excessivement affectées par la présence de valeurs aberrantes) pour l’estimation de la position et de la dispersion des données<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;L’ellipsoïde de volume minimal (MVE pour &lt;em&gt;minimum volume ellipsoid&lt;/em&gt;) et le déterminant de covariance minimale (MCD pour &lt;em&gt;minimum covariance determinant&lt;/em&gt;) sont sans doute les estimateurs les plus couramment utilisés &lt;span class="citation"&gt; (Filzmoser, Garrett, et Reimann, &lt;span&gt;« Multivariate Outlier Detection in Exploration Geochemistry »&lt;/span&gt;)&lt;/span&gt;.&lt;/p&gt;'><sup>135</sup></a>. Par exemple, la figure <a href="coda-outliers.html#fig:mahalanobis-robuste">21.2</a> représente la masse du cerveau de différents animaux en fonction de leur masse corporelle. Les données suivent une même tendance, à l’exception des dinosaures qui présentent une importante masse corporelle et un petit cerveau. Lorsque des estimateurs classiques sont utilisés, l’ellipse de tolérance est fortement affectée par les dinosaures. Au contraire, l’usage d’un estimateur robuste permet d’exclure les dinosaures qui constituent effectivement des valeurs aberrantes au regard de l’ensemble des données.</p>
+
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Répliquer la figure 1 de Rousseeuw et van Zomeren (1990)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"Animals"</span>, package <span class="op">=</span> <span class="st">"MASS"</span><span class="op">)</span>
+<span class="va">brain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">Animals</span><span class="op">)</span> <span class="co"># Echelle logarithmique</span>
+
+<span class="co">## Paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co">## Diagramme de dispersion</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">brain</span>, type <span class="op">=</span> <span class="st">"p"</span>, asp <span class="op">=</span> <span class="fl">1</span>,
+  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">7</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span>,
+  xlab <span class="op">=</span> <span class="st">"Masse corporelle (kg)"</span>,
+  ylab <span class="op">=</span> <span class="st">"Masse du cerveau (g)"</span>
+<span class="op">)</span>
+<span class="co">## Mettre en évidence les dinosaures</span>
+<span class="va">dino</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Dipliodocus"</span>, <span class="st">"Triceratops"</span>, <span class="st">"Brachiosaurus"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">brain</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">brain</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">dino</span>, <span class="op">]</span>,
+  type <span class="op">=</span> <span class="st">"p"</span>, pch <span class="op">=</span> <span class="fl">16</span>
+<span class="op">)</span>
+
+<span class="co">## Ellipses de tolérance</span>
+<span class="co">## Estimateurs classiques</span>
+<span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html">ellipse</a></span><span class="op">(</span>
+  center <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">brain</span><span class="op">)</span>,
+  shape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">brain</span><span class="op">)</span>,
+  radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
+  center.pch <span class="op">=</span> <span class="cn">NULL</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lty <span class="op">=</span> <span class="fl">3</span>
+<span class="op">)</span>
+<span class="co">## Estimateurs robustes</span>
+<span class="va">rob</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/cov.rob.html">cov.rob</a></span><span class="op">(</span><span class="va">brain</span>, method <span class="op">=</span> <span class="st">"mve"</span><span class="op">)</span> <span class="co"># Ellipsoïde de volume minimal</span>
+<span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html">ellipse</a></span><span class="op">(</span>
+  center <span class="op">=</span> <span class="va">rob</span><span class="op">$</span><span class="va">center</span>,
+  shape <span class="op">=</span> <span class="va">rob</span><span class="op">$</span><span class="va">cov</span>,
+  radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
+  center.pch <span class="op">=</span> <span class="cn">NULL</span>, col <span class="op">=</span> <span class="st">"blue"</span>, lty <span class="op">=</span> <span class="fl">1</span>
+<span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:mahalanobis-robuste"></span>
+<img src="chapter_coda_files/figure-html/mahalanobis-robuste-1.png" alt="Masse du cerveau en fonction de la masse corporelle de 28 espèces animales (échelle logarithmique, base 10). Les symboles pleins correspondent aux dinosaures. Ellipses de tolérance (seuil fixé à \(\chi^2_{2;0.975}\)) calculées à partir de la moyenne et de la covariance classiques (tirets) et à l’aide d’estimateurs robustes (ellipsoïde de volume minimal ; trait plein)." width="70%"><p class="caption">
+Figure 21.2: Masse du cerveau en fonction de la masse corporelle de 28 espèces animales (échelle logarithmique, base 10). Les symboles pleins correspondent aux dinosaures. Ellipses de tolérance (seuil fixé à <span class="math inline">\(\chi^2_{2;0.975}\)</span>) calculées à partir de la moyenne et de la covariance classiques (tirets) et à l’aide d’estimateurs robustes (ellipsoïde de volume minimal ; trait plein).
+</p>
+</div>
+<p>D’autre part, le choix du seuil permettant de caractériser une observation comme aberrante doit faire l’objet d’une discussion. Il n’y a en effet aucune raison <em>a priori</em> pour qu’un seuil particulier soit applicable à tous les jeux de donnée.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Filzmoser, Garrett, et Reimann.&lt;/p&gt;"><sup>136</sup></a></span> <span class="citation">Robert G. Garrett<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span&gt;« The Chi-Square Plot: A Tool for Multivariate Outlier Recognition »&lt;/span&gt;, &lt;em&gt;Journal of Geochemical Exploration&lt;/em&gt; 32, nᵒ 1-3 (avril 1989): 319‑41, &lt;a href="https://doi.org/10.1016/0375-6742(89)90071-X" role="doc-biblioref"&gt;https://doi.org/10.1016/0375-6742(89)90071-X&lt;/a&gt;.&lt;/p&gt;'><sup>137</sup></a></span> propose d’utiliser une méthode graphique en représentant les distances robustes, ordonnées par rang, en fonction des quantiles théoriques de la loi du <span class="math inline">\(\chi^2\)</span> (fig. <a href="coda-outliers.html#fig:mahalanobis-qqplot">21.3</a>). Les valeurs extrêmes sont alors retirées jusqu’à ce que les données s’alignent sur une même droite (fig. <a href="coda-outliers.html#fig:mahalanobis-qqplot">21.3</a>). Il est possible de combiner ces ces approches en fixant un seuil pour identifier de potentielles valeurs aberrantes, puis d’inspecter les données afin d’expliquer les différences observées en faisant appel à l’expérience de l’analyste<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="citation"&gt;Filzmoser, Garrett, et Reimann, &lt;span&gt;« Multivariate Outlier Detection in Exploration Geochemistry »&lt;/span&gt;&lt;/span&gt; proposent quant à eux une méthode automatique, permettant de distinguer les valeurs extrêmes issues d’une distribution normale des valeurs aberrantes issues d’une distribution différente.&lt;/p&gt;'><sup>138</sup></a>.</p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Distance de Mahalanobis robuste</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/mahalanobis.html">mahalanobis</a></span><span class="op">(</span><span class="va">brain</span>, center <span class="op">=</span> <span class="va">rob</span><span class="op">$</span><span class="va">center</span>, cov <span class="op">=</span> <span class="va">rob</span><span class="op">$</span><span class="va">cov</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## Trier par rang</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
+
+<span class="co">## Paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co">## Quantiles théoriques</span>
+<span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/ppoints.html">ppoints</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span><span class="op">)</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
+<span class="co">## Diagramme Quantile-Quantile</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">q</span>, y <span class="op">=</span> <span class="va">d</span>, xlab <span class="op">=</span> <span class="st">"Quantile théorique"</span>,
+     ylab <span class="op">=</span> <span class="st">"Distance de Mahalanobis robuste"</span><span class="op">)</span>
+<span class="co">## Tracer la droite théorique</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">d</span>, distribution <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="va">p</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span>
+<span class="co">## Mettre en évidence les dinosaures</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">q</span><span class="op">[</span><span class="va">d</span> <span class="op">&gt;</span> <span class="fl">9</span><span class="op">]</span>, y <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">d</span> <span class="op">&gt;</span> <span class="fl">9</span><span class="op">]</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">[</span><span class="va">d</span> <span class="op">&gt;</span> <span class="fl">9</span><span class="op">]</span><span class="op">)</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:mahalanobis-qqplot"></span>
+<img src="chapter_coda_files/figure-html/mahalanobis-qqplot-1.png" alt="Masse du cerveau en fonction de la masse corporelle de 28 espèces animales (échelle logarithmique, base 10). Les symboles pleins correspondent aux dinosaures. Ellipses de tolérance (seuil fixé à \(\chi^2_{2;0.975}\)) calculées à partir de la moyenne et de la covariance classiques (tirets) et à l’aide d’estimateurs robustes (ellipsoïde de volume minimal ; trait plein)." width="70%"><p class="caption">
+Figure 21.3: Masse du cerveau en fonction de la masse corporelle de 28 espèces animales (échelle logarithmique, base 10). Les symboles pleins correspondent aux dinosaures. Ellipses de tolérance (seuil fixé à <span class="math inline">\(\chi^2_{2;0.975}\)</span>) calculées à partir de la moyenne et de la covariance classiques (tirets) et à l’aide d’estimateurs robustes (ellipsoïde de volume minimal ; trait plein).
+</p>
+</div>
+<p>Enfin, comme nous l’avons vu précédemment (§ <a href="coda-introduction.html#coda-principes">19.3</a>), la définition de la covariance ne respecte pas le principe de <em>subcompositional coherence</em>. Dans le cas des données de composition, une transformation préalable des données est donc nécessaire (§ <a href="coda-transformations.html#coda-transformations">20</a>). <span class="citation">Peter Filzmoser et Karel Hron<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span&gt;« Outlier &lt;span&gt;Detection&lt;/span&gt; for &lt;span&gt;Compositional Data Using Robust Methods&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Mathematical Geosciences&lt;/em&gt; 40, nᵒ 3 (avril 2008): 233‑48, &lt;a href="https://doi.org/10.1007/s11004-007-9141-5" role="doc-biblioref"&gt;https://doi.org/10.1007/s11004-007-9141-5&lt;/a&gt;.&lt;/p&gt;'><sup>139</sup></a></span> ont montré que les distances de Mahalanobis sont les mêmes quelle que soit la transformation utilisée (<span class="math inline">\(ALR\)</span>, <span class="math inline">\(CLR\)</span> ou <span class="math inline">\(ILR\)</span>) si des estimateurs classiques de position et de dispersion sont utilisés. Si des estimateurs robustes sont utilisés, les distances sont les mêmes pour des données transformées <span class="math inline">\(ALR\)</span> ou <span class="math inline">\(ILR\)</span>.</p>
+
+</div>
+
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></div>
+<div class="next"><a href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#coda-outliers"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/nfrerebeau/rarcheo/blob/master/chapter_coda.Rmd">Voir le code <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/nfrerebeau/rarcheo/edit/master/chapter_coda.Rmd">Éditer cette page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Ce livre a été écrit avec le package R <a class="text-light" href="https://bookdown.org">bookdown</a>.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

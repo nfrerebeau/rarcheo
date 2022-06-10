@@ -4,7 +4,7 @@ subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
 - Ben Marwick
-date: "2022-06-07"
+date: "2022-06-10"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -95,7 +95,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 07 Jun 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 10 Jun 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
@@ -108,6 +108,7 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |:-------------|:-------|:--------------|:----------------|
 |bookdown      |0.26    |CRAN (R 4.2.0) |@R-bookdown      |
 |bslib         |0.3.1   |CRAN (R 4.2.0) |@R-bslib         |
+|car           |3.0-13  |CRAN (R 4.2.0) |@R-car           |
 |desc          |1.4.1   |CRAN (R 4.2.0) |@R-desc          |
 |DiagrammeR    |1.0.9   |CRAN (R 4.2.0) |@R-DiagrammeR    |
 |downlit       |0.4.0   |CRAN (R 4.2.0) |@R-downlit       |
@@ -117,6 +118,7 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |kableExtra    |1.3.4   |CRAN (R 4.2.0) |@R-kableExtra    |
 |knitr         |1.39    |CRAN (R 4.2.0) |@R-knitr         |
 |markdown      |1.1     |CRAN (R 4.2.0) |@R-markdown      |
+|MASS          |7.3-57  |CRAN (R 4.2.0) |@R-MASS          |
 |mime          |0.12    |CRAN (R 4.2.0) |@R-mime          |
 |miniCRAN      |0.2.16  |CRAN (R 4.2.0) |@R-miniCRAN      |
 |rmarkdown     |2.14    |CRAN (R 4.2.0) |@R-rmarkdown     |
