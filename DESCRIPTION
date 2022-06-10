@@ -26,14 +26,17 @@ BugReports: https://github.com/nfrerebeau/rarcheo/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
+    car,
     DiagrammeR,
     folio,
     ggplot2,
     ggraph,
     grid,
     kableExtra,
+    MASS,
     miniCRAN,
     scatterplot3d,
+    stats,
     tidygraph
 Suggests:
     bslib,
