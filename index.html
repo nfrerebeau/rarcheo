@@ -85,11 +85,11 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
 <li><a class="" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chrono-introduction.html"><span class="header-section-number">22</span> Introduction</a></li>
 <li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">25</span> Introduction</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
@@ -170,7 +170,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <div id="reproductibilité" class="section level2 unnumbered">
 <h2>Reproductibilité<a class="anchor" aria-label="anchor" href="#reproductibilit%C3%A9"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ce livre a été écrit dans <a href="http://www.rstudio.com/ide/">RStudio</a> avec le package <a href="http://bookdown.org/"><em>bookdown</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;bookdown: Authoring Books and Technical Documents with &lt;span&gt;R&lt;/span&gt; Markdown&lt;/em&gt; (Boca Raton, Florida: Chapman; Hall/CRC, 2016), &lt;a href="https://bookdown.org/yihui/bookdown" role="doc-biblioref"&gt;https://bookdown.org/yihui/bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></span> Le site web est hébergé par <a href="https://pages.github.com/">GitHub Pages</a> et automatiquement mis à jour après chaque commit par <a href="https://github.com/nfrerebeau/rarcheo/actions">GitHub Actions</a> (cette version a été compilée le 10 Jun 2022).</p>
+<p>Ce livre a été écrit dans <a href="http://www.rstudio.com/ide/">RStudio</a> avec le package <a href="http://bookdown.org/"><em>bookdown</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Yihui Xie, &lt;em&gt;bookdown: Authoring Books and Technical Documents with &lt;span&gt;R&lt;/span&gt; Markdown&lt;/em&gt; (Boca Raton, Florida: Chapman; Hall/CRC, 2016), &lt;a href="https://bookdown.org/yihui/bookdown" role="doc-biblioref"&gt;https://bookdown.org/yihui/bookdown&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></span> Le site web est hébergé par <a href="https://pages.github.com/">GitHub Pages</a> et automatiquement mis à jour après chaque commit par <a href="https://github.com/nfrerebeau/rarcheo/actions">GitHub Actions</a> (cette version a été compilée le 13 Jun 2022).</p>
 <p>Les données utilisées dans les exemples sont issues des packages <em>datasets</em><span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R Core Team, &lt;em&gt;R&lt;/em&gt;.&lt;/p&gt;"><sup>6</sup></a></span> et <a href="https://packages.tesselle.org/folio/"><em>folio</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nicolas Frerebeau, &lt;em&gt;folio: Datasets for Teaching Archaeology and Paleontology&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=folio" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=folio&lt;/a&gt;.&lt;/p&gt;'><sup>7</sup></a></span> Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant <code>set.seed(12345)</code>.</p>
 <p>Cette version du livre a été réalisée avec R version 4.2.0 (2022-04-22) et <a href="https://pandoc.org/">pandoc</a> version 2.14.2. Les packages R utilisés sont résumés dans le tableau <a href="index.html#tab:packages">0.1</a>.</p>
 <div class="inline-table"><table class="table table-sm">
@@ -274,40 +274,52 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <td align="left"><span class="citation">Andrie de Vries<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;miniCRAN: Create a Mini Version of CRAN Containing Only Selected Packages&lt;/em&gt;, 2022, &lt;a href="https://github.com/andrie/miniCRAN" role="doc-biblioref"&gt;https://github.com/andrie/miniCRAN&lt;/a&gt;.&lt;/p&gt;'><sup>22</sup></a></span></td>
 </tr>
 <tr class="even">
+<td align="left">rcarbon</td>
+<td align="left">1.4.3</td>
+<td align="left">CRAN (R 4.2.0)</td>
+<td align="left"><span class="citation">Andrew Bevan et Enrico Crema<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Rcarbon: Calibration and Analysis of Radiocarbon Dates&lt;/em&gt;, 2022, &lt;a href="https://github.com/ahb108/rcarbon/" role="doc-biblioref"&gt;https://github.com/ahb108/rcarbon/&lt;/a&gt;.&lt;/p&gt;'><sup>23</sup></a></span></td>
+</tr>
+<tr class="odd">
 <td align="left">rmarkdown</td>
 <td align="left">2.14</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">JJ Allaire et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Rmarkdown: Dynamic Documents for R&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=rmarkdown" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=rmarkdown&lt;/a&gt;.&lt;/p&gt;'><sup>23</sup></a></span></td>
+<td align="left"><span class="citation">JJ Allaire et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Rmarkdown: Dynamic Documents for R&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=rmarkdown" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=rmarkdown&lt;/a&gt;.&lt;/p&gt;'><sup>24</sup></a></span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">scatterplot3d</td>
 <td align="left">0.3-41</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">Uwe Ligges, Martin Maechler, et Sarah Schnackenberg<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;scatterplot3d: 3D Scatter Plot&lt;/em&gt;, 2018, &lt;a href="https://CRAN.R-project.org/package=scatterplot3d" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=scatterplot3d&lt;/a&gt;.&lt;/p&gt;'><sup>24</sup></a></span></td>
+<td align="left"><span class="citation">Uwe Ligges, Martin Maechler, et Sarah Schnackenberg<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;scatterplot3d: 3D Scatter Plot&lt;/em&gt;, 2018, &lt;a href="https://CRAN.R-project.org/package=scatterplot3d" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=scatterplot3d&lt;/a&gt;.&lt;/p&gt;'><sup>25</sup></a></span></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">sessioninfo</td>
 <td align="left">1.2.2</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">Hadley Wickham et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Sessioninfo: R Session Information&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=sessioninfo" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=sessioninfo&lt;/a&gt;.&lt;/p&gt;'><sup>25</sup></a></span></td>
+<td align="left"><span class="citation">Hadley Wickham et al.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Sessioninfo: R Session Information&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=sessioninfo" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=sessioninfo&lt;/a&gt;.&lt;/p&gt;'><sup>26</sup></a></span></td>
+</tr>
+<tr class="even">
+<td align="left">shape</td>
+<td align="left">1.4.6</td>
+<td align="left">CRAN (R 4.2.0)</td>
+<td align="left"><span class="citation">Karline Soetaert<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Shape: Functions for Plotting Graphical Shapes, Colors&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=shape" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=shape&lt;/a&gt;.&lt;/p&gt;'><sup>27</sup></a></span></td>
 </tr>
 <tr class="odd">
 <td align="left">tidygraph</td>
 <td align="left">1.2.1</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">Thomas Lin Pedersen<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Tidygraph: A Tidy API for Graph Manipulation&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=tidygraph" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=tidygraph&lt;/a&gt;.&lt;/p&gt;'><sup>26</sup></a></span></td>
+<td align="left"><span class="citation">Thomas Lin Pedersen<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Tidygraph: A Tidy API for Graph Manipulation&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=tidygraph" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=tidygraph&lt;/a&gt;.&lt;/p&gt;'><sup>28</sup></a></span></td>
 </tr>
 <tr class="even">
 <td align="left">webshot</td>
 <td align="left">0.5.3</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">Winston Chang<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Webshot: Take Screenshots of Web Pages&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=webshot" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=webshot&lt;/a&gt;.&lt;/p&gt;'><sup>27</sup></a></span></td>
+<td align="left"><span class="citation">Winston Chang<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Webshot: Take Screenshots of Web Pages&lt;/em&gt;, 2022, &lt;a href="https://CRAN.R-project.org/package=webshot" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=webshot&lt;/a&gt;.&lt;/p&gt;'><sup>29</sup></a></span></td>
 </tr>
 <tr class="odd">
 <td align="left">xml2</td>
 <td align="left">1.3.3</td>
 <td align="left">CRAN (R 4.2.0)</td>
-<td align="left"><span class="citation">Hadley Wickham, Jim Hester, et Jeroen Ooms<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;xml2: Parse XML&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=xml2" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=xml2&lt;/a&gt;.&lt;/p&gt;'><sup>28</sup></a></span></td>
+<td align="left"><span class="citation">Hadley Wickham, Jim Hester, et Jeroen Ooms<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;xml2: Parse XML&lt;/em&gt;, 2021, &lt;a href="https://CRAN.R-project.org/package=xml2" role="doc-biblioref"&gt;https://CRAN.R-project.org/package=xml2&lt;/a&gt;.&lt;/p&gt;'><sup>30</sup></a></span></td>
 </tr>
 </tbody>
 </table></div>
@@ -344,7 +356,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

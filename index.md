@@ -4,7 +4,7 @@ subtitle: "Exploration, visualisation et analyse de données"
 author:
 - Nicolas Frerebeau
 - Ben Marwick
-date: "2022-06-10"
+date: "2022-06-13"
 site: bookdown::bookdown_site
 documentclass: scrbook
 bibliography: [book.bib, packages.bib]
@@ -95,7 +95,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 ## Reproductibilité {-}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 10 Jun 2022).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le 13 Jun 2022).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
@@ -121,9 +121,11 @@ Table: (\#tab:packages)Liste des packages utilisés.
 |MASS          |7.3-57  |CRAN (R 4.2.0) |@R-MASS          |
 |mime          |0.12    |CRAN (R 4.2.0) |@R-mime          |
 |miniCRAN      |0.2.16  |CRAN (R 4.2.0) |@R-miniCRAN      |
+|rcarbon       |1.4.3   |CRAN (R 4.2.0) |@R-rcarbon       |
 |rmarkdown     |2.14    |CRAN (R 4.2.0) |@R-rmarkdown     |
 |scatterplot3d |0.3-41  |CRAN (R 4.2.0) |@R-scatterplot3d |
 |sessioninfo   |1.2.2   |CRAN (R 4.2.0) |@R-sessioninfo   |
+|shape         |1.4.6   |CRAN (R 4.2.0) |@R-shape         |
 |tidygraph     |1.2.1   |CRAN (R 4.2.0) |@R-tidygraph     |
 |webshot       |0.5.3   |CRAN (R 4.2.0) |@R-webshot       |
 |xml2          |1.3.3   |CRAN (R 4.2.0) |@R-xml2          |

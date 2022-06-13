@@ -224,7 +224,7 @@
 \makeatother
 \subtitle{Exploration, visualisation et analyse de données}
 \author{Nicolas Frerebeau \and Ben Marwick}
-\date{2022-06-10}
+\date{2022-06-13}
 
 \begin{document}
 \maketitle
@@ -332,7 +332,7 @@ Les commentaires dans le code sont précédés par le signe \texttt{\#}. Les blo
 \section*{Reproductibilité}\label{reproductibilituxe9}}
 \addcontentsline{toc}{section}{Reproductibilité}
 
-Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 10 Jun 2022).
+Ce livre a été écrit dans \href{http://www.rstudio.com/ide/}{RStudio} avec le package \href{http://bookdown.org/}{\emph{bookdown}} \autocite{bookdown2016}. Le site web est hébergé par \href{https://pages.github.com/}{GitHub Pages} et automatiquement mis à jour après chaque commit par \href{https://github.com/nfrerebeau/rarcheo/actions}{GitHub Actions} (cette version a été compilée le 13 Jun 2022).
 
 Les données utilisées dans les exemples sont issues des packages \emph{datasets} \autocite{R-base} et \href{https://packages.tesselle.org/folio/}{\emph{folio}} \autocite{R-folio}. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant \texttt{set.seed(12345)}.
 
@@ -363,9 +363,11 @@ markdown & 1.1 & CRAN (R 4.2.0) & \textcite{R-markdown} \\
 MASS & 7.3-57 & CRAN (R 4.2.0) & \textcite{R-MASS} \\
 mime & 0.12 & CRAN (R 4.2.0) & \textcite{R-mime} \\
 miniCRAN & 0.2.16 & CRAN (R 4.2.0) & \textcite{R-miniCRAN} \\
+rcarbon & 1.4.3 & CRAN (R 4.2.0) & \textcite{R-rcarbon} \\
 rmarkdown & 2.14 & CRAN (R 4.2.0) & \textcite{R-rmarkdown} \\
 scatterplot3d & 0.3-41 & CRAN (R 4.2.0) & \textcite{R-scatterplot3d} \\
 sessioninfo & 1.2.2 & CRAN (R 4.2.0) & \textcite{R-sessioninfo} \\
+shape & 1.4.6 & CRAN (R 4.2.0) & \textcite{R-shape} \\
 tidygraph & 1.2.1 & CRAN (R 4.2.0) & \textcite{R-tidygraph} \\
 webshot & 0.5.3 & CRAN (R 4.2.0) & \textcite{R-webshot} \\
 xml2 & 1.3.3 & CRAN (R 4.2.0) & \textcite{R-xml2} \\
@@ -3535,7 +3537,7 @@ Sachant les contraintes propres aux données de composition, la plupart des outi
 
 La détection de valeurs aberrantes (\emph{outliers}), ou considérées comme inattendues, est une tâche courante lors de l'analyse de données de composition. Cette dernière repose sur la définition d'un seuil ou d'une valeur limite permettant de séparer les valeurs aberrantes du reste des données \autocite{filzmoser2005,reimann2005}. Ce seuil correspond généralement à une distance limite par rapport au centre du jeu de données, au-delà de laquelle les individus ne sont pas uniquement affectés par la variation naturelle du phénomène étudié, voire relèvent d'un ou de plusieurs processus complètement différents \autocite{filzmoser2005}.
 
-Une telle approche nécessite de bien distinguer les valeurs aberrantes (observations issues d'une ou plusieurs distributions différentes) des valeurs extrêmes (issues de la même distribution malgré leur éloignement du centre) \autocite{reimann2005}. Cette distinction constitue une des principales difficultés : les valeurs aberrantes ne sont pas nécessairement des valeurs extrêmes, en particulier lorsqu'elles résultent de phénomènes secondaires (taphonomie, contaminations\ldots). Ainsi, les approches univariées sont généralement inefficaces pour détecter les valeurs aberrantes \autocite{filzmoser2005}. Les données de composition sont par nature mutlivariées. La détection de valeurs abbérantes doit donc reposer sur la position des données (distance par rapport au centroïde), mais prendre également en compte la forme de ces dernières \autocite{filzmoser2005}.
+Une telle approche nécessite de bien distinguer les valeurs aberrantes (observations issues d'une ou plusieurs distributions différentes) des valeurs extrêmes (issues de la même distribution malgré leur éloignement du centre) \autocite{reimann2005}. Cette distinction constitue une des principales difficultés : les valeurs aberrantes ne sont pas nécessairement des valeurs extrêmes, en particulier lorsqu'elles résultent de phénomènes secondaires (taphonomie, contaminations\ldots). Ainsi, les approches univariées sont généralement inefficaces pour détecter les valeurs aberrantes \autocite{filzmoser2005}. Les données de composition sont par nature mutlivariées : la détection de valeurs abbérantes doit donc reposer sur la position des données (distance par rapport au centroïde), mais prendre également en compte la forme de ces dernières \autocite{filzmoser2005}.
 
 La \href{https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis}{distance de Mahalanobis} \eqref{eq:mahalanobis} permet de déterminer la similarité entre un individu \(x\) multivarié et un ensemble d'observations en prenant en compte la position (moyenne \(\mu\)), ainsi que la forme et la taille (quantifiées par la matrice de covariance \(\Sigma\)) de cet ensemble.
 
@@ -3659,8 +3661,12 @@ D'autre part, le choix du seuil permettant de caractériser une observation comm
 \NormalTok{q }\OtherTok{\textless{}{-}} \FunctionTok{qchisq}\NormalTok{(}\FunctionTok{ppoints}\NormalTok{(}\FunctionTok{length}\NormalTok{(d)), }\AttributeTok{df =} \DecValTok{2}\NormalTok{)}
 
 \DocumentationTok{\#\# Diagramme Quantile{-}Quantile}
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ q, }\AttributeTok{y =}\NormalTok{ d, }\AttributeTok{xlab =} \StringTok{"Quantile théorique"}\NormalTok{,}
-     \AttributeTok{ylab =} \StringTok{"Distance de Mahalanobis robuste"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ q, }
+  \AttributeTok{y =}\NormalTok{ d, }
+  \AttributeTok{xlab =} \StringTok{"Quantile théorique"}\NormalTok{,}
+  \AttributeTok{ylab =} \StringTok{"Distance de Mahalanobis robuste"}
+\NormalTok{)}
 \DocumentationTok{\#\# Tracer la droite théorique}
 \FunctionTok{qqline}\NormalTok{(}\AttributeTok{y =}\NormalTok{ d, }\AttributeTok{distribution =} \ControlFlowTok{function}\NormalTok{(p) }\FunctionTok{qchisq}\NormalTok{(p, }\AttributeTok{df =} \DecValTok{2}\NormalTok{), }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
 \DocumentationTok{\#\# Mettre en évidence les dinosaures}
@@ -3682,8 +3688,8 @@ Enfin, comme nous l'avons vu précédemment (§ \ref{coda-principes}), la défin
 \hypertarget{part-chronologie}{%
 \part{Chronologie}\label{part-chronologie}}
 
-\hypertarget{introduction-3}{%
-\chapter{Introduction}\label{introduction-3}}
+\hypertarget{chrono-introduction}{%
+\chapter{Introduction}\label{chrono-introduction}}
 
 En archéologie, le processus de datation consiste au ``placement dans le temps d'événements les uns par rapport aux autres ou par rapport à toute échelle établie de mesure temporelle'' \autocite{dean1978}. Cela implique de distinguer les méthodes de datation dites \emph{relatives} (qui fournissent une séquence chronologique ordonnée d'événements) et les méthodes de datation dites \emph{absolues} (qui donnent une indication calendaire et peuvent fournir la durée d'un événement) \autocite{obrien2002}.
 
@@ -3697,11 +3703,566 @@ Nous garderons ici la distinction entre une \emph{date} et un \emph{âge} telle 
 \hypertarget{chronologie-quantitative}{%
 \chapter{Chronologie quantitative}\label{chronologie-quantitative}}
 
+\hypertarget{calibrer-des-uxe2ges-radiocarbones}{%
+\section{Calibrer des âges radiocarbones}\label{calibrer-des-uxe2ges-radiocarbones}}
+
+Depuis sa découverte et la ``révolution'' qui s'en est suivie, la méthode de datation par le radiocarbone est devenue d'usage courant pour l'archéologue ou l'historien. Soit parce qu'elle constitue la seule source d'information chronologique, soit parce qu'elle intervient en complément d'autres sources, matérielles ou textuelles.
+
+L'objectif de cette section est d'apprendre à calibrer\footnote{\emph{Calibration} est un anglicisme, le terme français est \href{https://fr.wikipedia.org/wiki/\%C3\%89talonnage_(m\%C3\%A9trologie)}{\emph{étalonage}}. L'usage de \emph{calibration} est cependant admis dans le langage courant et nous le conservons ici par commodité.} des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences\footnote{Cette section est une version modifiée de la leçon ``Calibrer des âges radiocarbone avec R'' publiée par \href{https://programminghistorian.org/}{\emph{The Programming Historian}} \autocite{frerebeau2021}}. La méthode du radiocarbone est une méthode de datation dite \emph{absolue} (cf.~chapitre \ref{chrono-introduction}) qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.
+
+\hypertarget{le-principe-de-la-datation-par-le-radiocarbone}{%
+\subsection{Le principe de la datation par le radiocarbone}\label{le-principe-de-la-datation-par-le-radiocarbone}}
+
+Proposée à la fin des années 1940 par Willard Libby et ses collègues \autocite{anderson1947}, la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (14C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent \autocite{colman1987}. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (\emph{Before Present}, avant 1950\footnote{L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.}).
+
+L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessaires :
+
+\begin{itemize}
+\tightlist
+\item
+  Le phénomène choisi doit suivre une loi qui varie au cours du temps ;
+\item
+  La loi en question doit être indépendante des conditions du milieu ;
+\item
+  Un événement initial doit pouvoir être déterminé.
+\end{itemize}
+
+Le 14C est un est des trois \href{https://fr.wikipedia.org/wiki/Isotope}{isotopes} du carbone avec le 12C et le 13C. Le 14C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la \emph{période radioactive} (notée \(T\), également appelée \emph{demi-vie}). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
+
+La période du 14C est de 5730 ± 40 ans : pour une quantité initiale \(N_0\) d'atomes de 14C, il en reste \(\frac{N_0}{2}\) au bout de 5730 ans, \(\frac{N_0}{4}\) au bout de 11460 ans, etc. (fig.~\ref{fig:c14-decroissance}). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de 14C est trop faible pour être mesurée : c'est la limite de la méthode.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-decroissance-1} 
+
+}
+
+\caption{Décroissance exponentielle d'une quantité $N_0$ d'atomes radioactifs au cours du temps (exprimé en périodes radioactives).}\label{fig:c14-decroissance}
+\end{figure}
+
+Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en 14C dans les organismes vivants est constante et à l'équilibre avec la teneur atmosphérique\footnote{La réalité est un peu plus complexe, notamment du fait des phénomènes de \href{https://fr.wikipedia.org/wiki/Fractionnement_isotopique}{fractionnement isotopique}.}.
+
+Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de 14C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
+
+Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un \emph{terminus} \emph{ante} ou \emph{post quem} pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment avant ou après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.) en fonction des éléments contextuels disponibles (stratigraphie, etc.). Ces éléments contextuels sont d'autant plus importants qu'ils participent à l'interprétation des résultats, en s'assurant notamment de l'absence de problèmes d'ordre \href{https://fr.wikipedia.org/wiki/Taphonomie}{taphonomique} et qu'il existe bien une relation univoque entre l'échantillon daté et l'événement d'intérêt\footnote{Voir par exemple \textcite{calabrisotto2017}.}.
+
+Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale (\(N_0\)) de 14C contenue dans un organisme à sa mort (instant \(t_0\)) et la quantité restante de 14C à un instant \(t\), il est possible de mesurer le temps écoulé entre \(t_0\) et \(t\) : l'âge radiocarbone d'un objet archéologique.
+
+\begin{itemize}
+\tightlist
+\item
+  La quantité actuelle de 14C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de 14C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (\emph{activité spécifique}).
+\item
+  Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de 14C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
+\end{itemize}
+
+Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs \autocite{arnold1949,libby1949,libby1960}. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig.~\ref{fig:c14-intcal}A).
+
+\hypertarget{pourquoi-calibrer-des-uxe2ges-radiocarbone}{%
+\subsection{Pourquoi calibrer des âges radiocarbone ?}\label{pourquoi-calibrer-des-uxe2ges-radiocarbone}}
+
+Les études menées dans la seconde moitié du XXe siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l'âge mesuré et l'âge attendu.
+
+Contrairement au postulat de Libby, la teneur en 14C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en 14C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone\ldots) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de 14C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de 14C.
+
+Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en 14C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'\emph{âges conventionnels}) appartiennent à un référentiel temporel qui leur est propre.
+
+L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de 14C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de \emph{calibration} pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe\footnote{Il existe actuellement trois séries de courbes de calibration : \emph{IntCal} pour l'hémisphère nord, \emph{SHCal} pour l'hémisphère sud et \emph{Marine} pour les échantillons marins.} dont l'estimation est régulièrement mise à jour par la communauté scientifique\footnote{Au moment de la rédaction de cet ouvrage, la courbe \emph{IntCal20} est la dernière en date \autocite{reimer2009,reimer2013,reimer2020}.}. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig.~\ref{fig:c14-intcal}B).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-intcal-1} 
+
+}
+
+\caption{Âges mesurées par le radiocarbone en fonction des âges calendaires attendus. (A) *Curve of Knowns*, âges radiocarbones d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens.}\label{fig:c14-intcal}
+\end{figure}
+
+\hypertarget{comment-calibrer}{%
+\subsection{Comment calibrer ?}\label{comment-calibrer}}
+
+Nous venons donc de voir qu'il était nécessaire de calibrer ses âges radiocarbone. Sur le papier, le processus de calibration est relativement simple, grâce à la table d'équivalence entre temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.
+
+Un âge conventionnel (noté ici \(t\)) est le résultat d'une mesure et, comme il n'existe pas de mesure parfaite, il est toujours accompagné d'un terme correspondant à l'incertitude analytique (\(\Delta t\)) et exprimé sous la forme \(t \pm \Delta t\) (l'âge, \emph{plus ou moins} son incertitude). Cette incertitude résulte de la combinaison des différentes sources d'erreur au sein du laboratoire : il s'agit d'une incertitude \emph{aléatoire} inhérente à la mesure.
+
+Un âge conventionnel est ainsi un \emph{estimateur} du vrai âge radiocarbone de l'objet daté. Si on répète un très grand nombre de fois la datation d'un même échantillon, sa valeur est susceptible de varier et il y a très peu de chance qu'elle coïncide exactement avec l'âge radiocarbone vrai.
+Il est donc préférable de s'attacher à un intervalle dont il est hautement probable qu'il contienne la vraie valeur (inconnue) de l'âge conventionnel. De fait, l'incertitude caractérise la dispersion des valeurs qui pourraient raisonnablement être attribuées à l'âge vrai. Un âge conventionnel est la réalisation d'un processus aléatoire, la décroissance radioactive, il peut être modélisé à l'aide d'une loi de probabilité particulière : la \href{https://fr.wikipedia.org/wiki/Loi_normale}{loi normale} \autocite{scott2007}.
+
+Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne \(\mu\) (tendance centrale) et l'écart-type \(\sigma\) (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l'intervalle défini par \(\mu \pm \sigma\) contient 67 \% des valeurs. Si on multiplie l'écart-type par deux, l'intervalle \(\mu \pm 2\sigma\) contient quant à lui 95 \% des valeurs (fig.~\ref{fig:c14-gauss}).
+
+Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'écart-type, il y a 68 \% de chance que l'intervalle à \(1\sigma\) contienne l'âge conventionnel vrai. De même, l'intervalle à \(2\sigma\) a 95 \% de chance de contenir l'âge conventionnel vrai. L'intervalle à \(1\sigma\) est moins dispersé, mais a moins de chance d'être juste qu'à \(2\sigma\) : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l'âge conventionnel vrai.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-gauss-1} 
+
+}
+
+\caption{Loi normale de moyenne 0 et d'écart-type 1 avec les plâge de normalité aux niveaux de confiance 68, 95 et 99 \%. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale.}\label{fig:c14-gauss}
+\end{figure}
+
+L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude (\(t - \Delta t\) et \(t + \Delta t\) dans le cas à \(1\sigma\)) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure \ref{fig:c14-calibration}, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à \(1\sigma\) (bandes noir) et à \(2\sigma\) (bandes hachurée).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-calibration-1} 
+
+}
+
+\caption{Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20.}\label{fig:c14-calibration}
+\end{figure}
+
+Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l'âge radiocarbone plus ou moins son incertitude, toutes les valeurs n'ont pas la même probabilité de coïncider avec l'âge radiocarbone vrai, or la calibration par simple interception suppose l'inverse. De fait, l'approche aujourd'hui courante\footnote{Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.} consiste à prendre également en compte la distribution normale des âges radiocarbone. On trouve parfois l'expression de \emph{calibration probabiliste} pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n'est pas équiprobable (fig.~\ref{fig:c14-hallstatt}).
+
+S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Du fait des oscillations de la courbe de calibration, il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater sur la figure \ref{fig:c14-hallstatt}. Ainsi, un âge calibré ne peut être exprimé autrement que sous la forme d'un intervalle.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-hallstatt-1} 
+
+}
+
+\caption{Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris).}\label{fig:c14-hallstatt}
+\end{figure}
+
+L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incertitude de l'âge conventionnel, de l'allure de la courbe de calibration et de l'incertitude associée à cette dernière. Cet intervalle, entre les bornes duquel l'âge calendaire a une probabilité donnée d'être compris, peut être obtenu de deux manières distinctes (fig.~\ref{fig:c14-hpd}) :
+
+\begin{description}
+\tightlist
+\item[Intervalle à plus hautes densités (\emph{Highest Posterior Density Interval, HPDI})]
+Les bornes de l'intervalle correspondent aux régions de la distribution dont la probabilité cumulée est supérieure à un seuil donné.
+\item[Intervalle de crédibilité]
+Les bornes de l'intervalle correspondent aux \href{https://fr.wikipedia.org/wiki/Quantile}{quantiles} de la distribution.
+\end{description}
+
+Lorsque la distribution d'un âge calibré est multimodale (en dents de scie), l'intervalle à plus hautes densités correspond souvent à l'union de plusieurs intervalle disjoints, au contraire de l'intervalle de crédibilité qui fourni toujours une gamme continue de valeurs \autocite{hyndman1996}. L'intervalle à plus hautes densités est ainsi souvent plus informatif, raison pour laquelle il est couramment utilisé pour présenter des résultats calibrés.
+
+Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l'Âge du Fer (fig.~\ref{fig:c14-hallstatt}). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 \% (intervalle HPD), à un âge calendaire compris entre 2718 et 2354 ans cal BP (soit 768-404 avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 \%), l'âge calendaire correspondant a 95 \% de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (fig.~\ref{fig:c14-hallstatt}). En réalisant la calibration à 68 \% (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L'âge calendaire a 68 \% de chance d'appartenir à l'union des intervalles 748-685 (18 \%), 665-637 (8 \%), 586-580 (2 \%), 568-452 (32 \%), 444-415 (8 \%) avant notre ère et non à un unique intervalle (fig.~\ref{fig:c14-hpd}).
+
+\textbackslash begin\{figure\}
+
+\{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-hpd-1}
+
+\}
+
+\textbackslash caption\{Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 \% et 95 \%. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins).\}\label{fig:c14-hpd}
+\textbackslash end\{figure\}
+
+Il est courant dans certains contextes de conserver des âges calibrés exprimés en années BP, dans ce cas il est recommandé de préciser \emph{cal} BP pour éviter toute confusion du lecteur. Ces âges calendaires en années BP peuvent être convertis en dates exprimées avant ou après notre ère (BC/AD, \emph{before Christ/anno Domini}). Pour cela, il suffit d'utiliser la règle de calcul suivante.
+
+\begin{tcolorbox}[fonttitle=\sffamily\bfseries\large,title=Conseil,colframe=darkcyan]
+
+Pour convertir en années BC/AD un âge \emph{calibré} (noté \(x\)) exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
+
+\begin{itemize}
+\tightlist
+\item
+  Si l'âge calibré est inférieur à 1950 BP : \(1950 - x\) AD
+\item
+  Si l'âge calibré est supérieur ou égal à 1950 BP : \(1949 - x\) BC
+\end{itemize}
+
+\end{tcolorbox}
+
+On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent rapidement conduire à des surinterprétations. Au cours de l'étude d'un corpus de datations ou lors de sa publication, il est donc particulièrement important de présenter l'ensemble des données et des choix ayant concouru à l'obtention des âges calendaires. L'usage d'outils libres favorise à la fois la transparence et la reproductibilité des résultats, deux aspects particulièrement importants en ce qui concerne la calibration d'âges radiocarbone.
+
+\hypertarget{applications}{%
+\subsection{Applications}\label{applications}}
+
+De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. \href{https://c14.arch.ox.ac.uk/oxcal/}{OxCal}, \href{http://calib.org}{CALIB} et \href{https://chronomodel.com}{ChronoModel} offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de \href{https://fr.wikipedia.org/wiki/Statistique_bay\%C3\%A9sienne}{modélisation bayésienne} de séquences chronologiques. R offre une alternative intéressante en permettant notamment d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
+
+Plusieurs packages R permettent de réaliser des calibrations d'âges radiocarbone (\href{https://cran.r-project.org/package=Bchron}{\emph{Bchron}}, \href{https://cran.r-project.org/package=IntCal}{\emph{IntCal}}, \href{https://cran.r-project.org/package=oxcAAR}{\emph{oxcAAR}}\ldots) et sont souvent orientés vers un aspect particulier de l'analyse, offrant ainsi des fonctionnalités différentes (construction de chronologies, modèles âges-profondeur, etc.). La solution retenue ici est \href{https://cran.r-project.org/package=rcarbon}{\emph{rcarbon}} \autocite{R-rcarbon}. Ce package permet de calibrer simplement et d'analyser des âges radiocarbone.
+
+\hypertarget{cas-duxe9tude}{%
+\subsubsection{Cas d'étude}\label{cas-duxe9tude}}
+
+Afin d'aborder concrètement la question de la calibration d'âges radiocarbone, nous allons nous pencher sur l'exemple de la datation du \href{https://fr.wikipedia.org/wiki/Suaire_de_Turin\#La_datation_par_le_carbone_14_(1988-1989)}{Suaire de Turin}. Réalisée à la fin des années 1980, cette dernière constitue un cas d'école en matière de datation d'un objet historique par la méthode du radiocarbone. Trois datations indépendantes d'un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.
+
+En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Trois laboratoires différents ont été sélectionnés l'année précédente et reçoivent chacun un fragment de ce même échantillon. En complément, trois autres tissus dont les âges calendaires sont connus par d'autres méthodes sont également échantillonnés. Ces trois échantillons supplémentaires doivent servir d'échantillons de contrôle, afin de valider les résultats de chaque laboratoire et de s'assurer que les résultats des différents laboratoires sont bien compatibles entre eux. Chaque laboratoire a reçu quatre échantillons et réalisé les mesures en aveugle, sans savoir lequel correspond au Suaire \autocite{damon1989}.
+
+Le tableau \ref{tab:c14-turin} présente ainsi les âges radiocarbone obtenus (\(1\sigma\)) dans le cadre de l'étude du Suaire de Turin \autocite{damon1989} et ce pour les trois laboratoires (Arizona, Oxford et Zurich). L'échantillon 1 (Éch. 1) correspond au tissu prélevé sur le Suaire de Turin; l'échantillon 2 (Éch. 2) représente un fragment de lin provenant d'une tombe de Qasr Ibrîm en Égypte, daté des XIe-XIIe siècles de notre ère; l'échantillon 3 (Éch. 3) correspond à un fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Enfin, l'échantillon 4 (Éch. 4) est constitué de fils de la chape de St-Louis d'Anjou (France), daté entre 1290 et 1310.
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{\label{tab:c14-turin} âges radiocarbone (\(1\sigma\)) obtenus dans le cadre de l'étude du Suaire de Turin (Damon \emph{et al.}, 1989).}\tabularnewline
+\toprule
+Laboratoire & Éch. 1 & Éch. 2 & Éch. 3 & Éch. 4 \\
+\midrule
+\endfirsthead
+\toprule
+Laboratoire & Éch. 1 & Éch. 2 & Éch. 3 & Éch. 4 \\
+\midrule
+\endhead
+Arizona & 646 ± 31 & 927 ± 32 & 1995 ± 46 & 722 ± 43 \\
+Oxford & 750 ± 30 & 940 ± 30 & 1980 ± 35 & 755 ± 30 \\
+Zurich & 676 ± 24 & 941 ± 23 & 1940 ± 30 & 685 ± 34 \\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Import des données}
+\NormalTok{turin }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{c}\NormalTok{( }
+    \DecValTok{646}\NormalTok{, }\DecValTok{927}\NormalTok{, }\DecValTok{1995}\NormalTok{, }\DecValTok{722}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{46}\NormalTok{, }\DecValTok{43}\NormalTok{,}
+    \DecValTok{750}\NormalTok{, }\DecValTok{940}\NormalTok{, }\DecValTok{1980}\NormalTok{, }\DecValTok{755}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{30}\NormalTok{,}
+    \DecValTok{676}\NormalTok{, }\DecValTok{941}\NormalTok{, }\DecValTok{1940}\NormalTok{, }\DecValTok{685}\NormalTok{, }\DecValTok{24}\NormalTok{, }\DecValTok{23}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{34}
+\NormalTok{  ),}
+  \AttributeTok{nrow =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{byrow =} \ConstantTok{TRUE}
+\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(turin) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"age1"}\NormalTok{, }\StringTok{"age2"}\NormalTok{, }\StringTok{"age3"}\NormalTok{, }\StringTok{"age4"}\NormalTok{, }
+                     \StringTok{"err1"}\NormalTok{, }\StringTok{"err2"}\NormalTok{, }\StringTok{"err3"}\NormalTok{, }\StringTok{"err4"}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(turin) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Arizona"}\NormalTok{, }\StringTok{"Oxford"}\NormalTok{, }\StringTok{"Zurich"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Ensuite, on remet en forme les données dans un \texttt{array}, obtenant ainsi un tableau à 3 dimensions : la 1ère dimension (lignes) correspond aux laboratoires, la 2ème dimension (colonnes) correspond aux échantillons, la 3ème dimension permet de distinguer les âges et leurs incertitudes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(turin) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\FunctionTok{dimnames}\NormalTok{(turin) }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"Arizona"}\NormalTok{, }\StringTok{"Oxford"}\NormalTok{, }\StringTok{"Zurich"}\NormalTok{),}
+  \FunctionTok{paste}\NormalTok{(}\StringTok{"Ech."}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{sep =} \StringTok{" "}\NormalTok{),}
+  \FunctionTok{c}\NormalTok{(}\StringTok{"age"}\NormalTok{, }\StringTok{"erreur"}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{turin}
+\CommentTok{\#\textgreater{} , , age}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}         Ech. 1 Ech. 2 Ech. 3 Ech. 4}
+\CommentTok{\#\textgreater{} Arizona    646    927   1995    722}
+\CommentTok{\#\textgreater{} Oxford     750    940   1980    755}
+\CommentTok{\#\textgreater{} Zurich     676    941   1940    685}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} , , erreur}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}         Ech. 1 Ech. 2 Ech. 3 Ech. 4}
+\CommentTok{\#\textgreater{} Arizona     31     32     46     43}
+\CommentTok{\#\textgreater{} Oxford      30     30     35     30}
+\CommentTok{\#\textgreater{} Zurich      24     23     30     34}
+\end{Highlighting}
+\end{Shaded}
+
+Avant de calibrer les âges radiocarbone obtenus, plusieurs questions préalables peuvent être explorées.
+
+\hypertarget{comment-visualiser-les-donnuxe9es-produites}{%
+\subsubsection{Comment visualiser les données produites ?}\label{comment-visualiser-les-donnuxe9es-produites}}
+
+Dans le cas présent, plusieurs laboratoires ont daté les mêmes objets. Dans un premier temps, on cherche donc à savoir si les âges obtenus pour chaque objet par les différents laboratoires sont compatibles entre eux. Cette compatibilité s'entend en prenant en compte les incertitudes associées aux âges.
+
+Une fois les données importées et mises en forme, une première approche consiste à les visualiser. On peut ainsi se faire une première idée quant à la compatibilité des résultats fournis par les différents laboratoires pour chaque objet daté. Le code suivant permet de générer la figure \ref{fig:c14-turin-uncal} où sont figurées les distributions des âges conventionnels de chaque échantillon.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# On fixe les paramètres graphiques}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{), }\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{) }\SpecialCharTok{+} \FloatTok{0.1}\NormalTok{, }\AttributeTok{las =} \DecValTok{1}\NormalTok{)}
+
+\DocumentationTok{\#\# On défini les couleurs à utiliser}
+\NormalTok{couleurs }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"\#DDAA33"}\NormalTok{, }\StringTok{"\#BB5566"}\NormalTok{, }\StringTok{"\#004488"}\NormalTok{)}
+\DocumentationTok{\#\# On ajoute de la transparence pour permettre la superposition}
+\NormalTok{couleurs }\OtherTok{\textless{}{-}} \FunctionTok{rgb}\NormalTok{(}\FunctionTok{col2rgb}\NormalTok{(couleurs) }\SpecialCharTok{/} \DecValTok{255}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+
+\DocumentationTok{\#\# Pour chaque objet daté...}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(turin)) \{}
+  \DocumentationTok{\#\# On défini l\textquotesingle{}étendue des valeurs en abscisse (années)}
+\NormalTok{  k }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(turin[, j, }\DecValTok{1}\NormalTok{])}
+\NormalTok{  x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(k) }\SpecialCharTok{*} \FloatTok{0.8}\NormalTok{, }\FunctionTok{max}\NormalTok{(k) }\SpecialCharTok{*} \FloatTok{1.2}\NormalTok{, }\AttributeTok{by =} \DecValTok{1}\NormalTok{)}
+  \DocumentationTok{\#\# On défini un graphique vide auquel ajouter les distributions}
+  \FunctionTok{plot}\NormalTok{(}\AttributeTok{x =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{xlim =} \FunctionTok{range}\NormalTok{(x), }\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.02}\NormalTok{),}
+       \AttributeTok{xlab =} \StringTok{""}\NormalTok{, }\AttributeTok{ylab =} \StringTok{""}\NormalTok{, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+
+  \DocumentationTok{\#\# On affiche le nom de l\textquotesingle{}échantillon}
+  \FunctionTok{text}\NormalTok{(}\AttributeTok{x =} \FunctionTok{min}\NormalTok{(k) }\SpecialCharTok{*} \FloatTok{0.9}\NormalTok{, }\AttributeTok{y =} \FloatTok{0.02}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{colnames}\NormalTok{(turin)[j], }\AttributeTok{pos =} \DecValTok{1}\NormalTok{)}
+
+  \DocumentationTok{\#\# Pour chaque âge obtenu...}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(turin)) \{}
+    \DocumentationTok{\#\# On calcule la fonction de densité de la distribution normale}
+\NormalTok{    y }\OtherTok{\textless{}{-}} \FunctionTok{dnorm}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{mean =}\NormalTok{ turin[i, j, }\DecValTok{1}\NormalTok{], }\AttributeTok{sd =}\NormalTok{ turin[i, j, }\DecValTok{2}\NormalTok{])}
+
+    \DocumentationTok{\#\# On trace la courbe}
+    \FunctionTok{polygon}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{col =}\NormalTok{ couleurs[[i]])}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\DocumentationTok{\#\# On ajoute une légende au dernier graphique}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{rownames}\NormalTok{(turin), }\AttributeTok{fill =}\NormalTok{ couleurs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-turin-uncal-1} 
+
+}
+
+\caption{Distribution des âges conventionnels par laboratoire.}\label{fig:c14-turin-uncal}
+\end{figure}
+
+La figure \ref{fig:c14-turin-uncal} permet de constater que l'échantillon 1 présente des âges ne se recouvrant que faiblement entre eux, au contraire des trois autres échantillons datés. Partant de cette première observation, on va donc tester l'homogénéité des résultats des différents laboratoires.
+
+\hypertarget{les-ruxe9sultats-des-diffuxe9rents-laboratoires-sont-ils-homoguxe8nes}{%
+\subsubsection{Les résultats des différents laboratoires sont-ils homogènes ?}\label{les-ruxe9sultats-des-diffuxe9rents-laboratoires-sont-ils-homoguxe8nes}}
+
+Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\(H_0\)) peut être formulée comme suit : ``les âges mesurés par les différents laboratoires sur un même objet sont égaux''.
+
+Pour cela, on commence par calculer l'âge moyen de chaque objet (\(\bar{x}\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \(w_i = \frac{1}{\sigma_i^2}\)) permet d'ajuster la contribution relative de chaque date (\(x_i\)) à la valeur moyenne.
+
+\[ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} \]
+
+À cet âge moyen est également associée une incertitude (\(\sigma\)) :
+\[ \sigma = \sqrt{\sum_{i=1}^{n}{w_i}} \]
+
+À partir de cette valeur moyenne, on peut calculer une variable de test statistique (\(T\)) permettant la comparaison des âges mesurés à un âge théorique (ici l'âge moyen) pour chaque objet daté.
+
+\[ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} \]
+
+\(T\) est une variable aléatoire qui suit une loi du \(\chi^2\) avec \(n-1\) degrés de liberté (\(n\) est le nombre de datations par objet, ici \(n = 3\)). À partir de \(T\), il est possible de calculer la valeur \(p\), c'est-à-dire le risque de rejeter l'hypothèse nulle alors que celle-ci est vraie. En comparant la valeur \(p\) à un seuil \(\alpha\) fixé à l'avance, on peut déterminer s'il est possible ou non de rejeter \(H_0\) (si \(p\) est supérieure à \(\alpha\), alors on ne peut rejeter l'hypothèse nulle). On fixe ici cette valeur \(\alpha\) à 0,05. On estime ainsi qu'un risque de 5 \% de se tromper est acceptable.
+
+Le code suivant permet de calculer pour chaque échantillon, son âge moyen, l'incertitude associée, la statistique \(T\) et la valeur \(p\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# On construit un data.frame pour stocker les résultats}
+\DocumentationTok{\#\# Chaque ligne correspond à un échantillon}
+\DocumentationTok{\#\# Les colonnes correspondent à :}
+\DocumentationTok{\#\# {-} L\textquotesingle{}âge moyen}
+\DocumentationTok{\#\# {-} L\textquotesingle{}incertitude associée à l\textquotesingle{}âge moyen}
+\DocumentationTok{\#\# {-} La statistique du test d\textquotesingle{}homogénéité}
+\DocumentationTok{\#\# {-} La valeur p du test d\textquotesingle{}homogénéité}
+\NormalTok{dates }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{4}\NormalTok{))}
+\FunctionTok{rownames}\NormalTok{(dates) }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"Ech."}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, }\AttributeTok{sep =} \StringTok{" "}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(dates) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"age"}\NormalTok{, }\StringTok{"erreur"}\NormalTok{, }\StringTok{"chi2"}\NormalTok{, }\StringTok{"p"}\NormalTok{)}
+
+\DocumentationTok{\#\# Pour chaque objet daté...}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(turin)) \{}
+\NormalTok{  age }\OtherTok{\textless{}{-}}\NormalTok{ turin[, j, }\DecValTok{1}\NormalTok{] }\CommentTok{\# On extrait les âges}
+\NormalTok{  inc }\OtherTok{\textless{}{-}}\NormalTok{ turin[, j, }\DecValTok{2}\NormalTok{] }\CommentTok{\# On extrait les incertitudes}
+
+  \CommentTok{\# On calcule la moyenne pondérée}
+\NormalTok{  w }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{/}\NormalTok{ inc}\SpecialCharTok{\^{}}\DecValTok{2} \CommentTok{\# Facteur de pondération}
+\NormalTok{  moy }\OtherTok{\textless{}{-}}\NormalTok{ stats}\SpecialCharTok{::}\FunctionTok{weighted.mean}\NormalTok{(}\AttributeTok{x =}\NormalTok{ age, }\AttributeTok{w =}\NormalTok{ w)}
+
+  \CommentTok{\# On calcule l\textquotesingle{}incertitude associée à la moyenne pondérée}
+\NormalTok{  err }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\DecValTok{1} \SpecialCharTok{/}\NormalTok{ inc}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1} \SpecialCharTok{/} \DecValTok{2}\NormalTok{)}
+
+  \CommentTok{\# On calcule la statistique du test}
+\NormalTok{  chi2 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(((age }\SpecialCharTok{{-}}\NormalTok{ moy) }\SpecialCharTok{/}\NormalTok{ inc)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+  \CommentTok{\# On calcule la valeur{-}p}
+\NormalTok{  p }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(chi2, }\AttributeTok{df =} \DecValTok{2}\NormalTok{)}
+
+  \CommentTok{\# On stocke les résultats}
+  \CommentTok{\# On arrondi au passage les ages à l\textquotesingle{}année}
+  \CommentTok{\# (une précision sub{-}annuelle n\textquotesingle{}a aucun sens)}
+\NormalTok{  dates[j, ] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(moy), }\FunctionTok{round}\NormalTok{(err), chi2, p)}
+\NormalTok{\}}
+
+\NormalTok{dates}
+\CommentTok{\#\textgreater{}         age erreur      chi2          p}
+\CommentTok{\#\textgreater{} Ech. 1  689     16 6.3518295 0.04175589}
+\CommentTok{\#\textgreater{} Ech. 2  937     16 0.1375815 0.93352200}
+\CommentTok{\#\textgreater{} Ech. 3 1964     20 1.3026835 0.52134579}
+\CommentTok{\#\textgreater{} Ech. 4  724     20 2.3856294 0.30336618}
+\end{Highlighting}
+\end{Shaded}
+
+On constate que l'échantillon 1 présente une valeur \(p\) de 0.04. Comme celle-ci est inférieure au seuil \(\alpha\) fixé, l'hypothèse \(H_0\) peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs \(p\) obtenues pour les autres échantillons sont respectivement de 0.93, 0.52, 0.3 : l'hypothèse \(H_0\) ne peut être donc rejetée dans ces cas.
+
+Cette fluctuation des âges de l'échantillon 1 est vraisemblablement liée à une hétérogénéité des mesures au sein d'un des laboratoires\footnote{Les raisons de cette hétérogénéité dépassent le cadre de notre propos. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).}.
+
+\hypertarget{calibrer-les-uxe2ges}{%
+\subsubsection{Calibrer les âges}\label{calibrer-les-uxe2ges}}
+
+Conformément aux résultats des tests précédents, les différents âges obtenus pour l'échantillon 1 seront calibrés séparément, tandis que l'on va pouvoir calibrer l'âge moyen des échantillons 2, 3 et 4. La calibration est réalisée avec la fonction \texttt{calibrate()} du package \emph{rcarbon}. On peut ensuite utiliser \texttt{summary()} pour obtenir un résumé des âges calibrés (par défaut, \texttt{summary()} retourne des âges calibrés exprimés en années cal BP).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Chargement du package rcarbon}
+\FunctionTok{library}\NormalTok{(rcarbon)}
+
+\DocumentationTok{\#\# On calibre les âges de l\textquotesingle{}échantillon 1}
+\NormalTok{ages\_ech1 }\OtherTok{\textless{}{-}} \FunctionTok{calibrate}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ turin[, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{],      }\CommentTok{\# On sélectionne les âges de l\textquotesingle{}échantillon 1}
+  \AttributeTok{errors =}\NormalTok{ turin[, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{], }\CommentTok{\# On sélectionne les incertitudes associées}
+  \AttributeTok{ids =} \FunctionTok{rownames}\NormalTok{(turin),  }\CommentTok{\# On précise les noms des âges (laboratoires)}
+  \AttributeTok{calCurves =} \StringTok{"intcal20"}\NormalTok{, }\CommentTok{\# On choisit la courbe IntCal20}
+  \AttributeTok{verbose =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\DocumentationTok{\#\# On affiche les âges calibrés à 95\%}
+\FunctionTok{summary}\NormalTok{(ages\_ech1, }\AttributeTok{prob =} \FloatTok{0.95}\NormalTok{)}
+\CommentTok{\#\textgreater{}    DateID MedianBP p\_0.95\_BP\_1 p\_0.95\_BP\_2}
+\CommentTok{\#\textgreater{} 1 Arizona      600  667 to 623  612 to 555}
+\CommentTok{\#\textgreater{} 2  Oxford      682  725 to 660    NA to NA}
+\CommentTok{\#\textgreater{} 3  Zurich      648  671 to 633  589 to 563}
+
+\DocumentationTok{\#\# On calibre les âges combinés}
+\NormalTok{ages\_comb }\OtherTok{\textless{}{-}} \FunctionTok{calibrate}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ dates}\SpecialCharTok{$}\NormalTok{age,}
+  \AttributeTok{errors =}\NormalTok{ dates}\SpecialCharTok{$}\NormalTok{erreur,}
+  \AttributeTok{ids =} \FunctionTok{rownames}\NormalTok{(dates),}
+  \AttributeTok{calCurves =} \StringTok{"intcal20"}\NormalTok{,}
+  \AttributeTok{verbose =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\DocumentationTok{\#\# On affiche les âges calibrés à 95\%}
+\FunctionTok{summary}\NormalTok{(ages\_comb, }\AttributeTok{prob =} \FloatTok{0.95}\NormalTok{)}
+\CommentTok{\#\textgreater{}   DateID MedianBP  p\_0.95\_BP\_1  p\_0.95\_BP\_2}
+\CommentTok{\#\textgreater{} 1 Ech. 1      659   671 to 648   581 to 571}
+\CommentTok{\#\textgreater{} 2 Ech. 2      850   910 to 839   837 to 792}
+\CommentTok{\#\textgreater{} 3 Ech. 3     1892 1974 to 1966 1943 to 1829}
+\CommentTok{\#\textgreater{} 4 Ech. 4      670   682 to 653     NA to NA}
+\end{Highlighting}
+\end{Shaded}
+
+La fonction \texttt{hpdi()} permet de calculer les intervalles HPD pour chaque âge calibrés (attention, \texttt{hpdi()} renvoie des âges exprimés en années cal BP) et la probabilité associée à chaque intervalle :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Intervalles HPD à 95 \% des âges de l\textquotesingle{}échantillon 1}
+\NormalTok{(hpd\_ech1 }\OtherTok{\textless{}{-}} \FunctionTok{hpdi}\NormalTok{(ages\_ech1, }\AttributeTok{credMass =} \FloatTok{0.95}\NormalTok{))}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        667      623 0.4298236}
+\CommentTok{\#\textgreater{} [2,]        612      555 0.5305958}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        725      660 0.9505207}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        671      633 0.5776311}
+\CommentTok{\#\textgreater{} [2,]        589      563 0.3795208}
+
+\DocumentationTok{\#\# Intervalles HPD à 95 \% des âges combinés}
+\NormalTok{(hpd\_comb }\OtherTok{\textless{}{-}} \FunctionTok{hpdi}\NormalTok{(ages\_comb, }\AttributeTok{credMass =} \FloatTok{0.95}\NormalTok{))}
+\CommentTok{\#\textgreater{} [[1]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        671      648 0.7900124}
+\CommentTok{\#\textgreater{} [2,]        581      571 0.1655072}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[2]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        910      839 0.5549372}
+\CommentTok{\#\textgreater{} [2,]        837      792 0.4040575}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[3]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP       prob}
+\CommentTok{\#\textgreater{} [1,]       1974     1966 0.02116099}
+\CommentTok{\#\textgreater{} [2,]       1943     1829 0.93518667}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} [[4]]}
+\CommentTok{\#\textgreater{}      startCalBP endCalBP      prob}
+\CommentTok{\#\textgreater{} [1,]        682      653 0.9527099}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comment-interpruxe9ter-ces-uxe2ges}{%
+\subsubsection{Comment interpréter ces âges ?}\label{comment-interpruxe9ter-ces-uxe2ges}}
+
+On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. Les distributions des âges conventionnels (axe des ordonnées) et calendaires (axe des abscisses) peuvent être représentés avec la courbe de calibration à l'aide de la fonction \texttt{plot()}. La figure \ref{fig:c14-turin-cal} permet alors de constater que leurs âges calibrés sont en accord avec les datations connues par ailleurs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# On fixe les paramètres graphiques}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{), }\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FloatTok{0.1}\NormalTok{, }\AttributeTok{las =} \DecValTok{1}\NormalTok{)}
+
+\DocumentationTok{\#\# Pour les échantillons 2, 3 et 4...}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{) \{}
+  \FunctionTok{plot}\NormalTok{(}
+    \AttributeTok{x =}\NormalTok{ ages\_comb,}
+    \AttributeTok{ind =}\NormalTok{ i,}
+    \AttributeTok{HPD =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{credMass =} \FloatTok{0.95}\NormalTok{,   }\CommentTok{\# 95\%}
+    \AttributeTok{calendar =} \StringTok{"BCAD"}\NormalTok{, }\CommentTok{\# Référence calendaire}
+    \AttributeTok{xlab =} \StringTok{"Année BC/AD"}\NormalTok{,}
+    \AttributeTok{axis4 =} \ConstantTok{FALSE}
+\NormalTok{  )}
+  \FunctionTok{mtext}\NormalTok{(}\AttributeTok{text =} \FunctionTok{rownames}\NormalTok{(dates)[[i]], }\AttributeTok{side =} \DecValTok{3}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbackslash begin\{figure\}
+
+\{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-turin-cal-1}
+
+\}
+
+\textbackslash caption\{Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95\%. Courbe IntCal20.\}\label{fig:c14-turin-cal}
+\textbackslash end\{figure\}
+
+\begin{itemize}
+\tightlist
+\item
+  L'âge calendaire de l'échantillon 2 a 95 \% de chance (intervalle HPD) de se trouver dans l'union des intervalles {[}1040;1109{]} (54 \%) et {[}1113;1158{]} (40 \%), en accord avec une datation attendue autour des XIe-XIIe siècles de notre ère.
+\item
+  L'âge calendaire de l'échantillon 3 a 95 \% de chance (intervalle HPD) de se trouver dans l'union des intervalles {[}-25;-17{]} (2 \%) et {[}7;121{]} (93 \%), en accord avec une datation attendue entre -110 et 75.
+\item
+  L'âge calendaire de l'échantillon 4 a 95 \% de chance (intervalle HPD) de se trouver entre 1267 et 1297, en accord avec une datation attendue entre 1290 et 1310.
+\end{itemize}
+
+Les âges radiocarbone obtenus par les différents laboratoires pour l'échantillon 1 ont été calibrés séparément. La fonction \texttt{multiplot()} permet de représenter simultanément les distributions des âges calibrés (exprimés en années BC/AD) pour les trois laboratoires (fig.~\ref{fig:c14-turin-plot}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# On fixe les paramètres graphiques}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{) }\SpecialCharTok{+} \FloatTok{0.1}\NormalTok{)}
+
+\DocumentationTok{\#\# On représente les âges obtenus par les trois laboratoires (éch. 1)}
+\FunctionTok{multiplot}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ ages\_ech1,}
+  \AttributeTok{type =} \StringTok{"d"}\NormalTok{,}
+  \AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{HPD =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{credMass =} \FloatTok{0.95}\NormalTok{,  }\CommentTok{\# 95\%}
+  \AttributeTok{calendar =} \StringTok{"BCAD"}\NormalTok{, }\CommentTok{\# Référence calendaire}
+  \AttributeTok{xlab =} \StringTok{"Année AD"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbackslash begin\{figure\}
+
+\{\centering \includegraphics[width=1\linewidth]{chapter_chronology_files/figure-latex/c14-turin-plot-1}
+
+\}
+
+\textbackslash caption\{Distribution des âges calendaires de l'échantillon 1 obtenus par les différents laboratoires. Les zones en gris foncé correspondent à l'intervalle HPD à 95\%. Courbe IntCal20.\}\label{fig:c14-turin-plot}
+\textbackslash end\{figure\}
+
+Si l'analyse des âges conventionnels obtenus par les différents laboratoires pour l'échantillon 1 révèle une certaine hétérogénéité, on constate néanmoins que les âges calibrés appartiennent tous aux XIIIe et XIVe siècles. Bien qu'on ne puisse donner un intervalle plus précis, ces résultats sont en accord avec l'apparition des premières mentions écrites du Suaire et permettent raisonnablement d'exclure l'hypothèse d'authenticité de la relique.
+
+\hypertarget{comment-pruxe9senter-ses-ruxe9sultats}{%
+\subsubsection{Comment présenter ses résultats ?}\label{comment-pruxe9senter-ses-ruxe9sultats}}
+
+Pour communiquer ou publier des âges radiocarbone de manière rigoureuse et permettre de vérifier les résultats et d'en faire usage, il est nécessaire de toujours faire figurer un certain nombre d'éléments. Par exemple, on écrira :
+
+\begin{quote}
+L'échantillon ETH-3883 est daté à 676 ± 24 ans BP, calibré à {[}671;633{]} (58 \%) ou {[}589;563{]} (38 \%) cal BP soit {[}1279;1317{]} (58 \%) ou {[}1361;1387{]} (38 \%) AD (intervalles HPD à 95 \%) avec IntCal20 (Reimer \emph{et al.} 2020), R version 4.2.0 (2022-04-22) \autocite{R-base} et le package rcarbon version 1.4.3 \autocite{R-rcarbon}.
+\end{quote}
+
+Sous cette forme, on dispose ainsi des éléments suivants \autocite{millard2014} :
+
+\begin{itemize}
+\tightlist
+\item
+  L'âge conventionnel et son incertitude (676 ± 24 ans BP), accompagnés du numéro d'identification donné par le laboratoire (ETH-3883) ;
+\item
+  L'âge calibré sous la forme d'un ou plusieurs intervalles (du fait de sa distribution particulière, un âge calibré est toujours donné sous la forme d'intervalles), en précisant la probabilité associée à chaque intervalle et le référentiel temporel utilisé (cal BP ou BC/AD) ;
+\item
+  La courbe de calibration utilisée et la référence correspondante : IntCal20 (Reimer \emph{et al.} 2020) ;
+\item
+  Les versions de R et du package utilisées : R version 4.2.0 (2022-04-22) et rcarbon version 1.4.3.
+\end{itemize}
+
 \hypertarget{part-cartographie}{%
 \part{Cartographie}\label{part-cartographie}}
 
-\hypertarget{introduction-4}{%
-\chapter{Introduction}\label{introduction-4}}
+\hypertarget{introduction-3}{%
+\chapter{Introduction}\label{introduction-3}}
 
 
 

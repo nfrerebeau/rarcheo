@@ -7,24 +7,15 @@
 <title>24 Chronologie quantitative | R pour l’archéologue</title>
 <meta name="author" content="Nicolas Frerebeau">
 <meta name="author" content="Ben Marwick">
-<meta name="description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="description" content="24.1 Calibrer des âges radiocarbones Depuis sa découverte et la “révolution” qui s’en est suivie, la méthode de datation par le radiocarbone est devenue d’usage courant pour l’archéologue ou...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="24 Chronologie quantitative | R pour l’archéologue">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://rstats.archaeo.science/chronologie-quantitative.html">
-<meta property="og:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta property="og:description" content="24.1 Calibrer des âges radiocarbones Depuis sa découverte et la “révolution” qui s’en est suivie, la méthode de datation par le radiocarbone est devenue d’usage courant pour l’archéologue ou...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="24 Chronologie quantitative | R pour l’archéologue">
-<meta name="twitter:description" content="&lt;p&gt;Ce livre s’adresse aux personnes qui souhaitent analyser, visualiser et
-modéliser des données archéologiques à l’aide du langage R. Cet ouvrage vous
-permet d’acquérir les connaissances et les compétences nécessaires pour
-aborder un large éventail de problèmes liés aux données archéologiques.&lt;/p&gt;">
+<meta name="twitter:description" content="24.1 Calibrer des âges radiocarbones Depuis sa découverte et la “révolution” qui s’en est suivie, la méthode de datation par le radiocarbone est devenue d’usage courant pour l’archéologue ou...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,11 +76,11 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
 <li><a class="" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chrono-introduction.html"><span class="header-section-number">22</span> Introduction</a></li>
 <li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
 <li><a class="active" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">25</span> Introduction</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
@@ -109,17 +100,480 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <h1>
 <span class="header-section-number">24</span> Chronologie quantitative<a class="anchor" aria-label="anchor" href="#chronologie-quantitative"><i class="fas fa-link"></i></a>
 </h1>
-
+<div id="calibrer-des-âges-radiocarbones" class="section level2" number="24.1">
+<h2>
+<span class="header-section-number">24.1</span> Calibrer des âges radiocarbones<a class="anchor" aria-label="anchor" href="#calibrer-des-%C3%A2ges-radiocarbones"><i class="fas fa-link"></i></a>
+</h2>
+<p>Depuis sa découverte et la “révolution” qui s’en est suivie, la méthode de datation par le radiocarbone est devenue d’usage courant pour l’archéologue ou l’historien. Soit parce qu’elle constitue la seule source d’information chronologique, soit parce qu’elle intervient en complément d’autres sources, matérielles ou textuelles.</p>
+<p>L’objectif de cette section est d’apprendre à calibrer<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;em&gt;Calibration&lt;/em&gt; est un anglicisme, le terme français est &lt;a href="https://fr.wikipedia.org/wiki/%C3%89talonnage_(m%C3%A9trologie)"&gt;&lt;em&gt;étalonage&lt;/em&gt;&lt;/a&gt;. L’usage de &lt;em&gt;calibration&lt;/em&gt; est cependant admis dans le langage courant et nous le conservons ici par commodité.&lt;/p&gt;'><sup>147</sup></a> des âges radiocarbone individuels, à combiner plusieurs âges en un seul et à en tester les différences<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Cette section est une version modifiée de la leçon “Calibrer des âges radiocarbone avec R” publiée par &lt;a href="https://programminghistorian.org/"&gt;&lt;em&gt;The Programming Historian&lt;/em&gt;&lt;/a&gt; &lt;span class="citation"&gt; (Nicolas Frerebeau et Brice Lebrun, &lt;span&gt;« Calibrer des âges radiocarbone avec R »&lt;/span&gt;, éd. par Sofia Papastamkou, &lt;em&gt;The Programming Historian en français&lt;/em&gt;, nᵒ 3 (24 mars 2021), &lt;a href="https://doi.org/10.46430/phfr0016" role="doc-biblioref"&gt;https://doi.org/10.46430/phfr0016&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;'><sup>148</sup></a>. La méthode du radiocarbone est une méthode de datation dite <em>absolue</em> (cf. chapitre <a href="chrono-introduction.html#chrono-introduction">22</a>) qui possède son propre référentiel temporel. La calibration est alors une étape indispensable, permettant le passage du référentiel radiocarbone à un référentiel calendaire.</p>
+<div id="le-principe-de-la-datation-par-le-radiocarbone" class="section level3" number="24.1.1">
+<h3>
+<span class="header-section-number">24.1.1</span> Le principe de la datation par le radiocarbone<a class="anchor" aria-label="anchor" href="#le-principe-de-la-datation-par-le-radiocarbone"><i class="fas fa-link"></i></a>
+</h3>
+<p>Proposée à la fin des années 1940 par Willard Libby et ses collègues,<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;E. C. Anderson et al., &lt;span&gt;« Radiocarbon &lt;span&gt;From Cosmic Radiation&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Science&lt;/em&gt; 105, nᵒ 2735 (30 mai 1947): 576‑77, &lt;a href="https://doi.org/10.1126/science.105.2735.576" role="doc-biblioref"&gt;https://doi.org/10.1126/science.105.2735.576&lt;/a&gt;.&lt;/p&gt;'><sup>149</sup></a></span> la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (<sup>14</sup>C) pour construire un chronomètre. Ce dernier permet d’estimer des âges, c’est-à-dire des intervalles de temps mesurés depuis le présent.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Colman, Pierce, et Birkeland, &lt;span&gt;« Suggested &lt;span&gt;Terminology&lt;/span&gt; for &lt;span&gt;Quaternary Dating Methods&lt;/span&gt; »&lt;/span&gt;.&lt;/p&gt;"><sup>150</sup></a></span> Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (<em>Before Present</em>, avant 1950<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;L’année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l’époque astronomique standard. Aujourd’hui, le choix de 1950 permet également d’avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.&lt;/p&gt;"><sup>151</sup></a>).</p>
+<p>L’élaboration d’un chronomètre suppose de vérifier trois conditions nécessaires :</p>
+<ul>
+<li>Le phénomène choisi doit suivre une loi qui varie au cours du temps ;</li>
+<li>La loi en question doit être indépendante des conditions du milieu ;</li>
+<li>Un événement initial doit pouvoir être déterminé.</li>
+</ul>
+<p>Le <sup>14</sup>C est un est des trois <a href="https://fr.wikipedia.org/wiki/Isotope">isotopes</a> du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s’agit d’un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l’aide une grandeur particulière, la <em>période radioactive</em> (notée <span class="math inline">\(T\)</span>, également appelée <em>demi-vie</em>). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d’une quantité intiale d’atomes.</p>
+<p>La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale <span class="math inline">\(N_0\)</span> d’atomes de <sup>14</sup>C, il en reste <span class="math inline">\(\frac{N_0}{2}\)</span> au bout de 5730 ans, <span class="math inline">\(\frac{N_0}{4}\)</span> au bout de 11460 ans, etc. (fig. <a href="chronologie-quantitative.html#fig:c14-decroissance">24.1</a>). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c’est la limite de la méthode.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-decroissance"></span>
+<img src="chapter_chronology_files/figure-html/c14-decroissance-1.png" alt="Décroissance exponentielle d'une quantité $N_0$ d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)." width="100%"><p class="caption">
+Figure 24.1: Décroissance exponentielle d’une quantité <span class="math inline">\(N_0\)</span> d’atomes radioactifs au cours du temps (exprimé en périodes radioactives).
+</p>
 </div>
+<p>Le carbone 14 est produit naturellement en haute atmosphère sous l’effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en <sup>14</sup>C dans les organismes vivants est constante et à l’équilibre avec la teneur atmosphérique<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;La réalité est un peu plus complexe, notamment du fait des phénomènes de &lt;a href="https://fr.wikipedia.org/wiki/Fractionnement_isotopique"&gt;fractionnement isotopique&lt;/a&gt;.&lt;/p&gt;'><sup>152</sup></a>.</p>
+<p>Lorsqu’un organisme meurt, les échanges avec le milieu s’arrêtent. En supposant qu’il n’y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de <sup>14</sup>C contenue dans l’organisme. L’événement daté par le radiocarbone est ainsi la mort de l’organisme.</p>
+<p>Sauf à rechercher spécifiquement à quand remonte la mort d’un organisme, le radiocarbone fournit donc un <em>terminus</em> <em>ante</em> ou <em>post quem</em> pour l’événement archéologique que l’on souhaite positionner dans le temps. C’est-à-dire le moment avant ou après lequel a eu lieu l’événement archéologique ou historique d’intérêt (abandon d’un objet, combustion d’un foyer, dépôt d’une couche sédimentaire, etc.) en fonction des éléments contextuels disponibles (stratigraphie, etc.). Ces éléments contextuels sont d’autant plus importants qu’ils participent à l’interprétation des résultats, en s’assurant notamment de l’absence de problèmes d’ordre <a href="https://fr.wikipedia.org/wiki/Taphonomie">taphonomique</a> et qu’il existe bien une relation univoque entre l’échantillon daté et l’événement d’intérêt<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Voir par exemple &lt;span class="citation"&gt;C Scirè Calabrisotto et al., &lt;span&gt;« Strategies for &lt;span&gt;Sampling Difficult Archaeological Contexts&lt;/span&gt; and &lt;span&gt;Improving&lt;/span&gt; the &lt;span&gt;Quality&lt;/span&gt; of &lt;span&gt;Radiocarbon Data&lt;/span&gt;: &lt;span&gt;The Case&lt;/span&gt; of &lt;span&gt;Erimi&lt;/span&gt; &lt;span&gt;&lt;em&gt;Laonin Tou Porakou&lt;/em&gt;&lt;/span&gt; , &lt;span&gt;Cyprus&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt; 59, nᵒ 6 (décembre 2017): 1919‑30, &lt;a href="https://doi.org/10.1017/RDC.2017.92" role="doc-biblioref"&gt;https://doi.org/10.1017/RDC.2017.92&lt;/a&gt;&lt;/span&gt;.&lt;/p&gt;'><sup>153</sup></a>.</p>
+<p>Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale (<span class="math inline">\(N_0\)</span>) de <sup>14</sup>C contenue dans un organisme à sa mort (instant <span class="math inline">\(t_0\)</span>) et la quantité restante de <sup>14</sup>C à un instant <span class="math inline">\(t\)</span>, il est possible de mesurer le temps écoulé entre <span class="math inline">\(t_0\)</span> et <span class="math inline">\(t\)</span> : l’âge radiocarbone d’un objet archéologique.</p>
+<ul>
+<li>La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (<em>activité spécifique</em>).</li>
+<li>Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l’hypothèse suivante : la quantité de <sup>14</sup>C dans l’atmosphère est constante dans le temps et égale à la teneur actuelle.</li>
+</ul>
+<p>Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d’âge connus par ailleurs.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;J. R. Arnold et W. F. Libby, &lt;span&gt;« Age &lt;span&gt;Determinations&lt;/span&gt; by &lt;span&gt;Radiocarbon Content&lt;/span&gt;: &lt;span&gt;Checks&lt;/span&gt; with &lt;span&gt;Samples&lt;/span&gt; of &lt;span&gt;Known Age&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Science&lt;/em&gt; 110, nᵒ 2869 (23 décembre 1949): 678‑80, &lt;a href="https://doi.org/10.1126/science.110.2869.678" role="doc-biblioref"&gt;https://doi.org/10.1126/science.110.2869.678&lt;/a&gt;; W. F. Libby, E. C. Anderson, et J. R. Arnold, &lt;span&gt;« Age &lt;span&gt;Determination&lt;/span&gt; by &lt;span&gt;Radiocarbon Content&lt;/span&gt;: &lt;span&gt;World-Wide Assay&lt;/span&gt; of &lt;span&gt;Natural Radiocarbon&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Science&lt;/em&gt; 109, nᵒ 2827 (4 mars 1949): 227‑28, &lt;a href="https://doi.org/10.1126/science.109.2827.227" role="doc-biblioref"&gt;https://doi.org/10.1126/science.109.2827.227&lt;/a&gt;; Willard F. Libby, &lt;span&gt;« Radiocarbon Dating »&lt;/span&gt; (Nobel &lt;span&gt;Lecture&lt;/span&gt;, &lt;span&gt;Stockholm&lt;/span&gt;, 12 décembre 1960), &lt;a href="http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1960/libby-lecture.html" role="doc-biblioref"&gt;http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1960/libby-lecture.html&lt;/a&gt;.&lt;/p&gt;'><sup>154</sup></a></span> Au regard des résultats alors obtenus, il apparaît qu’il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d’autres méthodes (fig. <a href="chronologie-quantitative.html#fig:c14-intcal">24.2</a>A).</p>
+</div>
+<div id="pourquoi-calibrer-des-âges-radiocarbone" class="section level3" number="24.1.2">
+<h3>
+<span class="header-section-number">24.1.2</span> Pourquoi calibrer des âges radiocarbone ?<a class="anchor" aria-label="anchor" href="#pourquoi-calibrer-des-%C3%A2ges-radiocarbone"><i class="fas fa-link"></i></a>
+</h3>
+<p>Les études menées dans la seconde moitié du XX<sup>e</sup> siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l’âge mesuré et l’âge attendu.</p>
+<p>Contrairement au postulat de Libby, la teneur en <sup>14</sup>C dans l’atmosphère n’est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en <sup>14</sup>C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone…) et anthropiques. Ces phénomènes peuvent être contradictoires : l’usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de <sup>14</sup>C (effet Suess), à l’inverse les essais nucléaires atmosphériques ont produit de grandes quantités de <sup>14</sup>C.</p>
+<p>Le chronomètre que constitue la méthode du radiocarbone n’a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l’expression d’<em>âges conventionnels</em>) appartiennent à un référentiel temporel qui leur est propre.</p>
+<p>L’utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de <em>calibration</em> pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l’aide d’une courbe<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Il existe actuellement trois séries de courbes de calibration : &lt;em&gt;IntCal&lt;/em&gt; pour l’hémisphère nord, &lt;em&gt;SHCal&lt;/em&gt; pour l’hémisphère sud et &lt;em&gt;Marine&lt;/em&gt; pour les échantillons marins.&lt;/p&gt;"><sup>155</sup></a> dont l’estimation est régulièrement mise à jour par la communauté scientifique<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Au moment de la rédaction de cet ouvrage, la courbe &lt;em&gt;IntCal20&lt;/em&gt; est la dernière en date &lt;span class="citation"&gt; (P. J. Reimer et al., &lt;span&gt;« &lt;span&gt;IntCal09&lt;/span&gt; and &lt;span&gt;Marine09 Radiocarbon Age Calibration Curves&lt;/span&gt;, 0–50,000 &lt;span&gt;Years&lt;/span&gt; Cal &lt;span&gt;BP&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt; 51, nᵒ 4 (2009): 1111‑50, &lt;a href="https://doi.org/10.1017/S0033822200034202" role="doc-biblioref"&gt;https://doi.org/10.1017/S0033822200034202&lt;/a&gt;; Paula J. Reimer et al., &lt;span&gt;« &lt;span&gt;IntCal13&lt;/span&gt; and &lt;span&gt;Marine13 Radiocarbon Age Calibration Curves&lt;/span&gt; 0-50,000 &lt;span&gt;Years&lt;/span&gt; Cal &lt;span&gt;BP&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt; 55, nᵒ 4 (novembre 2013): 1869‑87, &lt;a href="https://doi.org/10.2458/azu_js_rc.55.16947" role="doc-biblioref"&gt;https://doi.org/10.2458/azu_js_rc.55.16947&lt;/a&gt;; Paula J. Reimer et al., &lt;span&gt;« The &lt;span&gt;IntCal20 Northern Hemisphere Radiocarbon Age Calibration Curve&lt;/span&gt; (0-55 Cal &lt;span&gt;kBP&lt;/span&gt;) »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt;, 2020, 1‑33, &lt;a href="https://doi.org/10.1017/RDC.2020.41" role="doc-biblioref"&gt;https://doi.org/10.1017/RDC.2020.41&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;'><sup>156</sup></a>. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d’équivalence entre temps radiocarbone et temps calendaire (fig. <a href="chronologie-quantitative.html#fig:c14-intcal">24.2</a>B).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-intcal"></span>
+<img src="chapter_chronology_files/figure-html/c14-intcal-1.png" alt="Âges mesurées par le radiocarbone en fonction des âges calendaires attendus. (A) *Curve of Knowns*, âges radiocarbones d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens." width="100%"><p class="caption">
+Figure 24.2: Âges mesurées par le radiocarbone en fonction des âges calendaires attendus. (A) <em>Curve of Knowns</em>, âges radiocarbones d’objets archéologiques dont l’âge calendaire est connu par des méthodes indépendantes (d’après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer <em>et al.</em> 2009, 2013 et 2020). L’écart à la droite 1:1 (tirets) est d’autant plus marqué que les âges sont anciens.
+</p>
+</div>
+</div>
+<div id="comment-calibrer" class="section level3" number="24.1.3">
+<h3>
+<span class="header-section-number">24.1.3</span> Comment calibrer ?<a class="anchor" aria-label="anchor" href="#comment-calibrer"><i class="fas fa-link"></i></a>
+</h3>
+<p>Nous venons donc de voir qu’il était nécessaire de calibrer ses âges radiocarbone. Sur le papier, le processus de calibration est relativement simple, grâce à la table d’équivalence entre temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.</p>
+<p>Un âge conventionnel (noté ici <span class="math inline">\(t\)</span>) est le résultat d’une mesure et, comme il n’existe pas de mesure parfaite, il est toujours accompagné d’un terme correspondant à l’incertitude analytique (<span class="math inline">\(\Delta t\)</span>) et exprimé sous la forme <span class="math inline">\(t \pm \Delta t\)</span> (l’âge, <em>plus ou moins</em> son incertitude). Cette incertitude résulte de la combinaison des différentes sources d’erreur au sein du laboratoire : il s’agit d’une incertitude <em>aléatoire</em> inhérente à la mesure.</p>
+<p>Un âge conventionnel est ainsi un <em>estimateur</em> du vrai âge radiocarbone de l’objet daté. Si on répète un très grand nombre de fois la datation d’un même échantillon, sa valeur est susceptible de varier et il y a très peu de chance qu’elle coïncide exactement avec l’âge radiocarbone vrai.
+Il est donc préférable de s’attacher à un intervalle dont il est hautement probable qu’il contienne la vraie valeur (inconnue) de l’âge conventionnel. De fait, l’incertitude caractérise la dispersion des valeurs qui pourraient raisonnablement être attribuées à l’âge vrai. Un âge conventionnel est la réalisation d’un processus aléatoire, la décroissance radioactive, il peut être modélisé à l’aide d’une loi de probabilité particulière : la <a href="https://fr.wikipedia.org/wiki/Loi_normale">loi normale</a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;E Marian Scott, Gordon T Cook, et Philip Naysmith, &lt;span&gt;« Error and &lt;span&gt;Uncertainty&lt;/span&gt; in &lt;span&gt;Radiocarbon Measurements&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt; 49, nᵒ 2 (2007): 427‑40, &lt;a href="https://doi.org/10.1017/S0033822200042351" role="doc-biblioref"&gt;https://doi.org/10.1017/S0033822200042351&lt;/a&gt;.&lt;/p&gt;'><sup>157</sup></a></span></p>
+<p>Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne <span class="math inline">\(\mu\)</span> (tendance centrale) et l’écart-type <span class="math inline">\(\sigma\)</span> (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l’intervalle défini par <span class="math inline">\(\mu \pm \sigma\)</span> contient 67 % des valeurs. Si on multiplie l’écart-type par deux, l’intervalle <span class="math inline">\(\mu \pm 2\sigma\)</span> contient quant à lui 95 % des valeurs (fig. <a href="chronologie-quantitative.html#fig:c14-gauss">24.3</a>).</p>
+<p>Ainsi, si on exprime l’incertitude d’un âge conventionnel en fonction de l’écart-type, il y a 68 % de chance que l’intervalle à <span class="math inline">\(1\sigma\)</span> contienne l’âge conventionnel vrai. De même, l’intervalle à <span class="math inline">\(2\sigma\)</span> a 95 % de chance de contenir l’âge conventionnel vrai. L’intervalle à <span class="math inline">\(1\sigma\)</span> est moins dispersé, mais a moins de chance d’être juste qu’à <span class="math inline">\(2\sigma\)</span> : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l’âge conventionnel vrai.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-gauss"></span>
+<img src="chapter_chronology_files/figure-html/c14-gauss-1.png" alt="Loi normale de moyenne 0 et d'écart-type 1 avec les plâge de normalité aux niveaux de confiance 68, 95 et 99 \%. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." width="100%"><p class="caption">
+Figure 24.3: Loi normale de moyenne 0 et d’écart-type 1 avec les plâge de normalité aux niveaux de confiance 68, 95 et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale.
+</p>
+</div>
+<p>L’approche la plus élémentaire pour la calibration d’un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d’incertitude (<span class="math inline">\(t - \Delta t\)</span> et <span class="math inline">\(t + \Delta t\)</span> dans le cas à <span class="math inline">\(1\sigma\)</span>) pour obtenir l’intervalle d’âges calendaires correspondants. Ceci est illustré par la figure <a href="chronologie-quantitative.html#fig:c14-calibration">24.4</a>, qui présente la calibration d’un âge conventionnel par interception d’une courbe de calibration (train plein) dont l’incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à <span class="math inline">\(1\sigma\)</span> (bandes noir) et à <span class="math inline">\(2\sigma\)</span> (bandes hachurée).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-calibration"></span>
+<img src="chapter_chronology_files/figure-html/c14-calibration-1.png" alt="Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20." width="100%"><p class="caption">
+Figure 24.4: Calibration d’un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20.
+</p>
+</div>
+<p>Cette approche ne tient cependant pas compte du fait qu’un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l’âge radiocarbone plus ou moins son incertitude, toutes les valeurs n’ont pas la même probabilité de coïncider avec l’âge radiocarbone vrai, or la calibration par simple interception suppose l’inverse. De fait, l’approche aujourd’hui courante<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Dans les faits, la calibration par simple interception n’a plus lieu d’être utilisée.&lt;/p&gt;"><sup>158</sup></a> consiste à prendre également en compte la distribution normale des âges radiocarbone. On trouve parfois l’expression de <em>calibration probabiliste</em> pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n’est pas équiprobable (fig. <a href="chronologie-quantitative.html#fig:c14-hallstatt">24.5</a>).</p>
+<p>S’il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d’un âge calendaire une fois calibré. Du fait des oscillations de la courbe de calibration, il n’est en effet pas possible de décrire la distribution d’un âge calendaire avec une loi de probabilité particulière, comme on peut le constater sur la figure <a href="chronologie-quantitative.html#fig:c14-hallstatt">24.5</a>. Ainsi, un âge calibré ne peut être exprimé autrement que sous la forme d’un intervalle.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-hallstatt"></span>
+<img src="chapter_chronology_files/figure-html/c14-hallstatt-1.png" alt="Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)." width="100%"><p class="caption">
+Figure 24.5: Distributions d’un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris).
+</p>
+</div>
+<p>L’intervalle auquel appartient un âge calendaire résulte à la fois de l’incertitude de l’âge conventionnel, de l’allure de la courbe de calibration et de l’incertitude associée à cette dernière. Cet intervalle, entre les bornes duquel l’âge calendaire a une probabilité donnée d’être compris, peut être obtenu de deux manières distinctes (fig. <a href="chronologie-quantitative.html#fig:c14-hpd">24.6</a>) :</p>
+<dl>
+<dt>Intervalle à plus hautes densités (<em>Highest Posterior Density Interval, HPDI</em>)</dt>
+<dd>Les bornes de l’intervalle correspondent aux régions de la distribution dont la probabilité cumulée est supérieure à un seuil donné.
+</dd>
+<dt>Intervalle de crédibilité</dt>
+<dd>Les bornes de l’intervalle correspondent aux <a href="https://fr.wikipedia.org/wiki/Quantile">quantiles</a> de la distribution.
+</dd>
+</dl>
+<p>Lorsque la distribution d’un âge calibré est multimodale (en dents de scie), l’intervalle à plus hautes densités correspond souvent à l’union de plusieurs intervalle disjoints, au contraire de l’intervalle de crédibilité qui fourni toujours une gamme continue de valeurs.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Rob J. Hyndman, &lt;span&gt;« Computing and &lt;span&gt;Graphing Highest Density Regions&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;The American Statistician&lt;/em&gt; 50, nᵒ 2 (mai 1996): 120, &lt;a href="https://doi.org/10.2307/2684423" role="doc-biblioref"&gt;https://doi.org/10.2307/2684423&lt;/a&gt;.&lt;/p&gt;'><sup>159</sup></a></span> L’intervalle à plus hautes densités est ainsi souvent plus informatif, raison pour laquelle il est couramment utilisé pour présenter des résultats calibrés.</p>
+<p>Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l’allure de la courbe. Le cas le moins favorable est l’existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l’Âge du Fer (fig. <a href="chronologie-quantitative.html#fig:c14-hallstatt">24.5</a>). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 % (intervalle HPD), à un âge calendaire compris entre 2718 et 2354 ans cal BP (soit 768-404 avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 %), l’âge calendaire correspondant a 95 % de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (fig. <a href="chronologie-quantitative.html#fig:c14-hallstatt">24.5</a>). En réalisant la calibration à 68 % (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L’âge calendaire a 68 % de chance d’appartenir à l’union des intervalles 748-685 (18 %), 665-637 (8 %), 586-580 (2 %), 568-452 (32 %), 444-415 (8 %) avant notre ère et non à un unique intervalle (fig. <a href="chronologie-quantitative.html#fig:c14-hpd">24.6</a>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-hpd"></span>
+<img src="chapter_chronology_files/figure-html/c14-hpd-1.png" alt="Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins)." width="100%"><p class="caption">
+Figure 24.6: Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l’estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins).
+</p>
+</div>
+<p>Il est courant dans certains contextes de conserver des âges calibrés exprimés en années BP, dans ce cas il est recommandé de préciser <em>cal</em> BP pour éviter toute confusion du lecteur. Ces âges calendaires en années BP peuvent être convertis en dates exprimées avant ou après notre ère (BC/AD, <em>before Christ/anno Domini</em>). Pour cela, il suffit d’utiliser la règle de calcul suivante.</p>
+<div class="rmdtip">
+<p>Pour convertir en années BC/AD un âge <em>calibré</em> (noté <span class="math inline">\(x\)</span>) exprimé en années BP, sachant qu’il n’y pas d’année 0 dans le calendrier grégorien :</p>
+<ul>
+<li>Si l’âge calibré est inférieur à 1950 BP : <span class="math inline">\(1950 - x\)</span> AD</li>
+<li>Si l’âge calibré est supérieur ou égal à 1950 BP : <span class="math inline">\(1949 - x\)</span> BC</li>
+</ul>
+</div>
+<p>On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent rapidement conduire à des surinterprétations. Au cours de l’étude d’un corpus de datations ou lors de sa publication, il est donc particulièrement important de présenter l’ensemble des données et des choix ayant concouru à l’obtention des âges calendaires. L’usage d’outils libres favorise à la fois la transparence et la reproductibilité des résultats, deux aspects particulièrement importants en ce qui concerne la calibration d’âges radiocarbone.</p>
+</div>
+<div id="applications" class="section level3" number="24.1.4">
+<h3>
+<span class="header-section-number">24.1.4</span> Applications<a class="anchor" aria-label="anchor" href="#applications"><i class="fas fa-link"></i></a>
+</h3>
+<p>De nombreux outils sont aujourd’hui disponibles pour calibrer des âges radiocarbone. <a href="https://c14.arch.ox.ac.uk/oxcal/">OxCal</a>, <a href="http://calib.org">CALIB</a> et <a href="https://chronomodel.com">ChronoModel</a> offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de <a href="https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne">modélisation bayésienne</a> de séquences chronologiques. R offre une alternative intéressante en permettant notamment d’intégrer le traitement d’âges radiocarbone à des études plus larges (analyse spatiale etc.).</p>
+<p>Plusieurs packages R permettent de réaliser des calibrations d’âges radiocarbone (<a href="https://cran.r-project.org/package=Bchron"><em>Bchron</em></a>, <a href="https://cran.r-project.org/package=IntCal"><em>IntCal</em></a>, <a href="https://cran.r-project.org/package=oxcAAR"><em>oxcAAR</em></a>…) et sont souvent orientés vers un aspect particulier de l’analyse, offrant ainsi des fonctionnalités différentes (construction de chronologies, modèles âges-profondeur, etc.). La solution retenue ici est <a href="https://cran.r-project.org/package=rcarbon"><em>rcarbon</em></a>.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Bevan et Crema, &lt;em&gt;rcarbon&lt;/em&gt;.&lt;/p&gt;"><sup>160</sup></a></span> Ce package permet de calibrer simplement et d’analyser des âges radiocarbone.</p>
+<div id="cas-détude" class="section level4" number="24.1.4.1">
+<h4>
+<span class="header-section-number">24.1.4.1</span> Cas d’étude<a class="anchor" aria-label="anchor" href="#cas-d%C3%A9tude"><i class="fas fa-link"></i></a>
+</h4>
+<p>Afin d’aborder concrètement la question de la calibration d’âges radiocarbone, nous allons nous pencher sur l’exemple de la datation du <a href="https://fr.wikipedia.org/wiki/Suaire_de_Turin#La_datation_par_le_carbone_14_(1988-1989)">Suaire de Turin</a>. Réalisée à la fin des années 1980, cette dernière constitue un cas d’école en matière de datation d’un objet historique par la méthode du radiocarbone. Trois datations indépendantes d’un même prélèvement ont été réalisées en aveugle, avec des échantillons de contrôle.</p>
+<p>En avril 1988, un échantillon de tissu est prélevé sur le Suaire de Turin. Trois laboratoires différents ont été sélectionnés l’année précédente et reçoivent chacun un fragment de ce même échantillon. En complément, trois autres tissus dont les âges calendaires sont connus par d’autres méthodes sont également échantillonnés. Ces trois échantillons supplémentaires doivent servir d’échantillons de contrôle, afin de valider les résultats de chaque laboratoire et de s’assurer que les résultats des différents laboratoires sont bien compatibles entre eux. Chaque laboratoire a reçu quatre échantillons et réalisé les mesures en aveugle, sans savoir lequel correspond au Suaire.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;P. E. Damon et al., &lt;span&gt;« Radiocarbon Dating of the &lt;span&gt;Shroud&lt;/span&gt; of &lt;span&gt;Turin&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Nature&lt;/em&gt; 337, nᵒ 6208 (16 février 1989): 611‑15, &lt;a href="https://doi.org/10.1038/337611a0" role="doc-biblioref"&gt;https://doi.org/10.1038/337611a0&lt;/a&gt;.&lt;/p&gt;'><sup>161</sup></a></span></p>
+<p>Le tableau <a href="chronologie-quantitative.html#tab:c14-turin">24.1</a> présente ainsi les âges radiocarbone obtenus (<span class="math inline">\(1\sigma\)</span>) dans le cadre de l’étude du Suaire de Turin<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Damon et al.&lt;/p&gt;"><sup>162</sup></a></span> et ce pour les trois laboratoires (Arizona, Oxford et Zurich). L’échantillon 1 (Éch. 1) correspond au tissu prélevé sur le Suaire de Turin; l’échantillon 2 (Éch. 2) représente un fragment de lin provenant d’une tombe de Qasr Ibrîm en Égypte, daté des XIe-XIIe siècles de notre ère; l’échantillon 3 (Éch. 3) correspond à un fragment de lin associé à une momie de Thèbes (Égypte), daté entre -110 et 75. Enfin, l’échantillon 4 (Éch. 4) est constitué de fils de la chape de St-Louis d’Anjou (France), daté entre 1290 et 1310.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:c14-turin">Tableau 24.1: </span> âges radiocarbone (<span class="math inline">\(1\sigma\)</span>) obtenus dans le cadre de l’étude du Suaire de Turin (Damon <em>et al.</em>, 1989).</caption>
+<thead><tr class="header">
+<th align="left">Laboratoire</th>
+<th align="left">Éch. 1</th>
+<th align="left">Éch. 2</th>
+<th align="left">Éch. 3</th>
+<th align="left">Éch. 4</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Arizona</td>
+<td align="left">646 ± 31</td>
+<td align="left">927 ± 32</td>
+<td align="left">1995 ± 46</td>
+<td align="left">722 ± 43</td>
+</tr>
+<tr class="even">
+<td align="left">Oxford</td>
+<td align="left">750 ± 30</td>
+<td align="left">940 ± 30</td>
+<td align="left">1980 ± 35</td>
+<td align="left">755 ± 30</td>
+</tr>
+<tr class="odd">
+<td align="left">Zurich</td>
+<td align="left">676 ± 24</td>
+<td align="left">941 ± 23</td>
+<td align="left">1940 ± 30</td>
+<td align="left">685 ± 34</td>
+</tr>
+</tbody>
+</table></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Import des données</span>
+<span class="va">turin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> 
+    <span class="fl">646</span>, <span class="fl">927</span>, <span class="fl">1995</span>, <span class="fl">722</span>, <span class="fl">31</span>, <span class="fl">32</span>, <span class="fl">46</span>, <span class="fl">43</span>,
+    <span class="fl">750</span>, <span class="fl">940</span>, <span class="fl">1980</span>, <span class="fl">755</span>, <span class="fl">30</span>, <span class="fl">30</span>, <span class="fl">35</span>, <span class="fl">30</span>,
+    <span class="fl">676</span>, <span class="fl">941</span>, <span class="fl">1940</span>, <span class="fl">685</span>, <span class="fl">24</span>, <span class="fl">23</span>, <span class="fl">30</span>, <span class="fl">34</span>
+  <span class="op">)</span>,
+  nrow <span class="op">=</span> <span class="fl">3</span>,
+  byrow <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age1"</span>, <span class="st">"age2"</span>, <span class="st">"age3"</span>, <span class="st">"age4"</span>, 
+                     <span class="st">"err1"</span>, <span class="st">"err2"</span>, <span class="st">"err3"</span>, <span class="st">"err4"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Arizona"</span>, <span class="st">"Oxford"</span>, <span class="st">"Zurich"</span><span class="op">)</span></code></pre></div>
+<p>Ensuite, on remet en forme les données dans un <code>array</code>, obtenant ainsi un tableau à 3 dimensions : la 1<sup>ère</sup> dimension (lignes) correspond aux laboratoires, la 2<sup>ème</sup> dimension (colonnes) correspond aux échantillons, la 3<sup>ème</sup> dimension permet de distinguer les âges et leurs incertitudes.</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Arizona"</span>, <span class="st">"Oxford"</span>, <span class="st">"Zurich"</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Ech."</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>,
+  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"erreur"</span><span class="op">)</span>
+<span class="op">)</span>
+
+<span class="va">turin</span>
+<span class="co">#&gt; , , age</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;         Ech. 1 Ech. 2 Ech. 3 Ech. 4</span>
+<span class="co">#&gt; Arizona    646    927   1995    722</span>
+<span class="co">#&gt; Oxford     750    940   1980    755</span>
+<span class="co">#&gt; Zurich     676    941   1940    685</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; , , erreur</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;         Ech. 1 Ech. 2 Ech. 3 Ech. 4</span>
+<span class="co">#&gt; Arizona     31     32     46     43</span>
+<span class="co">#&gt; Oxford      30     30     35     30</span>
+<span class="co">#&gt; Zurich      24     23     30     34</span></code></pre></div>
+<p>Avant de calibrer les âges radiocarbone obtenus, plusieurs questions préalables peuvent être explorées.</p>
+</div>
+<div id="comment-visualiser-les-données-produites" class="section level4" number="24.1.4.2">
+<h4>
+<span class="header-section-number">24.1.4.2</span> Comment visualiser les données produites ?<a class="anchor" aria-label="anchor" href="#comment-visualiser-les-donn%C3%A9es-produites"><i class="fas fa-link"></i></a>
+</h4>
+<p>Dans le cas présent, plusieurs laboratoires ont daté les mêmes objets. Dans un premier temps, on cherche donc à savoir si les âges obtenus pour chaque objet par les différents laboratoires sont compatibles entre eux. Cette compatibilité s’entend en prenant en compte les incertitudes associées aux âges.</p>
+<p>Une fois les données importées et mises en forme, une première approche consiste à les visualiser. On peut ainsi se faire une première idée quant à la compatibilité des résultats fournis par les différents laboratoires pour chaque objet daté. Le code suivant permet de générer la figure <a href="chronologie-quantitative.html#fig:c14-turin-uncal">24.7</a> où sont figurées les distributions des âges conventionnels de chaque échantillon.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## On fixe les paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co">## On défini les couleurs à utiliser</span>
+<span class="va">couleurs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#DDAA33"</span>, <span class="st">"#BB5566"</span>, <span class="st">"#004488"</span><span class="op">)</span>
+<span class="co">## On ajoute de la transparence pour permettre la superposition</span>
+<span class="va">couleurs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/rgb.html">rgb</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/col2rgb.html">col2rgb</a></span><span class="op">(</span><span class="va">couleurs</span><span class="op">)</span> <span class="op">/</span> <span class="fl">255</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>
+
+<span class="co">## Pour chaque objet daté...</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co">## On défini l'étendue des valeurs en abscisse (années)</span>
+  <span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">turin</span><span class="op">[</span>, <span class="va">j</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.8</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1.2</span>, by <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+  <span class="co">## On défini un graphique vide auquel ajouter les distributions</span>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.02</span><span class="op">)</span>,
+       xlab <span class="op">=</span> <span class="st">""</span>, ylab <span class="op">=</span> <span class="st">""</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span>
+
+  <span class="co">## On affiche le nom de l'échantillon</span>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html">text</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.9</span>, y <span class="op">=</span> <span class="fl">0.02</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>, pos <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+  <span class="co">## Pour chaque âge obtenu...</span>
+  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+    <span class="co">## On calcule la fonction de densité de la distribution normale</span>
+    <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, mean <span class="op">=</span> <span class="va">turin</span><span class="op">[</span><span class="va">i</span>, <span class="va">j</span>, <span class="fl">1</span><span class="op">]</span>, sd <span class="op">=</span> <span class="va">turin</span><span class="op">[</span><span class="va">i</span>, <span class="va">j</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>
+
+    <span class="co">## On trace la courbe</span>
+    <span class="fu"><a href="https://rdrr.io/r/graphics/polygon.html">polygon</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, col <span class="op">=</span> <span class="va">couleurs</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">## On ajoute une légende au dernier graphique</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span>, fill <span class="op">=</span> <span class="va">couleurs</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-turin-uncal"></span>
+<img src="chapter_chronology_files/figure-html/c14-turin-uncal-1.png" alt="Distribution des âges conventionnels par laboratoire." width="100%"><p class="caption">
+Figure 24.7: Distribution des âges conventionnels par laboratoire.
+</p>
+</div>
+<p>La figure <a href="chronologie-quantitative.html#fig:c14-turin-uncal">24.7</a> permet de constater que l’échantillon 1 présente des âges ne se recouvrant que faiblement entre eux, au contraire des trois autres échantillons datés. Partant de cette première observation, on va donc tester l’homogénéité des résultats des différents laboratoires.</p>
+</div>
+<div id="les-résultats-des-différents-laboratoires-sont-ils-homogènes" class="section level4" number="24.1.4.3">
+<h4>
+<span class="header-section-number">24.1.4.3</span> Les résultats des différents laboratoires sont-ils homogènes ?<a class="anchor" aria-label="anchor" href="#les-r%C3%A9sultats-des-diff%C3%A9rents-laboratoires-sont-ils-homog%C3%A8nes"><i class="fas fa-link"></i></a>
+</h4>
+<p>Pour répondre à cette question, les auteurs de l’étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d’homogénéité dont l’hypothèse nulle (<span class="math inline">\(H_0\)</span>) peut être formulée comme suit : “les âges mesurés par les différents laboratoires sur un même objet sont égaux”.</p>
+<p>Pour cela, on commence par calculer l’âge moyen de chaque objet (<span class="math inline">\(\bar{x}\)</span>). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L’usage d’un facteur de pondération (l’inverse de la variance, <span class="math inline">\(w_i = \frac{1}{\sigma_i^2}\)</span>) permet d’ajuster la contribution relative de chaque date (<span class="math inline">\(x_i\)</span>) à la valeur moyenne.</p>
+<p><span class="math display">\[ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} \]</span></p>
+<p>À cet âge moyen est également associée une incertitude (<span class="math inline">\(\sigma\)</span>) :
+<span class="math display">\[ \sigma = \sqrt{\sum_{i=1}^{n}{w_i}} \]</span></p>
+<p>À partir de cette valeur moyenne, on peut calculer une variable de test statistique (<span class="math inline">\(T\)</span>) permettant la comparaison des âges mesurés à un âge théorique (ici l’âge moyen) pour chaque objet daté.</p>
+<p><span class="math display">\[ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} \]</span></p>
+<p><span class="math inline">\(T\)</span> est une variable aléatoire qui suit une loi du <span class="math inline">\(\chi^2\)</span> avec <span class="math inline">\(n-1\)</span> degrés de liberté (<span class="math inline">\(n\)</span> est le nombre de datations par objet, ici <span class="math inline">\(n = 3\)</span>). À partir de <span class="math inline">\(T\)</span>, il est possible de calculer la valeur <span class="math inline">\(p\)</span>, c’est-à-dire le risque de rejeter l’hypothèse nulle alors que celle-ci est vraie. En comparant la valeur <span class="math inline">\(p\)</span> à un seuil <span class="math inline">\(\alpha\)</span> fixé à l’avance, on peut déterminer s’il est possible ou non de rejeter <span class="math inline">\(H_0\)</span> (si <span class="math inline">\(p\)</span> est supérieure à <span class="math inline">\(\alpha\)</span>, alors on ne peut rejeter l’hypothèse nulle). On fixe ici cette valeur <span class="math inline">\(\alpha\)</span> à 0,05. On estime ainsi qu’un risque de 5 % de se tromper est acceptable.</p>
+<p>Le code suivant permet de calculer pour chaque échantillon, son âge moyen, l’incertitude associée, la statistique <span class="math inline">\(T\)</span> et la valeur <span class="math inline">\(p\)</span>.</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## On construit un data.frame pour stocker les résultats</span>
+<span class="co">## Chaque ligne correspond à un échantillon</span>
+<span class="co">## Les colonnes correspondent à :</span>
+<span class="co">## - L'âge moyen</span>
+<span class="co">## - L'incertitude associée à l'âge moyen</span>
+<span class="co">## - La statistique du test d'homogénéité</span>
+<span class="co">## - La valeur p du test d'homogénéité</span>
+<span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Ech."</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, sep <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"erreur"</span>, <span class="st">"chi2"</span>, <span class="st">"p"</span><span class="op">)</span>
+
+<span class="co">## Pour chaque objet daté...</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">age</span> <span class="op">&lt;-</span> <span class="va">turin</span><span class="op">[</span>, <span class="va">j</span>, <span class="fl">1</span><span class="op">]</span> <span class="co"># On extrait les âges</span>
+  <span class="va">inc</span> <span class="op">&lt;-</span> <span class="va">turin</span><span class="op">[</span>, <span class="va">j</span>, <span class="fl">2</span><span class="op">]</span> <span class="co"># On extrait les incertitudes</span>
+
+  <span class="co"># On calcule la moyenne pondérée</span>
+  <span class="va">w</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">inc</span><span class="op">^</span><span class="fl">2</span> <span class="co"># Facteur de pondération</span>
+  <span class="va">moy</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, w <span class="op">=</span> <span class="va">w</span><span class="op">)</span>
+
+  <span class="co"># On calcule l'incertitude associée à la moyenne pondérée</span>
+  <span class="va">err</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="va">inc</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>
+
+  <span class="co"># On calcule la statistique du test</span>
+  <span class="va">chi2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="va">age</span> <span class="op">-</span> <span class="va">moy</span><span class="op">)</span> <span class="op">/</span> <span class="va">inc</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
+
+  <span class="co"># On calcule la valeur-p</span>
+  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">chi2</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+
+  <span class="co"># On stocke les résultats</span>
+  <span class="co"># On arrondi au passage les ages à l'année</span>
+  <span class="co"># (une précision sub-annuelle n'a aucun sens)</span>
+  <span class="va">dates</span><span class="op">[</span><span class="va">j</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">moy</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">err</span><span class="op">)</span>, <span class="va">chi2</span>, <span class="va">p</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="va">dates</span>
+<span class="co">#&gt;         age erreur      chi2          p</span>
+<span class="co">#&gt; Ech. 1  689     16 6.3518295 0.04175589</span>
+<span class="co">#&gt; Ech. 2  937     16 0.1375815 0.93352200</span>
+<span class="co">#&gt; Ech. 3 1964     20 1.3026835 0.52134579</span>
+<span class="co">#&gt; Ech. 4  724     20 2.3856294 0.30336618</span></code></pre></div>
+<p>On constate que l’échantillon 1 présente une valeur <span class="math inline">\(p\)</span> de 0.04. Comme celle-ci est inférieure au seuil <span class="math inline">\(\alpha\)</span> fixé, l’hypothèse <span class="math inline">\(H_0\)</span> peut être rejetée. Cela signifie que les différences observées entre les âges obtenus sur cet échantillon sont significatives. Les valeurs <span class="math inline">\(p\)</span> obtenues pour les autres échantillons sont respectivement de 0.93, 0.52, 0.3 : l’hypothèse <span class="math inline">\(H_0\)</span> ne peut être donc rejetée dans ces cas.</p>
+<p>Cette fluctuation des âges de l’échantillon 1 est vraisemblablement liée à une hétérogénéité des mesures au sein d’un des laboratoires<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Les raisons de cette hétérogénéité dépassent le cadre de notre propos. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).&lt;/p&gt;"><sup>163</sup></a>.</p>
+</div>
+<div id="calibrer-les-âges" class="section level4" number="24.1.4.4">
+<h4>
+<span class="header-section-number">24.1.4.4</span> Calibrer les âges<a class="anchor" aria-label="anchor" href="#calibrer-les-%C3%A2ges"><i class="fas fa-link"></i></a>
+</h4>
+<p>Conformément aux résultats des tests précédents, les différents âges obtenus pour l’échantillon 1 seront calibrés séparément, tandis que l’on va pouvoir calibrer l’âge moyen des échantillons 2, 3 et 4. La calibration est réalisée avec la fonction <code><a href="https://rdrr.io/pkg/rcarbon/man/calibrate.html">calibrate()</a></code> du package <em>rcarbon</em>. On peut ensuite utiliser <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> pour obtenir un résumé des âges calibrés (par défaut, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> retourne des âges calibrés exprimés en années cal BP).</p>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Chargement du package rcarbon</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ahb108/rcarbon/">rcarbon</a></span><span class="op">)</span>
+
+<span class="co">## On calibre les âges de l'échantillon 1</span>
+<span class="va">ages_ech1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rcarbon/man/calibrate.html">calibrate</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">turin</span><span class="op">[</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span>,      <span class="co"># On sélectionne les âges de l'échantillon 1</span>
+  errors <span class="op">=</span> <span class="va">turin</span><span class="op">[</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span>, <span class="co"># On sélectionne les incertitudes associées</span>
+  ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">turin</span><span class="op">)</span>,  <span class="co"># On précise les noms des âges (laboratoires)</span>
+  calCurves <span class="op">=</span> <span class="st">"intcal20"</span>, <span class="co"># On choisit la courbe IntCal20</span>
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+
+<span class="co">## On affiche les âges calibrés à 95%</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ages_ech1</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;    DateID MedianBP p_0.95_BP_1 p_0.95_BP_2</span>
+<span class="co">#&gt; 1 Arizona      600  667 to 623  612 to 555</span>
+<span class="co">#&gt; 2  Oxford      682  725 to 660    NA to NA</span>
+<span class="co">#&gt; 3  Zurich      648  671 to 633  589 to 563</span>
+
+<span class="co">## On calibre les âges combinés</span>
+<span class="va">ages_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rcarbon/man/calibrate.html">calibrate</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">dates</span><span class="op">$</span><span class="va">age</span>,
+  errors <span class="op">=</span> <span class="va">dates</span><span class="op">$</span><span class="va">erreur</span>,
+  ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span>,
+  calCurves <span class="op">=</span> <span class="st">"intcal20"</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>
+<span class="op">)</span>
+
+<span class="co">## On affiche les âges calibrés à 95%</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ages_comb</span>, prob <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>
+<span class="co">#&gt;   DateID MedianBP  p_0.95_BP_1  p_0.95_BP_2</span>
+<span class="co">#&gt; 1 Ech. 1      659   671 to 648   581 to 571</span>
+<span class="co">#&gt; 2 Ech. 2      850   910 to 839   837 to 792</span>
+<span class="co">#&gt; 3 Ech. 3     1892 1974 to 1966 1943 to 1829</span>
+<span class="co">#&gt; 4 Ech. 4      670   682 to 653     NA to NA</span></code></pre></div>
+<p>La fonction <code><a href="https://rdrr.io/pkg/rcarbon/man/hpdi.html">hpdi()</a></code> permet de calculer les intervalles HPD pour chaque âge calibrés (attention, <code><a href="https://rdrr.io/pkg/rcarbon/man/hpdi.html">hpdi()</a></code> renvoie des âges exprimés en années cal BP) et la probabilité associée à chaque intervalle :</p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Intervalles HPD à 95 % des âges de l'échantillon 1</span>
+<span class="op">(</span><span class="va">hpd_ech1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rcarbon/man/hpdi.html">hpdi</a></span><span class="op">(</span><span class="va">ages_ech1</span>, credMass <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        667      623 0.4298236</span>
+<span class="co">#&gt; [2,]        612      555 0.5305958</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        725      660 0.9505207</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        671      633 0.5776311</span>
+<span class="co">#&gt; [2,]        589      563 0.3795208</span>
+
+<span class="co">## Intervalles HPD à 95 % des âges combinés</span>
+<span class="op">(</span><span class="va">hpd_comb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rcarbon/man/hpdi.html">hpdi</a></span><span class="op">(</span><span class="va">ages_comb</span>, credMass <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        671      648 0.7900124</span>
+<span class="co">#&gt; [2,]        581      571 0.1655072</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[2]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        910      839 0.5549372</span>
+<span class="co">#&gt; [2,]        837      792 0.4040575</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[3]]</span>
+<span class="co">#&gt;      startCalBP endCalBP       prob</span>
+<span class="co">#&gt; [1,]       1974     1966 0.02116099</span>
+<span class="co">#&gt; [2,]       1943     1829 0.93518667</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[4]]</span>
+<span class="co">#&gt;      startCalBP endCalBP      prob</span>
+<span class="co">#&gt; [1,]        682      653 0.9527099</span></code></pre></div>
+</div>
+<div id="comment-interpréter-ces-âges" class="section level4" number="24.1.4.5">
+<h4>
+<span class="header-section-number">24.1.4.5</span> Comment interpréter ces âges ?<a class="anchor" aria-label="anchor" href="#comment-interpr%C3%A9ter-ces-%C3%A2ges"><i class="fas fa-link"></i></a>
+</h4>
+<p>On s’intéresse en premier aux échantillons de contrôle 2, 3 et 4. Les distributions des âges conventionnels (axe des ordonnées) et calendaires (axe des abscisses) peuvent être représentés avec la courbe de calibration à l’aide de la fonction <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>. La figure <a href="chronologie-quantitative.html#fig:c14-turin-cal">24.8</a> permet alors de constater que leurs âges calibrés sont en accord avec les datations connues par ailleurs.</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## On fixe les paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span>, las <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co">## Pour les échantillons 2, 3 et 4...</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>
+    x <span class="op">=</span> <span class="va">ages_comb</span>,
+    ind <span class="op">=</span> <span class="va">i</span>,
+    HPD <span class="op">=</span> <span class="cn">TRUE</span>,
+    credMass <span class="op">=</span> <span class="fl">0.95</span>,   <span class="co"># 95%</span>
+    calendar <span class="op">=</span> <span class="st">"BCAD"</span>, <span class="co"># Référence calendaire</span>
+    xlab <span class="op">=</span> <span class="st">"Année BC/AD"</span>,
+    axis4 <span class="op">=</span> <span class="cn">FALSE</span>
+  <span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, side <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-turin-cal"></span>
+<img src="chapter_chronology_files/figure-html/c14-turin-cal-1.png" alt="Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." width="100%"><p class="caption">
+Figure 24.8: Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l’intervalle HPD à 95%. Courbe IntCal20.
+</p>
+</div>
+<ul>
+<li>L’âge calendaire de l’échantillon 2 a 95 % de chance (intervalle HPD) de se trouver dans l’union des intervalles [1040;1109] (54 %) et [1113;1158] (40 %), en accord avec une datation attendue autour des XI<sup>e</sup>-XII<sup>e</sup> siècles de notre ère.</li>
+<li>L’âge calendaire de l’échantillon 3 a 95 % de chance (intervalle HPD) de se trouver dans l’union des intervalles [-25;-17] (2 %) et [7;121] (93 %), en accord avec une datation attendue entre -110 et 75.</li>
+<li>L’âge calendaire de l’échantillon 4 a 95 % de chance (intervalle HPD) de se trouver entre 1267 et 1297, en accord avec une datation attendue entre 1290 et 1310.</li>
+</ul>
+<p>Les âges radiocarbone obtenus par les différents laboratoires pour l’échantillon 1 ont été calibrés séparément. La fonction <code><a href="https://rdrr.io/pkg/rcarbon/man/multiplot.html">multiplot()</a></code> permet de représenter simultanément les distributions des âges calibrés (exprimés en années BC/AD) pour les trois laboratoires (fig. <a href="chronologie-quantitative.html#fig:c14-turin-plot">24.9</a>).</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## On fixe les paramètres graphiques</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.1</span><span class="op">)</span>
+
+<span class="co">## On représente les âges obtenus par les trois laboratoires (éch. 1)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rcarbon/man/multiplot.html">multiplot</a></span><span class="op">(</span>
+  x <span class="op">=</span> <span class="va">ages_ech1</span>,
+  type <span class="op">=</span> <span class="st">"d"</span>,
+  decreasing <span class="op">=</span> <span class="cn">TRUE</span>,
+  HPD <span class="op">=</span> <span class="cn">TRUE</span>,
+  credMass <span class="op">=</span> <span class="fl">0.95</span>,  <span class="co"># 95%</span>
+  calendar <span class="op">=</span> <span class="st">"BCAD"</span>, <span class="co"># Référence calendaire</span>
+  xlab <span class="op">=</span> <span class="st">"Année AD"</span>
+<span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:c14-turin-plot"></span>
+<img src="chapter_chronology_files/figure-html/c14-turin-plot-1.png" alt="Distribution des âges calendaires de l'échantillon 1 obtenus par les différents laboratoires. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." width="100%"><p class="caption">
+Figure 24.9: Distribution des âges calendaires de l’échantillon 1 obtenus par les différents laboratoires. Les zones en gris foncé correspondent à l’intervalle HPD à 95%. Courbe IntCal20.
+</p>
+</div>
+<p>Si l’analyse des âges conventionnels obtenus par les différents laboratoires pour l’échantillon 1 révèle une certaine hétérogénéité, on constate néanmoins que les âges calibrés appartiennent tous aux XIII<sup>e</sup> et XIV<sup>e</sup> siècles. Bien qu’on ne puisse donner un intervalle plus précis, ces résultats sont en accord avec l’apparition des premières mentions écrites du Suaire et permettent raisonnablement d’exclure l’hypothèse d’authenticité de la relique.</p>
+</div>
+<div id="comment-présenter-ses-résultats" class="section level4" number="24.1.4.6">
+<h4>
+<span class="header-section-number">24.1.4.6</span> Comment présenter ses résultats ?<a class="anchor" aria-label="anchor" href="#comment-pr%C3%A9senter-ses-r%C3%A9sultats"><i class="fas fa-link"></i></a>
+</h4>
+<p>Pour communiquer ou publier des âges radiocarbone de manière rigoureuse et permettre de vérifier les résultats et d’en faire usage, il est nécessaire de toujours faire figurer un certain nombre d’éléments. Par exemple, on écrira :</p>
+<blockquote>
+<p>L’échantillon ETH-3883 est daté à 676 ± 24 ans BP, calibré à [671;633] (58 %) ou [589;563] (38 %) cal BP soit [1279;1317] (58 %) ou [1361;1387] (38 %) AD (intervalles HPD à 95 %) avec IntCal20 (Reimer <em>et al.</em> 2020), R version 4.2.0 (2022-04-22)<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R Core Team, &lt;em&gt;R&lt;/em&gt;.&lt;/p&gt;"><sup>164</sup></a></span> et le package rcarbon version 1.4.3.<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Bevan et Crema, &lt;em&gt;rcarbon&lt;/em&gt;.&lt;/p&gt;"><sup>165</sup></a></span></p>
+</blockquote>
+<p>Sous cette forme, on dispose ainsi des éléments suivants<span class="citation"><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Andrew R Millard, &lt;span&gt;« Conventions for &lt;span&gt;Reporting Radiocarbon Determinations&lt;/span&gt; »&lt;/span&gt;, &lt;em&gt;Radiocarbon&lt;/em&gt; 56, nᵒ 2 (2014): 555‑59, &lt;a href="https://doi.org/10.2458/56.17455" role="doc-biblioref"&gt;https://doi.org/10.2458/56.17455&lt;/a&gt;.&lt;/p&gt;'><sup>166</sup></a></span> :</p>
+<ul>
+<li>L’âge conventionnel et son incertitude (676 ± 24 ans BP), accompagnés du numéro d’identification donné par le laboratoire (ETH-3883) ;</li>
+<li>L’âge calibré sous la forme d’un ou plusieurs intervalles (du fait de sa distribution particulière, un âge calibré est toujours donné sous la forme d’intervalles), en précisant la probabilité associée à chaque intervalle et le référentiel temporel utilisé (cal BP ou BC/AD) ;</li>
+<li>La courbe de calibration utilisée et la référence correspondante : IntCal20 (Reimer <em>et al.</em> 2020) ;</li>
+<li>Les versions de R et du package utilisées : R version 4.2.0 (2022-04-22) et rcarbon version 1.4.3.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
 
 
 
   <div class="chapter-nav">
 <div class="prev"><a href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></div>
-<div class="next"><a href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></div>
+<div class="next"><a href="introduction-3.html"><span class="header-section-number">25</span> Introduction</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>Sur cette page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#chronologie-quantitative"><span class="header-section-number">24</span> Chronologie quantitative</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#chronologie-quantitative"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
+<li>
+<a class="nav-link" href="#calibrer-des-%C3%A2ges-radiocarbones"><span class="header-section-number">24.1</span> Calibrer des âges radiocarbones</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#le-principe-de-la-datation-par-le-radiocarbone"><span class="header-section-number">24.1.1</span> Le principe de la datation par le radiocarbone</a></li>
+<li><a class="nav-link" href="#pourquoi-calibrer-des-%C3%A2ges-radiocarbone"><span class="header-section-number">24.1.2</span> Pourquoi calibrer des âges radiocarbone ?</a></li>
+<li><a class="nav-link" href="#comment-calibrer"><span class="header-section-number">24.1.3</span> Comment calibrer ?</a></li>
+<li><a class="nav-link" href="#applications"><span class="header-section-number">24.1.4</span> Applications</a></li>
+</ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -136,7 +590,7 @@ aborder un large éventail de problèmes liés aux données archéologiques.&lt;
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

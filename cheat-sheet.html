@@ -76,11 +76,11 @@
 <li><a class="" href="coda-transformations.html"><span class="header-section-number">20</span> Transformations de données</a></li>
 <li><a class="" href="coda-outliers.html"><span class="header-section-number">21</span> Détection des valeurs aberrantes</a></li>
 <li class="book-part">Chronologie</li>
-<li><a class="" href="introduction-3.html"><span class="header-section-number">22</span> Introduction</a></li>
+<li><a class="" href="chrono-introduction.html"><span class="header-section-number">22</span> Introduction</a></li>
 <li><a class="" href="chronologie-qualitative.html"><span class="header-section-number">23</span> Chronologie qualitative</a></li>
 <li><a class="" href="chronologie-quantitative.html"><span class="header-section-number">24</span> Chronologie quantitative</a></li>
 <li class="book-part">Cartographie</li>
-<li><a class="" href="introduction-4.html"><span class="header-section-number">25</span> Introduction</a></li>
+<li><a class="" href="introduction-3.html"><span class="header-section-number">25</span> Introduction</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-vectorielles.html"><span class="header-section-number">26</span> Analyse de données vectorielles</a></li>
 <li><a class="" href="analyse-de-donn%C3%A9es-raster.html"><span class="header-section-number">27</span> Analyse de données raster</a></li>
 <li class="book-part">Annexes</li>
@@ -104,11 +104,11 @@
 <h2>
 <span class="header-section-number">29.1</span> Séquences<a class="anchor" aria-label="anchor" href="#fonctions-sequences"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Séquence de nombres entiers</span>
 <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Séquence de 1 à 10</span>
 <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span>
@@ -116,11 +116,11 @@
 <span class="co"># Séquence de 1 à 10 par pas de 2</span>
 <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1 3 5 7 9</span></code></pre></div>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Séquence de 10 entiers</span>
 <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Séquence de même longueur qu'un objet (ici de 1 à 10)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.6</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>, <span class="fl">7</span>, <span class="fl">1.8</span>, <span class="fl">6.9</span>, <span class="fl">1.6</span>, <span class="fl">3.8</span>, <span class="fl">2.6</span>, <span class="fl">5.5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -130,8 +130,8 @@
 <h2>
 <span class="header-section-number">29.2</span> Pipes<a class="anchor" aria-label="anchor" href="#fonctions-pipe"><i class="fas fa-link"></i></a>
 </h2>
-<p>L’opérateur <code>|&gt;</code> (<em>pipe</em>) a été introduit dans la version 4.1 de R<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Pour les versions de R antérieures 4.1, on peut utiliser l’opérateur &lt;code&gt;%&amp;gt;%&lt;/code&gt; du package &lt;a href="https://magrittr.tidyverse.org/"&gt;&lt;em&gt;magrittr&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;'><sup>148</sup></a>. Ainsi, <code>x |&gt; f(y)</code> est interprété comme <code>f(x, y)</code>.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<p>L’opérateur <code>|&gt;</code> (<em>pipe</em>) a été introduit dans la version 4.1 de R<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Pour les versions de R antérieures 4.1, on peut utiliser l’opérateur &lt;code&gt;%&amp;gt;%&lt;/code&gt; du package &lt;a href="https://magrittr.tidyverse.org/"&gt;&lt;em&gt;magrittr&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;'><sup>170</sup></a>. Ainsi, <code>x |&gt; f(y)</code> est interprété comme <code>f(x, y)</code>.</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mtcars</span> |&gt; 
   <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span>avg <span class="op">=</span> <span class="va">mpg</span> <span class="op">/</span> <span class="va">wt</span><span class="op">)</span> |&gt; 
   <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">avg</span> <span class="op">&gt;</span> <span class="fl">5</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">wt</span>, <span class="va">avg</span><span class="op">)</span><span class="op">)</span>
@@ -185,7 +185,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-10.</p>
+    <p>"<strong>R pour l’archéologue</strong>: Exploration, visualisation et analyse de données" a été écrit par Nicolas Frerebeau, Ben Marwick. Dernière compilation le 2022-06-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

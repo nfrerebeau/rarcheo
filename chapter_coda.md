@@ -138,7 +138,7 @@ Sachant les contraintes propres aux données de composition, la plupart des outi
 
 La détection de valeurs aberrantes (*outliers*), ou considérées comme inattendues, est une tâche courante lors de l'analyse de données de composition. Cette dernière repose sur la définition d'un seuil ou d'une valeur limite permettant de séparer les valeurs aberrantes du reste des données [@filzmoser2005; @reimann2005]. Ce seuil correspond généralement à une distance limite par rapport au centre du jeu de données, au-delà de laquelle les individus ne sont pas uniquement affectés par la variation naturelle du phénomène étudié, voire relèvent d'un ou de plusieurs processus complètement différents [@filzmoser2005].
 
-Une telle approche nécessite de bien distinguer les valeurs aberrantes (observations issues d'une ou plusieurs distributions différentes) des valeurs extrêmes (issues de la même distribution malgré leur éloignement du centre) [@reimann2005]. Cette distinction constitue une des principales difficultés : les valeurs aberrantes ne sont pas nécessairement des valeurs extrêmes, en particulier lorsqu'elles résultent de phénomènes secondaires (taphonomie, contaminations...). Ainsi, les approches univariées sont généralement inefficaces pour détecter les valeurs aberrantes [@filzmoser2005]. Les données de composition sont par nature mutlivariées. La détection de valeurs abbérantes doit donc reposer sur la position des données (distance par rapport au centroïde), mais prendre également en compte la forme de ces dernières [@filzmoser2005].
+Une telle approche nécessite de bien distinguer les valeurs aberrantes (observations issues d'une ou plusieurs distributions différentes) des valeurs extrêmes (issues de la même distribution malgré leur éloignement du centre) [@reimann2005]. Cette distinction constitue une des principales difficultés : les valeurs aberrantes ne sont pas nécessairement des valeurs extrêmes, en particulier lorsqu'elles résultent de phénomènes secondaires (taphonomie, contaminations...). Ainsi, les approches univariées sont généralement inefficaces pour détecter les valeurs aberrantes [@filzmoser2005]. Les données de composition sont par nature mutlivariées : la détection de valeurs abbérantes doit donc reposer sur la position des données (distance par rapport au centroïde), mais prendre également en compte la forme de ces dernières [@filzmoser2005].
 
 La [distance de Mahalanobis](https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis) \@ref(eq:mahalanobis) permet de déterminer la similarité entre un individu $x$ multivarié et un ensemble d'observations en prenant en compte la position (moyenne $\mu$), ainsi que la forme et la taille (quantifiées par la matrice de covariance $\Sigma$) de cet ensemble.
 
@@ -260,8 +260,12 @@ par(mar = c(4, 4, 1, 1) + 0.1, las = 1)
 q <- qchisq(ppoints(length(d)), df = 2)
 
 ## Diagramme Quantile-Quantile
-plot(x = q, y = d, xlab = "Quantile théorique",
-     ylab = "Distance de Mahalanobis robuste")
+plot(
+  x = q, 
+  y = d, 
+  xlab = "Quantile théorique",
+  ylab = "Distance de Mahalanobis robuste"
+)
 ## Tracer la droite théorique
 qqline(y = d, distribution = function(p) qchisq(p, df = 2), col = "blue")
 ## Mettre en évidence les dinosaures
