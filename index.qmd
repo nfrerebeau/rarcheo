@@ -1,10 +1,7 @@
 # Avant propos {.unnumbered}
 
-```{r, warning=FALSE, echo=FALSE}
+```{r, echo=FALSE}
 source(here::here("common.R"))
-
-# Créer automatiquement une bibliographie des packages R utilisés
-knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 ```
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques. Par science archéologique, nous entendons ici une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
@@ -55,7 +52,6 @@ Une entrée BibTeX pour citer ce document :
 ```{r}
 #| label: citation
 #| echo: false
-#| cache: false
 #| comment: ""
 ref <- utils::readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))
 print(ref, style = "Bibtex")
@@ -83,7 +79,6 @@ Cette version du livre a été réalisée avec `r R.version.string` et [pandoc](
 #| label: tbl-packages
 #| tbl-cap: "Liste des packages utilisés."
 #| echo: false
-#| cache: false
 #| results: "asis"
 # Lister les packages présents dans le fichier DESCRIPTION
 dep <- desc::desc_get_deps()$package[-1] # Retirer R base

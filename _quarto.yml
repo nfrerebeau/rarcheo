@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: _book
+  pre-render: references.R
 
 bibliography: [book.bib, packages.bib]
 # csl: chicago-fullnote-bibliography.csl
