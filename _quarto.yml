@@ -1,0 +1,140 @@
+project:
+  type: book
+  output-dir: _book
+
+bibliography: [book.bib, packages.bib]
+# csl: chicago-fullnote-bibliography.csl
+
+book:
+  title: "R pour l'archéologue"
+  subtitle: "Exploration, visualisation et analyse de données"
+  date: today
+  author:
+    - Nicolas Frerebeau
+    - Ben Marwick
+  author-meta: "Nicolas Frerebeau and Ben Marwick"
+  description-meta: |
+    Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
+    modéliser des données archéologiques à l'aide du langage R. Cet ouvrage vous 
+    permet d'acquérir les connaissances et les compétences nécessaires pour 
+    aborder un large éventail de problèmes liés aux données archéologiques.
+  output-file: rarcheo
+
+  reader-mode: true
+  search: true
+  page-navigation: true
+  downloads: [pdf]
+  site-url: https://rstats.archaeo.science
+  repo-url: https://github.com/nfrerebeau/rarcheo/
+  repo-actions: [edit, issue]
+  
+  chapters:
+  - index.qmd
+  - introduction.qmd
+
+  - part: Premiers pas avec R
+    chapters:
+    - chapter_rstats/introduction.qmd
+    - chapter_rstats/objects.qmd
+    - chapter_rstats/subsetting.qmd
+    - chapter_rstats/operators.qmd
+    - chapter_rstats/flow.qmd
+    - chapter_rstats/functions.qmd
+
+  - part: Collecter et organiser ses données
+    chapters:
+    - chapter_collect/introduction.qmd
+    - chapter_collect/manage.qmd
+    - chapter_collect/organize.qmd
+
+  - part: Préparer ses données
+    chapters:
+    - chapter_data/introduction.qmd
+    - chapter_data/read_write.qmd
+    - chapter_data/manipulation.qmd
+
+  - part: Éléments de statistiques
+    chapters:
+    - chapter_statistics/introduction.qmd
+    - chapter_statistics/description.qmd
+    - chapter_statistics/relations.qmd
+
+  - part: Visualisation de données
+    chapters:
+    - chapter_visualization/introduction.qmd
+    - chapter_visualization/graphs.qmd
+
+  - part: Données de comptage
+    chapters:
+    - chapter_artefacts/introduction.qmd
+
+  - part: Données de composition
+    chapters:
+    - chapter_coda/introduction.qmd
+    - chapter_coda/transformations.qmd
+    - chapter_coda/outliers.qmd
+
+  - part: Chronologie
+    chapters:
+    - chapter_chronology/introduction.qmd
+    - chapter_chronology/relative.qmd
+    - chapter_chronology/absolute.qmd
+
+  - part: Cartographie
+    chapters:
+    - chapter_geography/introduction.qmd
+    - chapter_geography/vector.qmd
+    - chapter_geography/raster.qmd
+    
+  - references.qmd
+    
+  appendices:
+    - chapter_appendix/setup.Rmd
+    - chapter_appendix/cheat_sheet.Rmd
+    - chapter_appendix/good_practices.Rmd
+    - chapter_appendix/style.Rmd
+    
+format:
+  html:
+    lang: fr
+    theme: cosmo
+    code-link: true
+    toc: true
+    number-sections: true
+    link-external-icon: false
+    license: CC BY-NC-SA
+  pdf:
+    lang: fr
+    documentclass: scrbook
+    classoption: 
+      - french
+      - 12pt
+      - a4paper
+      - twoside
+    include-in-header: latex/preamble.tex
+    include-before-body: latex/before_body.tex
+    include-after-body: latex/after_body.tex
+    pdf-engine: xelatex
+    cite-method: biblatex
+    toc: true
+    lof: true
+    lot: true
+    toc-depth: 2
+    toc-title: Sommaire
+
+editor: source
+
+execute:
+  freeze: auto
+
+knitr:
+  opts_chunk:
+    echo: true
+    collapse: true
+    comment: "#>"
+    dpi: 300
+    out-width: "100%"
+    fig-align: "center"
+    fig-width: 7
+    fig-height: 5
+    width: 68

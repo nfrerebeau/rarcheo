@@ -1,0 +1,230 @@
+# Extraction et remplacement {#subset}
+
+```{r, echo=FALSE}
+source(here::here("common.R"))
+```
+
+R possède un mécanisme très puissant pour naviguer parmi les valeurs d'un objet, afin d'en extraire ou d'en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.
+
+La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs `[` ou `[[` : `[` permet d'extraire un sous-ensemble, tandis que `[[` permet d'extraire un unique élément. Cette distinction correspond aux relations d'[appartenance](https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)) et d'[inclusion](https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)) de la théorie des ensembles en mathématiques^[Par exemple, si $M$ est un ensemble (collection) tel que $M = \{1,2,3\}$, alors $1$, $2$ et $3$ sont des éléments de $M$, tandis que $\{1,2\}$ ou $\{3\}$ sont des sous-ensembles de $M$.] (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de [listes](#subset-list)).
+
+Ces opérateurs peuvent être utilisés conjointement avec l'affectation (`<-`) pour remplacer des valeurs. On écrira ainsi : `x[i] <- y` où `i` correspond à l'indice (position) des valeurs à remplacer dans le vecteur `x` et `y` correspond au vecteur de nouvelles valeurs.
+
+## Vecteurs atomiques {#subset-atomic}
+
+Il existe différentes façons d'extraire un sous-ensemble d'éléments au sein d'un vecteur à l'aide de l'opérateur `[` :
+
+```{r}
+x <- c(1.3, 2.4, 3.5, 4.6, 5.7)
+```
+
+* Il est possible de spécifier les indices (positions) des éléments à conserver ou à enlever avec des nombres entiers :
+  ```{r}
+  # Sélection du premier, troisième et cinquième élément
+  x[c(1, 3, 5)]
+  
+  # Suppression du second et du quatrième élément
+  x[-c(2, 4)]
+  
+  # Zéro est un cas particulier
+  # (retourne un vecteur de longueur nulle)
+  x[0]
+  ```
+* Il est possible de spécifier si oui (`TRUE`) ou non (`FALSE`) on souhaite conserver des éléments :
+  ```{r}
+  x[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
+  ```
+* Si rien n'est spécifié, le vecteur d'origine est retourné :
+  ```{r}
+  x[]
+  ```
+* Si les éléments sont nommés, on peut les sélectionner par leur nom :
+  ```{r}
+  names(x) <- c("a", "b", "c", "d", "e")
+  x[c("a", "c", "e")]
+  ```
+
+L'utilisation de `[[` permet d'extraire un seul et unique élément au lieu d'un sous-ensemble. Dans le cas des vecteurs atomiques, la différence entre `[` et `[[` n'est pas évidente^[Hormis qu'une tentative de sélection de plusieurs éléments avec `[[` produira une erreur.] et est sans doute mieux illustrée avec un exemple :
+
+```{r}
+x[1] # L'attribut names est conservé (sous-ensemble)
+
+x[[1]] # L'attribut names n'est pas conservé (élément)
+```
+
+Les éléments sélectionnés peuvent être remplacés en affectant de nouvelles valeurs :
+
+```{r}
+# Remplacement du premier et du troisième élément
+x[c(1, 3)] <- c(100, 300)
+x
+```
+
+Lors de l'affectation de nouvelles valeurs dans un vecteur existant, il faut veiller à plusieurs aspects :
+
+* La duplication d'indices :
+  ```{r}
+  x <- 1:5
+  x[c(1, 1, 1)] # Duplique les valeurs
+  ```
+* L'ordre des indices :
+  ```{r}
+  x <- 1:5
+  x[c(5, 3, 1)] # Change l'ordre des valeurs
+  ```
+* Les mécanismes de [conversions implicites](#conversion) :
+  ```{r}
+  x <- 1:5
+  typeof(x)
+  
+  x[c(1, 3)] <- c(100.1, 300.3)
+  typeof(x)
+  ```
+* La taille du vecteur de remplacement. Si ce dernier est trop petit, il sera **recyclé** : ses valeurs seront réutilisées autant que nécessaire :
+  ```{r}
+  x <- 1:5
+  x[c(1, 2, 3, 4)] <- c(100, 200)
+  x
+  ```
+
+## Listes {#subset-list}
+
+L'extraction de sous-ensembles dans une liste s'opère de la même façon que pour un vecteur atomique :
+
+```{r}
+x <- list(
+  a = c(TRUE, FALSE),
+  b = c(1, 2, 3, 4, 5),
+  c = c("X", "Y", "Z")
+)
+x
+
+# Sélection du premier et du troisième élément
+x[c(1, 3)] # Par position
+
+x[c("a", "c")] # Par nom
+```
+
+L'opérateur `[` retourne toujours une liste, y compris lorsqu'un unique élément est sélectionné. Pour extraire un unique élément *hors* de la liste, il est possible d'utiliser l'opérateur `[[` :
+
+```{r}
+y <- x[1]
+y
+typeof(y)
+
+z <- x[[1]]
+z
+typeof(z)
+```
+
+Si les éléments de la liste sont nommés, on peut extraire un unique élément en le sélectionnant par son nom avec `[[` ou avec l'opérateur `$` (dollar) :
+
+```{r}
+x[["a"]]
+
+x$a
+```
+
+Cette distinction entre `[` et `[[` est particulièrement importante lorsqu'on souhaite remplacer des valeurs dans une liste (puisque `[` retourne toujours une liste, la valeur de remplacement doit également être une liste) :
+
+```{r}
+x[1] <- list(1:10)
+x
+
+x[[1]] <- c(TRUE, FALSE)
+x
+```
+
+L'opérateur `[[` permet également de supprimer un élément dans une liste en lui affectant la valeur `NULL` :
+
+```{r}
+x[[2]] <- NULL
+x
+```
+
+## Matrices {#subset-matrix}
+
+La sélection d'un sous-ensemble dans un tableau à deux dimensions (`matrix` ou `array`) est une généralisation de la sélection dans un vecteur. Il suffit de spécifier les indices des lignes et des colonnes, séparés par une virgule :
+
+```{r}
+x <- matrix(1:12, nrow = 3, ncol = 4)
+rownames(x) <- c("x", "y", "z")
+colnames(x) <- c("A", "B", "C", "D")
+x
+
+# Sélection des lignes 2 à 3 et des colonnes 1 à 3
+x[2:3, 1:3]
+
+x[-1, -4]
+
+x[c(FALSE, TRUE, TRUE), c("A", "B", "C")]
+```
+
+Si rien n'est spécifié, toutes les lignes ou toutes les colonnes sont sélectionnées :
+
+```{r}
+# Sélection de toutes les lignes et des colonnes 1 à 3
+x[, 1:3]
+
+# Sélection de toutes les colonnes et des lignes 2 à 3
+x[2:3, ]
+```
+
+Par défaut, `[` **simplifie** les résultats à la plus petite dimension possible. La sélection d'une unique valeur, d'une unique ligne ou d'une unique colonne, ne retourne donc pas une matrice mais un vecteur. La structure de l'objet d'origine peut cependant être conservée à l'aide de l'argument `drop` :
+
+```{r}
+# Sélection de la première colonne
+x[, 1] # Retourne un vecteur
+
+x[, 1, drop = FALSE] # Retourne une matrice
+```
+
+:::{.callout-warning}
+Un vecteur sans attribut `dim` n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
+:::
+
+Les matrices sont des [vecteurs possédant un attribut particulier](#r-matrix) (`dim`), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
+
+```{r}
+# Sélection des première et troisième valeurs
+x[c(1, 3)]
+
+# Remplacement des première et troisième valeurs
+x[c(1, 3)] <- 0
+x
+```
+
+Enfin, il est possible d'utiliser une matrice pour sélectionner un sous-ensemble d'un tableau à deux dimensions ou plus. Cette matrice doit contenir les coordonnées (lignes et colonnes) des valeurs à sélectionner. La première colonne doit ainsi contenir les indices des lignes à sélectionner, la seconde colonne les indices des colonnes et ainsi de suite pour les cas de dimensions supérieures (`array`) :
+
+```{r}
+# On veut sélectionner les cellules (1,2), (2,3) et (3,4)
+y <- matrix(c(1, 2, 3, 2, 3, 4), ncol = 2)
+
+# La première colonne contient les indices des lignes
+# La seconde colonne contient les indices des colonnes
+y
+
+x[y]
+```
+
+## Tableaux de données {#subset-dataframe}
+
+Pour extraire ou remplacer des valeurs dans un `data.frame`, on peut utiliser deux stratégies. Les `data.frame` ont en effet les caractéristiques des listes et des matrices :
+
+```{r}
+x <- data.frame(
+  a = c(TRUE, FALSE, TRUE, TRUE),
+  b = c(1, 2, 3, 4),
+  c = c("A", "B", "C", "D")
+)
+
+# Comme une liste !
+x[c("a", "b", "c")] # Colonnes nommées "a", "b" et "c"
+x[[2]]              # Deuxième colonne uniquement
+x$b                 # Colonne nommée "b"
+
+# Comme une matrice !
+x[, c("a", "b", "c")]
+x[, 2]
+x[, "b", drop = FALSE]
+```

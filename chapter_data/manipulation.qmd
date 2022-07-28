@@ -1,0 +1,35 @@
+# Traitement des données {#data-manipulation}
+## Nettoyer {#data-nettoyer}
+
+```{r}
+# abbreviate()
+# replace()
+# tolower() / toupper()
+```
+
+## Selectionner {#data-selectionner}
+
+```{r}
+# startsWith()
+
+# endsWith()
+```
+
+## Filtrer {#data-filtrer}
+
+```{r}
+# subset()
+```
+
+## Transformer {#data-transformer}
+
+```{r}
+# transform()
+# with()
+```
+
+## Fusionner {#data-jointure}
+
+```{r}
+# merge()
+```

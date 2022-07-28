@@ -39,9 +39,10 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-### R.Bookdown Stack ###
-_book/
-*.log
-*.rds
-# R package: bookdown caching files
-/*_files/
+### Quarto ###
+/.quarto/
+site_libs
+_book
+_freeze
+
+packages.bib

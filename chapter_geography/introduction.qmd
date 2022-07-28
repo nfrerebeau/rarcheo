@@ -1,0 +1,8 @@
+# Introduction
+
+```{r}
+#| label: fig-xkcd-sea-chase
+#| echo: false
+#| fig-cap: "Sea Chase. \"There are two rules on this ship: Never gaze back into the projection abyss, and never touch the red button labeled DYMAXION.\" [CC BY-NC 2.0 @munroe2022]."
+knitr::include_graphics(here::here("images/xkcd_sea_chase.png"))
+```

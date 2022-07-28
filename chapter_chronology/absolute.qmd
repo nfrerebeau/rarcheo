@@ -1,15 +1,3 @@
-# (PART) Chronologie {-}
-
-# Introduction {#chrono-introduction}
-
-En archéologie, le processus de datation consiste au "placement dans le temps d'événements les uns par rapport aux autres ou par rapport à toute échelle établie de mesure temporelle" [@dean1978]. Cela implique de distinguer les méthodes de datation dites *relatives* (qui fournissent une séquence chronologique ordonnée d'événements) et les méthodes de datation dites *absolues* (qui donnent une indication calendaire et peuvent fournir la durée d'un événement) [@obrien2002].
-
-À proprement parler, il n'existe pas de datation absolue, étant donné la façon dont les dates sont produites et que toute date s'inscrit dans un référentiel particulier. La distinction entre temps absolu et temps relatif peut être reformulée plus clairement comme quantifiable ou non quantifiable [@obrien2002] : les dates absolues "sont exprimées en points sur des échelles standard de mesure du temps" [@dean1978].
-
-Nous garderons ici la distinction entre une *date* et un *âge* telle que formulée par @colman1987 : "une date est un point précis dans le temps, alors qu'un âge est un intervalle de temps mesuré en arrière à partir du présent". Traiter des dates en archéologie peut être délicat si l'on ne tient pas compte des sources de l'information chronologique. Dans la plupart des cas, une date représente un *terminus* pour un assemblage archéologique donné. C'est-à-dire une date avant (*terminus ante quem*) ou après (*terminus post quem*) laquelle l'événement étudié a eu lieu. Enfin, on gardera à l'esprit qu'il n'existe pas de datation sans incertitude en archéologie (même si cette dernière ne peut pas toujours être quantifiée).
-
-# Chronologie qualitative
-
 # Chronologie quantitative
 ## Calibrer des âges radiocarbones
 
@@ -19,7 +7,7 @@ L'objectif de cette section est d'apprendre à calibrer^[*Calibration* est un an
 
 ### Le principe de la datation par le radiocarbone
 
-Proposée à la fin des années 1940 par Willard Libby et ses collègues [@anderson1947], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (<sup>14</sup>C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent [@colman1987]. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950^[L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.]).
+Proposée à la fin des années 1940 par Willard Libby et ses collègues [@anderson1947], la méthode du radiocarbone utilise la décroissance radioactive du carbone 14 (^14^C) pour construire un chronomètre. Ce dernier permet d'estimer des âges, c'est-à-dire des intervalles de temps mesurés depuis le présent [@colman1987]. Par convention, les âges radiocarbone sont ainsi exprimés en (kilo) années BP (*Before Present*, avant 1950^[L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.]).
 
 L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessaires :
 
@@ -27,11 +15,16 @@ L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessai
 - La loi en question doit être indépendante des conditions du milieu ;
 - Un événement initial doit pouvoir être déterminé.
 
-Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée $T$, également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
+Le ^14^C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le ^12^C et le ^13^C. Le ^14^C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée $T$, également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
 
-La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale $N_0$ d'atomes de <sup>14</sup>C, il en reste $\frac{N_0}{2}$ au bout de 5730 ans, $\frac{N_0}{4}$ au bout de 11460 ans, etc. (fig. \@ref(fig:c14-decroissance)). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
+La période du ^14^C est de 5730 ± 40 ans : pour une quantité initiale $N_0$ d'atomes de ^14^C, il en reste $\frac{N_0}{2}$ au bout de 5730 ans, $\frac{N_0}{4}$ au bout de 11460 ans, etc. (@fig-c14-decroissance). Au bout de 8 à 10 périodes (environ 45000 à 55000 ans), on considère que la quantité de ^14^C est trop faible pour être mesurée : c'est la limite de la méthode.
 
-```{r c14-decroissance, echo=FALSE, fig.width=7, fig.height=3.5, fig.cap="Décroissance exponentielle d'une quantité $N_0$ d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)."}
+```{r}
+#| label: fig-c14-decroissance
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3.5
+#| fig-cap: "Décroissance exponentielle d'une quantité $N_0$ d'atomes radioactifs au cours du temps (exprimé en périodes radioactives)."
 i <- 5730
 par(mar = c(4, 4, 1, 1) + 0.1, las = 1)
 curve(
@@ -50,30 +43,39 @@ lines(x = c(0, 1, 1) * i, y = c(0.50, 0.50, -1), type = "l", lty = 2, col = "red
 lines(x = c(0, 2, 2) * i, y = c(0.25, 0.25, -1), type = "l", lty = 2, col = "red")
 ```
 
-Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en <sup>14</sup>C dans les organismes vivants est constante et à l'équilibre avec la teneur atmosphérique^[La réalité est un peu plus complexe, notamment du fait des phénomènes de [fractionnement isotopique](https://fr.wikipedia.org/wiki/Fractionnement_isotopique).].
+Le carbone 14 est produit naturellement en haute atmosphère sous l'effet des rayonnements cosmiques. Il est ensuite progressivement absorbé par les organismes vivants au fil de la chaîne trophique (en commençant par les organismes photosynthétiques). On considère alors que la teneur en ^14^C dans les organismes vivants est constante et à l'équilibre avec la teneur atmosphérique^[La réalité est un peu plus complexe, notamment du fait des phénomènes de [fractionnement isotopique](https://fr.wikipedia.org/wiki/Fractionnement_isotopique).].
 
-Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de <sup>14</sup>C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
+Lorsqu'un organisme meurt, les échanges avec le milieu s'arrêtent. En supposant qu'il n'y ait pas de contamination extérieure, on considère que le système est clos : la décroissance radioactive est le seul phénomène affectant la quantité de ^14^C contenue dans l'organisme. L'événement daté par le radiocarbone est ainsi la mort de l'organisme.
 
 Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le radiocarbone fournit donc un *terminus* *ante* ou *post quem* pour l'événement archéologique que l'on souhaite positionner dans le temps. C'est-à-dire le moment avant ou après lequel a eu lieu l'événement archéologique ou historique d'intérêt (abandon d'un objet, combustion d'un foyer, dépôt d'une couche sédimentaire, etc.) en fonction des éléments contextuels disponibles (stratigraphie, etc.). Ces éléments contextuels sont d'autant plus importants qu'ils participent à l'interprétation des résultats, en s'assurant notamment de l'absence de problèmes d'ordre [taphonomique](https://fr.wikipedia.org/wiki/Taphonomie) et qu'il existe bien une relation univoque entre l'échantillon daté et l'événement d'intérêt^[Voir par exemple @calabrisotto2017.].
 
-Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale ($N_0$) de <sup>14</sup>C contenue dans un organisme à sa mort (instant $t_0$) et la quantité restante de <sup>14</sup>C à un instant $t$, il est possible de mesurer le temps écoulé entre $t_0$ et $t$ : l'âge radiocarbone d'un objet archéologique.
+Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale ($N_0$) de ^14^C contenue dans un organisme à sa mort (instant $t_0$) et la quantité restante de ^14^C à un instant $t$, il est possible de mesurer le temps écoulé entre $t_0$ et $t$ : l'âge radiocarbone d'un objet archéologique.
 
-* La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
-* Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de <sup>14</sup>C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
+* La quantité actuelle de ^14^C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de ^14^C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
+* Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de ^14^C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
 
-Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs [@arnold1949; @libby1949; @libby1960]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig. \@ref(fig:c14-intcal)A).
+Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs [@arnold1949; @libby1949; @libby1960]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (@fig-c14-intcal).
 
 ### Pourquoi calibrer des âges radiocarbone ?
 
 Les études menées dans la seconde moitié du XX<sup>e</sup> siècle, à mesure que des objets de plus en plus anciens sont datés, ont néanmoins permis de mettre en évidence un écart de plus en plus important entre l'âge mesuré et l'âge attendu.
 
-Contrairement au postulat de Libby, la teneur en <sup>14</sup>C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en <sup>14</sup>C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone...) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de <sup>14</sup>C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de <sup>14</sup>C.
+Contrairement au postulat de Libby, la teneur en ^14^C dans l'atmosphère n'est pas constante au cours du temps, expliquant en partie les écarts observés. La teneur atmosphérique en ^14^C varie en fonction de phénomènes naturels (variations du champ magnétique terrestre, activité solaire, activité volcanique, cycle du carbone...) et anthropiques. Ces phénomènes peuvent être contradictoires : l'usage des combustibles fossiles libère du carbone très ancien et tend à diminuer la teneur relative de ^14^C (effet Suess), à l'inverse les essais nucléaires atmosphériques ont produit de grandes quantités de ^14^C.
 
-Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
+Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en ^14^C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
 
-L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe^[Il existe actuellement trois séries de courbes de calibration : *IntCal* pour l'hémisphère nord, *SHCal* pour l'hémisphère sud et *Marine* pour les échantillons marins.] dont l'estimation est régulièrement mise à jour par la communauté scientifique^[Au moment de la rédaction de cet ouvrage, la courbe *IntCal20* est la dernière en date [@reimer2009; @reimer2013; @reimer2020].]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig. \@ref(fig:c14-intcal)B).
+L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de ^14^C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe^[Il existe actuellement trois séries de courbes de calibration : *IntCal* pour l'hémisphère nord, *SHCal* pour l'hémisphère sud et *Marine* pour les échantillons marins.] dont l'estimation est régulièrement mise à jour par la communauté scientifique^[Au moment de la rédaction de cet ouvrage, la courbe *IntCal20* est la dernière en date [@reimer2009; @reimer2013; @reimer2020].]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (@fig-c14-intcal).
 
-```{r c14-intcal, echo=FALSE, fig.width=7, fig.height=3.5, fig.cap="Âges mesurées par le radiocarbone en fonction des âges calendaires attendus. (A) *Curve of Knowns*, âges radiocarbones d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens."}
+```{r}
+#| label: fig-c14-intcal
+#| echo: false
+#| fig-width: 3.5
+#| fig-height: 3.5
+#| fig-cap: "Âges mesurées par le radiocarbone en fonction des âges calendaires attendus."
+#| fig-subcap: 
+#|  - "*Curve of Knowns*, âges radiocarbones d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets."
+#|  - "Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens."
+#| layout-ncol: 2
 data(arnold1949, package = "folio")
 data(intcal09, package = "folio")
 data(intcal13, package = "folio")
@@ -84,7 +86,7 @@ arnold1949$age_expected_error <- arnold1949$age_expected_error / 1000
 arnold1949$age_found <- arnold1949$age_found / 1000
 arnold1949$age_found_error <- arnold1949$age_found_error / 1000
 
-par(mfrow = c(1, 2), mar = c(4, 4, 1, 1) + 0.1, las = 1)
+par(mar = c(4, 4, 1, 1) + 0.1, las = 1)
 plot(
   x = arnold1949$age_expected[-1],
   y = arnold1949$age_found[-1],
@@ -105,7 +107,7 @@ segments(x0 = arnold1949$age_expected - arnold1949$age_expected_error,
          x1 = arnold1949$age_expected - arnold1949$age_expected_error,
          y1 = arnold1949$age_found)
 abline(a = 0, b = 1, col = "red", lty = 2)
-mtext("A", side = 2, line = 3, at = 5, font = 2)
+
 plot(
   x = intcal09[, 1] / 1000,
   y = intcal09[, 2] / 1000,
@@ -126,7 +128,6 @@ lines(
   type = "l", lty = 1, col = "#004488",
 )
 abline(a = 0, b = 1, lty = 2, col = "black")
-mtext("B", side = 2, line = 3, at = 51, font = 2)
 legend("topright", legend = c("IntCal09", "IntCal13", "IntCal20"),
        col = c("#DDAA33", "#BB5566", "#004488"), lty = 1)
 ```
@@ -140,11 +141,16 @@ Un âge conventionnel (noté ici $t$) est le résultat d'une mesure et, comme il
 Un âge conventionnel est ainsi un *estimateur* du vrai âge radiocarbone de l'objet daté. Si on répète un très grand nombre de fois la datation d'un même échantillon, sa valeur est susceptible de varier et il y a très peu de chance qu'elle coïncide exactement avec l'âge radiocarbone vrai.
 Il est donc préférable de s'attacher à un intervalle dont il est hautement probable qu'il contienne la vraie valeur (inconnue) de l'âge conventionnel. De fait, l'incertitude caractérise la dispersion des valeurs qui pourraient raisonnablement être attribuées à l'âge vrai. Un âge conventionnel est la réalisation d'un processus aléatoire, la décroissance radioactive, il peut être modélisé à l'aide d'une loi de probabilité particulière : la [loi normale](https://fr.wikipedia.org/wiki/Loi_normale) [@scott2007].
 
-Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne $\mu$ (tendance centrale) et l'écart-type $\sigma$ (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l'intervalle défini par $\mu \pm \sigma$ contient 67 % des valeurs. Si on multiplie l'écart-type par deux, l'intervalle $\mu \pm 2\sigma$ contient quant à lui 95 % des valeurs (fig. \@ref(fig:c14-gauss)).
+Seuls deux paramètres sont nécessaires pour caractériser la distribution des valeurs selon une loi normale : la moyenne $\mu$ (tendance centrale) et l'écart-type $\sigma$ (dispersion des valeurs). Les propriétés de la distribution normale sont telles que l'intervalle défini par $\mu \pm \sigma$ contient 67 % des valeurs. Si on multiplie l'écart-type par deux, l'intervalle $\mu \pm 2\sigma$ contient quant à lui 95 % des valeurs (@fig-c14-gauss).
 
 Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'écart-type, il y a 68 % de chance que l'intervalle à $1\sigma$ contienne l'âge conventionnel vrai. De même, l'intervalle à $2\sigma$ a 95 % de chance de contenir l'âge conventionnel vrai. L'intervalle à $1\sigma$ est moins dispersé, mais a moins de chance d'être juste qu'à $2\sigma$ : la plage de valeurs retenues est plus resserrée, mais elle a moins de chance de contenir l'âge conventionnel vrai.
 
-```{r c14-gauss, echo=FALSE, fig.width=7, fig.height=2.5, fig.cap="Loi normale de moyenne 0 et d'écart-type 1 avec les plâge de normalité aux niveaux de confiance 68, 95 et 99 \\%. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale."}
+```{r}
+#| label: fig-c14-gauss
+#| echo: false
+#| fig-width: 7
+#| fig-height: 2.5
+#| fig-cap: "Loi normale de moyenne 0 et d'écart-type 1 avec les plâge de normalité aux niveaux de confiance 68, 95 et 99 \\%. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale."
 x <- seq(-50, 50, by = 0.1)
 y <- dnorm(x, mean = 0, sd = 1)
 
@@ -179,9 +185,14 @@ lines(x = x, y = y, type = "l", lty = 1, lwd = 1.5)
 text(x = 0, y = 0.2, labels = "99.7 %", col = "white", cex = 1.2, font = 2)
 ```
 
-L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude ($t - \Delta t$ et $t + \Delta t$ dans le cas à $1\sigma$) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure \@ref(fig:c14-calibration), qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à $1\sigma$ (bandes noir) et à $2\sigma$ (bandes hachurée).
+L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude ($t - \Delta t$ et $t + \Delta t$ dans le cas à $1\sigma$) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la @fig-c14-calibration, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à $1\sigma$ (bandes noir) et à $2\sigma$ (bandes hachurée).
 
-```{r c14-calibration, echo=FALSE, fig.width=6, fig.height=6, fig.cap="Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20."}
+```{r}
+#| label: fig-c14-calibration
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20."
 # bronze <- rcarbon::calibrate(2725, 50, calMatrix = TRUE, verbose = FALSE)
 par(mar = c(4, 4, 1, 1) + 0.1, las = 1)
 plot(
@@ -238,11 +249,16 @@ legend("topright", legend = expression(1*sigma, 2*sigma),
        density = c(NA, 10), fill = c(NULL, "black"))
 ```
 
-Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l'âge radiocarbone plus ou moins son incertitude, toutes les valeurs n'ont pas la même probabilité de coïncider avec l'âge radiocarbone vrai, or la calibration par simple interception suppose l'inverse. De fait, l'approche aujourd'hui courante^[Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.] consiste à prendre également en compte la distribution normale des âges radiocarbone. On trouve parfois l'expression de *calibration probabiliste* pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n'est pas équiprobable (fig. \@ref(fig:c14-hallstatt)).
+Cette approche ne tient cependant pas compte du fait qu'un âge radiocarbone est décrit par une distribution normale. Dans la plage définie par l'âge radiocarbone plus ou moins son incertitude, toutes les valeurs n'ont pas la même probabilité de coïncider avec l'âge radiocarbone vrai, or la calibration par simple interception suppose l'inverse. De fait, l'approche aujourd'hui courante^[Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.] consiste à prendre également en compte la distribution normale des âges radiocarbone. On trouve parfois l'expression de *calibration probabiliste* pour la désigner. Cette méthode de calibration recourt à des méthodes numériques et la distribution des âges calendaires qui en résulte n'est pas équiprobable (@fig-c14-hallstatt).
 
-S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Du fait des oscillations de la courbe de calibration, il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater sur la figure \@ref(fig:c14-hallstatt). Ainsi, un âge calibré ne peut être exprimé autrement que sous la forme d'un intervalle.
+S'il est aisé de décrire un âge conventionnel et son incertitude avec une loi normale, il en va autrement d'un âge calendaire une fois calibré. Du fait des oscillations de la courbe de calibration, il n'est en effet pas possible de décrire la distribution d'un âge calendaire avec une loi de probabilité particulière, comme on peut le constater sur la @fig-c14-hallstatt. Ainsi, un âge calibré ne peut être exprimé autrement que sous la forme d'un intervalle.
 
-```{r c14-hallstatt, echo=FALSE, fig.width=6, fig.height=6, fig.cap="Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)."}
+```{r}
+#| label: fig-c14-hallstatt
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Distributions d'un âge radiocarbone de 2450 ± 75 ans BP avant et après calibration, respectivement en haut à gauche et en bas à droite. En haut à droite : extrait de la courbe de calibration IntCal20 (trait plein) et erreur associée (bandeau gris)."
 layout_matrix <- matrix(c(2, 4, 1, 3), nrow = 2, ncol = 2)
 layout(layout_matrix, widths = c(1, 2), heights = c(2, 1))
 
@@ -313,7 +329,7 @@ lines(x = x_cal, y = y_cal, type = "l", lty = 1, col = "black", lwd = 1.5)
 mtext("Probabilité", side = 2, line = 3.5, las = 0, cex = 0.8)
 ```
 
-L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incertitude de l'âge conventionnel, de l'allure de la courbe de calibration et de l'incertitude associée à cette dernière. Cet intervalle, entre les bornes duquel l'âge calendaire a une probabilité donnée d'être compris, peut être obtenu de deux manières distinctes (fig. \@ref(fig:c14-hpd)) :
+L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incertitude de l'âge conventionnel, de l'allure de la courbe de calibration et de l'incertitude associée à cette dernière. Cet intervalle, entre les bornes duquel l'âge calendaire a une probabilité donnée d'être compris, peut être obtenu de deux manières distinctes (@fig-c14-hpd) :
 
 Intervalle à plus hautes densités (*Highest Posterior Density Interval, HPDI*)
 : Les bornes de l'intervalle correspondent aux régions de la distribution dont la probabilité cumulée est supérieure à un seuil donné.
@@ -329,9 +345,14 @@ iron_95 <- rcarbon::hpdi(iron, credMass = 0.95)[[1]][, -3]
 iron_68 <- rcarbon::hpdi(iron, credMass = 0.68)[[1]]
 ```
 
-Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l'Âge du Fer (fig. \@ref(fig:c14-hallstatt)). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 % (intervalle HPD), à un âge calendaire compris entre `r paste0(iron_95, collapse = " et ")` ans cal BP (soit `r paste0(iron_95 - 1950, collapse = "-")` avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 %), l'âge calendaire correspondant a 95 % de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (fig. \@ref(fig:c14-hallstatt)). En réalisant la calibration à 68 % (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L'âge calendaire a 68 % de chance d'appartenir à l'union des intervalles `r toString(sprintf("%s (%s %%)", paste(iron_68[, 1] - 1950, iron_68[, 2] - 1950, sep = "-"), round(iron_68[, 3] * 100)))` avant notre ère et non à un unique intervalle (fig. \@ref(fig:c14-hpd)).
+Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l'Âge du Fer (@fig-c14-hallstatt). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 % (intervalle HPD), à un âge calendaire compris entre `r paste0(iron_95, collapse = " et ")` ans cal BP (soit `r paste0(iron_95 - 1950, collapse = "-")` avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 %), l'âge calendaire correspondant a 95 % de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (@fig-c14-hallstatt). En réalisant la calibration à 68 % (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L'âge calendaire a 68 % de chance d'appartenir à l'union des intervalles `r toString(sprintf("%s (%s %%)", paste(iron_68[, 1] - 1950, iron_68[, 2] - 1950, sep = "-"), round(iron_68[, 3] * 100)))` avant notre ère et non à un unique intervalle (@fig-c14-hpd).
 
-```{r c14-hpd, echo=FALSE, fig.width=6, fig.height=6, fig.cap="Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins)."}
+```{r}
+#| label: fig-c14-hpd
+#| echo: false
+#| fig-width: 6
+#| fig-height: 6
+#| fig-cap: "Estimation des intervalles calibrés. Les deux graphiques du haut illustrent l'estimation des régions de plus hautes densités à 68 % et 95 %. Le graphique du bas permet de comparer les intervalles HPD ainsi obtenus et les intervalles de crédibilités correspondants (traits pleins)."
 col_red <- rgb(221, 170, 51, alpha = 127, maxColorValue = 255)
 col_yellow <- rgb(187, 85, 102, alpha = 127, maxColorValue = 255)
 
@@ -479,7 +500,7 @@ arrows(
 
 Il est courant dans certains contextes de conserver des âges calibrés exprimés en années BP, dans ce cas il est recommandé de préciser *cal* BP pour éviter toute confusion du lecteur. Ces âges calendaires en années BP peuvent être convertis en dates exprimées avant ou après notre ère (BC/AD, *before Christ/anno Domini*). Pour cela, il suffit d'utiliser la règle de calcul suivante.
 
-::: {.rmdtip}
+:::{.callout-tip}
 Pour convertir en années BC/AD un âge *calibré* (noté $x$) exprimé en années BP, sachant qu'il n'y pas d'année 0 dans le calendrier grégorien :
   
 * Si l'âge calibré est inférieur à 1950 BP : $1950 - x$ AD

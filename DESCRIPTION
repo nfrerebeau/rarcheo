@@ -27,31 +27,26 @@ Depends:
     R (>= 4.1.0)
 Imports:
     car,
+    desc,
     DiagrammeR,
     folio,
     ggplot2,
     ggraph,
     grid,
+    here,
     kableExtra,
+    knitr,
     MASS,
     miniCRAN,
+    quarto,
     rcarbon,
+    rmarkdown,
     scatterplot3d,
+    sessioninfo,
     shape,
     stats,
-    tidygraph
-Suggests:
-    bslib,
-    bookdown,
-    downlit,
-    desc,
-    knitr,
-    markdown,
-    mime,
-    rmarkdown,
-    sessioninfo,
-    webshot,
-    xml2
+    tidygraph,
+    webshot
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

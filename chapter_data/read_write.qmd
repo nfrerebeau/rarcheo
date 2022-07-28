@@ -1,0 +1,5 @@
+# Importer et exporter {#data-read-write}
+
+```{r}
+# read.table()
+```

@@ -1,41 +1,17 @@
---- 
-title: "R pour l'archéologue"
-subtitle: "Exploration, visualisation et analyse de données"
-author:
-- Nicolas Frerebeau
-- Ben Marwick
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: scrbook
-bibliography: [book.bib, packages.bib]
-url: https://rstats.archaeo.science
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
-  modéliser des données archéologiques à l'aide du langage R. Cet ouvrage vous 
-  permet d'acquérir les connaissances et les compétences nécessaires pour 
-  aborder un large éventail de problèmes liés aux données archéologiques.
-biblio-style: apa
-csl: chicago-fullnote-bibliography.csl
-lang: fr
----
+# Avant propos {.unnumbered}
 
-```{r setup, include=FALSE, cache=FALSE}
+```{r, warning=FALSE, echo=FALSE}
+source(here::here("common.R"))
+
 # Créer automatiquement une bibliographie des packages R utilisés
 knitr::write_bib(c(.packages(), desc::desc_get_deps()$package), 'packages.bib')
 ```
-
-# Avant propos {-}
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques. Par science archéologique, nous entendons ici une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
 
 **Ce livre est en cours de rédaction.**
 
-`r if (knitr::is_html_output()) '
-<a class="btn btn-primary" href="rarcheo.pdf" role="button">Téléchargez le pdf</a>
-'`
-
-## Que contient ce livre ? {-}
+## Que contient ce livre ? {.unnumbered}
 
 Le but n'est pas d'être exhaustif, mais de se concentrer sur ce que nous pensons être les compétences essentielles à tout archéologue souhaitant utiliser R. Certains archéologues utilisent déjà R de manière *ad hoc*, pour un tracer un graphique par-ci, ou ajuster un modèle linéaire par-là. Si vous êtes l'une de ces personnes, vous serrez sans doute déjà familier de certains aspects développés dans ce livre. Notre objectif est que vous y trouviez également, quelque soit votre pratique, de nouvelles idées en vous montrant comment R peut être au centre de votre travail de recherche, de l'acquisition des données brutes jusqu'à la finalisation de votre thèse, rapport ou manuscrit.
 
@@ -56,7 +32,7 @@ Ce livre se veut une introduction pratique au langage R pour la réalisation eff
 * Le chapitre XX est une introduction à l'analyse de données spatiales et à la cartographie.
 * Le chapitre XX : simplifier la recherche collaborative grâce au contrôle de version.
 
-## Pour qui ce livre est-il écrit ? {-}
+## Pour qui ce livre est-il écrit ? {.unnumbered}
 
 Ce livre s'adresse à tout étudiant, doctorant, post-doctorant ou archéologue professionnel souhaitant découvrir le langage R et s'y initier pour l'analyse de données archéologiques. Il s'adresse ainsi aux archéologues désireux d'élargir leurs horizons analytiques et d'accéder à de nouvelles méthodes et à des moyens plus efficaces d'organiser leur processus de recherche. 
 
@@ -66,7 +42,7 @@ La plupart des méthodes présentées ici sont destinées à des données tabula
 
 Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, les méthodes présentées ici devraient donc être utiles à la majorité des applications archéologiques. Si vos données sont plus grandes que cela, vous faites probablement quelque chose de très spécialisé et vous aurez des défis particuliers à relever pour rendre votre recherche reproductible. Cependant, vous pourrez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
-## Licence {-}
+## Licence {.unnumbered}
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
@@ -76,30 +52,39 @@ Le code contenu dans ce livre est simultanément disponible sous la [licence MIT
 
 Une entrée BibTeX pour citer ce document :
 
-```{r citation, echo=FALSE, cache=FALSE, comment=""}
+```{r}
+#| label: citation
+#| echo: false
+#| cache: false
+#| comment: ""
 ref <- utils::readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))
 print(ref, style = "Bibtex")
 ```
 
-## Contributions {-}
+## Contributions {.unnumbered}
 
 Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
 
-## Conventions d'écriture {-}
+## Conventions d'écriture {.unnumbered}
 
 Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
 
 Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
 
-## Reproductibilité {-}
+## Reproductibilité {.unnumbered}
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec le package [*bookdown*](http://bookdown.org/) [@bookdown2016]. Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/). Le site web est hébergé par [GitHub Pages](https://pages.github.com/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
 
 Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
-Cette version du livre a été réalisée avec `r R.version.string` et [pandoc](https://pandoc.org/) version `r rmarkdown::pandoc_version()`. Les packages R utilisés sont résumés dans le tableau \@ref(tab:packages).
+Cette version du livre a été réalisée avec `r R.version.string` et [pandoc](https://pandoc.org/) version `r rmarkdown::pandoc_version()`. Les packages R utilisés sont résumés dans le @tbl-packages.
 
-```{r packages, echo=FALSE, cache=FALSE, results="asis"}
+```{r}
+#| label: tbl-packages
+#| tbl-cap: "Liste des packages utilisés."
+#| echo: false
+#| cache: false
+#| results: "asis"
 # Lister les packages présents dans le fichier DESCRIPTION
 dep <- desc::desc_get_deps()$package[-1] # Retirer R base
 # Récupérer les informations sur les packages
@@ -107,6 +92,6 @@ pkg <- sessioninfo::package_info(dep, dependencies = FALSE)
   
 df <- data.frame(pkg$package, pkg$ondiskversion, pkg$source, 
                  paste0("@R-", pkg$package))
-knitr::kable(df, format = "markdown", caption = "Liste des packages utilisés.",
+knitr::kable(df, format = "markdown",
              col.names = c("Package", "Version", "Source", "Référence"))
 ```

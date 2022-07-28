@@ -1,7 +1,0 @@
-\backmatter
-\bookmarksetup{startatroot}
-\addtocontents{toc}{\bigskip}
-
-`r if (knitr::is_html_output()) '
-# Bibliographie {-}
-'`
