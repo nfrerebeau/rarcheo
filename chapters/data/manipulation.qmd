@@ -1,0 +1,35 @@
+# Traitement des données {#sec-data-wrangling}
+## Nettoyer {#sec-data-clean}
+
+```{r}
+# abbreviate()
+# replace()
+# tolower() / toupper()
+```
+
+## Selectionner {#sec-data-select}
+
+```{r}
+# startsWith()
+
+# endsWith()
+```
+
+## Filtrer {#sec-data-filter}
+
+```{r}
+# subset()
+```
+
+## Transformer {#sec-data-transform}
+
+```{r}
+# transform()
+# with()
+```
+
+## Fusionner {#sec-data-join}
+
+```{r}
+# merge()
+```

@@ -1,0 +1,3 @@
+# Détection des valeurs aberrantes {#sec-coda-outliers}
+
+Comme nous l'avons vu précédemment (@sec-coda-principles), la définition de la covariance ne respecte pas le principe de *subcompositional coherence*. Dans le cas des données de composition, une transformation préalable des données est donc nécessaire (@sec-coda-transformations). @filzmoser2008 ont montré que les distances de Mahalanobis sont les mêmes quelle que soit la transformation utilisée ($ALR$, $CLR$ ou $ILR$) si des estimateurs classiques de position et de dispersion sont utilisés. Si des estimateurs robustes sont utilisés, les distances sont les mêmes pour des données transformées $ALR$ ou $ILR$.

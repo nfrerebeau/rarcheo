@@ -1,0 +1,151 @@
+\mainmatter
+
+# Introduction {.unnumbered}
+
+```{r, echo=FALSE}
+source(here::here("common.R"))
+```
+
+## Pourquoi les archéologues devraient-ils apprendre à programmer ? {#sec-intro-programmer .unnumbered}
+
+Ce livre vise à résoudre un problème spécifique : la majorité des archéologues reçoivent peu ou pas de formation en programmation scientifique pour l'analyse, la modélisation et la visualisation des données, bien qu'il s'agisse de tâches courantes en archéologie. Un programme à [interface en ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)^[Une interface de ligne de commande permet d'interagir avec un logiciel en envoyant des instructions au programme sous forme de lignes de texte brut.] tel que R est pourtant idéal pour accomplir ce type de taches et, pourtant, il est peu familier et exotique pour la plupart des archéologues. Au lieu de cela, la plupart des archéologues utilisent Microsoft Excel, SPSS ou un logiciel (commercial) similaire de type "pointer-cliquer" (à interface graphique). Ceci pose quatre problèmes.
+
+1. Il en résulte généralement beaucoup de répétitions fastidieuses, comme le copier-coller entre des feuilles de calcul, ou entre un tableur et un logiciel de traitement de texte. Ces dernières années, les biologistes ont vu le volume des données génomiques augmenter considérablement en raison des progrès des méthodes de séquençage. Cela les a amenés à rechercher des moyens plus efficaces pour analyser leurs données et automatiser leurs analyses. Ils ont notamment constaté que les tableurs n'offraient pas suffisamment de souplesse pour mener à bien leurs travaux de recherche. Par conséquent, beaucoup se sont tournés vers R, Python et d'autres langages de programmation similaires pour surmonter les limites et l'inefficacité des tableurs. Le détail clé ici est le passage de l'interface graphique d'un tableur à l'interface en ligne de commande d'un langage de programmation, où des instructions sont directement fournies à l'ordinateur en texte brut.
+
+2. Cela limite le développement de nouvelles méthodes, car l'utilisateur est limité à ce qui est disponible dans le logiciel commercial. Avec la plupart des logiciels commerciaux, vous êtes limité à l'ensemble des fonctions que l'éditeur choisit de mettre à votre disposition. Avec un langage de programmation sous [licence libre](https://fr.wikipedia.org/wiki/Licence_libre) vous et toute autre personne êtes libres de mettre en œuvre de nouvelles méthodes. R dispose de fonctions étendues pour l'analyse des données, mais plus important encore, R dispose d'un large éventail d'extensions pour l'analyse quantitative, la visualisation, l'import et la manipulation des données... Dans la plupart des situation, quelle que soit la tâche à effectuer, il y a de fortes chances que quelqu'un ait déjà réalisé quelque chose de très similaire, et ait mis à disposition le code correspondant. R est également la *lingua franca* des chercheurs en statistiques, qui publient souvent une extension à R pour accompagner leurs articles scientifiques. Cela signifie souvent un accès immédiat aux toutes dernières techniques et implémentations statistiques.
+
+3. Les logiciels commerciaux (et même certains logiciels libres) rendent difficile la démonstration et la reproductibilité en raison de la nature éphémère des interfaces graphiques. Ces interfaces nous sont familières et faciles à utiliser, car elles sont associées au développement de l'informatique domestique. Il est cependant très difficile d'enregistrer une séquence de clics complexes afin qu'une autre personne (ou vous-même à l'avenir) puisse répéter la procédure sans ambiguïté. Il est donc difficile de rendre vos analyses reproductibles si tout votre travail est effectué avec une souris. Il n'est pas pratique d'abandonner complètement l'utilisation de la souris lorsqu'on utilise un ordinateur, mais en utilisant un programme en ligne de commande tel que R, il devient possible d'enregistrer en texte brut les étapes les plus importantes de l'analyse. Nous disposons alors d'un enregistrement détaillé des étapes de notre analyse : nous pouvons facilement la partager avec d'autres et la réutiliser nous-mêmes, des mois ou des années plus tard.
+
+4. Les logiciels commerciaux limitent la transparence de la recherche, car les algorithmes qui sous-tendent les fonctions utilisées ne peuvent pas être inspectés et les modifications ne sont pas autorisées. Les statisticiens ont observés depuis longtemps qu'Excel contient des procédures inexactes [@mccullough2008; @yalta2008], et les manuels d'introduction aux statistiques avertissent généralement les étudiants de ne pas utiliser Excel lorsque les résultats sont importants [voir par exemple @keller2000]. Avec un logiciel libre tel que R, vous pouvez facilement inspecter et modifier les algorithmes derrière chaque opération. R, en particulier, présente l'avantage supplémentaire d'être l'un des logiciels les plus précis pour l'analyse statistique [@almiron2009; @keeling2007].
+
+L'utilisation d'un programme en ligne de commande tel que R contribue pour beaucoup à la résolution de ces quatre problèmes.
+
+Ce livre est complémentaire aux [principaux manuels d'archéologie quantitative](#sec-intro-biblio). Ces ouvrages sont de très bon supports pour les aspects théoriques, les discussions détaillées et la pertinence des exemples qu'ils proposent : ce livre ne les remplacera pas sur votre étagère. Cependant, ces livres ont trois limites que nous développerons dans les chapitres suivants.
+
+1. La première de ces limites est l'absence d'exemples prêts à l'emploi, ce qui oblige le lecteur à déployer des efforts considérables pour mettre en œuvre une méthode décrite à l'aide de formules et créé de nombreuses possibilités d'erreur. @vanpool2010 demandent ainsi à leurs lecteurs de faire leurs analyses statistiques à la main, une recommandation dépassée alors que les ordinateurs sont facilement disponibles. La quantité d'efforts requis par ces textes est prohibitive pour l'exploration rapides de données et l'expérimentation de nouvelles méthodes. Le présent livre comprend des exemples reproductibles utilisant des jeux de données réels, de sorte que vous pourrez facilement vous en servir pour explorer les effets de différents paramètres et les modifier pour utiliser vos propres données.
+
+2. Les ouvrages existants n'accordent que peu de place aux méthodes intuitives et méthodologiquement plus robustes, telles que le rééchantillonnage et les analyses bayésiennes, privilégiant les méthodes paramétriques traditionnelles. Cela reflète une époque où la puissance de calcul était une ressource rare et où les calculs étaient souvent effectués à la main ou à l'aide d'une calculatrice [voir par exemple @fletcher1991]. Les ordinateurs modernes peuvent maintenant facilement gérer ces aspects, et R est unique en ce qu'il possède un ensemble mature de méthodes pour calculer les tests courants dans ces situations. Ces méthodes sont également de plus en plus courantes dans la littérature scientifique. Ce livre présente ces approches alternatives afin de vous permettre de développer votre boîte à outils analytique.
+
+3. Les ouvrages actuellement disponibles sont muets sur les aspects pratiques de nombreuses tâches d'analyse et de visualisation de données, courantes en archéologie bien qu'elles ne soient traditionnellement pas considérées comme des statistiques. Il s'agit notamment de la visualisation et de l'analyse d'informations stratigraphiques issues de fouilles et de données spatiales provenant de prospection. L'apprentissage d'outils pour ces tâches se fait traditionnellement en autodidacte et souvent à grands frais avec des logiciels propriétaires. Ce livre essaie ainsi de répondre à un besoin de formation à l'usage d'outils libres pour la réalisation de tâches courantes en archéologie, en illustrant comment R et ses extensions peuvent être utilisés pour mener de bout en bout sa recherche à partir de données de prospection, de fouille ou issues du laboratoire.
+
+## Pourquoi travailler avec R ? {#sec-intro-rstats .unnumbered}
+
+Si vous êtes novice en la matière, vous vous demandez peut-être quel est l'attrait de R, surtout quand il existe tant d'autres programmes et langages couramment utilisés. Voici quelques-unes des caractéristiques qui nous ont incité à apprendre R :
+
+R est libre et gratuit
+: Il n'est pas nécessaire d'acheter une licence ou un abonnement pour utiliser R. Le développement de R a débuté en 1991 à l'initiative de Ross Ihaka et Robert Gentleman au sein du département de statistiques de l'université d'Auckland (Nouvelle-Zélande). En 1995 la première version officielle est publiée et R devient un logiciel libre, distribué sous [licence GNU](https://www.gnu.org/philosophy/free-sw.html). Le code source de l'ensemble du système R est ainsi accessible à tous, en garantissant quatre libertés essentielles :
+
+> * La liberté de faire fonctionner le programme comme vous voulez, pour n'importe quel usage (liberté 0) ;
+* La liberté d'étudier le fonctionnement du programme, et de le modifier pour qu'il effectue vos tâches informatiques comme vous le souhaitez (liberté 1) ; l'accès au code source est une condition nécessaire ;
+* La liberté de redistribuer des copies, donc d'aider les autres (liberté 2) ;
+* La liberté de distribuer aux autres des copies de vos versions modifiées (liberté 3) ; en faisant cela, vous donnez à toute la communauté une possibilité de profiter de vos changements ; l'accès au code source est une condition nécessaire.
+
+R est modulable
+: Les libertés offertes par la licence GNU et la structure modulaire de R permettent à toute personne de développer des extensions (appelées [*packages*](#packages)) et de les mettre à disposition de la communauté des utilisateurs. De nombreux packages fournissent des interfaces entre le langage R et d'autres langages ou logiciels libres, ce qui en fait un outil polyvalent, une passerelle permettant d'utiliser de nombreuses méthodes et algorithmes spécialisés. Ces packages peuvent être publiés et installés depuis le [*Comprehensive R Archive Network*](https://cran.r-project.org/)^[Il existe d'autres archives, parfois spécialisées comme [Bioconductor](https://www.bioconductor.org/) pour la biologie.] (CRAN) qui distribue également le code source de R et sa documentation. Fin 2021, plus de 22500 packages étaient disponibles sur le CRAN (@fig-cran-packages-year).
+
+```{r}
+#| label: fig-cran-packages-year
+#| echo: false
+#| fig-cap: "Évolution du nombre de packages disponibles sur le CRAN par année. Cette croissance exponentielle n'est pas sans poser de question quant au futur du CRAN [@thieme2018]."
+# https://gist.github.com/daroczig/3cf06d6db4be2bbe3368
+
+cran_pkg <- here::here("data/CRAN_packages_year.csv") |> 
+  read.table(header = TRUE, sep = ",", dec = ".")
+cran_pkg$year <- as.character.Date(cran_pkg$year)
+cran_pkg <- subset(cran_pkg, year < 2022)
+
+cran_pkg |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = as.Date(year), y = published) +
+  ggplot2::geom_col() +
+  ggplot2::scale_x_date(date_breaks = '2 year', date_labels = '%Y') +
+  ggplot2::scale_y_continuous(breaks = seq(0, 23000, 2000)) +
+  ggplot2::labs(x = "Année", y = "Nombre de packages", caption = "Source : CRAN")
+```
+
+R est robuste
+: R est un langage spécialisé pour l'analyse statistique et la visualisation de données. R a été développé à l'origine par des statisticiens et continue d'être largement utilisé par des statisticiens professionnels et universitaires. Cela signifie que le langage entretient des liens forts avec la littérature scientifique en statistique. Nombre de ses algorithmes ont été validés par des publications et testés de manière approfondie par une utilisation intensive. Il est facile de passer de la théorie statistique à la pratique en utilisant R.
+
+R facilite la reproductibilité
+: R est un langage de programmation qui fonctionne à l'aide de scripts. Ces scripts permettent de définir une suite d'instructions à exécuter et contiennent ainsi l'ensemble des étapes de l'analyse. Il est possible de modifier ou de rééxecuter une analyse pour mettre à jour des résultats ou de réutiliser un même script avec des données différentes. Ces scripts peuvent être archivés, partagés, soumis à l'examen des pairs et publiés au bénéfice d'une science ouverte, transparente et reproductible. R est disponible pour tous les principaux types d'ordinateurs. Par conséquent, si vous effectuez votre analyse avec R, il y a de fortes chances pour que toute personne disposant d'un ordinateur puisse facilement la reproduire.
+
+R facilite la publication
+: R propose des outils flexibles pour communiquer vos résultats, en permettant de produire facilement des documents complexes comprenant du texte, des tableaux et des figures, le tout généré à partir du code (comme ce livre !). C'est un gain de temps considérable, surtout lorsque des semaines ou des mois s'écoulent entre deux projets et que le souvenir des détails du dernier travail s'estompe. En consultant mon code R, je peux rapidement me souvenir de mon plan d'analyse et reprendre là où je me suis arrêté.
+
+R est collaboratif
+: R s'est progressivement imposé comme un outil de référence pour l'analyse de données dans de nombreuses disciplines, notamment en archéologie (@fig-wos-archaeo). Si l'apprentissage du langage peut paraître difficile pour qui n'a jamais programmé, la documentation est abondante et il est toujours possible de trouver de l'aide (voir @sec-rstats-help) en ligne ou par le biais de nombreux groupes locaux d'utilisateurs. R bénéficie d'une communauté étendue d'utilisateurs, de contributeurs et de développeurs. Cette communauté est très active, solidaire et généralement progressiste. Les auteurs d'extensions sont souvent heureux de voir que leur travail est utilisé par d'autres et sont prêts à répondre à des questions sur leur utilisation.
+
+Enfin, l'usage de R, comme de tout autre langage des programmation, conduit très souvent à généraliser un cas particulier. C'est ainsi un très bon moyen pour améliorer sa réflexion et, éventuellement, revoir la façon dont les problèmes sont posés.
+
+```{r}
+#| label: fig-wos-archaeo
+#| echo: false
+#| fig-cap: "Nombre d'articles d'archéologie citant R publié chaque année [répliqué d'après @schmidt2020]."
+# https://www.webofscience.com/wos/alldb/summary/f0124786-cee4-4290-bcd6-c7db5d8ab7fe-142d56d3/relevance/1
+
+wos_path <- list.files(path = here::here("data"), pattern = "WoS_archaeology_R", 
+                       full.names = TRUE)
+wos_data <- wos_path |> 
+  lapply(FUN = read.table, header = TRUE, sep = "\t", quote = "", dec = ".")
+wos_data <- do.call(rbind, wos_data) |> 
+  subset(PY < 2022)
+
+wos_archaeo_title <- wos_data |> 
+  split(f = wos_data$SO) |> 
+  lapply(FUN = function(x) data.frame(title = unique(x$SO), n = nrow(x)))
+wos_archaeo_title <- do.call(rbind, wos_archaeo_title)
+
+wos_archaeo_years <- wos_data |> 
+  split(f = wos_data$PY) |> 
+  lapply(FUN = function(x) data.frame(year = unique(x$PY), n = nrow(x)))
+wos_archaeo_years <- do.call(rbind, wos_archaeo_years)
+
+wos_archaeo_years |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(x = year, y = n) +
+  ggplot2::geom_col() +
+  ggplot2::labs(x = "Année de publication", y = "Nombre d'articles",
+                caption = "Source : Web of Science")
+```
+
+## Ressources complémentaires {#sec-intro-biblio .unnumbered}
+
+### Éléments de statistiques {.unnumbered}
+
+(Baxter 2003 ; 1994, Van Pool et Leonard 2011, Drennan 2009, Shennan 1997)
+
+### Utiliser R {.unnumbered}
+
+En complément de la [documentation officielle](https://cran.r-project.org/doc/manuals/R-intro.html) pour démarrer avec R et comprendre la structure des données, il existe de très nombreux ouvrages dont la plupart sont consultables en ligne. *R in a Nutshell* de @adler2010, [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) de @grolemund2015 et [*R cookbook*](https://rc2e.com/) de @long2019 couvrent les usages élémentaires du langage (plus qu'ils ne sont traités ici) et sont d'une aide précieuse pour un usage courant.
+
+L'ouvrage de référence de @murrell2019, *R graphics*, offre une vue d'ensemble des fonctionnalités graphiques de R et de leur usage avancé. [*R Graphics Cookbook*](https://r-graphics.org/) [@chang2012] constitue également une référence indispensable et fournit des recettes clé en main pour la création de graphiques. Quiconque s'attachant à la visualisation de données consultera avec intérêt [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) de @wilke2019.
+
+L'utilisateur confirmé trouvera dans les ouvrages [*Advanced R*](https://adv-r.hadley.nz/) [@wickham2019] et [*Efficient R programming*](https://csgillespie.github.io/efficientR/) [@gillespie2016] de quoi approfondir sa compréhension du langage et développer sa pratique. [*R packages*](https://r-pkgs.org/) de @wickham2015 est l'ouvrage idéal pour tout utilisateur souhaitant écrire son premier package et se former aux outils de développement ([*devtools*](https://devtools.r-lib.org/), [*roxygen2*](https://roxygen2.r-lib.org/), [*testthat*](https://testthat.r-lib.org/)...)^[Voir également la documentation officielle pour le développement d'extensions de R, la description du processus de création des modules complémentaires, l'écriture de la documentation, les interfaces et l'API : [*Writing R Extensions*](https://cran.r-project.org/doc/manuals/r-release/R-exts.html).].
+
+Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue^[On trouvera sur le [site du package bookdown](https://bookdown.org/home/) et sur le site du [Big Book of R](https://www.bigbookofr.com/) de nombreux ouvrages supplémentaires, librement consultables en ligne. Le site du projet R propose également [une liste d'ouvrages dédiés à R et ses applications](https://www.r-project.org/doc/bib/R-books.html).] :
+
+* *Comprendre et réaliser les tests statistiques à l'aide de R* [@millot2014], un ouvrage détaillé expliquant comment choisir un test statistique et présentant toutes les subtilités.
+* [*Geocomputation with R*](https://geocompr.robinlovelace.net/) [@lovelace2020], un livre sur l'analyse, la visualisation et la modélisation des données géographiques.
+* [*Text Mining with R*](https://www.tidytextmining.com/) [@silge2017], un livre sur l'analyse textuelle avec R.
+
+Enfin, on trouvera sur [R-bloggers](https://www.r-bloggers.com/) (un agrégateur de blogs) l'actualité du langage et de nombreux tutoriels. 
+
+:::{.callout-tip}
+Le site collaboratif [Rzine](https://rzine.fr/) a pour objectif de favoriser la diffusion et le partage de connaissances sur la pratique de R en <abbr title="Sciences Humaines et Sociales">SHS</abbr> :
+
+> Rzine.fr s'efforce de dessiner les contours de la communauté R en SHS. Il donne aux débutant·e·s un accès simple à l'information et orienté vers une utilisation autonome. Il offre aux utilisateur·rice·s de niveau intermédiaire la possibilité d'étendre leurs pratiques et de s'ouvrir à d'autres méthodes parfois issues d'autres disciplines. Enfin, il s'agit d'un espace de diffusion pour les utilisateur·rice·s avancé·e·s, auteur·e·s de développements ou de documentation. --- [Rzine](https://rzine.fr)
+
+Rzine recense de nombreuses ressources, fiches et manuels, *open source* et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en SHS.
+:::
+
+### Pour aller plus loin {.unnumbered}
+
+Si les enjeux de reproductibilité et de science ouverte vous intéressent, il vous faudra sans doute compléter votre maîtrise de R par des outils supplémentaires, notamment les logiciels de contrôle de version [@bryan2021].
+
+:::{.callout-note}
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2*), malgré leur popularité au sein de la communauté des utilisateurs de R.
+
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).
+
+Ceci étant dit, le lecteur qui le souhaite trouvera dans [*Introduction à R et au tidyverse*](https://juba.github.io/tidyverse) [@barnier2021], [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] et [*STAT 545*](https://stat545.com/) [@bryan2020] une introduction à l'analyse de données avec les packages du tidyverse.
+:::

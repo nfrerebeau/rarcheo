@@ -1,0 +1,480 @@
+# Style de programmation {#sec-style}
+
+Cette section propose un style de programmation destiné à accompagner les utilisatrices et utilisateurs débutants. Ce style regroupe des recommandations pour l'écriture du code et permet d'en faciliter la lecture et la compréhension. Ce style est dérivé du [*tidyverse style guide*](https://style.tidyverse.org) et du livre [*rOpenSci Packages*](https://devguide.ropensci.org).
+
+## Dénominations {#sec-style-naming}
+
+En règle générale, les abréviations doivent être évitées lors de la dénomination de fichiers ou d'objets.
+
+### Nommer les fichiers
+
+Les noms de fichiers doivent utiliser l'extension `.R`.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+plot.R
+
+# BAD
+plot
+```
+
+Les noms de fichiers doivent être parlants.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+plot.R
+
+# BAD
+Untitled1.R
+```
+
+Les noms de fichiers ne doivent pas contenir de `/` et d'espaces. À la place, utilisez un tiret (`-`) ou un trait de soulignement (`_`).
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+read_csv.R
+plot-methods.R
+
+# BAD
+read csv.R
+```
+
+Les noms de fichiers doivent utiliser des lettres du latin de base, et non du supplément latin-1, et doivent être en minuscules.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+plot.R
+
+# BAD
+Plot.R
+données.R
+```
+
+Utilisez des verbes signifiants pour les noms de fichiers.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+fit_model.R
+
+# BAD
+addition.R
+```
+
+Si le fichier ne contient qu'une seule fonction, nommez-le par le nom de la fonction.
+
+### Nommer les variables
+
+Les noms des variables doivent être aussi courts que possible.
+
+Les noms des variables doivent être des substantifs évocateurs.
+
+Les noms de variables doivent être en minuscules.
+
+Ne séparez jamais les mots à l'intérieur du nom par `.` (réservé pour les méthodes S3) et n'écrivez pas en PascalCase (réservé pour les définitions de classes S4). Utilisez plutôt un trait de soulignement (`_`).
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+std_dev <- 3
+
+# BAD
+std.dev <- 3
+StdDev <- 3
+```
+
+N'utilisez pas les noms de fonctions et de variables existantes (en particulier celles qui sont propres à R).
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+std_dev <- 3
+
+# BAD
+T <- 1
+c <- 2 * 2
+mean <- 10
+```
+
+### Nommer les fonctions
+
+Les noms de fonction doivent contenir un verbe qui fait référence à l'action principale de la fonction.
+
+Les noms de fonction doivent être en snake_case. N'utilisez `.` que pour le dispatching des méthodes S3.
+
+Le schéma de nommage `object_verb()` doit être préféré aussi souvent que possible. Ce schéma est facile à lire et à compléter automatiquement.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+peak_detect()
+
+# BAD
+addition()
+readFile()
+```
+
+Évitez de réemployer des noms de fonctions déjà utilisés par les packages de base ou d'autres packages populaires.
+
+### Nommer les classes S4
+
+Les noms des classes doivent être des substantifs en PascalCase avec une majuscule initiale et la première lettre de chaque mot concaténé en majuscule.
+
+## Syntaxe {#sec-style-syntax}
+
+### Longueur de ligne
+
+La longueur maximale des lignes est limitée à 80 caractères.
+
+Ne mettez pas plus d'une déclaration par ligne. N'utilisez pas de point-virgule pour terminer la commande.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+x <- 1
+x <- x + 1
+
+# BAD 
+x <- 1; x <- x + 1
+```
+
+### Appel de fonction {#sec-style-function}
+
+Dans un appel de fonction, spécifiez les arguments par leur nom. Ne spécifiez jamais les arguments par un nom partiel et ne mélangez jamais la position et le nom complet.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+mean(x, na.rm = TRUE)
+
+# BAD
+mean(x, na = TRUE)
+```
+
+Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+raise_to_power(x, power = 2.7)
+
+# BAD
+raise_to_power(power = 2.7, x)
+```
+
+L'argument `...` doit se trouver soit au début, soit à la fin.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+standardize(..., scale = TRUE, center = TRUE)
+
+# BAD
+standardize(scale = TRUE, ..., center = TRUE)
+```
+
+Définissez les arguments par défaut à l'intérieur de la fonction en utilisant l'idiome `NULL`, et évitez la dépendance entre les arguments.
+
+Validez toujours les arguments dans une fonction.
+
+### Espaces de nom
+
+Si vous utilisez ponctuellement une unique fonction d'un package, utilisez `::` pour spécifier le nom du package au lieu de charger tout le package.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+FactoMineR::PCA()
+
+# OK 
+library(FactoMineR)
+PCA()
+```
+
+L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
+
+### Boucles
+
+Utilisez `seq_along()` dans les boucles pour gérer correctement les cas où `x` est vide.
+
+```{r}
+# Soit un vecteur numérique de longueur nulle
+x <- numeric(0)
+
+# La boucle ne s'exécute pas (OK)
+for (i in seq_along(x)) {
+  print(i)
+}
+
+# La boucle s'exécute pour i=1 puis i=0 (!)
+for (i in 1:length(x)) {
+  print(i)
+}
+```
+
+### Affectation
+
+Utilisez `<-` au lieu de `=` pour l'affectation.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+x <- 1
+
+# BAD
+x = 1
+1 -> x
+```
+
+### Espaces
+
+Mettez des espaces autour de tous les opérateurs binaires infixes (`=`, `+`, `*`, `==`, `&&`, `<-`, `%*%`, etc.).
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+x == y
+z <- 2 + 1
+
+# BAD
+x==y
+z<-2+1
+```
+
+Mettez des espaces autour de `=` dans les appels de fonction.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+mean(x = c(1, 2, 3), na.rm = TRUE)
+
+# BAD
+mean(x=c(1, 2, NA), na.rm=TRUE)
+```
+
+Ne placez pas d'espace pour obtenir des sous-ensembles (`$` et `@`), pour la manipulation des espaces de noms (`::` et `:::`) et pour la génération de séquences (`:`).
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+car$cyl
+dplyr::select()
+1:10
+
+# BAD
+car $cyl
+dplyr:: select()
+1: 10
+```
+
+Mettez un espace après une virgule.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+mtcars[1, ]
+mean(x = c(1, NA, 2), na.rm = TRUE)
+
+# BAD
+mtcars[1 ,]
+mean(x = c(1,NA,2),na.rm = TRUE)
+```
+
+Utilisez un espace avant les parenthèses ouvrantes, sauf dans un appel de fonction.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+for (element in element_list)
+if (total == 5)
+sum(1:10)
+
+# BAD
+for(element in element_list)
+if(total == 5)
+sum (1:10)
+```
+
+Ne mettez pas d'espaces autour du code entre parenthèses ou entre crochets.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+if (is_true) message("Hello!")
+species["tiger", ]
+
+# BAD
+if ( is_true ) message("Hello!")
+species[ "tiger" ,]
+```
+
+### Accolade
+
+Une accolade ouvrante ne doit jamais être placée sur sa propre ligne et doit toujours être suivie d'une nouvelle ligne.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+if (is_true) {
+  # do something
+}
+
+if (is_true) {
+  # do something
+} else {
+  # do something else
+}
+    
+# BAD
+if (is_true)
+{
+  # do something
+}
+    
+if (is_true) { # do something }
+else { # do something else }
+```
+
+Une accolade fermante doit toujours être placée sur sa propre ligne, sauf si elle est suivie de `else`.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+if (is_true) {
+  # do something
+} else {
+  # do something else
+}
+
+# BAD
+if (is_true) {
+  # do something
+}
+else {
+  # do something else 
+}
+```
+
+Indentez toujours le code à l'intérieur des accolades.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+if (is_true) {
+  # do something
+  # and then something else
+}
+
+# BAD
+if (is_true) {
+  # do something
+  # and then something else
+}
+```
+
+Les accolades et les nouvelles lignes peuvent être évitées, si une déclaration après `if` est très courte.
+
+```{r, echo=TRUE, eval=FALSE}
+# OK 
+if (is_true) return(value)
+```
+
+### Indentation
+
+N'utilisez pas de tabulations ou de mélanges de tabulations et d'espaces pour l'indentation.
+
+Utilisez deux espaces pour l'indentation.
+
+### Nouvelle ligne
+
+Dans une définition ou un appel de fonction, les arguments excessifs doivent être indentés sur la ligne de la parenthèse fermante, si deux lignes suffisent.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+long_function_name <- function(arg1, arg2, arg3, arg4, 
+                               long_argument_name1 = TRUE)
+  
+plot(table(rpois(100, 5)), type = "h", col = "red", lwd = 10, 
+     main = "rpois(100, lambda = 5)")
+```
+
+Sinon, chaque argument peut aller sur une ligne séparée, en commençant par une nouvelle ligne après la parenthèse ouvrante.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+long_function_name <- function(long_argument_name1 = c("value1", "value2"),
+                               long_argument_name2 = TRUE,
+                               long_argument_name3 = NULL,
+                               long_argument_name4 = FALSE)
+  
+list(
+  mean = mean(x),
+  sd = sd(x),
+  var = var(x),
+  min = min(x),
+  max = max(x),
+  median = median(x)
+)
+```
+
+Si la condition dans l'instruction `if` s'étend sur plusieurs lignes, alors chaque condition doit se terminer par un opérateur logique, et non commencer par lui.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+if (some_very_long_name_1 == 1 &&
+    some_very_long_name_2 == 1 ||
+    some_very_long_name_3 %in% some_very_long_name_4)
+  
+# BAD
+if (some_very_long_name_1 == 1
+    && some_very_long_name_2 == 1
+    || some_very_long_name_3 %in% some_very_long_name_4)
+```
+
+Si l'instruction qui contient des opérateurs s'étend sur plusieurs lignes, chaque ligne doit se terminer par un opérateur et non commencer par lui.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD 
+normal_pdf <- 1 / sqrt(2 * pi * d_sigma ^ 2) *
+  exp(-(x - d_mean) ^ 2 / 2 / s ^ 2)
+
+# BAD
+normal_pdf <- 1 / sqrt(2 * pi * d_sigma ^ 2)
+* exp(-(x - d_mean) ^ 2 / 2 / d_sigma ^ 2)
+```
+
+Chaque appel de `dplyr` (après `%>%` ou `|>`) ou de `ggplot2` (après `+`) doit commencer sur une nouvelle ligne.
+
+## Commentaires
+
+Il est recommandé d'écrire les commentaires en anglais.
+
+Les commentaires commencent par `#` suivi d'un espace et du texte du commentaire.
+
+```{r, echo=TRUE, eval=FALSE}
+# This is a comment.
+```
+
+Les commentaires doivent expliquer le pourquoi, et non le comment. Les commentaires doivent expliquer l'intention générale de la commande.
+
+```{r, echo=TRUE, eval=FALSE}
+# GOOD
+# define iterator
+i <- 1
+
+# BAD
+# set i to 1
+i <- 1
+```
+
+De courts commentaires peuvent être placés sur la même ligne que le code code.
+
+```{r, echo=TRUE, eval=FALSE}
+plot(price, weight) # Plot a scatter chart of price and weight
+```
+
+Il peut être utile de diviser le code source en morceaux logiques par un commentaire suivi de `-` ou `=`.
+
+```{r, echo=TRUE, eval=FALSE}
+# Read data -------------------------------------------------------------
+
+# Clean data ------------------------------------------------------------
+```
+
+Les descriptions des fonctions et des objets doivent respecter les directives de [*roxygen2*] (https://roxygen2.r-lib.org/).
+
+```{r, echo=TRUE, eval=FALSE}
+#' Add Together Two Numbers
+#' 
+#' @param x A number.
+#' @param y A number.
+#' @return The sum of x and y.
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+  # general comment
+  x + y # inline comment
+}
+```

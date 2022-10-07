@@ -1,0 +1,5 @@
+# Statistique descriptive {#sec-statistics-description}
+
+## Indicateurs de position
+
+## Indicateurs de dispersion

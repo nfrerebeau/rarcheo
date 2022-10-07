@@ -1,3 +1,0 @@
-# Transformations de données {#coda-transformations}
-
-Sachant les contraintes propres aux données de composition, la plupart des outils statistiques et méthodes d'analyse ne peuvent être mises en œuvre sans prendre le risque d'aboutir à des inférences erronées. Néanmoins, il est possible de trouver une transformation permettant de projeter les données de compositions dans un espace réel non contraint. @aitchison1986 a montré qu'une telle transformation peut être obtenue par le logarithme de rapports de composés.

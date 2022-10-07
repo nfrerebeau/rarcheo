@@ -7,6 +7,12 @@ lang: fr-FR
 bibliography: [book.bib, packages.bib]
 # csl: chicago-fullnote-bibliography.csl
 
+crossref:
+  eq-prefix: équation
+  fig-prefix: figure
+  tbl-prefix: tableau
+  ref-hyperlink: true
+
 book:
   title: "R pour l'archéologue"
   subtitle: "Exploration, visualisation et analyse de données"
@@ -36,69 +42,72 @@ book:
   
   chapters:
   - index.qmd
-  - introduction.qmd
+  - chapters/introduction.qmd
 
   - part: Premiers pas avec R
     chapters:
-    - chapter_rstats/introduction.qmd
-    - chapter_rstats/objects.qmd
-    - chapter_rstats/subsetting.qmd
-    - chapter_rstats/operators.qmd
-    - chapter_rstats/flow.qmd
-    - chapter_rstats/functions.qmd
+    - chapters/rstats/introduction.qmd
+    - chapters/rstats/objects.qmd
+    - chapters/rstats/subsetting.qmd
+    - chapters/rstats/operators.qmd
+    - chapters/rstats/flow.qmd
+    - chapters/rstats/functions.qmd
 
-  - part: Collecter et organiser ses données
+  - part: Écrire de manière reproductible
     chapters:
-    - chapter_collect/introduction.qmd
-    - chapter_collect/manage.qmd
-    - chapter_collect/organize.qmd
+    - chapters/reproducibility/introduction.qmd
+
+  - part: Organiser ses données
+    chapters:
+    - chapters/collect/introduction.qmd
+    - chapters/collect/manage.qmd
+    - chapters/collect/organize.qmd
 
   - part: Préparer ses données
     chapters:
-    - chapter_data/introduction.qmd
-    - chapter_data/read_write.qmd
-    - chapter_data/manipulation.qmd
+    - chapters/data/introduction.qmd
+    - chapters/data/read_write.qmd
+    - chapters/data/manipulation.qmd
+
+  - part: Visualiser ses données
+    chapters:
+    - chapters/visualization/introduction.qmd
+    - chapters/visualization/graphs.qmd
 
   - part: Éléments de statistiques
     chapters:
-    - chapter_statistics/introduction.qmd
-    - chapter_statistics/description.qmd
-    - chapter_statistics/relations.qmd
-
-  - part: Visualisation de données
-    chapters:
-    - chapter_visualization/introduction.qmd
-    - chapter_visualization/graphs.qmd
+    - chapters/statistics/introduction.qmd
+    - chapters/statistics/description.qmd
+    - chapters/statistics/relations.qmd
+    - chapters/statistics/outliers.qmd
 
   - part: Données de comptage
     chapters:
-    - chapter_artefacts/introduction.qmd
+    - chapters/artefacts/introduction.qmd
 
   - part: Données de composition
     chapters:
-    - chapter_coda/introduction.qmd
-    - chapter_coda/transformations.qmd
-    - chapter_coda/outliers.qmd
+    - chapters/coda/introduction.qmd
+    - chapters/coda/transformations.qmd
+    - chapters/coda/outliers.qmd
 
   - part: Chronologie
     chapters:
-    - chapter_chronology/introduction.qmd
-    - chapter_chronology/relative.qmd
-    - chapter_chronology/absolute.qmd
+    - chapters/chronology/introduction.qmd
+    - chapters/chronology/relative.qmd
+    - chapters/chronology/absolute.qmd
 
   - part: Cartographie
     chapters:
-    - chapter_geography/introduction.qmd
-    - chapter_geography/vector.qmd
-    - chapter_geography/raster.qmd
+    - chapters/spatial/introduction.qmd
     
-  - references.qmd
+  - chapters/references.qmd
     
   appendices:
-    - chapter_appendix/setup.Rmd
-    - chapter_appendix/cheat_sheet.Rmd
-    - chapter_appendix/good_practices.Rmd
-    - chapter_appendix/style.Rmd
+    - appendix/setup.Rmd
+    - appendix/cheat_sheet.Rmd
+    - appendix/good_practices.Rmd
+    - appendix/style.Rmd
     
 format:
   html:
