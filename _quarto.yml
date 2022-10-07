@@ -3,6 +3,7 @@ project:
   output-dir: _book
   pre-render: references.R
 
+lang: fr-FR
 bibliography: [book.bib, packages.bib]
 # csl: chicago-fullnote-bibliography.csl
 
@@ -10,6 +11,7 @@ book:
   title: "R pour l'archéologue"
   subtitle: "Exploration, visualisation et analyse de données"
   date: today
+  date-format: long
   author:
     - Nicolas Frerebeau
     - Ben Marwick
@@ -27,7 +29,10 @@ book:
   downloads: [pdf]
   site-url: https://rstats.archaeo.science
   repo-url: https://github.com/nfrerebeau/rarcheo/
-  repo-actions: [edit, issue]
+  repo-actions: [edit, source, issue]
+  
+  sidebar: 
+   collapse-level: 1
   
   chapters:
   - index.qmd
