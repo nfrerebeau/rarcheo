@@ -79,9 +79,12 @@ De manière générale, méfiez-vous de votre tableur ! Ces derniers ont tendanc
 
 ## Enregistrer ses données {#sec-collect-data-csv}
 
-Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (@fig-xkcd-norm). De manière générale, conservez vos données dans un [fichier texte](https://fr.wikipedia.org/wiki/Fichier_texte).
+Une fois vos données correctement structurées, choisissez un format de fichier adapté pour les archiver, les diffuser ou les réutiliser (@fig-xkcd-norm). Il existe deux types de fichiers :
 
-Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separated values">CSV</abbr>. Comme son nom l'indique, un fichier <abbr title="comma-separated values">CSV</abbr> est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
+* Les [fichiers texte](https://fr.wikipedia.org/wiki/Fichier_texte), dont le contenu représente uniquement une suite de caractères imprimables et est lisible à la fois par des humains et par des machines.
+* Les [fichiers binaires](https://fr.wikipedia.org/wiki/Fichier_binaire), dont le contenu ne représentent pas une simple suite de caractères mais est une représentation des données destinée aux machines.
+
+De manière générale, conservez vos données tabulaires dans un fichier texte et, en particulier, utilisez le format <abbr title="comma-separated values">CSV</abbr> (*comma-separated values*). Comme son nom l'indique, un fichier <abbr title="comma-separated values">CSV</abbr> est un fichier texte contenant des valeurs séparées par une virgule. Cette simplicité lui confère plusieurs avantages, ce qui en fait le format idéal pour pérenniser des données :
 
 * Un fichier <abbr title="comma-separated values">CSV</abbr> est une suite de caractères et de retours à la ligne : il est facilement éditable et peut aussi bien être lu par un humain (les données ne sont pas encodées) que par une machine.
 * Le format <abbr title="comma-separated values">CSV</abbr> est un format ouvert : son utilisation ne dépend pas d'un éditeur particulier. Un fichier <abbr title="comma-separated values">CSV</abbr> peut ainsi être lu ou écrit par n'importe quel logiciel capable de manipuler des feuilles de calcul (ou par un simple éditeur de texte).
@@ -96,7 +99,7 @@ Dans le cas des données tabulaires, utilisez le format <abbr title="comma-separ
 knitr::include_graphics(here::here("images/xkcd_norm_normal_file_format.png"))
 ```
 
-La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de séparateur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (@fig-calc-csv).
+La simplicité et la souplesse de ce format nécessitent cependant un peu de prudence au moment de la création d'un fichier <abbr title="comma-separated values">CSV</abbr>. Il est en effet possible d'utiliser n'importe quel caractère en guise de délimiteur à la place d'une virgule. Si votre tableur est paramétré en français, par défaut, les données seront séparées un point-virgule pour éviter les confusions avec le séparateur décimal (de même, lors de l'ouverture d'un fichier <abbr title="comma-separated values">CSV</abbr> votre éditeur s'attendra à trouver des valeurs séparées par un point-virgule). Pensez à bien paramétrer votre logiciel lors de l'import ou de l'export d'un fichier <abbr title="comma-separated values">CSV</abbr> dans un tableur (@fig-calc-csv).
 
 ```{r}
 #| label: fig-calc-csv

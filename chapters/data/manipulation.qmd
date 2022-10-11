@@ -1,4 +1,7 @@
 # Traitement des données {#sec-data-wrangling}
+
+Il est rare que les données issues du travail sur le terrain ou obtenues directement d'un instrument soient immédiatement prêtes à être utilisées. Souvent, les données contiennent des incohérences et des erreurs mineures qui doivent être éliminées. L'identification et la suppression de ces contaminants sont rarement enseignées au cours de la formation de premier ou de deuxième cycle, et par conséquent, de nombreux chercheurs passent beaucoup de temps à se battre pour que leurs données soient exploitables. L'objectif de ce chapitre est d'étudier cinq concepts clés pour le nettoyage des données avec R. Ce chapitre vous donnera les outils nécessaires pour identifier les problèmes avec vos données, les corriger rapidement et simplement, et donner à vos données une forme appropriée pour l'analyse et la visualisation.
+
 ## Nettoyer {#sec-data-clean}
 
 ```{r}

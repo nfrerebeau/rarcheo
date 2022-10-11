@@ -65,7 +65,6 @@ book:
 
   - part: Préparer ses données
     chapters:
-    - chapters/data/introduction.qmd
     - chapters/data/read_write.qmd
     - chapters/data/manipulation.qmd
 

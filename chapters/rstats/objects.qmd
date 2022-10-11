@@ -191,7 +191,7 @@ L'utilisation des attributs permet de créer des vecteurs particuliers, appelés
 
 ## Listes (`list`) {#sec-rstats-list}
 
-Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type (@fig-r-list).
+Une liste est un vecteur particulier, dont les éléments peuvent être de n'importe quel type (@fig-r-list). Les listes sont les objets les plus polyvalents de R, car nous pouvons y stocker n'importe quoi.
 
 ```{r}
 #| label: fig-r-list

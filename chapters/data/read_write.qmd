@@ -1,5 +1,258 @@
-# Importer et exporter {#sec-data-read-write}
+# Importer et exporter {#sec-data-import}
+
+Dans ce chapitre, nous allons passer en revue quelques-unes des principales méthodes permettant d'importer des données dans R et de les écrire pour les stocker ou les partager. Comme discuté dans le chapitre [-@sec-collect-data-csv], le format <abbr title="comma-separated values">CSV</abbr> est idéal dans les cas de données tabulaires, car il s'agit d'un format ouvert, en texte clair, qui peut être lu et modifié par de nombreux programmes différents. Il convient également pour l'archivage à long terme, car c'est un format stable. Cependant, il est parfois nécessaire de travailler directement avec le fichier dans lequel les données ont été saisies ou de travailler avec un format avec lequel nos collaborateurs sont à l'aise. Il existe plusieurs packages qui permettent de lire les différents formats de feuilles de calcul, les fichiers produits par des applications tierces (d'autres logiciels de calcul par exemple), les fichiers en texte brut non structurés, les fichiers binaires ou des bases de données. Nous illustrerons brièvement ici comment gérer quelques unes de ces situations.
+
+Dans les exemples qui suivent, nous supposerons que les données issues d'une feuille de calcul sont correctement arrangées depuis le coin supérieur gauche de la feuille, et qu'elles ne contiennent pas de formatage particulier ou de formules. Au moment de la lecture dans R, il est possible d'ignorer les lignes contenant des cellules fusionnées ou d'autres informations dont nous n'avons pas besoin. Cependant, comment faire si notre fichier contient plusieurs tableaux dans une seule feuille de calcul ? Ou lorsque du texte en gras dans certaines cellules véhicule des informations importantes ? Plusieurs packages permettent de rendre moins pénible le travail avec des feuilles de calcul mal organisées, mais la question se pose de savoir s'il n'est pas plus simple de modifier manuellement la feuille de calcul (par exemple, en déplaçant chacun des tableaux sur sa propre feuille ou son propre fichier, ou en créant une nouvelle colonne pour représenter la variable indiquée par le formatage du texte en gras). L'édition manuelle est tentante, car elle peut être plus rapide et moins frustrante que d'importer le fichier tel quel et d'écrire du code pour reformater les données.
+
+Il peut être difficile de décider s'il préférable ou non de modifier manuellement les données. De notre expérience, il faut parfois une heure ou deux pour élaborer le script permettant d'extraire les données d'une feuille de calcul désordonnée et de les réorganiser. D'un autre côté, il suffit parfois de quelques minutes pour modifier manuellement la feuille de calcul afin de la rendre prête à l'emploi. Si le temps est la seule considération, le choix peut être évident. L'édition manuelle des données est cependant problématique : elle peut impliquer des décisions qui modifient les résultats de votre analyse, mais ne laissent aucune trace et sont impossibles, sinon très peu difficiles, à annuler. Prendre des décisions non documentées au cours de l'analyse viole un principe clé d'une recherche reproductible : chaque décision concernant l'analyse des données doit en effet être documentée dans les scripts d'analyse. Une façon de contourner ce problème consiste à rédiger une brève note décrivant comment vous avez modifié les données, de leur forme originale à la forme que vous avez effectivement utilisée. Cette note doit alors être incluse avec les données originales, non modifiées, vos nouvelles données modifiées dans le compendium de votre projet afin que quiconque puisse retracer les étapes de modification.
+
+Un facteur qui peut vous aider à décider s'il est préférable de modifier manuellement une feuille de calcul ou d'écrire un script pour la corriger est de savoir si vous êtes le seul à intervenir. Si vos collaborateurs continuent à la mettre à jour et à la faire circuler pendant que vous travaillez sur l'analyse, il peut être perturbant de réorganiser une feuille de calcul au milieu du processus. Dans cette situation, il peut être préférable d'écrire un script. En revanche, si les données contenues dans la feuille de calcul sont définitives et qu'aucune modification n'est apportée par d'autres personnes, l'édition manuelle ne perturbera pas le processus de collaboration et sera peut-être une meilleure option.
+
+Il est impératif de conserver les scripts que vous écrivez pour importer des données dans R. De même, conservez les fichiers de données brutes à proximité de vos scripts, en utilisant l'organisation des fichiers suggérée dans le chapitre précédent. Il vous sera ainsi plus facile de retracer les étapes de votre travail, si vous devez identifier une erreur ou vérifier un résultat inattendu. Il sera également plus facile pour d'autres personnes de reproduire vos résultats afin d'en évaluer la fiabilité. Lorsqu'il n'est pas possible de stocker vos données localement ou de les partager avec votre publication, vous devez expliquer en détail l'origine de vos données. Ceci afin que vos lecteurs disposent de suffisamment d'informations pour prendre une décision sur la fiabilité de vos données. Même si vous ne pouvez pas partager vos données, vous devriez quand même partager vos scripts d'importation de données, car ils peuvent contenir des informations qui aideront vos lecteurs à comprendre comment vos données ont été modifiées au cours de votre étude.
+
+## Désigner des fichiers
+
+Un fichier peut être désigné grâce à son **chemin d'accès**, c'est-à-dire une chaîne de caractères décrivant la position de ce fichier dans la hiérarchie du système de fichiers^[Il est également possible d'établir une **connexion** sur un fichier, mais cet aspect n'est traité ici (pour le moment).]. R fournir de nombreux outils pour manipuler des fichiers ou des chemin d'accès :
 
 ```{r}
-# read.table()
+# Informations sur un fichier
+file.info("data/isotopes.csv", extra_cols = FALSE)
+
+# Construit un chemin d'accès indépendamment de la plateforme utilisée
+file.path("chemin", "vers", "mon", "fichier")
+
+# Test l'existence d'un fichier
+file.exists("mon/fichier/est/absent.txt")
+
+# Supprime tous les éléments jusqu'au dernier séparateur
+basename("chemin/vers/mon/fichier.txt")
+
+# Conserve tous les éléments jusqu'au dernier séparateur
+dirname("chemin/vers/mon/fichier.txt")
 ```
+
+Une des fonctions les plus utiles est `list.files()` qui, comme son nom l'indique, permet de lister tous les fichiers contenus dans un dossier. Si on ne souhaite pas lister tous les fichiers, mais seulement un sous-ensemble, il est possible de restreindre les noms de fichiers retournés en fonction de ce qu'ils ont en commun grâce à l'argument `pattern`. Par exemple, si nous avons des fichiers <abbr title="comma-separated values">CSV</abbr> et des fichiers <abbr title="Portable Document Format">PDF</abbr> dans un dossier, mais que nous voulons seulement obtenir la liste des fichiers CSV :
+
+```{r}
+file_csv <- list.files(
+  path = "data",     # Chemin du dossier à lister
+  pattern = ".csv$", # Expression à rechercher
+  full.names = TRUE, # Retourner les chemins d'accès complets
+  ignore.case = TRUE # Ignorer la casse
+)
+```
+
+L'utilisation de `pattern = ".csv$"`, permet d'indiquer que nous ne voulons lister que les fichiers dont le nom se termine par ".csv". Le signe dollar implique que les caractères ".csv" ne correspondent à notre recherche que lorsqu'ils se trouvent à la fin du nom de fichier. Par exemple, `mon_fichier.csv.pdf` ne correspondrait pas au modèle, bien qu'il contienne la chaîne ".csv". Nous pouvons capturer à la fois les fichiers se terminant par ".csv" ou ".CSV" en ajoutant l'argument `ignore.case = TRUE`, qui ignorera les différences entre les caractères majuscules et minuscules. Enfin, `full.names = TRUE` permet de récupérer les chemins complets plutôt que les seuls noms de fichiers, ce qui sera plus pratique par la suite pour lire les fichiers en question.
+
+## Lire des données
+### Lire des fichiers textes délimités
+
+La façon la plus simple de lire des données tabulaires est d'utiliser la fonction `read.table()` qui retourne un `data.frame` contenant les données lues dans le fichier. Cette dernière permet de lire un fichier texte, où chaque ligne correspond à une observation et où les différentes valeurs sont séparées par un caractère particulier appelé délimiteur (généralement une virgule, un point-virgule ou une tabulation). Les fichiers textes délimités sont des fichiers structurés (les données et la structure du fichier sont stockées ensemble), néanmoins au regard du nombre de variations possibles il convient d'être vigilant lors de leur lecture dans R .
+
+Par défaut, `read.table()` s'attend à trouver des valeurs séparées par un ou plusieurs espaces. Il est possible de spécifier un délimiteur différent en changeant la valeur de l'argument `sep`. Enfin, selon les situations, il faudra également spécifier le séparateur décimal utilisé (un point est attendu par défaut et non une virgule comme c'est l'usage en français) à l'aide de l'argument `dec`. Il peut également être plus simple d'utiliser les variantes dont les réglages par défaut sont différents (voir `?read.table` pour plus de détails ; @tbl-data-read-table) :
+
+| Fonction        | Séparateur décimal | Séparateur de champ |
+|:----------------|:-------------------|:--------------------|
+| `read.csv()`    | point (`.`)        | virgule (`,`)       |
+| `read.csv2()`   | virgule (`,`)      | point-virgule (`;`) |
+| `read.delim()`  | point (`.`)        | tabulation (`\t`)   |
+| `read.delim2()` | virgule (`,`)      | tabulation (`\t`)   |
+
+: Variantes de la fonction `read.table()`. {#tbl-data-read-table}
+
+Voici un fichier <abbr title="comma-separated values">CSV</abbr> avec cinq colonnes, contenant les rapports isotopiques du plomb et les erreurs associées pour 10 échantillons :
+
+``` r
+Ref,Pb206_Pb204,Pb206_Pb204_erreur,Pb208_Pb204,Pb208_Pb204_erreur
+25091,18.130,0.002,38.357,0.005
+25092,18.189,0.002,38.390,0.006
+25093,18.174,0.001,38.388,0.005
+25094,18.171,0.002,38.378,0.007
+25095,18.182,0.002,38.404,0.007
+25096,18.162,0.002,38.393,0.006
+25097,18.159,0.002,38.399,0.006
+25098,18.155,0.002,38.384,0.008
+25099,18.203,0.001,38.407,0.004
+25100,18.128,0.001,38.357,0.005
+```
+
+Si ce fichier est nommé `isotopes.csv` et est placé dans le dossier `data/` de notre projet, on peut le charger simplement avec :
+
+```{r}
+iso <- read.table(
+  file = "data/isotopes.csv", # Chemin du fichier à lire
+  header = TRUE,              # Première ligne comme noms de colonnes
+  sep = ",",                  # Délimiteur
+  dec = "."                   # Séparateur décimal
+)
+
+head(iso)
+```
+
+L'argument `header = TRUE` permet de spécifier que la première ligne doit être utilisée comme en-tête de colonnes. De même, s'il existe au sein du jeu de données une colonne contenant des identifiants uniques pour chacune des ligne, on peut l'indiquer à l'aide de l'argument `row.names` (ici la première colonne) :
+
+```{r}
+iso <- read.table(
+  file = "data/isotopes.csv", # Chemin du fichier à lire
+  header = TRUE,              # Première ligne comme noms de colonnes
+  sep = ",",                  # Délimiteur
+  dec = ".",                  # Séparateur décimal
+  row.names = 1               # Première colonne comme noms de lignes
+)
+
+head(iso)
+```
+
+De manière générale, il peut être utile de jeter un œil aux fichiers délimités en les ouvrant avec un éditeur de texte avant de les lire dans R (et de consulter les métadonnées qui doivent les accompagner) pour en vérifier la structure. Les premières lignes peuvent parfois contenir des informations supplémentaires qu'il est utile de connaitre dans le cadre de l'analyse, mais qu'il faudra ignorer au moment de la lecture du fichier dans R. Il existe deux possibilités pour ignorer une partie des données lors de l'utilisation de `read.table()` :
+
+* L'argument `skip` permet de spécifier le nombre de lignes du fichier à sauter avant de commencer à lire les données.
+* L'argument `comment.char` permet de spécifier le caractère utilisé pour identifier les commentaires au sein des données. Chaque ligne débutant par ce caractère sera interprétée comme un commentaire et ignorée lors de la lecture. Par défaut, toutes les lignes commençant par `#` sont ainsi ignorées par `read.table()`.
+
+Par exemple, voici les 20 premières lignes de la courbe de la calibration du radiocarbone IntCal20 distribuée au format texte [@reimer2020]. Les 10 premières lignes correspondent à la référence bibliographique de la courbe et la onzième ligne correspond à l'en-tête des colonnes. Ces lignes débutent par un `#` : elles seront ignorées par défaut lors de la lecture du fichier avec `read.table()`.
+
+``` r
+##Atmospheric data from Reimer et al (2020)
+# Reimer et al. 2020
+# Reimer P, Austin WEN, Bard E, Bayliss A, Blackwell PG, Bronk Ramsey C, Butzin M, Cheng H,
+# Edwards RL, Friedrich M, Grootes PM, Guilderson TP, Hajdas I, Heaton TJ, Hogg AG, Hughen KA,
+# Kromer B, Manning SW, Muscheler R, Palmer JG, Pearson C, van der Plicht J, Reimer RW,
+# Richards DA, Scott EM, Southon JR, Turney CSM, Wacker L, Adolphi F, Büntgen U, Capano M,
+# Fahrni S, Fogtmann-Schulz A, Friedrich R, Köhler P, Kudsk S, Miyake F, Olsen J, Reinig F,
+# Sakamoto M, Sookdeo A, Talamo S. 2020.
+# The IntCal20 Northern Hemisphere radiocarbon age calibration curve (0-55 cal kBP).
+# Radiocarbon 62. doi: 10.1017/RDC.2020.41.
+# CAL BP, 14C age,Sigma,Delta 14C,Sigma
+55000,50100,1024,528.5,193.9
+54980,50081,1018,528.3,192.7
+54960,50063,1013,527.9,191.7
+54940,50043,1007,527.8,190.6
+54920,50027,1003,527.0,189.5
+54900,50009,997,526.6,188.4
+54880,49992,991,526.0,187.1
+54860,49976,987,525.3,186.2
+54840,49959,982,524.7,185.0
+```
+
+:::{.callout-note}
+La fonction `read.table()` possède un argument `check.names` dont la valeur est `TRUE` par défaut. Ce dernier entraîne la vérification des noms de colonnes lors de la lecture des données et garanti que leur syntaxe est correcte et qu'il n'y a pas de doublons en les ajustant au besoin. Cet ajustement est réalisé grâce à la fonction `make.names()` dont la documentation précise qu'un nom conforme est composé de lettres, de chiffres et des caractères point (`.`) ou soulignement (`_`), commence par une lettre ou par un point non suivi d'un chiffre et ne correspond par un mot réservé (voir @sec-rstats-objects).
+:::
+
+### Lire des feuilles de calcul
+
+Bien que les fichiers texte délimités en général, et le format <abbr title="comma-separated values">CSV</abbr> en particulier, soient le format idéal pour les données tabulaires --- et le plus simple à utiliser --- dans notre travail quotidien avec divers collaborateurs, il est fréquent de devoir importer des données directement depuis des feuilles calcul. Les packages [*readxl*](https://readxl.tidyverse.org/) [@R-readxl] et [*readODS*](https://docs.ropensci.org/readODS/) [@R-readODS] permettent de lire les fichiers `xlsx` et `ods`, respectivement.
+
+Le fichier `ods` de l'exemple suivant contient certaines des données recueillies lors des fouilles de l'abri sous roche de Jerimalai, au Timor oriental [@marwick2016]. Une ligne représente un artéfact en pierre, et il y a deux feuilles de calcul, une pour chaque carré de fouille.
+
+```{r}
+#| eval: false
+# Charger le package readxl
+library(readODS)
+
+jerimalai_A <- read_ods(path = "data/jerimalai_lithics.ods")
+```
+
+L'argument `skip` permet de spécifier un nombre de lignes à sauter lors de l'importation depuis un fichier `ods`. C'est particulièrement utile lorsque la feuille de calcul débute par une ou plusieurs lignes avec des cellules fusionnées, par exemple pour indiquer des groupes de variables. Il est préférable d'ignorer les lignes avec des cellules fusionnées lors de l'import des données. Par exemple, nous pourrions exécuter `read_ods("data/jerimalai_lithics.ods", skip = 1)` pour ignorer la première ligne de notre feuille de calcul.
+
+Pour lire une feuille de calcul particulière au sein du fichier, on peut utiliser l'argument `sheet`. La documentation précise qu'il est possible de faire référence aux feuilles par leur numéro (leur ordre dans le fichier) ou par leur nom, tel qu'il figure dans le fichier `ods`. Par défaut, la première feuille est sélectionnée. Il est généralement préférable d'utiliser le nom de la feuille avec l'argument `sheet`, car si l'ordre des feuilles dans le fichier change, la fonction ne lira pas les données données attendues.
+
+```{r}
+#| eval: false
+# Selectionner une feuille par son numéro
+jerimalai_B <- read_ods(
+  path = "data/jerimalai_lithics.ods",
+  sheet = 2 # Numéro de la feuille
+)
+
+# Selectionner une feuille par son nom
+jerimalai_B <- read_ods(
+  path = "data/jerimalai_lithics.ods",
+  sheet = "Jerimalai_All_Artefacts_Sq_B" # Nom de la feuille
+)
+```
+
+Nous avons maintenant lu les deux feuilles de notre fichier et nous disposons de deux `data.frame` prêts à être utilisés dans notre session de travail. Mais que faire si nous avons un grand nombre de feuilles dans un seul fichier ? Dans pareil cas, il serait fastidieux de répéter les mêmes instructions, en changeant manuellement le nom de la feuille à chaque fois. Éviter les répétitions est un des avantages de l'utilisation d'un langage de programmation, voici comment nous pouvons résoudre ce problème particulier :
+
+```{r}
+#| eval: false
+# Lire le noms de toutes les feuilles de calcul du fichier
+jerimalai_sheet_names <- list_ods_sheets("data/jerimalai_lithics.ods")
+
+# Itérer sur le vecteur des noms pour lire chaque feuille
+jerimalai_all_sheets <- lapply(
+  X = jerimalai_sheet_names, 
+  FUN = function(x) read_ods("data/jerimalai_lithics.ods", sheet = x)
+)              
+```
+
+En clair, l'exemple précédent utilise la fonction `list_ods_sheets()` pour obtenir les noms des feuilles de notre fichier. Nous n'avons que deux feuilles dans notre exemple, mais cette même approche pourrait être utilisée pour 10, ou 100, ou plus de feuilles. L'objet retourné est un vecteur de chaînes de caractères contenant les noms des feuilles de notre fichier. Ensuite, la fonction `lapply()` permet d'appliquer la fonction `read_ods()` à chaque élément du vecteur contenant le nom des feuilles de calcul (voir @sec-rstats-flow-apply)^[On remarquera ici que nous avons du écrire une petite fonction afin de faire passer le nom de la feuille à l'argument `sheet` de la fonction `read_ods()`.]. Avec seulement deux itérations, cette complexité peut sembler excessive, mais vous pouvez imaginer le temps gagné si nous avions 50 ou 500 feuilles.
+
+Si nous disposons d'une dizaine ou d'une centaine de fichiers de feuilles de calcul, nous pouvons tirer parti du même concept de boucle utilisé pour la lecture de plusieurs feuilles afin, cette fois, de lire rapidement tous les fichiers. Dans l'exemple ci-dessous, le dossier `bulk/` contient plusieurs fichiers `ods` (10, 100, 1000 ou plus). On peut itérer sur chaque nom de fichier pour en extraire les données, un par un, et rassembler les résultats dans une liste. Cette approche est particulièrement utile lorsqu'on dispose d'un grand nombre de fichiers structurés de manière similaire (c'est-à-dire le même nombre de colonnes avec les mêmes noms de colonnes).
+
+```{r}
+#| eval: false
+# Lister les fichiers ods dans le dossier data/bulk/
+file_names <- list.files("data/bulk", pattern = ".ods$", full.names = TRUE)
+
+# Itérer sur le vecteur des chemins pour lire chaque fichier
+file_data <- lapply(
+  X = file_names,
+  FUN = read_ods
+)
+```
+
+### Lire des fichiers non structurés
+
+Si les feuilles de calcul et les fichiers textes sont faciles à importer dans R, il arrive parfois que l'on souhaite extraire des données tabulaires d'autres types de documents. C'est souvent le cas lorsque l'on veut utiliser des données publiées dans un rapport ou dans un article. Pour les petits tableaux, il peut être aisé de les transcrire à la main dans une feuille de calcul, puis de lire cette feuille de calcul dans R en utilisant les méthodes décrites précédemment. Cependant, dans le cas de grands tableaux, ou de nombreux tableaux répartis sur plusieurs pages ou plusieurs documents, cette approche atteint très rapidement ses limites, car elle prend du temps et, surtout, le risque d'introduire des erreurs de transcription augmente fortement.
+
+Par exemple, la @fig-terry2000 présente un tableau de données publié par @terry2000 qu'il serait fastidieux de transcrire à la main. Le package [*tabulizer*](https://docs.ropensci.org/tabulizer/)^[Au moment de la rédaction de cet ouvrage, le package [*tabulizer*](https://docs.ropensci.org/tabulizer/) est archivé sur le CRAN et doit être installé depuis [GitHub](https://github.com/ropensci/tabulizer).]  [@R-tabulizer] fourni une interface à la bibliothèque java [Tabula](https://github.com/tabulapdf/tabula-java/), qui peut être utilisée pour extraire des tableaux depuis des documents <abbr title="Portable Document Format">PDF</abbr>.
+
+```{r}
+#| label: fig-terry2000
+#| echo: false
+#| fig-cap: Tableau 1 extrait de @terry2000, page 9.
+#| out-width: 70%
+knitr::include_graphics(here::here("images/terry2000.png"))
+```
+
+Dans l'exemple ci-dessous, la fonction `extract_tables()` du package *tabulizer* retourne une liste contenant autant d'éléments que de tableaux dans le document (ou dans la page spécifiée). Les éléments de la liste sont des matrices de chaînes de caractères. Dans le cas présent, seul le tableau de la page 9 nous intéresse. Une fois extrait, la première étape est de convertir le résultat de `extract_tables()` en `data.frame`.  Il restera alors quelques étapes de nettoyage à effectuer avant de pouvoir travailler avec ce tableau, comme déplacer les première et deuxième lignes hors du tableau (dans les en-têtes de colonne), retirer les deux dernières lignes et convertir les colonnes de mesure afin qu'elles soient adaptées aux opérations numériques. Nous détaillerons ces tâches lorsque nous aborderons la préparation et le nettoyage des données au chapitre [-@sec-data-wrangling].
+
+```{r}
+#| warning: false
+# Charger le package tabulizer
+library(tabulizer)
+
+# Lire le tableau de la page 9
+tableau <- extract_tables("data/terry2000.pdf", pages = 9)
+
+# Conversion du premier élément en data.frame
+as.data.frame(tableau[[1]])
+```
+
+De manière similaire, le package [*docxtractr*](https://gitlab.com/hrbrmstr/docxtractr) permet d'extraire des tableaux présent dans des documents Word au format `docx`.
+
+## Écrire des données
+
+Il est possible d'écrire les données tabulaires (contenues dans `data.frame` ou dans une matrice) afin de les archiver ou de les partager. La façon la plus simple consiste à les écrire dans un fichier texte délimité à l'aide de la fonction `write.table()`. Il suffit de passer à cette fonction le nom de l'objet et le chemin du fichier à écrire :
+
+```{r}
+#| eval: false
+# Un tableau avec trois observations
+info <- data.frame(
+  int = 1:3,
+  num = c(0.5, 1.0, 1.5),
+  cha = c("x", "y", "z"),
+  log = 1:3 > 2
+)
+
+# Ecrire les données
+write.table(x = info, file = "data/info.txt")
+```
+
+Par défaut `write.table()` utilise un espace comme séparateur de champ et le point comme séparateur décimal. Comme lors de la lecture avec `read.table()`, il est possible de changer ces valeurs par défaut à l'aide des arguments `sep` et `dec` ou d'utiliser les variantes, plus commodes d'utilisation (voir `?write.table` pour plus de détails ; @tbl-data-write-table) :
+
+| Fonction       | Séparateur décimal | Séparateur de champ |
+|:---------------|:-------------------|:--------------------|
+| `write.csv()`  | point (`.`)        | virgule (`,`)       |
+| `write.csv2()` | virgule (`,`)      | point-virgule (`;`) |
+
+: Variantes de la fonction `write.table()`. {#tbl-data-write-table}

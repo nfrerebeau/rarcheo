@@ -1,4 +1,4 @@
-# Structures de contrôle
+# Structures de contrôle {#sec-rstats-flow}
 
 ```{r, echo=FALSE}
 source(here::here("common.R"))
@@ -182,7 +182,7 @@ switch (
 
 ## Boucles
 
-Les boucles sont un moyen simple pour répéter des instructions en faisant varier un paramètre. 
+Les boucles sont un moyen simple pour répéter des instructions en faisant varier un paramètre.  Il s'agit d'un concept de programmation très puissant et efficace permettant de répéter un morceau de code un nombre spécifique de fois.
 
 ### Boucles itératives
 
@@ -260,7 +260,7 @@ for (i in 1:16) {
 resultats
 ```
 
-### Boucles de parcours
+### Boucles de parcours {#sec-rstats-flow-apply}
 
 R possède une famille de fonctions qui permettent d'appliquer facilement des instructions aux différents éléments d'un objet. Les principales fonctions de cette famille sont :
 
