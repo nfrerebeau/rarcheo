@@ -85,6 +85,6 @@ pkg <- sessioninfo::package_info(dep, dependencies = FALSE)
   
 df <- data.frame(pkg$package, pkg$ondiskversion, pkg$source, 
                  paste0("@R-", pkg$package))
-knitr::kable(df, format = "markdown",
+knitr::kable(df, format = "markdown", booktabs = TRUE,
              col.names = c("Package", "Version", "Source", "Référence"))
 ```

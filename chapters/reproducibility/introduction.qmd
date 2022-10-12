@@ -33,6 +33,8 @@ Le premier aspect est la reproductibilité empirique ou réplicabilité. Pour un
 Les deuxième et troisième parties de la reproductibilité sont la reproductibilité computationnelle et statistique. La reproductibilité computationnelle consiste à refaire les calculs d'un autre chercheur en utilisant ses données et ses méthodes (c'est-à-dire son code). Ce type de reproductibilité n'implique pas la collecte de données nouvelles, mais utilise les méthodes et les données recueillies par le chercheur original. L'amélioration de la reproductibilité computationnelle nécessite la préservation de l'ensemble des étapes de préparation des données brutes en vue de leur analyse. La reproductibilité statistique est quant à elle accrue lorsque des informations détaillées sont communiquées sur le choix des tests statistiques, les paramètres des modèles, les valeurs seuils et autres détails qui déterminent les résultats des analyses statistiques.
 
 :::{.callout-tip}
+## The Turing Way
+
 Le collectif [The Turing Way](https://the-turing-way.netlify.app) a pour objectif de fournir aux chercheurs toutes les informations nécessaires pour travailler de manière reproductible.
 
 > The Turing Way community is dedicated to making collaborative, reusable and transparent research "too easy not to do". That means investing in the socio-technical skills required to work in a team, to build something more significant than any individual could deliver alone. --- [The Turing Way](https://the-turing-way.netlify.app)

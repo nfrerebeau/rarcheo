@@ -131,18 +131,18 @@ Quelques ouvrages thématiques susceptibles d'intéresser l'archéologue^[On tro
 Enfin, on trouvera sur [R-bloggers](https://www.r-bloggers.com/) (un agrégateur de blogs) l'actualité du langage et de nombreux tutoriels. 
 
 :::{.callout-tip}
+## Rzine
+
 Le site collaboratif [Rzine](https://rzine.fr/) a pour objectif de favoriser la diffusion et le partage de connaissances sur la pratique de R en <abbr title="Sciences Humaines et Sociales">SHS</abbr> :
 
 > Rzine.fr s'efforce de dessiner les contours de la communauté R en SHS. Il donne aux débutant·e·s un accès simple à l'information et orienté vers une utilisation autonome. Il offre aux utilisateur·rice·s de niveau intermédiaire la possibilité d'étendre leurs pratiques et de s'ouvrir à d'autres méthodes parfois issues d'autres disciplines. Enfin, il s'agit d'un espace de diffusion pour les utilisateur·rice·s avancé·e·s, auteur·e·s de développements ou de documentation. --- [Rzine](https://rzine.fr)
 
-Rzine recense de nombreuses ressources, fiches et manuels, *open source* et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en SHS.
+Rzine recense de nombreuses ressources, fiches et manuels, *open source* et rédigés en français. Le site du projet permet également suivre l'actualité du langage et des évènements liés à la pratique de R en <abbr title="Sciences Humaines et Sociales">SHS</abbr>.
 :::
 
-### Pour aller plus loin {.unnumbered}
-
-Si les enjeux de reproductibilité et de science ouverte vous intéressent, il vous faudra sans doute compléter votre maîtrise de R par des outils supplémentaires, notamment les logiciels de contrôle de version [@bryan2021].
-
 :::{.callout-note}
+## Note sur le tidyverse
+
 Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2*), malgré leur popularité au sein de la communauté des utilisateurs de R.
 
 Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).

@@ -12,23 +12,33 @@ Il est impératif de conserver les scripts que vous écrivez pour importer des d
 
 ## Désigner des fichiers
 
-Un fichier peut être désigné grâce à son **chemin d'accès**, c'est-à-dire une chaîne de caractères décrivant la position de ce fichier dans la hiérarchie du système de fichiers^[Il est également possible d'établir une **connexion** sur un fichier, mais cet aspect n'est traité ici (pour le moment).]. R fournir de nombreux outils pour manipuler des fichiers ou des chemin d'accès :
+Au sein d'un ordinateur, une ressourece (un fichier ou un répertoire) peut être désignée grâce à son **chemin d'accès**, c'est-à-dire une chaîne de caractères décrivant sa position dans la hiérarchie du système de fichiers^[Il est également possible d'établir une **connexion** sur un fichier, mais cet aspect n'est traité ici (pour le moment).]. Un chemin est composé de plusieurs éléments, représentant des répertoires, séparés par un caractère particulier, généralement une barre oblique (*slash*, `/`) ou une barre oblique inversée (*backslash*, `\`) en fonction du système d'opération. Un chemin peut être absolu ou relatif :
+
+* Un chemin absolu pointe vers le même emplacement dans un système de fichiers, quel que soit le répertoire de travail actuel.
+* Un chemin relatif commence à partir d'un répertoire de travail donné, ce qui évite de devoir fournir le chemin absolu.
+
+Afin de garantir la portabilité de votre projet (@sec-collect-files-project), il est préférable d'utiliser des chemins relatifs, plutôt que des chemins absolus propres à une machine particulière.
+
+R fournir de nombreux outils pour manipuler des fichiers ou des chemin d'accès :
 
 ```{r}
-# Informations sur un fichier
-file.info("data/isotopes.csv", extra_cols = FALSE)
-
 # Construit un chemin d'accès indépendamment de la plateforme utilisée
-file.path("chemin", "vers", "mon", "fichier")
-
-# Test l'existence d'un fichier
-file.exists("mon/fichier/est/absent.txt")
+(chemin <- file.path("chemin", "vers", "mon", "fichier.txt"))
 
 # Supprime tous les éléments jusqu'au dernier séparateur
-basename("chemin/vers/mon/fichier.txt")
+basename(chemin)
 
 # Conserve tous les éléments jusqu'au dernier séparateur
-dirname("chemin/vers/mon/fichier.txt")
+dirname(chemin)
+
+# Créer les éléments du chemin
+dir.create(dirname(chemin), recursive = TRUE)
+
+# Créer le fichier
+file.create(chemin)
+
+# Teste l'existence d'un fichier
+file.exists(chemin)
 ```
 
 Une des fonctions les plus utiles est `list.files()` qui, comme son nom l'indique, permet de lister tous les fichiers contenus dans un dossier. Si on ne souhaite pas lister tous les fichiers, mais seulement un sous-ensemble, il est possible de restreindre les noms de fichiers retournés en fonction de ce qu'ils ont en commun grâce à l'argument `pattern`. Par exemple, si nous avons des fichiers <abbr title="comma-separated values">CSV</abbr> et des fichiers <abbr title="Portable Document Format">PDF</abbr> dans un dossier, mais que nous voulons seulement obtenir la liste des fichiers CSV :
