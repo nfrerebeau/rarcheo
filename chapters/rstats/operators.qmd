@@ -1,4 +1,4 @@
-# Opérateurs binaires {#sec-rstats-operateurs}
+# Opérateurs binaires {#sec-rstats-operators}
 
 ```{r, echo=FALSE}
 source(here::here("common.R"))
