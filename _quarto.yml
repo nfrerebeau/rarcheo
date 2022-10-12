@@ -53,9 +53,11 @@ book:
     - chapters/rstats/flow.qmd
     - chapters/rstats/functions.qmd
 
-  - part: Écrire de manière reproductible
+  - part: Une recherche reproductible
     chapters:
     - chapters/reproducibility/introduction.qmd
+    - chapters/reproducibility/literate_programming.qmd
+    - chapters/reproducibility/version_control.qmd
 
   - part: Organiser ses données
     chapters:
@@ -128,7 +130,7 @@ format:
     include-in-header: latex/preamble.tex
     include-before-body: latex/before_body.tex
     include-after-body: latex/after_body.tex
-    pdf-engine: xelatex
+    pdf-engine: lualatex
     cite-method: biblatex
     toc: true
     lof: true
