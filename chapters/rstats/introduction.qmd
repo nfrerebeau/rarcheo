@@ -6,7 +6,7 @@ source(here::here("common.R"))
 
 Maintenant que nous avons établi les motivations principales justifiant l'apprentissage de R et son usage en archéologie, il est temps d'introduire certains termes et concepts clés qui apparaissent fréquemment dans ce livre. Se familiariser avec ces termes vous aidera à trouver votre chemin lorsque vous commencerez à utiliser R.
 
-Jusque là, nous avons utilisé le mot code sans vraiment le définir. Le **code** désigne tout ce qui est écrit dans un langage de programmation, d'un simple mot à une fonction de plusieurs milliers de lignes. Un **script** est un fichier qui contient du code, les noms de fichiers de scripts R se terminent par l'extension `.R`. Vous pouvez ouvrir ces fichiers avec n'importe quel éditeur de texte. 
+Jusque là, nous avons utilisé le mot "code" sans vraiment le définir. Le **code** désigne tout ce qui est écrit dans un langage de programmation, d'un simple mot à une fonction de plusieurs milliers de lignes. Un **script** est un fichier qui contient du code, les noms de fichiers de scripts R se terminent par l'extension `.R`. Vous pouvez ouvrir ces fichiers avec n'importe quel éditeur de texte. 
 
 Le code contient souvent des **commentaires**, que vous pouvez reconnaître dans le langage R par un symbole `#` (dièse) en début de ligne. Le symbole `#` indique à l'interpréteur R d'ignorer tout ce qui se trouve à droite de ce symbole et de passer à la ligne de code suivante. Il n'y a pas de règles strictes sur le nombre de commentaires que vous devez inclure dans votre code, mais un bon point de départ serait une ligne de commentaire pour chaque 10 lignes ou section majeure de code. Les commentaires de code sont importants car ils vous aident, ainsi que d'autres personnes, à comprendre l'objectif du code. Les commentaires doivent expliquer le pourquoi, et non le comment (il suffit de lire le script pour cela) de votre code : ils doivent expliquer l'intention générale du code. Plus généralement, vos commentaires doivent vous dire ce que vous devrez savoir dans quelques semaines ou mois, lorsque vous reprendrez le travail après une pause et que vous ne vous souviendrez plus des détails. 
 
@@ -211,6 +211,16 @@ data(intcal20)
 ```
 
 L'une des forces de R, la communauté dynamique de chercheurs-développeurs, est aussi l'une de ses faiblesses. En effet, cela signifie que certains packages sont mis à jour fréquemment, et d'autres non. Parfois, ces mises à jour peuvent modifier le fonctionnement de votre code, ou l'empêcher complètement de fonctionner. Nous aborderons des solutions détaillées à ce problème par la suite. Pour l'instant, nous noterons simplement que c'est une bonne pratique d'inclure la sortie de `sessionInfo()` dans les résultats de votre analyse, car elle vous indique les numéros de version spécifiques de tous les paquets utilisés. Cela signifie que s'il y a des changements drastiques dans certains des packages que vous utilisez au cours de la vie de votre projet, vous avez un enregistrement de la dernière version des packages qui a fonctionné pour vous.
+
+:::{.callout-note}
+## Note sur le tidyverse
+
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2*), malgré leur popularité au sein de la communauté des utilisateurs de R.
+
+Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).
+
+Ceci étant dit, le lecteur qui le souhaite trouvera dans [*Introduction à R et au tidyverse*](https://juba.github.io/tidyverse) [@barnier2021], [*R for Data Science*](https://r4ds.had.co.nz/) [@wickham2016] et [*STAT 545*](https://stat545.com/) [@bryan2020] une introduction à l'analyse de données avec les packages du tidyverse.
+:::
 
 ### Limiter les dépendances {#sec-rstats-dependencies}
 
