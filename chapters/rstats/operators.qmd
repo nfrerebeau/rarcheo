@@ -1,4 +1,4 @@
-# Opérateurs binaires {#sec-rstats-operators}
+# Opérateurs mathématiques {#sec-rstats-operators}
 
 ```{r, echo=FALSE}
 source(here::here("common.R"))
@@ -35,7 +35,7 @@ x^y
 
 : Les principaux opérateurs arithmétiques de R. {#tbl-operateurs-math}
 
-Une des particularités des R est de *vectoriser* de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :
+Une des particularités des R est de **vectoriser** de nombreuses opérations. Cela signifie que les opérations mathématiques sont réalisées élément par élément :
 
 ```{r}
 x <- 1:5
@@ -181,3 +181,23 @@ x[x > 5]
 x[x == 0] <- NA
 x
 ```
+
+:::{.callout-note}
+Maintenant que vous maîtrisez les principaux opérateurs, nous pouvons nous livrer à une petite expérience. Si nous exécutons les instructions suivantes, il semble que R ne reconnaisse pas 0,9 comme étant égal à la somme de 0,6 et 0,3 :
+
+```{r}
+0.6 + 0.3
+
+0.6 + 0.3 == 0.9
+```
+
+Ce comportement n'est pas propre à R, mais est lié à la façon dont les ordinateurs représentent les nombres réels. Les machines utilisent en effet fréquemment des nombres à virgule flottante que l'on peut considérer comme des représentations approximatives des nombres réels. Les nombres réels, comme nous l'avons appris à l'école, peuvent avoir une partie décimale infinie. Au contraire, les nombres à virgule flottante ont une partie décimale finie (approximativement limitée à 16 décimales selon la [norme utilisée par R](https://fr.wikipedia.org/wiki/IEEE_754)). L'opérateur `==` reconnait qu'il existe une différence entre les deux valeurs de notre exemple, conséquence de cet arrondi.
+
+Il existe donc une fonction `all.equal()` qui teste la quasi-égalité :
+
+```{r}
+all.equal(0.6 + 0.3, 0.9)
+```
+
+Pour plus d'information, vous pouvez consulter la [foire aux questions de R](https://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f).
+:::
