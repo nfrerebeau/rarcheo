@@ -48,7 +48,6 @@ book:
     chapters:
     - chapters/reproducibility/introduction.qmd
     - chapters/reproducibility/literate_programming.qmd
-    - chapters/reproducibility/version_control.qmd
     - chapters/reproducibility/compendium.qmd
 
   - part: Premiers pas avec R
