@@ -21,19 +21,13 @@ book:
   author:
     - Nicolas Frerebeau
     - Ben Marwick
-  author-meta: "Nicolas Frerebeau and Ben Marwick"
-  description-meta: |
-    Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
-    modéliser des données archéologiques à l'aide du langage R. Cet ouvrage vous 
-    permet d'acquérir les connaissances et les compétences nécessaires pour 
-    aborder un large éventail de problèmes liés aux données archéologiques.
   output-file: rarcheo
 
   reader-mode: true
   search: true
   page-navigation: true
   downloads: [pdf]
-  site-url: https://rstats.archaeo.science
+  site-url: https://r-archeo.huma-num.fr
   repo-url: https://github.com/nfrerebeau/rarcheo/
   repo-actions: [edit, source, issue]
   
@@ -117,6 +111,14 @@ format:
     number-sections: true
     link-external-icon: false
     license: CC BY-NC-SA
+    author-meta: "Nicolas Frerebeau and Ben Marwick"
+    description-meta: |
+      Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
+      modéliser des données archéologiques à l'aide du langage R. Cet ouvrage 
+      vous permet d'acquérir les connaissances et les compétences nécessaires 
+      pour aborder un large éventail de problèmes liés aux données 
+      archéologiques.
+    
   pdf:
     lang: fr
     documentclass: scrbook
