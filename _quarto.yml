@@ -19,8 +19,14 @@ book:
   date: today
   date-format: long
   author:
-    - Nicolas Frerebeau
-    - Ben Marwick
+    - name: Nicolas Frerebeau
+      orcid: 0000-0001-5759-4944
+      affiliations:
+        - name: CNRS
+    - name: Ben Marwick
+      orcid: 0000-0001-7879-4531
+      affiliations:
+        - name: University of Washington
   output-file: rarcheo
 
   reader-mode: true
