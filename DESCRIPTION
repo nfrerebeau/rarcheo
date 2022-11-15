@@ -26,6 +26,7 @@ BugReports: https://github.com/nfrerebeau/rarcheo/issues
 Depends: 
     R (>= 4.1.0)
 Imports:
+    bench,
     car,
     desc,
     DiagrammeR,
@@ -36,6 +37,7 @@ Imports:
     grid,
     here,
     kableExtra,
+    khroma,
     knitr,
     MASS,
     miniCRAN,

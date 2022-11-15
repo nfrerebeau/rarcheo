@@ -217,7 +217,7 @@ for (i in 1:5) {
 }
 ```
 
-Dans l'exemple précédent, la valeur de `k` a été remplacée à chaque itération de la boucle. Si on veut récupérer les résultats des différentes étapes, il va falloir au préalable créer un objet vide susceptible de recevoir progressivement les différentes valeurs. La définition de cet objet implique d'anticiper les résultats de la boucle pour qu'il ait la structure adéquate :
+Dans l'exemple précédent, la valeur de `k` a été remplacée à chaque itération de la boucle. Si on veut récupérer les résultats des différentes étapes, il va falloir au préalable créer un objet vide susceptible de recevoir progressivement les différentes valeurs (@sec-tips-loops). La définition de cet objet implique d'anticiper les résultats de la boucle pour qu'il ait la structure adéquate :
 
 ```{r}
 # Créer un vecteur vide pour récupérer les résultats

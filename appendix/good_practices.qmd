@@ -1,1 +1,96 @@
 # Bonnes pratiques {#sec-tips}
+
+```{r, echo=FALSE}
+source(here::here("common.R"))
+```
+
+## Boucles {#sec-tips-loops}
+
+Utilisez `seq_along()` dans les boucles pour gérer correctement les cas où `x` est vide.
+
+```{r}
+# Soit un vecteur numérique de longueur nulle
+x <- numeric(0)
+
+# La boucle ne s'exécute pas (OK)
+for (i in seq_along(x)) {
+  print(i)
+}
+
+# La boucle s'exécute pour i=1 puis i=0 (!)
+for (i in 1:length(x)) {
+  print(i)
+}
+```
+
+Si vous souhaitez récupérer le résultat de chaque exécution d'une boucle itérative, vous pouvez soit combiner successivement les différents résultats, soit créer en amont un objet aux bonnes dimensions pour récupérer progressivement les différentes valeurs. La seconde possibilité consiste à **pré-allouer** les ressources nécessaires, c'est-à-dire prévoir l'espace mémoire nécessaire avant l'exécution, en spécifiant la quantité nécessaire. Ceci se traduit par un gain notable en termes de performance^[Sur les aspects de performance, voir @wickham2019.] (@fig-for-prealocate) et doit être préféré.
+
+```{r}
+#| eval: false
+# Créer un vecteur vide pour récupérer les résultats
+# Le vecteur est de longueur nulle
+results <- numeric(0)
+
+# Faire varier i de 1 à 10000
+for (i in 1:10000) {
+  # Combiner successivement les résultats
+  results <- c(results, i)
+}
+
+# Créer un vecteur vide pour récupérer les résultats
+# Le vecteur à la même longueur que le nombre d'itérations
+results <- numeric(10000)
+
+# Faire varier i de 1 à 10000
+for (i in 1:10000){
+  # Affecter les résultats à l'emplacement prévu
+  results[i] <- i
+}
+```
+
+```{r}
+#| label: fig-for-prealocate
+#| echo: false
+#| warnings: false
+#| fig-cap: Temps d'execution d'une boucle `for`.
+fun1 <- function(n) {
+  results <- numeric()
+  for (i in seq_len(n)){
+    results <- c(results, i)
+  }
+}
+fun2 <- function(n) {
+  results <- numeric(n)
+  for (i in seq_len(n)){
+    results[i] <- i
+  }
+}
+
+iter <- c(100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000)
+x1 <- vapply(
+  X = iter, 
+  FUN = function(x) {
+    bench::mark(fun1(x), filter_gc = FALSE, time_unit = "s")$median
+  }, 
+  FUN.VALUE = numeric(1)
+)
+x2 <- vapply(
+  X = iter, 
+  FUN = function(x) {
+    bench::mark(fun2(x), filter_gc = FALSE, time_unit = "s")$median
+  }, 
+  FUN.VALUE = numeric(1)
+)
+x <- data.frame(
+  iteration = c(iter, iter),
+  elapsed = c(x1, x2),
+  prealocate = c(rep(FALSE, length(iter)), rep(TRUE, length(iter)))
+)
+
+ggplot2::ggplot(x) +
+  ggplot2::aes(x = iteration, y = elapsed, colour = prealocate) +
+  ggplot2::geom_line() +
+  ggplot2::scale_x_log10() +
+  ggplot2::labs(x = "Nombre d'itération", y = "Temps d'exécution (s)") +
+  khroma::scale_colour_highcontrast(name = "Pré-allocation")
+```

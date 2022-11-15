@@ -179,6 +179,20 @@
         "RcppArmadillo"
       ]
     },
+    "bench": {
+      "Package": "bench",
+      "Version": "1.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "96fdc9419a103087fd765e896299e67f",
+      "Requirements": [
+        "glue",
+        "pillar",
+        "profmem",
+        "rlang",
+        "tibble"
+      ]
+    },
     "bit": {
       "Package": "bit",
       "Version": "4.0.4",
@@ -843,6 +857,14 @@
         "xml2"
       ]
     },
+    "khroma": {
+      "Package": "khroma",
+      "Version": "1.9.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "7e39a8daa5056daf017ace566e0d3d58",
+      "Requirements": []
+    },
     "knitr": {
       "Package": "knitr",
       "Version": "1.40",
@@ -1138,6 +1160,14 @@
         "R6",
         "ps"
       ]
+    },
+    "profmem": {
+      "Package": "profmem",
+      "Version": "0.6.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4974ce1d5ab22f266af90826f295f6c7",
+      "Requirements": []
     },
     "progress": {
       "Package": "progress",
