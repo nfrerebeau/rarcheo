@@ -184,25 +184,6 @@ PCA()
 
 L'utilisation des espaces de nom permet d'éviter les conflits lorsque deux packages ont une fonction du même nom et explicite l'origine de la fonction utilisée.
 
-### Boucles
-
-Utilisez `seq_along()` dans les boucles pour gérer correctement les cas où `x` est vide.
-
-```{r}
-# Soit un vecteur numérique de longueur nulle
-x <- numeric(0)
-
-# La boucle ne s'exécute pas (OK)
-for (i in seq_along(x)) {
-  print(i)
-}
-
-# La boucle s'exécute pour i=1 puis i=0 (!)
-for (i in 1:length(x)) {
-  print(i)
-}
-```
-
 ### Affectation
 
 Utilisez `<-` au lieu de `=` pour l'affectation.

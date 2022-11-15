@@ -277,7 +277,7 @@ facto_dep |>
 
 Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (@fig-xkcd-dependency) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
 
-* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique ([écrivez vos propres fonctions !](#fonctions-ecrire)).
+* Évitez d'utiliser un package particulier quand la même tâche peut être réalisée en R basique : écrivez vos propres fonctions ! (@sec-rstats-functions-custom).
 * Quand cela est possible, préférez les packages qui n'ont pas (ou peu) de dépendances.
 * N'utilisez pas la version de développement d'un package, mais installez toujours la version stable depuis le CRAN.
 
@@ -317,16 +317,15 @@ help(round)
 ?round
 ```
 
-Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura pas où chercher la documentation. Dans l'exemple suivant, la fonction `lda()` appartient au package *MASS* qui n'est pas chargé :
-
-```{r}
-help(lda)
-```
-
-Pour accéder à la documentation, il faudra alors charger le package au préalable ou le spécifier dans la fonction `help()` :
+Si l'objet recherché appartient à un package qui n'est pas chargé, R ne saura pas où chercher la documentation. Dans l'exemple suivant, la fonction `lda()` appartient au package *MASS* : pour accéder à la documentation, il faudra alors charger le package au préalable ou le spécifier dans la fonction `help()` :
 
 ```{r, eval=FALSE}
 help(lda, package = "MASS")
+
+# OU
+
+library(MASS)
+help(lda)
 ```
 
 Si on ignore le nom de la fonction à utiliser, deux approches permettent d'explorer la documentation :

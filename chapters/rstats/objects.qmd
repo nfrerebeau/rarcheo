@@ -103,20 +103,13 @@ x <- c(TRUE, "B", TRUE)
 typeof(x)
 ```
 
-Un vecteur contenant au moins un nombre réel sera de type `double` (même s'il ne possède pas de partie décimale) :
+Un vecteur contenant au moins un nombre réel sera de type `double` (même s'il ne possède pas de partie décimale)^[La création d'un `integer` avec une partie décimale sera automatiquement converti en type `double` avec un avertissement.] :
 
 ```{r}
 x <- c(1L, 2.1, 3L)
 typeof(x)
 
 x <- c(TRUE, 2.1, TRUE)
-typeof(x)
-```
-
-La création d'un `integer` avec une partie décimale sera automatiquement converti en type `double` avec un avertissement :
-
-```{r, warning=TRUE}
-x <- 10.5L
 typeof(x)
 ```
 
