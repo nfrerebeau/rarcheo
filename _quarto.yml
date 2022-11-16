@@ -107,6 +107,7 @@ book:
     - appendix/cheat_sheet.qmd
     - appendix/good_practices.qmd
     - appendix/style.qmd
+    - appendix/ggplot2.qmd
     
 format:
   html:

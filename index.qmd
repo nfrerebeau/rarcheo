@@ -69,7 +69,7 @@ Les commentaires dans le code sont précédés par le signe `#`. Les blocs de co
 
 Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/) (`r quarto::quarto_version()`). Le site web est hébergé par la <abbr title="Très Grande Infrastructure de Recherche">TGIR</abbr> [Huma-Num](https://www.huma-num.fr/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
 
-Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base] et [*folio*](https://packages.tesselle.org/folio/) [@R-folio]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
+Les données utilisées dans les exemples sont issues des packages *datasets* [@R-base], [*folio*](https://packages.tesselle.org/folio/) [@R-folio] et [*archdata*](https://cran.r-project.org/package=archdata) [@R-archdata]. Les exemples reposant sur la génération de nombre aléatoires sont reproductibles en utilisant `set.seed(12345)`.
 
 Cette version du livre a été réalisée avec `r R.version.string`. Les packages R utilisés sont résumés dans le @tbl-packages.
 

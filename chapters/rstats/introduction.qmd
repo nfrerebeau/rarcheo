@@ -187,7 +187,7 @@ Essayez vous-même en exécutant les commandes suivantes pour installer certains
 install.packages("folio")
 
 # Installer plusieurs packages à la fois
-pkg <- c("dplyr", "ggplot2", "knitr", "readr", "rmarkdown", "scales", "stringr", "tidyr")
+pkg <- c("rmarkdown", "tinytext")
 install.packages(pkg)
 ```
 
@@ -215,7 +215,7 @@ L'une des forces de R, la communauté dynamique de chercheurs-développeurs, est
 :::{.callout-note}
 ## Note sur le tidyverse
 
-Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2*), malgré leur popularité au sein de la communauté des utilisateurs de R.
+Le [tidyverse](https://www.tidyverse.org/) est un ensemble de packages partageant "une philosophie de conception, une grammaire et des structures de données" dont les principes sont détaillés par @wickham2019b. Tout comme le tidyverse revendique un "parti pris" (*opinionated*), ce livre revendique un choix : celui de ne pas utiliser les packages du tidyverse (à l'exception de *ggplot2* ; @sec-ggplot2), malgré leur popularité au sein de la communauté des utilisateurs de R.
 
 Ce choix repose sur un constat simple : l'usage de ces packages tend à considérablement complexifier l'apprentissage de R par les débutants et à les enfermer dans un écosystème particulier. Au contraire, l'utilisateur qui maîtrise les bases de R peut faire face à une multitudes de situations (il s'agit ici d'apprendre les bases d'un langage, plutôt que celles d'un dialecte particulier^[Voir @matloff2019 pour une discussion détaillée.]).
 

@@ -1,0 +1,239 @@
+# Visualisation avec `ggplot2`
+
+```{r, echo=FALSE}
+library(ggplot2)
+```
+
+## Présentation {#sec-ggplot2}
+
+*ggplot2* est un package dédié à la visualisation de donnée, conçu à partir des principes fondamentaux exposés par @wilkinson2005 dans son ouvrage théorique *The Grammar of Graphics*. Cette grammaire particulière est résumée par @ggplot22016 :
+
+> Un graphique fait correspondre les données à des attributs esthétiques (couleur, forme, taille) d'objets géométriques (points, lignes, barres). [...] C'est la combinaison de ces éléments indépendants qui constitue un graphique.
+
+*ggplot2* permet ainsi de construire des graphiques complexes à partir d'un `data.frame` en combinant différents éléments, c'est-à-dire en faisant correspondre les données aux attributs esthétiques. Les correspondances entre les variables d'un jeu de données et les attributs esthétiques sont décrites à l'aide de la fonction `aes()`, et peuvent ensuite être utilisées dans la fonction `ggplot()` (ou dans des couches individuelles) qui permet d'initialiser un graphique. La construction d'un graphique avec *ggplot2* débutera donc par un appel à la fonction `ggplot()` selon le modèle de base suivant :
+
+```
+ggplot(data = <DONNEES>, mapping = aes(<CORRESPONDANCES>)) +
+  <GEOMETRIES>
+```
+
+La construction d'un graphique avec *ggplot2* est un processus itératif : les données et les correspondances esthétiques sont passées à la fonction `ggplot()`, puis des éléments sont ajoutés à l'aide de l'opérateur `+`. Une première couche représentant les données peut ainsi être ajoutée, puis combinée avec des annotations, des transformations, des résumés statistiques, des échelles de couleurs, etc.
+
+Ces différents éléments sont brièvement décrits et illustrés ci-après. Pour une présentation complète de *ggplot2* et de son usage, le mieux est de consulter l'ouvrage de référence [*ggplot2: elegant graphics for data analysis*](https://ggplot2-book.org) [@ggplot22016] ainsi que la [documentation du package](https://ggplot2.tidyverse.org/). Enfin, les fonctionnalité de *ggplot2* peuvent être étendues à l'aide de nombreux [packages complémentaires](https://exts.ggplot2.tidyverse.org/gallery/) comme [*ggforce*](https://ggforce.data-imaginist.com/), [*ggraph*](https://ggraph.data-imaginist.com/) (données relationnelles), [*ggrepel*](https://ggrepel.slowkow.com/) (éviter le chevauchement des étiquettes) ou [*patchwork*](https://patchwork.data-imaginist.com/) (assembler plusieurs graphiques).
+
+```{r}
+# Charger ggplot2
+library(ggplot2)
+```
+
+## Couches (`geom` et `stat`)
+
+Les couches d'un graphique correspondent aux éléments géométriques (représentation des données brutes) et aux transformations statistiques (représentation d'un résumé des données). Les couches de transformation statistique représentent des variables calculées à partir des données brutes (en calculant des fréquences pour la réalisation d'un histogramme par exemple).
+
+Principaux éléments géométriques :
+
+* `geom_point()` : diagramme de dispersion ;
+* `geom_line()` et `geom_path()` : tracé linéaire ;
+* `geom_col()` : diagramme en barres ;
+
+Principales transformations statistiques :
+
+* `geom_histogram()` : histogramme ;
+* `geom_boxplot()` : boîtes à moustache ;
+* `geom_smooth()` : régression.
+
+Dans l'exemple suivant, on cherche à représenter la largeur d'un ensemble de pointes de flèches en fonction de leur longueur. La fonction `geom_point()` permet de construire un diagramme de dispersion :
+
+```{r}
+#| fig-align: center
+#| out-width: 75%
+# Charger les données
+data("DartPoints", package = "archdata")
+
+# Voir l'aide pour le détail des variables
+# help("DartPoints", package = "archdata")
+
+# Initialiser le graphique et construire les correspondances :
+# - La variable 'Length' doit être représentée selon l'axe x 
+# - La variable 'Width' doit être représentée selon l'axe y
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point() # Élément géométrique : points
+```
+
+Il est possible de construire des correspondances supplémentaires, par exemple en attribuant des symboles ou des couleurs en fonction des modalités d'une variable qualitative (ici, le type de pointe de flèche) ou en faisant varier la taille fonction d'une variable quantitative (l'épaisseur des pointes par exemple) :
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Les symboles sont attribués en fonction de la variable 'Name'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point(mapping = aes(shape = Name))
+
+# Les couleurs sont appliquées en fonction de la variable 'Name'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point(mapping = aes(colour = Name))
+
+# La taille des points varie en fonction de la variable 'Thickness'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point(mapping = aes(size = Thickness))
+
+# La taille et la couleur des points varient en fonction de 'Thickness'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point(mapping = aes(size = Thickness, colour = Thickness))
+```
+
+Il est également possible de combiner plusieurs couches, et ainsi de superposer les données brutes et un résumé statistique. Le diagramme de dispersion précédent peut être complété en ajoutant le résultat d'une régression linéaire pour chaque type de pointe de flèche :
+
+```{r}
+#| fig-align: center
+#| out-width: 75%
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width, color = Name)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE)
+```
+
+Les correspondances définies dans `ggplot()` sont utilisables par l'ensemble des couches, mais il est également possible de les définir spécifiquement pour chaque couche :
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Les couleurs sont appliquées à geom_boxplot() et geom_jitter()
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Name, colour = Name)) +
+  geom_boxplot() +
+  geom_jitter(height = 0.2)
+
+# Les couleurs sont appliquées seulement à geom_jitter()
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Name)) +
+  geom_boxplot() +
+  geom_jitter(mapping = aes(colour = Name), height = 0.2)
+```
+
+## Échelles (`scales`)
+
+Les échelles permettent de modifier les correspondances entre les données et les attributs esthétiques, en modifiant les limites des axes ou en leur appliquant des transformations (échelles logarithmiques par exemple), en définissant les échelles de couleurs, les gammes de tailles ou de symboles, etc.
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Charger les données
+data("BACups", package = "archdata")
+
+# Voir l'aide pour le détail des variables
+# help("BACups", package = "archdata")
+
+# Couleurs par défaut
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point()
+
+# Gamme de couleur spécifique
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point() +
+  scale_colour_manual(values = c("darkblue", "orange"))
+```
+
+::: {.callout-important}
+Les fonctions `lims()`, `xlim()` et `ylim()` permettent, comme leur nom l'indique, de modifier les limites des axes. Les données qui se trouveraient hors de la gamme ainsi définie sont transformées en `NA` et ne sont donc pas prises en compte pour la construction du graphique. Il convient d'être particulièrement prudent avec l'usage de ces fonctions, car elles sont susceptibles d'affecter le résultat des transformations statistiques. *Elles doivent être utilisées pour omettre des données et non pour zoomer sur un détail du graphique.*
+:::
+
+## Systèmes de coordonnées (`coord`)
+
+Le système de coordonnées permet de repérer les données dans le plan du graphique. Dans la plus part des cas, les coordonnées utilisées sont des coordonnées cartésiennes, décrivant la position d'un point en abscisse et en ordonnée (sauf situation très spécifique, c'est le système par défaut utilisé par *ggplot2*).
+
+La fonction `coord_cartesian()` permet de zoomer :
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Diagramme de dispersion
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point()
+
+# Zoom sur l'intervalle [3;7] en abscisse
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point() +
+  coord_cartesian(xlim = c(3, 7))
+```
+
+Les fonctions `coord_flip()` et `coord_fixed()` permettent de pivoter les axes et de fixer le rapport entre les axes, respectivement :
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Retourner les axes
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point() +
+  coord_flip()
+
+# Fixer le rapport entre les axes
+ggplot(data = BACups, mapping = aes(x = H, y = RD, colour = Phase)) +
+  geom_point() +
+  coord_fixed()
+```
+
+L'usage de coordonnées polaires permet, entre autres, de transformer un diagramme en barre en un diagramme en secteur. Ce type de représentation pose cependant des problèmes de perception et devrait être évité.
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Diagramme en barres
+ggplot(data = DartPoints, aes(x = factor(1), fill = Name)) +
+  geom_bar(width = 1) +
+  coord_cartesian() # Coordonnées cartésiennes
+
+# Diagramme en secteurs
+ggplot(data = DartPoints, aes(x = factor(1), fill = Name)) +
+  geom_bar(width = 1) +
+  coord_polar(theta = "y") # Coordonnées polaires
+```
+
+## Facettes (`facet`)
+
+Lorsque l'on souhaite visualiser une variable qualitative, il possible de créer une mosaïque de graphiques en découpant le jeu de données en fonction de cette variable et en représentant chaque sous-ensemble. Les facettes sont ainsi une alternative à l'utilisation d'un attribut esthétique (comme la couleur) pour distinguer des groupes. Cette approche à l'avantage de faciliter la lecture, en particulier lorsque le recouvrement entre les groupes est important.
+
+`facet_wrap()` permet de construire les facette à la suite les unes des autres, puis des les arranger en lignes et en colonnes :
+
+```{r}
+# Construire une facette par modalité de la variable 'Name' à la suite
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point() +
+  facet_wrap(~ Name)
+```
+
+```{r}
+#| echo: false
+#| eval: false
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point(data = DartPoints[, -1], colour = "darkgrey") + 
+  geom_point(mapping = aes(colour = Name)) +
+  facet_wrap(~ Name)
+```
+
+`facet_grid()` permet d'arranger les facettes selon une grille, en spécifiant les variables à utiliser en ligne et en colonne (il est ainsi possible de croiser deux ou plusieurs variables qualitatives) :
+
+```{r}
+#| fig-align: center
+#| out-width: 75%
+# Construire une facette par modalité de la variable 'Name' en ligne
+ggplot(data = DartPoints, mapping = aes(x = Length, fill = Name)) +
+  geom_histogram(binwidth = 5) +
+  facet_grid(Name ~ .)
+```
+
+## Thèmes (`theme`)
+
+Les thèmes permettent de changer l'apparence d'un graphique en modifiant tous les éléments d'un graphique qui ne sont associés aux données. *ggplot2* propose plusieurs thèmes, qu'il est possible de modifier à l'aide de la fonction `theme()` (voir `help("theme", package = "ggplot2")` pour plus de détails).
+
+```{r}
+#| fig-show: hold
+#| layout-ncol: 2
+# Thème 'BW'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point() +
+  theme_bw()
+
+# Thème 'minimal'
+ggplot(data = DartPoints, mapping = aes(x = Length, y = Width)) +
+  geom_point() +
+  theme_minimal()
+```
+
