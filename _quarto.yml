@@ -103,11 +103,11 @@ book:
   - chapters/references.qmd
     
   appendices:
-    - appendix/setup.qmd
-    - appendix/cheat_sheet.qmd
-    - appendix/good_practices.qmd
-    - appendix/style.qmd
-    - appendix/ggplot2.qmd
+    - chapters/appendix/setup.qmd
+    - chapters/appendix/cheat_sheet.qmd
+    - chapters/appendix/good_practices.qmd
+    - chapters/appendix/style.qmd
+    - chapters/appendix/ggplot2.qmd
     
 format:
   html:
