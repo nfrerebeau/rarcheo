@@ -26,6 +26,60 @@ x <- c(8.6, 4.1, 3.9, 7, 1.8, 6.9, 1.6, 3.8, 2.6, 5.5)
 seq_along(x)
 ```
 
+## Fonctions numériques {#sec-cheat-numeric}
+
+| Fonction                | Description                                      |
+|:------------------------|:-------------------------------------------------|
+| `ceiling(x)`            | Arrondi `x` à l'entier naturel supérieur ou égal |
+| `floor(x)`              | Arrondi `x` à l'entier naturel inférieur ou égal |
+| `trunc(x)`              | Tronque `x` vers 0                               |
+| `round(x, digits = n)`  | Arrondi `x` à `n` chiffres après la virgule      |
+| `signif(x, digits = n)` | Arrondi `x` à `n` chiffres significatifs         |
+
+: Fonctions d'arrondissement {#tbl-sec-cheat-round}
+
+:::{.callout-warning}
+R réalise des arrondis au pair le plus proche et non des arrondis arithmétiques :
+
+```{r}
+round(1.5)
+round(2.5)
+```
+
+:::
+
+## Fonctions mathématiques de base {#sec-cheat-math}
+
+| Fonction   | Description                |
+|:-----------|:---------------------------|
+| `abs(x)`   | Valeur absolue de `x`      |
+| `exp(x)`   | Exponentielle de `x`       |
+| `log(x)`   | Logarithme népérien de `x` |
+| `log10(x)` | Logarithme naturel de `x`  |
+| `sum(x)`   | Somme des éléments de `x`  |
+| `sqrt(x)`  | Racine carrée de `x`       |
+
+: Fonctions mathématiques de base {#tbl-sec-cheat-math}
+
+## Fonctions statistiques de base {#sec-cheat-stat}
+
+| Fonction             | Description                                     |
+|:---------------------|:------------------------------------------------|
+| `mean(x)`            | Moyenne de `x`                                  |
+| `median(x)`          | Médiane de `x`                                  |
+| `sd(x)`              | Écart-type de `x`                               |
+| `var(x)`             | Variance de `x` / matrice de covariance de `x`  |
+| `cor(x)`             | Matrice des corrélations de `x`                 |
+| `quantile(x, probs)` | Quantiles de `x` d'ordre `probs`                |
+| `min(x)`             | Minimum de `x`                                  |
+| `max(x)`             | Maximum de `x`                                  |
+| `range(x)`           | Étendue de `x`                                  |
+| `sign(x)`            | Signe de `x`                                    |
+| `scale(x)`           | Centre et réduit `x`                            |
+| `cut(x, breaks)`     | Divise l'étendue de `x` en `breaks` intervalles |
+
+: Fonctions statistiques de base {#tbl-sec-cheat-stat}
+
 ## Pipes {#sec-cheat-pipe}
 
 L'opérateur `|>` (*pipe*) a été introduit dans la version 4.1 de R^[Pour les versions de R antérieures 4.1, on peut utiliser l'opérateur `%>%` du package [*magrittr*](https://magrittr.tidyverse.org/)]. Ainsi, `x |> f(y)` est interprété comme `f(x, y)`.
