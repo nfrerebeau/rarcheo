@@ -2,23 +2,10 @@
 
 Une *variable statistique* désigne une caractéristique mesurable qui peut prendre différentes *valeurs*. On distingue les *variables quantitatives* (ou numériques) qui décrivent des caractéristiques quantifiables et les *variables qualitatives* (ou catégoriques) qui sont des caractéristiques non quantifiables (@fig-variables). Dans sa forme la plus simple, une variable statistique est représentée par un [vecteur atomique](#sec-rstats-atomic).
 
-```{r}
-#| label: fig-variables
-#| echo: false
-#| out-width: '100%'
-#| fig-cap: "Les types de variables."
-DiagrammeR::grViz(
-  "digraph {
-  node [shape = box, fontname = arial]
-    variable; qualitative; quantitative;
-    nominale; ordinale; discrète; continue
-  
-  variable -> {qualitative quantitative}
-  qualitative -> {nominale ordinale}
-  quantitative -> {discrète continue}
-  }",
-  height = 200
-)
+```{dot}
+//| label: fig-variables
+//| fig-cap: "Les types de variables."
+//| file: diagrams/variables.dot
 ```
 
 Variables quantitatives

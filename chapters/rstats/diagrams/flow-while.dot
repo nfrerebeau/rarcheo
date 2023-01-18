@@ -1,0 +1,31 @@
+digraph {
+  splines = ortho
+  rankdir = TB
+  
+  node [shape = diamond, fontname = arial, width = 1.25]
+    T [label = "test", group = g1]
+  node [shape = box, fontname = arial, width = 1]
+    A [label = "instruction 1", group = g1]
+    B [label = "instruction 2", group = g1]
+  node [shape = point, width = 0]
+    d1 [group = g1]; d2 [group = g1]; d4 [group = g1];
+    d5 [group = g2]; d7 [group = g2]; d8 [group = g2];
+    d3 [group = g3]; d6 [group = g3]
+  
+  edge [minlen = 1, fontname = arial]
+    d6 -> d2 -> T
+    d6 -> d3 -> A [arrowhead = none]
+    d1 -> d2 [arrowhead = none]
+    T -> A [label = "  oui"]
+    T -> d5 [arrowhead = none]
+    d5 -> d7 [arrowhead = none, label="  non"] 
+    d7 -> d8 [arrowhead = none]
+    B -> d8 [dir = back]
+    B -> d4 [arrowhead = none]
+    
+  { rank = same; T; d5 }
+  { rank = same; A; d3; d7 }
+  { rank = same; B; d8 }
+  { rank = same; d2; d6 }
+  
+}

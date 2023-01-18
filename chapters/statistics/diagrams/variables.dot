@@ -1,0 +1,9 @@
+digraph {
+  node [shape = box, fontname = arial]
+    variable; qualitative; quantitative;
+    nominale; ordinale; discrète; continue
+  
+  variable -> {qualitative quantitative}
+  qualitative -> {nominale ordinale}
+  quantitative -> {discrète continue}
+}
