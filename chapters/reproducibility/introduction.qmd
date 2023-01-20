@@ -11,21 +11,14 @@ Avant toute chose, nous devons préciser ce que nous entendons ici par "reproduc
 #| echo: false
 #| tbl-cap: Définition d'une recherche reproductible d'après *The Turing Way*.
 repro <- data.frame(
-  element = c("Analyse", "Analyse"),
-  data = c("Identique", "Différente"),
+  data = c("Analyse identique", "Analyse différente"),
   identique = c("Reproductible", "Robuste"),
   different = c("Réplicable", "Généralisable")
 )
 
-repro |> 
-  knitr::kable(
-    col.names = c("", "", "Identiques", "Différentes"),
-    booktabs = TRUE
-  ) |> 
-  kableExtra::kable_styling(full_width = TRUE) |> 
-  kableExtra::column_spec(1:2, bold = TRUE) |> 
-  kableExtra::collapse_rows(columns = 1, valign = "middle") |>
-  kableExtra::add_header_above(c(" " = 2, "Données" = 2))
+
+knitr::kable(repro, booktabs = TRUE, 
+             col.names = c("", "Données identiques", "Données différentes"))
 ```
 
 Le premier aspect est la reproductibilité empirique ou réplicabilité. Pour un archéologue, cela signifie évaluer un résultat obtenu précédemment en procédant à une nouvelle fouille d'un site qu'un autre chercheur a déjà fouillé, en étudiant une collection de musée qui a déjà été étudiée par une autre personne ou en répétant une expérience qui avait déjà été publiée. La reproductibilité empirique consiste à retourner à la source des données et à les collecter à nouveau. Les archéologues le font régulièrement, par exemple, en retournant sur des sites célèbres tels que Le Moustier (Dordogne, France) ou Çatal Höyük (Anatolie, Turquie) pour les fouiller à nouveau. Cela se produit généralement des décennies après les fouilles originales qui ont rendu le site célèbre. Il ne s'agit pas d'une reproductibilité empirique exacte, car nous n'utilisons pas exactement les mêmes procédures que les équipes précédentes, mais des méthodes de terrain modernes pour collecter davantage de données et améliorer et étendre les travaux antérieurs. L'idée générale de tester les affirmations précédentes est généralement la principale motivation pour retourner sur un site.

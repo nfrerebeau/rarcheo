@@ -1,4 +1,9 @@
 # Introduction {#sec-coda}
+
+```{r, echo=FALSE}
+source(here::here("common.R"))
+```
+
 ## Étendue du problème {#sec-coda-problem}
 
 Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieurs ensembles de mobilier. On considère pour l'exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d'étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (@tbl-coda-subcoherence). Les résultats d'Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu'ils ont en commun devraient s'accorder.
@@ -7,24 +12,22 @@ Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieu
 #| label: tbl-coda-subcoherence
 #| echo: false
 #| tbl-cap: "Pourcentages de céramiques appartenant à chaque catéogrie observés par deux archéologues."
-coda_ex <- matrix(
-  data = c(0.100, 0.200, 0.100, 0.600, 0.250, 0.500, 0.250,
-           0.200, 0.100, 0.100, 0.600, 0.500, 0.250, 0.250,
-           0.300, 0.300, 0.200, 0.200, 0.375, 0.375, 0.250) * 100,
-  nrow = 3, byrow = TRUE
+#| layout-ncol: 2
+coda1 <- data.frame(
+  A = c(0.1, 0.2, 0.3),
+  B = c(0.2, 0.1, 0.3),
+  C = c(0.1, 0.1, 0.2),
+  D = c(0.6, 0.6, 0.2)
 )
+coda2 <- coda1[, 1:3] / rowSums(coda1[, 1:3])
 
-coda_ex |> 
-  as.data.frame() |> 
-  knitr::kable(
-    row.names = FALSE,
-    col.names = c("A", "B", "C", "D", "A", "B", "C"),
-    booktabs = TRUE
-  ) |> 
-  kableExtra::add_header_above(c("Howard" = 4, "Arthur" = 3))
+knitr::kable(coda1 * 100, booktabs = TRUE, row.names = FALSE, 
+             caption = "Howard")
+knitr::kable(coda2 * 100, booktabs = TRUE, row.names = FALSE, 
+             caption = "Arthur")
 ```
 
-A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent `r cor(coda_ex[, 1], coda_ex[, 2])` et `r cor(coda_ex[, 5], coda_ex[, 6])`, respectivement, alors qu'ils étudient le même matériel.
+A partir de leurs résultats, exprimés en pourcentages, les deux archéologues cherchent ensuite à mettre en évidence les relations de dépendance entre certaines catégories de mobilier. Pour cela, tous deux calculent à partir de leurs données le coefficient de corrélation entre les catégories A et B. Howard et Arthur obtiennent `r cor(coda1[, 1], coda1[, 2])` et `r cor(coda2[, 1], coda2[, 2])`, respectivement, alors qu'ils étudient le même matériel.
 
 ## Définitions {#sec-coda-definitions}
 
@@ -63,9 +66,9 @@ Cet univers (ou espace échantillon) peut être facilement représenté dans le 
 ```{r}
 #| label: fig-coda-simplex
 #| echo: false
-#| fig-width: 7
+#| fig-width: 10.5
 #| fig-height: 3.5
-#| fig-cap: "Projection de compositions à deux (gauche) et trois composés (droite) dans un espace réel à deux et trois dimensions, respectivement. L'ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d'une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés."
+#| fig-cap: "Projection de compositions à deux (gauche) et trois composés (centre) dans un espace réel à deux et trois dimensions, respectivement. L'ensemble des points appartient à un sous-espace figuré en rouge. Dans le cas d'une composition à trois composés, ce sous-espace correspond au diagramme ternaire des trois composés (droite)."
 #| out-width: '100%'
 
 # Générer des compositions aléatoires
@@ -76,7 +79,7 @@ compo2 <- as.data.frame(coda[, -3] * 100 / rowSums(coda))
 compo3 <- as.data.frame(coda * 100 / rowSums(coda))
 
 # Projeter les compositions
-par(mfrow = c(1, 2), mar = c(4, 4, 1, 1) + 0.1, las = 1, cex = 1)
+par(mfrow = c(1, 3), mar = c(4, 4, 1, 1) + 0.1, las = 1, cex = 1)
 # Nuage de points R2
 plot(
   x = compo2,
@@ -107,9 +110,11 @@ polygon(
 )
 
 # Diagramme ternaire
-# source("R/ternary.R")
-# ternary(compo3, pch = 1, col = "steelblue",
-#         col.triangle = "darkred", lwd.triangle = 2, cex.lab = 1)
+par(mar = c(1, 1, 1, 1) + 0.1, las = 1, cex = 1)
+isopleuros::ternary_plot(compo3, pch = 16, col = "steelblue", axes = FALSE)
+isopleuros::ternary_axis(1, col = "darkred", lwd = 2)
+isopleuros::ternary_axis(2, col = "darkred", lwd = 2)
+isopleuros::ternary_axis(3, col = "darkred", lwd = 2)
 ```
 
 ## Principes {#sec-coda-principles}

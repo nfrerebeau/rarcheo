@@ -80,20 +80,21 @@ lines(
 
 ## Ellipses de tolérance
 ## Estimateurs classiques
-car::ellipse(
-  center = colMeans(brain),
-  shape = cov(brain),
-  radius = sqrt(qchisq(0.975, df = 2)),
-  center.pch = NULL, col = "blue", lty = 3
+classic <- ellipse::ellipse(
+  x = cov(brain),
+  centre = colMeans(brain),
+  t = sqrt(qchisq(0.975, df = 2))
 )
+lines(classic, col = "blue", lty = 3, lwd = 2)
 ## Estimateurs robustes
-rob <- MASS::cov.rob(brain, method = "mve") # Ellipsoïde de volume minimal
-car::ellipse(
-  center = rob$center,
-  shape = rob$cov,
-  radius = sqrt(qchisq(0.975, df = 2)),
-  center.pch = NULL, col = "blue", lty = 1
+## (ellipsoïde de volume minimal)
+minvol <- MASS::cov.rob(brain, method = "mve")
+robust <- ellipse::ellipse(
+  x = minvol$cov,
+  centre = minvol$center,
+  t = sqrt(qchisq(0.975, df = 2))
 )
+lines(robust, col = "blue", lty = 1, lwd = 2)
 ```
 
 D'autre part, le choix du seuil permettant de caractériser une observation comme aberrante doit faire l'objet d'une discussion. Il n'y a en effet aucune raison *a priori* pour qu'un seuil particulier soit applicable à tous les jeux de donnée [@filzmoser2005]. @garrett1989 propose d'utiliser une méthode graphique en représentant les distances robustes, ordonnées par rang, en fonction des quantiles théoriques de la loi du $\chi^2$ (@fig-mahalanobis-qqplot). Les valeurs extrêmes sont alors retirées jusqu'à ce que les données s'alignent sur une même droite (@fig-mahalanobis-qqplot). Il est possible de combiner ces ces approches en fixant un seuil pour identifier de potentielles valeurs aberrantes, puis d'inspecter les données afin d'expliquer les différences observées en faisant appel à l'expérience de l'analyste^[@filzmoser2005 proposent quant à eux une méthode automatique, permettant de distinguer les valeurs extrêmes issues d'une distribution normale des valeurs aberrantes issues d'une distribution différente.].
@@ -105,7 +106,7 @@ D'autre part, le choix du seuil permettant de caractériser une observation comm
 #| fig-height: 5
 #| fig-cap: "Diagramme quantile-quantile des distances de Mahalanobis."
 ## Distance de Mahalanobis robuste
-d <- sqrt(mahalanobis(brain, center = rob$center, cov = rob$cov))
+d <- sqrt(mahalanobis(brain, center = minvol$center, cov = minvol$cov))
 ## Trier par rang
 d <- sort(d)
 

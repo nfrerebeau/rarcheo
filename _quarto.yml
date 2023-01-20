@@ -138,7 +138,6 @@ format:
     include-before-body: latex/before_body.tex
     include-after-body: latex/after_body.tex
     pdf-engine: lualatex
-    cite-method: biblatex
     toc: true
     lof: true
     lot: true

@@ -28,17 +28,15 @@ Depends:
 Imports:
     archdata,
     bench,
-    car,
     desc,
-    DiagrammeR,
     downlit,
+    ellipse,
     folio,
     ggplot2,
     ggraph,
     grid,
     here,
     isopleuros,
-    kableExtra,
     khroma,
     knitr,
     MASS,
@@ -46,14 +44,12 @@ Imports:
     quarto,
     readODS,
     readxl,
-    rmarkdown,
     scatterplot3d,
     sessioninfo,
     shape,
     stats,
     tabulizer,
     tidygraph,
-    webshot,
     xml2
 Encoding: UTF-8
 LazyData: true
