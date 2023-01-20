@@ -32,7 +32,7 @@ book:
   reader-mode: true
   search: true
   page-navigation: true
-  downloads: [pdf]
+  # downloads: [pdf]
   site-url: https://r-archeo.huma-num.fr
   repo-url: https://github.com/nfrerebeau/rarcheo/
   repo-actions: [edit, source, issue]
