@@ -22,7 +22,7 @@ Il est alors possible d'entrer une **expression**, qui va être **évaluée** pa
 1 + 1
 ```
 
-Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'opérateur `:` (deux-points) permet de construire des [séquences](#sec-cheat-sequences) de nombres entiers :
+Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'opérateur `:` (deux-points) permet de construire des séquences (@sec-cheat-sequence) de nombres entiers :
 
 ```{r}
 0:100
@@ -31,7 +31,7 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice** de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17^e^ valeur, etc.).
 
 :::{.callout-important}
-Contrairement à [Python](https://www.python.org/), dans R les [indices commencent à 1](#subset) et non à 0.
+Contrairement à [Python](https://www.python.org/), dans R les indices commencent à 1 et non à 0.
 :::
 
 Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie sur plusieurs lignes : 
@@ -122,7 +122,7 @@ Il existe des objets particuliers, qui permettent d'agir sur d'autres objets : l
 
 Les fonctions peuvent accepter une ou plusieurs valeurs (ou objets) en entrée, appelés **arguments**, et retournent un objet au terme de leur exécution. Les arguments permettent de modifier le comportement d'une fonction. 
 
-R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'[écrire ses propres fonctions](#sec-rstats-functions-custom) ou d'[installer des packages](#sec-rstats-packages) supplémentaires.
+R fournit de très nombreuses fonctions, mais pour réaliser des taches très spécifiques il est possible d'écrire ses propres fonctions (@sec-rstats-functions-custom) ou d'installer des packages (@sec-rstats-packages) supplémentaires.
 
 Par exemple, la fonction `round()` permet d'arrondir une valeur numérique au nombre de décimales spécifié. Par défaut, la fonction `round()` réalise un arrondi à zéro chiffre après la virgule :
 
@@ -148,14 +148,14 @@ Les différents arguments d'une fonction sont séparés par une virgule et sont 
 round(3.141593, 2)
 ```
 
-Pour éviter les erreurs et pour [faciliter la lecture du code](#sec-style-function), dans un appel de fonction, spécifiez toujours les arguments par leur nom (à l'exception du premier argument). Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs :
+Pour éviter les erreurs et pour faciliter la lecture du code (@sec-style-function), dans un appel de fonction, spécifiez toujours les arguments par leur nom (à l'exception du premier argument). Les arguments obligatoires doivent être placés en premier, suivis des arguments facultatifs :
 
 ```{r}
 round(3.141593, digits = 2)
 ```
 
 :::{.callout-tip}
-Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'[aide](#sec-rstats-help).
+Le nom des arguments d'une fonction, leurs rôles et leurs éventuelles valeurs par défaut sont détaillés dans l'aide (@sec-rstats-help).
 :::
 
 Par exemple, on peut vouloir calculer la moyenne des longueurs d'un assemblage d'artefacts. Cet exemple montre l'utilisation de deux fonctions simples pour calculer une valeur moyenne :
@@ -165,13 +165,13 @@ x <- c(4, 7, 12) # Combine la longueur de trois artefacts
 y <- mean(x)     # Calcule la longueur moyenne
 ```
 
-La fonction `c()` permet de combiner ("c" pour combiner) nos mesures d'artefacts dans un objet appelé [vecteur](#sec-rstats-atomic). Un vecteur est une séquence simple d'éléments du même type. Dans notre exemple, tous les éléments sont des nombres. Il existe deux autres vecteurs couramment utilisés dans R : un vecteur de chaînes de caractères où tous les éléments peuvent être des lettres ou des mots, et un vecteur logique où tous les éléments sont des constantes logiques, soit `TRUE` (vrai) ou `FALSE` (faux). Le vecteur est un type de données fondamental en R que nous utiliserons très souvent. Dans l'exemple ci-dessus, nous avons stocké le résultat de la fonction `c()` dans un objet que nous appelons `x` (nous pouvons l'appeler comme bon nous semble, et nous n'avons pas besoin de créer `x` à l'avance). La deuxième ligne de code permet de calculer la moyenne de 4, 7 et 12 (c'est-à-dire $(4 + 7 + 12)/3$), puis d'affecter, ou stocker, le résultat dans un objet appelé `y`. Nous pouvons ensuite utiliser `x` et `y` plus tard dans notre flux de travail pour d'autres tâches. C'est utile car cela signifie que nous n'avons pas à recalculer la moyenne à plusieurs reprises.
+La fonction `c()` permet de combiner ("c" pour combiner) nos mesures d'artefacts dans un objet appelé vecteur (@sec-rstats-atomic). Un vecteur est une séquence simple d'éléments du même type. Dans notre exemple, tous les éléments sont des nombres. Il existe deux autres vecteurs couramment utilisés dans R : un vecteur de chaînes de caractères où tous les éléments peuvent être des lettres ou des mots, et un vecteur logique où tous les éléments sont des constantes logiques, soit `TRUE` (vrai) ou `FALSE` (faux). Le vecteur est un type de données fondamental en R que nous utiliserons très souvent. Dans l'exemple ci-dessus, nous avons stocké le résultat de la fonction `c()` dans un objet que nous appelons `x` (nous pouvons l'appeler comme bon nous semble, et nous n'avons pas besoin de créer `x` à l'avance). La deuxième ligne de code permet de calculer la moyenne de 4, 7 et 12 (c'est-à-dire $(4 + 7 + 12)/3$), puis d'affecter, ou stocker, le résultat dans un objet appelé `y`. Nous pouvons ensuite utiliser `x` et `y` plus tard dans notre flux de travail pour d'autres tâches. C'est utile car cela signifie que nous n'avons pas à recalculer la moyenne à plusieurs reprises.
 
 Les fonctions, telles que `c()` et `mean()` dans l'exemple ci-dessus, sont au cœur du travail avec R, et expliquent en partie la grande polyvalence de R. Elles permettent de gagner beaucoup de temps en minimisant la saisie et le copier-coller, il est donc utile d'investir quelques efforts pour apprendre à utiliser les fonctions, et à écrire vos propres fonctions. 
 
 ## Packages {#sec-rstats-packages}
 ### Installer et utiliser des packages
-Les fonctions sont organisées en **packages**, que vous pouvez télécharger pour étendre l'utilisation de R. Lors d'une première installation de R, deux ensembles de packages contenant les [fonctions](#sec-rstats-functions) fondamentales sont installés :
+Les fonctions sont organisées en **packages**, que vous pouvez télécharger pour étendre l'utilisation de R. Lors d'une première installation de R, deux ensembles de packages contenant les fonctions (@sec-rstats-functions) fondamentales sont installés :
 
 * Les packages essentiels : `base`, `compiler`, `datasets`, `graphics`, `grDevices`, `grid`, `methods`, `parallel`, `splines`, `stats`, `stats4`, `tcltk`, `tools`, `translations`, `utils`.
 * Les packages recommandés : `boot`, `class`, `cluster`, `codetools`, `foreign`, `KernSmooth`, `lattice`, `MASS`, `Matrix`, `mgcv`, `nlme`, `nnet`, `rpart`, `spatial`, `survival`.
@@ -374,7 +374,7 @@ example(mean)
 ```
 
 :::{.callout-tip}
-Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à [écrire des exemples reproductibles](#sec-rstats-reprex).
+Si vous faites face à une difficulté, il fort probable quelqu'un se soit déjà posé la même question que vous et que la réponse se trouve sur [Stack Overflow](https://stackoverflow.com/questions/tagged/r) ou sur les listes de diffusions [R-help](https://stat.ethz.ch/mailman/listinfo/r-help) et [R-devel](https://stat.ethz.ch/mailman/listinfo/r-devel) (actives depuis 1996). Dans le cas contraire, vous pourrez y exposer votre problème, mais il vous faudra apprendre à écrire des exemples reproductibles (@sec-rstats-reprex).
 :::
 
 ### Écrire des exemples reproductibles {#sec-rstats-reprex}

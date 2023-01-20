@@ -140,7 +140,7 @@ Les définitions classiques de la covariance et de la corrélation ne respectent
 La plupart des méthodes dédiées aux statistiques multivariées, dont la mise en œuvre repose sur l'exploitation des matrices de variance-covariance, sont donc inapplicables. Le recours à ces dernières requiert une transformation préalable des données, permettant de casser la contrainte de somme constante introduite par la fermeture des données.
 
 :::{.callout-note}
-L'approche courante lorsque l'on cherche à explorer les relations de d'inter-dépendance dans le cas d'un jeu de données multivarié est de s'attacher à la [covariance](#sec-statistics-covariance) et à la [corrélation](#sec-statistics-correlation) entre variables. Pour deux variables aléatoires $X$ et $Y$, la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l'intensité de la relation entre ces deux variables.
+L'approche courante lorsque l'on cherche à explorer les relations de d'inter-dépendance dans le cas d'un jeu de données multivarié est de s'attacher à la covariance (@sec-statistics-covariance) et à la corrélation (@sec-statistics-correlation) entre variables. Pour deux variables aléatoires $X$ et $Y$, la covariance est en effet une mesure de la tendance de ces deux variables à évoluer dans le même sens (indiqué par le signe de la covariance), tandis que la corrélation (covariance normalisée) est une mesure de l'intensité de la relation entre ces deux variables.
 
 Sachant les propriétés de la covariance, pour une composition $x$ de longueur $D$ telle que $x = \left[ x_{1}, x_{2}, \dotsc, x_{D} \right]$ avec $\sum_{i=1}^{D} x_{i} = 1$, on a :
 

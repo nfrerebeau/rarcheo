@@ -6,7 +6,7 @@ source(here::here("common.R"))
 
 R possède un mécanisme très puissant pour naviguer parmi les valeurs d'un objet, afin d'en extraire ou d'en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.
 
-La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs `[` ou `[[` : `[` permet d'extraire un sous-ensemble, tandis que `[[` permet d'extraire un unique élément. Cette distinction correspond aux relations d'[appartenance](https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)) et d'[inclusion](https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)) de la théorie des ensembles en mathématiques^[Par exemple, si $M$ est un ensemble (collection) tel que $M = \{1,2,3\}$, alors $1$, $2$ et $3$ sont des éléments de $M$, tandis que $\{1,2\}$ ou $\{3\}$ sont des sous-ensembles de $M$.] (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de [listes](#sec-rstats-subset-list)). Le principe est toujours le même : on indique entre crochets ce que l'on souhaite garder ou non.
+La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs `[` ou `[[` : `[` permet d'extraire un sous-ensemble, tandis que `[[` permet d'extraire un unique élément. Cette distinction correspond aux relations d'[appartenance](https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)) et d'[inclusion](https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)) de la théorie des ensembles en mathématiques^[Par exemple, si $M$ est un ensemble (collection) tel que $M = \{1,2,3\}$, alors $1$, $2$ et $3$ sont des éléments de $M$, tandis que $\{1,2\}$ ou $\{3\}$ sont des sous-ensembles de $M$.] (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de listes ; @sec-rstats-subset-list). Le principe est toujours le même : on indique entre crochets ce que l'on souhaite garder ou non.
 
 Ces opérateurs peuvent être utilisés conjointement avec l'affectation (`<-`) pour remplacer des valeurs. On écrira ainsi : `x[i] <- y` où `i` correspond à l'indice (position) des valeurs à remplacer dans le vecteur `x` et `y` correspond au vecteur de nouvelles valeurs.
 
@@ -72,7 +72,7 @@ Lors de l'affectation de nouvelles valeurs dans un vecteur existant, il faut vei
   x <- 1:5
   x[c(5, 3, 1)] # Change l'ordre des valeurs
   ```
-* Les mécanismes de [conversions implicites](#sec-rstats-coerce) :
+* Les mécanismes de conversions implicites (@sec-rstats-coerce) :
   ```{r}
   x <- 1:5
   typeof(x)
@@ -183,7 +183,7 @@ x[, 1, drop = FALSE] # Retourne une matrice
 Un vecteur sans attribut `dim` n'a pas de dimension et ne doit pas être confondu avec une matrice à une seule ligne ou une seule colonne !
 :::
 
-Les matrices sont des [vecteurs possédant un attribut particulier](#sec-rstats-matrix) (`dim`), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
+Les matrices sont des vecteurs possédant un attribut particulier (`dim` ; @sec-rstats-matrix), il est donc également possible de sélectionner un sous-ensemble à l'aide d'un unique vecteur (souvenez-vous que les matrices sont remplies par colonnes) :
 
 ```{r}
 # Sélection des première et troisième valeurs

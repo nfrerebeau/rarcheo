@@ -146,7 +146,7 @@ k
 
 Dans le cas d'un tableau à deux dimensions, écrire une même série d'instructions pour chaque ligne ou colonne individuellement peut rapidement s'avérer fastidieux. On peut ainsi mettre à profit les boucles pour n'écrire qu'une seule fois ces instructions et les appliquer à toutes les lignes ou toutes les colonnes.
 
-Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont [correctement structurées](#data-tidy), on peut calculer cette somme pour chacune des colonnes d'un tableau de données^[Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (`rowSums()`) ou des colonnes (`colSums()`) d'un tableau.] :
+Imaginons que l'on souhaite connaitre le nombre total de tessons de différents types de céramiques retrouvés sur un ensemble de sites archéologiques. Si nos données sont correctement structurées (@sec-collect-data, @sec-data-wrangling), on peut calculer cette somme pour chacune des colonnes d'un tableau de données^[Il s'agit d'un exemple : dans le cas présent une boucle n'est pas nécessaire, R possède deux fonctions qui permettent de calculer la somme des lignes (`rowSums()`) ou des colonnes (`colSums()`) d'un tableau.] :
 
 ```{r}
 # On charge les données d'exemple
@@ -193,7 +193,7 @@ somme
 ```
 
 :::{.callout-warning}
-La fonction `apply()` est conçue pour être utilisée sur une matrice (ou un `array`). Lorsqu'elle est utilisée sur un `data.frame`, elle va donc le convertir en `matrix`. Les éléments d'une matrice sont tous du même type : si les colonnes du `data.frame` sont de types différents, les règles de [conversions implicites](#sec-rstats-coerce) s'appliquent et peuvent entraîner des erreurs (par exemple lorsque les colonnes numériques sont transformées en chaînes de caractères, empêchant ainsi l'exécution d'une fonction mathématique).
+La fonction `apply()` est conçue pour être utilisée sur une matrice (ou un `array`). Lorsqu'elle est utilisée sur un `data.frame`, elle va donc le convertir en `matrix`. Les éléments d'une matrice sont tous du même type : si les colonnes du `data.frame` sont de types différents, les règles de conversions implicites (@sec-rstats-coerce) s'appliquent et peuvent entraîner des erreurs (par exemple lorsque les colonnes numériques sont transformées en chaînes de caractères, empêchant ainsi l'exécution d'une fonction mathématique).
 :::
 
 Dans le cas d'un `data.frame`, il est préférable d'utiliser `lapply()` lorsqu'on souhaite appliquer une même fonction aux différentes colonnes :
@@ -220,7 +220,7 @@ x[] <- lapply(X = x, FUN = as.integer)
 x
 ```
 
-`vapply()` est similaire à `lapply()`, mais peut être plus pratique à utiliser. `vapply()` simplifie le résultat final et retourne un vecteur ou, si cela est approprié, une matrice (comme pour `apply()`, faites attention aux règles de [conversions implicites](#sec-rstats-coerce)). De plus, le comportement de `vapply()` est prédictible : il est nécessaire de spécifier avec l'argument `FUN.VALUE` le type de résultat retourné.
+`vapply()` est similaire à `lapply()`, mais peut être plus pratique à utiliser. `vapply()` simplifie le résultat final et retourne un vecteur ou, si cela est approprié, une matrice (comme pour `apply()`, faites attention aux règles de conversions implicites ; @sec-rstats-coerce). De plus, le comportement de `vapply()` est prédictible : il est nécessaire de spécifier avec l'argument `FUN.VALUE` le type de résultat retourné.
 
 ```{r}
 # On spécifie le résultat de l'application de FUN aux éléments de X

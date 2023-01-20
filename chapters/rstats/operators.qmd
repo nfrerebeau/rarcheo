@@ -168,7 +168,7 @@ FALSE | NA
 ```
 :::
 
-Utilisés conjointement avec `[` et `<-`, les opérateurs logiques permettent de [filtrer](#sec-data-filter) et [nettoyer](#sec-data-clean) facilement ses données :
+Utilisés conjointement avec `[` et `<-`, les opérateurs logiques permettent de filtrer (@sec-data-filter) et nettoyer (@sec-data-clean) facilement ses données :
 
 ```{r}
 x <- 0:10

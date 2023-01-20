@@ -1,6 +1,6 @@
 # Introduction {#sec-statistics}
 
-Une *variable statistique* désigne une caractéristique mesurable qui peut prendre différentes *valeurs*. On distingue les *variables quantitatives* (ou numériques) qui décrivent des caractéristiques quantifiables et les *variables qualitatives* (ou catégoriques) qui sont des caractéristiques non quantifiables (@fig-variables). Dans sa forme la plus simple, une variable statistique est représentée par un [vecteur atomique](#sec-rstats-atomic).
+Une *variable statistique* désigne une caractéristique mesurable qui peut prendre différentes *valeurs*. On distingue les *variables quantitatives* (ou numériques) qui décrivent des caractéristiques quantifiables et les *variables qualitatives* (ou catégoriques) qui sont des caractéristiques non quantifiables (@fig-variables). Dans sa forme la plus simple, une variable statistique est représentée dans R par un vecteur atomique (@sec-rstats-atomic).
 
 ```{dot}
 //| label: fig-variables

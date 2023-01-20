@@ -1,6 +1,6 @@
 # Aide mémoire {#sec-cheat}
 
-## Séquences {#sec-cheat-sequences}
+## Séquences {#sec-cheat-sequence}
 
 ```{r}
 # Séquence de nombres entiers
@@ -36,7 +36,7 @@ seq_along(x)
 | `round(x, digits = n)`  | Arrondi `x` à `n` chiffres après la virgule      |
 | `signif(x, digits = n)` | Arrondi `x` à `n` chiffres significatifs         |
 
-: Fonctions d'arrondissement {#tbl-sec-cheat-round}
+: Fonctions d'arrondissement. {#tbl-sec-cheat-round}
 
 :::{.callout-warning}
 R réalise des arrondis au pair le plus proche et non des arrondis arithmétiques :
@@ -59,7 +59,7 @@ round(2.5)
 | `sum(x)`   | Somme des éléments de `x`  |
 | `sqrt(x)`  | Racine carrée de `x`       |
 
-: Fonctions mathématiques de base {#tbl-sec-cheat-math}
+: Fonctions mathématiques de base. {#tbl-sec-cheat-math}
 
 ## Fonctions statistiques de base {#sec-cheat-stat}
 
@@ -78,7 +78,21 @@ round(2.5)
 | `scale(x)`           | Centre et réduit `x`                            |
 | `cut(x, breaks)`     | Divise l'étendue de `x` en `breaks` intervalles |
 
-: Fonctions statistiques de base {#tbl-sec-cheat-stat}
+: Fonctions statistiques de base. {#tbl-sec-cheat-stat}
+
+## Fonctions graphiques de base {#sec-cheat-plot}
+
+| Fonction          | Description                         |
+|:------------------|:------------------------------------|
+| `plot(x, y)`      | Diagramme de dispersion             |
+| `barplot(height)` | Diagramme en barres                 |
+| `boxplot(x)`      | Boîte à moustaches                  |
+| `hist(x)`         | Histogramme des valeurs de `x`      |
+| `coplot(formula)` | Graphe de conditionnement           |
+| `pairs(x)`        | Matrice de diagrammes de dispersion |
+| `pie(x)`          | Diagramme en secteurs               |
+
+: Fonctions graphiques du package *graphics*. {#tbl-sec-cheat-stat}
 
 ## Pipes {#sec-cheat-pipe}
 

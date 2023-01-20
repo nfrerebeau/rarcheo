@@ -23,7 +23,7 @@ Ce livre se veut une introduction pratique au langage R pour la réalisation de 
 * Le chapitre [-@sec-statistics]
 * Le chapitre [-@sec-artefacts] Travailler avec des données de comptage d'artéfacts ou de restes de faune ou de flore.
 * Le chapitre [-@sec-coda] vous guidera dans l'univers très contraint de l'analyse des données de composition.
-* Le chapitre [-@sec-chronology] détaille comment travailler avec des données chronologiques (relatives et absolues) en analysant des données stratigraphiques, en réalisant des sériations, et en calibrant, analysant et visualisant des datation radiocarbone.
+* Le chapitre [-@sec-chrono] détaille comment travailler avec des données chronologiques (relatives et absolues) en analysant des données stratigraphiques, en réalisant des sériations, et en calibrant, analysant et visualisant des datation radiocarbone.
 * Le chapitre [-@sec-spatial] est une introduction à l'analyse de données spatiales et à la cartographie.
 * Le chapitre [-@sec-network] est une introduction à l'analyse de réseaux.
 

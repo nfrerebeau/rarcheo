@@ -37,6 +37,9 @@ dir.create(dirname(chemin), recursive = TRUE)
 # Créer le fichier
 file.create(chemin)
 
+# Supprimer le fichier
+file.remove(chemin)
+
 # Teste l'existence d'un fichier
 file.exists(chemin)
 ```

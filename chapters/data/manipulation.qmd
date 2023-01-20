@@ -29,10 +29,13 @@ Il est rare que les données issues du travail sur le terrain ou obtenues direct
 ```{r}
 # transform()
 # with()
+# within()
+# aggregate()
 ```
 
 ## Fusionner {#sec-data-join}
 
 ```{r}
 # merge()
+# match()
 ```
