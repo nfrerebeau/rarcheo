@@ -1,9 +1,4 @@
 # Opérateurs mathématiques {#sec-rstats-operators}
-
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 ## Opérateurs arithmétiques
 
 Les opérateurs arithmétiques (@tbl-operateurs-math) permettent de réaliser les opérations élémentaires :

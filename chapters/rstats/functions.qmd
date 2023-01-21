@@ -1,9 +1,5 @@
 # Écrire des fonctions {#sec-rstats-functions-custom}
 
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 Comme son nom le laisse deviner, fonction `function()` permet de créer ses propres fonctions. 
 
 ```{r}

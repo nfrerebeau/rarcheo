@@ -1,9 +1,4 @@
 # Bonnes pratiques {#sec-tips}
-
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 ## Boucles {#sec-tips-loops}
 
 Utilisez `seq_along()` dans les boucles pour gérer correctement les cas où `x` est vide.

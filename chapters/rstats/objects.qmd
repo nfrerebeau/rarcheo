@@ -1,9 +1,5 @@
 # Structures de données {#sec-rstats-vector}
 
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 Le vecteur (`vector`) est la structure de base de R, à partir de laquelle toutes les autres sont construites. Un vecteur est simplement un ensemble d'**éléments**.
 
 Un vecteur peut être un vecteur atomique (@sec-rstats-atomic) (`atomic`), si tous ses éléments sont de même **type**, ou une liste (@sec-rstats-list) (`list`), si ses éléments sont de types différents (@tbl-r-data-structures). Un vecteur peut également avoir des **attributs** (@sec-rstats-attributes) (sorte de métadonnées).

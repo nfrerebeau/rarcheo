@@ -1,11 +1,6 @@
 \mainmatter
 
 # Introduction {.unnumbered}
-
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 ## Pourquoi les archéologues devraient-ils apprendre à programmer ? {#sec-intro-programmer .unnumbered}
 
 Ce livre vise à résoudre un problème spécifique : la majorité des archéologues reçoivent peu ou pas de formation en programmation scientifique pour l'analyse, la modélisation et la visualisation des données, bien qu'il s'agisse de tâches courantes en archéologie. Un programme à [interface en ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)^[Une interface de ligne de commande permet d'interagir avec un logiciel en envoyant des instructions au programme sous forme de lignes de texte brut.] tel que R est idéal pour accomplir ce type de taches et, pourtant, il est peu familier et exotique pour la plupart des archéologues. Au lieu de cela, la plupart des archéologues utilisent Microsoft Excel, SPSS ou un logiciel (commercial) similaire de type "pointer-cliquer" (à interface graphique). Ceci pose quatre problèmes.

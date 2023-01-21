@@ -1,9 +1,4 @@
 # Introduction {#sec-coda}
-
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 ## Étendue du problème {#sec-coda-problem}
 
 Soient deux archéologues, Howard et Arthur qui se partagent l'étude de plusieurs ensembles de mobilier. On considère pour l'exemple la situation idéale, où chacun à reçu une moitié identique de chaque ensemble et que tous deux sont parfaitement routiniers de ce type d'étude. Howard quantifie son matériel en distinguant les catégories A, B, C et D. De son côté Arthur ne quantifie que les catégories A, B et C (@tbl-coda-subcoherence). Les résultats d'Arthur constituent ainsi une sous-composition de ceux obtenus par Howard et, en toute logique, les observations faites par les deux archéologues sur les catégories de mobilier qu'ils ont en commun devraient s'accorder.

@@ -1,9 +1,4 @@
 # Structures de contrôle {#sec-rstats-flow}
-
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 ## Alternatives
 
 Les alternatives permettent d'exécuter différentes instructions en fonction du résultat d'un test logique.

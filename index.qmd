@@ -1,9 +1,5 @@
 # Avant propos {.unnumbered}
 
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques, entendues ici comme une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
 
 **Ce livre est en cours de rédaction.**

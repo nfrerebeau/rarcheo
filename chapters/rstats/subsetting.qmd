@@ -1,9 +1,5 @@
 # Extraction et remplacement {#sec-rstats-subset}
 
-```{r, echo=FALSE}
-source(here::here("common.R"))
-```
-
 R possède un mécanisme très puissant pour naviguer parmi les valeurs d'un objet, afin d'en extraire ou d'en remplacer tout ou partie. Ce mécanisme obéit cependant à des règles parfois complexes et peut aboutir à des résultats inattendus si elles ne sont pas bien comprises.
 
 La façon la plus simple de sélectionner ou d'extraire des valeurs consiste à utiliser les opérateurs `[` ou `[[` : `[` permet d'extraire un sous-ensemble, tandis que `[[` permet d'extraire un unique élément. Cette distinction correspond aux relations d'[appartenance](https://fr.wikipedia.org/wiki/Appartenance_(math%C3%A9matiques)) et d'[inclusion](https://fr.wikipedia.org/wiki/Inclusion_(math%C3%A9matiques)) de la théorie des ensembles en mathématiques^[Par exemple, si $M$ est un ensemble (collection) tel que $M = \{1,2,3\}$, alors $1$, $2$ et $3$ sont des éléments de $M$, tandis que $\{1,2\}$ ou $\{3\}$ sont des sous-ensembles de $M$.] (cette distinction peut paraître un peu obscure au premier abord, mais prend tout son sens lors de la manipulation de listes ; @sec-rstats-subset-list). Le principe est toujours le même : on indique entre crochets ce que l'on souhaite garder ou non.
