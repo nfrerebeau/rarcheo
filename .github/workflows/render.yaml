@@ -42,21 +42,13 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           to: html
-      
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: latex-log
-          path: /home/runner/work/rarcheo/rarcheo/*.log
 
       - name: Deploy
         run: |
-          sudo apt-get install openssh-client -y
-          eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.DO_HOST }} >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
           rsync -az -e ssh --delete _book/ ${{ secrets.DO_USER }}@${{ secrets.DO_HOST }}:${{ secrets.DO_PATH }}
