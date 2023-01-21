@@ -6,14 +6,14 @@ citEntry(
   title        = "R pour l'archéologue: Exploration, visualisation et analyse de données",
   author       = c(person("Nicolas", "Frerebeau", role = "aut"),
                    person("Ben", "Marwick", role = "aut")),
-  year         = "2021",
+  year         = "2023",
   publisher    = "Université Bordeaux Montaigne",
   address      = "Pessac, France",
-  url          = "https://rstats.archaeo.science",
+  url          = "https://r-archeo.huma-num.fr",
 
   textVersion  =
   paste("Frerebeau, Nicolas, Marwick, Ben",
         "R pour l'archéologue: Exploration, visualisation et analyse de données.",
-        "Pessac, France: Université Bordeaux Montaigne, 2021.",
-        "URL https://rstats.archaeo.science.")
+        "Pessac, France: Université Bordeaux Montaigne, 2023.",
+        "URL https://r-archeo.huma-num.fr.")
 )

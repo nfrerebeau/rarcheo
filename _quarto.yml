@@ -17,7 +17,7 @@ book:
   title: "R pour l'archéologue"
   subtitle: "Exploration, visualisation et analyse de données"
   date: today
-  date-format: long
+  date-format: "YYYY"
   author:
     - name: Nicolas Frerebeau
       orcid: 0000-0001-5759-4944
