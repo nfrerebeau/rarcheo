@@ -1,5 +1,25 @@
 # Statistique descriptive {#sec-statistics-description}
 
-## Indicateurs de position
+## Mesures de la tendance centrale
+### Moyenne
 
-## Indicateurs de dispersion
+### Médiane
+
+### Mode
+
+## Mesures de la variabilité
+### Étendue
+
+### Écart interquartile
+
+### Écart moyen absolu
+
+### Variance
+
+### Écart-type
+
+### Coefficient de variation
+
+## Asymétrie et aplatissement
+
+## Scores standards

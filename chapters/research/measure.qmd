@@ -1,0 +1,9 @@
+# Échelles de mesure
+
+## Échelle nominale
+
+## Échelle ordinale
+
+## Échelle d'intervalle
+
+## Échelle de rapports

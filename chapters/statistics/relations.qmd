@@ -1,7 +1,5 @@
 # Relations entre variables {#sec-statistics-relations}
 
-correlation vs causalité
-
 ## Covariance {#sec-statistics-covariance}
 
 ## Corrélation {#sec-statistics-correlation}
@@ -13,7 +11,7 @@ correlation vs causalité
 knitr::include_graphics(here::here("images/xkcd_correlation.png"))
 ```
 
-## Régression {#sec-statistics-regression}
+## Régression linéaire {#sec-statistics-regression}
 
 ```{r}
 #| label: fig-xkcd-curve-fitting

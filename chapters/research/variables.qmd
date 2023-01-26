@@ -1,4 +1,4 @@
-# Introduction {#sec-statistics}
+# Variables statistiques {#sec-statistics}
 
 Une *variable statistique* désigne une caractéristique mesurable qui peut prendre différentes *valeurs*. On distingue les *variables quantitatives* (ou numériques) qui décrivent des caractéristiques quantifiables et les *variables qualitatives* (ou catégoriques) qui sont des caractéristiques non quantifiables (@fig-variables). Dans sa forme la plus simple, une variable statistique est représentée dans R par un vecteur atomique (@sec-rstats-atomic).
 
@@ -14,5 +14,3 @@ Variables quantitatives
 Variables qualitatives
 : Les variables qualitatives représentent des caractéristiques non quantifiables, dont les valeurs sont appelées catégories ou *modalités*^[Il peut arriver que des variables qualitatives apparaissent sous une forme numérique dans un jeu de données. Cette dernière résulte du codage des données. Pour ne pas commettre d'erreur d'interprétation il est donc important de consulter les **métadonnées** décrivant chacune des variables du jeu de données utilisé.].
 Une variable qualitative *nominale* décrit une catégorie sans ordre naturel (le genre, les couleurs sont ainsi des variables nominales). À l'inverse, une variable qualitative est dite *ordinale* s'il existe une relation d'ordre entre les catégories auxquelles peuvent appartenir ses différentes valeurs (une grandeur mesurée sur une échelle petit/moyen/grand est une variable ordinale).
-
-logical = variable qualitative nominale qui ne peut prendre que deux valeurs : `TRUE` (vrai) ou `FALSE` (faux)

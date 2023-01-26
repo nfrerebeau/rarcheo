@@ -46,9 +46,9 @@ book:
 
   - part: Vers une recherche reproductible
     chapters:
-    - chapters/reproducibility/introduction.qmd
-    - chapters/reproducibility/literate_programming.qmd
-    - chapters/reproducibility/compendium.qmd
+    - chapters/research/measure.qmd
+    - chapters/research/variables.qmd
+    - chapters/research/reproducibility.qmd
 
   - part: Premiers pas avec R
     chapters:
@@ -58,23 +58,24 @@ book:
     - chapters/rstats/operators.qmd
     - chapters/rstats/flow.qmd
     - chapters/rstats/functions.qmd
+    - chapters/rstats/literate_programming.qmd
 
   - part: Préparer ses données
     chapters:
+    - chapters/data/compendium.qmd
     - chapters/data/read_write.qmd
     - chapters/data/manipulation.qmd
 
-  - part: Visualiser ses données
+  - part: Statistiques descriptives
     chapters:
-    - chapters/visualization/introduction.qmd
-    - chapters/visualization/graphs.qmd
-
-  - part: Éléments de statistiques
-    chapters:
-    - chapters/statistics/introduction.qmd
     - chapters/statistics/description.qmd
     - chapters/statistics/relations.qmd
     - chapters/statistics/outliers.qmd
+
+  - part: Visualisation de données
+    chapters:
+    - chapters/visualization/introduction.qmd
+    - chapters/visualization/graphs.qmd
 
   - part: Données de comptage
     chapters:
