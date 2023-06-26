@@ -44,12 +44,6 @@ book:
   - index.qmd
   - chapters/introduction.qmd
 
-  - part: Vers une recherche reproductible
-    chapters:
-    - chapters/research/measure.qmd
-    - chapters/research/variables.qmd
-    - chapters/research/reproducibility.qmd
-
   - part: Premiers pas avec R
     chapters:
     - chapters/rstats/introduction.qmd
@@ -58,11 +52,17 @@ book:
     - chapters/rstats/operators.qmd
     - chapters/rstats/flow.qmd
     - chapters/rstats/functions.qmd
-    - chapters/rstats/literate_programming.qmd
+    
+  - part: Vers une recherche reproductible
+    chapters:
+    - chapters/research/reproducibility.qmd
+    - chapters/research/literate_programming.qmd
+    - chapters/research/compendium.qmd
 
   - part: Préparer ses données
     chapters:
-    - chapters/data/compendium.qmd
+    - chapters/data/measure.qmd
+    - chapters/data/variables.qmd
     - chapters/data/read_write.qmd
     - chapters/data/manipulation.qmd
 
