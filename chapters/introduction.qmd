@@ -83,7 +83,7 @@ wos_path <- list.files(path = here::here("data"), pattern = "WoS_archaeology_R",
 wos_data <- wos_path |> 
   lapply(FUN = read.table, header = TRUE, sep = "\t", quote = "", dec = ".")
 wos_data <- do.call(rbind, wos_data) |> 
-  subset(PY < 2022)
+  subset(PY < 2023)
 
 wos_archaeo_title <- wos_data |> 
   split(f = wos_data$SO) |> 
@@ -101,8 +101,8 @@ wos_archaeo_years |>
   ggplot2::geom_col() +
   ggplot2::labs(
     x = "Année de publication",
-    y = "Nombre d'articles",
-    caption = "Source : Web of Science"
+    y = "Nombre d'articles citant R",
+    caption = "Source : Web of Science. Dernier accès : 2023-06-26."
   )
 ```
 
