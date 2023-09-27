@@ -117,15 +117,17 @@ format:
     code-link: true
     toc: true
     number-sections: true
-    link-external-icon: false
+    link-external-icon: true
     license: CC BY-NC-SA
-    author-meta: "Nicolas Frerebeau and Ben Marwick"
-    description-meta: |
+    description: |
       Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et 
       modéliser des données archéologiques à l'aide du langage R. Cet ouvrage 
-      vous permet d'acquérir les connaissances et les compétences nécessaires 
-      pour aborder un large éventail de problèmes liés aux données 
+      doit vous permettre d'acquérir les connaissances et les compétences 
+      nécessaires pour aborder un large éventail de problèmes liés aux données 
       archéologiques.
+    mainfont: Atkinson Hyperlegible
+    include-in-header:
+      - head.html
     
   pdf:
     lang: fr
