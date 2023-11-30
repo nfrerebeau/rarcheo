@@ -6,7 +6,7 @@ library(ggplot2)
 
 ## Présentation {#sec-ggplot2}
 
-*ggplot2* est un package dédié à la visualisation de donnée, conçu à partir des principes fondamentaux exposés par @wilkinson2005 dans son ouvrage théorique *The Grammar of Graphics*. Cette grammaire particulière est résumée par @ggplot22016 :
+*ggplot2* est un package dédié à la visualisation de donnée, conçu à partir des principes fondamentaux exposés par @wilkinson2005 dans son ouvrage théorique *The Grammar of Graphics*. Cette grammaire particulière est résumée par @R-ggplot2 :
 
 > Un graphique fait correspondre les données à des attributs esthétiques (couleur, forme, taille) d'objets géométriques (points, lignes, barres). [...] C'est la combinaison de ces éléments indépendants qui constitue un graphique.
 
