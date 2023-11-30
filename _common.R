@@ -6,5 +6,5 @@ set.seed(12345)
 ## Load packages
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
-  old <- theme_set(theme_bw())
+  theme_set(theme_bw())
 }

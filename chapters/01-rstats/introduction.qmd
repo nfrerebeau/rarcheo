@@ -2,6 +2,14 @@
 
 Maintenant que nous avons établi les motivations principales justifiant l'apprentissage de R et son usage en archéologie, il est temps d'introduire certains termes et concepts clés qui apparaissent fréquemment dans ce livre. Se familiariser avec ces termes vous aidera à trouver votre chemin lorsque vous commencerez à utiliser R.
 
+:::{.callout-tip}
+L'apprentissage d'un programme à interface en ligne de commande tel que R peut paraître déroutant au premier abord, mais ne perdez pas de vue les points suivants :
+
+* Vous n'avez pas besoin de connaître tout ce qu'il y a à savoir sur R pour l'utiliser de manière efficace. Si vous êtes bloqué, consultez la documentation et les nombreuses ressources librement accessibles en ligne.
+* Il existe de nombreuses façons d'aborder un problème particulier avec R. Si votre code ne ressemble pas à celui d'un d'autre, mais qu'il fait ce que vous voulez qu'il fasse en un temps raisonnable et de manière robuste, alors le travail est fait.
+* **Il y aura des moments où les choses seront un peu difficiles ou frustrantes.** Essayez d'accepter ces périodes comme faisant partie du processus d'apprentissage d'une nouvelle compétence : le temps et l'énergie que vous investissez maintenant seront rapidement rentabilisés.
+:::
+
 Jusque là, nous avons utilisé le mot "code" sans vraiment le définir. Le **code** désigne tout ce qui est écrit dans un langage de programmation, d'un simple mot à une fonction de plusieurs milliers de lignes. Un **script** est un fichier qui contient du code, les noms de fichiers de scripts R se terminent par l'extension `.R`. Vous pouvez ouvrir ces fichiers avec n'importe quel éditeur de texte. 
 
 Le code contient souvent des **commentaires**, que vous pouvez reconnaître dans le langage R par un symbole `#` (dièse) en début de ligne. Le symbole `#` indique à l'interpréteur R d'ignorer tout ce qui se trouve à droite de ce symbole et de passer à la ligne de code suivante. Il n'y a pas de règles strictes sur le nombre de commentaires que vous devez inclure dans votre code, mais un bon point de départ serait une ligne de commentaire pour chaque 10 lignes ou section majeure de code. Les commentaires de code sont importants car ils vous aident, ainsi que d'autres personnes, à comprendre l'objectif du code. Les commentaires doivent expliquer le pourquoi, et non le comment (il suffit de lire le script pour cela) de votre code : ils doivent expliquer l'intention générale du code. Plus généralement, vos commentaires doivent vous dire ce que vous devrez savoir dans quelques semaines ou mois, lorsque vous reprendrez le travail après une pause et que vous ne vous souviendrez plus des détails. 
@@ -24,11 +32,7 @@ Sans surprise, le résultat de l'addition est 2. R donne une information supplé
 0:100
 ```
 
-La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice** de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17^e^ valeur, etc.).
-
-:::{.callout-important}
-Contrairement à [Python](https://www.python.org/), dans R les indices commencent à 1 et non à 0.
-:::
+La commande `0:100` retourne 101 valeurs qui sont affichées sur plusieurs lignes : le nombre entre crochet indique l'**indice**^[Contrairement à [Python](https://www.python.org/), dans R les indices commencent à 1 et non à 0.] de la valeur par laquelle débute chacune des lignes (la deuxième ligne commence par la 17^e^ valeur, etc.).
 
 Si une commande incomplète est transmise, l'invite de commande signale par un `+` que la suite des instructions peut être saisie sur plusieurs lignes : 
 
@@ -58,9 +62,11 @@ Il est possible d'associer un nom à une valeur et ainsi de créer des **variabl
 Cette **affectation** (ou assignation, par anglicisme) est réalisée à l'aide de l'opérateur `<-` (flèche) :
 
 ```{r}
-x <- 1 # Le résultat d'une affection n'est pas affiché dans la console
+## Le résultat d'une affection n'est pas affiché dans la console
+x <- 1
 
-(x <- 1) # Avec des parenthèses, le résultat est affiché dans la console
+## Avec des parenthèses, le résultat est affiché dans la console
+(x <- 1)
 
 x
 ```
@@ -108,9 +114,36 @@ Dans R les variables stockent des **objets**^[En informatique, un objet est une 
 
 Un objet possède un type et une structure de données particulière. Le type d'un objet est lié au type d'information qu'il contient et à la façon dont il est stocké dans la mémoire^[Votre système d'exploitation alloue la mémoire en fonction du type de donnée et décide de ce qui peut être stocké dans la mémoire réservée lors de la création d'une variable.]. La structure de données d'un objet correspond à la manière dont sont organisées les données.
 
-Ainsi, pour conserver les résultats d'un calcul, nous affectons la sortie d'une instruction à une variable. Ce processus d'affectation enregistre la sortie dans notre **environnement** afin qu'elle soit disponible pour une réutilisation ultérieure dans notre session. L'affectation n'enregistre pas les données dans un fichier qui peut être utilisé ailleurs : l'export de données est un processus distinct que nous aborderons plus tard.
+Ainsi, pour conserver les résultats d'un calcul, nous affectons la sortie d'une instruction à une variable. Ce processus d'affectation enregistre la sortie dans notre **environnement** afin qu'elle soit disponible pour une réutilisation ultérieure dans notre session. L'affectation n'enregistre pas les données dans un fichier qui peut être utilisé ailleurs : l'export de données est un processus distinct que nous aborderons plus tard (@sec-data-import).
 
-## Environnement {#sec-rstats-environment}
+## Environnements {#sec-rstats-environments}
+
+Résumé simplement, les environnements peuvent être vus comme des collections d'objet (variables, fonctions, etc.) : c'est l'endroit où R stocke les résultats des calculs. Lors du lancement de R, un environnement est créé et toute variable définie au cours de la session de travail se trouvera dans cet environnement. Par exemple, si vous avez exécuté un script qui lit une feuille de calcul et la stocke en tant qu'objet R, cet objet sera répertorié dans l'environnement courant.
+
+Les fonctions `ls()` et `rm()` permettent respectivement de lister et de supprimer les objets qui se trouvent dans un environnement spécifique :
+
+``` r
+## Assigner des valeurs aux variables x et y
+x <- 1
+y <- 2
+
+## Lister les objets présents dans l'environnement
+ls()
+#> [1] "x" "y"
+
+## Supprimer l'objet x de l'environnement
+## (action non réversible !)
+rm(x)
+
+ls()
+#> [1] "y"
+```
+
+Les environnements sont un concept de programmation avancé qui dépasse le cadre de cet ouvrage, une explication détaillée en est donnée par @wickham2019.
+
+:::{.callout-tip}
+Si vous utilisez RStudio (@sec-setup-rstudio), l'onglet *Environment* répertorie les objets qui sont actuellement disponibles dans votre session de travail. Cet onglet est utile car il permet d'obtenir d'un coup d'œil des informations de base sur la dimension des objets que vous créez (par exemple, le nombre de lignes et de colonnes), de vérifier rapidement le résultat de vos calculs et de voir si votre code fonctionne comme prévu. 
+:::
 
 ## Fonctions {#sec-rstats-functions}
 
@@ -249,9 +282,9 @@ facto_dep |>
   ggraph::geom_node_point(
     mapping = ggplot2::aes(
       color = name == "FactoMineR",
-      size = name == "FactoMineR",
       shape = name == "FactoMineR"
     ),
+    size = 5,
     show.legend = FALSE
   ) + 
   # ggraph::geom_node_text(
@@ -267,8 +300,7 @@ facto_dep |>
   ) +
   ggplot2::scale_color_manual(
     values = c(`TRUE` = "black", `FALSE` = "grey")
-  ) +
-  ggplot2::scale_size_manual(values = c(`TRUE` = 7, `FALSE` = 5))
+  )
 ```
 
 Qu'arrivera-t-il alors si une seule des ces dépendances change drastiquement, arrête de fonctionner ou disparaît tout simplement (@fig-xkcd-dependency) ? Pour réduire ce risque et sortir de cet enfer des dépendances :
