@@ -1436,8 +1436,14 @@
     "tabulizer": {
       "Package": "tabulizer",
       "Version": "0.2.3",
-      "Source": "Repository",
-      "Repository": "https://ropensci.r-universe.dev",
+      "Source": "GitHub",
+      "Remotes": "ropensci/tabulizerjars",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "tabulizer",
+      "RemoteUsername": "ropensci",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "bfc79cb128f284eceeecc310b9b957bbfb9dd719",
       "Requirements": [
         "png",
         "rJava",
@@ -1445,17 +1451,22 @@
         "tools",
         "utils"
       ],
-      "Hash": "14213878ed8599a29ba8f1eae5243a4f"
+      "Hash": "d27e3b810f0eb71f821f403c0047778f"
     },
     "tabulizerjars": {
       "Package": "tabulizerjars",
       "Version": "1.0.1",
-      "Source": "Repository",
-      "Repository": "https://ropensci.r-universe.dev",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "tabulizerjars",
+      "RemoteUsername": "ropensci",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "d1924e01db15b75251e4eb8f558e6e1a81e1c270",
       "Requirements": [
         "rJava"
       ],
-      "Hash": "f8e259f00c9fe116a167c838575d7d49"
+      "Hash": "19b09cc46a0c025054f38ae21700bf43"
     },
     "tensorA": {
       "Package": "tensorA",
