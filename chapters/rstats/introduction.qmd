@@ -14,13 +14,13 @@ Lorsque R est en cours d'exécution, l'interface signifie qu'elle est prête à 
 
 Il est alors possible d'entrer une **expression**, qui va être **évaluée** par R avant d'en retourner le résultat :
 
-```{r}
+```{webr-r}
 1 + 1
 ```
 
 Sans surprise, le résultat de l'addition est 2. R donne une information supplémentaire, le `[1]` devant `2` précise qu'il s'agit du premier (dans le cas présent, du seul) élément retourné. Certaines commandes peuvent retourner plusieurs valeurs. Par exemple, l'opérateur `:` (deux-points) permet de construire des séquences (@sec-cheat-sequence) de nombres entiers :
 
-```{r}
+```{webr-r}
 0:100
 ```
 

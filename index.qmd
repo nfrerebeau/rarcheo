@@ -2,7 +2,11 @@
 
 Ce livre s'adresse aux personnes qui souhaitent analyser, visualiser et modéliser des données archéologiques à l'aide du [langage R](https://www.r-project.org/) [@R-base]. Cet ouvrage doit vous permettre d'acquérir les connaissances et les compétences nécessaires pour aborder un large éventail de problèmes dans le cadre des sciences archéologiques, entendues ici comme une recherche systématique, objective et empirique sur les comportements humains et les sociétés du passé, à partir de données issues de vestiges et de traces matérielles.
 
+::: {.callout-important}
+
 **Ce livre est en cours de rédaction.**
+
+:::
 
 ## Que contient ce livre ? {.unnumbered}
 
@@ -12,8 +16,8 @@ Bien que des notions élémentaires soient rappelées au fil de l'ouvrage, ce li
 
 Ce livre se veut une introduction pratique au langage R pour la réalisation de tâches courantes en archéologie. Sa lecture doit servir de tremplin vers une utilisation de R plus avancée. Les principaux sujets abordés dans ce livre sont les suivants :
 
-* Le chapitre [-@sec-reproducibility] expose les motivations et modalités conduisant à mettre en œuvre une recherche ouverte et reproductible en archéologie (une bonne pratique pour la science en général, et pour votre productivité individuelle en particulier). Il est complété par le chapitre [-@sec-reproducibility-literate] qui vous accompagnera vers la prise en main d'un concept clés : la programmation lettrée. Tandis que le chapitres [-@sec-collect] propose un certain nombre de recommandations quant à l'organisation de votre travail en amont de l'analyse pour en faciliter la réalisation.
 * Les chapitres [-@sec-rstat], [-@sec-rstats-vector], [-@sec-rstats-subset], [-@sec-rstats-operators], [-@sec-rstats-flow] et [-@sec-rstats-functions-custom] vous permettront de vous familiariser avec le langage R et d'acquérir les notions élémentaires qui vous permettrons de progresser dans la lecture de l'ouvrage. Ces premiers chapitres constituent également un aide-mémoire, vers lequel vous tourner au cours de la lecture des autres chapitres.
+* Le chapitre [-@sec-reproducibility] expose les motivations et modalités conduisant à mettre en œuvre une recherche ouverte et reproductible en archéologie (une bonne pratique pour la science en général, et pour votre productivité individuelle en particulier). Il est complété par le chapitre [-@sec-reproducibility-literate] qui vous accompagnera vers la prise en main d'un concept clés : la programmation lettrée. Enfin, le chapitre [-@sec-collect] propose un certain nombre de recommandations quant à l'organisation de votre travail en amont de l'analyse pour en faciliter la réalisation.
 * Les chapitres [-@sec-data-import] et [-@sec-data-wrangling] doivent vous permettre de travailler avec des structures de données courantes en archéologie, les lire avec R et les manipuler pour les préparer en vue d'être analysées.
 * Le chapitre [-@sec-visualization]
 * Le chapitre [-@sec-statistics]
@@ -33,7 +37,11 @@ La plupart des méthodes présentées ici sont destinées à des données tabula
 
 Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, les méthodes présentées ici devraient donc être utiles à la majorité des applications archéologiques. Si le volume de vos données dépasse ce seuil, vous faites probablement quelque chose de très spécialisé et vous aurez des défis particuliers à relever pour rendre votre recherche reproductible. Cependant, vous pourrez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
-## Licence {.unnumbered}
+## Comment utiliser ce livre ? {.unnumbered}
+
+La version en ligne de ce livre utilise [WebR](https://docs.r-wasm.org/webr/latest/) pour vous permettre d'exécuter du code R directement dans votre navigateur.
+
+### Licence {.unnumbered}
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
@@ -51,17 +59,17 @@ ref <- utils::readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))
 print(ref, style = "Bibtex")
 ```
 
-## Contributions {.unnumbered}
+### Contributions {.unnumbered}
 
 Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
 
-## Conventions d'écriture {.unnumbered}
+### Conventions d'écriture {.unnumbered}
 
 Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
 
 Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
 
-## Reproductibilité {.unnumbered}
+### Reproductibilité {.unnumbered}
 
 Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/) (`r quarto::quarto_version()`). Le site web est hébergé par la <abbr title="Très Grande Infrastructure de Recherche">TGIR</abbr> [Huma-Num](https://www.huma-num.fr/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
 
