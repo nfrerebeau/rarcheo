@@ -44,5 +44,6 @@ vignettes/*.pdf
 site_libs
 _book
 _freeze
+*_files
 
 packages.bib

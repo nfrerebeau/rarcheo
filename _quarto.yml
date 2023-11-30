@@ -42,40 +42,40 @@ book:
   
   chapters:
   - index.qmd
-  - chapters/introduction.qmd
+  - chapters/00-introduction.qmd
 
   - part: Premiers pas avec R
     chapters:
-    - chapters/rstats/introduction.qmd
-    - chapters/rstats/objects.qmd
-    - chapters/rstats/subsetting.qmd
-    - chapters/rstats/operators.qmd
-    - chapters/rstats/flow.qmd
-    - chapters/rstats/functions.qmd
+    - chapters/01-rstats/introduction.qmd
+    - chapters/01-rstats/objects.qmd
+    - chapters/01-rstats/subsetting.qmd
+    - chapters/01-rstats/operators.qmd
+    - chapters/01-rstats/flow.qmd
+    - chapters/01-rstats/functions.qmd
     
   - part: Vers une recherche reproductible
     chapters:
-    - chapters/research/reproducibility.qmd
-    - chapters/research/literate_programming.qmd
-    - chapters/research/compendium.qmd
+    - chapters/02-research/reproducibility.qmd
+    - chapters/02-research/literate_programming.qmd
+    - chapters/02-research/compendium.qmd
 
   - part: Préparer ses données
     chapters:
-    - chapters/data/measure.qmd
-    - chapters/data/variables.qmd
-    - chapters/data/read_write.qmd
-    - chapters/data/manipulation.qmd
+    - chapters/03-data/measure.qmd
+    - chapters/03-data/variables.qmd
+    - chapters/03-data/read_write.qmd
+    - chapters/03-data/manipulation.qmd
 
   - part: Statistiques descriptives
     chapters:
-    - chapters/statistics/description.qmd
-    - chapters/statistics/relations.qmd
-    - chapters/statistics/outliers.qmd
+    - chapters/04-statistics/description.qmd
+    - chapters/04-statistics/relations.qmd
+    - chapters/04-statistics/outliers.qmd
 
   - part: Visualisation de données
     chapters:
-    - chapters/visualization/introduction.qmd
-    - chapters/visualization/graphs.qmd
+    - chapters/05-visualization/introduction.qmd
+    - chapters/05-visualization/graphs.qmd
 
   - part: Données de comptage
     chapters:
@@ -101,7 +101,7 @@ book:
     chapters:
     - chapters/network/introduction.qmd
     
-  - chapters/references.qmd
+  - chapters/00-references.qmd
     
   appendices:
     - chapters/appendix/setup.qmd

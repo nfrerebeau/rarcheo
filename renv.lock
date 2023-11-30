@@ -9,16 +9,6 @@
     ]
   },
   "Packages": {
-    "DEoptimR": {
-      "Package": "DEoptimR",
-      "Version": "1.1-3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "stats"
-      ],
-      "Hash": "72f87e0092e39384aee16df8d67d7410"
-    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-60",
@@ -145,22 +135,6 @@
         "R"
       ],
       "Hash": "543776ae6848fde2f48ff3816d0628bc"
-    },
-    "bayesm": {
-      "Package": "bayesm",
-      "Version": "3.1-6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "RcppArmadillo",
-        "grDevices",
-        "graphics",
-        "stats",
-        "utils"
-      ],
-      "Hash": "6377d4336f5c291b8a89d75fb8074828"
     },
     "bench": {
       "Package": "bench",
@@ -289,25 +263,6 @@
         "stats"
       ],
       "Hash": "f20c47fd52fae58b4e377c37bb8c335b"
-    },
-    "compositions": {
-      "Package": "compositions",
-      "Version": "2.0-6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "MASS",
-        "R",
-        "bayesm",
-        "grDevices",
-        "graphics",
-        "methods",
-        "robustbase",
-        "stats",
-        "tensorA",
-        "utils"
-      ],
-      "Hash": "9e15d9bdaa6b712faa0069246ad09424"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -1258,21 +1213,6 @@
       ],
       "Hash": "d65e35823c817f09f4de424fcdfa812a"
     },
-    "robustbase": {
-      "Package": "robustbase",
-      "Version": "0.99-1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "DEoptimR",
-        "R",
-        "graphics",
-        "methods",
-        "stats",
-        "utils"
-      ],
-      "Hash": "3adb5cc6a5cc5650cb4569204a3209c3"
-    },
     "rprojroot": {
       "Package": "rprojroot",
       "Version": "2.0.4",
@@ -1467,17 +1407,6 @@
         "rJava"
       ],
       "Hash": "19b09cc46a0c025054f38ae21700bf43"
-    },
-    "tensorA": {
-      "Package": "tensorA",
-      "Version": "0.36.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "stats"
-      ],
-      "Hash": "fd792ceac77f96b647fa8d6e1788969a"
     },
     "tibble": {
       "Package": "tibble",
