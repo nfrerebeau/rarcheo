@@ -1,8 +1,9 @@
-# Relations entre variables {#sec-statistics-relations}
+# Statistiques bivariées {#sec-stats-bivariate}
 
-## Covariance {#sec-statistics-covariance}
+## Relations entre variables
+### Covariance {#sec-statistics-covariance}
 
-## Corrélation {#sec-statistics-correlation}
+### Corrélation {#sec-statistics-correlation}
 
 ```{r}
 #| label: fig-xkcd-correlation

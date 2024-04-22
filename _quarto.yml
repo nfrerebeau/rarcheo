@@ -68,8 +68,8 @@ book:
 
   - part: Statistiques descriptives
     chapters:
-    - chapters/04-statistics/description.qmd
-    - chapters/04-statistics/relations.qmd
+    - chapters/04-statistics/univariate.qmd
+    - chapters/04-statistics/bivariate.qmd
     - chapters/04-statistics/outliers.qmd
 
   - part: Visualisation de données

@@ -1,0 +1,159 @@
+# Statistiques univariées {#sec-stats-univariate}
+
+## Mesures de la tendance centrale
+
+La mesure de la tendance centrale d'une série d'observations vise à caractériser à l'aide d'une valeur ponctuelle l'idée de centre ou de milieu de cette série (c'est une caractéristique de *position*). Le langage courant fait souvent un usage abusif de cette notion, il convient donc de prendre un peu de recul et de bien réfléchir au sens de l'information que l'on souhaite obtenir. Il existe différentes façon d'estimer cette valeur, il est donc nécessaire de choisir la caractéristique la plus adaptée au cas d'étude, sans oublier qu'il s'agit d'un résumé des observations (au risque, parfois, de sur-simplifier la réalité).
+
+### Moyenne
+#### Moyenne arithmétique
+
+$$
+\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} =  \frac{1}{n} \sum_{i = 1}^{n}{x_i}
+$$
+Par exemple, on peut chercher à calculer la longueur moyenne d'une série d'artefacts :
+
+```{r}
+## Longueur de 5 artefacts (en mm)
+longueur <- c(75.3, 68.2, 68.3, 71.9, 70.4)
+
+## Somme des valeurs
+total <- sum(longueur)
+
+## Longueur du vecteur (nombre d'observations)
+n <- length(longueur)
+
+## Calcul de la moyenne
+total / n
+```
+
+Bien entendu, R dispose déjà d'une fonction `mean()` :
+
+```{r}
+mean(longueur)
+```
+
+La moyenne arithmétique est simple à calculer, cependant elle ne convient pas à toutes les situations. D'autres moyennes peuvent être calculées en fonction du phénomène étudié, en particulier dans les cas de processus multiplicatifs ou lorsque les grandeurs mesurées sont des rapports.
+
+#### Moyenne géométrique
+
+Lorsque l'on étudie des phénomènes qui impliquent des variations périodiques (lorsqu'on s'intéresse à des taux de variation, c'est-à-dire l'évolution de la valeur d'une variable sur une période donnée), la moyenne géométrique est plus appropriée pour trouver la variation moyenne sur l'ensemble de la période étudiée. 
+
+La moyenne géométrique d'une série de $n$ valeurs $x_1, x_2, \dots, x_n$ est définie comme la racine-$n$ième du produit de l'ensemble des valeurs :
+
+$$
+\bar{x}_g = \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^{n}{x_i}} = \left( \prod_{i = 1}^{n}{x_i} \right)^{1 / n}
+$$
+
+Par exemple, on s'intéresse à l'évolution de la démographie d'une ville médiévale sur cinq ans pendant lesquels le taux de variation du nombre d'habitants à été de 14%, 26%, 16%, -38% et -6% (on sait également que la population était de 5000 habitants au début de la période étudiée) :
+
+```{r}
+## Taux de variation en %
+pop <- c(10, 14, -28, -15, 25)
+
+## Conversion du taux de variation en taux de croissance
+(taux <- 1 + pop / 100)
+```
+
+On peut calculer la moyenne arithmétique de ces taux :
+
+```{r}
+mean(taux)
+```
+
+Au regard de ce résultat, il semble que la population ait augmenté sur l'ensemble de la période considérée (le taux moyen est supérieur à 1). Pour s'en assurer, on peut calculer le nombre d'habitants dans la ville au terme de la période de 5 ans :
+
+```{r}
+## Nombre d'habitant au bout de 5 ans
+5000 * prod(taux)
+```
+
+Contrairement à ce que laissait penser la moyenne arithmétique, la population a diminué sur la période étudiée.
+
+Calculons maintenant la moyenne géométrique :
+
+```{r}
+## Nombre d'observations
+n <- length(taux)
+
+## Moyenne géométrique
+x <- prod(taux)^(1 / n)
+x
+```
+
+La moyenne géométrique indique bien qu'il y a une diminution du nombre d'habitants au cours du temps à un taux moyen de 0,992 (soit un taux de variation moyen de -0,8%). Si on applique ce taux moyen pendant 5 ans, on obtient :
+
+```{r}
+hab0 <- 5000 # Nombre initial d'habitants
+(hab1 <- hab0 * x) # Nombre d'habitants au bout de 1 an
+(hab2 <- hab1 * x) # Nombre d'habitants au bout de 2 an
+(hab3 <- hab2 * x) # Nombre d'habitants au bout de 3 an
+(hab4 <- hab3 * x) # Nombre d'habitants au bout de 4 an
+(hab5 <- hab4 * x) # Nombre d'habitants au bout de 5 an
+```
+
+#### Moyenne harmonique
+
+La moyenne harmonique est utilisée lorsqu'on veut déterminer un rapport moyen dans les cas où une grandeur varie selon une raison inverse d'une autre valeur, c'est-à-dire lorsque les éléments comparés ont des rapports de proportionnalité inverses.
+
+$$
+\bar{x}_h = \frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \cdots + \frac{1}{x_n}} = \frac{n}{\sum_{i=1}^{n}{\frac{1}{x_i}}}
+$$
+
+Par exemple, on cherche à calculer la densité de population moyenne d'une série de villes qui ont le même nombre d'habitants (pour l'exemple, les cinq villes ont une population de 5000 habitants).
+ 
+```{r}
+## Densités de population
+dens <- c(220, 800, 300, 760, 920)
+```
+
+On peut calculer la moyenne arithmétique de ces densités :
+
+```{r}
+mean(dens)
+```
+
+Cependant, cette valeur est incorrecte : elle ne tient pas compte du fait que les villes en question ont des superficies différentes. La densité correspond au nombre d'habitants par unité de surface (à population égale, la densité augmente lorsque la surface diminue) : la densité moyenne correspond donc à la population totale des villes étudiées rapportée à la superficie totale occupée par ces villes :
+
+```{r}
+## Population totales des villes
+pop_totale <- 5 * 5000
+
+## Superficie totale des villes
+aire_totale <- sum(5000 / dens)
+
+## Densité moyenne
+pop_totale / aire_totale
+```
+
+Calculons maintenant la moyenne harmonique des densités de population :
+
+```{r}
+## Nombre d'observations
+n <- length(dens)
+
+## Moyenne harmonique
+n / sum(1 / dens)
+```
+
+### Médiane
+
+La moyenne est très sensible aux fluctuations d'échantillonnage et à la présence de valeurs extrêmes (beaucoup plus petites ou beaucoup plus grandes que le reste des observations).
+
+### Mode
+
+## Mesures de la dispersion
+### Étendue
+
+### Écart interquartile
+
+### Écart moyen absolu
+
+### Variance
+
+### Écart-type
+
+### Coefficient de variation
+
+## Asymétrie et aplatissement
+
+## Scores standards

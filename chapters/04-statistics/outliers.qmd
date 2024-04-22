@@ -1,4 +1,4 @@
-# Valeurs abérantes {#sec-statistics-outliers}
+# Valeurs abérantes {#sec-stats-outliers}
 
 La détection de valeurs aberrantes (*outliers*), ou considérées comme inattendues, est une tâche courante lors de l'analyse de données. Cette dernière repose généralement sur la définition d'un seuil ou d'une valeur limite permettant de séparer les valeurs aberrantes du reste des données [@filzmoser2005; @reimann2005]. Ce seuil correspond généralement à une distance limite par rapport au centre du jeu de données, au-delà de laquelle les individus ne sont pas uniquement affectés par la variation naturelle du phénomène étudié, voire relèvent d'un ou de plusieurs processus complètement différents [@filzmoser2005].
 
