@@ -1,3 +1,0 @@
-# Gestion de versions {#sec-reproducibility-version}
-
-* @bryan2021
