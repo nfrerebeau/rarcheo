@@ -151,21 +151,6 @@ editor: source
 
 execute:
   freeze: auto
-  
-# Set default options for every webpage that may or may not include webR.
-engine: knitr
-webr: 
-  show-startup-message: true     # Display status of webR initialization
-#  show-header-message: false     # Check to see if COOP&COEP headers are set for speed.
-#  packages: ['ggplot2', 'dplyr'] # Pre-install dependencies
-#  base-url: ''                   # Base URL used for specifying where R WebAssembly binaries should be located
-#  home-dir: '/home/rstudio'      # Customize where the working directory is
-#  channel-type: 'post-message'   # Specify communication channel
-#  service-worker-url: ''         # URL from where to load JavaScript worker scripts when loading webR with the ServiceWorker communication channel.
-
-# Attach webR to every page
-filters:
-  - webr
 
 knitr:
   opts_chunk:

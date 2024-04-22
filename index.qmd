@@ -37,11 +37,7 @@ La plupart des méthodes présentées ici sont destinées à des données tabula
 
 Ce livre se veut utile pour les archéologues travaillant avec des données de petite taille (c'est-à-dire des tableaux de moins de 1 million de lignes, et de moins de 2 Go par fichier) qui peuvent être stockées sur votre ordinateur (plutôt que sur un serveur distant). De notre expérience, la majorité des archéologues travaillent avec des données à cette échelle, les méthodes présentées ici devraient donc être utiles à la majorité des applications archéologiques. Si le volume de vos données dépasse ce seuil, vous faites probablement quelque chose de très spécialisé et vous aurez des défis particuliers à relever pour rendre votre recherche reproductible. Cependant, vous pourrez toujours utiliser R et les méthodes décrites ici pour travailler sur des sous-ensembles de votre grand jeu de données.
 
-## Comment utiliser ce livre ? {.unnumbered}
-
-La version en ligne de ce livre utilise [WebR](https://docs.r-wasm.org/webr/latest/) pour vous permettre d'exécuter du code R directement dans votre navigateur.
-
-### Licence {.unnumbered}
+## Licence {.unnumbered}
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
@@ -59,17 +55,17 @@ ref <- utils::readCitationFile("inst/CITATION", meta = list(Encoding = "UTF-8"))
 print(ref, style = "Bibtex")
 ```
 
-### Contributions {.unnumbered}
+## Contributions {.unnumbered}
 
 Le [code source](https://github.com/nfrerebeau/rarcheo) de ce livre est disponible sur [GitHub](https://github.com/). N'hésitez pas à y [ouvrir un ticket](https://github.com/nfrerebeau/rarcheo/issues) pour signaler toutes les erreurs que vous pourrez constater ou proposer des modifications.
 
-### Conventions d'écriture {.unnumbered}
+## Conventions d'écriture {.unnumbered}
 
 Par la suite, on écrira `foo()` pour désigner une fonction, `bar` pour désigner les variables et les paramètres des fonctions et `baz/` pour désigner les chemins. Les noms de *packages* sont indiqués en italique.
 
 Les commentaires dans le code sont précédés par le signe `#`. Les blocs de code alternent l'entrée et la sortie. La sortie est commentée (précédée par `#>` pour la distinguer des commentaires standards) de sorte que vous pouvez facilement copier et coller les exemples dans R.
 
-### Reproductibilité {.unnumbered}
+## Reproductibilité {.unnumbered}
 
 Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/) (`r quarto::quarto_version()`). Le site web est hébergé par la <abbr title="Très Grande Infrastructure de Recherche">TGIR</abbr> [Huma-Num](https://www.huma-num.fr/) et automatiquement mis à jour après chaque commit par [GitHub Actions](https://github.com/nfrerebeau/rarcheo/actions) (cette version a été compilée le `r format(Sys.Date(), "%d %b %Y")`).
 
