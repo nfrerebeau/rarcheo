@@ -282,7 +282,7 @@ Un vecteur peut être transformé en un tableau à deux (`matrix`) ou plusieurs 
 #|   - ""
 #| layout-ncol: 2
 vec <- data.frame(x = rep(1:5, each = 4), y = -rep(1:4, times = 5), z = c("A"))
-vec$i <- paste(vec$x, vec$y * -1, sep=",")
+vec$i <- paste(vec$y * -1, vec$x, sep=",")
 col <- data.frame(x = 1:5, y = 0, z = "X", i = "")
 row <- data.frame(x = 0, y = 1:4 * -1, z = "X", i = "")
 
@@ -373,6 +373,19 @@ y
 
 Le `data.frame` est probablement le concept le plus important de R : il permet de représenter un tableau de données rectangulaire dont les colonnes peuvent contenir des informations de différentes natures. Un `data.frame` est un cas particulier de `list` dont tous les éléments sont nommés et ont la même longueur : chaque élément correspond à une colonne du tableau^[Ainsi, la fonction `names()` est équivalente à `rownames()` et la fonction `length()` retourne le nombre de colonne du tableau (équivalent à `ncol()`).]. Chaque colonne d'un `data.frame` peut ainsi être d'un type différent (contrairement aux matrices dont tous les éléments sont du même type ; @fig-r-dataframe).
 
+Les `data.frame` permettent facilement de :
+
+* Stocker les données associées dans une structure de données de type tableau ;
+* Modifier, extraire, trier l'ensemble des données d'une manière confortable ;
+* Simplifier l'analyse complexe des grands ensembles de données.
+
+Dans un `data.frame` :
+
+* Les colonnes doivent avoir un nom ;
+* Les noms des lignes doivent être uniques ;
+* Chaque colonne peut être de type différent ;
+* Chaque colonne doit contenir le même nombre de valeurs.
+
 ```{r}
 #| label: fig-r-dataframe
 #| echo: false
@@ -436,5 +449,21 @@ Sauf instruction spécifique lors de la création d'un `data.frame`, les noms de
 
 Comme pour les matrices, il est possible de combiner les lignes ou les colonnes de plusieurs `data.frame` en un seul tableau de données avec `rbind()` et `cbind()`. Dans le cas de la combinaison de colonnes, il pourra être préférable de réaliser des jointures (@sec-data-join).
 
-## Valeurs manquantes {#sec-rstats-missing
-}
+Lorsque l'on travaille avec des tableaux de grande taille, il est possible (et plus commode) d'obtenir une vue d'ensemble de nos données à l'aide de la fonction `str()`:
+
+```{r}
+## Créer un tableau de donnée
+data <- data.frame(
+  name = c("John", "Molly", "Frank", "Peter", "Michelle"),
+  job = c("Policeman", "Artist", "Banker", NA, "Teacher"),
+  sex = c("male", "female", "male", "male", "female"),
+  age = c(45, 32, 58, 18, 22)
+)
+
+## Obtenir un apperçu
+str(data)
+```
+
+## Valeurs manquantes {#sec-rstats-missing}
+
+

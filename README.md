@@ -8,7 +8,7 @@ Bien qu'il soit initialement conçu pour les étudiants du master mention *Arch�
 
 ## Contribuer
 
-Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/). Le code source peut être forké plus cloné depuis [GitHub](https://github.com/nfrerebeau/rarcheo) :
+Ce livre a été écrit dans [RStudio](http://www.rstudio.com/ide/) avec [Quarto](https://quarto.org/). Le code source peut être forké puis cloné depuis [GitHub](https://github.com/nfrerebeau/rarcheo) :
 
 ``` r
 # install.packages("usethis")
